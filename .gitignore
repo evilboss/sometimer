@@ -1,0 +1,5 @@
+app/.meteor/local
+app/.meteor/meteorite
+app/node_modules
+app/settings-dev.json
+.idea

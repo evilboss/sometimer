@@ -33,3 +33,4 @@ mdg:validation-error    # A simple wrapper for Meteor.methods
 kadira:flow-router-ssr  # Same as kadira:flow-router, but with SSR support
 kadira:dochead          # DocHead is an isomorphic way to manipulate document.head for Meteor apps.
 materialize:materialize # Materialize (official): A modern responsive front-end framework based on Material Design
+meteorhacks:picker      # Server Side Router for Meteor

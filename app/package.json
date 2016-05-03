@@ -9,8 +9,19 @@
     "type": "git",
     "url": "git@bitbucket.org:bosstechlabs/remotiv-platform.git"
   },
-  "author": "Jr Reyes",
-  "license": "ISC",
+  "author": "Jr Reyes <jr.evilboss@gmail.com> (https://github.com/evilboss)",
+  "keywords": [
+    "node",
+    "mongo",
+    "express",
+    "React",
+    "Mantra"
+  ],
+  "contributors": [
+    "Aaron Randrup <aaronrandrup@gmail.com> (https://github.com/aaronra)"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "",
   "dependencies": {
     "classnames": "^2.2.5",
     "domready": "^1.0.8",

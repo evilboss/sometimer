@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Layout = ({content = () => null }) => (
-  <div>
+const Layout = ({head = () => null,content =() =>null, footer =() =>null}) => (
     <div>
-      {content()}
+        <div>
+            {head()}
+            {content()}
+            {footer()}
+        </div>
     </div>
-  </div>
 );
 
 export default Layout;

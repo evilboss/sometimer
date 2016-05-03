@@ -16,8 +16,19 @@ standard-minifier-css   # CSS minifier run for production mode
 standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
-
-autopublish             # Publish all data to the clients (for prototyping)
-insecure                # Allow all DB writes from clients (for prototyping)
-kadira:flow-router
-materialize:materialize
+# Meteor Standard Packages
+check                   # Check whether a value matches a pattern
+random                  # Random number generator and utilities
+accounts-password       # Password support for accounts
+email                   # Send email messages
+# Atmosphere Third Party packages
+aldeed:simple-schema    # A simple schema validation object with reactivity. Used by collection2 and autoform.
+aldeed:collection2      # Automatic validation of insert and update operations on the client and server.
+cfs:standard-packages   # Filesystem for Meteor, collectionFS
+cfs:filesystem          # Filesystem storage adapter for CollectionFS
+cfs:graphicsmagick      # Adds `gm` to scope with the ability to perform GraphicsMagick or ImageMagick manipulation
+alanning:roles          # Authorization package for Meteor
+fortawesome:fontawesome # Font Awesome (official): 500+ scalable vector icons, customizable via CSS, Retina friendly
+mdg:validation-error    # A simple wrapper for Meteor.methods
+kadira:flow-router-ssr  # Same as kadira:flow-router, but with SSR support
+materialize:materialize # Materialize (official): A modern responsive front-end framework based on Material Design

@@ -30,7 +30,7 @@ cfs:graphicsmagick      # Adds `gm` to scope with the ability to perform Graphic
 alanning:roles          # Authorization package for Meteor
 fortawesome:fontawesome # Font Awesome (official): 500+ scalable vector icons, customizable via CSS, Retina friendly
 mdg:validation-error    # A simple wrapper for Meteor.methods
-kadira:flow-router-ssr  # Same as kadira:flow-router, but with SSR support
+kadira:flow-router      # Same as kadira:flow-router, but with SSR support
 kadira:dochead          # DocHead is an isomorphic way to manipulate document.head for Meteor apps.
 materialize:materialize # Materialize (official): A modern responsive front-end framework based on Material Design
 fourseven:scss          # Style with attitude. Sass and SCSS support for Meteor.js (with autoprefixer and sourcemaps)

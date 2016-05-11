@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-export default class Login extends React.Component {
+class Login extends React.Component {
   render() {
     return(
-     <di>Login</di>
+      <div>Login</div>
     );
   }
 
@@ -12,3 +11,4 @@ export default class Login extends React.Component {
     this.props.login(ReactDOM.findDOMNode(this.refs.email).value, ReactDOM.findDOMNode(this.refs.password).value);
   }
 }
+export default Login;

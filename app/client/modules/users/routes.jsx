@@ -1,12 +1,22 @@
 import React from 'react';
 import {mount} from 'react-mounter';
-import App from '../core/components/App.jsx';
+
+import AppLayout from '../core/components/app_layout.jsx';
 import {Register, Login, RecoverPassword, ResetPassword, EmailVerification, UserSearch, Profile} from './containers';
 
 export default function (injectDeps, {FlowRouter}) {
-  const AppLayout = injectDeps(App);
 
-  FlowRouter.route('/users', {
+  const AppLayoutCtx = injectDeps(AppLayout);
+
+  FlowRouter.route('/login', {
+    name: 'user.login', action() {
+      mount(AppLayoutCtx, {
+        content: () => (<Login />),
+        title: 'Login: '+DocHead.getTitle()
+      });
+    }
+  });
+ /* FlowRouter.route('/users', {
     name: 'users.list', action() {
       mount(AppLayout, {
         content: () => (<UserSearch />)
@@ -22,13 +32,6 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  FlowRouter.route('/login', {
-    name: 'user.login', action() {
-      mount(AppLayout, {
-        content: () => (<Login />)
-      });
-    }
-  });
 
   FlowRouter.route('/register', {
     name: 'user.register', action() {
@@ -70,5 +73,5 @@ export default function (injectDeps, {FlowRouter}) {
         content: () => (<EmailVerification token={token}/>)
       });
     }
-  });
+  });*/
 }

@@ -1,3 +1,10 @@
+/** {
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}*/
+
 section#body {
   display: flex;
   min-height: 100vh;
@@ -6,4 +13,11 @@ section#body {
 
 main {
   flex: 1 0 auto;
+}
+
+.btn-menu {
+  padding: 0 5px;
+  &:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  }
 }

@@ -1,6 +1,5 @@
 import Login from '../components/Login.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
-
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   onData(null, {});

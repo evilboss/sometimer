@@ -7,4 +7,13 @@ import UserList from './UserList.js';
 import UserSearch from './UserSearch.js';
 import Profile from './Profile.js';
 
-export { Login, EmailVerification, RecoverPassword, Register, ResetPassword, UserList, UserSearch, Profile };
+export {
+  Login,
+  EmailVerification,
+  RecoverPassword,
+  Register,
+  ResetPassword,
+  UserList,
+  UserSearch,
+  Profile
+};

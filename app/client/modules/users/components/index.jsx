@@ -7,4 +7,15 @@ import UserList from './UserList.jsx';
 import UserSearch from './UserSearch.jsx';
 import Profile from './Profile.jsx';
 
-export { Register, Login, RecoverPassword, ResetPassword, EmailVerification, UserList, UserSearch, Profile };
+export default {
+  Register,
+  Login,
+  RecoverPassword,
+  ResetPassword,
+  EmailVerification,
+  UserList,
+  UserSearch,
+  Profile,
+  load(context) {
+  }
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import Screenfull from 'screenfull';
-import SideNav from './side_nav.jsx';
+
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -15,21 +15,26 @@ class Navbar extends React.Component {
 
   render() {
     return (
-
-      <nav>
-        <div className="nav-wrapper cyan">
-          <a href="#!" className="brand-logo">Remotiv-App</a>
-          <a href="#" data-activates="mobile-mode" className="button-collapse"><i
-            className="material-icons">menu</i></a>
-          <ul className="right hide-on-med-and-down">
-            <li><a href=""><i className="mdi-social-notifications"></i></a></li>
-            <li><a href=""><i className="material-icons">view_module</i></a></li>
-            <li><a href=""><i className="material-icons">refresh</i></a></li>
-            <li><a href="" onClick={this.toggleFullscreen}><i className="material-icons">settings_overscan</i></a></li>
-          </ul>
-          <SideNav />
-        </div>
-      </nav>
+      <section id="navbar">
+        <nav id="horizontal-nav" className="white hide-on-med-and-down">
+          <div className="nav-wrapper center center-align">
+            <ul className="hide-on-med-and-down">
+              <li>
+                <a href="index.html" className="cyan-text">
+                  <i className="mdi-action-dashboard"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="app-email.html" className="cyan-text">
+                  <i className="mdi-communication-email"></i>
+                  <span>Mailbox</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </section>
     );
   }
 }

@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 class Login extends React.Component {
   render() {
-    return(
-      <div>Login</div>
+    return (
+      <section id="login" className="container">Login</section>
     );
   }
 
-  login(event){
+  login(event) {
     this.props.login(ReactDOM.findDOMNode(this.refs.email).value, ReactDOM.findDOMNode(this.refs.password).value);
   }
 }

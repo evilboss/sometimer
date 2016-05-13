@@ -1,3 +1,5 @@
+@import './partial/_public-body';
+
 /** {
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -15,9 +17,73 @@ main {
   flex: 1 0 auto;
 }
 
+// Button
 .btn-menu {
   padding: 0 5px;
   &:hover {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   }
+}
+
+// Label
+
+.ribbon {
+  border: 0 solid #1a69a4;
+  left: calc(.05rem - 1.2em);
+  position: absolute;
+  top: 1rem;
+  color: #fff !important;
+  @include padding(0.5em, 1.2em, 0.5em, calc(1rem + 1.2em));
+  border-radius: 0 .28571429rem .28571429rem 0;
+  line-height: 1;
+  font-weight: 700;
+  &:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 0;
+    background-color: transparent !important;
+    border-style: solid;
+    border-width: 0 1.2em 1.2em 0;
+    border-color: transparent;
+    border-right-color: inherit;
+    width: 0;
+    height: 0;
+  }
+}
+
+//inputs
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #2196F3;
+  box-shadow: 0 1px 0 0 #2196F3;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #2196F3 !important;
+}
+
+.input-field .prefix.active {
+  color: #2196F3 !important;
 }

@@ -1,0 +1,26 @@
+@mixin margin($top, $right, $bottom, $left) {
+  margin: {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left
+  }
+}
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding: {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left
+  }
+}
+
+@mixin border($top, $right, $bottom, $left) {
+  border: {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left
+  }
+}

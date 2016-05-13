@@ -1,7 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Formsy from 'formsy-react';
+import {Input} from 'formsy-react-components';
+
+
 class Login extends React.Component {
   render() {
+    const {error} = this.props;
+
     return (
       <section id="login">
         <div className="container">
@@ -19,26 +24,40 @@ class Login extends React.Component {
                     <div className="blue ribbon">
                       Login
                     </div>
+                    <Formsy.Form className="col s12"
+                                 onValidSubmit={this.validSubmit.bind(this)}
+                                 ref="form">
+                      {error ?
+                        <div className="alert alert-danger" onClick="">
+                          <span className="octicon octicon-megaphone"></span>
+                          {error}
+                        </div> : null }
+                      <Input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        autoComplete="off"
+                        validations="isEmail"
+                        validationError="Please provide a valid email address."
+                        required
+                      />
+                      <Input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                      />
 
-                    <form className="col s12">
-                      <div className="row">
-                        <div className="input-field col s12">
-                          <i className="material-icons prefix">email</i>
-                          <input id="icon_prefix" type="email" className="validate"/>
-                          <label for="icon_prefix">Email</label>
-                        </div>
-                        <div className="input-field col s12">
-                          <i className="material-icons prefix">lock</i>
-                          <input id="icon_telephone" type="tel" className="validate"/>
-                          <label for="icon_telephone">Password</label>
-                        </div>
+                      <div className="submit">
+                        <button className="button button-block bg-green" type="submit">SIGN IN
+                        </button>
                       </div>
-                    </form>
+
+
+                    </Formsy.Form>
                   </div>
                 </div>
 
-                <a className="waves-effect waves-light btn btn-large yellow darken-2">
-                  <i className="material-icons left">input</i>Sign In</a>
 
               </div>
             </div>
@@ -49,8 +68,28 @@ class Login extends React.Component {
     );
   }
 
-  login(event) {
-    this.props.login(ReactDOM.findDOMNode(this.refs.email).value, ReactDOM.findDOMNode(this.refs.password).value);
+
+  resetForm() {
+    this.refs.form.reset();
+  }
+
+  validSubmit(data) {
+    this.props.submitAction(data.email, data.password);
+  }
+
+  // invalidSubmit(data) {
+  invalidSubmit() {
+    // console.log('invalidSubmit', data);
+  }
+
+  enableButton() {
+    // console.log('enable button');
+    this.setState({canSubmit: true});
+  }
+
+  disableButton() {
+    // console.log('disable button');
+    this.setState({canSubmit: false});
   }
 }
 export default Login;

@@ -6,7 +6,7 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  login: actions.users.login,
+  submitAction: actions.users.login,
   context: () => context
 });
 

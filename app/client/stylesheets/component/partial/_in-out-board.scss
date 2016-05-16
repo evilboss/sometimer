@@ -15,8 +15,18 @@ section#in-out-board {
       @include margin(null, 0.5em, 3em, 0.5em);
       @include padding(0.5em, 0.5em, 0.5em, 0.5em);
       .logo {
+        display: inline-block;
         img {
           height: 3em;
+        }
+      }
+      .right {
+        margin-right: 0.5em;
+        a {
+          color: white;
+          span {
+            display: block;
+          }
         }
       }
     }

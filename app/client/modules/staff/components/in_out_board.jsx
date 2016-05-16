@@ -16,8 +16,10 @@ class InOutBoard extends React.Component {
                   <div className="logo">
                     <img src="Assets/logo/ezyva-logo.png"/>
                   </div>
-                  <div className="right">
-                    <a href=""><i className="material-icons">settings_overscan</i></a>
+                  <div className="right center-align">
+                    <a href="/"><i className="material-icons">dashboard</i>
+                    <span>Dashboard</span>
+                    </a>
                   </div>
                 </div>
 

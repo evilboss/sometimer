@@ -10,6 +10,7 @@ export default {
     });
   },
 
+/*
   register({Meteor, LocalState}, user) {
     Accounts.createUser(user, (err, res) => {
       if(err){
@@ -19,18 +20,25 @@ export default {
       }
     });
   },
+*/
 
-  login({Meteor, LocalState}, email, password) {
-    Meteor.loginWithPassword(email, password, (err, res) => {
-      if(err){
-        notify.show(err.message, 'error');
-      }else{
-        notify.show("You successfully logged in.", 'success');
-        FlowRouter.go('/');
+  login({Meteor, LocalState, FlowRouter}, email, password) {
+
+    if (!email || !password) {
+      return LocalState.set('LOGIN_ERROR', 'Login & Password are required!');
+    }
+
+    LocalState.set('LOGIN_ERROR', null);
+
+    Meteor.loginWithPassword(email, password, (err) => {
+      if (err && err.reason) {
+        console.log(err);
+        return LocalState.set('LOGIN_ERROR', err.reason);
       }
+      FlowRouter.go('/');
     });
-  },
 
+  },
   recover_password({Meteor, LocalState}, email) {
     Accounts.forgotPassword( { email: email }, (err) => {
       if(err){

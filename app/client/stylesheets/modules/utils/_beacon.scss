@@ -1,19 +1,20 @@
 .beacon {
+  border: 3px solid white;
+  display: inline-block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: #33a751;
-  height: 3em;
-  width: 3em;
+  @include margin(1.5em, 0, 0, 2em);
+  background-color: #F48762;
+  height: 1.5em;
+  width: 1.5em;
   border-radius: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
 
-.beacon:before {
+.beacon.green:before {
   position: absolute;
   content: "";
-  height: 3em;
-  width: 3em;
+  height: 1.1em;
+  width: 1.1em;
   left: 0;
   top: 0;
   background-color: transparent;

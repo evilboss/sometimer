@@ -30,12 +30,20 @@ class InOutBoard extends React.Component {
                            className="display-photo circle responsive-img"/>
                     </div>
                     <div className="staff-details col l8 m8 s12">
-                      <h4>Staff Name</h4>
-                      <p><i className="material-icons left">work</i>Job Title</p>
-                      <b><i className="material-icons left">cached</i>Click to Change Status</b>
-                      <div>
-                        <span className="beacon"></span>
+                      <div><h4>Staff Name</h4>
+                        <p><i className="material-icons left">work</i>Job Title</p>
+                        <button className="ui btn waves-effect waves-light yellow darken-3">
+                          <i className="material-icons left">cached</i>
+                          Click to Change Status
+                        </button>
                       </div>
+                      <div className="row">
+                        <div className="col s12">
+                          <div className="current-log"><p><b>Current Log -</b> Out</p></div>
+                          <div className="beacon z-depth-1"></div>
+                        </div>
+                      </div>
+                      <div>Date Today</div>
                     </div>
                   </div>
                 </div>

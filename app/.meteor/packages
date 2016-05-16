@@ -35,3 +35,5 @@ kadira:dochead          # DocHead is an isomorphic way to manipulate document.he
 materialize:materialize # Materialize (official): A modern responsive front-end framework based on Material Design
 fourseven:scss          # Style with attitude. Sass and SCSS support for Meteor.js (with autoprefixer and sourcemaps)
 meteorhacks:picker      # Server Side Router for Meteor
+std:accounts-material   # Material UI – Accounts UI for React in Meteor 1.3
+percolate:migrations

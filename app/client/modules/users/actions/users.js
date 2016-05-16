@@ -10,6 +10,7 @@ export default {
     });
   },
 
+/*
   register({Meteor, LocalState}, user) {
     Accounts.createUser(user, (err, res) => {
       if(err){
@@ -19,6 +20,7 @@ export default {
       }
     });
   },
+*/
 
   login({Meteor, LocalState, FlowRouter}, email, password) {
 

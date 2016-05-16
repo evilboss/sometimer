@@ -1,6 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import {Input} from 'formsy-react-components';
+import { Accounts } from 'meteor/std:accounts-ui';
 
 
 class Login extends React.Component {
@@ -9,6 +10,7 @@ class Login extends React.Component {
 
     return (
       <section id="login">
+
         <div className="container">
           <div className="row">
             <div className="col s12">
@@ -24,38 +26,9 @@ class Login extends React.Component {
                     <div className="blue ribbon">
                       Login
                     </div>
-                    <Formsy.Form className="col s12"
-                                 onValidSubmit={this.validSubmit.bind(this)}
-                                 ref="form">
-                      {error ?
-                        <div className="alert alert-danger" onClick="">
-                          <span className="octicon octicon-megaphone"></span>
-                          {error}
-                        </div> : null }
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder="Email Address"
-                        autoComplete="off"
-                        validations="isEmail"
-                        validationError="Please provide a valid email address."
-                        required
-                      />
-                      <Input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        required
-                      />
-
-                      <div className="submit">
-                        <button className="button button-block bg-green" type="submit">SIGN IN
-                        </button>
-                      </div>
-
-
-                    </Formsy.Form>
                   </div>
+                  <Accounts.ui.LoginForm />
+
                 </div>
 
 

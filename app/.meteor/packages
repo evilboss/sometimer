@@ -36,4 +36,4 @@ materialize:materialize # Materialize (official): A modern responsive front-end 
 fourseven:scss          # Style with attitude. Sass and SCSS support for Meteor.js (with autoprefixer and sourcemaps)
 meteorhacks:picker      # Server Side Router for Meteor
 std:accounts-material   # Material UI – Accounts UI for React in Meteor 1.3
-clinical:migrations     # A simple migration system for Meteor supporting up/downwards migrations and command line usage. Forked to experiment with package data migrations.
+percolate:migrations    # A simple migration system for Meteor supporting up/downwards migrations and command line usage. Forked to experiment with package data migrations.

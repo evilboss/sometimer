@@ -24,6 +24,7 @@ email                   # Send email messages
 # Atmosphere Third Party packages
 aldeed:simple-schema    # A simple schema validation object with reactivity. Used by collection2 and autoform.
 aldeed:collection2      # Automatic validation of insert and update operations on the client and server.
+aldeed:autoform         # UI components and helpers to easily create basic forms with automatic insert and update events
 cfs:standard-packages   # Filesystem for Meteor, collectionFS
 cfs:filesystem          # Filesystem storage adapter for CollectionFS
 cfs:graphicsmagick      # Adds `gm` to scope with the ability to perform GraphicsMagick or ImageMagick manipulation

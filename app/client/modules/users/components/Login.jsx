@@ -1,10 +1,27 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import {Input} from 'formsy-react-components';
-import { Accounts } from 'meteor/std:accounts-ui';
+import {Accounts} from 'meteor/std:accounts-ui';
 
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.componentDidMount = ()=> {
+
+      $("input").removeAttr("placeholder");
+      $(".input-field>label").removeClass("active");
+      $("button.btn-flat").attr('class', 'ui btn waves-effect waves-light blue');
+
+      var submit = $(':submit');
+      var className = submit.attr('class') + ' yellow darken-3';
+      submit.attr('class', className);
+
+      $(":submit.active").addClass("yellow darken-3");
+      console.log(submit.attr('class'));
+    };
+  };
+
   render() {
     const {error} = this.props;
 
@@ -22,16 +39,12 @@ class Login extends React.Component {
 
                 <div className="container">
                   <div className="form row">
-
                     <div className="blue ribbon">
                       Login
                     </div>
+                    <Accounts.ui.LoginForm />
                   </div>
-                  <Accounts.ui.LoginForm />
-
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -40,7 +53,6 @@ class Login extends React.Component {
       </section>
     );
   }
-
 
   resetForm() {
     this.refs.form.reset();

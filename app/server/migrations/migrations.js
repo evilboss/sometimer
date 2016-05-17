@@ -14,6 +14,7 @@ Migrations.add({
     removeAllUsers();
   }
 });
+/*TODO: Need to have a handler that detects if there is a new migration*/
 Meteor.startup(function () {
   Migrations.migrateTo(0);
   Migrations.migrateTo('latest');

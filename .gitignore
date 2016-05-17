@@ -1,5 +1,6 @@
 app/.meteor/local
 app/.meteor/meteorite
+app/.meteor/versions
 app/node_modules
 app/settings-dev.json
 .idea

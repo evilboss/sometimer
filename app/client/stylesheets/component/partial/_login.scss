@@ -10,7 +10,6 @@ section#login {
 
   .header-wrapper {
     margin-top: 50px;
-    margin-bottom: 100px;
     .logo {
       @include margin(null, 0.5em, 3em, 0.5em);
     }
@@ -21,7 +20,14 @@ section#login {
       color: white;
     }
     form {
-      margin-top: 1.5em;
+      margin-top: 2.5em;
+      padding: 0 1em;
+      .input-field {
+        width: 100% !important;
+      }
+      button {
+        @include margin(0.5em, 0.5em, 0, 0.5em);
+      }
     }
   }
 }

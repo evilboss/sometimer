@@ -1,5 +1,5 @@
 @import './partial/_public-body';
-
+@import '_helpers';
 /** {
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
@@ -86,4 +86,10 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 
 .input-field .prefix.active {
   color: #2196F3 !important;
+}
+
+// bg-color
+
+.green {
+  background-color: #4CAF50 !important;
 }

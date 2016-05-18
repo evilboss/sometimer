@@ -13,13 +13,10 @@ class TaskList extends React.Component {
       <div className="row">
         TaskList
         <ReactQuickform
-          buttonText="pekpek"
+          buttonText="Add New Task"
           field={Task}
           operation="insert"
           name="insertTaskForm"
-          buttonClass="yellow"
-          included="title,author"
-          ommited ="author"
         />
       </div>
     );

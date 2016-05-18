@@ -97,3 +97,16 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 .green {
   background-color: #4CAF50 !important;
 }
+
+// table
+table.centered tfoot tr th, table.centered tfoot tr td {
+  text-align: center;
+}
+
+tfoot {
+  border-top: 2px solid #00BCD4;
+}
+
+td, th {
+  padding: 10px 5px !important;
+}

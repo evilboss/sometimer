@@ -7,6 +7,7 @@ import timesheetModule from './modules/timesheet';
 import userModule from './modules/users';
 import staffModule from './modules/staff';
 import taskModule from './modules/task';
+import react_quickformModule from './modules/react_quickform';
 
 // init context
 const context = initContext();
@@ -18,4 +19,5 @@ app.loadModule(timesheetModule);
 app.loadModule(userModule);
 app.loadModule(taskModule);
 app.loadModule(staffModule);
+app.loadModule(react_quickformModule);
 app.init();

@@ -9,11 +9,12 @@ Task.attachSchema(new SimpleSchema({
     label: "Title",
     max: 200,
     optional: true,
-    materialForm: {
-      className:'input-field col s12',
-      floatingLabelText: 'Your name'
-
+    autoform: {
+      afFieldInput: {
+        class: 'custom'
+      }
     }
+
   },
   author: {
     type: String,
@@ -57,4 +58,3 @@ if (Meteor.isServer) {
 }
 
 export default Task;
-/*TODO: Reminder using multiple form helpers - Best one is simple-react-form-material-ui w/c does not work. and ReactAutoForm w/c Works but Does not offer customizatiion*/

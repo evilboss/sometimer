@@ -1,9 +1,6 @@
 import React from 'react';
 import Task from '/lib/collections/task';
-import ReactAutoForm from 'meteor-react-autoform';
-import  {QuickForm} from 'react-form-simple-schema';
-import {Form} from 'simple-react-form';
-import {RaisedButton} from 'material-ui';
+import ReactQuickform from '/client/modules/react_quickform/components/react_quickform';
 
 
 class TaskList extends React.Component {
@@ -15,8 +12,12 @@ class TaskList extends React.Component {
     return (
       <div className="row">
         TaskList
-        <ReactAutoForm collection={Task} type="insert" onSubmit={console.log('submit')} formClass="col s12" />
-
+        <ReactQuickform
+          buttonText="Add New Task"
+          field={Task}
+          operation="insert"
+          name="insertTaskForm"
+        />
       </div>
     );
   }

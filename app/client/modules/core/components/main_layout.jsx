@@ -10,7 +10,7 @@ const Layout = ({head = () => null, content =() =>null, footer =() =>null}) => (
     <header>
       {head()}
     </header>
-    <main id="main">
+    <main id="main" className="container z-depth-3">
       {content()}
     </main>
     {footer()}

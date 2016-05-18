@@ -20,15 +20,15 @@ class Navbar extends React.Component {
           <div className="nav-wrapper center center-align">
             <ul className="hide-on-med-and-down">
               <li>
-                <a href="index.html" className="cyan-text">
+                <a href="/" className="cyan-text">
                   <i className="mdi-action-dashboard"></i>
                   <span>Dashboard</span>
                 </a>
               </li>
               <li>
-                <a href="app-email.html" className="cyan-text">
-                  <i className="mdi-communication-email"></i>
-                  <span>Mailbox</span>
+                <a href="/timesheet" className="cyan-text">
+                  <i className="material-icons">access_time</i>
+                  <span>Timesheet</span>
                 </a>
               </li>
             </ul>

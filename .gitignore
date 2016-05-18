@@ -3,4 +3,5 @@ app/.meteor/meteorite
 app/.meteor/versions
 app/node_modules
 app/settings-dev.json
+app/packages
 .idea

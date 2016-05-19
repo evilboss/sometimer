@@ -14,4 +14,12 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
+  FlowRouter.route('/task/new', {
+    name: 'task.new',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<TaskCreate/>)
+      });
+    }
+  });
 }

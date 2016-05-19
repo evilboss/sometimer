@@ -1,7 +1,7 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../task_create';
+import {composer} from '../task/task_create';
 
 describe('task.containers.task_create', () => {
   describe('composer', () => {

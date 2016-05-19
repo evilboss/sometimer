@@ -11,7 +11,6 @@ export const composer = ({context}, onData) => {
     onData();
   }
 };
-
 export const depsMapper = (context, actions) => ({
   context: () => context
 });

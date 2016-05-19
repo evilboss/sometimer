@@ -1,12 +1,16 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import TaskCreate from '../components/task_create.jsx';
-
+import TaskList from '../../components/task/task_list.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  onData(null, {});
-};
+  if (Meteor.subscribe('task').ready()) {
 
+    const task = Collections.Task.find().fetch();
+    onData(null, {task});
+  } else {
+    onData();
+  }
+};
 export const depsMapper = (context, actions) => ({
   context: () => context
 });
@@ -14,4 +18,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(TaskCreate);
+)(TaskList);

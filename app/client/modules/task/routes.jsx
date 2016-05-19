@@ -22,8 +22,9 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'task.new',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<TaskCreate/>)
-
+        head: () => (<Header/>),
+        content: () => (<TaskCreate/>),
+        footer: () => (<Footer/>)
       });
     }
   });

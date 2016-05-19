@@ -1,6 +1,5 @@
 import React from 'react';
 import Task from '/lib/collections/task';
-import ReactQuickform from '/client/modules/reactUtils/components/react_quickform';
 
 
 class TaskList extends React.Component {
@@ -8,16 +7,18 @@ class TaskList extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
+
       <div className="row">
         TaskList
-        <ReactQuickform
-          buttonText="Add New Task"
-          field={Task}
-          operation="insert"
-          name="insertTaskForm"
-        />
+        <a href="task/new">New Task</a>
+        {this.props.task.map(task => (
+          <div key={task._id} className="comment">
+            <b>{task.title}: {task.author}</b> <span>Assignee: {task.assignee}</span>
+          </div>
+        ))}
       </div>
     );
   }

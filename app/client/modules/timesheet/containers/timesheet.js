@@ -5,10 +5,7 @@ import Timesheet from '../components/timesheet.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  if (Meteor.subscribe('timesheet').ready()) {
-    console.log(Collections.Timesheet.find().fetch());
-  }
-
+  onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({

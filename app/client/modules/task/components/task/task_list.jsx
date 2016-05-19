@@ -1,6 +1,6 @@
 import React from 'react';
 import Task from '/lib/collections/task';
-import ReactQuickform from '/client/modules/react_quickform/components/react_quickform';
+import ReactQuickform from '/client/modules/reactUtils/components/react_quickform';
 
 
 class TaskList extends React.Component {

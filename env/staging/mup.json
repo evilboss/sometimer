@@ -1,0 +1,23 @@
+{
+  "servers": [
+    {
+      "host": "52.91.186.237",
+      "username": "ubuntu",
+      "pem": "~/.ssh/remotiv-app-dev.pem",
+      "env": {
+      }
+    }
+  ],
+  "setupMongo": true,
+  "setupNode": true,
+  "nodeVersion": "0.10.38",
+  "setupPhantom": false,
+  "appName": "remotiv-platform",
+  "app": "../../app",
+  "env": {
+    "PORT": 80,
+    "ROOT_URL": "http://ec2-52-91-186-237.compute-1.amazonaws.com",
+    "NODE_ENV": "staging"
+  },
+  "deployCheckWaitTime": 15
+}

@@ -1,0 +1,10 @@
+// all partial component should imported here
+// @import './partial/_example.scss';
+@import './partial/_navbar';
+@import "./partial/_sidenav";
+@import "./partial/_login";
+@import './partial/_in-out-board';
+@import './partial/_footer';
+@import './partial/_timesheet';
+@import './partial/_task-list';
+@import "./partial/_task-create";

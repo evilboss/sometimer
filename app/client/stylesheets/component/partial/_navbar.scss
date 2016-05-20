@@ -1,0 +1,16 @@
+section#navbar {
+  ul {
+    display: inline-block;
+    & li a {
+      i {
+        height: 0;
+        line-height: 45px;
+        font-size: 1.4rem;
+      }
+      span {
+        position: relative;
+        top: 12px;
+      }
+    }
+  }
+}

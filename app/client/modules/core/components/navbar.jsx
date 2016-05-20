@@ -31,6 +31,12 @@ class Navbar extends React.Component {
                   <span>Timesheet</span>
                 </a>
               </li>
+              <li>
+                <a href="/task" className="cyan-text">
+                  <i className="material-icons">assignment</i>
+                  <span>Task</span>
+                </a>
+              </li>
             </ul>
           </div>
         </nav>

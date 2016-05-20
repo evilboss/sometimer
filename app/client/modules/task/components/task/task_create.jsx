@@ -7,16 +7,19 @@ class TaskCreate extends React.Component {
 
   render() {
     return (
-      <div>
-        TaskCreate
-        <ReactQuickform
-          buttonText="Add New Task"
-          field={this.props.task}
-          operation="insert"
-          name="insertTaskForm"
-        />
-        <a href="/task">View All task</a>
-      </div>
+      <section className="task-create">
+        <h5 className="inline">TaskCreate</h5> <a className="waves-effect waves-light btn cyan">
+        <i className="material-icons right">assignment</i>
+        View All task</a>
+        <div className="row container-padding z-depth-1-half card-top-border">
+          <ReactQuickform
+            buttonText="Add New Task"
+            field={this.props.task}
+            operation="insert"
+            name="insertTaskForm"
+          />
+        </div>
+      </section>
     );
   }
 }

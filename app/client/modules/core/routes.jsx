@@ -6,7 +6,6 @@ import Home from './components/home.jsx';
 import Header from './components/header.jsx';
 import Foot from './components/footer.jsx';
 
-
 export default function (injectDeps, {FlowRouter}) {
     const MainLayoutCtx = injectDeps(MainLayout);
     FlowRouter.route('/', {

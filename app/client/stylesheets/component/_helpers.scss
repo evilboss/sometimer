@@ -1,4 +1,10 @@
 /*helpers*/
+
+//padding
+.container-padding {
+  padding: 0.5em;
+}
+
 .no-padding {
   padding: 0 !important;
 }
@@ -8,14 +14,18 @@
     top: 0;
     bottom: 0;
   }
+}
 
-  .no-horizontal-padding {
-    padding: {
-      right: 0;
-      left: 0;
-    }
-
+.no-horizontal-padding {
+  padding: {
+    right: 0;
+    left: 0;
   }
+}
+
+//margin
+.container-margin {
+  margin: 0.8em;
 }
 
 .no-margin {
@@ -27,16 +37,20 @@
     top: 0;
     bottom: 0;
   }
-};
+}
+
+;
 
 .no-horizontal-margin {
   margin: {
     right: 0 !important;
     left: 0 !important;
   }
-};
+}
 
-.card-top-border{
+;
+
+.card-top-border {
   border-top: 3px solid #00BCD4;
   border-top-left-radius: 15px;
 }

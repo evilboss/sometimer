@@ -3,9 +3,22 @@ import React from 'react';
 class InOutBoard extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {
+    let status = '';
+    let handleClick = function (event) {
+      console.log('triggering');
+      console.log(status);
+      (status) ? status = '' : status = 'green';
+      if (status) {
+        console.log('yes');
+      } else {
+        console.log('no');
+      }
+    }
+
     return (
       <section id="in-out-board">
         <div className="container">
@@ -32,7 +45,8 @@ class InOutBoard extends React.Component {
                     <div className="staff-details col l8 m8 s12">
                       <div><h4>Staff Name</h4>
                         <p><i className="material-icons left">work</i>Job Title</p>
-                        <button className="ui btn waves-effect waves-light yellow darken-3">
+                        <button className="ui btn waves-effect waves-light yellow darken-3"
+                                onClick={handleClick}>
                           <i className="material-icons left">cached</i>
                           Click to Change Status
                         </button>
@@ -40,7 +54,9 @@ class InOutBoard extends React.Component {
                       <div className="row">
                         <div className="col s12">
                           <div className="current-log"><p><b>Current Log -</b> Out</p></div>
-                          <div className="beacon z-depth-1"></div>
+                          {console.log(status)}
+                          {status}
+                          <div className={status +' beacon z-depth-1'}></div>
                         </div>
                       </div>
                       <div>Date Today</div>

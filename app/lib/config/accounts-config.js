@@ -4,5 +4,6 @@
 import {Meteor} from 'meteor/meteor';
 Accounts.ui.config({
   passwordSignupFields: 'EMAIL_ONLY',
-  loginPath: '/login'
+  loginPath: '/login',
+
 });

@@ -16,9 +16,6 @@ section#body {
 
 main#main {
   flex: 1 0 auto;
-  width: 98% !important;
-  margin-top: 10px;
-  padding: 0.5em;
 }
 
 // Button
@@ -109,4 +106,9 @@ tfoot {
 
 td, th {
   padding: 10px 5px !important;
+}
+
+// list
+.collection a.collection-item {
+  color: #000000 !important;
 }

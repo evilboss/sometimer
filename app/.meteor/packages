@@ -41,3 +41,7 @@ percolate:migrations          # A simple migration system for Meteor supporting 
 thereactivestack:blazetoreact #Transform a Blaze template into a React.js component while keeping the reactivity
 
 #custom package section
+
+
+#dev only packages
+meteortoys:allthings

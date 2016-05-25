@@ -5,6 +5,8 @@ import Team from './team';
 
 
 export {
-  Timesheet,Users,Task,,
+  Timesheet,
+  Users,
+  Task,
   Team
 };

@@ -10,7 +10,7 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
 
-.beacon.green:before {
+.beacon.in:before {
   position: absolute;
   content: "";
   height: 1.1em;
@@ -22,6 +22,9 @@
   box-shadow: 0px 0px 2px 2px #2980b9;
   -webkit-animation: active 2s infinite linear;
   animation: active 2s infinite linear;
+}
+.in{
+  background-color: green !important;
 }
 
 @-webkit-keyframes active {

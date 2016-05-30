@@ -2,6 +2,14 @@ nav.landing-header {
   line-height: 40px;
   margin-top: 50px;
   background-color: transparent;
+  .brand-logo {
+    img {
+      background-color: rgb(255, 255, 255);
+      border-radius: 11px;
+      padding: 5px;
+      height: 2em;
+    }
+  }
   & ul a {
     border-radius: 10px;
     &:hover {

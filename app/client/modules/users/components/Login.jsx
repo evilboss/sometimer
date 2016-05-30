@@ -34,7 +34,7 @@ class Login extends React.Component {
               <div className="header-wrapper center-align">
 
                 <div className="logo">
-                  <img className="responsive-img" src="Assets/logo/ezyva-logo.png"/>
+                  <img className="responsive-img" src="/Assets/teams/ezyva/logo/ezyva-logo.png"/>
                 </div>
 
                 <div className="container">

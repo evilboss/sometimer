@@ -1,0 +1,28 @@
+section.create-team {
+
+  .content {
+    flex: 1 0 auto;
+  }
+  .page-footer {
+    margin-bottom: 1em;
+    padding-bottom: 2em;
+  }
+  .right-wrapper {
+    background-color: #21B2FE;
+    @include full-height;
+  }
+
+  .left-wrapper {
+    @include full-height;
+  }
+  .header {
+    padding: 1em;
+  }
+  .brand-logo {
+    height: 4em;
+  }
+
+  h5 {
+    line-height: 3em;
+  }
+}

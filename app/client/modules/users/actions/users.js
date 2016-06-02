@@ -1,26 +1,12 @@
-import {notify} from '../../core/libs/notify';
-
 export default {
 
   update({Meteor, LocalState}, field) {
-    Meteor.call( 'user.update', field, ( err ) => {
-      if(err){
+    Meteor.call('user.update', field, (err) => {
+      if (err) {
         notify.show(err.message, 'error');
       }
     });
   },
-
-/*
-  register({Meteor, LocalState}, user) {
-    Accounts.createUser(user, (err, res) => {
-      if(err){
-        notify.show(err.message, 'error');
-      }else{
-        FlowRouter.go('/email-verification');
-      }
-    });
-  },
-*/
 
   login({Meteor, LocalState, FlowRouter}, email, password) {
 
@@ -40,23 +26,23 @@ export default {
 
   },
   recover_password({Meteor, LocalState}, email) {
-    Accounts.forgotPassword( { email: email }, (err) => {
-      if(err){
+    Accounts.forgotPassword({email: email}, (err) => {
+      if (err) {
         notify.show(err.message, 'error');
-      }else{
+      } else {
         notify.show("Email sent. Please check your mail account.", 'success');
       }
     });
   },
 
   reset_password({Meteor, LocalState}, token, password, repeatPassword) {
-    if(password != repeatPassword){
+    if (password != repeatPassword) {
       notify.show("Passwords don't match.", 'error');
-    }else{
-      Accounts.resetPassword( token, password, ( err ) => {
-        if(err){
+    } else {
+      Accounts.resetPassword(token, password, (err) => {
+        if (err) {
           notify.show(err.message, 'error');
-        }else{
+        } else {
           notify.show("New password has been saved.", 'success');
           FlowRouter.go("/login");
         }
@@ -65,30 +51,30 @@ export default {
   },
 
   change_password({Meteor, LocalState}, oldPassword, newPassword) {
-    Accounts.changePassword( oldPassword, newPassword, ( err ) => {
-      if(err){
+    Accounts.changePassword(oldPassword, newPassword, (err) => {
+      if (err) {
         notify.show(err.message, 'error');
-      }else{
+      } else {
         notify.show("New password has been saved.", 'success');
       }
     });
   },
 
   change_username({Meteor, LocalState}, username) {
-    Meteor.call( 'user.update', {username: username}, ( err ) => {
-      if(err){
+    Meteor.call('user.update', {username: username}, (err) => {
+      if (err) {
         notify.show(err.message, 'error');
-      }else{
+      } else {
         notify.show("New username has been saved.", 'success');
       }
     });
   },
 
   change_email({Meteor, LocalState}, email) {
-    Meteor.call( 'user.update', {email: email}, ( err ) => {
-      if(err){
+    Meteor.call('user.update', {email: email}, (err) => {
+      if (err) {
         notify.show(err.message, 'error');
-      }else{
+      } else {
         notify.show("New email has been saved.", 'success');
         FlowRouter.go("/email-verification");
       }
@@ -97,10 +83,10 @@ export default {
 
   verify_email({Meteor, LocalState}, token) {
     var result = true;
-    Accounts.verifyEmail( token, ( err ) => {
-      if(err){
+    Accounts.verifyEmail(token, (err) => {
+      if (err) {
         notify.show(err.message, 'error');
-      }else{
+      } else {
         result = true;
       }
     });
@@ -108,10 +94,10 @@ export default {
   },
 
   send_verification_email({Meteor, LocalState}) {
-    Meteor.call("user.send_verification_email", ( err ) => {
-      if(err){
+    Meteor.call("user.send_verification_email", (err) => {
+      if (err) {
         notify.show(err.message, 'error');
-      }else{
+      } else {
         FlowRouter.go("/email-verification");
       }
     });

@@ -1,7 +1,4 @@
 import React from 'react';
-import Task from '/lib/collections/task';
-
-
 class TaskList extends React.Component {
   constructor(props) {
     super(props);

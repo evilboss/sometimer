@@ -11,16 +11,15 @@ export default function (injectDeps, {FlowRouter}) {
 
   FlowRouter.route('/inOutBoard', {
     name: 'staff.inOutBoard',
+
+    triggersEnter: [function(context, redirect) {
+      accessControl.isLoggedIn('staff.inOutBoard', redirect);
+    }],
     action() {
-      console.log(accessControl.isLoggedIn());
-      console.log(Meteor.user());
-      if(accessControl.isLoggedIn()){
-        mount(MainLayoutCtx, {
-          content: ()=>(<InOutBoard />)
-        });
-      }else{
-        FlowRouter.redirect('/login');
-      }
+
+      mount(MainLayoutCtx, {
+        content: ()=>(<InOutBoard />)
+      });
     }
   });
 }

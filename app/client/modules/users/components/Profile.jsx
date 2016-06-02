@@ -56,7 +56,28 @@ export default class Profile extends React.Component {
   render() {
     const user = this.props.user;
     return (
-      <div>Profile</div>
+      <section className="profile">
+        <h5 className="title">My Account</h5>
+        <div className="row">
+          <div className="col s12 m2 l2">
+            <img src="http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg" alt="dp"
+                 className="display-photo responsive-img"/>
+          </div>
+          <div className="col s12 m10 l10">
+            <h5>Account Information</h5>
+            <ul className="collection">
+              <li className="collection-item">User Name: <span>aaron@ezyva.com</span></li>
+              <li className="collection-item">First Name: <span>Aaron</span></li>
+              <li className="collection-item">Middle Name: <span>Manaloto</span></li>
+              <li className="collection-item">Last Name: <span>Randrup</span></li>
+              <li className="collection-item">Birthday: <span>06-17-1993</span></li>
+              <li className="collection-item">Email: <span>aaron@aaron.com</span></li>
+              <li className="collection-item">Mobile: <span>0999-999-19993</span></li>
+            </ul>
+
+          </div>
+        </div>
+      </section>
     );
   }
 }

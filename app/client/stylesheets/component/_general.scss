@@ -126,3 +126,14 @@ td, th {
 .collection a.collection-item {
   color: #000000 !important;
 }
+
+ul.dropdown-content {
+  li {
+    a {
+      color: #000000;
+      i {
+        color: #00BCD4;
+      }
+    }
+  }
+}

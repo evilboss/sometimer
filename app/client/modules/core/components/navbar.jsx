@@ -10,6 +10,7 @@ class Navbar extends React.Component {
     this.componentDidMount = ()=> {
       $(".button-collapse").sideNav();
     };
+   
   };
 
 

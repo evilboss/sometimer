@@ -18,8 +18,18 @@ main#main {
   flex: 1 0 auto;
 }
 
+// fonts
+h5 {
+  font-size: responsive 2.5em 2.625em !important;
+  font-weight: 300;
+}
+
 p {
   font-size: responsive 12px 14px !important;
+}
+
+.subtext {
+  color: #9e9ea6;
 }
 
 // Button
@@ -115,4 +125,15 @@ td, th {
 // list
 .collection a.collection-item {
   color: #000000 !important;
+}
+
+ul.dropdown-content {
+  li {
+    a {
+      color: #000000;
+      i {
+        color: #00BCD4;
+      }
+    }
+  }
 }

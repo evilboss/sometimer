@@ -9,7 +9,6 @@ const accessControl = {
   status: '',
   isLoggedIn: (routename, redirect) => {
     const currentUser = Meteor.userId();
-    console.log(currentUser);
     if (!currentUser) {
       redirect('/login');
     }

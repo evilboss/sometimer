@@ -9,12 +9,10 @@ export const composer = ({context}, onData) => {
     onData(null, {currentUser});
   }
 };
-
 export const depsMapper = (context, actions) => ({
   status_change:actions.staff.status_change,
   context: () => context
 });
-
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)

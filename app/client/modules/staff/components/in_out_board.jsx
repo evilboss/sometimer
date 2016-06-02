@@ -3,29 +3,26 @@ import React from 'react';
 class InOutBoard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      status: 'Out'
+    };
+  }
+
+  handleClick() {
+    var status = this.state.status;
+    console.log(status);
+    (status == 'Out') ? this.setState({status: 'In'}) : this.setState({status: 'Out'});
   }
 
   render() {
-
-    let status = '';
-    let handleClick = function (event) {
-      (status) ? status = '' : status = 'in';
-      if (status) {
-        console.log('yes');
-      } else {
-        console.log('no');
-      }
-    }
-    let backgroundImage ='/Assets/teams/ezyva/background/bg.jpg';
-    let appLogo ='/Assets/teams/ezyva/logo/ezyva-logo.png';
+    let backgroundImage = '/Assets/teams/ezyva/background/bg.jpg';
+    let appLogo = '/Assets/teams/ezyva/logo/ezyva-logo.png';
     let boardStyle;
-    let inOutLogo = (appLogo)? inOutLogo = appLogo:'/Assets/teams/default/logo/logo.png';
-    (backgroundImage)?boardStyle ={
+    let inOutLogo = (appLogo) ? inOutLogo = appLogo : '/Assets/teams/default/logo/logo.png';
+    (backgroundImage) ? boardStyle = {
       backgroundImage: 'url(' + backgroundImage + ')'
-    }:'';
-    let getStatus = function () {
-      return status;
-    }
+    } : '';
+
     return (
       <section id="in-out-board" style={boardStyle}>
         <div className="container">
@@ -53,15 +50,15 @@ class InOutBoard extends React.Component {
                       <div><h4>Staff Name</h4>
                         <p><i className="material-icons left">work</i>Job Title</p>
                         <button className="ui btn waves-effect waves-light yellow darken-3"
-                                onClick={handleClick}>
+                                onClick={this.handleClick.bind(this)}>
                           <i className="material-icons left">cached</i>
                           Click to Change Status
                         </button>
                       </div>
                       <div className="row">
                         <div className="col s12">
-                          <div className="current-log"><p><b>Current Log -</b> Out</p></div>
-                          <div className={getStatus() +' beacon z-depth-1'}></div>
+                          <div className="current-log"><p><b>Current Log -</b> {this.state.status}</p></div>
+                          <div className={this.state.status +' beacon z-depth-1'}></div>
                         </div>
                       </div>
                       <div>Date Today</div>

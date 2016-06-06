@@ -8,18 +8,19 @@ const accessControl = {
   },
   status: '',
   isLoggedIn: (routename, redirect) => {
-    if(!Meteor.user()){
+    const currentUser = Meteor.userId();
+    if (!currentUser) {
       redirect('/login');
     }
   },
-  redirectLogin:function (routename) {
+  redirectLogin: function (routename) {
 
   },
-  cannotAccess:function () {
-    
+  cannotAccess: function () {
+
   },
-  is_allowed:function () {
-    
+  is_allowed: function () {
+
   }
 }
 export {

@@ -19,7 +19,7 @@ export function loadMenus() {
 }
 export function removeAllMenus() {
   console.log('Removing Menus');
-  /*_.each(Meteor.users, function (user) {
-   user.delete();
-   });*/
+  _.each(Menu.find().fetch(), function (menu) {
+    menu.delete();
+  });
 }

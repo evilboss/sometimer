@@ -3,6 +3,7 @@
  */
 import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
+import {loadTeams,removeAllTeams} from './team-migrations';
 Migrations.add({
   version: 1,
   name: 'Add default users to app',
@@ -23,6 +24,17 @@ Migrations.add({
   },
   down: function () {
     removeAllMenus();
+  }
+});
+Migrations.add({
+  version: 3,
+  name: 'Add Default Teams to app',
+
+  up: function () {
+    loadTeams();
+  },
+  down: function () {
+    removeAllTeams();
   }
 });
 /*TODO: Need to have a handler that detects if there is a new migration*/

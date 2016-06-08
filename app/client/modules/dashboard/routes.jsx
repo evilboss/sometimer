@@ -1,8 +1,9 @@
 import React from 'react';
 import {mount} from 'react-mounter';
-import Header from '../core/components/header.jsx';
+import DashboardHeader from './components/dashboard_header';
 import Foot from '../core/components/footer.jsx';
-import Home from '../core/components/home.jsx';
+import Dashboard from './containers/dashboard';
+
 import {accessControl} from '/lib/access-control/access-control';
 
 
@@ -12,12 +13,12 @@ export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   FlowRouter.route('/dashboard', {
     name: 'dashboard',
-    triggersEnter: [function(context, redirect) {
+    triggersEnter: [function (context, redirect) {
       accessControl.isLoggedIn('dashboard', redirect);
     }],
     action() {
       mount(MainLayoutCtx,
-        {head: () => (<Header/>), content: ()=>(<Home/>), footer: ()=>(<Foot/>)}
+        {head: () => (<DashboardHeader />), content: ()=>(<Dashboard />), footer: ()=>(<Foot/>)}
       );
     }
   });

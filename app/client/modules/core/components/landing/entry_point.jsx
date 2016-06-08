@@ -13,7 +13,7 @@ class EntryPoint extends React.Component {
           <h1 className="white-text">
             Remotiv Platform
           </h1>
-          <a className="waves-effect waves-light btn-large amber darken-2"><b>
+          <a href="/team/create" className="waves-effect waves-light btn-large amber darken-2"><b>
             <i className="material-icons right">&#xE7F0;</i>
             Create Your Team</b></a>
         </div>

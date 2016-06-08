@@ -1,7 +1,7 @@
 /**
  * Created by jr on 5/16/16.
  */
-
+import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
 Migrations.add({
   version: 1,
@@ -9,6 +9,7 @@ Migrations.add({
 
   up: function () {
     loadUsers();
+    loadMenus();
   },
   down: function () {
     removeAllUsers();

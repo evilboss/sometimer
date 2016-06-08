@@ -1,8 +1,8 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import PublicLayout from '../public_layout';
+import Card from '../card';
 
-describe('core.components.public_layout', () => {
+describe('dashboard.components.card', () => {
   it('should do something');
 });

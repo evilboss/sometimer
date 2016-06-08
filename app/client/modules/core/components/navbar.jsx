@@ -1,12 +1,8 @@
 import React from 'react';
-import Screenfull from 'screenfull';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleFullscreen = ()=> {
-      Screenfull.enabled ? Screenfull.toggle() : void 0;
-    };
     this.componentDidMount = ()=> {
       $(".button-collapse").sideNav();
     };

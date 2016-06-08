@@ -9,10 +9,20 @@ Migrations.add({
 
   up: function () {
     loadUsers();
-    loadMenus();
   },
   down: function () {
     removeAllUsers();
+  }
+});
+Migrations.add({
+  version: 2,
+  name: 'Adds Menus to app',
+
+  up: function () {
+    loadMenus();
+  },
+  down: function () {
+    removeAllMenus();
   }
 });
 /*TODO: Need to have a handler that detects if there is a new migration*/

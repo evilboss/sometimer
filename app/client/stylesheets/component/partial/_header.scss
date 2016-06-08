@@ -1,4 +1,8 @@
 section#header {
+  nav .brand-logo {
+    left: 0;
+    transform: translateX(0);
+  }
   .account-menu {
     img {
       border-radius: 5px;

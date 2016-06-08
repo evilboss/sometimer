@@ -6,7 +6,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.logOut = ()=> {
-      Meteor.logout();
+
     };
     this.componentDidMount = () => {
       $('.account-menu').dropdown({

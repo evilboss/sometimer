@@ -20,7 +20,6 @@ main#main {
 
 // fonts
 h5 {
-  font-size: responsive 2.5em 2.625em !important;
   font-weight: 300;
 }
 
@@ -41,6 +40,10 @@ p {
 }
 
 // Label
+.error {
+  color: #ff8f00;
+  font-size: inherit !important;
+}
 
 .ribbon {
   border: 0 solid #1a69a4;
@@ -137,3 +140,5 @@ ul.dropdown-content {
     }
   }
 }
+
+

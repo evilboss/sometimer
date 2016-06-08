@@ -3,7 +3,6 @@
  */
 import {Team} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
-
 function extractDomain(url) {
   var domain;
   //find & remove protocol (http, ftp, etc.) and get domain
@@ -21,10 +20,13 @@ function extractDomain(url) {
 }
 
 function getTeamInfo() {
-  if (Meteor.subscribe('teams.current',getSubdomain() ).ready) {
-    console.log(Team.find().fetch());
-    return (Team.find().count())?Teams.find().fetch():null;
+  if (Meteor.subscribe('team.current', getSubdomain()).ready) {
+    console.log('subscription ready');
+    console.log(Team.find().count());
+    return (Team.find().count()) ? Team.find().fetch() : null;
   }
+
+
 }
 function getSubdomain() {
   let url = window.location.hostname;
@@ -39,7 +41,7 @@ function getSubdomain() {
 const TeamInfo = {
   test: ()=>'test',
   getTeamDomain: () =>getSubdomain(),
-  getTeamInfo:()=>getTeamInfo()
+  getTeamInfo: ()=>getTeamInfo()
 
 };
 export {TeamInfo};

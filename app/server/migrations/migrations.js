@@ -5,7 +5,7 @@ import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
 Migrations.add({
   version: 1,
-  name: 'Adds default users to app',
+  name: 'Add default users to app',
 
   up: function () {
     loadUsers();
@@ -16,7 +16,7 @@ Migrations.add({
 });
 Migrations.add({
   version: 2,
-  name: 'Adds Menus to app',
+  name: 'Add Menu list to app',
 
   up: function () {
     loadMenus();

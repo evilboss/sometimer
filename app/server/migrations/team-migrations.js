@@ -12,7 +12,6 @@ export function loadTeams() {
 }
 export function removeAllTeams() {
   console.log('Removing Teams');
-  _.each(Team.find(), function (team) {
-    team.delete();
-   });
+  return Team.remove({});
+
 }

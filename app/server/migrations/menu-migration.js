@@ -5,11 +5,13 @@ export function loadMenus() {
   if (Menu.find({}).count() === 0) {
     let menuItems = [{
       title: "Timesheet",
-      icon: "access_time"
+      icon: "access_time",
+      url: '/timesheet'
     },
       {
         title: "Task",
-        icon: "assignment"
+        icon: "assignment",
+        url: '/task'
       }];
     _.each(menuItems, function (menuItems) {
       Menu.insert(menuItems);

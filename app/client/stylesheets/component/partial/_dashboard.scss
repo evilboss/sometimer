@@ -8,7 +8,7 @@ section.dashboard {
     animation: bottom-to-top 1.5s;
     animation-fill-mode: both;
     animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
-
+    transition: all 0.2s ease-out;
     .card-icon {
       width: 80px;
       height: 80px;
@@ -39,7 +39,7 @@ section.dashboard {
       font-weight: 300;
     }
     &:hover {
-      transition: 0.2s ease-out;
+      transition: all 0.2s ease-out;
       box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
       margin-top: -1px;
       margin-bottom: 1.55em;

@@ -4,9 +4,10 @@
 export function loadUsers() {
   console.log('Loading users');
   if (Meteor.users.find({}).count() === 0) {
+    console.log('migrating user admins');
     Accounts.createUser({
-      username: "admin",
-      password: "password"
+      email: "admin@admin.com",
+      password: "password",
     });
   }
 }

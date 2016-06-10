@@ -1,10 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
-/*let schema = new SimpleSchema({
-    username: {
-      type: String
-    },
+let schema = new SimpleSchema({
     emails: {
       type: Array
     },
@@ -35,17 +32,14 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
           lastname:{
             type: String
           }
-      })
+      }),
+      optional:true
     },
     roles: {
       type: [String],
       optional: true
     },
     // In order to avoid an 'Exception in setInterval callback' from Meteor
-    heartbeat: {
-      type: Date,
-      optional: true
-    }
 });
 
-Meteor.users.attachSchema(schema);*/
+Meteor.users.attachSchema(schema);

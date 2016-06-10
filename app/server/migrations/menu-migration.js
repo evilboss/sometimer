@@ -21,7 +21,6 @@ export function loadMenus() {
 }
 export function removeAllMenus() {
   console.log('Removing Menus');
-  _.each(Menu.find().fetch(), function (menu) {
-    menu.delete();
-  });
+  return Menu.remove({});
+
 }

@@ -12,7 +12,5 @@ export function loadUsers() {
 }
 export function removeAllUsers() {
   console.log('Removing Users');
-  _.each(Meteor.users.find().fetch(), function (user) {
-    user.delete();
-  });
+  return Meteor.users.remove({});
 }

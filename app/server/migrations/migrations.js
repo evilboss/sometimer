@@ -3,7 +3,7 @@
  */
 import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
-import {loadTeams,removeAllTeams} from './team-migrations';
+import {loadTeams, removeAllTeams} from './team-migrations';
 Migrations.add({
   version: 1,
   name: 'Add default users to app',
@@ -37,8 +37,13 @@ Migrations.add({
     removeAllTeams();
   }
 });
-/*TODO: Need to have a handler that detects if there is a new migration*/
-Meteor.startup(function () {
+const runMigrationsFromStart = ()=> {
   Migrations.migrateTo(0);
   Migrations.migrateTo('latest');
+};
+const runOnlyToLatest = () => {
+  Migrations.migrateTo('latest')
+};
+Meteor.startup(function () {
+  (process.env.NODE_ENV === 'development') ? runMigrationsFromStart() : runOnlyToLatest();
 });

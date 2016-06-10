@@ -9,9 +9,9 @@ class Card extends React.Component {
     return (
       <div>
         {this.props.menu.map(menu => (
-          <div className="col s12 m3 l3" key={menu._id}>
-            <a href="#" className="white-text">
-            <div className="card-panel cyan white-text">
+          <div className="col s12 m6 l3" key={menu._id}>
+            <a href={menu.url} className="white-text">
+              <div className="card-panel cyan white-text">
                 <div className="card-icon left">
                   <i className="material-icons"> {menu.icon}</i>
                 </div>
@@ -20,7 +20,7 @@ class Card extends React.Component {
                     {menu.title}
                   </div>
                 </div>
-            </div>
+              </div>
             </a>
           </div>
         ))}

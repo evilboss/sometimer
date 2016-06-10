@@ -4,7 +4,7 @@
 import {TeamInfo} from '/client/modules/team/libs/teamInfo';
 let runTeamSearch=()=>{
   Tracker.autorun(function () {
-    (TeamInfo.getTeamInfo()) ? FlowRouter.redirect('/login') : console.log('no');
+    (TeamInfo.getTeamInfo()) ? FlowRouter.redirect('/login') : FlowRouter.redirect('/notfound');
   });
 }
 const Oauth = {

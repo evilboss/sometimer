@@ -15,6 +15,11 @@ Menu.attachSchema(new SimpleSchema({
     type: String,
     label: "Icon",
     optional: true
+  },
+  url: {
+    type: String,
+    label: "url",
+    optional: true
   }
 }));
 if (Meteor.isServer) {

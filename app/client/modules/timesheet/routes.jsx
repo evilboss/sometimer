@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'react-mounter';
-import Header from '../core/components/header.jsx';
+import Header from '../core/containers/header';
 import Foot from '../core/components/footer.jsx';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from './containers/timesheet';

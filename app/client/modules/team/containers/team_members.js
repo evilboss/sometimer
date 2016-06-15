@@ -1,11 +1,12 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
-import ReactQuickform from '../components/react_quickform.jsx';
-
+import TeamMembers from '../components/create_team/forms/team_members.jsx';
+import {DocDict} from '/lib/local-data/reactive-dict';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-
-  onData(null, {});
+  const newTeam = DocDict.get('teamDocument');
+  const team = Collections.Team;
+  const path = Meteor.absoluteUrl();
+  onData(null, {team, newTeam, path});
 };
 
 export const depsMapper = (context, actions) => ({
@@ -15,4 +16,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(ReactQuickform);
+)(TeamMembers);

@@ -1,9 +1,9 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../quickform';
+import {composer} from '../team_name';
 
-describe('react_quickform.containers.react_quickform', () => {
+describe('team.containers.team_name', () => {
   describe('composer', () => {
 
 //    const Tracker = {nonreactive: cb => cb()};

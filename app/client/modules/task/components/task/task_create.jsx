@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactQuickform from '/client/modules/reactUtils/components/react_quickform';
+import Quickform from '/client/modules/reactUtils/components/quickform';
 class TaskCreate extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class TaskCreate extends React.Component {
         <i className="material-icons right">assignment</i>
         View All task</a>
         <div className="row container-padding z-depth-1-half card-top-border">
-          <ReactQuickform
+          <Quickform
             buttonText="Add New Task"
             field={this.props.task}
             operation="insert"

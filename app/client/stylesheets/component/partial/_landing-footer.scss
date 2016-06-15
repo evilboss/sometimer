@@ -1,5 +1,13 @@
 section.landing-footer {
   footer.page-footer {
     background-color: rgba(30, 30, 30, 0.5);
+    img {
+      padding: 0.5em;
+      height: 3em;
+      position: absolute;
+    }
+    span {
+      margin-left: 40px;
+    }
   }
 }

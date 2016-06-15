@@ -1,5 +1,6 @@
 import React from 'react';
 import Background from './landing_background';
+import CreateTeamButton from './create_team_button';
 class EntryPoint extends React.Component {
   constructor(props) {
     super(props);
@@ -10,12 +11,15 @@ class EntryPoint extends React.Component {
       <section className="entry-point">
         <Background />
         <div className="center-align container body">
-          <h1 className="white-text">
-            Remotiv Platform
-          </h1>
-          <a href="/team/create" className="waves-effect waves-light btn-large amber darken-2"><b>
-            <i className="material-icons right">&#xE7F0;</i>
-            Create Your Team</b></a>
+          <div className="remotiv-background"></div>
+          <div className="big-logo">
+            <img src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
+          </div>
+          <div className="remotiv-text">
+            <h1>Remotiv<span>.io</span></h1>
+            <h6>Business Beyond Boundaries</h6>
+          </div>
+          <CreateTeamButton />
         </div>
       </section>
     );

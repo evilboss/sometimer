@@ -1,6 +1,6 @@
 import React from 'react';
 import Background from './landing_background';
-
+import CreateTeamButton from './create_team_button';
 class NotFoundPage extends React.Component {
   constructor(props) {
     super(props);
@@ -19,9 +19,7 @@ class NotFoundPage extends React.Component {
             You've found yourself in a weird place.
             Probably not the place you were looking for.&nbsp; ¯\_(ツ)_/¯
           </div>
-          <a href="/team/create" className="waves-effect waves-light btn-large amber darken-2"><b>
-            <i className="material-icons right">&#xE7F0;</i>
-            Create Your Team</b></a>
+          <CreateTeamButton />
         </div>
       </section>
     );

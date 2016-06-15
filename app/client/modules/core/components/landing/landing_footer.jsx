@@ -11,7 +11,8 @@ class LandingFooter extends React.Component {
         <footer className="page-footer">
           <div className="footer-copyright">
             <div className="container">
-              © 2016 Ezy VA
+              <img src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
+              <span>© 2016 Remotiv.io</span>
             </div>
           </div>
         </footer>

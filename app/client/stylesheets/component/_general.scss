@@ -18,6 +18,11 @@ main#main {
   flex: 1 0 auto;
 }
 
+nav .brand-logo {
+  left: 0 !important;
+  transform: translateX(0%);
+}
+
 // fonts
 h5 {
   font-weight: 300;
@@ -112,6 +117,32 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   background-color: #4CAF50 !important;
 }
 
+.remotiv-text {
+  font-family: 'Maven Pro', sans-serif !important;
+  text-transform: lowercase;
+  letter-spacing: -2px;
+  font-style: normal;
+  color: white;
+  margin-bottom: 1em;
+  h1, h2, h3, h4, h5, h6 {
+    @extend .no-margin;
+    span {
+      color: #94C73C;
+    }
+  }
+  h6 {
+    color: #F4CE57;
+  }
+}
+
+.remotiv-background {
+  filter: blur(2px);
+  background-position: center;
+  background-image: url(/Assets/teams/default/background/remotiv_io_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 // table
 table.centered tfoot tr th, table.centered tfoot tr td {
   text-align: center;
@@ -141,4 +172,10 @@ ul.dropdown-content {
   }
 }
 
-
+.big-logo {
+  height: 15em;
+  img {
+    height: 100%;
+    width: auto;
+  }
+}

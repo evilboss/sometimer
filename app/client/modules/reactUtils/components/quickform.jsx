@@ -1,12 +1,10 @@
 import React from 'react';
 const QuickFormTemplate = BlazeToReact('quickFormTemplate');
-class ReactQuickform extends React.Component {
+class Quickform extends React.Component {
 
   constructor(props) {
     super(props);
   }
-
-
   render() {
     return (
         <QuickFormTemplate
@@ -17,9 +15,10 @@ class ReactQuickform extends React.Component {
           buttonClass = {this.props.buttonClass}
           included = {this.props.included}
           ommited = {this.props.ommited}
+          doc = {this.props.doc}
         />
     );
   }
 }
 
-export default ReactQuickform;
+export default Quickform;

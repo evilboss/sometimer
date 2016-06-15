@@ -1,8 +1,8 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import Quickform from '../quickform';
+import TeamMembers from '../create_team/forms/team_members';
 
-describe('react_quickform.components.react_quickform', () => {
+describe('team.components.team_members', () => {
   it('should do something');
 });

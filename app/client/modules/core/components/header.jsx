@@ -1,13 +1,12 @@
 import React from 'react';
 import Navbar from './navbar.jsx';
 import SideNav from './side_nav.jsx';
+import  NavbarProfile from './navbar_profile';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.logOut = ()=> {
 
-    };
     this.componentDidMount = () => {
       $('.account-menu').dropdown({
           inDuration: 300,
@@ -42,13 +41,7 @@ class Header extends React.Component {
                          src="http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg"/>
                     <i className="right material-icons">arrow_drop_down</i>
                   </a>
-                  <ul id='account-menu' className='dropdown-content cyan-text'>
-                    <li><a href="/profile">Profile
-                      <i className="material-icons right">account_box</i></a></li>
-                    <li className="divider"></li>
-                    <li><a href="" onclick={this.logOut()}>Log out
-                      <i className="material-icons right">exit_to_app</i></a></li>
-                  </ul>
+                  <NavbarProfile />
                 </li>
               </ul>
 

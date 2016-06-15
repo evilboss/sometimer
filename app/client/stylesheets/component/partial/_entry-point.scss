@@ -37,12 +37,7 @@ section.entry-point {
     transform: translate(-50%, -50%);
   }
   .container.body {
-    margin-top: 6em;
-    @include margin(6em, auto, 2.5em, auto);
+    @include margin(1em, auto, 2.5em, auto);
     padding: 0 2.5em;
-    h1 {
-      font-weight: 900;
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .4));
-    }
   }
 }

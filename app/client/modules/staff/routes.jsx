@@ -2,7 +2,8 @@ import React from 'react';
 import {mount} from 'react-mounter';
 import {test} from '/lib/test';
 import {accessControl} from '/lib/access-control/access-control'
-import {Header, Footer} from '../core/components';
+import {Footer} from '../core/components';
+import Header from '../core/containers/header';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import {InOutBoard} from  './containers';
 import Profile from '../users/components/Profile'

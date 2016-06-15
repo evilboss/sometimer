@@ -4,10 +4,11 @@ nav.landing-header {
   background-color: transparent;
   .brand-logo {
     img {
-      background-color: rgb(255, 255, 255);
-      border-radius: 11px;
-      padding: 5px;
       height: 2em;
+    }
+    .remotiv-text {
+      margin: 5px;
+      position: absolute;
     }
   }
   & ul a {

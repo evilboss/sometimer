@@ -11,8 +11,7 @@ class CreateTeam extends React.Component {
     return (
       <section className="create-team">
         <div className="row no-vertical-margin">
-
-          <LeftWrapper />
+          <LeftWrapper formData={this.props.formData} target={this.props.target}/>
           <RightWrapper />
 
         </div>

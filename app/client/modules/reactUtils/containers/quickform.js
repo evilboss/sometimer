@@ -1,6 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import ReactQuickform from '../components/react_quickform.jsx';
+import Quickform from '../components/quickform.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
@@ -15,4 +15,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(ReactQuickform);
+)(Quickform);

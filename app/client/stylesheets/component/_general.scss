@@ -88,8 +88,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #2196F3;
-  box-shadow: 0 1px 0 0 #2196F3;
+  border-bottom: 1px solid $green;
+  box-shadow: 0 1px 0 0 $green;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -104,7 +104,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #2196F3 !important;
+  color: $green !important;
 }
 
 .input-field .prefix.active {
@@ -112,12 +112,18 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 // bg-color
+.translucent-background {
+  background-color: rgba(30, 30, 30, 0.65);
+  padding: 2em;
+  border-radius: 1em;
+}
 
 .green {
   background-color: #4CAF50 !important;
 }
 
 .remotiv-text {
+
   font-family: 'Maven Pro', sans-serif !important;
   text-transform: lowercase;
   letter-spacing: -2px;
@@ -132,6 +138,17 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   }
   h6 {
     color: #F4CE57;
+  }
+}
+
+.brand-logo {
+  img {
+    height: 2em;
+  }
+  .remotiv-text {
+    margin: 5px;
+    position: absolute;
+    @extend .remotiv-text;
   }
 }
 

@@ -1,3 +1,21 @@
-@import "./modules/_modules";
-@import "./component/_general";
-@import "./component/_components";
+body.default-theme {
+  $theme-color: hsl(89, 46%, 48%);
+  @import "./modules/_modules";
+  @import "./component/_general";
+  @import "./component/_components";
+}
+
+body.red-theme {
+  $theme-color: red;
+  @import "./modules/_modules";
+  @import "./component/_general";
+  @import "./component/_components";
+}
+
+body.blue-theme {
+  $theme-color: hsl(207, 90%, 54%);
+  @import "./modules/_modules";
+  @import "./component/_general";
+  @import "./component/_components";
+
+}

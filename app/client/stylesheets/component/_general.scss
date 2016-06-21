@@ -1,13 +1,6 @@
 @import './partial/_public-body';
 @import '_helpers';
 
-/** {
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-}*/
-
 section#body {
   display: flex;
   min-height: 100vh;
@@ -51,7 +44,7 @@ p {
 }
 
 .ribbon {
-  border: 0 solid #1a69a4;
+  border: 0 solid darken($theme-color, 20%);
   left: calc(.05rem - 1.2em);
   position: absolute;
   top: 1rem;
@@ -112,6 +105,10 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 // bg-color
+.theme-color {
+  background-color: $theme-color;
+}
+
 .translucent-background {
   background-color: rgba(30, 30, 30, 0.65);
   padding: 2em;
@@ -195,4 +192,9 @@ ul.dropdown-content {
     height: 100%;
     width: auto;
   }
+}
+
+//border
+.circular-border {
+  border-radius: 0.5em;
 }

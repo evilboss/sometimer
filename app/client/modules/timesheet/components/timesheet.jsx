@@ -80,42 +80,6 @@ class Timesheet extends React.Component {
               </tr>
             ))}
 
-            <tr>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>Alvin</td>
-              <td colSpan="2">Eclair</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-            </tr>
-            <tr>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>Eclair</td>
-              <td>$3.76</td>
-              <td colSpan="2">Alvin</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-            </tr>
-            <tr>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>Eclair</td>
-              <td>$7.00</td>
-              <td colSpan="2">Alvin</td>
-              <td>$0.87</td>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-            </tr>
             </tbody>
             <tfoot>
             <tr>

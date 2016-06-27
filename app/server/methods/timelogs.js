@@ -6,11 +6,10 @@ export default function () {
   Meteor.methods({
     'timelogs.change-status'(){
       let currentUser = Meteor.users.findOne({_id: Meteor.userId()});
-      let status = (currentUser.profile.status == 'Out') ? 'In' : 'Out';
-      Meteor.users.update({_id: currentUser._id}, {$set: {'profile.status': status}});
-      currentUser = Meteor.users.findOne({_id: Meteor.userId()});
-      console.log(currentUser);
-      (status == 'Out') ? dtr.logTimeIn() : dtr.logTimeOut();
+      let status = currentUser.profile.status;
+      dtr.changeStatus(status);
+
     }
+
   });
 }

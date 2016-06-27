@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class Timesheet extends React.Component {
   constructor(props) {
@@ -6,6 +7,7 @@ class Timesheet extends React.Component {
   }
 
   render() {
+    let timelogs = this.props.timelogs;
     return (
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
@@ -15,15 +17,15 @@ class Timesheet extends React.Component {
               <tbody>
               <tr>
                 <th>Name:</th>
-                <td>Aaron</td>
+                <td>Staff</td>
               </tr>
               <tr>
                 <th>Department:</th>
-                <td>Dev</td>
+                <td>Department</td>
               </tr>
               <tr>
                 <th>Designation:</th>
-                <td>Soft Eng</td>
+                <td>Designation</td>
               </tr>
               </tbody>
             </table>
@@ -47,7 +49,7 @@ class Timesheet extends React.Component {
             </table>
           </div>
         </div>
-        
+
         <div className="z-depth-1-half card-top-border">
           <table className="centered responsive-table striped">
             <thead>
@@ -55,9 +57,10 @@ class Timesheet extends React.Component {
               <th>Date</th>
               <th>Shift</th>
               <th>Time In</th>
+              <th>Out To Lunch</th>
+              <th>Back From Lunch</th>
               <th>Time Out</th>
               <th colSpan="2">Leave</th>
-              <th>Status</th>
               <th>Undertime</th>
               <th>Overtime</th>
               <th>Hours<br/>Rendered</th>
@@ -66,42 +69,17 @@ class Timesheet extends React.Component {
             </thead>
 
             <tbody>
-            <tr>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>Alvin</td>
-              <td colSpan="2">Eclair</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-            </tr>
-            <tr>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>Eclair</td>
-              <td>$3.76</td>
-              <td colSpan="2">Alvin</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-            </tr>
-            <tr>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>Eclair</td>
-              <td>$7.00</td>
-              <td colSpan="2">Alvin</td>
-              <td>$0.87</td>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
-              <td>$0.87</td>
-            </tr>
+            {timelogs.map(timelog => (
+              <tr>{console.log(timelog)}
+                <td>{moment(timelog.timeIn).format('LL')}</td>
+                <td></td>
+                <td>{moment(timelog.timeIn).format('LTS')}</td>
+                <td>{moment(timelog.outToLunch).format('LTS')}</td>
+                <td>{moment(timelog.backFromLunch).format('HH:MM:SS')}</td>
+                <td>{moment(timelog.timeOut).format('HH:MM:SS')}</td>
+              </tr>
+            ))}
+
             </tbody>
             <tfoot>
             <tr>

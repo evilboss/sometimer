@@ -2,10 +2,6 @@ import {Mongo} from 'meteor/mongo';
 
 const Timelogs = new Mongo.Collection('timelogs');
 Timelogs.attachSchema(new SimpleSchema({
-  createdAt: {
-    type: Date,
-    defaultValue: Date.now
-  },
   timeIn: {
     type: Date,
   },
@@ -13,9 +9,20 @@ Timelogs.attachSchema(new SimpleSchema({
     type: Date,
     optional: true
   },
+  outToLunch: {
+    type: Date,
+    optional: true
+  },
+  backFromLunch: {
+    type: Date,
+    optional: true
+  },
   status: {
     type: String,
 
+  },
+  userId: {
+    type: String,
   }
 }));
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import Time from 'react-time'
 
 class InOutBoard extends React.Component {
   constructor(props) {
@@ -6,14 +8,29 @@ class InOutBoard extends React.Component {
     this.state = {
       status: 'Out'
     };
-  }
+  };
 
   handleClick() {
     var status = this.state.status;
-    console.log(status);
     (status == 'Out') ? this.setState({status: 'In'}) : this.setState({status: 'Out'});
     Meteor.call('timelogs.change-status');
+  };
+
+  setTime() {
+    this.setState({today: moment().format('LL hh:mm:ss')});
+  };
+  getTime(){
+    return this.state.today;
   }
+
+  componentWillMount() {
+    this.setTime();
+  };
+  componentDidMount() {
+    window.setInterval(function () {
+      this.setTime();
+    }.bind(this), 1000);
+  };
 
   render() {
     let backgroundImage = '/Assets/teams/ezyva/background/bg.jpg';
@@ -60,11 +77,12 @@ class InOutBoard extends React.Component {
                           </div>
                           <div className="row">
                             <div className="col s12">
-                              <div className="current-log"><p><b>Current Log -</b> {currentUser.profile.status}</p></div>
+                              <div className="current-log"><p><b>Current Log -</b> {currentUser.profile.status}</p>
+                              </div>
                               <div className={currentUser.profile.status +' beacon z-depth-1'}></div>
                             </div>
                           </div>
-                          <div>Date Today</div>
+                          <div>Date Today: {this.getTime()}</div>
                         </div>
                       </div>
                     </div>
@@ -79,7 +97,7 @@ class InOutBoard extends React.Component {
         </div>
       </section>
     );
-  }
+  };
 }
 
 export default InOutBoard;

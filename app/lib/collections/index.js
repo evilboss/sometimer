@@ -3,6 +3,7 @@ import Users from './users';
 import Task from './task';
 import Team from './team';
 import Menu from './menu';
+import Timelogs from './timelogs';
 
 
 export {
@@ -10,5 +11,6 @@ export {
   Users,
   Task,
   Team,
-  Menu
+  Menu,
+  Timelogs
 };

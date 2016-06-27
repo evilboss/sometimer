@@ -12,12 +12,12 @@ class TaskCreate extends React.Component {
         <i className="material-icons right">assignment</i>
         View All task</a>
         <div className="row container-padding z-depth-1-half card-top-border">
-          <Quickform
+          {<Quickform
             buttonText="Add New Task"
             field={this.props.task}
             operation="insert"
             name="insertTaskForm"
-          />
+          />}
         </div>
       </section>
     );

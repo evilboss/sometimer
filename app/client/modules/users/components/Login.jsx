@@ -1,11 +1,26 @@
 import React from 'react';
-
+import Formsy from 'formsy-react';
+import {
+  Input,
+  Row,
+} from 'formsy-react-components';
+/*TODO : @aaron fixed login layout and validation*/
 class Login extends React.Component {
   constructor(props) {
     super(props);
+
+    this.validSubmit = (data)=> {
+      this.props.submitAction(data.email, data.password);
+    };
+    this.invalidSubmit = ()=> {
+
+    };
   }
 
   render() {
+
+    let formClassName = 'vertical m-t';
+    const {error} = this.props;
     return (
       <section className="blue-theme" id="login">
 
@@ -14,8 +29,8 @@ class Login extends React.Component {
             <div className="col s12">
               <div className="header-wrapper center-align">
 
-                <div className="logo">
-                  <img className="responsive-img" src="/Assets/teams/ezyva/logo/ezyva-logo.png"/>
+                <div className="big-logo">
+                  <img className="responsive-img" src="/Assets/teams/default/logo/remotiv_io_logo_style1.png"/>
                 </div>
 
                 <div className="container">
@@ -23,25 +38,46 @@ class Login extends React.Component {
                     <div className="theme-color ribbon">
                       Login
                     </div>
-                    <div className="row">
-                      <form className="col s12">
-                        <div className="row">
-                          <div className="input-field col s12">
-                            <input id="email" type="email" className="validate"/>
-                            <label for="email">Email</label>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="input-field col s12">
-                            <input id="password" type="password" className="validate"/>
-                            <label for="password">Password</label>
-                          </div>
-                        </div>
-                        <button className="btn waves-effect waves-light theme-color" type="submit" name="action">Login
-                          <i className="material-icons right">send</i>
-                        </button>
-                      </form>
-                    </div>
+
+
+                    <Formsy.Form className={formClassName}
+                                 onValidSubmit={this.validSubmit}
+                                 onInvalidSubmit={this.invalidSubmit}
+                                 onChange={this.onChange}
+                                 ref="form">
+
+                      {error ?
+                        <div className="alert alert-danger" onClick="">
+                          <span className="octicon octicon-megaphone"></span>
+                          {error}
+                        </div> : null }
+
+                      <Input
+                        name="email"
+                        value=""
+                        label="Email"
+                        type="email"
+                        autoComplete="off"
+                        validations="isEmail"
+                        validationError="Please provide a valid email address."
+
+                      />
+                      <Input
+                        name="password"
+                        value=""
+                        label="Password"
+                        type="password"
+                        validations="minLength:4"
+                        validationError="That password looks a bit short, try again"
+
+                      />
+
+                      <input className="btn waves-effect waves-light theme-color"
+                             formNoValidate={true}
+                             type="submit"
+                             defaultValue="Login"/>
+                    </Formsy.Form>
+
                   </div>
                 </div>
               </div>

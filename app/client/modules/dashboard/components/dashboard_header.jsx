@@ -3,7 +3,7 @@ import NavbarProfile from '../../core/components/navbar_profile';
 class DashboardHeader extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.componentDidMount = () => {
       $('.account-menu').dropdown({
           inDuration: 300,
@@ -20,8 +20,12 @@ class DashboardHeader extends React.Component {
     return (
       <section id="header">
         <nav>
-          <div className="nav-wrapper cyan">
-            <a href="#!" className="brand-logo">Remotiv-App</a>
+          <div className="nav-wrapper theme-color">
+            <a href="#!" className="brand-logo">
+              <img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
+              <div className="remotiv-text inline"><h5>Remotiv<span>.io</span>
+              </h5><h6>Business Beyond Boundaries</h6></div>
+            </a>
             <ul className="right">
               <li><a href=""><i className="mdi-social-notifications"></i></a></li>
               <li>

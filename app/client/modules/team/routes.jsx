@@ -12,7 +12,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'team.create',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (< CreateTeam formData='team.create' target="/team/create/name"/>)
+        content: () => (<CreateTeam formData='team.create' target="/team/create/name"/>)
       });
     }
   });

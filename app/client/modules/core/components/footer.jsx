@@ -7,7 +7,7 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="page-footer cyan">
+      <footer className="page-footer theme-color">
         <div className="footer-copyright">
           <div className="container">
             © 2016 Ezy VA

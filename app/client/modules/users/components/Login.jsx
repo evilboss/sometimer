@@ -1,48 +1,83 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import {Input} from 'formsy-react-components';
-import {Accounts} from 'meteor/std:accounts-ui';
-
-
+import {
+  Input,
+  Row,
+} from 'formsy-react-components';
+/*TODO : @aaron fixed login layout and validation*/
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.componentDidMount = ()=> {
 
-      $("input").removeAttr("placeholder");
-      $(".input-field>label").removeClass("active");
-      $("button.btn-flat").attr('class', 'ui btn waves-effect waves-light blue');
-
-      var submit = $(':submit');
-      var className = submit.attr('class') + ' yellow darken-3';
-      submit.attr('class', className);
-
-      $(":submit.active").addClass("yellow darken-3");
-      console.log(submit.attr('class'));
+    this.validSubmit = (data)=> {
+      this.props.submitAction(data.email, data.password);
     };
-  };
+    this.invalidSubmit = ()=> {
+
+    };
+  }
 
   render() {
-    const {error} = this.props;
 
+    let formClassName = 'vertical m-t';
+    const {error} = this.props;
     return (
-      <section id="login">
+      <section className="blue-theme" id="login">
 
         <div className="container">
           <div className="row">
             <div className="col s12">
               <div className="header-wrapper center-align">
 
-                <div className="logo">
-                  <img className="responsive-img" src="/Assets/teams/ezyva/logo/ezyva-logo.png"/>
+                <div className="big-logo">
+                  <img className="responsive-img" src="/Assets/teams/default/logo/remotiv_io_logo_style1.png"/>
                 </div>
 
                 <div className="container">
-                  <div className="form row">
-                    <div className="blue ribbon">
+                  <div className="form row circular-border">
+                    <div className="theme-color ribbon">
                       Login
                     </div>
-                    <Accounts.ui.LoginForm />
+
+
+                    <Formsy.Form className={formClassName}
+                                 onValidSubmit={this.validSubmit}
+                                 onInvalidSubmit={this.invalidSubmit}
+                                 onChange={this.onChange}
+                                 ref="form">
+
+                      {error ?
+                        <div className="alert alert-danger" onClick="">
+                          <span className="octicon octicon-megaphone"></span>
+                          {error}
+                        </div> : null }
+
+                      <Input
+                        name="email"
+                        value=""
+                        label="Email"
+                        type="email"
+                        autoComplete="off"
+                        validations="isEmail"
+                        validationError="Please provide a valid email address."
+
+                      />
+                      <Input
+                        name="password"
+                        value=""
+                        label="Password"
+                        type="password"
+                        validations="minLength:4"
+                        validationError="That password looks a bit short, try again"
+
+                      />
+
+                      <input className="btn waves-effect waves-light theme-color"
+                             formNoValidate={true}
+                             type="submit"
+                             defaultValue="Login"/>
+                    </Formsy.Form>
+
                   </div>
                 </div>
               </div>
@@ -53,28 +88,6 @@ class Login extends React.Component {
       </section>
     );
   }
-
-  resetForm() {
-    this.refs.form.reset();
-  }
-
-  validSubmit(data) {
-    this.props.submitAction(data.email, data.password);
-  }
-
-  // invalidSubmit(data) {
-  invalidSubmit() {
-    // console.log('invalidSubmit', data);
-  }
-
-  enableButton() {
-    // console.log('enable button');
-    this.setState({canSubmit: true});
-  }
-
-  disableButton() {
-    // console.log('disable button');
-    this.setState({canSubmit: false});
-  }
 }
+
 export default Login;

@@ -3,8 +3,11 @@ import React from 'react';
 class TeamEmail extends React.Component {
   constructor(props) {
     super(props);
+
   }
+
   render() {
+
     return (
       <div>
         <div className="row">
@@ -17,12 +20,12 @@ class TeamEmail extends React.Component {
         </div>
         <div className="page-footer center-align">
           <p>
-            <input type="checkbox" id="test5"/>
-            <label for="test5"> It's ok to send me (very occasional)
+            <input type="checkbox" id="checkbox"/>
+            <label for="checkbox" class="checkbox"> It's ok to send me (very occasional)
               <br className="hide-on-small-only"/>
-              email about the Slack service.</label>
+              email about the Remotiv.io service.</label>
           </p>
-          <a href="/team/create/name" className="waves-effect waves-light btn-large amber darken-2"><i
+          <a href="/team/create/name" className="waves-effect waves-light btn-large light-green darken-1"><i
             className="material-icons right">navigate_next</i>Next</a>
         </div>
 

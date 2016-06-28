@@ -1,13 +1,6 @@
 @import './partial/_public-body';
 @import '_helpers';
 
-/** {
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-}*/
-
 section#body {
   display: flex;
   min-height: 100vh;
@@ -51,7 +44,7 @@ p {
 }
 
 .ribbon {
-  border: 0 solid #1a69a4;
+  border: 0 solid darken($theme-color, 20%);
   left: calc(.05rem - 1.2em);
   position: absolute;
   top: 1rem;
@@ -88,8 +81,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #2196F3;
-  box-shadow: 0 1px 0 0 #2196F3;
+  border-bottom: 1px solid $green;
+  box-shadow: 0 1px 0 0 $green;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -104,7 +97,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #2196F3 !important;
+  color: $green !important;
 }
 
 .input-field .prefix.active {
@@ -112,12 +105,26 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 // bg-color
+.theme-color {
+  background-color: $theme-color;
+}
+
+.theme-text {
+  color: $theme-color;
+}
+
+.translucent-background {
+  background-color: rgba(30, 30, 30, 0.65);
+  padding: 2em;
+  border-radius: 1em;
+}
 
 .green {
   background-color: #4CAF50 !important;
 }
 
 .remotiv-text {
+
   font-family: 'Maven Pro', sans-serif !important;
   text-transform: lowercase;
   letter-spacing: -2px;
@@ -135,6 +142,17 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   }
 }
 
+.brand-logo {
+  img {
+    height: 2em;
+  }
+  .remotiv-text {
+    margin: 5px;
+    position: absolute;
+    @extend .remotiv-text;
+  }
+}
+
 .remotiv-background {
   filter: blur(2px);
   background-position: center;
@@ -149,7 +167,7 @@ table.centered tfoot tr th, table.centered tfoot tr td {
 }
 
 tfoot {
-  border-top: 2px solid #00BCD4;
+  border-top: 2px solid $theme-color;
 }
 
 td, th {
@@ -166,7 +184,7 @@ ul.dropdown-content {
     a {
       color: #000000;
       i {
-        color: #00BCD4;
+        color: $theme-color;
       }
     }
   }
@@ -178,4 +196,9 @@ ul.dropdown-content {
     height: 100%;
     width: auto;
   }
+}
+
+//border
+.circular-border {
+  border-radius: 0.5em;
 }

@@ -12,21 +12,26 @@ class LeftWrapper extends React.Component {
       <div className="left-wrapper col s12 m12 l5">
 
         <div className="header">
-          <img src="/Assets/teams/default/logo/logo.png" className="brand-logo"/>
+          <a href="#" className="brand-logo">
+            <img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
+            <div className="remotiv-text inline"><h5>Remotiv<span>.io</span></h5>
+              <h6>Business Beyond Boundaries</h6></div>
+          </a>
         </div>
 
         <div className="content container">
           <h5>Create a New Team</h5>
           {(() => {
             switch (this.props.formData) {
-              case "team.create.name":   return <TeamName/>;
-              case "team.create.members": return <TeamMembers/>;
-              default:      return <TeamEmail/>;
+              case "team.create.name":
+                return <TeamName/>;
+              case "team.create.members":
+                return <TeamMembers/>;
+              default:
+                return <TeamEmail/>;
             }
           })()}
         </div>
-
-
       </div>
     );
   }

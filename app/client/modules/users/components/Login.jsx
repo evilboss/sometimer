@@ -1,9 +1,7 @@
 import React from 'react';
-import Formsy from 'formsy-react';
-import {
-  Input,
-  Row,
-} from 'formsy-react-components';
+import {Form} from 'formsy-react';
+
+import MyInput from './input';
 /*TODO : @aaron fixed login layout and validation*/
 class Login extends React.Component {
   constructor(props) {
@@ -19,8 +17,6 @@ class Login extends React.Component {
 
   render() {
 
-    let formClassName = 'vertical m-t';
-    const {error} = this.props;
     return (
       <section className="blue-theme" id="login">
 
@@ -38,45 +34,14 @@ class Login extends React.Component {
                     <div className="theme-color ribbon">
                       Login
                     </div>
-
-
-                    <Formsy.Form className={formClassName}
-                                 onValidSubmit={this.validSubmit}
-                                 onInvalidSubmit={this.invalidSubmit}
-                                 onChange={this.onChange}
-                                 ref="form">
-
-                      {error ?
-                        <div className="alert alert-danger" onClick="">
-                          <span className="octicon octicon-megaphone"></span>
-                          {error}
-                        </div> : null }
-
-                      <Input
-                        name="email"
-                        value=""
-                        label="Email"
-                        type="email"
-                        autoComplete="off"
-                        validations="isEmail"
-                        validationError="Please provide a valid email address."
-
-                      />
-                      <Input
-                        name="password"
-                        value=""
-                        label="Password"
-                        type="password"
-                        validations="minLength:4"
-                        validationError="That password looks a bit short, try again"
-
-                      />
-
-                      <input className="btn waves-effect waves-light theme-color"
-                             formNoValidate={true}
-                             type="submit"
-                             defaultValue="Login"/>
-                    </Formsy.Form>
+                    <Form onSubmit={this.validSubmit} onValid={this.validSubmit} onInvalid={this.invalidSubmit}
+                          className="login">
+                      <MyInput name="email" title="Email" validations="isEmail"
+                               validationError="This is not a valid email" required/>
+                      <MyInput name="password" title="Password" type="password" required/>
+                      <button className="btn waves-effect waves-light theme-color" type="submit">Login <i
+                        className="material-icons right">send</i></button>
+                    </Form>
 
                   </div>
                 </div>

@@ -8,6 +8,14 @@ export function loadUsers() {
     Accounts.createUser({
       email: "admin@admin.com",
       password: "password",
+      profile: {
+        firstName: 'Admin',
+        lastName: 'Nistrator',
+        department: 'Development',
+        staffType: 'Regular',
+        jobTitle: 'Administrator',
+        displayPhoto:'/Assets/teams/default/profiles/admin/admin.jpg',
+      }
     });
   }
 }

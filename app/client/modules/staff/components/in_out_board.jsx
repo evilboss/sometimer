@@ -1,7 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import Time from 'react-time'
-
 class InOutBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -19,13 +17,15 @@ class InOutBoard extends React.Component {
   setTime() {
     this.setState({today: moment().format('LL hh:mm:ss')});
   };
-  getTime(){
+
+  getTime() {
     return this.state.today;
   }
 
   componentWillMount() {
     this.setTime();
   };
+
   componentDidMount() {
     window.setInterval(function () {
       this.setTime();
@@ -59,16 +59,16 @@ class InOutBoard extends React.Component {
                         </a>
                       </div>
                     </div>
-
+                    {(() => {return (currentUser.profile) ?
                     <div className="container">
                       <div className="row">
                         <div className="col l4 m4 s12 center-align">
-                          <img src="http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg" alt="dp"
+                          <img src={(currentUser.profile.displayPhoto)?currentUser.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'} alt="dp"
                                className="display-photo circle responsive-img"/>
                         </div>
                         <div className="staff-details col l8 m8 s12">
-                          <div><h4>Staff Name</h4>
-                            <p><i className="material-icons left">work</i>Job Title</p>
+                          <div><h4>{currentUser.profile.firstName +' '+ currentUser.profile.lastName}</h4>
+                            <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
                             <button className="ui btn waves-effect waves-light yellow darken-3"
                                     onClick={this.handleClick.bind(this)}>
                               <i className="material-icons left">cached</i>
@@ -85,7 +85,8 @@ class InOutBoard extends React.Component {
                           <div>Date Today: {this.getTime()}</div>
                         </div>
                       </div>
-                    </div>
+                    </div>:''
+                    })()}
                   </div>
                 </div>
               </div>

@@ -47,4 +47,5 @@ const runOnlyToLatest = () => {
 Meteor.startup(function () {
   //TODO: Stopped migrations from running
   //(process.env.NODE_ENV === 'development') ? runMigrationsFromStart() : runOnlyToLatest();
+  runOnlyToLatest();
 });

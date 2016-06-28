@@ -1,7 +1,12 @@
 section#header {
   nav .brand-logo {
+    margin-left: 10px;
+    height: 2em;
     left: 0;
     transform: translateX(0);
+    img {
+      padding: 5px;
+    }
   }
   .account-menu {
     img {

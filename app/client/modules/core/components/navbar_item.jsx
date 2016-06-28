@@ -9,14 +9,14 @@ class NavbarItem extends React.Component {
     return (
       <ul className="hide-on-med-and-down">
         <li>
-          <a href="/dashboard" className="cyan-text">
+          <a href="/dashboard" className="theme-text">
             <i className="mdi-action-dashboard"></i>
             <span>Dashboard</span>
           </a>
         </li>
         {this.props.menu.map(menu => (
           <li key={menu._id}>
-            <a href={menu.url} className="cyan-text">
+            <a href={menu.url} className="theme-text">
               <i className="material-icons">{menu.icon}</i>
               <span>{menu.title}</span>
             </a>

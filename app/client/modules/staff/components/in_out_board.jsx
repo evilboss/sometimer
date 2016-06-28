@@ -3,9 +3,7 @@ import moment from 'moment';
 class InOutBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      status: 'Out'
-    };
+    
   };
 
   handleClick() {

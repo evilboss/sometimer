@@ -48,3 +48,4 @@ juliancwirko:postcss    # Use PostCSS with Meteor
 
 #dev only packages
 meteortoys:allthings
+ultimatejs:tracker-react

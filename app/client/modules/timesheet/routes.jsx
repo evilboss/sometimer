@@ -9,7 +9,6 @@ import Timesheet from './containers/timesheet';
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   FlowRouter.route('/timesheet', {
-
     name: 'timesheet',
     action() {
       mount(MainLayoutCtx, {

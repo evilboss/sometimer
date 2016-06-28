@@ -5,9 +5,13 @@ import Timesheet from '../components/timesheet.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  if(Meteor.subscribe("timelogs",Meteor.userId()).ready){
+  if (Meteor.subscribe("timelogs", Meteor.userId()).ready && Meteor.subscribe("user.current").ready) {
     const timelogs = Collections.Timelogs.find().fetch();
-    onData(null, {timelogs});
+    const currentUser = Meteor.user();
+
+    onData(null, {timelogs, currentUser});
+  } else {
+    onData();
   }
 };
 

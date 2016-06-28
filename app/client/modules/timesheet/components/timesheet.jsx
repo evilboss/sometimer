@@ -6,6 +6,7 @@ class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
   }
+
   render() {
     let timelogs = this.props.timelogs;
     return (

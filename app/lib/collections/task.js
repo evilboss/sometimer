@@ -11,7 +11,7 @@ Task.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       },
       afFieldInput: {
@@ -26,7 +26,7 @@ Task.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       }
 
@@ -38,13 +38,16 @@ Task.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       },
       afFieldInput: {
         class: 'input-field'
       }
     }
+  },
+  projectId: {
+    type: String
   }
 }));
 if (Meteor.isServer) {

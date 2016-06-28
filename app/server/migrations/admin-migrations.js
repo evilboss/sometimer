@@ -14,7 +14,7 @@ export function loadUsers() {
         department: 'Development',
         staffType: 'Regular',
         jobTitle: 'Administrator',
-        displayPhoto:'/Assets/teams/default/profiles/admin/admin.jpg',
+        displayPhoto:'/Assets/teams/default/profiles/admin/admin.gif',
       }
     });
   }

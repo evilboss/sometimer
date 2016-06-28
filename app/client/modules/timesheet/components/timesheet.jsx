@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-
+import StaffInfo from './staff_info';
 class Timesheet extends React.Component {
   constructor(props) {
     super(props);
@@ -12,42 +12,7 @@ class Timesheet extends React.Component {
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
         <div className="no-horizontal-margin row z-depth-1-half card-top-border">
-          <div className="col s12 m6 l6">
-            <table>
-              <tbody>
-              <tr>
-                <th>Name:</th>
-                <td>Staff</td>
-              </tr>
-              <tr>
-                <th>Department:</th>
-                <td>Department</td>
-              </tr>
-              <tr>
-                <th>Designation:</th>
-                <td>Designation</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="col s12 m6 l6">
-            <table>
-              <tbody>
-              <tr>
-                <th>Status:</th>
-                <td>Regular</td>
-              </tr>
-              <tr>
-                <th>Shift:</th>
-                <td>9:00 to 18:00</td>
-              </tr>
-              <tr>
-                <th>State:</th>
-                <td>Au</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
+          <StaffInfo/>
         </div>
 
         <div className="z-depth-1-half card-top-border">
@@ -70,7 +35,7 @@ class Timesheet extends React.Component {
 
             <tbody>
             {timelogs.map(timelog => (
-              <tr>{console.log(timelog)}
+              <tr>
                 <td>{moment(timelog.timeIn).format('LL')}</td>
                 <td></td>
                 <td>{moment(timelog.timeIn).format('LTS')}</td>

@@ -1,19 +1,18 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-import Timesheet from '../components/timesheet.jsx';
+
+import StaffInfo from '../components/staff_info.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('timelogs', Meteor.userId()).ready) {
-    const timelogs = Collections.Timelogs.find().fetch();
-    onData(null, {timelogs});
+  if(Meteor.subscribe("user.current").ready){
+    const currentUser = Meteor.user();
+    onData(null, {currentUser});
   }
 };
-
 export const depsMapper = (context, actions) => ({
   context: () => context
 });
-
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(Timesheet);
+)(StaffInfo);

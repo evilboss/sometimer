@@ -1,16 +1,17 @@
 import React from 'react';
 import moment from 'moment';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-class Timesheet extends React.Component {
+class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
   }
-
   render() {
     let timelogs = this.props.timelogs;
     return (
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
+
         <div className="no-horizontal-margin row z-depth-1-half card-top-border">
           <div className="col s12 m6 l6">
             <table>

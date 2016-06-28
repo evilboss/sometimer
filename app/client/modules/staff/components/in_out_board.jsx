@@ -3,7 +3,7 @@ import moment from 'moment';
 class InOutBoard extends React.Component {
   constructor(props) {
     super(props);
-    
+
   };
 
   handleClick() {
@@ -21,14 +21,23 @@ class InOutBoard extends React.Component {
   }
 
   componentWillMount() {
+    this.setState({loaded: true});
+
     this.setTime();
   };
 
   componentDidMount() {
-    window.setInterval(function () {
-      this.setTime();
-    }.bind(this), 1000);
+    if (this.state.loaded) {
+      window.setInterval(function () {
+        this.setTime();
+      }.bind(this), 1000);
+    }
+
   };
+  componentWillUnmount() {
+    this.setState({loaded: false});
+  }
+
 
   render() {
     let backgroundImage = '/Assets/teams/ezyva/background/bg.jpg';
@@ -52,38 +61,44 @@ class InOutBoard extends React.Component {
                         <img src={inOutLogo}/>
                       </div>
                       <div className="right center-align">
-                        <a href="/"><i className="material-icons">dashboard</i>
+                        <a href="/dashboard"><i className="material-icons">dashboard</i>
                           <span>Dashboard</span>
+                        </a>
+                        <a href="/timesheet"><i className="material-icons">alarm</i>
+                          <span>Timesheet</span>
                         </a>
                       </div>
                     </div>
-                    {(() => {return (currentUser.profile) ?
-                    <div className="container">
-                      <div className="row">
-                        <div className="col l4 m4 s12 center-align">
-                          <img src={(currentUser.profile.displayPhoto)?currentUser.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'} alt="dp"
-                               className="display-photo circle responsive-img"/>
-                        </div>
-                        <div className="staff-details col l8 m8 s12">
-                          <div><h4>{currentUser.profile.firstName +' '+ currentUser.profile.lastName}</h4>
-                            <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
-                            <button className="ui btn waves-effect waves-light yellow darken-3"
-                                    onClick={this.handleClick.bind(this)}>
-                              <i className="material-icons left">cached</i>
-                              Click to Change Status
-                            </button>
-                          </div>
+                    {(() => {
+                      return (currentUser.profile) ?
+                        <div className="container">
                           <div className="row">
-                            <div className="col s12">
-                              <div className="current-log"><p><b>Current Log -</b> {currentUser.profile.status}</p>
+                            <div className="col l4 m4 s12 center-align">
+                              <img
+                                src={(currentUser.profile.displayPhoto)?currentUser.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+                                alt="dp"
+                                className="display-photo circle responsive-img"/>
+                            </div>
+                            <div className="staff-details col l8 m8 s12">
+                              <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
+                                <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
+                                <button className="ui btn waves-effect waves-light yellow darken-3"
+                                        onClick={this.handleClick.bind(this)}>
+                                  <i className="material-icons left">cached</i>
+                                  Click to Change Status
+                                </button>
                               </div>
-                              <div className={currentUser.profile.status +' beacon z-depth-1'}></div>
+                              <div className="row">
+                                <div className="col s12">
+                                  <div className="current-log"><p><b>Current Log -</b> {currentUser.profile.status}</p>
+                                  </div>
+                                  <div className={currentUser.profile.status +' beacon z-depth-1'}></div>
+                                </div>
+                              </div>
+                              <div>Date Today: {this.getTime()}</div>
                             </div>
                           </div>
-                          <div>Date Today: {this.getTime()}</div>
-                        </div>
-                      </div>
-                    </div>:''
+                        </div> : ''
                     })()}
                   </div>
                 </div>

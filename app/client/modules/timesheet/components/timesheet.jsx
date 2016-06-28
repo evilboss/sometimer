@@ -7,50 +7,85 @@ class Timesheet extends TrackerReact(React.Component) {
     super(props);
   }
 
+  getUserName() {
+    Tracker.autorun(function () {
+      if (Meteor.user()) {
+
+        if (Meteor.user().profile) {
+          return Meteor.user().profile.firstName;
+          console.log(Meteor.user());
+        }
+      }
+    });
+
+
+  }
+
   render() {
+
     let timelogs = this.props.timelogs;
+    let currentUser = Meteor.user();
+    let currentDisplayName = this.getUserName();
     return (
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
 
-        <div className="no-horizontal-margin row z-depth-1-half card-top-border">
-          <div className="col s12 m6 l6">
-            <table>
-              <tbody>
-              <tr>
-                <th>Name:</th>
-                <td>Staff</td>
-              </tr>
-              <tr>
-                <th>Department:</th>
-                <td>Department</td>
-              </tr>
-              <tr>
-                <th>Designation:</th>
-                <td>Designation</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="col s12 m6 l6">
-            <table>
-              <tbody>
-              <tr>
-                <th>Status:</th>
-                <td>Regular</td>
-              </tr>
-              <tr>
-                <th>Shift:</th>
-                <td>9:00 to 18:00</td>
-              </tr>
-              <tr>
-                <th>State:</th>
-                <td>Au</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        {(currentUser) ? <section class="user-details">
+          {(currentUser.profile) ?
+            <div className="no-horizontal-margin row z-depth-1-half card-top-border">
+              <div className="col s12 m6 l6">
+                <table>
+
+                  <tbody>
+
+                  <tr>
+                    <th>Name:</th>
+                    <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
+                  </tr>
+
+
+                  <tr>
+                    <th>Department:</th>
+                    <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>Designation:</th>
+                    <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
+                  </tr>
+                  </tbody>
+
+                </table>
+
+              </div>
+              <div className="col s12 m6 l6">
+                <table>
+                  <tbody>
+                  <tr>
+                    <th>Status:</th>
+                    <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
+                  </tr>
+                  <tr>
+                    {
+                      /*<th>Shift:</th>
+                      <td>9:00 to 18:00</td>*/
+                    }
+                  </tr>
+                  <tr>
+                    {
+                      /*<th>State:</th>
+                      <td>Au</td>*/
+                    }
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            : 'Please wait'}
+        </section>
+
+
+          : 'please wait more'}
 
         <div className="z-depth-1-half card-top-border">
           <table className="centered responsive-table striped">
@@ -69,10 +104,9 @@ class Timesheet extends TrackerReact(React.Component) {
               <th>Night<br/>Differential</th>
             </tr>
             </thead>
-
             <tbody>
             {timelogs.map(timelog => (
-              <tr>{console.log(timelog)}
+              <tr>
                 <td>{moment(timelog.timeIn).format('LL')}</td>
                 <td></td>
                 <td>{moment(timelog.timeIn).format('LTS')}</td>

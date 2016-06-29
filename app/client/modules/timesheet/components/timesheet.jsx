@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-
 class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
@@ -35,7 +34,6 @@ class Timesheet extends TrackerReact(React.Component) {
             <div className="no-horizontal-margin row z-depth-1-half card-top-border">
               <div className="col s12 m6 l6">
                 <table>
-
                   <tbody>
 
                   <tr>

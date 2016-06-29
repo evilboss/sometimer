@@ -200,7 +200,15 @@ ul.dropdown-content {
 }
 
 //error
-.error {
+.error-container {
+  @extend .circular-border;
+  padding: 1em 1.5em;
+  border: 1px solid #F44336;
+  background-color: #FFE8E6;
+}
+
+.error-text {
+  font-weight: 700;
   color: #F44336;
 }
 
@@ -214,6 +222,7 @@ ul.dropdown-content {
       border-bottom: 2px solid #F44336 !important;
     }
     .validation-error {
+      @extend .error-text;
       font-size: 13.5px;
     }
   }

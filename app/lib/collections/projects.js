@@ -2,11 +2,10 @@ import {Mongo} from 'meteor/mongo';
 
 const Projects = new Mongo.Collection('projects');
 Projects.attachSchema(new SimpleSchema({
-  title: {
+  name: {
     type: String,
-    label: "Title",
-    max: 200,
-    optional: true,
+    label: "Project Name",
+    unique: true,
     autoform: {
       class: 'input-field',
       afFormGroup: {

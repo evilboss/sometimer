@@ -9,7 +9,7 @@ Projects.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       },
       afFieldInput: {
@@ -20,15 +20,15 @@ Projects.attachSchema(new SimpleSchema({
   },
   author: {
     type: String,
-    label: "Author",
-    optional: true,
     autoform: {
+      type: "hidden",
+      label: false,
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       }
-
-    }
+    },
+    defaultValue: this.userId,
   },
   assignee: {
     type: String,
@@ -36,7 +36,7 @@ Projects.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       },
       afFieldInput: {

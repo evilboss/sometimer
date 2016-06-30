@@ -17,6 +17,22 @@ Projects.attachSchema(new SimpleSchema({
     }
 
   },
+  description: {
+    type: String,
+    label: "Description",
+    unique: true,
+    autoform: {
+      class: 'input-field',
+      type: 'textarea',
+      afFormGroup: {
+        'formgroup-class': 'input-field'
+      },
+      afFieldInput: {
+        class: 'input-field'
+      }
+    }
+
+  },
   author: {
     type: String,
     autoform: {

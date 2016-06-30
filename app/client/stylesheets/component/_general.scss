@@ -38,10 +38,6 @@ p {
 }
 
 // Label
-.error {
-  color: #ff8f00;
-  font-size: inherit !important;
-}
 
 .ribbon {
   border: 0 solid darken($theme-color, 20%);
@@ -202,3 +198,33 @@ ul.dropdown-content {
 .circular-border {
   border-radius: 0.5em;
 }
+
+//error
+.error-container {
+  @extend .circular-border;
+  padding: 1em 1.5em;
+  border: 1px solid #F44336;
+  background-color: #FFE8E6;
+}
+
+.error-text {
+  font-weight: 700;
+  color: #F44336;
+}
+
+.form-group {
+  input {
+    margin: 0;
+  }
+  &.error {
+    input {
+      color: white !important;
+      border-bottom: 2px solid #F44336 !important;
+    }
+    .validation-error {
+      @extend .error-text;
+      font-size: 13.5px;
+    }
+  }
+}
+

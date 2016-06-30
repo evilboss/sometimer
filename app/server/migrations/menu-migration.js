@@ -4,10 +4,15 @@ export function loadMenus() {
   console.log('Loading Menus');
   if (Menu.find({}).count() === 0) {
     let menuItems = [{
-      title: "Timesheet",
+      title: "In/Out Board",
       icon: "access_time",
-      url: '/timesheet'
+      url: '/inOutBoard'
     },
+      {
+        title: "Timesheet",
+        icon: "grid_on",
+        url: '/timesheet'
+      },
       {
         title: "Task",
         icon: "assignment",

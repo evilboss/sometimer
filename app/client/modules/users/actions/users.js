@@ -11,7 +11,7 @@ export default {
   login({Meteor, LocalState, FlowRouter}, email, password) {
 
     if (!email || !password) {
-      return LocalState.set('LOGIN_ERROR', 'Login & Password are required!');
+      return LocalState.set('LOGIN_ERROR', 'Email & Password are required!');
     }
 
     LocalState.set('LOGIN_ERROR', null);

@@ -1,26 +1,26 @@
 import React from 'react';
 import Quickform from '/client/modules/reactUtils/components/quickform';
-class TaskCreate extends React.Component {
+
+class AddProjects extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <section className="task-create">
-        <h5 className="inline">TaskCreate</h5> <a className="waves-effect waves-light btn theme-color">
+      <section className="Projects-New">
+        <h5 className="inline">New Project</h5> <a className="waves-effect waves-light btn theme-color">
         <i className="material-icons right">assignment</i>
-        View All task</a>
+        View All Projects</a>
         <div className="row container-padding z-depth-1-half card-top-border">
           {<Quickform
-            buttonText="Add New Task"
-            field={this.props.task}
+            buttonText="Save Project"
+            field={this.props.projects}
             operation="insert"
-            name="insertTaskForm"
+            name="insertProjectForm"
           />}
         </div>
       </section>
     );
   }
 }
-
-export default TaskCreate;
+export default AddProjects;

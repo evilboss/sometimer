@@ -6,7 +6,7 @@ import {Footer} from '../core/components';
 import Header from '../core/containers/header';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import {InOutBoard} from  './containers';
-import Profile from '../users/components/Profile'
+import Profile from '../users/containers/Profile'
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);

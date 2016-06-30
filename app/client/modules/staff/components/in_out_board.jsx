@@ -34,6 +34,7 @@ class InOutBoard extends React.Component {
     }
 
   };
+
   componentWillUnmount() {
     this.setState({loaded: false});
   }
@@ -61,12 +62,15 @@ class InOutBoard extends React.Component {
                         <img src={inOutLogo}/>
                       </div>
                       <div className="right center-align">
-                        <a href="/dashboard"><i className="material-icons">dashboard</i>
-                          <span>Dashboard</span>
-                        </a>
-                        <a href="/timesheet"><i className="material-icons">alarm</i>
-                          <span>Timesheet</span>
-                        </a>
+
+                        <ul className="no-margin">
+                          <li><a href="/timesheet" className="theme-text">
+                            <i className="material-icons">grid_on</i><span>Timesheet</span></a>
+                          </li>
+                          <li><a href="/dashboard" className="theme-text">
+                            <i className="material-icons">dashboard</i><span>Dashboard</span></a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                     {(() => {
@@ -82,7 +86,7 @@ class InOutBoard extends React.Component {
                             <div className="staff-details col l8 m8 s12">
                               <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
                                 <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
-                                <button className="ui btn waves-effect waves-light yellow darken-3"
+                                <button className="ui btn waves-effect waves-light theme-color"
                                         onClick={this.handleClick.bind(this)}>
                                   <i className="material-icons left">cached</i>
                                   Click to Change Status

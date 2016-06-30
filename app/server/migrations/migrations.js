@@ -4,10 +4,10 @@
 import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
 import {loadTeams, removeAllTeams} from './team-migrations';
+import {loadStaff} from './inial-user-migrations';
 Migrations.add({
   version: 1,
   name: 'Add default users to app',
-
   up: function () {
     loadUsers();
   },
@@ -18,7 +18,6 @@ Migrations.add({
 Migrations.add({
   version: 2,
   name: 'Add Menu list to app',
-
   up: function () {
     loadMenus();
   },
@@ -29,12 +28,21 @@ Migrations.add({
 Migrations.add({
   version: 3,
   name: 'Add Default Teams to app',
-
   up: function () {
     loadTeams();
   },
   down: function () {
     removeAllTeams();
+  }
+});
+Migrations.add({
+  version: 4,
+  name: 'Add Initial users to app',
+  up: function () {
+    loadStaff();
+  },
+  down: function () {
+    console.log('no down function yet');
   }
 });
 const runMigrationsFromStart = ()=> {

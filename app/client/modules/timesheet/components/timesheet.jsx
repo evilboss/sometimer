@@ -106,7 +106,7 @@ class Timesheet extends TrackerReact(React.Component) {
             </thead>
             <tbody>
             {timelogs.map(timelog => (
-              <tr>
+              <tr key={timelog._id}>
                 <td>{moment(timelog.timeIn).format('LL')}</td>
                 <td></td>
                 <td>{moment(timelog.timeIn).format('LTS')}</td>

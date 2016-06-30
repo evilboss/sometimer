@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount} from 'react-mounter';
+import AddProjects from './containers/add_projects';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 
@@ -19,10 +20,17 @@ export default function (injectDeps, {FlowRouter}) {
       console.log('Project View');
     }
   });
+  projectRoutes.route('/new', {
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<AddProjects/>)
+      });
+    }
+  });
   projectRoutes.route('/:projectId', {
     action(){
       let projectId = FlowRouter.getParam('projectId');
-      console.log('Project ProjectID',projectId);
+      console.log('Project ProjectID', projectId);
     }
   });
 

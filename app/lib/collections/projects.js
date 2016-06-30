@@ -2,14 +2,29 @@ import {Mongo} from 'meteor/mongo';
 
 const Projects = new Mongo.Collection('projects');
 Projects.attachSchema(new SimpleSchema({
-  title: {
+  name: {
     type: String,
-    label: "Title",
-    max: 200,
-    optional: true,
+    label: "Project Name",
+    unique: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
+        'formgroup-class': 'input-field'
+      },
+      afFieldInput: {
+        class: 'input-field'
+      }
+    }
+
+  },
+  description: {
+    type: String,
+    label: "Description",
+    unique: true,
+    autoform: {
+      class: 'input-field',
+      type: 'textarea',
+      afFormGroup: {
         'formgroup-class': 'input-field'
       },
       afFieldInput: {
@@ -20,15 +35,15 @@ Projects.attachSchema(new SimpleSchema({
   },
   author: {
     type: String,
-    label: "Author",
-    optional: true,
     autoform: {
+      type: "hidden",
+      label: false,
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       }
-
-    }
+    },
+    defaultValue: this.userId,
   },
   assignee: {
     type: String,
@@ -36,7 +51,7 @@ Projects.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       class: 'input-field',
-      afFormGroup:{
+      afFormGroup: {
         'formgroup-class': 'input-field'
       },
       afFieldInput: {

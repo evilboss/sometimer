@@ -120,21 +120,23 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 .remotiv-text {
-
-  font-family: 'Maven Pro', sans-serif !important;
+  margin: 10px 5px !important;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: "kabegnos", sans-serif;
   text-transform: lowercase;
   letter-spacing: -2px;
   font-style: normal;
   color: white;
-  margin-bottom: 1em;
   h1, h2, h3, h4, h5, h6 {
     @extend .no-margin;
     span {
       color: #94C73C;
     }
   }
-  h6 {
+
+  .sub-text {
     color: #F4CE57;
+    font-family: "Maven Pro", sans-serif;
   }
 }
 

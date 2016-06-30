@@ -17,8 +17,8 @@ class RightWrapper extends React.Component {
           <div className="translucent-background margin-auto center-align z-depth-4">
             <div className="big-logo">
               <img src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/></div>
-            <div className="remotiv-text"><h1>Remotiv<span>.io</span></h1><h6>
-              Business Beyond Boundaries</h6></div>
+            <div className="remotiv-text"><h1>Remotiv<span>.io</span></h1>
+              <h5 className="sub-text">Business Beyond Boundaries</h5></div>
           </div>
         </div>
 

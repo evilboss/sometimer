@@ -24,7 +24,7 @@ class DashboardHeader extends React.Component {
             <a href="#!" className="brand-logo">
               <img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
               <div className="remotiv-text inline"><h5>Remotiv<span>.io</span>
-              </h5><h6>Business Beyond Boundaries</h6></div>
+              </h5><h6 className="sub-text">Business Beyond Boundaries</h6></div>
             </a>
             <ul className="right">
               <li><a href=""><i className="mdi-social-notifications"></i></a></li>

@@ -1,5 +1,6 @@
 import TeamInfo from '../modules/team/libs/teamInfo';
-
+import app from './app';
 Meteor.startup(function () {
-  $('body').addClass('default-theme');
+  const theme = (app.theme) ? app.theme : 'default-theme';
+  $('body').addClass(theme);
 });

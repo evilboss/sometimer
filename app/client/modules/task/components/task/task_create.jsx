@@ -4,7 +4,6 @@ class TaskCreate extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <section className="task-create">

@@ -65,13 +65,13 @@ class Timesheet extends TrackerReact(React.Component) {
                   <tr>
                     {
                       /*<th>Shift:</th>
-                      <td>9:00 to 18:00</td>*/
+                       <td>9:00 to 18:00</td>*/
                     }
                   </tr>
                   <tr>
                     {
                       /*<th>State:</th>
-                      <td>Au</td>*/
+                       <td>Au</td>*/
                     }
                   </tr>
                   </tbody>
@@ -111,6 +111,11 @@ class Timesheet extends TrackerReact(React.Component) {
                 <td>{moment(timelog.outToLunch).format('LTS')}</td>
                 <td>{moment(timelog.backFromLunch).format('HH:MM:SS')}</td>
                 <td>{moment(timelog.timeOut).format('HH:MM:SS')}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
             ))}
 
@@ -127,6 +132,7 @@ class Timesheet extends TrackerReact(React.Component) {
               <th>0</th>
               <th>0</th>
               <th>0</th>
+              <th></th>
             </tr>
             </tfoot>
           </table>

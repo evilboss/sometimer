@@ -4,11 +4,12 @@ import Header from '../core/containers/header';
 import Foot from '../core/components/footer.jsx';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from './containers/timesheet';
-
-
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
-  FlowRouter.route('/timesheet', {
+  const dashboardRoutes = FlowRouter.group({
+    prefix: "/dashboard"
+  });
+  dashboardRoutes.route('/timesheet', {
     name: 'timesheet',
     action() {
       mount(MainLayoutCtx, {

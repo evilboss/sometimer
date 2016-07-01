@@ -21,7 +21,7 @@ export default {
         console.log(err);
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      FlowRouter.go('/inOutBoard');
+      FlowRouter.go('/dashboard/inOutBoard');
     });
 
   },

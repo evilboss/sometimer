@@ -34,13 +34,14 @@ class InOutBoard extends React.Component {
     }
 
   };
+
   componentWillUnmount() {
     this.setState({loaded: false});
   }
 
 
   render() {
-    let backgroundImage = '/Assets/teams/ezyva/background/bg.jpg';
+    let backgroundImage = '/Assets/teams/default/background/bg3.jpg';
     let appLogo = '/Assets/teams/default/logo/remotiv_io_logo_style2.png';
     let boardStyle;
     let inOutLogo = (appLogo) ? inOutLogo = appLogo : '/Assets/teams/ezyva/logo/ezyva-logo.png';
@@ -61,12 +62,15 @@ class InOutBoard extends React.Component {
                         <img src={inOutLogo}/>
                       </div>
                       <div className="right center-align">
-                        <a href="/dashboard"><i className="material-icons">dashboard</i>
-                          <span>Dashboard</span>
-                        </a>
-                        <a href="/timesheet"><i className="material-icons">alarm</i>
-                          <span>Timesheet</span>
-                        </a>
+
+                        <ul className="no-margin">
+                          <li><a href="/dashboard/timesheet" className="theme-text">
+                            <i className="material-icons">grid_on</i><span>Timesheet</span></a>
+                          </li>
+                          <li><a href="/dashboard" className="theme-text">
+                            <i className="material-icons">dashboard</i><span>Dashboard</span></a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                     {(() => {
@@ -82,20 +86,20 @@ class InOutBoard extends React.Component {
                             <div className="staff-details col l8 m8 s12">
                               <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
                                 <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
-                                <button className="ui btn waves-effect waves-light yellow darken-3"
+                                <button className="ui btn waves-effect waves-light theme-color"
                                         onClick={this.handleClick.bind(this)}>
                                   <i className="material-icons left">cached</i>
                                   Click to Change Status
                                 </button>
                               </div>
-                              <div className="row">
+                              <div className="row no-vertical-margin">
                                 <div className="col s12">
-                                  <div className="current-log"><p><b>Current Log -</b> {currentUser.profile.status}</p>
+                                  <div className="current-log"><p><b>Current Log: </b> {currentUser.profile.status}</p>
                                   </div>
                                   <div className={currentUser.profile.status +' beacon z-depth-1'}></div>
                                 </div>
                               </div>
-                              <div>Date Today: {this.getTime()}</div>
+                              <div><b>Date Today:</b> {this.getTime()}</div>
                             </div>
                           </div>
                         </div> : ''

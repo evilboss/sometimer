@@ -64,7 +64,7 @@ class InOutBoard extends React.Component {
                       <div className="right center-align">
 
                         <ul className="no-margin">
-                          <li><a href="/timesheet" className="theme-text">
+                          <li><a href="/dashboard/timesheet" className="theme-text">
                             <i className="material-icons">grid_on</i><span>Timesheet</span></a>
                           </li>
                           <li><a href="/dashboard" className="theme-text">

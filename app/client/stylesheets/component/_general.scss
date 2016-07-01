@@ -77,8 +77,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid $green;
-  box-shadow: 0 1px 0 0 $green;
+  border-bottom: 1px solid $theme-color;
+  box-shadow: 0 1px 0 0 $theme-color;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -93,7 +93,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: $green !important;
+  color: $theme-color !important;
 }
 
 .input-field .prefix.active {

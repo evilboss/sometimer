@@ -28,6 +28,10 @@ section#in-out-board {
             display: block;
           }
         }
+        ul li {
+          @extend .inline;
+          margin: 0 5px;
+        }
       }
     }
     .form.row {
@@ -41,6 +45,7 @@ section#in-out-board {
     }
     .display-photo {
       height: 10em;
+      width: 10em;
     }
   }
   .staff-details {

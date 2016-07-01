@@ -92,14 +92,14 @@ class InOutBoard extends React.Component {
                                   Click to Change Status
                                 </button>
                               </div>
-                              <div className="row">
+                              <div className="row no-vertical-margin">
                                 <div className="col s12">
-                                  <div className="current-log"><p><b>Current Log -</b> {currentUser.profile.status}</p>
+                                  <div className="current-log"><p><b>Current Log: </b> {currentUser.profile.status}</p>
                                   </div>
                                   <div className={currentUser.profile.status +' beacon z-depth-1'}></div>
                                 </div>
                               </div>
-                              <div>Date Today: {this.getTime()}</div>
+                              <div><b>Date Today:</b> {this.getTime()}</div>
                             </div>
                           </div>
                         </div> : ''

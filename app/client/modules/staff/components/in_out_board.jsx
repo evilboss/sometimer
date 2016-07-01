@@ -41,7 +41,7 @@ class InOutBoard extends React.Component {
 
 
   render() {
-    let backgroundImage = '/Assets/teams/ezyva/background/bg.jpg';
+    let backgroundImage = '/Assets/teams/default/background/bg3.jpg';
     let appLogo = '/Assets/teams/default/logo/remotiv_io_logo_style2.png';
     let boardStyle;
     let inOutLogo = (appLogo) ? inOutLogo = appLogo : '/Assets/teams/ezyva/logo/ezyva-logo.png';

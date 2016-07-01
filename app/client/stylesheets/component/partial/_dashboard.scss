@@ -1,0 +1,48 @@
+section.dashboard {
+  @extend .container-margin;
+  .card-panel {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    animation: bottom-to-top 1.5s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    transition: all 0.2s ease-out;
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      display: block;
+      float: left;
+      padding-left: 15px;
+      padding-top: 35px;
+      margin-bottom: 40px;
+      font-size: 35px;
+      line-height: 35px;
+      i {
+        margin-left: -35px;
+        font-size: 110px;
+        opacity: .25;
+        line-height: 110px;
+      }
+    }
+    .title {
+      position: absolute;
+      right: 15px;
+      padding-right: 15px;
+      padding-top: 25px;
+      text-align: right;
+      font-size: 34px;
+      line-height: 36px;
+      letter-spacing: -1px;
+      margin-bottom: 0;
+      font-weight: 300;
+    }
+    &:hover {
+      transition: all 0.2s ease-out;
+      box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+      margin-top: -1px;
+      margin-bottom: 1.55em;
+    }
+  }
+}

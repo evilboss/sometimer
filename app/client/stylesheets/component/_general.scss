@@ -1,13 +1,6 @@
 @import './partial/_public-body';
 @import '_helpers';
 
-/** {
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-}*/
-
 section#body {
   display: flex;
   min-height: 100vh;
@@ -16,6 +9,24 @@ section#body {
 
 main#main {
   flex: 1 0 auto;
+}
+
+nav .brand-logo {
+  left: 0 !important;
+  transform: translateX(0%);
+}
+
+// fonts
+h5 {
+  font-weight: 300;
+}
+
+p {
+  font-size: responsive 12px 14px !important;
+}
+
+.subtext {
+  color: #9e9ea6;
 }
 
 // Button
@@ -29,7 +40,7 @@ main#main {
 // Label
 
 .ribbon {
-  border: 0 solid #1a69a4;
+  border: 0 solid darken($theme-color, 20%);
   left: calc(.05rem - 1.2em);
   position: absolute;
   top: 1rem;
@@ -66,8 +77,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #2196F3;
-  box-shadow: 0 1px 0 0 #2196F3;
+  border-bottom: 1px solid $theme-color;
+  box-shadow: 0 1px 0 0 $theme-color;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -82,7 +93,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #2196F3 !important;
+  color: $theme-color !important;
 }
 
 .input-field .prefix.active {
@@ -90,9 +101,62 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 // bg-color
+.theme-color {
+  background-color: $theme-color;
+}
+
+.theme-text {
+  color: $theme-color;
+}
+
+.translucent-background {
+  background-color: rgba(30, 30, 30, 0.65);
+  padding: 2em;
+  border-radius: 1em;
+}
 
 .green {
   background-color: #4CAF50 !important;
+}
+
+.remotiv-text {
+  margin: 10px 5px !important;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: "kabegnos", sans-serif;
+  text-transform: lowercase;
+  letter-spacing: -1px;
+  font-style: normal;
+  color: white;
+  h1, h2, h3, h4, h5, h6 {
+    @extend .no-margin;
+    span {
+      color: #94C73C;
+    }
+  }
+
+  .sub-text {
+    color: #F4CE57;
+    font-family: "Maven Pro", sans-serif;
+  }
+}
+
+.brand-logo {
+  img {
+    height: 2em;
+  }
+  .remotiv-text {
+    margin: 5px;
+    position: absolute;
+    @extend .remotiv-text;
+  }
+}
+
+.remotiv-background {
+  filter: blur(2px);
+  background-position: center;
+  background-image: url(/Assets/teams/default/background/remotiv_io_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 // table
@@ -101,7 +165,7 @@ table.centered tfoot tr th, table.centered tfoot tr td {
 }
 
 tfoot {
-  border-top: 2px solid #00BCD4;
+  border-top: 2px solid $theme-color;
 }
 
 td, th {
@@ -112,3 +176,57 @@ td, th {
 .collection a.collection-item {
   color: #000000 !important;
 }
+
+ul.dropdown-content {
+  li {
+    a {
+      color: #000000;
+      i {
+        color: $theme-color;
+      }
+    }
+  }
+}
+
+.big-logo {
+  height: 15em;
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+//border
+.circular-border {
+  border-radius: 0.5em;
+}
+
+//error
+.error-container {
+  @extend .circular-border;
+  padding: 1em 1.5em;
+  border: 1px solid #F44336;
+  background-color: #FFE8E6;
+}
+
+.error-text {
+  font-weight: 700;
+  color: #F44336;
+}
+
+.form-group {
+  input {
+    margin: 0;
+  }
+  &.error {
+    input {
+      color: white !important;
+      border-bottom: 2px solid #F44336 !important;
+    }
+    .validation-error {
+      @extend .error-text;
+      font-size: 13.5px;
+    }
+  }
+}
+

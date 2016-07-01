@@ -1,6 +1,8 @@
 section#login {
+
   @extend section#body;
-  background-image: url("/Assets/bg.jpg");
+
+  background-image: url("/Assets/landing/bg/poster.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -18,11 +20,29 @@ section#login {
       @include margin(null, 0.5em, 2em, 0.5em);
     }
     .form.row {
+      outline: none;
+      box-shadow: 0 0 15px $theme-color;
       position: relative;
       padding: 1.5em 0;
       background-color: rgba(0, 0, 0, 0.7);
       color: white;
       margin-bottom: 0;
+
+      //inputs
+      input:not([type]):focus:not([readonly]),
+      input[type=text]:focus:not([readonly]),
+      input[type=password]:focus:not([readonly]),
+      input[type=email]:focus:not([readonly]) {
+        border-bottom: 1px solid $theme-color;
+        box-shadow: 0 1px 0 0 $theme-color;
+      }
+
+      input:not([type]):focus:not([readonly]) + label,
+      input[type=text]:focus:not([readonly]) + label,
+      input[type=password]:focus:not([readonly]) + label,
+      input[type=email]:focus:not([readonly]) + label {
+        color: $theme-color !important;
+      }
     }
     form {
       margin-top: 2.5em;
@@ -36,5 +56,3 @@ section#login {
     }
   }
 }
-
-

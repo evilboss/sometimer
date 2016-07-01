@@ -1,15 +1,8 @@
 import React from 'react';
-import Screenfull from 'screenfull';
-
+import NavbarItem from './navbar_item';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleFullscreen = ()=> {
-      Screenfull.enabled ? Screenfull.toggle() : void 0;
-    };
-    this.componentDidMount = ()=> {
-      $(".button-collapse").sideNav();
-    };
   };
 
 
@@ -18,26 +11,8 @@ class Navbar extends React.Component {
       <section id="navbar">
         <nav id="horizontal-nav" className="white hide-on-med-and-down">
           <div className="nav-wrapper center center-align">
-            <ul className="hide-on-med-and-down">
-              <li>
-                <a href="/" className="cyan-text">
-                  <i className="mdi-action-dashboard"></i>
-                  <span>Dashboard</span>
-                </a>
-              </li>
-              <li>
-                <a href="/timesheet" className="cyan-text">
-                  <i className="material-icons">access_time</i>
-                  <span>Timesheet</span>
-                </a>
-              </li>
-              <li>
-                <a href="/task" className="cyan-text">
-                  <i className="material-icons">assignment</i>
-                  <span>Task</span>
-                </a>
-              </li>
-            </ul>
+
+            <NavbarItem menu={this.props.menu}/>
           </div>
         </nav>
       </section>

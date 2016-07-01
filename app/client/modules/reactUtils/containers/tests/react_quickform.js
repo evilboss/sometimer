@@ -1,7 +1,7 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../react_quickform';
+import {composer} from '../quickform';
 
 describe('react_quickform.containers.react_quickform', () => {
   describe('composer', () => {

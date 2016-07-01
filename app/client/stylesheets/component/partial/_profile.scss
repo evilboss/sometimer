@@ -1,0 +1,17 @@
+section.profile {
+  @extend .container-margin;
+  .title {
+    padding: 0 0.75em;
+  }
+  .display-photo {
+    width: 11em;
+    border-radius: 1em;
+  }
+  ul.collection {
+    border: none;
+    border-radius: 0;
+    li span {
+      color: #5D5D5D;
+    }
+  }
+}

@@ -8,6 +8,9 @@ import userModule from './modules/users';
 import staffModule from './modules/staff';
 import taskModule from './modules/task';
 import reactUtilsModule from './modules/reactUtils';
+import teamModule from './modules/team';
+import dashboardModule from './modules/dashboard';
+import projectsModule from './modules/projects';
 
 // init context
 const context = initContext();
@@ -20,4 +23,7 @@ app.loadModule(userModule);
 app.loadModule(taskModule);
 app.loadModule(staffModule);
 app.loadModule(reactUtilsModule);
+app.loadModule(teamModule);
+app.loadModule(dashboardModule);
+app.loadModule(projectsModule);
 app.init();

@@ -10,8 +10,12 @@ Task.attachSchema(new SimpleSchema({
     max: 200,
     optional: true,
     autoform: {
+      class: 'input-field',
+      afFormGroup: {
+        'formgroup-class': 'input-field'
+      },
       afFieldInput: {
-        class: 'custom'
+        class: 'input-field'
       }
     }
 
@@ -19,12 +23,31 @@ Task.attachSchema(new SimpleSchema({
   author: {
     type: String,
     label: "Author",
-    optional: true
+    optional: true,
+    autoform: {
+      class: 'input-field',
+      afFormGroup: {
+        'formgroup-class': 'input-field'
+      }
+
+    }
   },
   assignee: {
     type: String,
     label: "Assignee",
-    optional: true
+    optional: true,
+    autoform: {
+      class: 'input-field',
+      afFormGroup: {
+        'formgroup-class': 'input-field'
+      },
+      afFieldInput: {
+        class: 'input-field'
+      }
+    }
+  },
+  projectId: {
+    type: String
   }
 }));
 if (Meteor.isServer) {

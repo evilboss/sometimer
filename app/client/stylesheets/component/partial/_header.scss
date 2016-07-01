@@ -1,0 +1,27 @@
+section#header {
+  nav .brand-logo {
+    margin-left: 10px;
+    height: 2em;
+    left: 0;
+    transform: translateX(0);
+    img {
+      padding: 5px;
+    }
+  }
+  .account-menu {
+    img {
+      border-radius: 5px;
+      height: 2.5em;
+      margin-top: 12px;
+      margin-bottom: -13px;
+    }
+  }
+  #account-menu {
+    a {
+      padding: 12px 8px;
+      i {
+        font-size: 1.5em;
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 /**
  * Created by jr on 5/16/16.
  */
-
+import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
+import {loadTeams, removeAllTeams} from './team-migrations';
+import {loadStaff} from './inial-user-migrations';
 Migrations.add({
   version: 1,
-  name: 'Adds default users to app',
-
+  name: 'Add default users to app',
   up: function () {
     loadUsers();
   },
@@ -14,8 +15,45 @@ Migrations.add({
     removeAllUsers();
   }
 });
-/*TODO: Need to have a handler that detects if there is a new migration*/
-Meteor.startup(function () {
+Migrations.add({
+  version: 2,
+  name: 'Add Menu list to app',
+  up: function () {
+    loadMenus();
+  },
+  down: function () {
+    removeAllMenus();
+  }
+});
+Migrations.add({
+  version: 3,
+  name: 'Add Default Teams to app',
+  up: function () {
+    loadTeams();
+  },
+  down: function () {
+    removeAllTeams();
+  }
+});
+Migrations.add({
+  version: 4,
+  name: 'Add Initial users to app',
+  up: function () {
+    loadStaff();
+  },
+  down: function () {
+    console.log('no down function yet');
+  }
+});
+const runMigrationsFromStart = ()=> {
   Migrations.migrateTo(0);
   Migrations.migrateTo('latest');
+};
+const runOnlyToLatest = () => {
+  Migrations.migrateTo('latest')
+};
+Meteor.startup(function () {
+  //TODO: Stopped migrations from running
+  //(process.env.NODE_ENV === 'development') ? runMigrationsFromStart() : runOnlyToLatest();
+  runOnlyToLatest();
 });

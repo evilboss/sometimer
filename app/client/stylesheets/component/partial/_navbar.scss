@@ -1,16 +1,28 @@
 section#navbar {
   ul {
     display: inline-block;
-    & li a {
-      i {
-        height: 0;
-        line-height: 45px;
-        font-size: 1.4rem;
-      }
-      span {
-        position: relative;
-        top: 12px;
+    & li {
+      display: inherit;
+      float: none;
+      a {
+        i {
+          height: 0;
+          line-height: 45px;
+          font-size: 1.4rem;
+        }
+        span {
+          position: relative;
+          top: 12px;
+        }
       }
     }
+    nav {
+      font-size: 0;
+    }
+  }
+  #horizontal-nav {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }

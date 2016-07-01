@@ -1,0 +1,51 @@
+section.create-team {
+
+  .content {
+    flex: 1 0 auto;
+  }
+  .page-footer {
+    margin-bottom: 1em;
+    padding-bottom: 2em;
+  }
+  .right-wrapper {
+    position: relative;
+    padding: 0;
+    @include full-height;
+    .background-image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      background-position: center;
+      background-size: cover;
+      background-image: url("/Assets/teams/default/background/remotiv_io_bg.png");
+      background-color: rgb(177, 177, 177);
+      opacity: 0.6;
+    }
+    .content.container {
+      z-index: 2;
+      .big-logo {
+        img {
+          box-shadow: 0 16px 23px 0 rgba(0, 0, 0, 0.22), 0 16px 23px 0 rgba(0, 0, 0, 0.22);
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .left-wrapper {
+    @include full-height;
+    .brand-logo {
+      .remotiv-text {
+        color: #262D33;
+      }
+    }
+  }
+  .header {
+    padding: 1em;
+  }
+  .brand-logo img {
+    height: 4em;
+  }
+
+}

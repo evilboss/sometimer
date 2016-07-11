@@ -11,13 +11,13 @@ class TeamName extends React.Component {
       <div>
         <div className="row">
           <Quickform
-            buttonText='Next'
-            field={this.props.team}
-            operation='insert'
-            name="insertTeamForm"
-            buttonClass = "waves-effect waves-light btn-large amber darken-2"
-            ommited = "members"
-          />
+          buttonText='Next'
+          field={this.props.team}
+          operation='insert'
+          name="insertTeamForm"
+          buttonClass = "waves-effect waves-light btn-large amber darken-2"
+          ommited = "members"
+        />
           <p className="subtext center-align">
             (this would be your team domain)</p>
         </div>

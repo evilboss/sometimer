@@ -11,7 +11,6 @@ _.each(metaInfo, function (metaItem) {
 /*head links*/
 var linkInfo = [
   {rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons"},
-  {rel: "stylesheet", href: "//db.onlinewebfonts.com/c/78226c87fd060eb906de93c6b83aae95?family=kabegnos"},
   {rel: "icon", type: "image/png", href: "Assets/teams/default/logo/remotiv_io_logo_style3.png"}];
 _.each(linkInfo, function (linkInfo) {
   DocHead.addLink(linkInfo);

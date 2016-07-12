@@ -64,11 +64,14 @@ export default class Profile extends React.Component {
               <img
                 src={(user.profile.displayPhoto)?user.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
                 alt="dp"
-                className="display-photo responsive-img"/>
+                className="display-photo responsive-img center-block"/>
             </div>
 
             <div className="col s12 m10 l10">
-              <h5>Account Information</h5>
+              <h5>Account Information
+                <span className="icon-span">
+                  <a href="task/new" className="btn-floating waves-effect waves-light theme-color">
+                  <i className="material-icons">edit</i></a></span></h5>
               <ul className="collection">
                 <li className="collection-item">Email: <span>{(user.emails[0]) ? user.emails[0].address : ''}</span>
                 </li>

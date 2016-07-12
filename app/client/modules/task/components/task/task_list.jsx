@@ -9,8 +9,10 @@ class TaskList extends React.Component {
     return (
 
       <section className="task-list">
-        <h5>TaskList <span><a href="task/new" className="btn-floating waves-effect waves-light theme-color"> <i
-          className="material-icons">add</i></a></span></h5>
+        <h5>TaskList<span className="icon-span">
+          <a href="task/new"
+             className="btn-floating waves-effect waves-light theme-color">
+            <i className="material-icons">add</i></a></span></h5>
 
         <div className="row container-padding z-depth-1-half card-top-border">
           <div className="collection">

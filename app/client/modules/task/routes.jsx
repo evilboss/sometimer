@@ -5,16 +5,11 @@ import {accessControl} from '/lib/access-control/access-control'
 import Header from '../core/containers/header';
 import {Footer} from '../core/components';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
+import {dashboardRoutes} from '/client/modules/dashboard/routes'
 
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
-  const dashboardRoutes = FlowRouter.group({
-    prefix: "/dashboard",
-    triggersEnter: [function (context, redirect) {
-      accessControl.isLoggedIn('dashboard', redirect);
-    }]
-  });
   dashboardRoutes.route('/task', {
     name: 'task',
     action() {

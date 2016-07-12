@@ -6,7 +6,6 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('menu').ready()) {
     const menu = Collections.Menu.find().fetch();
-    console.log(menu);
     onData(null, {menu});
   } else {
     onData();

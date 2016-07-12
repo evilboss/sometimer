@@ -20,6 +20,16 @@ Menu.attachSchema(new SimpleSchema({
     type: String,
     label: "url",
     optional: true
+  },
+  roles: {
+    type: [String],
+    label: 'role',
+    optional: true,
+  },
+  'roles.$': {
+    type: String,
+    label: 'Role',
+    optional: true,
   }
 }));
 if (Meteor.isServer) {

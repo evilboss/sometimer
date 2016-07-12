@@ -6,17 +6,17 @@ export function loadMenus() {
     let menuItems = [{
       title: "In/Out Board",
       icon: "access_time",
-      url: '/inOutBoard'
+      url: '/dashboard/inOutBoard'
     },
       {
         title: "Timesheet",
         icon: "grid_on",
-        url: '/timesheet'
+        url: '/dashboard/timesheet'
       },
       {
         title: "Task",
         icon: "assignment",
-        url: '/task'
+        url: '/dashboard/task'
       }];
     _.each(menuItems, function (menuItems) {
       Menu.insert(menuItems);

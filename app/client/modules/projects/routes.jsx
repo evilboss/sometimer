@@ -3,7 +3,6 @@ import {mount} from 'react-mounter';
 import AddProjects from './containers/add_projects';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
-
 export default function (injectDeps, {FlowRouter}) {
 
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -11,6 +10,7 @@ export default function (injectDeps, {FlowRouter}) {
     prefix: "/projects"
   });
   projectRoutes.route('/', {
+    name:'projects',
     action(){
       console.log('Project root');
     }

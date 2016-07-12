@@ -77,8 +77,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid $green;
-  box-shadow: 0 1px 0 0 $green;
+  border-bottom: 1px solid $theme-color;
+  box-shadow: 0 1px 0 0 $theme-color;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -93,7 +93,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label,
 input[type=search]:focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: $green !important;
+  color: $theme-color !important;
 }
 
 .input-field .prefix.active {
@@ -120,21 +120,23 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 .remotiv-text {
-
-  font-family: 'Maven Pro', sans-serif !important;
+  margin: 10px 5px !important;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: "kabegnos", sans-serif;
   text-transform: lowercase;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   font-style: normal;
   color: white;
-  margin-bottom: 1em;
   h1, h2, h3, h4, h5, h6 {
     @extend .no-margin;
     span {
       color: #94C73C;
     }
   }
-  h6 {
+
+  .sub-text {
     color: #F4CE57;
+    font-family: "Maven Pro", sans-serif;
   }
 }
 

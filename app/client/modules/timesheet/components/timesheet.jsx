@@ -35,13 +35,10 @@ class Timesheet extends TrackerReact(React.Component) {
               <div className="col s12 m6 l6">
                 <table>
                   <tbody>
-
                   <tr>
                     <th>Name:</th>
                     <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
                   </tr>
-
-
                   <tr>
                     <th>Department:</th>
                     <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
@@ -51,9 +48,7 @@ class Timesheet extends TrackerReact(React.Component) {
                     <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
                   </tr>
                   </tbody>
-
                 </table>
-
               </div>
               <div className="col s12 m6 l6">
                 <table>
@@ -78,11 +73,8 @@ class Timesheet extends TrackerReact(React.Component) {
                 </table>
               </div>
             </div>
-
             : 'Please wait'}
         </section>
-
-
           : 'please wait more'}
 
         <div className="z-depth-1-half card-top-border">
@@ -107,10 +99,10 @@ class Timesheet extends TrackerReact(React.Component) {
               <tr key={timelog._id}>
                 <td>{moment(timelog.timeIn).format('LL')}</td>
                 <td></td>
-                <td>{moment(timelog.timeIn).format('LTS')}</td>
-                <td>{moment(timelog.outToLunch).format('LTS')}</td>
-                <td>{moment(timelog.backFromLunch).format('HH:MM:SS')}</td>
-                <td>{moment(timelog.timeOut).format('HH:MM:SS')}</td>
+                <td>{(timelog.timeIn) ? moment(timelog.timeIn).format('LTS') : ''}</td>
+                <td>{(timelog.outToLunch) ? moment(timelog.outToLunch).format('LTS') : ''}</td>
+                <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('HH:MM:SS') : ''}</td>
+                <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('HH:MM:SS') : ''}</td>
                 <td></td>
                 <td></td>
                 <td></td>

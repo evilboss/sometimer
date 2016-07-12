@@ -46,8 +46,31 @@ Projects.attachSchema(new SimpleSchema({
     defaultValue: this.userId,
   },
   assignee: {
-    type: String,
+    type: [String],
     label: "Assignee",
+    optional: true,
+    autoform: {
+      type: "select-multiple",
+      options: function () {
+        return [
+          {label: "2013", value: 2013},
+          {label: "2014", value: 2014},
+          {label: "2015", value: 2015}
+        ];
+      },
+
+      class: 'input-field',
+      afFormGroup: {
+        'formgroup-class': 'input-field'
+      },
+      afFieldInput: {
+        class: 'input-field'
+      }
+    }
+  },
+  'assignee.$': {
+    type: String,
+    label: 'Assignee',
     optional: true,
     autoform: {
       class: 'input-field',

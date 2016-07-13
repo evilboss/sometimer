@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor';
-import {SimpleSchema} from 'meteor/aldeed:simple-schema';
+const Users = Meteor.users;
 
-let schema = new SimpleSchema({
+Users.attachSchema(new SimpleSchema({
   emails: {
     type: Array
   },
@@ -35,23 +35,68 @@ let schema = new SimpleSchema({
       firstName: {
         type: String,
         optional: true,
+        autoform: {
+          class: 'input-field',
+          afFormGroup: {
+            'formgroup-class': 'input-field'
+          },
+          afFieldInput: {
+            class: 'input-field'
+          }
+        }
       },
       lastName: {
         type: String,
         optional: true,
+        autoform: {
+          class: 'input-field',
+          afFormGroup: {
+            'formgroup-class': 'input-field'
+          },
+          afFieldInput: {
+            class: 'input-field'
+          }
+        }
       },
       department: {
         type: String,
         optional: true,
+        autoform: {
+          class: 'input-field',
+          afFormGroup: {
+            'formgroup-class': 'input-field'
+          },
+          afFieldInput: {
+            class: 'input-field'
+          }
+        }
       },
-      staffType:{
+      staffType: {
         type: String,
-        optional:true,
-        defaultValue: 'Regular'
+        optional: true,
+        defaultValue: 'Regular',
+        autoform: {
+          class: 'input-field',
+          afFormGroup: {
+            'formgroup-class': 'input-field'
+          },
+          afFieldInput: {
+            class: 'input-field'
+          }
+        }
       },
       jobTitle: {
         type: String,
-        optional: true
+        optional: true,
+        autoform: {
+          class: 'input-field',
+          afFormGroup: {
+            'formgroup-class': 'input-field'
+          },
+          afFieldInput: {
+            class: 'input-field'
+          }
+        }
       },
       displayPhoto: {
         type: String,
@@ -66,6 +111,6 @@ let schema = new SimpleSchema({
     optional: true
   },
   // In order to avoid an 'Exception in setInterval callback' from Meteor
-});
+}));
 
-Meteor.users.attachSchema(schema);
+export default Users;

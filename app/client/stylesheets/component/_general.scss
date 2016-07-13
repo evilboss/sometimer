@@ -29,6 +29,10 @@ p {
   margin: 0 10px;
 }
 
+.title {
+  padding: 0 0.75em;
+}
+
 .subtext {
   color: #9e9ea6;
 }
@@ -234,3 +238,18 @@ ul.dropdown-content {
   }
 }
 
+//spacing
+.col {
+  margin: 0.5em 0;
+}
+
+form {
+  .row {
+    margin-bottom: 0;
+  }
+
+  .card-panel {
+    box-shadow: none;
+    padding: 0;
+  }
+}

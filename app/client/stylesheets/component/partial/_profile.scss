@@ -1,7 +1,7 @@
-section.profile {
+section#profile, section#edit-profile {
   @extend .container-margin;
-  .title {
-    padding: 0 0.75em;
+  .card-title {
+    display: none;
   }
   .display-photo {
     width: 11em;

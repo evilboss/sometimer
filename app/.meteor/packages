@@ -43,7 +43,7 @@ percolate:migrations          # A simple migration system for Meteor supporting 
 thereactivestack:blazetoreact #Transform a Blaze template into a React.js component while keeping the reactivity
 juliancwirko:postcss    # Use PostCSS with Meteor
 kevohagan:sweetalert    #  a responsive, themable, cross-browser replacement for JavaScript's alert() with beautiful dialog prompts.
-
+praneybehl:react-dropzone
 
 #custom package section
 

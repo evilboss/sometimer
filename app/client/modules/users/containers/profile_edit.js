@@ -6,9 +6,10 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe("user.current").ready) {
     const user = Meteor.user();
+    const image = Collections.Images;
     const users = Meteor.users;
-    console.log(Meteor.user());
-    onData(null, {user, users});
+    console.log(image);
+    onData(null, {user, users, image});
   }
 };
 

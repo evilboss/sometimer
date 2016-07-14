@@ -4,4 +4,5 @@ app/.meteor/versions
 app/node_modules
 app/settings-dev.json
 app/packages
+app/public/uploads
 .idea

@@ -14,6 +14,7 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  submitAction: actions.users.change_password,
   context: () => context
 });
 

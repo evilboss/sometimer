@@ -5,7 +5,7 @@ export default class Profile extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-   
+
   };
 
 
@@ -18,7 +18,7 @@ export default class Profile extends React.Component {
           <div className="row">
             <div className="col s12 m2 l2">
               <img
-                src={(user.profile.displayPhoto)?user.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+                src={(user.profile.displayPhoto)?'/uploads/'+user.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
             </div>

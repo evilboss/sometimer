@@ -6,18 +6,24 @@ export function loadMenus() {
     let menuItems = [{
       title: "In/Out Board",
       icon: "access_time",
-      url: '/dashboard/inOutBoard'
+      url: '/dashboard/inOutBoard',
+      roles: ['Staff', 'Admin']
     },
       {
         title: "Timesheet",
         icon: "grid_on",
-        url: '/dashboard/timesheet'
+        url: '/dashboard/timesheet',
+        roles: ['Staff', 'Admin']
+
       },
       {
-        title: "Task",
+        title: "Projects",
         icon: "assignment",
-        url: '/dashboard/task'
-      }];
+        url: '/projects',
+        roles: ['Staff', 'Admin']
+
+      }
+    ];
     _.each(menuItems, function (menuItems) {
       Menu.insert(menuItems);
     });

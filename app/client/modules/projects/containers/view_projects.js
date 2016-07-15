@@ -4,8 +4,12 @@ import ViewProjects from '../components/view_projects.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  const projects = Collections.Projects;
-  onData(null, {projects});
+  if (Meteor.subscribe('project-list').ready()) {
+    const projects = Collections.Projects.find().fetch();
+    onData(null, {projects});
+  } else {
+    onData();
+  }
 };
 
 export const depsMapper = (context, actions) => ({

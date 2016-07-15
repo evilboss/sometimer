@@ -20,18 +20,27 @@ const changeStatus = (status = 'Out')=> {
     case 'In':
       console.log('Out to lunch action will occur');
       statusChange = 'Out to Lunch';
-      Timelogs.update({userId:Meteor.userId(),status:'In'}, {$set: {status: statusChange,outToLunch:Date.now()}})
+      Timelogs.update({userId: Meteor.userId(), status: 'In'}, {$set: {status: statusChange, outToLunch: Date.now()}});
       break;
     case 'Out to Lunch':
       console.log('trigger back from lunch');
       statusChange = 'Back From Lunch';
-      Timelogs.update({userId:Meteor.userId(),status:'Out to Lunch'}, {$set: {status: statusChange,backFromLunch:Date.now()}})
+      Timelogs.update({userId: Meteor.userId(), status: 'Out to Lunch'}, {
+        $set: {
+          status: statusChange,
+          backFromLunch: Date.now()
+        }
+      });
       break;
     case 'Back From Lunch':
       console.log('Trigger Out');
       statusChange = 'Out';
-      Timelogs.update({userId:Meteor.userId(),status:'Back From Lunch'}, {$set: {status: statusChange,timeOut:Date.now()}})
-
+      Timelogs.update({userId: Meteor.userId(), status: 'Back From Lunch'}, {
+        $set: {
+          status: statusChange,
+          timeOut: Date.now()
+        }
+      });
       break;
     default:
       console.log('trigger in');
@@ -39,7 +48,10 @@ const changeStatus = (status = 'Out')=> {
       Timelogs.insert({
         timeIn: Date.now(),
         status: 'In',
-        userId: Meteor.userId()
+        userId: Meteor.userId(),
+        outToLunch: '',
+        backFromLunch: '',
+        timeOut: '',
       });
   }
   if (statusChange) {

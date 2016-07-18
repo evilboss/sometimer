@@ -248,8 +248,26 @@ form {
     margin-bottom: 0;
   }
 
+  button {
+    background-color: $theme-color !important;
+  }
+
   .card-panel {
     box-shadow: none;
     padding: 0;
+  }
+}
+
+.dropzone-wrapper {
+  margin: 0.5em;
+  width: 100%;
+  height: auto;
+  border: 2px dashed rgb(102, 102, 102);
+  border-radius: 5px;
+
+  .dropzone-container {
+    text-align: center;
+    font-weight: 500;
+    margin: 25% 0;
   }
 }

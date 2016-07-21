@@ -25,6 +25,14 @@ p {
   font-size: responsive 12px 14px !important;
 }
 
+.icon-span {
+  margin: 0 10px;
+}
+
+.title {
+  padding: 0 0.75em;
+}
+
 .subtext {
   color: #9e9ea6;
 }
@@ -230,3 +238,36 @@ ul.dropdown-content {
   }
 }
 
+//spacing
+.col {
+  margin: 0.5em 0;
+}
+
+form {
+  .row {
+    margin-bottom: 0;
+  }
+
+  button {
+    background-color: $theme-color !important;
+  }
+
+  .card-panel {
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.dropzone-wrapper {
+  margin: 0.5em;
+  width: 100%;
+  height: auto;
+  border: 2px dashed rgb(102, 102, 102);
+  border-radius: 5px;
+
+  .dropzone-container {
+    text-align: center;
+    font-weight: 500;
+    margin: 25% 0;
+  }
+}

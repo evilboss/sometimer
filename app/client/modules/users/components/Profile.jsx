@@ -5,70 +5,29 @@ export default class Profile extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      showPasswordModal: false,
-      showEmailModal: false,
-      showUsernameModal: false
-    };
+
   };
 
-  changePassword() {
-    this.props.change_password(
-      ReactDOM.findDOMNode(this.refs.oldPassword).value,
-      ReactDOM.findDOMNode(this.refs.newPassword).value
-    );
-    this.togglePasswordModal();
-  }
-
-  changeEmail() {
-    this.props.change_email(
-      ReactDOM.findDOMNode(this.refs.email).value
-    );
-    this.toggleEmailModal();
-  }
-
-  changeUsername() {
-    this.props.change_username(
-      ReactDOM.findDOMNode(this.refs.username).value
-    );
-    this.toggleUsernameModal();
-    this.forceUpdate();
-  }
-
-  update(event) {
-    let user = {};
-    user[event.target.name] = event.target.value;
-    this.props.update(user);
-  }
-
-  togglePasswordModal(event) {
-    this.setState({showPasswordModal: !this.state.showPasswordModal});
-  }
-
-  toggleEmailModal(event) {
-    this.setState({showEmailModal: !this.state.showEmailModal});
-  }
-
-  toggleUsernameModal(event) {
-    this.setState({showUsernameModal: !this.state.showUsernameModal});
-  }
 
   render() {
     const user = Meteor.user();
     return (
-      <section className="profile">
+      <section id="profile">
         <h5 className="title">My Account</h5>
         {(user) ?
           <div className="row">
             <div className="col s12 m2 l2">
               <img
-                src={(user.profile.displayPhoto)?user.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+                src={(user.profile.displayPhoto)?'/uploads/'+user.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
                 alt="dp"
-                className="display-photo responsive-img"/>
+                className="display-photo responsive-img center-block"/>
             </div>
 
-            <div className="col s12 m10 l10">
-              <h5>Account Information</h5>
+            <div className="col s12 m10 l10 no-horizontal-margin row z-depth-1-half card-top-border">
+              <h5>Account Information
+                <span className="icon-span">
+                  <a href="/dashboard/profile/edit" className="btn-floating waves-effect waves-light theme-color">
+                  <i className="material-icons">edit</i></a></span></h5>
               <ul className="collection">
                 <li className="collection-item">Email: <span>{(user.emails[0]) ? user.emails[0].address : ''}</span>
                 </li>

@@ -5,6 +5,7 @@ import Team from './team';
 import Menu from './menu';
 import Timelogs from './timelogs';
 import Projects from './projects';
+import Images from './images';
 
 
 export {
@@ -14,5 +15,6 @@ export {
   Team,
   Menu,
   Timelogs,
-  Projects
+  Projects,
+  Images
 };

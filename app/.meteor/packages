@@ -42,6 +42,8 @@ std:accounts-material   # Material UI – Accounts UI for React in Meteor 1.3
 percolate:migrations          # A simple migration system for Meteor supporting up/downwards migrations and command line usage. Forked to experiment with package data migrations.
 thereactivestack:blazetoreact #Transform a Blaze template into a React.js component while keeping the reactivity
 juliancwirko:postcss    # Use PostCSS with Meteor
+kevohagan:sweetalert    #  a responsive, themable, cross-browser replacement for JavaScript's alert() with beautiful dialog prompts.
+praneybehl:react-dropzone
 
 #custom package section
 

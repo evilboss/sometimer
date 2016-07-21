@@ -79,7 +79,7 @@ class InOutBoard extends React.Component {
                           <div className="row">
                             <div className="col l4 m4 s12 center-align">
                               <img
-                                src={(currentUser.profile.displayPhoto)?currentUser.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+                                src={(currentUser.profile.displayPhoto)?'/uploads/'+currentUser.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
                                 alt="dp"
                                 className="display-photo circle responsive-img"/>
                             </div>

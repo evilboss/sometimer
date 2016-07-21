@@ -1,12 +1,5 @@
 export default {
 
-  update({Meteor, LocalState}, field) {
-    Meteor.call('user.update', field, (err) => {
-      if (err) {
-        notify.show(err.message, 'error');
-      }
-    });
-  },
 
   login({Meteor, LocalState, FlowRouter}, email, password) {
 
@@ -24,7 +17,8 @@ export default {
       FlowRouter.go('/dashboard/inOutBoard');
     });
 
-  },
+  }
+  ,
   recover_password({Meteor, LocalState}, email) {
     Accounts.forgotPassword({email: email}, (err) => {
       if (err) {
@@ -53,9 +47,9 @@ export default {
   change_password({Meteor, LocalState}, oldPassword, newPassword) {
     Accounts.changePassword(oldPassword, newPassword, (err) => {
       if (err) {
-        notify.show(err.message, 'error');
+
       } else {
-        notify.show("New password has been saved.", 'success');
+        
       }
     });
   },
@@ -101,5 +95,5 @@ export default {
         FlowRouter.go("/email-verification");
       }
     });
-  },
+  }
 };

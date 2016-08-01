@@ -47,9 +47,9 @@ export default {
   change_password({Meteor, LocalState}, oldPassword, newPassword) {
     Accounts.changePassword(oldPassword, newPassword, (err) => {
       if (err) {
-
+        sweetAlert("Oops...", err, "error");
       } else {
-        
+        sweetAlert("Success!", "Click OK to close", "success");
       }
     });
   },

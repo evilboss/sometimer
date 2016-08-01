@@ -13,7 +13,7 @@ class ViewProjects extends React.Component {
   render() {
     return (
 
-      <section id="project-list">
+      <section className="project-list">
 
         <div><h5>ProjectList <span>
           <a href="/projects/new" className="btn-floating waves-effect waves-light theme-color">

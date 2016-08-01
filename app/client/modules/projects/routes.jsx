@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 import {Footer} from '../core/components';
 import Header from '../core/containers/header';
-import {AddProjects, ViewProjects} from './containers';
+import {AddProjects, ViewProjects, ListView} from './containers';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 export default function (injectDeps, {FlowRouter}) {
@@ -24,7 +24,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'projects.listview',
     action(){
       mount(MainLayoutCtx, {
-        head: () => (<Header />), content: () => (<ViewProjects />), footer: () => (<Footer />)
+        head: () => (<Header />), content: () => (<ListView />), footer: () => (<Footer />)
       });
     }
   });

@@ -1,0 +1,38 @@
+section#project-list {
+  @extend .container-margin;
+  .project-view {
+    a {
+      color: $gray;
+    }
+    .active {
+      color: $theme-color;
+    }
+  }
+  article {
+    .card {
+      animation: bottom-to-top 1.5s;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+      transition: all 0.2s ease-out;
+      .card-content {
+        height: 12em;
+        .card-title {
+          color: black;
+        }
+      }
+      .card-action {
+        padding: 0.5em;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      &:hover {
+        transition: all 0.2s ease-out;
+        box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+        margin-top: -1px;
+        margin-bottom: 1.55em;
+      }
+    }
+  }
+}

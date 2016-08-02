@@ -1,21 +1,32 @@
 import React from 'react';
 import {mount} from 'react-mounter';
-import {AddProjects, ViewProjects} from './containers';
+import {Footer} from '../core/components';
+import Header from '../core/containers/header';
+import {AddProjects, ViewProjects, ListView} from './containers';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 export default function (injectDeps, {FlowRouter}) {
 
   const MainLayoutCtx = injectDeps(MainLayout);
   const projectRoutes = FlowRouter.group({
-    name:'projectRouteGroup',
+    name: 'projectRouteGroup',
     prefix: "/projects"
   });
-  projectRoutes.route('/', {
-    name: 'projects',
+  projectRoutes.route('/tileView', {
+    name: 'projects.tileview',
     action(){
       mount(MainLayoutCtx, {
-        content: () => (<ViewProjects/>)
-      });    }
+        head: () => (<Header />), content: () => (<ViewProjects />), footer: () => (<Footer />)
+      });
+    }
+  });
+  projectRoutes.route('/listView', {
+    name: 'projects.listview',
+    action(){
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<ListView />), footer: () => (<Footer />)
+      });
+    }
   });
   projectRoutes.route('/view', {
     action(){
@@ -25,7 +36,7 @@ export default function (injectDeps, {FlowRouter}) {
   projectRoutes.route('/new', {
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<AddProjects/>)
+        head: () => (<Header />), content: () => (<AddProjects />), footer: () => (<Footer />)
       });
     }
   });

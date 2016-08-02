@@ -1,3 +1,4 @@
 import AddProjects from './add_projects';
 import ViewProjects from './view_projects';
-export {AddProjects, ViewProjects};
+import ListView from './list_view';
+export {AddProjects, ViewProjects, ListView};

@@ -262,7 +262,8 @@ form {
   margin: 0.5em;
   width: 100%;
   height: auto;
-  border: 2px dashed rgb(102, 102, 102);
+  background-color: #E6E6E6;
+  border: 2px dashed $theme-color;
   border-radius: 5px;
 
   .dropzone-container {

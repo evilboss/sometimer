@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 export default function () {
-  Meteor.publish('project-list', function (projectsId) {
-    return Projects.find(projectsId);
+  Meteor.publish('project-list', function () {
+    return Projects.find();
   });
 }

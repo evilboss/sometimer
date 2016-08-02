@@ -7,7 +7,6 @@ import MyInput from './input';
 class ProfileEdit extends React.Component {
   constructor(props) {
     super(props);
-
     this.onDrop = (files)=> {
       console.log('Received files: ', files);
       _.each(files, function (file) {
@@ -29,6 +28,7 @@ class ProfileEdit extends React.Component {
     };
     this.onSubmit = (data)=> {
       this.props.submitAction(data.oldPassword, data.newPassword);
+
     };
   }
 
@@ -53,7 +53,7 @@ class ProfileEdit extends React.Component {
               </Dropzone>
             </div>
             <div className="col s12 m10 l10">
-              <h5 class="title">Account Information</h5>
+              <h5 className="title">Account Information</h5>
               <div className="no-horizontal-margin row z-depth-1-half card-top-border">
                 {<Quickform
                   buttonText="Update Profile"
@@ -64,10 +64,9 @@ class ProfileEdit extends React.Component {
                   name="updateProfileForm"
                 />}
               </div>
-              <h5 class="title">Account Password</h5>
+              <h5 className="title">Account Password</h5>
               <div className="no-horizontal-margin row z-depth-1-half card-top-border">
-                <Formsy.Form onSubmit={this.onSubmit} onValid={this.validSubmit} onInvalid={this.invalidSubmit}
-                             className="login">
+                <Formsy.Form onSubmit={this.onSubmit} onValidSubmit={this.onSubmit} className="login">
                   <MyInput name="oldPassword" title="oldPassword" type="password"/>
                   <MyInput name="newPassword" title="newPassword" type="password"/>
                   <div className="row">

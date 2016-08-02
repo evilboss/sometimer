@@ -1,5 +1,5 @@
 body.default-theme {
-  $theme-color: hsl(196, 97%, 14%);
+  $theme-color: #03BDF0;
   @import "./modules/_modules";
   @import "./component/_general";
   @import "./component/_components";

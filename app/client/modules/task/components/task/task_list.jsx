@@ -12,7 +12,9 @@ class TaskList extends React.Component {
 
   renderTasks() {
     return (
+
       <section className="task-list">
+        <h4>Project name</h4>
         <h5>TaskList<span className="icon-span">
        <a href="task/new"
           className="btn-floating waves-effect waves-light theme-color">
@@ -55,6 +57,5 @@ class TaskList extends React.Component {
       </div>);
   }
 }
-
 
 export default TaskList;

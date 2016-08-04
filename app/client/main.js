@@ -11,6 +11,7 @@ import reactUtilsModule from './modules/reactUtils';
 import teamModule from './modules/team';
 import dashboardModule from './modules/dashboard';
 import projectsModule from './modules/projects';
+import commentsModule from './modules/comments';
 
 // init context
 const context = initContext();
@@ -26,4 +27,6 @@ app.loadModule(reactUtilsModule);
 app.loadModule(teamModule);
 app.loadModule(dashboardModule);
 app.loadModule(projectsModule);
+app.loadModule(commentsModule);
+
 app.init();

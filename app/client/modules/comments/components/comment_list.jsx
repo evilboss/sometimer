@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateComment from '../containers/create_comment';
+import Username from '/client/modules/users/containers/username';
 class CommentList extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ class CommentList extends React.Component {
           {comments.length === 0 ? <p>No Comments Yet!</p> : null}
           {comments.map(comment => (
             <div key={comment._id} className="comment">
-              <b>{comment.author}:</b> {comment.text}
+              <Username userId={comment.author}/>:{comment.text}
               {comment.saving ? '...' : null}
             </div>
           ))}

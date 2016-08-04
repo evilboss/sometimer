@@ -109,11 +109,20 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   border-bottom: 2px solid $theme-color;
 }
 
-.dropdown-content .select-dropdown {
-  .active {
+.select-dropdown li.disabled {
+  span {
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.dropdown-content {
+  li.active {
     span {
       color: $theme-color;
     }
+  }
+  span {
+    color: black;
   }
 }
 

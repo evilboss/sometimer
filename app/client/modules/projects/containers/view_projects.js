@@ -1,7 +1,5 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
 import ViewProjects from '../components/view_projects.jsx';
-
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('project-list').ready()) {

@@ -14,7 +14,15 @@ export default {
         console.log(err);
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      FlowRouter.go('/dashboard/inOutBoard');
+      console.log(Meteor.user());
+      if (Meteor.user()) {
+        let path = '/dashboard/inOutBoard';
+        if (Meteor.user().role === 'admin') {
+          path = '/dashboard'
+        }
+        FlowRouter.go(path);
+      }
+
     });
 
   }

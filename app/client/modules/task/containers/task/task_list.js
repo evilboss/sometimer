@@ -1,11 +1,14 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
 import TaskList from '../../components/task/task_list.jsx';
-export const composer = ({context}, onData) => {
+export const composer = ({context, projectId}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('task').ready()) {
-    const task = Collections.Task.find().fetch();
-    onData(null, {task});
+  if (Meteor.subscribe('task.projects', projectId).ready()) {
+    const options = {
+      sort: {createdAt: -1}
+    };
+    const tasks = Collections.Task.find({projectId}, options).fetch();
+    onData(null, {tasks});
   } else {
     onData();
   }

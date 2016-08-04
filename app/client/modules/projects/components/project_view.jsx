@@ -1,6 +1,6 @@
 import React from 'react';
 import CommentList from '/client/modules/comments/containers/comment_list';
-
+import TaskList from '/client/modules/task/containers/task/task_list';
 class ProjectView extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +16,9 @@ class ProjectView extends React.Component {
         </div>
         <div>
           Project Id: {_id}
+        </div>
+        <div>
+          <TaskList projectId={_id}/>
         </div>
         <div>
           <CommentList projectId={_id}/>

@@ -110,7 +110,11 @@ Users.attachSchema(new SimpleSchema({
     type: [String],
     optional: true
   },
-  // In order to avoid an 'Exception in setInterval callback' from Meteor
+  "roles.$": {
+    type: String,
+    optional: true,
+  }
+// In order to avoid an 'Exception in setInterval callback' from Meteor
 }));
 
 export default Users;

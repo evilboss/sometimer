@@ -2,7 +2,7 @@ import React from 'react';
 import Quickform from '/client/modules/reactUtils/components/quickform';
 import Dropzone from 'react-dropzone';
 import Formsy from 'formsy-react';
-import MyInput from './input';
+import MyInput from '../../../utils/form/input';
 
 class ProfileEdit extends React.Component {
   constructor(props) {

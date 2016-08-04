@@ -1,7 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 
-import MyInput from './input';
+import MyInput from '../../../utils/form/input';
 /*TODO : @aaron fixed login layout and validation*/
 class Login extends React.Component {
   constructor(props) {

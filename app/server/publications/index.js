@@ -6,6 +6,8 @@ import team from './team';
 import timelogs from './timelogs';
 import projects from './projects';
 import images from './images';
+import comments from './comment-publications';
+
 export default function () {
   timesheet();
   task();
@@ -15,4 +17,5 @@ export default function () {
   timelogs();
   images();
   projects();
+  comments();
 }

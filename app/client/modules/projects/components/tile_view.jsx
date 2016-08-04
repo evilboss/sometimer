@@ -10,7 +10,7 @@ var TileView = React.createClass({
           <a href="/projects/listview"><i className="material-icons">view_list</i></a>
         </div>
         {this.props.projects.map(project=> (
-          <a href="#!" key={project._id} className="collection-item">
+          <a href={`/projects/${project._id}`} key={project._id} className="collection-item">
             <article className="col s12 m6 l4">
               <div className="card">
                 <div className="card-content">

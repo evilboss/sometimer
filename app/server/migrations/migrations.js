@@ -5,6 +5,7 @@ import {loadMenus, removeAllMenus} from './menu-migration';
 import {loadUsers, removeAllUsers} from './admin-migrations';
 import {loadTeams, removeAllTeams} from './team-migrations';
 import {loadStaff} from './inial-user-migrations';
+import {loadProjects, removeProjects} from './project-migrations';
 Migrations.add({
   version: 1,
   name: 'Add default users to app',
@@ -45,12 +46,22 @@ Migrations.add({
     console.log('no down function yet');
   }
 });
+Migrations.add({
+  version: 5,
+  name: 'Adds Projects to db.',
+  up: function () {
+    loadProjects();
+  },
+  down: function () {
+    removeProjects();
+  }
+});
 const runMigrationsFromStart = ()=> {
   Migrations.migrateTo(0);
   Migrations.migrateTo('latest');
 };
 const runOnlyToLatest = () => {
-  Migrations.migrateTo('latest')
+  Migrations.migrateTo('latest');
 };
 Meteor.startup(function () {
   //TODO: Stopped migrations from running

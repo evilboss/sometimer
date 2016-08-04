@@ -40,14 +40,13 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-  projectRoutes.route('/projectId', {
-    action(){
-      let projectId = FlowRouter.getParam('projectId');
-      console.log('Project ProjectID', projectId);
+  projectRoutes.route('/:projectId', {
+    name: 'project.single',
+    action(projectId){
+      console.log(projectId.projectId);
       mount(MainLayoutCtx, {
-        head: () => (<Header />), content: () => (<ProjectView />), footer: () => (<Footer />)
+        head: () => (<Header />), content: () => (<ProjectView projectId={projectId.projectId}/>), footer: () => (<Footer />)
       });
     }
   });
-
 }

@@ -6,9 +6,11 @@ import Menu from './menu';
 import Timelogs from './timelogs';
 import Projects from './projects';
 import Images from './images';
+import Comments from './comments';
 
 
 export {
+  Comments,
   Timesheet,
   Users,
   Task,

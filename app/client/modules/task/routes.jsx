@@ -10,23 +10,23 @@ import {dashboardRoutes} from '/client/modules/dashboard/routes'
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
-  dashboardRoutes.route('/task', {
-    name: 'task',
-    action() {
+  const projectRoutes = FlowRouter.group({
+    name: 'projectRouteGroup',
+    prefix: "/projects/task"
+  });
+  projectRoutes.route('/', {
+    name: 'projects.task',
+    action(){
       mount(MainLayoutCtx, {
-        head: () => (<Header/>),
-        content: () => (<TaskList/>),
-        footer: () => (<Footer/>)
+        head: () => (<Header />), content: () => (<TaskList />), footer: () => (<Footer />)
       });
     }
   });
-  dashboardRoutes.route('/task/new', {
-    name: 'task.new',
-    action() {
+  projectRoutes.route('/new', {
+    name: 'projects.task.new',
+    action(){
       mount(MainLayoutCtx, {
-        head: () => (<Header/>),
-        content: () => (<TaskCreate/>),
-        footer: () => (<Footer/>)
+        head: () => (<Header />), content: () => (<TaskCreate />), footer: () => (<Footer />)
       });
     }
   });

@@ -1,8 +1,8 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import Input from '../../../../utils/form/input';
+import ProjectView from '../project_view';
 
-describe('users.components.input', () => {
+describe('projects.components.project_view', () => {
   it('should do something');
 });

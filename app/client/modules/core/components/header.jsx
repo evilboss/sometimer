@@ -6,18 +6,18 @@ import  NavbarProfile from './navbar_profile';
 class Header extends React.Component {
   constructor(props) {
     super(props);
-
-    this.componentDidMount = () => {
-      $('.account-menu').dropdown({
-          inDuration: 300,
-          outDuration: 225,
-          constrain_width: false,
-          belowOrigin: true,
-          alignment: 'left'
-        }
-      );
-    };
   }
+
+  componentDidMount() {
+    $('.account-menu').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: false,
+        belowOrigin: true,
+        alignment: 'left'
+      }
+    );
+  };
 
   render() {
     return (

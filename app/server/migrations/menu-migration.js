@@ -19,7 +19,7 @@ export function loadMenus() {
       {
         title: "Projects",
         icon: "assignment",
-        url: '/projects',
+        url: '/projects/tileview',
         roles: ['Staff', 'Admin']
 
       }

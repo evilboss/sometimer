@@ -15,8 +15,7 @@ export function loadUsers() {
         staffType: 'Regular',
         jobTitle: 'Administrator',
         displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif'
-      },
-      role: 'admin'
+      }
     });
   }
 }

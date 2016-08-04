@@ -1,3 +1,4 @@
+/*
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
@@ -34,3 +35,4 @@ export function user_list(selector, options) {
 
   return Meteor.users.find(selector, options);
 };
+*/

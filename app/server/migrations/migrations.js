@@ -61,7 +61,7 @@ const runMigrationsFromStart = ()=> {
   Migrations.migrateTo('latest');
 };
 const runOnlyToLatest = () => {
-  Migrations.migrateTo(5);
+  Migrations.migrateTo('latest');
 };
 Meteor.startup(function () {
   //TODO: Stopped migrations from running

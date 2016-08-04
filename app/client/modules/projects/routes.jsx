@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 import {Footer} from '../core/components';
 import Header from '../core/containers/header';
-import {AddProjects, ViewProjects, ListView} from './containers';
+import {AddProjects, ViewProjects, ListView, ProjectView} from './containers';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 export default function (injectDeps, {FlowRouter}) {
@@ -40,10 +40,13 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-  projectRoutes.route('/:projectId', {
+  projectRoutes.route('/projectId', {
     action(){
       let projectId = FlowRouter.getParam('projectId');
       console.log('Project ProjectID', projectId);
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<ProjectView />), footer: () => (<Footer />)
+      });
     }
   });
 

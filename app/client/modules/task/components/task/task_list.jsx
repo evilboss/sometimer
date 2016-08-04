@@ -4,24 +4,46 @@ class TaskList extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+  };
 
   render() {
     return (
 
       <section className="task-list">
+        <h4>Project name</h4>
         <h5>TaskList<span className="icon-span">
           <a href="task/new"
              className="btn-floating waves-effect waves-light theme-color">
             <i className="material-icons">add</i></a></span></h5>
-
         <div className="row container-padding z-depth-1-half card-top-border">
-          <div className="collection">
-            {this.props.task.map(task => (
-              <a href="#!" key={task._id} className="collection-item">
+          <div className="col l9 m8 s12">
+            {this.props.task.map((task, index) => (
+              <a href="#!" key={index}>
                 <b>{task.title}</b>
               </a>
             ))}
           </div>
+          <div className="col l3 m4 s12 z-depth-1">
+            <div className="input-field">
+              <select className="icons">
+                <option value="" disabled selected>to-dos assigned to</option>
+                <option value="" data-icon="images/sample-1.jpg" className="circle">AaronR</option>
+              </select>
+              <label>Show to-dos assigned to </label>
+            </div>
+            <div className="input-field">
+              <select className="icons">
+                <option value="" disabled selected>to-dos that are due</option>
+                <option value="">yesterday</option>
+              </select>
+              <label>Show to-dos that are due </label>
+            </div>
+          </div>
+
         </div>
       </section>
     )

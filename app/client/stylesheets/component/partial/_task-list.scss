@@ -1,3 +1,14 @@
 section.task-list {
   @extend .container-margin;
+
+  a {
+    color: rgba(0, 0, 0, 0.87);
+    &:hover {
+      color: $theme-color;
+      text-decoration-line: underline;
+    }
+  }
+.input-field{
+  margin-bottom: 15px;
+}
 }

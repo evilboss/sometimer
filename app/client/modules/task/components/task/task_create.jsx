@@ -9,7 +9,7 @@ class TaskCreate extends React.Component {
     return (
       <section className="task-create">
         <h5 className="inline">TaskCreate</h5>
-        <a href="/dashboard/task" className="waves-effect waves-light btn theme-color">
+        <a href="/projects/task" className="waves-effect waves-light btn theme-color">
           <i className="material-icons right">assignment</i>
           View All task</a>
         <div className="row container-padding z-depth-1-half card-top-border">

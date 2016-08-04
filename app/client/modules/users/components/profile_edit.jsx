@@ -21,7 +21,7 @@ class ProfileEdit extends React.Component {
             let imagePath = 'images-' + fileObj._id + '-' + file.name;
 
             console.log(Meteor.call('user.update-photo', Meteor.userId(), imagePath));
-
+            sweetAlert("Success!", "Click OK to close", "success");
           }
         });
       });
@@ -43,7 +43,7 @@ class ProfileEdit extends React.Component {
           <div className="row">
             <div className="col s12 m2 l2">
               <img
-                src={(user.profile.displayPhoto)?'/uploads/'+user.profile.displayPhoto:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+                src={(user.profile.displayPhoto)?'/uploads'+user.profile.displayPhoto:'/uploads/default-img.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
 

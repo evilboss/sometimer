@@ -1,8 +1,8 @@
 import {Menu} from '/lib/collections';
 const menuItems = [{
-  title: "In/Out Board",
+  title: "Time Tracker",
   icon: "access_time",
-  url: '/dashboard/inOutBoard',
+  url: '/dashboard/timetracker',
   roles: ['Staff', 'Admin']
 },
   {

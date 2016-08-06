@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-class InOutBoard extends React.Component {
+class TimeTracker extends React.Component {
   constructor(props) {
     super(props);
 
@@ -118,4 +118,4 @@ class InOutBoard extends React.Component {
   };
 }
 
-export default InOutBoard;
+export default TimeTracker;

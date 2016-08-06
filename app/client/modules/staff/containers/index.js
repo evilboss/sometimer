@@ -1,5 +1,4 @@
-import InOutBoard from './in_out_board';
-
+import TimeTracker from './time_tracker';
 export {
-  InOutBoard,
+	TimeTracker,
 };

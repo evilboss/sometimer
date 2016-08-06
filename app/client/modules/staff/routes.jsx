@@ -5,7 +5,7 @@ import {accessControl} from '/lib/access-control/access-control'
 import {Footer} from '../core/components';
 import Header from '../core/containers/header';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
-import {InOutBoard} from  './containers';
+import {TimeTracker} from  './containers';
 import Profile from '../users/containers/Profile';
 import {dashboardRoutes} from '/client/modules/dashboard/routes'
 import EditProfile from '../users/containers/profile_edit'
@@ -14,12 +14,12 @@ import EditProfile from '../users/containers/profile_edit'
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
 
-  dashboardRoutes.route('/inOutBoard', {
-    name: 'staff.inOutBoard',
+  dashboardRoutes.route('/timetracker', {
+    name: 'staff.timetracker',
 
     action() {
       mount(MainLayoutCtx, {
-        content: ()=>(<InOutBoard />)
+        content: ()=>(<TimeTracker />)
       });
     }
   });

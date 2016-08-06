@@ -11,15 +11,49 @@ export function loadUsers() {
       profile: {
         firstName: 'Admin',
         lastName: 'Nistrator',
-        department: 'Development',
+        department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Administrator',
-        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif'
+        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        role:'admin'
+      }
+    });
+    Accounts.createUser({
+      email: "manager@manager.com",
+      password: "password",
+      profile: {
+        firstName: 'Man',
+        lastName: 'Mager',
+        department: 'Admin',
+        staffType: 'Regular',
+        jobTitle: 'Manager',
+        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        role:'manager'
+      }
+    });
+    Accounts.createUser({
+      email: "staff@staff.com",
+      password: "password",
+      profile: {
+        firstName: 'St',
+        lastName: 'Aff',
+        department: 'Virtual Assistants',
+        staffType: 'Regular',
+        jobTitle: 'Virtual Assistant',
+        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        role:'staff'
       }
     });
   }
 }
 export function removeAllUsers() {
   console.log('Removing Users');
-  return Meteor.users.remove({});
+  const innitalUsers =['admin@admin.com','manager@manager.com','staff@staff.com'];
+  _.each(innitalUsers,function (userEmail) {
+    const removeUser =  Meteor.users.findOne({'emails.address': {$regex:userEmail,$options:'i'}});
+    if(removeUser){
+      Meteor.users.remove(removeUser._id);
+    }
+  
+  });
 }

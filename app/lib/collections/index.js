@@ -7,6 +7,7 @@ import Timelogs from './timelogs';
 import Projects from './projects';
 import Images from './images';
 import Comments from './comments';
+import Breaks from './breaks';
 
 
 export {
@@ -18,5 +19,6 @@ export {
   Menu,
   Timelogs,
   Projects,
-  Images
+  Images,
+  Breaks
 };

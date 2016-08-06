@@ -19,7 +19,6 @@ export function loadProjects() {
   console.log('displaying projects', Projects.find().fetch());
 }
 export function removeProjects() {
-  let projectnames = ['Project 1', 'project 2', 'test'];
   _.each(projectnames, function (project) {
     Projects.remove({name: project});
   });

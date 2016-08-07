@@ -14,7 +14,7 @@ import EditProfile from '../users/containers/profile_edit'
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
 
-  dashboardRoutes.route('/inOutBoard', {
+  dashboardRoutes.route('/timetracker', {
     name: 'staff.inOutBoard',
 
     action() {

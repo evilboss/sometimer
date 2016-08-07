@@ -6,7 +6,7 @@ export function loadMenus() {
     let menuItems = [{
       title: "In/Out Board",
       icon: "access_time",
-      url: '/dashboard/inOutBoard',
+      url: '/dashboard/timetracker',
       roles: ['Staff', 'Admin']
     },
       {

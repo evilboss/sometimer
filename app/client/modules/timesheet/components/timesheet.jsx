@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import ApprovalButton from '../../manager/components/approval_button';
 class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
@@ -54,10 +55,6 @@ class Timesheet extends TrackerReact(React.Component) {
                 <table>
                   <tbody>
                   <tr>
-                    <th>Status:</th>
-                    <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
-                  </tr>
-                  <tr>
                     {
                       /*<th>Shift:</th>
                        <td>9:00 to 18:00</td>*/
@@ -82,30 +79,22 @@ class Timesheet extends TrackerReact(React.Component) {
             <thead>
             <tr>
               <th>Date</th>
-              <th>Shift</th>
               <th>Time In</th>
               <th>Out To Lunch</th>
               <th>Back From Lunch</th>
               <th>Time Out</th>
-              <th colSpan="2">Leave</th>
-              <th>Undertime</th>
-              <th>Overtime</th>
+              <th>Leave</th>
               <th>Hours<br/>Rendered</th>
-              <th>Night<br/>Differential</th>
             </tr>
             </thead>
             <tbody>
             {timelogs.map(timelog => (
               <tr key={timelog._id}>
                 <td>{moment(timelog.timeIn).format('LL')}</td>
-                <td></td>
                 <td>{(timelog.timeIn) ? moment(timelog.timeIn).format('LTS') : ''}</td>
                 <td>{(timelog.outToLunch) ? moment(timelog.outToLunch).format('LTS') : ''}</td>
                 <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('HH:MM:SS') : ''}</td>
                 <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('HH:MM:SS') : ''}</td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td></td>
                 <td></td>
               </tr>
@@ -118,17 +107,15 @@ class Timesheet extends TrackerReact(React.Component) {
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
+              <th></th>
               <th colSpan="2">Paid:0/Unpaid:0</th>
-              <th></th>
-              <th>0</th>
-              <th>0</th>
-              <th>0</th>
-              <th>0</th>
-              <th></th>
             </tr>
             </tfoot>
           </table>
+
         </div>
+        <ApprovalButton/>
       </section>
     );
   }

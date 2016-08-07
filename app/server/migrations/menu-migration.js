@@ -4,7 +4,7 @@ export function loadMenus() {
   console.log('Loading Menus');
   if (Menu.find({}).count() === 0) {
     let menuItems = [{
-      title: "In/Out Board",
+      title: "Time Tracker",
       icon: "access_time",
       url: '/dashboard/timetracker',
       roles: ['Staff', 'Admin']

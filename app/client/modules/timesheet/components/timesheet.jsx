@@ -124,11 +124,10 @@ class Timesheet extends TrackerReact(React.Component) {
               <th>Hours<br/>Rendered</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-            </tr>
-
-            {dates.map((date,index)=>(<tr key={index}><td>{date.toDateString()}</td><TimeData keyIndex={index} date={date} userId={currentUser._id}/></tr>))}
+            <tbody className="utub">
+            {dates.map((date,index)=>(
+              <TimeData keyIndex={index} date={date} userId={currentUser._id}/>
+           ))}
 
             </tbody>
             <tfoot>

@@ -8,18 +8,29 @@ class Timedata extends React.Component {
   render() {
     const timelog = this.props.timelog;
     return (
-      <tbody key={this.props.keyIndex}>
-        <td >
-          {(timelog)?(timelog.timeIn)?moment(timelog.timeIn).format('hh:mm:ss'):'00:00:00':'--:--:--'}
+      <tr key={this.props.keyIndex}>
+        <td>{this.props.date.toDateString()}</td>
+        <td>
+          {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '00:00:00' : '--:--:--'}
         </td>
         <td>
           Total break
         </td>
         <td >
-          {(timelog)?(timelog.timeOut)?moment(timelog.timeOut).format('hh:mm:ss'):'00:00:00':'--:--:--'}
+          {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss') : '00:00:00' : '--:--:--'}
         </td>
-      </tbody>
+        <td>
+          --:--:--
+        </td>
+        <td>
+          {this.getTotalHours()}
+        </td>
+      </tr>
     );
+  }
+
+  getTotalHours() {
+    return 'total hours';
   }
 }
 

@@ -22,10 +22,9 @@ export default function () {
       const month = check.format('M');
       const day   = check.format('D');
       const year  = check.format('YYYY');
-      const startDate = (17<=15)?moment([year, month]).add(-1,"month"):moment(moment([year, month]).add(-1,"month")).add(15,"days");
-      const endDate =(17<=15)? moment(startDate).add(14,"days"):moment(startDate).endOf('month');
+      const startDate = (day<=15)?moment([year, month]).add(-1,"month"):moment(moment([year, month]).add(-1,"month")).add(15,"days");
+      const endDate =(day<=15)? moment(startDate).add(14,"days"):moment(startDate).endOf('month');
       const dateArray = getDates(startDate.toDate(), endDate.toDate());
-      console.log((day>=15),month, day, year,startDate.toDate(),endDate.toDate());
       return dateArray;
     }
   });

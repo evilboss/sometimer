@@ -8,6 +8,6 @@ export default function () {
   });
   Meteor.publish('timelogs.by.date', function (date, userId) {
     const selector = {date: date,userId:userId};
-    return Timelogs.findOne(selector);
+    return Timelogs.find(selector);
   });
 }

@@ -128,7 +128,7 @@ class Timesheet extends TrackerReact(React.Component) {
             <tr>
             </tr>
 
-            {dates.map((date,index)=>(<tr><td>{date.toDateString()}</td><TimeData/></tr>))}
+            {dates.map((date,index)=>(<tr key={index}><td>{date.toDateString()}</td><TimeData keyIndex={index} date={date} userId={currentUser._id}/></tr>))}
 
             </tbody>
             <tfoot>

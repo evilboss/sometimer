@@ -5,10 +5,13 @@ class Timedata extends React.Component {
     super(props);
   }
 
+  isToday(date) {
+   return ((moment(date).isSame(moment(), 'day')))?'table-row-active':'';
+  }
   render() {
     const timelog = this.props.timelog;
     return (
-      <tr key={this.props.keyIndex}>
+      <tr key={this.props.keyIndex} className={this.isToday(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
           {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '00:00:00' : '--:--:--'}

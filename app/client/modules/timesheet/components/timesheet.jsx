@@ -30,48 +30,66 @@ class Timesheet extends TrackerReact(React.Component) {
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
 
-        {(currentUser) ? <section class="user-details">
+        {(currentUser) ? <section className="user-details">
           {(currentUser.profile) ?
             <div className="no-horizontal-margin row z-depth-1-half card-top-border">
               <div className="col s12 m6 l6">
-                <table>
-                  <tbody>
-                  <tr>
-                    <th>Name:</th>
-                    <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
-                  </tr>
-                  <tr>
-                    <th>Department:</th>
-                    <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
-                  </tr>
-                  <tr>
-                    <th>Designation:</th>
-                    <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
-                  </tr>
-                  </tbody>
-                </table>
+                <h5>Staff</h5>
+                <div className="col s8">
+                  <table>
+                    <tbody>
+                    <tr>
+                      <th>Name:</th>
+                      <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
+                    </tr>
+                    <tr>
+                      <th>Department:</th>
+                      <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
+                    </tr>
+                    <tr>
+                      <th>Designation:</th>
+                      <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
+                    </tr>
+                    <tr>
+                      <th>Status:</th>
+                      <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="col s4">
+                  <img src="/uploads/defaults/default-img.png" alt="dp"
+                       className="display-photo responsive-img center-block circle"/>
+                </div>
               </div>
               <div className="col s12 m6 l6">
-                <table>
-                  <tbody>
-                  <tr>
-                    <th>Status:</th>
-                    <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
-                  </tr>
-                  <tr>
-                    {
-                      /*<th>Shift:</th>
-                       <td>9:00 to 18:00</td>*/
-                    }
-                  </tr>
-                  <tr>
-                    {
-                      /*<th>State:</th>
-                       <td>Au</td>*/
-                    }
-                  </tr>
-                  </tbody>
-                </table>
+                <h5>Team Account Manager</h5>
+                <div className="col s8">
+                  <table>
+                    <tbody>
+                    <tr>
+                      <th>Name:</th>
+                      <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
+                    </tr>
+                    <tr>
+                      <th>Department:</th>
+                      <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
+                    </tr>
+                    <tr>
+                      <th>Designation:</th>
+                      <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
+                    </tr>
+                    <tr>
+                      <th>Status:</th>
+                      <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="col s4">
+                  <img src="/uploads/defaults/default-img.png" alt="dp"
+                       className="display-photo responsive-img center-block circle"/>
+                </div>
               </div>
             </div>
             : 'Please wait'}
@@ -115,8 +133,7 @@ class Timesheet extends TrackerReact(React.Component) {
               <th></th>
               <th></th>
               <th></th>
-              <th></th>
-              <th colSpan="2">Paid:0/Unpaid:0</th>
+              <th>Paid:0/Unpaid:0</th>
             </tr>
             </tfoot>
           </table>
@@ -126,9 +143,10 @@ class Timesheet extends TrackerReact(React.Component) {
       </section>
     );
   }
+
   getDiff(timeIn, timeOut) {
-    let dateB = moment(timeOut,'HH:MM:SS');
-    let dateC = moment(timeIn,'HH:MM:SS');
+    let dateB = moment(timeOut, 'HH:MM:SS');
+    let dateC = moment(timeIn, 'HH:MM:SS');
     console.log(dateB.diff(dateC));
   }
 }

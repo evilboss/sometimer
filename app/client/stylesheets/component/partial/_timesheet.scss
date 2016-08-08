@@ -1,6 +1,10 @@
 section.timesheet {
   @extend .container-margin;
-  .approve-btn{
+  .approve-btn {
     margin-top: 1em;
+  }
+  .display-photo {
+    height: 10em;
+    width: 10em;
   }
 }

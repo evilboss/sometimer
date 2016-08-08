@@ -12,6 +12,8 @@ import teamModule from './modules/team';
 import dashboardModule from './modules/dashboard';
 import projectsModule from './modules/projects';
 import commentsModule from './modules/comments';
+import managerModule from './modules/manager';
+import clientModule from './modules/client';
 
 // init context
 const context = initContext();
@@ -28,5 +30,7 @@ app.loadModule(teamModule);
 app.loadModule(dashboardModule);
 app.loadModule(projectsModule);
 app.loadModule(commentsModule);
+app.loadModule(managerModule);
+app.loadModule(clientModule);
 
 app.init();

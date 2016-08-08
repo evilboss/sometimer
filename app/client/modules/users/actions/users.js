@@ -16,7 +16,7 @@ export default {
       }
       console.log(Meteor.user());
       if (Meteor.user()) {
-        let path = '/dashboard/inOutBoard';
+        let path = '/dashboard/timetracker';
         if (Meteor.user().role === 'admin') {
           path = '/dashboard'
         }

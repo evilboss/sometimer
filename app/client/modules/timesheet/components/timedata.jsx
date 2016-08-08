@@ -11,10 +11,11 @@ class Timedata extends React.Component {
   }
 
   isWeekend(date) {
-    return ((moment(date).isoWeekday() == 6) || (moment(date).isoWeekday() == 7))?'table-row-weekend':'';
+    return ((moment(date).isoWeekday() == 6) || (moment(date).isoWeekday() == 7)) ? 'table-row-weekend' : '';
   }
-  getRowClass(date){
-    return this.isWeekend(date)+' '+this.isToday(date);
+
+  getRowClass(date) {
+    return this.isWeekend(date) + ' ' + this.isToday(date);
   }
 
   render() {
@@ -35,9 +36,10 @@ class Timedata extends React.Component {
           --:--:--
         </td>
         <td>
-          {this.getTotalHours()}
+          {(timelog) ? (timelog.completed) ? this.getTotalHours(timelog.timeIn, timelog.timeOut) : '--:--:--' : '--:--:--'}
+          {}
         </td>
-        <td><ApprovalButton/></td>
+        <td>{(timelog) ? (timelog.completed) ? <ApprovalButton/> : '' : ''}</td>
       </tr>
     );
   }

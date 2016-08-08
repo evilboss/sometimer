@@ -46,10 +46,16 @@ p {
 }
 
 // Label
-.table-row-active{
+.table-row-active {
   background-color: #68c73f;
   color: white;
 }
+
+.table-row-weekend {
+  background-color: #98a0a4;
+  color: white;
+}
+
 .ribbon {
   border: 0 solid darken($theme-color, 20%);
   left: calc(.05rem - 1.2em);

@@ -13,7 +13,7 @@ import dashboardModule from './modules/dashboard';
 import projectsModule from './modules/projects';
 import commentsModule from './modules/comments';
 import managerModule from './modules/manager';
-import clientModule from './modules/client';
+import clientModule from './modules/client-module';
 
 // init context
 const context = initContext();

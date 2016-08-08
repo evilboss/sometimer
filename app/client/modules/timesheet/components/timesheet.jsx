@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import ApprovalButton from '../../manager/components/approval_button';
+
 import TimeData from '../containers/timedata';
 const DateData = new ReactiveVar();
 
@@ -113,7 +113,7 @@ class Timesheet extends TrackerReact(React.Component) {
           : 'please wait more'}
 
         <div className="z-depth-1-half card-top-border">
-          <table className="centered responsive-table striped">
+          <table className="centered responsive-table">
             <thead>
             <tr>
               <th>Date</th>
@@ -143,7 +143,7 @@ class Timesheet extends TrackerReact(React.Component) {
           </table>
 
         </div>
-        <ApprovalButton/>
+        
       </section>
     );
   }

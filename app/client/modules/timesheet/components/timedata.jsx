@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import ApprovalButton from '../../manager/components/approval_button';
 class Timedata extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +37,7 @@ class Timedata extends React.Component {
         <td>
           {this.getTotalHours()}
         </td>
+        <td><ApprovalButton/></td>
       </tr>
     );
   }

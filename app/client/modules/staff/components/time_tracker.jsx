@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import TimeIn from './status/time_in';
+import {TimeIn, TimeOut, BackToWork} from './status/index';
 class TimeTracker extends React.Component {
   constructor(props) {
     super(props);
@@ -80,7 +80,7 @@ class TimeTracker extends React.Component {
                           <div className="row">
                             <div className="col l4 m4 s12 center-align">
                               <img
-                                src={(currentUser.profile.displayPhoto) ? '/uploads/' + currentUser.profile.displayPhoto : 'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+                                src={(currentUser.profile.displayPhoto) ? '/uploads/' + currentUser.profile.displayPhoto : '/uploads/default-img.png'}
                                 alt="dp"
                                 className="display-photo circle responsive-img"/>
                             </div>
@@ -89,6 +89,8 @@ class TimeTracker extends React.Component {
                                 <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
 
                                 <TimeIn/>
+                                <TimeOut/>
+                                <BackToWork/>
                               </div>
                               <div className="row no-vertical-margin">
                                 <div className="col s12">

@@ -5,5 +5,8 @@ app/.meteor/dev_bundle
 app/node_modules
 app/settings-dev.json
 app/packages
-app/public/uploads
+app/public/uploads/*
+!app/public/uploads/defaults/
+
+
 .idea

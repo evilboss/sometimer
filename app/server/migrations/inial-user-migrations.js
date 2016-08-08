@@ -1,6 +1,3 @@
-/**
- * Created by jr on 6/30/16.
- */
 const newStaffs = [
   {
     email: 'kimberly.ocariz@ezyva.com',
@@ -11,7 +8,7 @@ const newStaffs = [
       department: 'Accounts',
       staffType: 'Probitionary',
       jobTitle: 'Account Support',
-      displayPhoto: '/Assets/teams/ezyva/profiles/kim/kimDP.jpg',
+      displayPhoto: 'defaults/default-img.png',
       role:'staff',
 
     }
@@ -25,7 +22,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Associate Software Engineer',
-      displayPhoto: '/Assets/teams/ezyva/profiles/iob/iobDP.jpg',
+      displayPhoto: 'defaults/default-img.png',
       role:'staff',
 
     }
@@ -39,7 +36,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Associate Software Engineer',
-      displayPhoto: '/Assets/teams/ezyva/profiles/dan/danDp.jpg',
+      displayPhoto: 'defaults/default-img.png',
       role:'staff',
 
     }
@@ -53,7 +50,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
-      displayPhoto: '/Assets/teams/ezyva/profiles/aaron/jaredDp.jpg',
+      displayPhoto: 'defaults/default-img.png',
       role:'staff',
 
     }
@@ -67,7 +64,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
-      displayPhoto: '/Assets/teams/ezyva/profiles/jr/rockAndRollToTheWorld.jpg',
+      displayPhoto: 'defaults/default-img.png',
       role:'staff',
 
     }

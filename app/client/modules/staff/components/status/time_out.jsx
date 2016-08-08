@@ -8,11 +8,11 @@ class TimeOut extends React.Component {
   render() {
     return (
       <div>
-        <button className="ui btn waves-effect waves-light theme-color">
+        <button className="ui btn waves-effect waves-light theme-color btn-block">
           <i className="material-icons left">cached</i>
-          Time Out
+        Break Time
         </button>
-        <button className="ui btn waves-effect waves-light theme-color">
+        <button className="ui btn waves-effect waves-light theme-color btn-block">
           <i className="material-icons left">cached</i>
           Time Out
         </button>

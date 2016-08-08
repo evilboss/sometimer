@@ -1,16 +1,36 @@
 import React from 'react';
 import moment from 'moment';
 import {TimeIn, TimeOut, BackToWork} from './status/index';
+var timerId;
 class TimeTracker extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      today: moment().format('LL hh:mm:ss'),
+      loaded: false,
+    }
   };
 
-  handleClick() {
+  changeStatus() {
     var status = this.state.status;
     (status == 'Out') ? this.setState({status: 'In'}) : this.setState({status: 'Out'});
     Meteor.call('timelogs.change-status');
+  };
+
+  startShift() {
+    Meteor.call('timelogs.startShift');
+  };
+
+  endShift() {
+    Meteor.call('timelogs.endShift');
+  };
+
+  startBreak() {
+    Meteor.call('timelogs.startBreak');
+  };
+
+  endBreak() {
+    Meteor.call('timelogs.endBreak');
   };
 
   setTime() {
@@ -23,23 +43,25 @@ class TimeTracker extends React.Component {
 
   componentWillMount() {
     this.setState({loaded: true});
-
     this.setTime();
+  };
+
+  componentWillUnMount() {
+    this.setState({loaded: false});
   };
 
   componentDidMount() {
     if (this.state.loaded) {
-      window.setInterval(function () {
+      timerId = setInterval(function () {
         this.setTime();
       }.bind(this), 1000);
     }
-
   };
 
   componentWillUnmount() {
     this.setState({loaded: false});
+    clearInterval(timerId);
   }
-
 
   render() {
     let backgroundImage = '/Assets/teams/default/background/bg3.jpg';
@@ -87,10 +109,10 @@ class TimeTracker extends React.Component {
                             <div className="staff-details col l8 m8 s12">
                               <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
                                 <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
-
-                                <TimeIn/>
-                                <TimeOut/>
-                                <BackToWork/>
+                                {console.log(currentUser.profile.status)}
+                                <TimeIn action={this.startShift.bind(this)} status={currentUser.profile.status}/>
+                                <TimeOut endShiftAction={this.endShift.bind(this)} startBreakAction={this.startBreak.bind(this)} status={currentUser.profile.status}/>
+                                <BackToWork action={this.endBreak.bind(this) } status={currentUser.profile.status}/>
                               </div>
                               <div className="row no-vertical-margin">
                                 <div className="col s12">
@@ -117,5 +139,4 @@ class TimeTracker extends React.Component {
     );
   };
 }
-
 export default TimeTracker;

@@ -110,9 +110,13 @@ class TimeTracker extends React.Component {
                               <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
                                 <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
                                 {console.log(currentUser.profile.status)}
+
                                 <TimeIn action={this.startShift.bind(this)} status={currentUser.profile.status}/>
-                                <TimeOut endShiftAction={this.endShift.bind(this)} startBreakAction={this.startBreak.bind(this)} status={currentUser.profile.status}/>
+                                <TimeOut endShiftAction={this.endShift.bind(this)}
+                                         startBreakAction={this.startBreak.bind(this)}
+                                         status={currentUser.profile.status}/>
                                 <BackToWork action={this.endBreak.bind(this) } status={currentUser.profile.status}/>
+                                
                               </div>
                               <div className="row no-vertical-margin">
                                 <div className="col s12">

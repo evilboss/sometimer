@@ -13,6 +13,7 @@ export function loadStaff() {
         staffType: 'Probitionary',
         jobTitle: 'Account Support',
         displayPhoto: '/Assets/teams/ezyva/profiles/kim/kimDP.jpg',
+        role:'staff',
 
       }
     },
@@ -26,6 +27,7 @@ export function loadStaff() {
         staffType: 'Probitionary',
         jobTitle: 'Associate Software Engineer',
         displayPhoto: '/Assets/teams/ezyva/profiles/iob/iobDP.jpg',
+        role:'staff',
 
       }
     },
@@ -39,7 +41,7 @@ export function loadStaff() {
         staffType: 'Probitionary',
         jobTitle: 'Associate Software Engineer',
         displayPhoto: '/Assets/teams/ezyva/profiles/dan/danDp.jpg',
-
+        role:'staff',
       }
     },
     {
@@ -52,6 +54,7 @@ export function loadStaff() {
         staffType: 'Probitionary',
         jobTitle: 'Senior Software Engineer',
         displayPhoto: '/Assets/teams/ezyva/profiles/aaron/jaredDp.jpg',
+        role:'staff',
 
       }
     },
@@ -65,6 +68,7 @@ export function loadStaff() {
         staffType: 'Probitionary',
         jobTitle: 'Senior Software Engineer',
         displayPhoto: '/Assets/teams/ezyva/profiles/jr/rockAndRollToTheWorld.jpg',
+        role:'staff',
 
       }
     },

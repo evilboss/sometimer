@@ -11,10 +11,24 @@ export function loadUsers() {
       profile: {
         firstName: 'Admin',
         lastName: 'Nistrator',
-        department: 'Development',
+        department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Administrator',
-        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif'
+        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        role:'admin'
+      }
+    });
+    Accounts.createUser({
+      email: "manager@manager.com",
+      password: "password",
+      profile: {
+        firstName: 'Man',
+        lastName: 'Nager',
+        department: 'Admin',
+        staffType: 'Regular',
+        jobTitle: 'Manager',
+        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        role:'manager'
       }
     });
   }

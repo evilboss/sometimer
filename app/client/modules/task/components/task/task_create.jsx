@@ -1,28 +1,45 @@
 import React from 'react';
-import Quickform from '/client/modules/reactUtils/components/quickform';
 class TaskCreate extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
+    const {error} = this.props;
     return (
-      <section className="task-create">
-        <h5 className="inline">TaskCreate</h5>
-        <a href="/projects/task" className="waves-effect waves-light btn theme-color">
-          <i className="material-icons right">assignment</i>
-          View All task</a>
-        <div className="row container-padding z-depth-1-half card-top-border">
-          {<Quickform
-            buttonText="Add New Task"
-            field={this.props.task}
-            operation="insert"
-            name="insertTaskForm"
-          />}
-        </div>
-      </section>
+      <div>
+        {error ? this._renderError(error) : null}
+        <textarea ref='text' placeholder='Enter task title here.'>
+        </textarea>
+        <select ref="publishstatus" defaultValue="">
+          <option>Draft</option>
+          <option>Published</option>
+        </select>
+        <select ref="assignee" defaultValue="Draft">
+          <option>Draft</option>
+          <option>Published</option>
+        </select>
+        <br />
+        <button className="btn-floating waves-effect waves-light theme-color" onClick={this._create.bind(this)}> <i className="material-icons">add</i></button>
+      </div>
+    );
+  }
+
+  _create() {
+    const title = this.refs.text.value;
+    const {create, projectId} = this.props;
+    create(projectId, title);
+    this.refs.text.value = '';
+    console.log('clicking');
+  }
+
+  _renderError(error) {
+    return (
+      <div className='error'>
+        {error}
+      </div>
     );
   }
 }
+
 
 export default TaskCreate;

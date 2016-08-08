@@ -101,13 +101,14 @@ class Timesheet extends TrackerReact(React.Component) {
                 <td></td>
                 <td>{(timelog.timeIn) ? moment(timelog.timeIn).format('LTS') : ''}</td>
                 <td>{(timelog.outToLunch) ? moment(timelog.outToLunch).format('LTS') : ''}</td>
-                <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('HH:MM:SS') : ''}</td>
-                <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('HH:MM:SS') : ''}</td>
+                <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('LTS') : ''}</td>
+                <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('LTS') : ''}</td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>{(timelog.complete) ? this.getDiff(moment(timelog.timeIn).format('HH:MM:SS'), moment(timelog.timeOut).format('HH:MM:SS')) : '0'}
+                </td>
               </tr>
             ))}
 
@@ -131,6 +132,11 @@ class Timesheet extends TrackerReact(React.Component) {
         </div>
       </section>
     );
+  }
+  getDiff(timeIn, timeOut) {
+    let dateB = moment(timeOut,'HH:MM:SS');
+    let dateC = moment(timeIn,'HH:MM:SS');
+    console.log(dateB.diff(dateC));
   }
 }
 

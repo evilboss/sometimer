@@ -15,14 +15,13 @@ export default {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
       console.log(Meteor.user());
-      if (Meteor.user()) {
+      if (Meteor.user().profile) {
         let path = '/dashboard/inOutBoard';
-        if (Meteor.user().role === 'admin') {
+        if (Meteor.user().profile.role === 'admin' || Meteor.user().profile.role === 'manager') {
           path = '/dashboard'
         }
         FlowRouter.go(path);
       }
-
     });
 
   }

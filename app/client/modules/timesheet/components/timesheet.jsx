@@ -113,7 +113,7 @@ class Timesheet extends TrackerReact(React.Component) {
           : 'please wait more'}
 
         <div className="z-depth-1-half card-top-border">
-          <table className="centered responsive-table">
+          <table className="centered responsive-table bordered">
             <thead>
             <tr>
               <th>Date</th>

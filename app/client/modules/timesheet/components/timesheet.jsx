@@ -55,6 +55,10 @@ class Timesheet extends TrackerReact(React.Component) {
                 <table>
                   <tbody>
                   <tr>
+                    <th>Status:</th>
+                    <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
+                  </tr>
+                  <tr>
                     {
                       /*<th>Shift:</th>
                        <td>9:00 to 18:00</td>*/
@@ -80,8 +84,7 @@ class Timesheet extends TrackerReact(React.Component) {
             <tr>
               <th>Date</th>
               <th>Time In</th>
-              <th>Out To Lunch</th>
-              <th>Back From Lunch</th>
+              <th>Total Break</th>
               <th>Time Out</th>
               <th>Leave</th>
               <th>Hours<br/>Rendered</th>
@@ -93,10 +96,14 @@ class Timesheet extends TrackerReact(React.Component) {
                 <td>{moment(timelog.timeIn).format('LL')}</td>
                 <td>{(timelog.timeIn) ? moment(timelog.timeIn).format('LTS') : ''}</td>
                 <td>{(timelog.outToLunch) ? moment(timelog.outToLunch).format('LTS') : ''}</td>
-                <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('HH:MM:SS') : ''}</td>
-                <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('HH:MM:SS') : ''}</td>
+                <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('LTS') : ''}</td>
+                <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('LTS') : ''}</td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td></td>
+                <td>{(timelog.complete) ? this.getDiff(moment(timelog.timeIn).format('HH:MM:SS'), moment(timelog.timeOut).format('HH:MM:SS')) : '0'}
+                </td>
               </tr>
             ))}
 
@@ -118,6 +125,11 @@ class Timesheet extends TrackerReact(React.Component) {
         <ApprovalButton/>
       </section>
     );
+  }
+  getDiff(timeIn, timeOut) {
+    let dateB = moment(timeOut,'HH:MM:SS');
+    let dateC = moment(timeIn,'HH:MM:SS');
+    console.log(dateB.diff(dateC));
   }
 }
 

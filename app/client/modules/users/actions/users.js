@@ -22,7 +22,6 @@ export default {
         }
         FlowRouter.go(path);
       }
-
     });
 
   }

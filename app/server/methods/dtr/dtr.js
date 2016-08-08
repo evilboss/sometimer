@@ -38,7 +38,8 @@ const changeStatus = (status = 'Out')=> {
       Timelogs.update({userId: Meteor.userId(), status: 'Back From Lunch'}, {
         $set: {
           status: statusChange,
-          timeOut: Date.now()
+          timeOut: Date.now(),
+          complete: true,
         }
       });
       break;

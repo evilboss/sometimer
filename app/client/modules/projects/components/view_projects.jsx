@@ -8,13 +8,9 @@ class ViewProjects extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
   render() {
     return (
-
       <section className="project-list">
-
         <div><h5>ProjectList <span>
           <a href="/projects/new" className="btn-floating waves-effect waves-light theme-color">
             <i className="material-icons">add</i></a></span></h5>

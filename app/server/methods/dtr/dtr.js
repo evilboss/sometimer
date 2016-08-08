@@ -2,44 +2,32 @@
  * Created by jr on 6/20/16.
  */
 import Timelogs from '/lib/collections/timelogs';
-const logTimeIn = ()=> {
-  Timelogs.insert({
-    timeIn: Date.now(),
-    status: 'In',
-    userId: Meteor.userId()
-  });
-};
-const logTimeOut = ()=> {
-  let currentLog = Timelogs.findOne({status: 'In', userId: Meteor.userId});
-  console.log('timelog', currentLog);
-};
 const changeStatus = (status = 'Out')=> {
   console.log(status);
   let statusChange;
   switch (status) {
     case 'In':
-      console.log('Out to lunch action will occur');
-      statusChange = 'Out to Lunch';
-      Timelogs.update({userId: Meteor.userId(), status: 'In'}, {$set: {status: statusChange, outToLunch: Date.now()}});
+      console.log('Break Status Will Occur');
+      statusChange = 'On Break';
+
+      const currentLog = Timelogs.findOne({userId: Meteor.userId(), status: 'In'});
+      console.log(currentLog);
+      if (currentLog) {
+        Timelogs.update(currentLog._id, {
+          $set: {
+            status: statusChange,
+            backFromLunch: new Date()
+          }
+        });
+      }
       break;
-    case 'Out to Lunch':
+    case 'On Break':
       console.log('trigger back from lunch');
       statusChange = 'Back From Lunch';
       Timelogs.update({userId: Meteor.userId(), status: 'Out to Lunch'}, {
         $set: {
           status: statusChange,
-          backFromLunch: Date.now()
-        }
-      });
-      break;
-    case 'Back From Lunch':
-      console.log('Trigger Out');
-      statusChange = 'Out';
-      Timelogs.update({userId: Meteor.userId(), status: 'Back From Lunch'}, {
-        $set: {
-          status: statusChange,
-          timeOut: Date.now(),
-          complete: true,
+          backFromLunch: new Date()
         }
       });
       break;
@@ -47,7 +35,7 @@ const changeStatus = (status = 'Out')=> {
       console.log('trigger in');
       statusChange = 'In';
       Timelogs.insert({
-        timeIn: Date.now(),
+        timeIn: new Date(),
         status: 'In',
         userId: Meteor.userId(),
         outToLunch: '',
@@ -60,8 +48,6 @@ const changeStatus = (status = 'Out')=> {
   }
 };
 const dtr = {
-  logTimeIn: ()=>logTimeIn(),
-  logTimeOut: ()=>logTimeOut(),
   changeStatus: (status)=>changeStatus(status)
 };
 export {dtr};

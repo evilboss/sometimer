@@ -2,35 +2,51 @@ import React from 'react';
 import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ApprovalButton from '../../manager/components/approval_button';
+import TimeData from '../containers/timedata';
+const DateData = new ReactiveVar();
+
 class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
+    this.state = {
+      dates: []
+    };
+  }
+
+  componentWillMount() {
+    this.getDates();
+  }
+
+  getDates() {
+    let reactState = this;
+    Meteor.call('timesheet_dates.getCutOffDates', function (err, res, callback) {
+      if (err) {
+        console.log(JSON.stringify(err, null, 2))
+      } else {
+        reactState.setState({dates: res});
+      }
+    });
   }
 
   getUserName() {
     Tracker.autorun(function () {
       if (Meteor.user()) {
-
         if (Meteor.user().profile) {
           return Meteor.user().profile.firstName;
-          console.log(Meteor.user());
         }
       }
     });
-
-
   }
 
   render() {
-
-    let timelogs = this.props.timelogs;
     let currentUser = Meteor.user();
     let currentDisplayName = this.getUserName();
+    let dates = this.state.dates;
     return (
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
 
-        {(currentUser) ? <section class="user-details">
+        {(currentUser) ? <section className="user-details">
           {(currentUser.profile) ?
             <div className="no-horizontal-margin row z-depth-1-half card-top-border">
               <div className="col s12 m6 l6">
@@ -91,21 +107,10 @@ class Timesheet extends TrackerReact(React.Component) {
             </tr>
             </thead>
             <tbody>
-            {timelogs.map(timelog => (
-              <tr key={timelog._id}>
-                <td>{moment(timelog.timeIn).format('LL')}</td>
-                <td>{(timelog.timeIn) ? moment(timelog.timeIn).format('LTS') : ''}</td>
-                <td>{(timelog.outToLunch) ? moment(timelog.outToLunch).format('LTS') : ''}</td>
-                <td>{(timelog.backFromLunch) ? moment(timelog.backFromLunch).format('LTS') : ''}</td>
-                <td>{(timelog.timeOut) ? moment(timelog.timeOut).format('LTS') : ''}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>{(timelog.complete) ? this.getDiff(moment(timelog.timeIn).format('HH:MM:SS'), moment(timelog.timeOut).format('HH:MM:SS')) : '0'}
-                </td>
-              </tr>
-            ))}
+            <tr>
+            </tr>
+
+            {dates.map((date,index)=>(<tr><td>{date.toDateString()}</td><TimeData/></tr>))}
 
             </tbody>
             <tfoot>
@@ -126,9 +131,10 @@ class Timesheet extends TrackerReact(React.Component) {
       </section>
     );
   }
+
   getDiff(timeIn, timeOut) {
-    let dateB = moment(timeOut,'HH:MM:SS');
-    let dateC = moment(timeIn,'HH:MM:SS');
+    let dateB = moment(timeOut, 'HH:MM:SS');
+    let dateC = moment(timeIn, 'HH:MM:SS');
     console.log(dateB.diff(dateC));
   }
 }

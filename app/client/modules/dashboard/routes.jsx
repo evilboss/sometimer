@@ -25,7 +25,7 @@ export default function (injectDeps, {FlowRouter}) {
     }],
     action() {
       mount(MainLayoutCtx,
-        {head: () => (<DashboardHeader />), content: ()=>(<Dashboard />), footer: ()=>(<Foot/>)}
+        {head: () => (<DashboardHeader />), content: ()=>(<Dashboard />), footer: ()=>(<Foot/>)},
       );
     }
   });

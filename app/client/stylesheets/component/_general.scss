@@ -10,6 +10,9 @@ section#body {
 main#main {
   flex: 1 0 auto;
 }
+.full-width {
+  width: 100%;
+}
 
 nav .brand-logo {
   left: 0 !important;
@@ -38,9 +41,6 @@ p {
 }
 
 // Button
-.btn {
-  padding: 0 1.5rem;
-}
 
 .btn-menu {
   padding: 0 5px;
@@ -122,6 +122,9 @@ textarea.materialize-textarea {
 }
 
 .picker {
+  .picker__weekday-display {
+    background-color: darken($theme-color, 7%);
+  }
   .picker__date-display {
     background-color: $theme-color;
   }

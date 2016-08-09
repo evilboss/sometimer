@@ -1,7 +1,17 @@
 /**
  * Created by jr on 5/16/16.
  */
-export function loadUsers() {
+Migrations.add({
+  version: 1,
+  name: 'Add default users to app',
+  up: function () {
+    loadUsers();
+  },
+  down: function () {
+    removeAllUsers();
+  }
+});
+const loadUsers = ()=> {
   console.log('Loading users');
   if (Meteor.users.find({}).count() === 0) {
     console.log('migrating user admins');
@@ -15,7 +25,7 @@ export function loadUsers() {
         staffType: 'Regular',
         jobTitle: 'Administrator',
         displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
-        role:'admin'
+        role: 'admin'
       }
     });
     Accounts.createUser({
@@ -28,7 +38,7 @@ export function loadUsers() {
         staffType: 'Regular',
         jobTitle: 'Manager',
         displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
-        role:'manager'
+        role: 'manager'
       }
     });
     Accounts.createUser({
@@ -41,19 +51,19 @@ export function loadUsers() {
         staffType: 'Regular',
         jobTitle: 'Virtual Assistant',
         displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
-        role:'staff'
+        role: 'staff'
       }
     });
   }
-}
-export function removeAllUsers() {
+};
+const removeAllUsers = ()=> {
   console.log('Removing Users');
-  const innitalUsers =['admin@admin.com','manager@manager.com','staff@staff.com'];
-  _.each(innitalUsers,function (userEmail) {
-    const removeUser =  Meteor.users.findOne({'emails.address': {$regex:userEmail,$options:'i'}});
-    if(removeUser){
+  const innitalUsers = ['admin@admin.com', 'manager@manager.com', 'staff@staff.com'];
+  _.each(innitalUsers, function (userEmail) {
+    const removeUser = Meteor.users.findOne({'emails.address': {$regex: userEmail, $options: 'i'}});
+    if (removeUser) {
       Meteor.users.remove(removeUser._id);
     }
-  
+
   });
-}
+};

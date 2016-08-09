@@ -2,9 +2,19 @@
  * Created by jr on 8/4/16.
  */
 import {Projects} from '/lib/collections';
+Migrations.add({
+  version: 5,
+  name: 'Adds Projects to db.',
+  up: function () {
+    loadProjects();
+  },
+  down: function () {
+    removeProjects();
+  }
+});
 const projectnames = ['Project 1', 'project 2', 'test'];
-export function loadProjects() {
-  let userList = ['jr@ezyva.com', 'admin@admin.com', 'aaron.randrup@ezyva.com','manager@manager.com'];
+const loadProjects = ()=> {
+  let userList = ['jr@ezyva.com', 'admin@admin.com', 'aaron.randrup@ezyva.com', 'manager@manager.com'];
   let members = [];
   _.each(userList, function (userEmail) {
     let member = Meteor.users.findOne({"emails.address": userEmail});
@@ -15,10 +25,10 @@ export function loadProjects() {
     Projects.insert({name: project, createdAt: Date.now(), members: members});
   });
   console.log('displaying projects', Projects.find().fetch());
-}
-export function removeProjects() {
+};
+const removeProjects = ()=> {
   _.each(projectnames, function (project) {
     Projects.remove({name: project});
   });
   console.log('displaying projects', Projects.find().fetch());
-}
+};

@@ -1,3 +1,14 @@
+Migrations.add({
+  version: 4,
+  name: 'Add Initial users to app',
+  up: function () {
+    loadStaff();
+  },
+  down: function () {
+    console.log('no down function yet');
+    removeStaff();
+  }
+});
 const newStaffs = [
   {
     email: 'kimberly.ocariz@ezyva.com',
@@ -9,7 +20,7 @@ const newStaffs = [
       staffType: 'Probitionary',
       jobTitle: 'Account Support',
       displayPhoto: 'defaults/default-img.png',
-      role:'staff',
+      role: 'staff',
 
     }
   },
@@ -23,7 +34,7 @@ const newStaffs = [
       staffType: 'Probitionary',
       jobTitle: 'Associate Software Engineer',
       displayPhoto: 'defaults/default-img.png',
-      role:'staff',
+      role: 'staff',
 
     }
   },
@@ -37,7 +48,7 @@ const newStaffs = [
       staffType: 'Probitionary',
       jobTitle: 'Associate Software Engineer',
       displayPhoto: 'defaults/default-img.png',
-      role:'staff',
+      role: 'staff',
 
     }
   },
@@ -51,7 +62,7 @@ const newStaffs = [
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
       displayPhoto: 'defaults/default-img.png',
-      role:'staff',
+      role: 'staff',
 
     }
   },
@@ -65,13 +76,12 @@ const newStaffs = [
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
       displayPhoto: 'defaults/default-img.png',
-      role:'staff',
+      role: 'staff',
 
     }
   },
 ];
-
-export function loadStaff() {
+const loadStaff = ()=> {
   _.each(newStaffs, function (staff) {
     Accounts.createUser({
       email: staff.email,
@@ -79,12 +89,12 @@ export function loadStaff() {
       profile: staff.profile
     });
   });
-}
-export function removeStaff() {
-  _.each(newStaffs,function (staff) {
-    const removeUser =  Meteor.users.findOne({'emails.address': {$regex:staff.email,$options:'i'}});
-    if(removeUser){
+};
+const removeStaff = ()=> {
+  _.each(newStaffs, function (staff) {
+    const removeUser = Meteor.users.findOne({'emails.address': {$regex: staff.email, $options: 'i'}});
+    if (removeUser) {
       Meteor.users.remove(removeUser._id);
     }
   });
-}
+};

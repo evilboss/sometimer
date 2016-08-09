@@ -15,7 +15,7 @@ const startShift = ()=> {
     date: moment(new Date).format('DD:MM:YY'),
     currentStatus: 'In'
   };
-  Timelogs.insert(timeLog)
+  Timelogs.insert(timeLog);
 };
 const endShift = ()=> {
   console.log('Ending Shift');
@@ -26,10 +26,13 @@ const endShift = ()=> {
     date: moment(new Date).format('DD:MM:YY')
   });
   console.log(currentLog);
+  const breakLogs = Breaks.find({userId: Meteor.userId(), timeLogId: currentLog._id}).fetch();
+  console.log(breakLogs);
   Timelogs.update(currentLog._id, {
     $set: {
       currentStatus: 'Out',
-      timeOut: new Date()
+      timeOut: new Date(),
+      completed: true
     }
   });
 };
@@ -64,11 +67,10 @@ const endBreak = ()=> {
     timeLogId: currentLog._id,
     currentStatus: 'BreakIn'
   });
-
   Breaks.update(breakLog._id, {
     $set: {
       currentStatus: 'BreakOut',
-      breakTimeOut: new Date()
+      breakTimeOut: new Date(),
     }
   });
   console.log(breakLog);

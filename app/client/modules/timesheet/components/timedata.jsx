@@ -36,7 +36,7 @@ class Timedata extends React.Component {
 
         </td>
         <td>
-          {(timelog) ? (timelog.completed) ? this.getTotalHours(timelog.timeIn, timelog.timeOut) : '0' : '0'}
+          {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
           {}
         </td>
         <td>{(timelog) ? (timelog.completed) ? <ApprovalButton/> : '' : ''}</td>

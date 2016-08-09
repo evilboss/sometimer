@@ -13,7 +13,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'timesheet',
     action() {
       mount(MainLayoutCtx, {
-        head: () => (<Header/>), content: ()=>(<Timesheet />), footer: ()=>(<Foot/>)
+        title:'Timesheet: '+DocHead.getTitle(),head: () => (<Header/>), content: ()=>(<Timesheet />), footer: ()=>(<Foot/>)
       });
     }
   });

@@ -2,7 +2,9 @@ import React from 'react';
 import {mount} from 'react-mounter';
 import DashboardHeader from './components/dashboard_header';
 import Foot from '../core/components/footer.jsx';
+import Header from '../core/containers/header';
 import Dashboard from './containers/dashboard';
+import StaffList from '/client/modules/client-module/components/staff_list';
 import {accessControl} from '/lib/access-control/access-control';
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
@@ -27,6 +29,14 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
+  dashboardRoutes.route('/stafflist', {
+    name: 'dashboard.stafflist',
+    action(){
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<StaffList />), footer: () => (<Foot />)
+      });
+    }
+  });
   dashboardRoutes.route('/:testId', {
     name: 'dashboard.test',
     action() {
@@ -34,4 +44,5 @@ export default function (injectDeps, {FlowRouter}) {
       FlowRouter.go('/notFound');
     }
   });
+
 }

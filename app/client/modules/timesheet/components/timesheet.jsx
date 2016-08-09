@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-
+import DatePicker from './datepicker';
 import TimeData from '../containers/timedata';
 const DateData = new ReactiveVar();
 
@@ -16,6 +16,7 @@ class Timesheet extends TrackerReact(React.Component) {
   componentWillMount() {
     this.getDates();
   }
+
 
   getDates() {
     let reactState = this;
@@ -83,6 +84,7 @@ class Timesheet extends TrackerReact(React.Component) {
         </section>
           : 'please wait more'}
 
+        <DatePicker/>
         <div className="z-depth-1-half card-top-border">
           <table className="centered responsive-table bordered">
             <thead>
@@ -124,6 +126,7 @@ class Timesheet extends TrackerReact(React.Component) {
     let dateC = moment(timeIn, 'HH:MM:SS');
     console.log(dateB.diff(dateC));
   }
+
 }
 
 export default Timesheet;

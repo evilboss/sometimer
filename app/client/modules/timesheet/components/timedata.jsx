@@ -24,19 +24,19 @@ class Timedata extends React.Component {
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
-          {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '00:00:00' : '--:--:--'}
+          {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '' : ''}
         </td>
         <td>
-          Total break
+          0
         </td>
         <td >
-          {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss') : '00:00:00' : '--:--:--'}
+          {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss') : '' : ''}
         </td>
         <td>
-          --:--:--
+
         </td>
         <td>
-          {(timelog) ? (timelog.completed) ? this.getTotalHours(timelog.timeIn, timelog.timeOut) : '--:--:--' : '--:--:--'}
+          {(timelog) ? (timelog.completed) ? this.getTotalHours(timelog.timeIn, timelog.timeOut) : '0' : '0'}
           {}
         </td>
         <td>{(timelog) ? (timelog.completed) ? <ApprovalButton/> : '' : ''}</td>

@@ -6,6 +6,7 @@ import Header from '../core/containers/header';
 import Dashboard from './containers/dashboard';
 import StaffList from '/client/modules/client-module/components/staff_list';
 import {accessControl} from '/lib/access-control/access-control';
+import MainLayout from '/client/modules/core/components/main_layout.jsx';
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {
@@ -13,8 +14,6 @@ const dashboardRoutes = FlowRouter.group({
   }]
 });
 export {dashboardRoutes};
-import MainLayout from '/client/modules/core/components/main_layout.jsx';
-
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
 
@@ -25,7 +24,7 @@ export default function (injectDeps, {FlowRouter}) {
     }],
     action() {
       mount(MainLayoutCtx,
-        {head: () => (<DashboardHeader />), content: ()=>(<Dashboard />), footer: ()=>(<Foot/>)},
+        {head: () => (<DashboardHeader />), content: ()=>(<Dashboard />), footer: ()=>(<Foot/>),},
       );
     }
   });
@@ -46,3 +45,4 @@ export default function (injectDeps, {FlowRouter}) {
   });
 
 }
+

@@ -16,7 +16,6 @@ const dashboardRoutes = FlowRouter.group({
 export {dashboardRoutes};
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
-
   dashboardRoutes.route('/', {
     name: 'dashboard',
     triggersEnter: [function (context, redirect) {

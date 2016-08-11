@@ -7,6 +7,7 @@ import timelogs from './timelogs';
 import projects from './projects';
 import images from './images';
 import comments from './comment-publications';
+import teamlist from './teamlist';
 
 export default function () {
   timesheet();
@@ -18,4 +19,5 @@ export default function () {
   images();
   projects();
   comments();
+  teamlist();
 }

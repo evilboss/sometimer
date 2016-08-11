@@ -8,7 +8,9 @@ class EntryPoint extends React.Component {
 
   render() {
     return (
+
       <section className="entry-point">
+
         <Background />
         <div className="center-align container body">
           <div className="remotiv-background"></div>

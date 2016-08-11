@@ -8,6 +8,7 @@ import Projects from './projects';
 import Images from './images';
 import Comments from './comments';
 import Breaks from './breaks';
+import Teamlist from './teamlist';
 
 
 export {
@@ -20,5 +21,6 @@ export {
   Timelogs,
   Projects,
   Images,
-  Breaks
+  Breaks,
+  Teamlist
 };

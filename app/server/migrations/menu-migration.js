@@ -13,20 +13,27 @@ const menuItems = [{
   title: "Time Tracker",
   icon: "access_time",
   url: '/dashboard/timetracker',
-  roles: ['Staff', 'Admin']
+  roles: ['staff', 'admin']
 },
   {
     title: "Timesheet",
     icon: "grid_on",
     url: '/dashboard/timesheet',
-    roles: ['Staff', 'Admin']
+    roles: ['staff', 'admin']
+
+  },
+  {
+    title: "Staff List",
+    icon: "group",
+    url: '/dashboard/stafflist',
+    roles: ['admin','manager']
 
   },
   {
     title: "Projects",
     icon: "assignment",
     url: '/projects/tileview',
-    roles: ['Staff', 'Admin']
+    roles: ['staff', 'admin']
 
   }
 ];

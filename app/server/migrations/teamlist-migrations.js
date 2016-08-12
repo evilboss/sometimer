@@ -20,10 +20,8 @@ const loadStaffList = ()=> {
         const staff = Meteor.users.findOne({'emails.address': {$regex: staffEmail, $options: 'i'}});
         useridList.push(staff._id);
       });
-      console.log(owner._id);
       Teamlist.insert({owner: owner._id, stafflist: useridList});
     }
-    console.log(useridList);
   }
 };
 const removeAllStaffList = ()=> {
@@ -34,6 +32,7 @@ const removeAllStaffList = ()=> {
     const owner = Meteor.users.findOne({'emails.address': {$regex: 'manager@manager.com', $options: 'i'}});
     if (owner) {
       let currentTeamList = Teamlist.find({ownerId: owner._id});
+      console.log(currentTeamList);
       _.each(currentTeamList, function (teamlist) {
         Teamlist.remove(teamlist._id);
       })

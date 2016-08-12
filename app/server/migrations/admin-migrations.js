@@ -24,7 +24,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Administrator',
-        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        displayPhoto: 'defaults/default-img.png',
         role: 'admin'
       }
     });
@@ -37,7 +37,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Manager',
-        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        displayPhoto: 'defaults/default-img.png',
         role: 'manager'
       }
     });

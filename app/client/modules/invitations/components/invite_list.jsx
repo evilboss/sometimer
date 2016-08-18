@@ -1,4 +1,5 @@
 import React from 'react';
+import SendInvitationModal from '../components/send_invitation_modal.jsx';
 
 class InviteList extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class InviteList extends React.Component {
   render() {
     return (
       <div>
-        InviteList
+        <h3>Employees</h3>
       </div>
     );
   }

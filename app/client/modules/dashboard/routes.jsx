@@ -13,6 +13,7 @@ const dashboardRoutes = FlowRouter.group({
     accessControl.isLoggedIn('dashboard', redirect);
   }]
 });
+
 export {dashboardRoutes};
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -35,13 +36,4 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-  dashboardRoutes.route('/:testId', {
-    name: 'dashboard.test',
-    action() {
-      let projectId = FlowRouter.getParam('testId');
-      FlowRouter.go('/notFound');
-    }
-  });
-
 }
-

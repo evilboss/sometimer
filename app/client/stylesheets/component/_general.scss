@@ -312,6 +312,11 @@ form {
   button {
     background-color: $theme-color !important;
   }
+  .modal-footer{
+    button{
+      margin-left: 5px;
+    }
+  }
 
   .card-panel {
     box-shadow: none;

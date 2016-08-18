@@ -24,9 +24,9 @@ class StaffList extends React.Component {
               </a>
             ))}
           </div>
-        </section>
-        <section id="invitationButton">
-          <SendInvitationModal/>
+          <div id="invitationButton">
+            <SendInvitationModal/>
+          </div>
         </section>
       </div>
     );

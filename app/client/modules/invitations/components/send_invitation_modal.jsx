@@ -23,7 +23,7 @@ class SendInvitationModal extends React.Component {
   render() {
     return (
       <div>
-        <button className="modal-trigger btn btn-success pull-right" data-toggle="modal"
+        <button className="modal-trigger btn theme-color pull-right" data-toggle="modal"
                 data-target="send-invitation-modal">Send Invitation
         </button>
 

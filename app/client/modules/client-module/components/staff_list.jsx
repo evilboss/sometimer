@@ -1,5 +1,5 @@
 import React from 'react';
-import SendInvitationModal from 'client/modules/invitation/components/send_invitation_modal';
+import SendInvitationModal from '/client/modules/invitations/components/send_invitation_modal';
 
 class StaffList extends React.Component {
   constructor(props) {

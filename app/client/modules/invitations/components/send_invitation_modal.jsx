@@ -3,6 +3,8 @@ import React from 'react';
 class SendInvitationModal extends React.Component {
   constructor(props) {
     super(props);
+    this.sendInvite = this.sendInvite.bind(this);
+
   }
 
   componentDidMount() {
@@ -10,6 +12,14 @@ class SendInvitationModal extends React.Component {
     $('select').material_select();
 
   }
+
+  sendInvite(e) {
+    e.preventDefault();
+    let email = this.refs.email.value;
+    let role = this.refs.role.value;
+    console.log('sending invite', role, email);
+  }
+
   render() {
     return (
       <div>
@@ -20,37 +30,30 @@ class SendInvitationModal extends React.Component {
         <section name="sendInvitationModal">
 
           <div id="send-invitation-modal" className="modal">
-            <div className="modal-content">
-              <h4 className="modal-title" id="send-invitation">Send Invitation</h4>
-              <form id="send-invite-form">
+            <form onSubmit={ this.sendInvite } ref="inviteForm">
+              <div className="modal-content">
+                <h4 className="modal-title" id="send-invitation">Send Invitation</h4>
                 <div className="modal-body">
                   <div className="form-group">
-                    <input placeholder="Email Address" type="email" className="form-control" name="emailAddress"/>
+                    <input ref="email" placeholder="Email Address" type="email" className="form-control"
+                           name="emailAddress"/>
                   </div>
                   <div className="form-group">
-                    <select  name="roles" className="input-field col s12">
-                      <option value="" disabled selected>Choose Role</option>
-                      <option value="employee">Employee</option>
+                    <select name="role" ref="role" className="input-field col s12" defaultValue="Choose Role">
+                      <option value="staff">Staff</option>
                       <option value="manager">Manager</option>
                       <option value="admin">Admin</option>
                     </select>
-                    <select>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
-                    </select>
-
-
                   </div>
                 </div>
                 <div className="modal-footer">
                 </div>
-              </form>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="submit" className="btn btn-success">Send Invitation</button>
-            </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" className="btn btn-success">Send Invitation</button>
+              </div>
+            </form>
           </div>
         </section>
       </div>

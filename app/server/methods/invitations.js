@@ -4,8 +4,19 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'invitations.send'() {
-      console.log('sending Invite');
+    'invitations.send'(invite) {
+      check( invite, {
+        email: String,
+        role: String
+      });
+      const sendInvitation ={
+        email: invite.email,
+        token: Random.hexString( 16 ),
+        role: invite.role,
+        date: ( new Date() ).toISOString()
+
+      };
+      console.log('sending Invite',sendInvitation);
     }
   });
 }

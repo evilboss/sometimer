@@ -40,7 +40,7 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
   render() {
-    let currentUser = Meteor.user();
+    let currentUser = this.props.currentUser;
     let currentDisplayName = this.getUserName();
     let dates = this.state.dates;
     return (

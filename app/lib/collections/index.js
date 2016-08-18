@@ -9,6 +9,7 @@ import Images from './images';
 import Comments from './comments';
 import Breaks from './breaks';
 import Teamlist from './teamlist';
+import Invitations from './invitations';
 
 
 export {
@@ -22,5 +23,6 @@ export {
   Projects,
   Images,
   Breaks,
-  Teamlist
+  Teamlist,
+  Invitations
 };

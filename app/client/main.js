@@ -14,6 +14,7 @@ import projectsModule from './modules/projects';
 import commentsModule from './modules/comments';
 import managerModule from './modules/manager';
 import clientModule from './modules/client-module';
+import invitationsModule from './modules/invitations';
 
 // init context
 const context = initContext();
@@ -32,5 +33,6 @@ app.loadModule(projectsModule);
 app.loadModule(commentsModule);
 app.loadModule(managerModule);
 app.loadModule(clientModule);
+app.loadModule(invitationsModule);
 
 app.init();

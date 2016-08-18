@@ -7,6 +7,7 @@ import Dashboard from './containers/dashboard';
 import StaffList from '/client/modules/client-module/containers/staff_list';
 import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
+import Timesheet from '/client/modules/timesheet/containers/timesheet';
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {
@@ -35,11 +36,13 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-  dashboardRoutes.route('/:testId', {
-    name: 'dashboard.test',
-    action() {
-      let projectId = FlowRouter.getParam('testId');
-      FlowRouter.go('/notFound');
+  dashboardRoutes.route('/staff/:staffId', {
+    name: 'dashboard.staff',
+    action(staffId){
+      console.log();
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<Timesheet userId={staffId.staffId}/>), footer: () => (<Foot />)
+      });
     }
   });
 

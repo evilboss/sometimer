@@ -25,7 +25,7 @@ class Timedata extends React.Component {
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
-          {console.log(userRole,this.props.selectedUser.profile.role)}
+          {console.log(userRole, this.props.selectedUser.profile.role)}
           {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '' : ''}
         </td>
         <td>
@@ -41,7 +41,8 @@ class Timedata extends React.Component {
           {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
           {}
         </td>
-        <td>{(timelog) ? (timelog.completed) ?(userRole=='manager')? <ApprovalButton/> :'Waiting for approval': '' : ''}</td>
+        <td>{(timelog) ? (timelog.completed) ? (userRole == 'manager') ?
+          <ApprovalButton/> : 'Waiting for approval' : '' : ''}</td>
       </tr>
     );
   }

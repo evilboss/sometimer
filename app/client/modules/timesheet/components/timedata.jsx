@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import ApprovalButton from '../../manager/components/approval_button';
+import ApprovalButton from '/client/modules/manager/containers/approval_button';
 class Timedata extends React.Component {
   constructor(props) {
     super(props);
@@ -20,16 +20,16 @@ class Timedata extends React.Component {
 
   render() {
     const timelog = this.props.timelog;
-    const userRole = this.props.selectedUser.profile.role;
+    const userRole = this.props.activeRole;
+    console.log(this.props.activeRole);
     return (
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
-          {console.log(userRole,this.props.selectedUser.profile.role)}
           {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '' : ''}
         </td>
         <td>
-          0
+          {(timelog) ? (timelog.totalBreak) ? timelog.totalBreak : '' : ''}
         </td>
         <td >
           {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss') : '' : ''}
@@ -39,9 +39,18 @@ class Timedata extends React.Component {
         </td>
         <td>
           {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
-          {}
         </td>
-        <td>{(timelog) ? (timelog.completed) ?(userRole=='manager')? <ApprovalButton/> :'Waiting for approval': '' : ''}</td>
+        <td>
+          {console.log(userRole)}
+          {(timelog) ?
+            (timelog.completed) ?
+              (timelog.approved) ?
+                'Approved'
+                : (userRole == 'manager') ?
+                <ApprovalButton timelogId={timelog._id}/>
+                : 'Waiting for approval'
+              : ''
+            : ''}</td>
       </tr>
     );
   }

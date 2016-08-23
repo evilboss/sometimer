@@ -1,18 +1,13 @@
 import React from 'react';
-
 class SendInvitationModal extends React.Component {
   constructor(props) {
     super(props);
     this.sendInvite = this.sendInvite.bind(this);
-
   }
-
   componentDidMount() {
     $('.modal-trigger').leanModal();
     $('select').material_select();
-
   }
-
   sendInvite(e) {
     e.preventDefault();
     const invite = {
@@ -23,16 +18,13 @@ class SendInvitationModal extends React.Component {
       (error) ? alert(error.reason) : alert('Invitation Sent!');
     });
   }
-
   render() {
     return (
       <div>
         <button className="modal-trigger btn theme-color pull-right" data-toggle="modal"
                 data-target="send-invitation-modal">Send Invitation
         </button>
-
         <section name="sendInvitationModal">
-
           <div id="send-invitation-modal" className="modal">
             <form onSubmit={ this.sendInvite } ref="inviteForm">
               <div className="modal-content">
@@ -64,5 +56,4 @@ class SendInvitationModal extends React.Component {
     );
   }
 }
-
 export default SendInvitationModal;

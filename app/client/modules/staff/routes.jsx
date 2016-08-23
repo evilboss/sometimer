@@ -5,6 +5,7 @@ import {accessControl} from '/lib/access-control/access-control'
 import {Footer} from '../core/components';
 import Header from '../core/containers/header';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
+import PunchcardLayout from '/client/modules/core/components/punchcard_layout.jsx';
 import {TimeTracker} from  './containers';
 import Profile from '../users/containers/Profile';
 import {dashboardRoutes} from '/client/modules/dashboard/routes'
@@ -40,4 +41,18 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
+}
+
+export default function (injectDeps, {FlowRouter}) {
+  const PunchCardLayoutCtx = injectDeps(PunchcardLayout);
+
+  dashboardRoutes.route('/timetracker', {
+    name: 'staff.timetracker',
+
+    action() {
+      mount(PunchCardLayoutCtx, {
+        content: ()=>(<TimeTracker />)
+      });
+    }
+  });
 }

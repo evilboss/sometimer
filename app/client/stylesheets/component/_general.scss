@@ -7,16 +7,42 @@ section#body {
   flex-direction: column;
 }
 
+.body-wrapper {
+  @extend section#body;
+  background-image: url("/Assets/teams/default/background/Software_internal_bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  .body-container {
+    @extend section#body;
+    margin: 0 4em;
+    main#main {
+      background-color: #f6f6f6;
+    }
+  }
+}
+
 main#main {
   flex: 1 0 auto;
 }
+
 .full-width {
   width: 100%;
 }
 
-nav .brand-logo {
-  left: 0 !important;
-  transform: translateX(0%);
+nav {
+  margin: 0.7em 0;
+  background-color: transparent;
+  box-shadow: none;
+  .brand-logo {
+    left: 0 !important;
+    transform: translateX(0%);
+  }
+}
+
+#horizontal-nav {
+  margin-bottom: 0;
 }
 
 // fonts
@@ -312,8 +338,8 @@ form {
   button {
     background-color: $theme-color !important;
   }
-  .modal-footer{
-    button{
+  .modal-footer {
+    button {
       margin-left: 5px;
     }
   }

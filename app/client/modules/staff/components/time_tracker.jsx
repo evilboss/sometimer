@@ -64,7 +64,7 @@ class TimeTracker extends React.Component {
   }
 
   render() {
-    let backgroundImage = '/Assets/teams/default/background/bg3.jpg';
+    let backgroundImage = '/Assets/teams/default/background/punchcard_bg.png';
     let appLogo = '/Assets/teams/default/logo/remotiv_io_logo_style2.png';
     let boardStyle;
     let inOutLogo = (appLogo) ? inOutLogo = appLogo : '/Assets/teams/ezyva/logo/ezyva-logo.png';
@@ -108,24 +108,19 @@ class TimeTracker extends React.Component {
                             </div>
                             <div className="staff-details col l8 m8 s12">
                               <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
-                                <p><i className="material-icons left">work</i>{currentUser.profile.jobTitle}</p>
+                                <h6>{currentUser.profile.jobTitle}</h6>
                                 {console.log(currentUser.profile.status)}
-
-                                <TimeIn action={this.startShift.bind(this)} status={currentUser.profile.status}/>
-                                <TimeOut endShiftAction={this.endShift.bind(this)}
-                                         startBreakAction={this.startBreak.bind(this)}
-                                         status={currentUser.profile.status}/>
-                                <BackToWork action={this.endBreak.bind(this) } status={currentUser.profile.status}/>
-                                
-                              </div>
-                              <div className="row no-vertical-margin">
-                                <div className="col s12">
-                                  <div className="current-log"><p><b>Current Log: </b> {currentUser.profile.status}</p>
-                                  </div>
-                                  <div className={currentUser.profile.status + ' beacon z-depth-1'}></div>
+                                <div className="status">
+                                  <TimeIn action={this.startShift.bind(this)} status={currentUser.profile.status}/>
+                                  <TimeOut endShiftAction={this.endShift.bind(this)}
+                                           startBreakAction={this.startBreak.bind(this)}
+                                           status={currentUser.profile.status}/>
+                                  <BackToWork action={this.endBreak.bind(this) } status={currentUser.profile.status}/>
                                 </div>
                               </div>
-                              <div><b>Date Today:</b> {this.getTime()}</div>
+                              <div className="row no-vertical-margin">
+                              </div>
+                              <div><b>{this.getTime()}</b></div>
                             </div>
                           </div>
                         </div> : ''

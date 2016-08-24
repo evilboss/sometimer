@@ -8,7 +8,6 @@ export const composer = ({context}, onData) => {
     const user = Meteor.user();
     const image = Collections.Images;
     const users = Meteor.users;
-    console.log(image);
     onData(null, {user, users, image});
   }
 };

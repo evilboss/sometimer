@@ -11,7 +11,7 @@ Migrations.add({
 });
 const defaultstafflist = ['aaron.randrup@ezyva.com', 'manager@manager.com', 'staff@staff.com', 'jr@ezyva.com'];
 const loadStaffList = ()=> {
-  console.log('Loading stafflist');
+  console.info('Loading stafflist');
   if (Teamlist.find({}).count() === 0) {
     let useridList = [];
     const owner = Meteor.users.findOne({'emails.address': {$regex: 'manager@manager.com', $options: 'i'}});
@@ -26,13 +26,12 @@ const loadStaffList = ()=> {
 };
 const removeAllStaffList = ()=> {
 
-  console.log('removing stafflist');
+  console.info('removing stafflist');
   if (Teamlist.find({}).count() === 0) {
     let useridList = [];
     const owner = Meteor.users.findOne({'emails.address': {$regex: 'manager@manager.com', $options: 'i'}});
     if (owner) {
       let currentTeamList = Teamlist.find({ownerId: owner._id});
-      console.log(currentTeamList);
       _.each(currentTeamList, function (teamlist) {
         Teamlist.remove(teamlist._id);
       })

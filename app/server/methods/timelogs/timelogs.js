@@ -9,10 +9,8 @@ const updateStatus = (status)=> {
   Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.status': status}});
 };
 const startShift = ()=> {
-  console.log('Starting Shift');
   updateStatus('In');
   const sameDayLog = Timelogs.findOne({userId: Meteor.userId(), date: moment(new Date).format('DD:MM:YY')});
-  console.log(sameDayLog);
   const timeLog = {
     userId: Meteor.userId(),
     timeIn: new Date(),
@@ -35,7 +33,6 @@ const startShift = ()=> {
   }
 };
 const endShift = ()=> {
-  console.log('Ending Shift');
   updateStatus('Out');
   const currentLog = Timelogs.findOne({
     userId: Meteor.userId(),
@@ -58,7 +55,6 @@ const endShift = ()=> {
 
 };
 const startBreak = ()=> {
-  console.log('Starting Break');
   updateStatus('Break');
   const currentLog = Timelogs.findOne({
     userId: Meteor.userId(),
@@ -71,11 +67,9 @@ const startBreak = ()=> {
     breakTimeIn: new Date(),
     currentStatus: 'BreakIn'
   };
-  console.log(breaklog);
   Breaks.insert(breaklog);
 };
 const endBreak = ()=> {
-  console.log('Ending Break');
   updateStatus('In');
   const currentLog = Timelogs.findOne({
     userId: Meteor.userId(),

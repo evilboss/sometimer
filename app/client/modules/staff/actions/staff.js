@@ -4,6 +4,6 @@
 
 export default {
   status_change:function () {
-    console.log('status change');
+    console.info('status change');
   }
 }

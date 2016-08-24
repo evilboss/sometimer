@@ -22,7 +22,11 @@ class Timesheet extends TrackerReact(React.Component) {
     let reactState = this;
     Meteor.call('timesheet_dates.getCutOffDates', function (err, res, callback) {
       if (err) {
-        console.log(JSON.stringify(err, null, 2))
+        sweatAlert(
+          'Ooops',
+          'Something went wrong!',
+          'Error'+JSON.stringify(err, null, 2)
+        );
       } else {
         reactState.setState({dates: res});
       }
@@ -125,7 +129,6 @@ class Timesheet extends TrackerReact(React.Component) {
   getDiff(timeIn, timeOut) {
     let dateB = moment(timeOut, 'HH:MM:SS');
     let dateC = moment(timeIn, 'HH:MM:SS');
-    console.log(dateB.diff(dateC));
   }
 
 }

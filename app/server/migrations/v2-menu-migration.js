@@ -38,7 +38,7 @@ const menuItems = [{
   }
 ];
 const loadMenus = ()=> {
-  console.log('Loading Menus');
+  console.info('Loading Menus');
   if (Menu.find({}).count() === 0) {
     _.each(menuItems, function (menuItems) {
       Menu.insert(menuItems);
@@ -47,7 +47,7 @@ const loadMenus = ()=> {
   }
 };
 const removeAllMenus = ()=> {
-  console.log('Removing Menus');
+  console.info('Removing Menus');
   _.each(menuItems, function (menuItems) {
     const removeMenu = Menu.findOne({title: menuItems.title});
     if (removeMenu) {

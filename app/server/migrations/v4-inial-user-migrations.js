@@ -5,7 +5,6 @@ Migrations.add({
     loadStaff();
   },
   down: function () {
-    console.log('no down function yet');
     removeStaff();
   }
 });
@@ -82,6 +81,7 @@ const newStaffs = [
   },
 ];
 const loadStaff = ()=> {
+  console.info('Adding Staff');
   _.each(newStaffs, function (staff) {
     Accounts.createUser({
       email: staff.email,
@@ -91,6 +91,7 @@ const loadStaff = ()=> {
   });
 };
 const removeStaff = ()=> {
+  console.info('Removing Staff');
   _.each(newStaffs, function (staff) {
     const removeUser = Meteor.users.findOne({'emails.address': {$regex: staff.email, $options: 'i'}});
     if (removeUser) {

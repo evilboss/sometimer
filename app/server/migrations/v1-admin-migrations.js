@@ -12,9 +12,9 @@ Migrations.add({
   }
 });
 const loadUsers = ()=> {
-  console.log('Loading users');
+  console.info('Loading users');
   if (Meteor.users.find({}).count() === 0) {
-    console.log('migrating user admins');
+    console.info('migrating user admins');
     Accounts.createUser({
       email: "admin@admin.com",
       password: "password",
@@ -57,7 +57,7 @@ const loadUsers = ()=> {
   }
 };
 const removeAllUsers = ()=> {
-  console.log('Removing Users');
+  console.info('Removing Users');
   const innitalUsers = ['admin@admin.com', 'manager@manager.com', 'staff@staff.com'];
   _.each(innitalUsers, function (userEmail) {
     const removeUser = Meteor.users.findOne({'emails.address': {$regex: userEmail, $options: 'i'}});

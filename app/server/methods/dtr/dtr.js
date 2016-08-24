@@ -3,15 +3,14 @@
  */
 import Timelogs from '/lib/collections/timelogs';
 const changeStatus = (status = 'Out')=> {
-  console.log(status);
   let statusChange;
   switch (status) {
     case 'In':
-      console.log('Break Status Will Occur');
+      console.info()('Break Status Will Occur');
       statusChange = 'On Break';
 
       const currentLog = Timelogs.findOne({userId: Meteor.userId(), status: 'In'});
-      console.log(currentLog);
+      console.info(currentLog);
       if (currentLog) {
         Timelogs.update(currentLog._id, {
           $set: {
@@ -22,7 +21,7 @@ const changeStatus = (status = 'Out')=> {
       }
       break;
     case 'On Break':
-      console.log('trigger back from lunch');
+      console.info('trigger back from lunch');
       statusChange = 'Back From Lunch';
       Timelogs.update({userId: Meteor.userId(), status: 'Out to Lunch'}, {
         $set: {
@@ -32,7 +31,7 @@ const changeStatus = (status = 'Out')=> {
       });
       break;
     default:
-      console.log('trigger in');
+      console.info('trigger in');
       statusChange = 'In';
       Timelogs.insert({
         timeIn: new Date(),

@@ -7,8 +7,6 @@ export default function () {
     return Team.find();
   });
   Meteor.publish('team.current', function (name) {
-    console.log('publishing current team');
-    console.log(Team.findOne({name: name}));
     return Team.find({name: name});
   });
 }

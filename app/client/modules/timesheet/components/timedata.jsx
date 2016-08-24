@@ -21,7 +21,6 @@ class Timedata extends React.Component {
   render() {
     const timelog = this.props.timelog;
     const userRole = this.props.activeRole;
-    console.log(this.props.activeRole);
     return (
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
@@ -42,7 +41,6 @@ class Timedata extends React.Component {
           {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
         </td>
         <td>
-          {console.log(userRole)}
           {(timelog) ?
             (timelog.completed) ?
               (timelog.approved) ?

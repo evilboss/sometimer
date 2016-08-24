@@ -3,13 +3,12 @@
  */
 let getCurrentUser =()=>{
   if (Meteor.subscribe("user.current").ready) {
-    console.log('user ready');
     return Meteor.user();
   }
 };
 let findCurrentUser=()=>{
   Tracker.autorun(function () {
-    console.log(getCurrentUser())
+    getCurrentUser();
     //(getCurrentUser()) ? FlowRouter.redirect('/login') : FlowRouter.redirect('/notfound');
   });
 }

@@ -13,8 +13,6 @@ class StaffInfo extends React.Component {
         <div className="col s12 m6 l6">
           <table>
             <tbody>
-            {console.log(UserInfo)}
-
             <tr>
               <th>Name:</th>
               <th>{/*currentUser.profile.firstName*/}</th>

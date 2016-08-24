@@ -23,14 +23,13 @@ const generateLogs = ()=> {
   return dateArray;
 };
 const addTimelogs = ()=> {
-  console.log('Adding timelogs');
+  console.info('Adding timelogs');
   const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
   const staffLogs = Timelogs.find({userId: staff._id});
   if (staffLogs.count() === 0) {
     const logs = generateLogs();
     logs.every(function (log) {
         if (moment(log).isSame(moment(), 'day')) {
-          console.log('need to stop is same day');
           return false;
         }
         if (!(moment(log).isoWeekday() === 6 || moment(log).isoWeekday() === 7)) {
@@ -52,7 +51,7 @@ const addTimelogs = ()=> {
   }
 };
 const removeTimelogs = ()=> {
-  console.log('Removing timelogs');
+  console.info('Removing timelogs');
   const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
   const staffLogs = Timelogs.find({userId: staff._id}).fetch();
   _.each(staffLogs, function (log) {

@@ -8,7 +8,6 @@ export const composer = ({context}, onData) => {
     const teamlist = Collections.Teamlist.find().fetch();
     const options = {_id: {$ne: Meteor.userId()}};
     const staffList = Meteor.users.find(options).fetch();
-    console.log(staffList);
     onData(null, {staffList});
   } else {
     onData();

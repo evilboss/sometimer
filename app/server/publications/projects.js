@@ -13,7 +13,6 @@ export default function () {
   });
 
   Meteor.publish('project.single', function (projectId) {
-    console.log(projectId);
     const selector = {_id: projectId};
     return Projects.find(selector);
   });

@@ -45,10 +45,7 @@ const loadBreaks = ()=> {
         totalRendered: totalRendered
       }
     });
-
-
-    console.log('list of breaks generated for timelog ', timelog._id);
-    console.log(breakList, 'breakcount number =', breakCount);
+    console.log(Timelogs.findOne(timelog._id));
   }) : console.log('No timelogs');
 
 };

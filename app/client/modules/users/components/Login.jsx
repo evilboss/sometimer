@@ -6,7 +6,6 @@ import MyInput from '../../../utils/form/input';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-
     this.onSubmit = (data)=> {
       this.props.submitAction(data.email, data.password);
     };

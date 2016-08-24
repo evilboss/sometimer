@@ -8,6 +8,7 @@ import projects from './projects';
 import images from './images';
 import comments from './comment-publications';
 import teamlist from './teamlist';
+import breaks from './breaks';
 
 export default function () {
   timesheet();
@@ -20,4 +21,5 @@ export default function () {
   projects();
   comments();
   teamlist();
+  breaks();
 }

@@ -13,13 +13,13 @@ const menuItems = [{
   title: "Time Tracker",
   icon: "access_time",
   url: '/dashboard/timetracker',
-  roles: ['staff', 'admin']
+  roles: ['staff', 'admin','manager']
 },
   {
     title: "Timesheet",
     icon: "grid_on",
     url: '/dashboard/timesheet',
-    roles: ['staff', 'admin']
+    roles: ['staff', 'admin','manager']
 
   },
   {
@@ -33,7 +33,7 @@ const menuItems = [{
     title: "Projects",
     icon: "assignment",
     url: '/projects/tileview',
-    roles: ['staff', 'admin']
+    roles: ['staff', 'admin','manager']
 
   }
 ];

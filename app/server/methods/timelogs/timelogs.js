@@ -1,13 +1,18 @@
 import moment from 'moment/moment';
 import {Timelogs, Breaks} from '/lib/collections/';
-
-
+import {getHoursRendered, addTime, subtractTime} from '/server/methods/timeDate/timeDate';
+/**
+ *
+ * @param status
+ */
 const updateStatus = (status)=> {
   Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.status': status}});
 };
 const startShift = ()=> {
   console.log('Starting Shift');
   updateStatus('In');
+  const sameDayLog = Timelogs.findOne({userId: Meteor.userId(), date: moment(new Date).format('DD:MM:YY')});
+  console.log(sameDayLog);
   const timeLog = {
     userId: Meteor.userId(),
     timeIn: new Date(),
@@ -15,7 +20,19 @@ const startShift = ()=> {
     date: moment(new Date).format('DD:MM:YY'),
     currentStatus: 'In'
   };
-  Timelogs.insert(timeLog);
+  if (!sameDayLog) {
+    Timelogs.insert(timeLog);
+  } else {
+    Timelogs.update({
+      _id: sameDayLog._id
+
+    }, {
+      $set: {
+        timeIn: new Date(),
+        currentStatus: 'In'
+      }
+    });
+  }
 };
 const endShift = ()=> {
   console.log('Ending Shift');
@@ -25,16 +42,20 @@ const endShift = ()=> {
     currentStatus: 'In',
     date: moment(new Date).format('DD:MM:YY')
   });
-  console.log(currentLog);
   const breakLogs = Breaks.find({userId: Meteor.userId(), timeLogId: currentLog._id}).fetch();
-  console.log(breakLogs);
+  const totalBreak = _.pluck(breakLogs, 'duration').reduce((a, b) => addTime(a, b), 0);
+  const timeOut = new Date();
+  const totalRendered = subtractTime(getHoursRendered(timeOut, currentLog.timeIn), totalBreak);
   Timelogs.update(currentLog._id, {
     $set: {
       currentStatus: 'Out',
-      timeOut: new Date(),
-      completed: true
+      timeOut: timeOut,
+      totalBreak: totalBreak,
+      completed: true,
+      totalRendered: totalRendered
     }
   });
+
 };
 const startBreak = ()=> {
   console.log('Starting Break');
@@ -53,7 +74,6 @@ const startBreak = ()=> {
   console.log(breaklog);
   Breaks.insert(breaklog);
 };
-
 const endBreak = ()=> {
   console.log('Ending Break');
   updateStatus('In');
@@ -71,14 +91,26 @@ const endBreak = ()=> {
     $set: {
       currentStatus: 'BreakOut',
       breakTimeOut: new Date(),
+      duration: getHoursRendered(new Date(), breakLog.breakTimeIn)
     }
   });
-  console.log(breakLog);
 };
+/**
+ *
+ * @param timelogId
+ */
+const approve = (timelogId)=> {
+  const timelog = Timelogs.findOne(timelogId);
+  (timelog)? Timelogs.update(timelog,{
+    $set:{approved:true}
+  }):''
+}
 const timelogs = {
   startShift: ()=>startShift(),
   endShift: ()=>endShift(),
   startBreak: ()=> startBreak(),
-  endBreak: ()=> endBreak()
+  endBreak: ()=> endBreak(),
+  approve: (timeLogId)=>approve(timeLogId)
 };
+
 export {timelogs};

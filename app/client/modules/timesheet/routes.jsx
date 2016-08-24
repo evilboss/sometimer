@@ -4,7 +4,7 @@ import Header from '../core/containers/header';
 import Foot from '../core/components/footer.jsx';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from './containers/timesheet';
-
+import Breaklogs from './containers/breaklogs';
 import {dashboardRoutes} from '/client/modules/dashboard/routes'
 
 export default function (injectDeps, {FlowRouter}) {
@@ -13,7 +13,21 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'timesheet',
     action() {
       mount(MainLayoutCtx, {
-        title:'Timesheet: '+DocHead.getTitle(),head: () => (<Header/>), content: ()=>(<Timesheet />), footer: ()=>(<Foot/>)
+        title: 'Timesheet: ' + DocHead.getTitle(),
+        head: () => (<Header/>),
+        content: ()=>(<Timesheet />),
+        footer: ()=>(<Foot/>)
+      });
+    }
+  });
+  dashboardRoutes.route('/timesheet/breaks/:timeLogId', {
+    name: 'timesheet.breaks',
+    action(timeLogId) {
+      mount(MainLayoutCtx, {
+        title: 'Break Logs: ' + DocHead.getTitle(),
+        head: () => (<Header/>),
+        content: ()=>(<Breaklogs timeLogId={timeLogId.timeLogId}/>),
+        footer: ()=>(<Foot/>)
       });
     }
   });

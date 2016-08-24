@@ -15,7 +15,10 @@ export default function () {
     },
     'timelogs.endShift'(){
       timelogs.endShift();
-    }
+    },
+    'timelogs.approve'(timeLogId){
+      timelogs.approve(timeLogId);
+    },
 
   });
 }

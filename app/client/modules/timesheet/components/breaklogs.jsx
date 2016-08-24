@@ -32,12 +32,10 @@ class Breaklogs extends React.Component {
               </td>
             </tr>
           ))}
-
           </tbody>
           <tfoot>
           <tr>
             <th>Total:</th>
-
             <th></th>
             <th>{(timeLog)?(timeLog.totalBreak)?timeLog.totalBreak:'00:00:00':'00:00:00'}</th>
           </tr>

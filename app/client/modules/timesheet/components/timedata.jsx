@@ -29,7 +29,8 @@ class Timedata extends React.Component {
           {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '' : ''}
         </td>
         <td>
-          {(timelog) ? (timelog.totalBreak) ? timelog.totalBreak : '' : ''}
+          {(timelog) ? (timelog.totalBreak) ?
+            <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
         </td>
         <td >
           {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss') : '' : ''}

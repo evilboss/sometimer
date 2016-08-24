@@ -42,7 +42,6 @@ const addTimelogs = ()=> {
             userId: staff._id,
             completed: true,
             date: moment(log).format('DD:MM:YY'),
-            totalRendered: getHoursRendered(timeOut, timeIn)
           });
         }
 

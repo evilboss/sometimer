@@ -47,7 +47,8 @@ class Timesheet extends TrackerReact(React.Component) {
       <section className="timesheet">
         <h5>Employee's TimeSheet</h5>
 
-        {(currentUser) ? <section className="user-details">
+        {(currentUser) ?
+          <section className="user-details">
           {(currentUser.profile) ?
             <div className="no-horizontal-margin row z-depth-1-half card-top-border">
               <div className="col s12 m6 l6">
@@ -99,7 +100,7 @@ class Timesheet extends TrackerReact(React.Component) {
             </thead>
             <tbody>
             {dates.map((date, index)=>(
-              <TimeData keyIndex={index} date={date} userId={currentUser._id} selectedUser={currentUser}/>
+              <TimeData key={index} keyIndex={index} date={date} userId={currentUser._id} selectedUser={currentUser}/>
             ))}
 
             </tbody>

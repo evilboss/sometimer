@@ -7,7 +7,12 @@ export default function () {
     return Timelogs.find({userId: userId});
   });
   Meteor.publish('timelogs.by.date', function (date, userId) {
-    const selector = {date: date,userId:userId};
+    const selector = {date: date, userId: userId};
     return Timelogs.find(selector);
   });
+  Meteor.publish('timelogs.by.id', function (timeLogId) {
+    const selector = {_id: timeLogId};
+    return Timelogs.find(selector);
+  });
+
 }

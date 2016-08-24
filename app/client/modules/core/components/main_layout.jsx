@@ -1,19 +1,16 @@
 import React from 'react';
 
 const Layout = ({head = () => null, content =() =>null, footer =() =>null}) => (
-  <section id="body">
-    <div id="loader-wrapper">
-      <div id="loader"></div>
-      <div className="loader-section section-left"></div>
-      <div className="loader-section section-right"></div>
+  <section id="body" className="body-wrapper">
+    <div className="body-container">
+      <header>
+        {head()}
+      </header>
+      <main id="main">
+        {content()}
+      </main>
+      
     </div>
-    <header>
-      {head()}
-    </header>
-    <main id="main">
-      {content()}
-    </main>
-    {footer()}
   </section>
 );
 

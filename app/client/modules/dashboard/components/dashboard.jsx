@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <section className="dashboard">
-
+        <div className="page-title"><h5>Dashboard</h5></div>
         <div className="row">
           <Card menu={this.props.menu}/>
         </div>

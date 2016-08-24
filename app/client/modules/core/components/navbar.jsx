@@ -9,8 +9,8 @@ class Navbar extends React.Component {
   render() {
     return (
       <section id="navbar">
-        <nav id="horizontal-nav" className="white hide-on-med-and-down">
-          <div className="nav-wrapper center center-align">
+        <nav id="horizontal-nav">
+          <div className="nav-wrapper">
 
             <NavbarItem menu={this.props.menu}/>
           </div>

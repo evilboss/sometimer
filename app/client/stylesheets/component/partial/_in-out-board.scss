@@ -49,11 +49,22 @@ section#in-out-board {
     }
   }
   .staff-details {
+    color: white;
     .current-log {
       display: inline-block;
     }
+    h4 {
+      font-weight: 500;
+      margin-bottom: 0.3em;
+    }
+    h6 {
+      font-size: 1.2rem;
+    }
   }
-  .time-out{
+  .status {
+    margin: 1em 0;
+  }
+  .time-out {
     padding-right: 3.24em;
     margin-top: 0.5em;
   }

@@ -5,10 +5,6 @@ var TileView = React.createClass({
   render() {
     return (
       <div className="row">
-        <div className="project-view">
-          <i className="material-icons active">view_module</i>
-          <a href="/projects/listview"><i className="material-icons">view_list</i></a>
-        </div>
         {this.props.projects.map(project=> (
           <a href={`/projects/${project._id}`} key={project._id} className="collection-item">
             <article className="col s12 m6 l4">

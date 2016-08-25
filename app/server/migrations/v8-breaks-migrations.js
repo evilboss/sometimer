@@ -2,8 +2,9 @@
  * Created by jr on 8/24/16.
  */
 import {Timelogs, Breaks} from '/lib/collections/';
-import {getHoursRendered, addTime, subtractTime} from '/server/methods/timeDate/timeDate';
+import {getHoursRendered} from '/server/methods/timeDate/timeDate';
 import {getRandomInt} from '/lib/lib/utils';
+import {addTime, subtractTime} from '/lib/lib/time';
 Migrations.add({
   version: 8,
   name: 'Add Breaks to staff@staff.com user',

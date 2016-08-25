@@ -3,6 +3,7 @@ import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import DatePicker from './datepicker';
 import TimeData from '../containers/timedata';
+import TimesheetTotal from '../containers/timesheet_total';
 class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
@@ -103,14 +104,8 @@ class Timesheet extends TrackerReact(React.Component) {
 
             </tbody>
             <tfoot>
-            <tr>
-              <th>Total:</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>Paid:0/Unpaid:0</th>
-            </tr>
+            <TimesheetTotal from={_.first(dates)} to={_.last(dates)}/>
+
             </tfoot>
           </table>
 
@@ -129,3 +124,4 @@ class Timesheet extends TrackerReact(React.Component) {
 }
 
 export default Timesheet;
+

@@ -1,6 +1,7 @@
 import moment from 'moment/moment';
 import {Timelogs, Breaks} from '/lib/collections/';
-import {getHoursRendered, addTime, subtractTime} from '/server/methods/timeDate/timeDate';
+import {addTime, subtractTime} from '/lib/lib/time';
+import {getHoursRendered} from '/server/methods/timeDate/timeDate';
 /**
  *
  * @param status
@@ -16,7 +17,7 @@ const startShift = ()=> {
     timeIn: new Date(),
     createdAt: new Date(),
     date: moment(new Date).format('DD:MM:YY'),
-    currentStatus: 'In'
+    currentStatus: 'In',
   };
   if (!sameDayLog) {
     Timelogs.insert(timeLog);
@@ -95,9 +96,9 @@ const endBreak = ()=> {
  */
 const approve = (timelogId)=> {
   const timelog = Timelogs.findOne(timelogId);
-  (timelog)? Timelogs.update(timelog,{
-    $set:{approved:true}
-  }):''
+  (timelog) ? Timelogs.update(timelog, {
+    $set: {approved: true}
+  }) : ''
 }
 const timelogs = {
   startShift: ()=>startShift(),

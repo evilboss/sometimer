@@ -25,14 +25,14 @@ class Timedata extends React.Component {
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
-          {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss') : '' : ''}
+          {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss a') : '' : ''}
         </td>
         <td>
           {(timelog) ? (timelog.totalBreak) ?
             <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
         </td>
         <td >
-          {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss') : '' : ''}
+          {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss a') : '' : ''}
         </td>
         <td>
 

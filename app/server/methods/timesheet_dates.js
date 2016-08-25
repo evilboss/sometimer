@@ -9,6 +9,10 @@ export default function () {
       const endDate = (to) ? moment(to) : (day <= 15) ? moment(startDate).add(14, "days") : moment(startDate).endOf('month');
       const dateArray = getDates(startDate.toDate(), endDate.toDate());
       return dateArray;
+    },
+    'timesheet.getToday'(){
+      const {day, month, year} =generateDateToday();
+      return moment([year, month, day]).toDate();
     }
   });
 }

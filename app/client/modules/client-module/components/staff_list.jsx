@@ -1,6 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 import SendInvitationModal from '/client/modules/invitations/components/send_invitation_modal';
-
+import StaffDetails from '../containers/staff_details';
 class StaffList extends React.Component {
   constructor(props) {
     super(props);
@@ -13,14 +14,7 @@ class StaffList extends React.Component {
           <h5>Staff List</h5>
           <div className="collection">
             {this.props.staffList.map((staff, index) => (
-              <a className="collection-item avatar" key={index} href={`/dashboard/staff/${staff._id}`}>
-                <img src={"/uploads/" + staff.profile.displayPhoto} alt="" className="circle"/>
-                <span className="title">{staff.profile.firstName} {staff.profile.lastName}</span>
-                <p>{staff.profile.jobTitle}<br/>
-                  {staff.profile.department}<br/>
-                  {staff.profile.role}
-                </p>
-              </a>
+              <StaffDetails key={index} staff={staff} index={index}/>
             ))}
           </div>
           <div id="invitationButton">

@@ -24,10 +24,9 @@ const loadBreaks = ()=> {
   };
   (timelogList) ? _.each(timelogList, function (timelog) {
     const breakCount = getRandomInt(1, 10);
-    let breakList = [];
     for (var index = 0; index <= breakCount; index++) {
       const breaklog = {
-        userId: timelog.userId,
+        userId: staff._id,
         timeLogId: timelog._id,
         breakTimeIn: 'Sample only',
         currentStatus: 'BreakOut',

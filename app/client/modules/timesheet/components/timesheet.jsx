@@ -2,10 +2,9 @@ import React from 'react';
 import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import DatePicker from './datepicker';
-import TimeData from '../containers/timedata';
-import TimesheetTotal from '../containers/timesheet_total';
 import PageTitle from '/client/modules/core/components/page_title';
 import UserDetails from './user_details';
+import TimesheetTable from './timesheet_table';
 const DateData = new ReactiveVar();
 
 class Timesheet extends TrackerReact(React.Component) {
@@ -50,32 +49,7 @@ class Timesheet extends TrackerReact(React.Component) {
         <UserDetails currentUser={currentUser}/>
 
         <DatePicker changeDate={this.changeDate.bind(this)}/>
-        <div>
-          <table className="centered bordered">
-            <thead>
-            <tr>
-              <th>Date</th>
-              <th>Time In</th>
-              <th>Total Break</th>
-              <th>Time Out</th>
-              <th>Leave</th>
-              <th>Hours<br/>Rendered</th>
-              <th>Approval</th>
-            </tr>
-            </thead>
-            <tbody>
-            {dates.map((date, index)=>(
-              <TimeData key={index} keyIndex={index} date={date} userId={currentUser._id} selectedUser={currentUser}/>
-            ))}
-
-            </tbody>
-            <tfoot>
-            <TimesheetTotal from={_.first(dates)} to={_.last(dates)}/>
-
-            </tfoot>
-          </table>
-
-        </div>
+        <TimesheetTable currentUser={currentUser} dates={dates}/>
 
       </section>
     );

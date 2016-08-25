@@ -24,7 +24,15 @@ section.timesheet {
     margin: -0.8em;
     border-top: 1px solid #E8E8E8;
   }
-  td, th {
-    border-radius: 0;
+  section.timesheet-table {
+    @include remove-section-margin;
+    thead {
+      background-color: #454648;
+      color: white;
+    }
+    td, th {
+      border-radius: 0;
+      padding: 7px 5px;
+    }
   }
 }

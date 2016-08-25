@@ -45,13 +45,14 @@ class Datepicker extends React.Component {
   }
 
   submitForm(e) {
+    console.log('utub');
     e.preventDefault();
     this.props.changeDate(this.refs.input_from.value, this.refs.input_to.value);
   }
 
   render() {
     return (
-      <section className="row datepicker">
+      <section className="row datepicker-wrapper">
         <form className="col s12" onSubmit={this.submitForm.bind(this)}>
           <h5>View Timesheet</h5>
           <div className="row">

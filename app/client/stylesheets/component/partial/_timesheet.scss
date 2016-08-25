@@ -4,7 +4,27 @@ section.timesheet {
     margin-top: 1em;
   }
   .display-photo {
-    height: 10em;
-    width: 10em;
+    height: 6em;
+    width: 6em;
+  }
+  section.user-details {
+    table {
+      td, th {
+        padding: 1px;
+      }
+      th {
+        color: #6c6c6c;
+      }
+      td {
+        color: #2f5f5b;
+      }
+    }
+  }
+  section.datepicker {
+    margin: -0.8em;
+    border-top: 1px solid #E8E8E8;
+  }
+  td, th {
+    border-radius: 0;
   }
 }

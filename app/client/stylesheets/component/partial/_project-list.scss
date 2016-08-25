@@ -1,10 +1,29 @@
 section.project-list {
   @extend .container-margin;
   .project-view {
+    margin-left: 3em;
+    vertical-align: sub;
+    i {
+      font-size: 30px;
+    }
     a {
       color: $gray;
     }
     .active {
+      color: $theme-color;
+    }
+  }
+  .btn-add {
+    margin-top: 5em;
+    a {
+      border-radius: 50%;
+      i {
+        font-size: 3em;
+        color: white;
+        padding: 10px;
+      }
+    }
+    h6 {
       color: $theme-color;
     }
   }

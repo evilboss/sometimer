@@ -47,6 +47,9 @@ nav {
   padding: 0.5em 1.5em;
   border-bottom: 1px solid #E8E8E8;
   margin-bottom: 0;
+  h5 {
+    color: #0a6c86;
+  }
 }
 
 #horizontal-nav {
@@ -55,7 +58,7 @@ nav {
 
 // fonts
 h5 {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p {
@@ -265,10 +268,6 @@ table.centered tfoot tr th, table.centered tfoot tr td {
 
 tfoot {
   border-top: 2px solid $theme-color;
-}
-
-td, th {
-  padding: 10px 5px !important;
 }
 
 // list

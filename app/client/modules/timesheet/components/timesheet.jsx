@@ -4,6 +4,10 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import DatePicker from './datepicker';
 import TimeData from '../containers/timedata';
 import TimesheetTotal from '../containers/timesheet_total';
+import PageTitle from '/client/modules/core/components/page_title';
+import UserDetails from './user_details';
+const DateData = new ReactiveVar();
+
 class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
@@ -14,9 +18,6 @@ class Timesheet extends TrackerReact(React.Component) {
 
   componentWillMount() {
     this.getDates();
-  }
-
-  componentDidUpdate() {
   }
 
 
@@ -45,48 +46,12 @@ class Timesheet extends TrackerReact(React.Component) {
     let dates = this.state.dates;
     return (
       <section className="timesheet">
-        <h5>Employee's TimeSheet</h5>
-        {(currentUser) ?
-          <section className="user-details">
-            {(currentUser.profile) ?
-              <div className="no-horizontal-margin row z-depth-1-half card-top-border">
-                <div className="col s12 m6 l6">
-                  <h5>Staff</h5>
-                  <div className="col s8">
-                    <table>
-                      <tbody>
-                      <tr>
-                        <th>Name:</th>
-                        <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
-                      </tr>
-                      <tr>
-                        <th>Department:</th>
-                        <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
-                      </tr>
-                      <tr>
-                        <th>Designation:</th>
-                        <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
-                      </tr>
-                      <tr>
-                        <th>Status:</th>
-                        <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="col s4">
-                    <img src="/uploads/defaults/default-img.png" alt="dp"
-                         className="display-photo responsive-img center-block circle"/>
-                  </div>
-                </div>
-              </div>
-              : 'Please wait'}
-          </section>
-          : 'please wait more'}
+        <PageTitle title="Your Time Tracker"/>
+        <UserDetails currentUser={currentUser}/>
 
         <DatePicker changeDate={this.changeDate.bind(this)}/>
-        <div className="z-depth-1-half card-top-border">
-          <table className="centered responsive-table bordered">
+        <div>
+          <table className="centered bordered">
             <thead>
             <tr>
               <th>Date</th>
@@ -95,6 +60,7 @@ class Timesheet extends TrackerReact(React.Component) {
               <th>Time Out</th>
               <th>Leave</th>
               <th>Hours<br/>Rendered</th>
+              <th>Approval</th>
             </tr>
             </thead>
             <tbody>

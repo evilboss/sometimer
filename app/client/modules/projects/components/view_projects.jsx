@@ -13,19 +13,25 @@ class ViewProjects extends React.Component {
     return (
       <section className="project-list">
         <div className="page-title">
-          <h5>ProjectList <span>
-          <a href="/projects/new" className="btn-floating waves-effect waves-light theme-color">
-            <i className="material-icons">add</i></a></span></h5>
+          <h5 className="inline">ProjectList</h5>
 
-          <div className="project-view">
+          <div className="project-view inline">
             <i className="material-icons active">view_module</i>
-            <a href="/projects/listview"><i className="material-icons">view_list</i></a>
+            <a href="/projects/listview"><i className="material-icons">list</i></a>
           </div>
         </div>
 
 
-        <TileView projects={this.props.projects}/>
-
+        <div className="row">
+          <div className="col s2 center-align">
+            <div className="btn-add">
+              <a href="/projects/new" className="waves-effect waves-light theme-color">
+                <i className="material-icons">add</i></a>
+              <h6>New Project</h6>
+            </div>
+          </div>
+          <TileView projects={this.props.projects}/>
+        </div>
       </section>
     );
   }

@@ -46,12 +46,12 @@ class Datepicker extends React.Component {
 
   submitForm(e) {
     e.preventDefault();
-    this.props.changeDate(this.refs.input_from.value,this.refs.input_to.value);
+    this.props.changeDate(this.refs.input_from.value, this.refs.input_to.value);
   }
 
   render() {
     return (
-      <div className="no-horizontal-margin row z-depth-1-half card-top-border">
+      <section className="row datepicker">
         <form className="col s12" onSubmit={this.submitForm.bind(this)}>
           <h5>View Timesheet</h5>
           <div className="row">
@@ -71,7 +71,7 @@ class Datepicker extends React.Component {
             </div>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

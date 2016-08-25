@@ -15,10 +15,10 @@ const newStaffs = [
     profile: {
       firstName: 'Kimbery',
       lastName: 'Ocariz',
-      department: 'Accounts',
-      staffType: 'Probitionary',
-      jobTitle: 'Account Support',
-      displayPhoto: 'defaults/default-img.png',
+      department: 'Accounts Support',
+      staffType: 'Regular',
+      jobTitle: 'Account Support Manager',
+      displayPhoto: 'defaults/teams/ezyva/profiles/kim/kimDP.jpg',
       role: 'staff',
 
     }
@@ -32,7 +32,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Associate Software Engineer',
-      displayPhoto: 'defaults/default-img.png',
+      displayPhoto: 'defaults/teams/ezyva/profiles/iob/iobDP.jpg',
       role: 'staff',
 
     }
@@ -42,11 +42,11 @@ const newStaffs = [
     password: 'kimpatakla',
     profile: {
       firstName: 'Daniel',
-      lastName: 'Tungul',
-      department: 'Development',
-      staffType: 'Probitionary',
-      jobTitle: 'Associate Software Engineer',
-      displayPhoto: 'defaults/default-img.png',
+      lastName: 'Arceo',
+      department: 'Accounts Support',
+      staffType: 'Regular',
+      jobTitle: 'Client Support Manager',
+      displayPhoto: 'defaults/teams/ezyva/profiles/dan/danDp.jpg',
       role: 'staff',
 
     }
@@ -60,7 +60,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
-      displayPhoto: 'defaults/default-img.png',
+      displayPhoto: 'defaults/teams/ezyva/profiles/aaron/jaredDp.jpg',
       role: 'staff',
 
     }
@@ -74,7 +74,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
-      displayPhoto: 'defaults/default-img.png',
+      displayPhoto: 'defaults/teams/ezyva/profiles/jr/rockAndRollToTheWorld.jpg',
       role: 'staff',
 
     }

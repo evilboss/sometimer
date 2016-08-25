@@ -24,7 +24,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Administrator',
-        displayPhoto: 'defaults/default-img.png',
+        displayPhoto: 'defaults/teams/default/profiles/admin/admin.gif',
         role: 'admin'
       }
     });
@@ -37,7 +37,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Manager',
-        displayPhoto: 'defaults/default-img.png',
+        displayPhoto: 'defaults/teams/default/profiles/manager/joker.jpg',
         role: 'manager'
       }
     });
@@ -50,7 +50,7 @@ const loadUsers = ()=> {
         department: 'Virtual Assistants',
         staffType: 'Regular',
         jobTitle: 'Virtual Assistant',
-        displayPhoto: '/Assets/teams/default/profiles/admin/admin.gif',
+        displayPhoto: 'defaults/teams/default/profiles/staff/rick.jpg',
         role: 'staff'
       }
     });

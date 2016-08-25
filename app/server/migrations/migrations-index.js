@@ -9,6 +9,7 @@
  * V5: Project Migration
  * V6: Timelogs for staff@staff.com user
  * v7: Teamlist migrations
+ * TODO: fix migration of breaks
  * v8: break migrations for staff@staff.com user
  * */
 const runMigrationsFromStart = ()=> {
@@ -16,6 +17,7 @@ const runMigrationsFromStart = ()=> {
   Migrations.migrateTo('latest');
 };
 const runOnlyToLatest = () => {
+  /*TODO: If migrating from 0 or off a meteor reset, Migrate first to 7 then continue to latest, bug tracked as per line 12*/
   Migrations.migrateTo('latest');
 };
 Meteor.startup(function () {

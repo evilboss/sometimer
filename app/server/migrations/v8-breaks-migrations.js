@@ -46,7 +46,6 @@ const loadBreaks = ()=> {
       }
     });
   }) : console.error('No timelogs');
-
 };
 const removeBreaks = ()=> {
   console.info('Removing breaks');

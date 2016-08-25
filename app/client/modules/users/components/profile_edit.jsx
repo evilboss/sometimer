@@ -8,19 +8,15 @@ class ProfileEdit extends React.Component {
   constructor(props) {
     super(props);
     this.onDrop = (files)=> {
-      console.log('Received files: ', files);
       _.each(files, function (file) {
         file.owner = Meteor.userId(); //before upload also save the owner of that file
         Images.insert(file, function (err, fileObj) {
-          console.log(fileObj);
           if (err) {
-            console.log(err); //in case there is an error, log it to the console
+            console.error(err); //in case there is an error, log it to the console
           } else {
-            console.log(file);
-            console.log("Success -> File Id: ->", fileObj._id);
-            let imagePath = 'images-' + fileObj._id + '-' + file.name;
 
-            console.log(Meteor.call('user.update-photo', Meteor.userId(), imagePath));
+            let imagePath = 'images-' + fileObj._id + '-' + file.name;
+            Meteor.call('user.update-photo', Meteor.userId(), imagePath);
             sweetAlert("Success!", "Click OK to close", "success");
           }
         });

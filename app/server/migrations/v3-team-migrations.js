@@ -14,7 +14,7 @@ Migrations.add({
 });
 const teamlist = ['protos', 'ezyva'];
 const loadTeams = ()=> {
-  console.log('Loading Teams');
+  console.info('Loading Teams');
   if (Team.find({}).count() === 0) {
     _.each(teamlist, function (team) {
       Team.insert({name: team});
@@ -23,6 +23,7 @@ const loadTeams = ()=> {
   }
 };
 const removeAllTeams = ()=> {
+  console.info('Removing Teams');
   _.each(teamlist, function (team) {
     const teamToRemove = Team.findOne({name: team});
     if (teamToRemove) {

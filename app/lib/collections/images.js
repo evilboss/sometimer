@@ -1,7 +1,6 @@
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: process.env.PWD + "/public/uploads/"})]
 });
-console.log(process.env.PWD);
 if (Meteor.isServer) {
   Images.allow({
     'insert': function () {

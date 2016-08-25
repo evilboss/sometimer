@@ -29,7 +29,6 @@ class TaskCreate extends React.Component {
     const {create, projectId} = this.props;
     create(projectId, title);
     this.refs.text.value = '';
-    console.log('clicking');
   }
 
   _renderError(error) {

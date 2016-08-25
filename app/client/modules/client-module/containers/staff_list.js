@@ -4,11 +4,10 @@ import StaffList from '../components/staff_list.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('teamlist', Meteor.userId()).ready()) {
+  if (Meteor.subscribe('teamlist').ready()) {
     const teamlist = Collections.Teamlist.find().fetch();
     const options = {_id: {$ne: Meteor.userId()}};
     const staffList = Meteor.users.find(options).fetch();
-    console.log(staffList);
     onData(null, {staffList});
   } else {
     onData();

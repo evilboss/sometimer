@@ -2,8 +2,9 @@
  * Created by jr on 8/24/16.
  */
 import {Timelogs, Breaks} from '/lib/collections/';
-import {getHoursRendered, addTime, subtractTime} from '/server/methods/timeDate/timeDate';
+import {getHoursRendered} from '/server/methods/timeDate/timeDate';
 import {getRandomInt} from '/lib/lib/utils';
+import {addTime, subtractTime} from '/lib/lib/time';
 Migrations.add({
   version: 8,
   name: 'Add Breaks to staff@staff.com user',
@@ -17,17 +18,16 @@ Migrations.add({
 const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
 const getTimelogs = (staffId)=> Timelogs.find({userId: staffId}).fetch();
 const loadBreaks = ()=> {
-  console.log('Adding breaks to staff');
+  console.info('Adding breaks to staff');
   const timelogList = (staff) ? getTimelogs(staff._id) : function () {
-    console.log('No staff found');
+    console.error('No staff found');
     return [];
   };
   (timelogList) ? _.each(timelogList, function (timelog) {
     const breakCount = getRandomInt(1, 10);
-    let breakList = [];
     for (var index = 0; index <= breakCount; index++) {
       const breaklog = {
-        userId: timelog.userId,
+        userId: staff._id,
         timeLogId: timelog._id,
         breakTimeIn: 'Sample only',
         currentStatus: 'BreakOut',
@@ -45,12 +45,10 @@ const loadBreaks = ()=> {
         totalRendered: totalRendered
       }
     });
-    console.log(Timelogs.findOne(timelog._id));
-  }) : console.log('No timelogs');
-
+  }) : console.error('No timelogs');
 };
 const removeBreaks = ()=> {
-  console.log('Removing breaks');
+  console.info('Removing breaks');
   const timeLogs = Timelogs.find({userId: staff._id}).fetch();
   _.each(timeLogs, function (timelog) {
     Breaks.remove({timeLogId: timelog._id});

@@ -3,6 +3,7 @@ import moment from 'moment';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import DatePicker from './datepicker';
 import TimeData from '../containers/timedata';
+import TimesheetTotal from '../containers/timesheet_total';
 import PageTitle from '/client/modules/core/components/page_title';
 import UserDetails from './user_details';
 const DateData = new ReactiveVar();
@@ -13,44 +14,79 @@ class Timesheet extends TrackerReact(React.Component) {
     this.state = {
       dates: []
     };
-  }
+  };
 
   componentWillMount() {
     this.getDates();
   }
 
 
-  getDates() {
-    let reactState = this;
-    Meteor.call('timesheet_dates.getCutOffDates', function (err, res, callback) {
+
+  getDates(from = null, to = null) {
+    const reactState = this;
+    Meteor.call('timesheet_dates.getCutOffDates', from, to, function (err, res, callback) {
       if (err) {
-        console.log(JSON.stringify(err, null, 2))
+        sweatAlert(
+          'Ooops',
+          'Something went wrong!',
+          '' + JSON.stringify(err, null, 2)
+        );
+
       } else {
         reactState.setState({dates: res});
       }
     });
   }
 
-  getUserName() {
-    Tracker.autorun(function () {
-      if (Meteor.user()) {
-        if (Meteor.user().profile) {
-          return Meteor.user().profile.firstName;
-        }
-      }
-    });
+  changeDate(from, to) {
+    this.getDates(from, to);
   }
 
   render() {
     let currentUser = this.props.currentUser;
-    let currentDisplayName = this.getUserName();
     let dates = this.state.dates;
     return (
       <section className="timesheet">
+        <h5>Employee's TimeSheet</h5>
+        {(currentUser) ?
+          <section className="user-details">
+            {(currentUser.profile) ?
+              <div className="no-horizontal-margin row z-depth-1-half card-top-border">
+                <div className="col s12 m6 l6">
+                  <h5>Staff</h5>
+                  <div className="col s8">
+                    <table>
+                      <tbody>
+                      <tr>
+                        <th>Name:</th>
+                        <td>{(currentUser.profile.firstName) ? currentUser.profile.firstName : ''} {(currentUser.profile.lastName) ? currentUser.profile.lastName : ''} </td>
+                      </tr>
+                      <tr>
+                        <th>Department:</th>
+                        <td>{(currentUser.profile.department) ? currentUser.profile.department : ''}</td>
+                      </tr>
+                      <tr>
+                        <th>Designation:</th>
+                        <td>{(currentUser.profile.jobTitle) ? currentUser.profile.jobTitle : ''}</td>
+                      </tr>
+                      <tr>
+                        <th>Status:</th>
+                        <td>{(currentUser.profile.staffType) ? currentUser.profile.staffType : ''}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="col s4">
+                    <img src="/uploads/defaults/default-img.png" alt="dp"
+                         className="display-photo responsive-img center-block circle"/>
+                  </div>
+                </div>
+              </div>
+              : 'Please wait'}
+          </section>
+          : 'please wait more'}
 
-        <PageTitle title="Your Time Tracker"/>
-        <UserDetails currentUser={currentUser}/>
-        <DatePicker/>
+        <DatePicker changeDate={this.changeDate.bind(this)}/>
         <div className="z-depth-1-half card-top-border">
           <table className="centered responsive-table bordered">
             <thead>
@@ -70,14 +106,8 @@ class Timesheet extends TrackerReact(React.Component) {
 
             </tbody>
             <tfoot>
-            <tr>
-              <th>Total:</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>Paid:0/Unpaid:0</th>
-            </tr>
+            <TimesheetTotal from={_.first(dates)} to={_.last(dates)}/>
+
             </tfoot>
           </table>
 
@@ -96,3 +126,4 @@ class Timesheet extends TrackerReact(React.Component) {
 }
 
 export default Timesheet;
+

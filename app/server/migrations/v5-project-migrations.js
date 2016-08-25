@@ -20,15 +20,15 @@ const loadProjects = ()=> {
     let member = Meteor.users.findOne({"emails.address": userEmail});
     members.push(member._id);
   });
-  console.log('Adding projects');
+  console.info('Adding projects');
   _.each(projectnames, function (project) {
     Projects.insert({name: project, createdAt: Date.now(), members: members});
   });
-  console.log('displaying projects', Projects.find().fetch());
+  console.info('displaying projects', Projects.find().fetch());
 };
 const removeProjects = ()=> {
   _.each(projectnames, function (project) {
     Projects.remove({name: project});
   });
-  console.log('displaying projects', Projects.find().fetch());
+  console.info('displaying projects', Projects.find().fetch());
 };

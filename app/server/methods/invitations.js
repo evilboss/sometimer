@@ -16,7 +16,7 @@ export default function () {
         date: ( new Date() ).toISOString()
 
       };
-      console.log('sending Invite',sendInvitation);
+      console.info('sending Invite',sendInvitation);
     }
   });
 }

@@ -3,9 +3,9 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import Timesheet from '../components/timesheet.jsx';
 export const composer = ({context, userId}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe("timesheet_data").ready && Meteor.subscribe("user.current").ready) {
+  const subscriptionsReady = [Meteor.subscribe("timesheet_data").ready, Meteor.subscribe("user.current").ready, Meteor.subscribe('teamlist').ready()];
+  if (subscriptionsReady) {
     const currentUser = (userId) ? Meteor.users.findOne({_id: userId}) : Meteor.user();
-    
     onData(null, {currentUser});
   } else {
     onData();

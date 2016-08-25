@@ -34,7 +34,6 @@ function buildDomain(sub, url) {
 
   //find & remove port number
   port = domain.split(':')[1];
-  console.log(port,domain.split(':'));
   domain = domain.split(':')[0];
 
 
@@ -48,8 +47,6 @@ function buildDomain(sub, url) {
 
 function getTeamInfo() {
   if (Meteor.subscribe('team.current', getSubdomain()).ready) {
-    console.log('subscription ready');
-    console.log(Team.find().count());
     return (Team.find().count()) ? Team.find().fetch() : null;
   }
 

@@ -8,10 +8,8 @@ export default {
 
     Meteor.loginWithPassword(email, password, (err) => {
       if (err && err.reason) {
-        console.log(err);
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      console.log(Meteor.user());
       if (Meteor.user()) {
         let path = '/dashboard/timetracker';
         if (Meteor.user().role === 'admin') {

@@ -4,7 +4,6 @@ import SendInvitationModal from '/client/modules/invitations/components/send_inv
 class StaffList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.staffList);
   }
 
   render() {

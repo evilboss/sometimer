@@ -6,10 +6,8 @@ class Username extends React.Component {
   }
   userRole(){
     const {profile} = this.props.user;
-    console.log(profile.role);
   }
   render() {
-    console.log(this.props.user);
     const {profile} = this.props.user;
     const {firstName,lastName} = profile;
     return (

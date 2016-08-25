@@ -9,7 +9,6 @@ class StartTaskButton extends React.Component {
     let role = this.props.user.profile.role;
     return (
       <div>
-        {console.log(role)}
         {(role =='staff')?<button className="btn btn-small">Start TASK</button>:''}
       </div>
     );

@@ -5,8 +5,6 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe("user.current").ready) {
     const user = Meteor.user();
-    console.log(user);
-
     onData(null, {user});
   }
 };

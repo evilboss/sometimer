@@ -46,7 +46,7 @@ class Datepicker extends React.Component {
 
   submitForm(e) {
     e.preventDefault();
-    alert(this.refs.input_from.value + this.refs.input_to.value);
+    this.props.changeDate(this.refs.input_from.value,this.refs.input_to.value);
   }
 
   render() {

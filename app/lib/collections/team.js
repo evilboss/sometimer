@@ -71,9 +71,7 @@ Team.after.insert(function (userId, doc) {
     if (doc._id) {
       DocDict.set('teamDocument', doc);
       if (DocDict.get('teamDocument')) {
-        console.log(DocDict.get('teamDocument'), 'yes');
       }
-      console.log(DocDict.get('teamDocument'));
       FlowRouter.go('/team/create/members');
     }
 

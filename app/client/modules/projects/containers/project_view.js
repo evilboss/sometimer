@@ -4,7 +4,6 @@ import ProjectView from '../components/project_view.jsx';
 
 export const composer = ({context, projectId}, onData) => {
   const {Meteor, Collections} = context();
-  console.log('composer',projectId);
   Meteor.subscribe('project.single', projectId, () => {
     const project = Collections.Projects.findOne(projectId);
     onData(null, {project});

@@ -2,7 +2,7 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import MyInput from '../../../utils/form/input';
 import TextArea from '../../../utils/form/textarea';
-
+import StaffMultiSelect from '/client/modules/staff/';
 class AddProjects extends React.Component {
   constructor(props) {
     super(props);

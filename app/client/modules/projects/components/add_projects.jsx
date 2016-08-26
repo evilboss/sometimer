@@ -2,7 +2,7 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import MyInput from '../../../utils/form/input';
 import TextArea from '../../../utils/form/textarea';
-import StaffMultiSelect from '/client/modules/staff/';
+import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 class AddProjects extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +26,7 @@ class AddProjects extends React.Component {
               <TextArea name="description" title="Description" required/>
               <button className="btn waves-effect waves-light theme-color" type="submit">Start the Project
                 <i className="material-icons right">send</i></button>
+              <StaffMultiSelect/>
             </Formsy.Form>
           </div>
         </div>

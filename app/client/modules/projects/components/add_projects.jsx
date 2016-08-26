@@ -2,10 +2,14 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import MyInput from '../../../utils/form/input';
 import TextArea from '../../../utils/form/textarea';
-
+import StaffMultiSelect from '/client/modules/staff/';
 class AddProjects extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  addProject() {
+    console.log('submit');
   }
 
   render() {
@@ -17,7 +21,7 @@ class AddProjects extends React.Component {
           View All Projects</a>
         <div className="row container-padding z-depth-1-half card-top-border">
           <div className="row">
-            <Formsy.Form onSubmit={this.onSubmit} className="login">
+            <Formsy.Form onSubmit={this.addProject.bind(this)} className="login">
               <MyInput name="projectName" title="Project Name" required/>
               <TextArea name="description" title="Description" required/>
               <button className="btn waves-effect waves-light theme-color" type="submit">Start the Project

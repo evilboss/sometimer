@@ -67,7 +67,6 @@ const loadUsers = ()=> {
         role: 'client'
       }
     });
-
   }
 };
 const removeAllUsers = ()=> {

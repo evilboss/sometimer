@@ -10,7 +10,9 @@
  * V6: Timelogs for staff@staff.com user
  * v7: Teamlist migrations
  * v8: break migrations for staff@staff.com user
+ * V9: Add client user stafflist
  * */
+
 const runMigrationsFromStart = ()=> {
   Migrations.migrateTo(0);
   Migrations.migrateTo('latest');

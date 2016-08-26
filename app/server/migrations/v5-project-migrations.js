@@ -22,7 +22,7 @@ const loadProjects = ()=> {
   });
   console.info('Adding projects');
   _.each(projectnames, function (project) {
-    Projects.insert({name: project, createdAt: Date.now(), members: members});
+    Projects.insert({name: project, createdAt: Date.now(), collaborators: members});
   });
   console.info('displaying projects', Projects.find().fetch());
 };

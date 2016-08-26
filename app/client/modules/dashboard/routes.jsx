@@ -4,7 +4,7 @@ import DashboardHeader from './components/dashboard_header';
 import Foot from '../core/components/footer.jsx';
 import Header from '../core/containers/header';
 import Dashboard from './containers/dashboard';
-import StaffList from '/client/modules/client-module/containers/staff_list';
+import StaffList from '/client/modules/staff/containers/staff_list';
 import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';

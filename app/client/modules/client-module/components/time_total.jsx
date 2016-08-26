@@ -16,18 +16,24 @@ class TimeTotal extends React.Component {
   componentWillReceiveProps() {
     console.log('props recived');
     console.log(this.props.totalBreak, this.props.totalRendered);
-    (this.props.totalRendered)?this.setState({totalRendered:this.props.totalRendered}):'';
-    (this.props.totalBreak)?this.setState({totalBreak:this.props.totalBreak}):'';
+    (this.props.totalRendered) ? this.setState({totalRendered: this.props.totalRendered}) : '';
+    (this.props.totalBreak) ? this.setState({totalBreak: this.props.totalBreak}) : '';
   }
+
   render() {
     return (
-      <div>
-        <div>
-          Total Break: {this.state.totalBreak}
+      <div className="total-time col s8">
+
+        <div className="center-align">
+          <h2>{this.state.totalRendered}</h2>
+          Work hrs.
         </div>
-        <div>
-          Total Hours: {this.state.totalRendered}
+
+        <div className="center-align">
+          <h2>{this.state.totalBreak}</h2>
+          Break hrs.
         </div>
+        
       </div>
     );
   }

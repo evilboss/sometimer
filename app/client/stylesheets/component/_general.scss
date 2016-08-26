@@ -266,6 +266,18 @@ table.centered tfoot tr th, table.centered tfoot tr td {
   text-align: center;
 }
 
+table {
+  td, th {
+    padding: 1px;
+  }
+  th {
+    color: #6c6c6c;
+  }
+  td {
+    color: #2f5f5b;
+  }
+}
+
 tfoot {
   border-top: 2px solid $theme-color;
 }

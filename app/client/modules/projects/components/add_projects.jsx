@@ -24,9 +24,10 @@ class AddProjects extends React.Component {
             <Formsy.Form onSubmit={this.addProject.bind(this)} className="login">
               <MyInput name="projectName" title="Project Name" required/>
               <TextArea name="description" title="Description" required/>
+              <StaffMultiSelect/>
               <button className="btn waves-effect waves-light theme-color" type="submit">Start the Project
                 <i className="material-icons right">send</i></button>
-              <StaffMultiSelect/>
+
             </Formsy.Form>
           </div>
         </div>

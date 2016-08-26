@@ -29,7 +29,7 @@ const menuItems = [{
     icon: "group",
     url: '/dashboard/stafflist',
     name: 'dashboard.stafflist',
-    roles: ['admin', 'manager']
+    roles: ['admin', 'manager','client']
 
   },
   {
@@ -37,8 +37,7 @@ const menuItems = [{
     icon: "assignment",
     url: '/projects/tileview',
     name:'projects.tileview',
-    roles: ['staff', 'admin', 'manager']
-
+    roles: ['staff', 'admin', 'manager','client']
   }
 ];
 const loadMenus = ()=> {

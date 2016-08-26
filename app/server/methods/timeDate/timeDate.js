@@ -59,7 +59,6 @@ const generateDateToday = ()=> {
   };
   return today;
 };
-
 /**
  *
  * @param timeOut

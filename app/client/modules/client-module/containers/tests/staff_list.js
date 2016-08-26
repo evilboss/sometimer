@@ -1,7 +1,7 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../staff_list';
+import {composer} from '../../../staff/containers/staff_list';
 
 describe('client_module.containers.staff_list', () => {
   describe('composer', () => {

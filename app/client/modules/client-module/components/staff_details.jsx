@@ -31,15 +31,35 @@ class StaffDetails extends React.Component {
   render() {
     const {staff, index} = this.props;
     return (
+      
       <a className="collection-item avatar" key={index} href={`/dashboard/staff/${staff._id}`}>
         <img src={"/uploads/" + staff.profile.displayPhoto} alt="" className="circle"/>
-        <div>Name: {staff.profile.firstName}</div>
-        <div>Department: {staff.profile.department}</div>
-        <div>Job Title: {staff.profile.jobTitle}</div>
-        <div>Status: {staff.profile.staffType}</div>
-        <div>Task?</div>
-        <div>Login Status: {staff.profile.status}</div>
+
+        <table>
+          <tbody>
+          <tr>
+            <th>Name:</th>
+            <td>{staff.profile.firstName}</td>
+          </tr>
+          <tr>
+            <th>Department:</th>
+            <td>{staff.profile.department}</td>
+          </tr>
+          <tr>
+            <th>Designation:</th>
+            <td>{staff.profile.jobTitle}</td>
+          </tr>
+          <tr>
+            <th>Status:</th>
+            <td>{staff.profile.staffType}</td>
+          </tr>
+          </tbody>
+        </table>
+
         <TimeTotal userId={staff._id} date={this.state.date}/>
+
+        <div>Login Status {staff.profile.status}</div>
+
       </a>
     );
   }

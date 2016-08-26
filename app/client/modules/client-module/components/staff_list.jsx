@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import SendInvitationModal from '/client/modules/invitations/components/send_invitation_modal';
 import StaffDetails from '../containers/staff_details';
+import PageTitle from '/client/modules/core/components/page_title';
 class StaffList extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,7 @@ class StaffList extends React.Component {
     return (
       <div>
         <section id="staff-list">
-          <h5>Staff List</h5>
+          <PageTitle title="My Team"/>
           <div className="collection">
             {this.props.staffList.map((staff, index) => (
               <StaffDetails key={index} staff={staff} index={index}/>

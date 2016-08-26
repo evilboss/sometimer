@@ -15,14 +15,14 @@ Migrations.add({
     removeBreaks();
   }
 });
-const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
 const getTimelogs = (staffId)=> Timelogs.find({userId: staffId}).fetch();
 const loadBreaks = ()=> {
   console.info('Adding breaks to staff');
-  const timelogList = (staff) ? getTimelogs(staff._id) : function () {
-    console.error('No staff found');
-    return [];
-  };
+  Meteor._sleepForMs(5000);
+  const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
+  console.log(staff);
+  const timelogList = (staff) ? getTimelogs(staff._id) : [];
+  console.log(timelogList, getTimelogs(staff._id));
   (timelogList) ? _.each(timelogList, function (timelog) {
     const breakCount = getRandomInt(1, 10);
     for (var index = 0; index <= breakCount; index++) {
@@ -49,6 +49,7 @@ const loadBreaks = ()=> {
 };
 const removeBreaks = ()=> {
   console.info('Removing breaks');
+  const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
   const timeLogs = Timelogs.find({userId: staff._id}).fetch();
   _.each(timeLogs, function (timelog) {
     Breaks.remove({timeLogId: timelog._id});

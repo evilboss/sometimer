@@ -19,7 +19,6 @@ class TimeTotal extends React.Component {
     (this.props.totalRendered)?this.setState({totalRendered:this.props.totalRendered}):'';
     (this.props.totalBreak)?this.setState({totalBreak:this.props.totalBreak}):'';
   }
-
   render() {
     return (
       <div>

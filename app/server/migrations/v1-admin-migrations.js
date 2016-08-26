@@ -54,11 +54,25 @@ const loadUsers = ()=> {
         role: 'staff'
       }
     });
+    Accounts.createUser({
+      email: "client@client.com",
+      password: "password",
+      profile: {
+        firstName: ' Jack',
+        lastName: 'Torrance',
+        department: 'Virtual Assistants',
+        staffType: 'Regular',
+        jobTitle: 'Virtual Assistant',
+        displayPhoto: 'defaults/teams/default/profiles/jack/JackTorrance.jpg',
+        role: 'client'
+      }
+    });
+
   }
 };
 const removeAllUsers = ()=> {
   console.info('Removing Users');
-  const innitalUsers = ['admin@admin.com', 'manager@manager.com', 'staff@staff.com'];
+  const innitalUsers = ['admin@admin.com', 'manager@manager.com', 'staff@staff.com', 'client@client.com'];
   _.each(innitalUsers, function (userEmail) {
     const removeUser = Meteor.users.findOne({'emails.address': {$regex: userEmail, $options: 'i'}});
     if (removeUser) {

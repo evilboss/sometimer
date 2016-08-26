@@ -8,10 +8,12 @@ export const composer = ({context, date, userId}, onData) => {
   const subscriptionReady = [Meteor.subscribe('timelogs.by.date', moment(date).format('DD:MM:YY'), userId).ready];
   if (subscriptionReady) {
     const selector = {userId: userId};
+    console.log(Collections.Timelogs.find(selector).fetch());
     const timelog = Collections.Timelogs.findOne(selector);
-    if (timelog) {
-      const totalBreak = timelog.totalBreak;
-      const totalRendered = timelog.totalRendered;
+    console.log(timelog);
+    if (Collections.Timelogs.findOne(selector)) {
+      const totalBreak = Collections.Timelogs.findOne(selector).totalBreak;
+      const totalRendered = Collections.Timelogs.findOne(selector).totalRendered;
       onData(null, {totalBreak, totalRendered});
     } else {
       onData(null, {});

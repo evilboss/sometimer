@@ -14,8 +14,10 @@ const loadStaffList = ()=> {
   console.info('Loading stafflist');
   if (Teamlist.find({}).count() === 0) {
     let useridList = [];
+    Meteor._sleepForMs(5000);
     const owner = Meteor.users.findOne({'emails.address': {$regex: 'manager@manager.com', $options: 'i'}});
     if (owner) {
+      console.log('owner found', owner);
       _.each(defaultstafflist, function (staffEmail) {
         const staff = Meteor.users.findOne({'emails.address': {$regex: staffEmail, $options: 'i'}});
         useridList.push(staff._id);
@@ -28,10 +30,11 @@ const removeAllStaffList = ()=> {
 
   console.info('removing stafflist');
   if (Teamlist.find({}).count() === 0) {
-    let useridList = [];
+    Meteor._sleepForMs(5000);
     const owner = Meteor.users.findOne({'emails.address': {$regex: 'manager@manager.com', $options: 'i'}});
     if (owner) {
-      let currentTeamList = Teamlist.find({ownerId: owner._id});
+      console.log('owner found', owner);
+      let currentTeamList = Teamlist.find({owner: owner._id});
       _.each(currentTeamList, function (teamlist) {
         Teamlist.remove(teamlist._id);
       })

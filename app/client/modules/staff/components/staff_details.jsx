@@ -57,9 +57,17 @@ class StaffDetails extends React.Component {
               </tbody>
             </table>
           </div>
-          <TimeTotal userId={staff._id} date={this.state.date}/>
+          <div className="col s8">
+            <TimeTotal userId={staff._id} date={this.state.date}/>
+            <div className="status inline center-align">
+              <div className="center-align">
+                <div className="beacon"></div>
+                {staff.profile.status}
+              </div>
+            </div>
+          </div>
         </div>
-        <div>Login Status {staff.profile.status}</div>
+
 
       </a>
     );

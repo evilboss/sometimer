@@ -17,21 +17,29 @@ section#staff-list {
         }
       }
       .total-time {
+        margin-top: 1.6em;
         div:first-child {
-          border-left: 1px solid gray;
-          border-right: 1px solid gray;
+          border-left: 1px dotted #dedede;
+          border-right: 1px dotted #dedede;
+        }
+        div {
+          border-right: 1px dotted #dedede;
         }
         div:last-child {
-          border-right: 1px solid gray;
+          border-right: 1px dotted #dedede;
         }
         div.center-align {
+          color: #999999;
           display: inline-block;
           padding: 0 1.5em;
         }
-        h2 {
+        h4 {
           margin: 0;
           color: $theme-color;
         }
+      }
+      .status {
+        @extend .total-time;
       }
     }
   }

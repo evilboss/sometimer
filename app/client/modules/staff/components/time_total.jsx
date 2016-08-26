@@ -22,18 +22,23 @@ class TimeTotal extends React.Component {
 
   render() {
     return (
-      <div className="total-time col s8">
+      <div className="total-time inline">
 
         <div className="center-align">
-          <h2>{this.state.totalRendered}</h2>
+          <h4>{this.state.totalRendered}</h4>
           Work hrs.
         </div>
 
         <div className="center-align">
-          <h2>{this.state.totalBreak}</h2>
+          <h4>1</h4>
+          Task(s)
+        </div>
+
+        <div className="center-align">
+          <h4>{this.state.totalBreak}</h4>
           Break hrs.
         </div>
-        
+
       </div>
     );
   }

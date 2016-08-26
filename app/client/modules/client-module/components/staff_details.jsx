@@ -38,11 +38,8 @@ class StaffDetails extends React.Component {
         <div>Job Title: {staff.profile.jobTitle}</div>
         <div>Status: {staff.profile.staffType}</div>
         <div>Task?</div>
-<TimeTotal userId={staff._id} date={this.state.date}/>
-        
-        
-        <div>Login Status {staff.profile.status}</div>
-
+        <div>Login Status: {staff.profile.status}</div>
+        <TimeTotal userId={staff._id} date={this.state.date}/>
       </a>
     );
   }

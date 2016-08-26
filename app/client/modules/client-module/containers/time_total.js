@@ -9,7 +9,15 @@ export const composer = ({context, date, userId}, onData) => {
   if (subscriptionReady) {
     const selector = {userId: userId};
     const timelog = Collections.Timelogs.findOne(selector);
-    onData(null, {timelog});
+    if (timelog) {
+      const totalBreak = timelog.totalBreak;
+      const totalRendered = timelog.totalRendered;
+      onData(null, {totalBreak, totalRendered});
+    } else {
+      onData(null, {});
+    }
+
+
   } else {
     onData();
   }

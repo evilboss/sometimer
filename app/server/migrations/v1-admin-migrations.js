@@ -60,9 +60,9 @@ const loadUsers = ()=> {
       profile: {
         firstName: ' Jack',
         lastName: 'Torrance',
-        department: 'Virtual Assistants',
+        department: 'Admin',
         staffType: 'Regular',
-        jobTitle: 'Virtual Assistant',
+        jobTitle: 'CEO',
         displayPhoto: 'defaults/teams/default/profiles/jack/JackTorrance.jpg',
         role: 'client'
       }

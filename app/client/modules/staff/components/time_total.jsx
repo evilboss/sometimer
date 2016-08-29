@@ -22,7 +22,7 @@ class TimeTotal extends React.Component {
 
   render() {
     return (
-      <div className="total-time inline">
+      <div className="total-time">
 
         <div className="center-align">
           <h4>{this.state.totalRendered}</h4>

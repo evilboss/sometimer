@@ -32,10 +32,10 @@ class StaffDetails extends React.Component {
     const {staff, index} = this.props;
     return (
 
-      <a className="collection-item avatar" key={index} href={`/dashboard/staff/${staff._id}`}>
+      <div className="collection-item avatar" key={index}>
         <img src={"/uploads/" + staff.profile.displayPhoto} alt="" className="circle"/>
         <div className="row">
-          <div className="col s4">
+          <div className="col s3">
             <table>
               <tbody>
               <tr>
@@ -57,19 +57,25 @@ class StaffDetails extends React.Component {
               </tbody>
             </table>
           </div>
-          <div className="col s8">
+          <div className="col s9 flex">
             <TimeTotal userId={staff._id} date={this.state.date}/>
-            <div className="status inline center-align">
-              <div className="center-align">
-                <div className="beacon"></div>
-                {staff.profile.status}
-              </div>
+            <div className="status center-align">
+              <div className="beacon"></div>
+              {staff.profile.status}
+            </div>
+            <div className="icons center-align">
+              <a href={`/dashboard/staff/${staff._id}`}>
+                <img src="/Assets/icons/time.png"/>
+              </a>
+              <img src="/Assets/icons/message.png"/>
+              <img src="/Assets/icons/phone.png"/>
+              <img src="/Assets/icons/file.png"/>
             </div>
           </div>
         </div>
 
 
-      </a>
+      </div>
     );
   }
 }

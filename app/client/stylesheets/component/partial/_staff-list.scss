@@ -3,7 +3,7 @@ section#staff-list {
   .collection {
     @include remove-section-margin;
     .collection-item {
-      padding-left: 90px;
+      padding: 5px 0px 5px 90px;
       img.circle {
         margin-top: 1em;
         width: 60px;
@@ -16,6 +16,9 @@ section#staff-list {
           padding: 0 5px;
         }
       }
+      .col {
+        padding: 0;
+      }
       .total-time {
         margin-top: 1.6em;
         div:first-child {
@@ -25,9 +28,7 @@ section#staff-list {
         div {
           border-right: 1px dotted #dedede;
         }
-        div:last-child {
-          border-right: 1px dotted #dedede;
-        }
+
         div.center-align {
           color: #999999;
           display: inline-block;
@@ -40,7 +41,32 @@ section#staff-list {
       }
       .status {
         @extend .total-time;
+        color: #999999;
+        width: 100px;
+        position: relative;
+        border-right: 1px dotted #dedede;
+        .beacon {
+          position: relative;
+          display: block;
+          border: none;
+          height: 1em;
+          width: 1em;
+          margin: 0.8em auto 0.7em auto;
+        }
       }
+      .icons {
+        @extend .total-time;
+        position: relative;
+        padding: 10px;
+        img {
+          padding: 5px;
+        }
+      }
+    }
+  }
+  #invitationaButton {
+    button {
+      margin: 1em 0;
     }
   }
 }

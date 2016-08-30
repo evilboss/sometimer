@@ -31,16 +31,51 @@ class StaffDetails extends React.Component {
   render() {
     const {staff, index} = this.props;
     return (
-      <a className="collection-item avatar" key={index} href={`/dashboard/staff/${staff._id}`}>
+
+      <div className="collection-item avatar" key={index}>
         <img src={"/uploads/" + staff.profile.displayPhoto} alt="" className="circle"/>
-        <div>Name: {staff.profile.firstName}</div>
-        <div>Department: {staff.profile.department}</div>
-        <div>Job Title: {staff.profile.jobTitle}</div>
-        <div>Status: {staff.profile.staffType}</div>
-        <div>Task?</div>
-        <div>Login Status: {staff.profile.status}</div>
-        <TimeTotal userId={staff._id} date={this.state.date}/>
-      </a>
+        <div className="row">
+          <div className="col s3">
+            <table>
+              <tbody>
+              <tr>
+                <th>Name:</th>
+                <td>{staff.profile.firstName}</td>
+              </tr>
+              <tr>
+                <th>Department:</th>
+                <td>{staff.profile.department}</td>
+              </tr>
+              <tr>
+                <th>Designation:</th>
+                <td>{staff.profile.jobTitle}</td>
+              </tr>
+              <tr>
+                <th>Status:</th>
+                <td>{staff.profile.staffType}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col s9 flex">
+            <TimeTotal userId={staff._id} date={this.state.date}/>
+            <div className="status center-align">
+              <div className="beacon"></div>
+              {staff.profile.status}
+            </div>
+            <div className="icons center-align">
+              <a href={`/dashboard/staff/${staff._id}`}>
+                <img src="/Assets/icons/time.png"/>
+              </a>
+              <img src="/Assets/icons/message.png"/>
+              <img src="/Assets/icons/phone.png"/>
+              <img src="/Assets/icons/file.png"/>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
     );
   }
 }

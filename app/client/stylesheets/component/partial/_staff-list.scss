@@ -22,11 +22,11 @@ section#staff-list {
       .total-time {
         margin-top: 1.6em;
         div:first-child {
-          border-left: 1px dotted #dedede;
-          border-right: 1px dotted #dedede;
+          border-left: 1px dotted $gray-line;
+          border-right: 1px dotted $gray-line;
         }
         div {
-          border-right: 1px dotted #dedede;
+          border-right: 1px dotted $gray-line;
         }
 
         div.center-align {
@@ -44,7 +44,7 @@ section#staff-list {
         color: #999999;
         width: 100px;
         position: relative;
-        border-right: 1px dotted #dedede;
+        border-right: 1px dotted $gray-line;
         .beacon {
           position: relative;
           display: block;

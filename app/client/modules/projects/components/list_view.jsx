@@ -21,7 +21,7 @@ class ListView extends React.Component {
         <div className="row">
           <div className="col s2 center-align">
             <div className="btn-add">
-              <a href="/projects/new" className="waves-effect waves-light theme-color">
+              <a href="/projects/new" className="waves-effect waves-light secondary-color">
                 <i className="material-icons">add</i></a>
               <h6>New Project</h6>
             </div>

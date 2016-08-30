@@ -9,10 +9,10 @@ const MyInput = React.createClass({
     const className = 'row form-group' + (this.props.className || ' ') +
       (this.showRequired() ? 'required' : this.showError() ? 'error' : '');
     const errorMessage = this.getErrorMessage();
-
+    const fieldSize = this.props.fieldSize;
     return (
-      <div className={className}>
-        <div className="input-field col s12">
+      <div className={`${className} ${(fieldSize)?(fieldSize):'col s12'}`}>
+        <div className="input-field col s12 no-padding">
           <input
             type={this.props.type || 'text'}
             name={this.props.name}

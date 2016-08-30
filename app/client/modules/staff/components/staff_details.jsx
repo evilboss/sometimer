@@ -70,6 +70,7 @@ class StaffDetails extends React.Component {
               <img src="/Assets/icons/message.png"/>
               <img src="/Assets/icons/phone.png"/>
               <img src="/Assets/icons/file.png"/>
+	            <a className="btn" href={`/dashboard/staff/settings/${staff._id}`}>Settings</a>
             </div>
           </div>
         </div>

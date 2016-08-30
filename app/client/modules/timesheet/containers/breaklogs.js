@@ -1,5 +1,4 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
 import Breaklogs from '../components/breaklogs.jsx';
 export const composer = ({context, timeLogId}, onData) => {
   const {Meteor, Collections} = context();

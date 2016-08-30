@@ -8,6 +8,11 @@ class StaffDetails extends React.Component {
     };
   };
 
+  comingSoon(e) {
+    e.preventDefault();
+    sweetAlert("Coming Soon!");
+  }
+
   componentDidMount() {
     this.getToday();
   };
@@ -67,9 +72,9 @@ class StaffDetails extends React.Component {
               <a href={`/dashboard/staff/${staff._id}`}>
                 <img src="/Assets/icons/time.png"/>
               </a>
-              <img src="/Assets/icons/message.png"/>
-              <img src="/Assets/icons/phone.png"/>
-              <img src="/Assets/icons/file.png"/>
+              <img src="/Assets/icons/message.png" onClick={this.comingSoon.bind()}/>
+              <img src="/Assets/icons/phone.png" onClick={this.comingSoon.bind()}/>
+              <img src="/Assets/icons/file.png" onClick={this.comingSoon.bind()}/>
             </div>
           </div>
         </div>

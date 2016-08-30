@@ -65,7 +65,7 @@ class StaffDetails extends React.Component {
           <div className="col s9 flex">
             <TimeTotal userId={staff._id} date={this.state.date}/>
             <div className="status center-align">
-              <div className="beacon"></div>
+              <div className={`beacon ${staff.profile.status}`}></div>
               {staff.profile.status}
             </div>
             <div className="icons center-align">

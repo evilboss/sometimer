@@ -383,3 +383,45 @@ form {
     margin: 25% 0;
   }
 }
+
+.react-select-popover {
+  .select-input {
+    span.tag {
+      cursor: pointer;
+      display: inline-block;
+      height: 32px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 32px;
+      padding: 0 12px;
+      border-radius: 16px;
+      background-color: #e4e4e4;
+      margin-bottom: 5px;
+      margin-right: 5px;
+      button {
+        border: none;
+        background-color: transparent !important;
+        font-weight: bold;
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .popover {
+    span.tag {
+      cursor: pointer;
+      display: inline-block;
+      height: 32px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 32px;
+      padding: 0 12px;
+      border-radius: 16px;
+      background-color: #e4e4e4;
+      margin-bottom: 5px;
+      margin-right: 5px;
+    }
+  }
+}

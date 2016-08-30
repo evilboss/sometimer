@@ -75,6 +75,7 @@ class StaffDetails extends React.Component {
               <img src="/Assets/icons/message.png" onClick={this.comingSoon.bind()}/>
               <img src="/Assets/icons/phone.png" onClick={this.comingSoon.bind()}/>
               <img src="/Assets/icons/file.png" onClick={this.comingSoon.bind()}/>
+              <a className="btn" href={`/dashboard/staff/settings/${staff._id}`}>Settings</a>
             </div>
           </div>
         </div>

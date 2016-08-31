@@ -45,12 +45,11 @@ class Timesheet extends TrackerReact(React.Component) {
     let dates = this.state.dates;
     return (
       <section className="timesheet">
-        <PageTitle title="Your Time Tracker"/>
+	      
+        <PageTitle title={`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`}/>
         <UserDetails currentUser={currentUser}/>
-
         <DatePicker changeDate={this.changeDate.bind(this)}/>
         <TimesheetTable currentUser={currentUser} dates={dates}/>
-
       </section>
     );
   }

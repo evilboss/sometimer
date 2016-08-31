@@ -3,7 +3,7 @@
  */
 import Projects from '/lib/collections/projects';
 const projectInsert = (project)=> {
-  Projects.insert();
+  Projects.insert(project);
 };
 const projectUpdate = (project)=> {
   Projects.update({_id: project});

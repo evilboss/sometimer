@@ -5,7 +5,7 @@ import TextArea from '../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import PageTitle from '/client/modules/core/components/page_title';
 import ProjectQuickView from '/client/modules/projects/containers/project_quick_view';
-/*TODO:@aaron project create fields*/
+
 class AddProjects extends React.Component {
   constructor(props) {
     super(props);
@@ -38,32 +38,34 @@ class AddProjects extends React.Component {
         <div className="row flex no-section-margin">
 
           <div className="col s2 no-horizontal-padding">
-              <ProjectQuickView/>
+            <ProjectQuickView/>
           </div>
 
           <div className="col s10">
-            <h4>Creat A Project</h4>
-            <Formsy.Form onSubmit={this.addProject.bind(this)} className="login">
-              <MyInput name="name" ref="name" fieldSize="col s4" title="Project Title" required/>
-              <div className="row form-group required col s4">
-                <div className="input-field col s12 no-padding">
-                  <select>
-                    <option defaultValue="Choose your option" disabled></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                  <label>Materialize Select</label>
+            <section className="create-project">
+              <h4>Create A Project</h4>
+              <Formsy.Form onSubmit={this.addProject.bind(this)} className="login">
+                <MyInput name="name" ref="name" fieldSize="col s6" title="Project Title" required/>
+                <div className="row form-group required col s6">
+                  <div className="input-field col s12 no-padding">
+                    <select>
+                      <option defaultValue="Choose your option" disabled></option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Materialize Select</label>
+                  </div>
                 </div>
-              </div>
+                <div className="row form-group required col s12">
+                  <TextArea name="description" title="Description" required/>
+                </div>
+                <StaffMultiSelect getData={this.getData.bind(this)}/>
+                <button className="btn waves-effect waves-light theme-color" type="submit">Start the Project
+                  <i className="material-icons right">send</i></button>
 
-
-              <TextArea name="description" title="Description" required/>
-              <StaffMultiSelect getData={this.getData.bind(this)}/>
-              <button className="btn waves-effect waves-light theme-color" type="submit">Start the Project
-                <i className="material-icons right">send</i></button>
-
-            </Formsy.Form>
+              </Formsy.Form>
+            </section>
           </div>
         </div>
       </section>

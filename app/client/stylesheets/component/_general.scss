@@ -385,6 +385,12 @@ form {
 }
 
 .react-select-popover {
+  padding: 0 0.75em;
+  width: 100%;
+  .empty-list {
+    color: #9e9e9e;
+    padding-left: 0.75em;
+  }
   .select-input {
     span.tag {
       cursor: pointer;

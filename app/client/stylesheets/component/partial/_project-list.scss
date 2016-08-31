@@ -7,7 +7,7 @@ section.project-list {
       font-size: 30px;
     }
     a {
-      color: $gray;
+      color: $gray-line;
     }
     .active {
       color: $theme-color;
@@ -24,7 +24,7 @@ section.project-list {
       }
     }
     h6 {
-      color: $theme-color;
+      color: $secondary-color;
     }
   }
   article {

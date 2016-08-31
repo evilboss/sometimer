@@ -6,7 +6,5 @@ app/node_modules
 app/settings-dev.json
 app/packages
 app/public/uploads/*
-!app/public/uploads/defaults/
-
-
 .idea
+!app/public/uploads/defaults/

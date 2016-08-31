@@ -30,7 +30,6 @@ class ListView extends React.Component {
             <div className="collection">
               {this.props.projects.map(project => (
                 <a href={`/project/${project._id}`} key={project._id} className="collection-item">
-
                   <b>{project.name}</b>
                 </a>
               ))}

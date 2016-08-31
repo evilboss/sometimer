@@ -1,4 +1,5 @@
 import React from 'react';
+import StaffDp from '/client/modules/users/containers/staff_dp';
 
 var TileView = React.createClass({
 
@@ -14,8 +15,9 @@ var TileView = React.createClass({
                   <p className="subtext">{project.description}</p>
                 </div>
                 <div className="card-action">
-                  <img src="/uploads/images-JDmnjLyS2SJX2Dobw-10157144_1564499200529805_9058151315234506598_n.jpg"
-                       alt="people" className="circle responsive-img"/>
+                  {project.collaborators.map((collaborator, key)=>(
+                    (key <= 4) ? <StaffDp key={key} userId={collaborator}/> : ''
+                  ))}
                 </div>
               </div>
             </article>

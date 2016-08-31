@@ -3,24 +3,42 @@ class TaskCreate extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const {error} = this.props;
     return (
-      <div>
+      <section id="task-create">
+        <h4>Create A Task</h4>
         {error ? this._renderError(error) : null}
-        <textarea ref='text' placeholder='Enter task title here.'>
+        <div className="row">
+
+
+          <div className="input-field col s12">
+          <textarea ref='text' className="materialize-textarea" placeholder='Enter task title here.'>
         </textarea>
-        <select ref="publishstatus" defaultValue="">
-          <option>Draft</option>
-          <option>Published</option>
-        </select>
-        <select ref="assignee" defaultValue="Draft">
-          <option>Draft</option>
-          <option>Published</option>
-        </select>
+            <label htmlFor="textarea1">Task Title</label>
+          </div>
+
+          <div className="input-field col s6">
+            <select ref="publishstatus" defaultValue="">
+              <option>Draft</option>
+              <option>Published</option>
+            </select>
+            <label>Publish Status</label>
+          </div>
+          <div className="input-field col s6">
+            <select ref="assignee" defaultValue="Draft">
+              <option>Draft</option>
+              <option>Published</option>
+            </select>
+            <label>Assignee</label>
+          </div>
+        </div>
+
         <br />
-        <button className="btn-floating waves-effect waves-light theme-color" onClick={this._create.bind(this)}> <i className="material-icons">add</i></button>
-      </div>
+        <button className="btn-floating waves-effect waves-light theme-color" onClick={this._create.bind(this)}><i
+          className="material-icons">add</i></button>
+      </section>
     );
   }
 

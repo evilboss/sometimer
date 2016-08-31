@@ -1,3 +1,18 @@
-section#project {
-@extend .container-margin;
+section#project-view {
+  @extend .container-margin;
+
+  section.phase-list {
+    .phase-title {
+      font-weight: 400;
+      font-size: 22px;
+    }
+    .description {
+      margin: 0;
+    }
+    .timeline {
+      border-top: 1px solid $gray-line;
+      border-bottom: 1px solid $gray-line;
+      padding: 0.5em 0;
+    }
+  }
 }

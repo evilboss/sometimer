@@ -19,7 +19,9 @@ section.timesheet {
     @include remove-section-margin;
     thead {
       background-color: #454648;
-      color: white;
+      th {
+        color: white;
+      }
     }
     td, th {
       border-radius: 0;

@@ -40,7 +40,6 @@ class AddProjects extends React.Component {
           <div className="col s2 no-horizontal-padding">
             <ProjectQuickView/>
           </div>
-
           <div className="col s10">
             <section className="create-project">
               <h4>Create A Project</h4>

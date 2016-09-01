@@ -14,6 +14,10 @@ class StaffList extends React.Component {
     });
   }
 
+  changeView(e) {
+    console.log(e);
+  }
+
   render() {
     return (
       <div>
@@ -29,10 +33,11 @@ class StaffList extends React.Component {
           </div>
           <div className="tabs-wrapper">
             <ul className="tabs">
-              <li className="tab col s3"><a className="active" href="#today">Today</a></li>
-              <li className="tab col s3"><a href="#week">This Week</a></li>
-              <li className="tab col s3"><a href="#month">This Month</a></li>
-              <li className="tab col s3"><a href="#custom">Custom Date</a></li>
+              <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
+                                            href="#today">Today</a></li>
+              <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#week">This Week</a></li>
+              <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#month">This Month</a></li>
+              <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom Date</a></li>
             </ul>
           </div>
           <div className="collection">

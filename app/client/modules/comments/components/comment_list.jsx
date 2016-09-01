@@ -11,7 +11,7 @@ class CommentList extends React.Component {
     let comments = this.props.comments;
     let projectId = this.props.projectId;
     return (
-      <div className="comments">
+      <section className="comments white-wrapper">
         <h4>Comments</h4>
 
         <div>
@@ -26,7 +26,7 @@ class CommentList extends React.Component {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     );
   }
 }

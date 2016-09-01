@@ -12,7 +12,10 @@ section#project-view {
     .timeline {
       border-top: 1px solid $gray-line;
       border-bottom: 1px solid $gray-line;
-      padding: 0.5em 0;
+      padding: 0.3em 0;
+    }
+    .team-lead {
+      margin-bottom: 0;
     }
   }
 }

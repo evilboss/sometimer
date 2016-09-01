@@ -56,7 +56,7 @@ class AddProjects extends React.Component {
                     </select>
                   </div>
                 </div>
-                <div className="row form-group required col s12">
+                <div className="row form-group required col s12 no-padding">
                   <TextArea name="description" title="Description" required/>
                 </div>
                 <StaffMultiSelect getData={this.getData.bind(this)}/>

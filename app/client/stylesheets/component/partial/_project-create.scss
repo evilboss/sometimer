@@ -7,4 +7,7 @@ section.Projects-New {
     border-right: 1px solid $gray-line;
   }
 
+  label[for=description] {
+    padding-left: 0.75em;
+  }
 }

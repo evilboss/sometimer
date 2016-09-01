@@ -19,7 +19,7 @@ class AddPhase extends React.Component {
 
   render() {
     return (
-      <section className="create-phase">
+      <section className="create-phase white-wrapper">
         <h5>Breakdown your project in phases/Subprojects/Tasks</h5>
         <p>If your project has a lot of moving parts. It's necessary to break them down.
           Click below the modules to fill them up.<br/>

@@ -15,12 +15,10 @@ class ProjectView extends React.Component {
     return (
       <section id="project-view">
         <PageTitle title={name}/>
-        <div className="white-wrapper">
-          <CreatePhase projectId={_id}/>
-          <TaskCreate projectId={_id}/>
-          <TaskList projectId={_id}/>
-          <CommentList projectId={_id}/>
-        </div>
+        <CreatePhase projectId={_id}/>
+        <TaskCreate projectId={_id}/>
+        <TaskList projectId={_id}/>
+        <CommentList projectId={_id}/>
       </section>
     );
   }

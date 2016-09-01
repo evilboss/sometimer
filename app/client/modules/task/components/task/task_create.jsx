@@ -7,12 +7,10 @@ class TaskCreate extends React.Component {
   render() {
     const {error} = this.props;
     return (
-      <section id="task-create">
+      <section id="task-create" className="white-wrapper">
         <h4>Create A Task</h4>
         {error ? this._renderError(error) : null}
-        <div className="row">
-
-
+        <div className="row no-margin">
           <div className="input-field col s12">
           <textarea ref='text' className="materialize-textarea" placeholder='Enter task title here.'>
         </textarea>
@@ -34,8 +32,6 @@ class TaskCreate extends React.Component {
             <label>Assignee</label>
           </div>
         </div>
-
-        <br />
         <button className="btn-floating waves-effect waves-light theme-color" onClick={this._create.bind(this)}><i
           className="material-icons">add</i></button>
       </section>

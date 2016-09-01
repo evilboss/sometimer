@@ -8,8 +8,8 @@ class PhaseList extends React.Component {
   render() {
     return (
       <section className="phase-list row">
-        <div className="z-depth-1 col s5">
-          <div className="phase-title">Phase Title</div>
+        <div className="z-depth-1 col s6">
+          <div className="phase-title">Phase Title <i className="material-icons">border_color</i></div>
           <p className="description">lorem ipsum dolor sit amet, coneskdsjhfksj</p>
           <div className="timeline row">
             <div className="col s3">Timeline:</div>

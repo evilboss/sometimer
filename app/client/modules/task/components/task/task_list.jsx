@@ -16,21 +16,19 @@ class TaskList extends React.Component {
   renderTasks() {
     let tasks = this.props.tasks;
     return (
-      <section className="task-list">
-        <h5>TaskList<span className="icon-span"></span>
-          {tasks.map((task, index) => (
-            <div className="row">
-              <a href="" key={index}>
-                <b>{task.title}</b>
-                <StartTaskButton userId={Meteor.userId()}/>
-                <AssignDropDown userId={Meteor.userId()}/>
+      <section className="task-list white-wrapper no-horizontal-margin">
+        <h4>TaskList</h4>
+        {tasks.map((task, index) => (
+          <div className="row">
+            <a href="" key={index}>
+              <h5>{task.title}</h5>
+              <StartTaskButton userId={Meteor.userId()}/>
+              <AssignDropDown userId={Meteor.userId()}/>
 
-              </a>
+            </a>
 
-            </div>
-          ))}
-
-        </h5>
+          </div>
+        ))}
 
       </section>
     );

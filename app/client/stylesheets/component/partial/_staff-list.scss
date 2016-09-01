@@ -65,6 +65,34 @@ section#staff-list {
       }
     }
   }
+  .tabs-wrapper {
+    width: 30em;
+    border: 1px solid $gray-line;
+    border-bottom: none;
+    margin: 0 auto;
+    margin-bottom: -1px;
+    z-index: 1;
+    position: relative;
+    .tabs {
+      height: 27px;
+      font-size: 10px;
+      font-weight: bold;
+      .indicator {
+        background-color: $theme-color;
+      }
+      .tab {
+        line-height: 24px;
+        height: 24px;
+        border-right: 1px dotted $gray-line;
+        a {
+          color: $theme-color;
+          &.active {
+            color: darkgray;
+          }
+        }
+      }
+    }
+  }
   #invitationaButton {
     button {
       margin: 1em 0;

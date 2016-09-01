@@ -27,5 +27,24 @@ section.timesheet {
       border-radius: 0;
       padding: 7px 5px;
     }
+    td.rendered {
+      position: relative;
+      div.chip {
+        cursor: pointer;
+        display: none;
+        height: 20px;
+        font-size: 10px;
+        line-height: 21px;
+        padding: 0 10px;
+        position: absolute;
+        top: 5px;
+      }
+    }
+    td.rendered:hover div.chip {
+      display: inline-block !important;
+    }
+  }
+  .modal {
+    overflow: visible;
   }
 }

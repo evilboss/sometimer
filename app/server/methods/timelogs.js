@@ -19,6 +19,9 @@ export default function () {
     'timelogs.approve'(timeLogId){
       timelogs.approve(timeLogId);
     },
+    'timelogs.editLogs'(timeLogId, totalRendered){
+      timelogs.editLogs(timeLogId, totalRendered);
+    }
 
   });
 }

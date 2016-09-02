@@ -90,6 +90,9 @@ const endBreak = ()=> {
     }
   });
 };
+const editLogs = (timeLogId, totalRendered)=> {
+  Timelogs.update({_id: timeLogId}, {$set: {totalRendered: totalRendered}});
+};
 /**
  *
  * @param timelogId
@@ -105,7 +108,8 @@ const timelogs = {
   endShift: ()=>endShift(),
   startBreak: ()=> startBreak(),
   endBreak: ()=> endBreak(),
-  approve: (timeLogId)=>approve(timeLogId)
+  approve: (timeLogId)=>approve(timeLogId),
+  editLogs: (timeLogId, totalRendered)=>editLogs(timeLogId, totalRendered)
 };
 
 export {timelogs};

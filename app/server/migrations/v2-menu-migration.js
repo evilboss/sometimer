@@ -1,4 +1,4 @@
-import {Menu} from '/lib/collections';
+import {Menu} from "/lib/collections";
 Migrations.add({
   version: 2,
   name: 'Add Menu list to app',
@@ -9,36 +9,59 @@ Migrations.add({
     removeAllMenus();
   }
 });
-const menuItems = [{
-  title: "Time Tracker",
-  icon: "access_time",
-  url: '/dashboard/timetracker',
-  name: 'users.timetracker',
-  roles: ['staff', 'admin', 'manager']
-},
+const menuItems = [
   {
-    title: "Timesheet",
+    title: "TIME TRACKER",
+    icon: "access_time",
+    url: '/dashboard/timetracker',
+    name: 'users.timetracker',
+    roles: ['staff', 'admin', 'manager']
+  },
+  {
+    title: "TIMESHEET",
     icon: "grid_on",
     url: '/dashboard/timesheet',
     name: 'timesheet',
     roles: ['staff', 'admin', 'manager']
-
   },
   {
-    title: "Staff List",
+    title: "WORK FLOW",
     icon: "group",
-    url: '/dashboard/stafflist',
-    name: 'dashboard.stafflist',
-    roles: ['admin', 'manager','client']
-
+    url: '',
+    name: 'dashboard.workflow',
+    roles: ['staff', 'admin', 'manager', 'client']
   },
   {
-    title: "Projects",
+    title: "PROJECTS",
     icon: "assignment",
     url: '/projects/tileview',
-    name:'projects.tileview',
-    roles: ['staff', 'admin', 'manager','client']
-  }
+    name: 'projects.tileview',
+    roles: ['staff', 'admin', 'manager', 'client']
+  },
+  {
+    title: "TOOLBOX",
+    icon: "group",
+    url: '',
+    name: 'dashboard.toolbox',
+    roles: ['staff', 'admin', 'manager', 'client']
+
+  },
+  {
+    title: "MY ACCOUNT",
+    icon: "group",
+    url: '/dashboard/profile',
+    name: 'dashboard.profile',
+    roles: ['staff', 'admin', 'manager', 'client']
+
+  },
+  {
+    title: "MY TEAM",
+    icon: "group",
+    url: '/dashboard/myteam',
+    name: 'dashboard.myteam',
+    roles: ['admin', 'manager', 'client']
+
+  },
 ];
 const loadMenus = ()=> {
   console.info('Loading Menus');

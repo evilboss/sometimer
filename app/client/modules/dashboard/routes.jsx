@@ -28,8 +28,8 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
-  dashboardRoutes.route('/stafflist', {
-    name: 'dashboard.stafflist',
+  dashboardRoutes.route('/myteam', {
+    name: 'dashboard.myteam',
     action(){
       mount(MainLayoutCtx, {
         head: () => (<Header />), content: () => (<StaffList />), footer: () => (<Foot />)

@@ -387,6 +387,9 @@ form {
 .react-select-popover {
   padding: 0 0.75em;
   width: 100%;
+  .select-wrapper.hidden-select-box {
+    display: none !important;
+  }
   .empty-list {
     color: #9e9e9e;
     padding-left: 0.75em;

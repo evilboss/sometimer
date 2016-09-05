@@ -11,29 +11,40 @@ class EditHourRendered extends React.Component {
     $('select').material_select();
   }
 
+  changeTimeData(event) {
+    event.preventDefault();
+    let min = this.refs.mins.value;
+    let hour = this.refs.hours.value;
+    Meteor.call('timelogs.editLogs', this.props.target, hour + ':' + min + ':00');
+
+    console.log('changing time', hour, min);
+    $('#' + this.props.target).closeModal();
+
+  }
+
   render() {
     return (
       <div id={this.props.target} className="modal">
-        <form ref="edithoursrenderedForm">
+        <form ref="edithoursrenderedForm" onSubmit={this.changeTimeData.bind(this)}>
           <div className="modal-content">
             <h4 className="modal-title" id="send-invitation">Hours Rendered</h4>
             <div className="modal-body">
 
               <div className="row">
                 <div className="input-field col s6">
-                  <select>
+                  <select ref="hours" name="hours">
                     <option value="" disabled selected>Choose your option</option>
                     <option value=""></option>
-                    <option value="0">00</option>
-                    <option value="1">01</option>
-                    <option value="2">02</option>
-                    <option value="3">03</option>
-                    <option value="4">04</option>
-                    <option value="5">05</option>
-                    <option value="6">06</option>
-                    <option value="7">07</option>
-                    <option value="8">08</option>
-                    <option value="9">09</option>
+                    <option value="00">00</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
@@ -52,11 +63,11 @@ class EditHourRendered extends React.Component {
                   <label>Hours</label>
                 </div>
                 <div className="input-field col s6">
-                  <select>
+                  <select ref="mins" name="mins">
                     <option value="" disabled selected>Choose your option</option>
                     <option value=""></option>
-                    <option value="0">00</option>
-                    <option value="5">05</option>
+                    <option value="00">00</option>
+                    <option value="05">05</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>

@@ -3,9 +3,8 @@ import React from 'react';
 class Datepicker extends React.Component {
   constructor(props) {
     super(props);
+
   }
-
-
   componentDidMount() {
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
@@ -43,7 +42,6 @@ class Datepicker extends React.Component {
       }
     })
   }
-
   submitForm(e) {
     console.log('utub');
     e.preventDefault();

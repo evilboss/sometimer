@@ -5,7 +5,7 @@ import TextArea from '../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import PageTitle from '/client/modules/core/components/page_title';
 import ProjectQuickView from '/client/modules/projects/containers/project_quick_view';
-
+/*TODO:@aaron project create fields*/
 class AddProjects extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,6 @@ class AddProjects extends React.Component {
           <div className="col s2 no-horizontal-padding">
             <ProjectQuickView/>
           </div>
-
           <div className="col s10">
             <section className="create-project">
               <h4>Create A Project</h4>
@@ -48,13 +47,12 @@ class AddProjects extends React.Component {
                 <MyInput name="name" ref="name" fieldSize="col s6" title="Project Title" required/>
                 <div className="row form-group required col s6">
                   <div className="input-field col s12 no-padding">
+                    <label>Publish Settings</label>
                     <select>
                       <option defaultValue="Choose your option" disabled></option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                      <option value="published">Published</option>
+                      <option value="draft">Draft</option>
                     </select>
-                    <label>Materialize Select</label>
                   </div>
                 </div>
                 <div className="row form-group required col s12 no-padding">

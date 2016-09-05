@@ -40,7 +40,7 @@ class Timedata extends React.Component {
         </td>
         <td className="rendered">
           {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
-          {(userRole == 'manager') ?
+          {(userRole == 'manager'|| userRole == 'admin') ?
             (timelog) ?
               (timelog._id) ?
                 <span>
@@ -59,7 +59,7 @@ class Timedata extends React.Component {
             (timelog.completed) ?
               (timelog.approved) ?
                 'Approved'
-                : (userRole == 'manager') ?
+                : (userRole == 'manager'|| userRole == 'admin') ?
                 <ApprovalButton timelogId={timelog._id}/>
                 : 'Waiting for approval'
               : ''

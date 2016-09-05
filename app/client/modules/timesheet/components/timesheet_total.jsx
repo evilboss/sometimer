@@ -20,7 +20,16 @@ class TimesheetTotal extends React.Component {
         <th>{totalBreak}</th>
         <th></th>
         <th></th>
-        <th>Paid:<span className="green-text"> {totalPaid}</span>/Unpaid:<span className="red-text"> {totalUnpaid}</span></th>
+        <th>
+          Approved:
+          <span className="green-text">
+            {totalPaid}
+          </span>
+          / Unapproved:
+          <span className="red-text">
+            {totalUnpaid}
+          </span>
+        </th>
       </tr>
     );
   }

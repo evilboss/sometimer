@@ -5,9 +5,7 @@ class CommentList extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
-    console.log('render called');
     let comments = this.props.comments;
     let projectId = this.props.projectId;
     return (

@@ -8,7 +8,6 @@ export default function () {
       check(_id, String);
       check(projectId, String);
       check(text, String);
-      Meteor._sleepForMs(500);
       const createdAt = new Date();
       const author = Meteor.userId();
       const comment = {_id, projectId, author, text, createdAt};

@@ -3,6 +3,7 @@ import CommentList from '/client/modules/comments/containers/comment_list';
 import TaskList from '/client/modules/task/containers/task/task_list';
 import TaskCreate from '/client/modules/task/containers/task/task_create';
 import CreatePhase from './add_phase';
+import SubProjectList from '/client/modules/sub_projects/containers/sub_project_list';
 import PageTitle from '/client/modules/core/components/page_title';
 
 class ProjectView extends React.Component {
@@ -19,6 +20,7 @@ class ProjectView extends React.Component {
         <TaskCreate projectId={_id}/>
         <TaskList projectId={_id}/>
         <CommentList projectId={_id}/>
+        <SubProjectList projectId={_id}/>
       </section>
     );
   }

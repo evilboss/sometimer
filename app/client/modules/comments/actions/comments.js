@@ -5,7 +5,6 @@ export default {
       LocalState.set('CREATE_COMMENT_ERROR', 'Comment text is required.');
       return;
     }
-
     const id = Meteor.uuid();
     Meteor.call('comments.create', id, projectId, text, (err) => {
       if (err) {

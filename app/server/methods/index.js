@@ -6,6 +6,7 @@ import timesheetDates from './timesheet_dates';
 import invitations from './invitations';
 import projects from './projects';
 import teamlist from './teamlist';
+import subProjects from './sub_projects';
 
 export default function () {
   users();
@@ -16,4 +17,5 @@ export default function () {
   invitations();
   projects();
   teamlist();
+  subProjects();
 }

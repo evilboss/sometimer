@@ -5,7 +5,6 @@ import {check} from 'meteor/check';
 export default function () {
   Meteor.methods({
     'task.create'(projectId, title) {
-      check(_id, String);
       check(projectId, String);
       check(title, String);
       const createdAt = new Date();

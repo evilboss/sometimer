@@ -47,4 +47,13 @@ section.timesheet {
   .modal {
     overflow: visible;
   }
+  section.daterange {
+    .form-group {
+      margin-bottom: 1em;
+      input {
+        width: auto;
+        cursor: pointer;
+      }
+    }
+  }
 }

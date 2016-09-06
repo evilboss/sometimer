@@ -36,11 +36,20 @@ class TaskList extends React.Component {
     );
   }
 
+  renderNoTask() {
+    return (
+      <section className="task-list white-wrapper no-horizontal-margin">
+        <h4>TaskList</h4>
+        <p>No Task Yet!</p>
+      </section>
+    )
+  }
+
   render() {
     let tasks = this.props.tasks;
     return (
       <div>
-        {tasks.length === 0 ? <p>No Task Yet!</p> : this.renderTasks()}
+        {tasks.length === 0 ? this.renderNoTask() : this.renderTasks()}
       </div>);
   }
 }

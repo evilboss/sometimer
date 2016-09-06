@@ -12,7 +12,7 @@ class TaskCreate extends React.Component {
         {error ? this._renderError(error) : null}
         <div className="row no-margin">
           <div className="input-field col s12">
-          <textarea ref='text' className="materialize-textarea" placeholder='Enter task title here.'>
+          <textarea ref='text' className="materialize-textarea">
         </textarea>
             <label htmlFor="textarea1">Task Title</label>
           </div>

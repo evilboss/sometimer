@@ -5,7 +5,6 @@ class SubProjectList extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const {subProjects, projectId} = this.props;
     return (
@@ -27,5 +26,4 @@ class SubProjectList extends React.Component {
     );
   }
 }
-
 export default SubProjectList;

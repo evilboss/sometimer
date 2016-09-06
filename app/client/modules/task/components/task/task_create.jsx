@@ -16,7 +16,6 @@ class TaskCreate extends React.Component {
         </textarea>
             <label htmlFor="textarea1">Task Title</label>
           </div>
-
           <div className="input-field col s6">
             <select ref="publishstatus" defaultValue="">
               <option>Draft</option>
@@ -52,6 +51,7 @@ class TaskCreate extends React.Component {
       </div>
     );
   }
+
 }
 
 

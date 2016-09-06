@@ -1,7 +1,7 @@
 import React from 'react';
 import StartTaskButton from '/client/modules/users/containers/start_task_button';
 import AssignDropDown from '/client/modules/users/containers/assign_drop_down';
-
+import Todos from '../../containers/todos/todos';
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
@@ -24,8 +24,10 @@ class TaskList extends React.Component {
               <h5>{task.title}</h5>
               <StartTaskButton userId={Meteor.userId()}/>
               <AssignDropDown userId={Meteor.userId()}/>
-
             </a>
+            <ul>
+              <Todos taskId={task._id}/>
+            </ul>
 
           </div>
         ))}

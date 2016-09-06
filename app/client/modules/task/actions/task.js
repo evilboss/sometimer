@@ -5,9 +5,7 @@ export default {
       LocalState.set('CREATE_TASK_ERROR', 'TASK text is required.');
       return;
     }
-
-    const id = Meteor.uuid();
-    Meteor.call('task.create', id, projectId, title, (err) => {
+    Meteor.call('task.create',projectId, title, (err) => {
       if (err) {
         alert(`task creating failed: ${err.message}`);
       }

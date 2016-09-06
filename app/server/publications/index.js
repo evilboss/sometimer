@@ -10,6 +10,7 @@ import comments from './comment-publications';
 import teamlist from './teamlist';
 import breaks from './breaks';
 import subProjects from './sub_projects';
+import todos from './todos';
 
 export default function () {
   timesheet();
@@ -24,4 +25,5 @@ export default function () {
   teamlist();
   breaks();
   subProjects();
+  todos();
 }

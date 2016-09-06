@@ -7,6 +7,7 @@ import invitations from './invitations';
 import projects from './projects';
 import teamlist from './teamlist';
 import subProjects from './sub_projects';
+import todos from './todos';
 
 export default function () {
   users();
@@ -18,4 +19,5 @@ export default function () {
   projects();
   teamlist();
   subProjects();
+  todos();
 }

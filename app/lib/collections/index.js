@@ -11,6 +11,7 @@ import Breaks from './breaks';
 import Teamlist from './teamlist';
 import Invitations from './invitations';
 import SubProjects from './sub_projects';
+import Todos from './todos';
 
 
 export {
@@ -26,5 +27,6 @@ export {
   Breaks,
   Teamlist,
   Invitations,
-  SubProjects
+  SubProjects,
+  Todos
 };

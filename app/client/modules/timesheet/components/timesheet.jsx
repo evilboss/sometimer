@@ -19,7 +19,6 @@ class Timesheet extends TrackerReact(React.Component) {
     this.getDates();
   }
 
-
   getDates(from = null, to = null) {
     const reactState = this;
     Meteor.call('timesheet_dates.getCutOffDates', from, to, function (err, res, callback) {
@@ -37,6 +36,7 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
   changeDate(from, to) {
+    console.log(from, to);
     this.getDates(from, to);
   }
 
@@ -45,8 +45,9 @@ class Timesheet extends TrackerReact(React.Component) {
     let dates = this.state.dates;
     return (
       <section className="timesheet">
-	      
-        <PageTitle title={`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`}/>
+
+        <PageTitle
+          title={`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`}/>
         <UserDetails currentUser={currentUser}/>
         <DatePicker changeDate={this.changeDate.bind(this)}/>
         <TimesheetTable currentUser={currentUser} dates={dates}/>
@@ -61,6 +62,5 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
 }
-
 export default Timesheet;
 

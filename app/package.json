@@ -36,6 +36,7 @@
     "moment": "^2.13.0",
     "object-assign": "^4.1.0",
     "react": "^15.2.1",
+    "react-date-range": "^0.2.4",
     "react-dom": "^15.2.1",
     "react-dropzone": "^3.5.3",
     "react-form-simple-schema": "0.0.3",

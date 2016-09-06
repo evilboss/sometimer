@@ -9,7 +9,7 @@ class LeftWrapper extends React.Component {
 
   render() {
     return (
-      <div className="left-wrapper col s12 m12 l5">
+      <div className="left-wrapper col s12 m12 l5 no-margin">
 
         <div className="header">
           <a href="#" className="brand-logo">

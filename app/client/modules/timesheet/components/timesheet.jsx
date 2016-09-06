@@ -5,6 +5,7 @@ import DatePicker from './datepicker';
 import PageTitle from '/client/modules/core/components/page_title';
 import UserDetails from './user_details';
 import TimesheetTable from './timesheet_table';
+import DateRange from './daterange';
 const DateData = new ReactiveVar();
 
 class Timesheet extends TrackerReact(React.Component) {
@@ -12,13 +13,9 @@ class Timesheet extends TrackerReact(React.Component) {
     super(props);
     this.state = {
       dates: []
-    };
+    }
   };
-
-  componentWillMount() {
-    this.getDates();
-  }
-
+  
 
   getDates(from = null, to = null) {
     const reactState = this;
@@ -43,12 +40,14 @@ class Timesheet extends TrackerReact(React.Component) {
   render() {
     let currentUser = this.props.currentUser;
     let dates = this.state.dates;
+    console.log(this.state.dates);
     return (
       <section className="timesheet">
-	      
-        <PageTitle title={`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`}/>
+
+        <PageTitle
+          title={`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`}/>
         <UserDetails currentUser={currentUser}/>
-        <DatePicker changeDate={this.changeDate.bind(this)}/>
+        <DateRange changeDate={this.changeDate.bind(this)}/>
         <TimesheetTable currentUser={currentUser} dates={dates}/>
       </section>
     );

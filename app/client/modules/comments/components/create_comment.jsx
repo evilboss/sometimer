@@ -10,11 +10,12 @@ class CreateComment extends React.Component {
     return (
       <div>
         {error ? this._renderError(error) : null}
-        <textarea ref='text' placeholder='Enter your comment here.'>
-
+        <div className="input-field col s12">
+          <textarea ref='text' className="materialize-textarea" placeholder='Enter your comment here.'>
         </textarea>
-        <br />
-        <button onClick={this._create.bind(this)}>Add Comment</button>
+          <label htmlFor="textarea1">Instruction</label>
+        </div>
+        <button className="btn theme-color waves-effect" onClick={this._create.bind(this)}>Add Instruction</button>
       </div>
     );
   }

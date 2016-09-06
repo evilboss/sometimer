@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'react-mounter';
 
-import MainLayout from './components/main_layout.jsx';
+import PublicLayout from './components/public_layout';
 import Entry from './components/landing/entry_point';
 import NotFound from './components/landing/not_found_page';
 import Header from './components/landing/landing_header';
@@ -10,13 +10,13 @@ import {Oauth} from '/client/modules/reactUtils/libs/oauth';
 
 
 export default function (injectDeps, {FlowRouter}) {
-  const MainLayoutCtx = injectDeps(MainLayout);
+  const PublicLayoutCtx = injectDeps(PublicLayout);
   FlowRouter.route('/', {
     name: 'home',
     triggersEnter: [Oauth.directToTeam],
     action() {
 
-      mount(MainLayoutCtx,
+      mount(PublicLayoutCtx,
         {head: () => (<Header/>), content: ()=>(<Entry />), footer: ()=>(<Foot/>)}
       );
     }
@@ -25,7 +25,7 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/notfound', {
     name: 'home',
     action() {
-      mount(MainLayoutCtx,
+      mount(PublicLayoutCtx,
         {head: () => (<Header/>), content: ()=>(<NotFound />), footer: ()=>(<Foot/>)}
       );
     }

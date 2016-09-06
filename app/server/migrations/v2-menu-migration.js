@@ -47,14 +47,6 @@ const menuItems = [
 
   },
   {
-    title: "MY ACCOUNT",
-    icon: "group",
-    url: '/dashboard/profile',
-    name: 'dashboard.profile',
-    roles: ['staff', 'admin', 'manager', 'client']
-
-  },
-  {
     title: "MY TEAM",
     icon: "group",
     url: '/dashboard/myteam',

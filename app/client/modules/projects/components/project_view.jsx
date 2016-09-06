@@ -16,7 +16,6 @@ class ProjectView extends React.Component {
     return (
       <section id="project-view">
         <PageTitle title={name}/>
-        <CreatePhase projectId={_id}/>
         <TaskCreate projectId={_id}/>
         <TaskList projectId={_id}/>
         <CommentList projectId={_id}/>

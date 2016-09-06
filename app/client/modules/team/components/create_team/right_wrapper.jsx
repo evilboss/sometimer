@@ -7,7 +7,7 @@ class RightWrapper extends React.Component {
 
   render() {
     return (
-      <div className="right-wrapper col hide-on-med-and-down l7">
+      <div className="right-wrapper col hide-on-med-and-down l7 no-margin">
         <div className="background-image"></div>
         <div className="header">
 

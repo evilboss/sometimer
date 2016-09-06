@@ -11,7 +11,7 @@ class NavbarItem extends React.Component {
       <div>
         <a href="/dashboard">
           <div className="menu-item center-align ">
-            Dashboard
+            DASHBOARD
           </div>
         </a>
         {this.props.menu.map(menu => (<a key={menu._id} href={menu.url}>

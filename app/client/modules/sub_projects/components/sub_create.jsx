@@ -17,11 +17,22 @@ class SubCreate extends React.Component {
     return (
       <div>
         {error ? this._renderError(error) : null}
-        <input type="text" ref="name"/>
-        <textarea ref='details' placeholder='Details your comment here.'>
+
+        <div class="input-field col s6">
+          <input id="name" ref="name" type="text" class="validate"/>
+          <label for="name">Subproject Title</label>
+        </div>
+
+        <div className="input-field col s12">
+          <textarea ref='details' placeholder='Details your comment here.' className="materialize-textarea">
         </textarea>
+          <label htmlFor="textarea1">Details</label>
+        </div>
+
         <StaffMultiSelect getData={this.getData.bind(this)}/>
-        <button onClick={this._create.bind(this)}>Add Sub-Project</button>
+        <button className="btn waves-effect waves-light theme-color" onClick={this._create.bind(this)}>Add
+          Sub-Project
+        </button>
       </div>
     );
   }

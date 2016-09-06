@@ -38,19 +38,25 @@ class TaskList extends React.Component {
 
   renderNoTask() {
     return (
-      <section className="task-list white-wrapper no-horizontal-margin">
+      <div>
         <h4>TaskList</h4>
         <p>No Task Yet!</p>
-      </section>
+      </div>
     )
   }
 
   render() {
     let tasks = this.props.tasks;
     return (
-      <div>
+      <section className="task-list white-wrapper no-horizontal-margin">
         {tasks.length === 0 ? this.renderNoTask() : this.renderTasks()}
-      </div>);
+        <form action="#">
+          <p>
+            <input type="checkbox" id="test5"/>
+            <label htmlFor="test5">Red</label>
+          </p>
+        </form>
+      </section>);
   }
 }
 

@@ -21,12 +21,11 @@ class TodoList extends React.Component {
         TodoList
         <ul>
           {todoList.map((todo, index) =><li key={index}>
-            <input
-              type="checkbox"
-              checked={this.state.hideCompleted}
-              onClick={this.toggleHideCompleted.bind(this)}
-            />
-            {todo.name}
+
+            <p>
+              <input type="checkbox" id={todo._id}/>
+              <label htmlFor={todo._id}>{todo.name}</label>
+            </p>
           </li>)}
         </ul>
       </div>

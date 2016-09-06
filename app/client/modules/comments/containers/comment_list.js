@@ -9,6 +9,7 @@ export const composer = ({context, clearErrors, projectId}, onData) => {
       sort: {createdAt: -1}
     };
     const comments = Collections.Comments.find({projectId}, options).fetch();
+    console.log(comments);
     onData(null, {comments});
   } else {
     onData();

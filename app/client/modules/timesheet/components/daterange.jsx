@@ -59,7 +59,7 @@ class Daterange extends React.Component {
     this.setState({
       [which]: dateRange
     });
-    const format = 'D MMMM, YYYY';
+    const format = 'YYYY-MM-DD';
     this.props.changeDate({[which]: dateRange}.rangePicker['startDate'].format(format), {[which]: dateRange}.rangePicker['endDate'].format(format));
   }
 

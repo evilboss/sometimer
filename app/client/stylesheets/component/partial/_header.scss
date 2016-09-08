@@ -8,19 +8,19 @@ section#header {
       padding: 5px;
     }
   }
-  .account-menu {
+  ul.right {
     img {
       border-radius: 5px;
       height: 2.5em;
       margin-top: 12px;
       margin-bottom: -13px;
     }
-  }
-  #account-menu {
-    a {
-      padding: 12px 8px;
-      i {
-        font-size: 1.5em;
+    #account-menu {
+      a {
+        padding: 12px 8px;
+        i {
+          font-size: 1.5em;
+        }
       }
     }
   }

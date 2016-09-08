@@ -38,7 +38,9 @@ class Header extends React.Component {
               </ul>
 
               <ul className="right hide-on-med-and-down">
-                <li><a href=""><i className="mdi-social-notifications"></i></a></li>
+                <li><a href="">
+                  <i className="mdi-social-notifications"></i>
+                </a></li>
                 <li>
                   <a href='#' className="account-menu" data-activates='account-menu'>
                     <img className="inline"
@@ -47,6 +49,12 @@ class Header extends React.Component {
                   </a>
                   <NavbarProfile />
                 </li>
+                <li>
+                  <a href="">
+                    <i className="material-icons">settings</i>
+                  </a>
+                </li>
+                <li><img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/></li>
               </ul>
 
               <SideNav />

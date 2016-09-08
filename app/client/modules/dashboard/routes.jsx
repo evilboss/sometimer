@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'react-mounter';
-import DashboardHeader from './components/dashboard_header';
+import DashboardHeader from './containers/dashboard_header';
 import Foot from '../core/components/footer.jsx';
 import Header from '../core/containers/header';
 import Dashboard from './containers/dashboard';

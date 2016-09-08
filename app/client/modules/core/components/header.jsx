@@ -20,15 +20,14 @@ class Header extends React.Component {
   };
 
   render() {
+    const currentUser = this.props.currentUser;
     return (
       <div>
         <section id="header">
           <nav>
             <div className="nav-wrapper">
               <a href="/dashboard" className="brand-logo">
-                <img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
-                <div className="remotiv-text inline"><h5>Remotiv<span>.io</span>
-                </h5><h6 className="sub-text">Business Beyond Boundaries</h6></div>
+                <div className="remotiv-text inline">Company Logo</div>
               </a>
               <ul className="right">
                 <li>
@@ -38,14 +37,16 @@ class Header extends React.Component {
               </ul>
 
               <ul className="right hide-on-med-and-down">
+                <li>Welcome back, {currentUser.profile.firstName}!
+                  <span></span>
+                </li>
                 <li><a href="">
                   <i className="mdi-social-notifications"></i>
                 </a></li>
                 <li>
                   <a href='#' className="account-menu" data-activates='account-menu'>
                     <img className="inline"
-                         src="http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg"/>
-                    <i className="right material-icons">arrow_drop_down</i>
+                         src={(currentUser.profile.displayPhoto) ? `/uploads/${currentUser.profile.displayPhoto}` : '/uploads/defaults/default-img.png'}/>
                   </a>
                   <NavbarProfile />
                 </li>

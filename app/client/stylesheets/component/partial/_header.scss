@@ -9,6 +9,18 @@ section#header {
     }
   }
   ul.right {
+    li:first-child {
+      margin-right: 2em;
+    }
+    .account-menu {
+      img {
+        border-radius: 5px;
+        height: 2.5em;
+        width: 2.5em;
+        margin-top: 12px;
+        margin-bottom: -13px;
+      }
+    }
     img {
       border-radius: 5px;
       height: 2.5em;

@@ -1,5 +1,71 @@
 section#project-view {
   @extend .container-margin;
+  .row {
+    @extend .no-section-margin;
+    section:not(:last-child) {
+      border-right: solid 2px $gray-line;
+    }
+    .col {
+      @extend .no-padding;
+      margin: 0;
+    }
+    section.left {
+      .collection {
+        .collection-item.avatar {
+          min-height: 50px;
+          padding-left: 50px;
+          .circle {
+            width: 30px;
+            height: 30px;
+          }
+        }
+        .role {
+          background-color: $gray-line;
+        }
+      }
+    }
+    section.middle {
+      .inner-wrapper {
+        margin: 0 2em;
+      }
+      section {
+        border: none;
+        border-top: solid 2px $gray-line;
+      }
+      ul.tabs {
+        width: 100% !important;
+        border: 2px solid $gray-line;
+        border-bottom: none;
+        height: 28px;
+        margin: -2px;
+        .tab {
+          line-height: 24px;
+          height: 24px;
+          a {
+            color: $theme-color;
+          }
+        }
+        .indicator {
+          background-color: $theme-color;
+        }
+      }
+      #DISCUSSIONS {
+        div.inner-wrapper:first-child {
+          margin: 1em 2em;
+          line-height: 36px;
+        }
+      }
+
+      .discussion-list {
+        .discussion-item {
+          @extend .inner-wrapper;
+        }
+      }
+    }
+    section.right {
+
+    }
+  }
 
   section.phase-list {
     .phase-title {

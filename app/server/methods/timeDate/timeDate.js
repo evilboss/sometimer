@@ -47,7 +47,7 @@ const setTime = (date, time)=> {
  * @returns {{day, month, year, date: *}}
  */
 const generateDateToday = ()=> {
-  const date = moment(new Date);
+  const date = moment();
   const month = date.format('M');
   const day = date.format('D');
   const year = date.format('YYYY');

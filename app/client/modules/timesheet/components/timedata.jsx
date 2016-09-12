@@ -27,21 +27,8 @@ class Timedata extends React.Component {
     return (
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
-        <td>
+        <td className="time-in">
           {(timelog) ? (timelog.timeIn) ? (moment(timelog.timeIn).tz('Asia/Manila').format(format)) : '' : ''}
-        </td>
-        <td>
-          {(timelog) ? (timelog.totalBreak) ?
-            <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
-        </td>
-        <td>
-          {(timelog) ? (timelog.timeOut) ? (moment(timelog.timeOut).tz('Asia/Manila').format(format)) : '' : ''}
-        </td>
-        <td>
-
-        </td>
-        <td className="rendered">
-          {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
           {(userRole == 'manager' || userRole == 'admin') ?
             (timelog) ?
               (timelog._id) ?
@@ -54,7 +41,43 @@ class Timedata extends React.Component {
                 : ''
               : ''
             : ''}
+        </td>
+        <td className="total-break">
+          {(timelog) ? (timelog.totalBreak) ?
+            <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
+          {(userRole == 'manager' || userRole == 'admin') ?
+            (timelog) ?
+              (timelog._id) ?
+                <span>
+                  <div data-target={timelog._id} className="chip z-depth-1 modal-trigger" data-toggle="modal">
+                    Edit
+                  </div>
+                  <EditHoursRendered target={timelog._id}/>
+                </span>
+                : ''
+              : ''
+            : ''}
+        </td>
+        <td className="time-out">
+          {(timelog) ? (timelog.timeOut) ? (moment(timelog.timeOut).tz('Asia/Manila').format(format)) : '' : ''}
+          {(userRole == 'manager' || userRole == 'admin') ?
+            (timelog) ?
+              (timelog._id) ?
+                <span>
+                  <div data-target={timelog._id} className="chip z-depth-1 modal-trigger" data-toggle="modal">
+                    Edit
+                  </div>
+                  <EditHoursRendered target={timelog._id}/>
+                </span>
+                : ''
+              : ''
+            : ''}
+        </td>
+        <td>
 
+        </td>
+        <td className="rendered">
+          {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
         </td>
         <td>
           {(timelog) ?

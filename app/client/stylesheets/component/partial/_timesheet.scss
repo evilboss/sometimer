@@ -40,7 +40,10 @@ section.timesheet {
         top: 5px;
       }
     }
-    td.rendered:hover div.chip {
+    td.rendered:hover div.chip,
+    .time-in:hover div.chip,
+    .time-out:hover div.chip,
+    .total-break:hover div.chip {
       display: inline-block !important;
     }
   }

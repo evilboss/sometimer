@@ -27,7 +27,7 @@ section.timesheet {
       border-radius: 0;
       padding: 7px 5px;
     }
-    td.rendered {
+    td.rendered, .time-in, .time-out, .total-break {
       position: relative;
       div.chip {
         cursor: pointer;

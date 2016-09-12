@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import tz from 'moment-timezone';
 import ApprovalButton from '/client/modules/manager/containers/approval_button';
 import EditHoursRendered from './edit_hour_rendered';
 class Timedata extends React.Component {
@@ -26,21 +27,21 @@ class Timedata extends React.Component {
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
-          {(timelog) ? (timelog.timeIn) ? moment(timelog.timeIn).format('hh:mm:ss a') : '' : ''}
+          {(timelog) ? (timelog.timeIn) ? (moment(timelog.timeIn).tz('Asia/Manila').format('hh:mm a z')) : '' : ''}
         </td>
         <td>
           {(timelog) ? (timelog.totalBreak) ?
             <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
         </td>
         <td>
-          {(timelog) ? (timelog.timeOut) ? moment(timelog.timeOut).format('hh:mm:ss a') : '' : ''}
+          {(timelog) ? (timelog.timeOut) ? (moment(timelog.timeOut).tz('Asia/Manila').format('hh:mm a z')) : '' : ''}
         </td>
         <td>
 
         </td>
         <td className="rendered">
           {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
-          {(userRole == 'manager'|| userRole == 'admin') ?
+          {(userRole == 'manager' || userRole == 'admin') ?
             (timelog) ?
               (timelog._id) ?
                 <span>
@@ -59,7 +60,7 @@ class Timedata extends React.Component {
             (timelog.completed) ?
               (timelog.approved) ?
                 'Approved'
-                : (userRole == 'manager'|| userRole == 'admin') ?
+                : (userRole == 'manager' || userRole == 'admin') ?
                 <ApprovalButton timelogId={timelog._id}/>
                 : 'Waiting for approval'
               : ''

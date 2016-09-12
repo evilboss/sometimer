@@ -19,7 +19,7 @@ class TaskList extends React.Component {
       <section className="task-list white-wrapper no-horizontal-margin">
         <h4>TaskList</h4>
         {tasks.map((task, index) => (
-          <div className="row">
+          <div className="row z-depth-1 task-item">
             <a href="" key={index}>
               <h5>{task.title}</h5>
               <StartTaskButton userId={Meteor.userId()}/>

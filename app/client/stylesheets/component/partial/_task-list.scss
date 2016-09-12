@@ -1,6 +1,7 @@
 section.task-list {
   @extend .container-margin;
 
+  border-top: none !important;
   div:nth-child(1) a {
     display: block;
     line-height: 2em;
@@ -12,5 +13,9 @@ section.task-list {
   }
   .input-field {
     margin-bottom: 15px;
+  }
+  .task-item {
+    padding: 5px 10px;
+    margin-bottom: 0.5em;
   }
 }

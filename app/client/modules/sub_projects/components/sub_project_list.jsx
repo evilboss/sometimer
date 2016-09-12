@@ -5,23 +5,35 @@ class SubProjectList extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const {subProjects, projectId} = this.props;
     return (
       <section className="subproject white-wrapper">
         <h4>Sub Projects</h4>
-        <div>
-          <SubCreate projectId={projectId}/>
-        </div>
-        <div className="subproject-list">
+
+        <div className="row">
           {subProjects.length === 0 ? <p>No Sub-Projects Yet!</p> : null}
           {subProjects.map(subProject => (
-            <div key={subProject._id} className="subproject">
-              <Username userId={subProject.author}/>:{subProject.name}{subProject.details}
-              {subProject.saving ? '...' : null}
-            </div>
+            <a href="" key={subProject._id}>
+              <article className="col s12 l3">
+                <div className="card">
+                  <div className="content">
+                    <div className="card-title">
+                      {subProject.name}
+                      {subProject.saving ? '...' : null}
+                    </div>
+                    <p>{subProject.details}</p>
+                  </div>
+                  <div className="card-action">
+                  </div>
+                </div>
+              </article>
+            </a>
           ))}
         </div>
+
+        <SubCreate projectId={projectId}/>
       </section>
     );
   }

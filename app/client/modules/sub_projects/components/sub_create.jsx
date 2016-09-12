@@ -15,12 +15,14 @@ class SubCreate extends React.Component {
   render() {
     const {error} = this.props;
     return (
-      <div>
+      <div class="sub-create">
+
+        <h4>Create Sub Project</h4>
         {error ? this._renderError(error) : null}
 
-        <div class="input-field col s6">
-          <input id="name" ref="name" type="text" class="validate"/>
-          <label for="name">Subproject Title</label>
+        <div className="input-field col s12">
+          <input id="name" ref="name" type="text" className="validate"/>
+          <label htmlFor="name">Subproject Title</label>
         </div>
 
         <div className="input-field col s12">

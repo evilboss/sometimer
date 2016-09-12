@@ -1,15 +1,13 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import ProjectQuickView from '../components/project_quick_view.jsx';
+import DashboardHeader from '../components/dashboard_header.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  const dataReady = ()=> {
-    const projects = Collections.Projects.find().fetch();
-    onData(null, {projects});
-  };
-  const susbriptionsReady = [Meteor.subscribe('project-list').ready()];
-  (susbriptionsReady) ? dataReady() : onData();
+  if (Meteor.subscribe("user.current").ready) {
+    const currentUser = Meteor.user();
+    onData(null, {currentUser});
+  }
 };
 
 export const depsMapper = (context, actions) => ({
@@ -19,4 +17,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(ProjectQuickView);
+)(DashboardHeader);

@@ -16,7 +16,7 @@ var TileView = React.createClass({
                 </div>
                 <div className="card-action">
                   {project.collaborators.map((collaborator, key)=>(
-                    (key <= 4) ? <StaffDp key={key} userId={collaborator}/> : ''
+                    (key <= 4) ? <StaffDp key={key} projectId={project._id} userId={collaborator}/> : ''
                   ))}
                 </div>
               </div>

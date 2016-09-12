@@ -50,11 +50,11 @@ class ProjectView extends React.Component {
             </ul>
           </section>
 
-          <section className="col s7 middle">
+          <section className="col s10 middle">
             <div className="inner-wrapper">
               <h4>{name}</h4>
               <p>lorem ipsum ....</p>
-              <div className="col s8">
+              <div className="col s7">
                 <ul className="tabs">
                   <li className="tab col s3"><a href="#DISCUSSIONS">DISCUSSIONS</a></li>
                   <li className="tab col s3"><a href="#SUB">SUB PROJECTS</a></li>
@@ -63,10 +63,6 @@ class ProjectView extends React.Component {
               </div>
             </div>
             <section id="DISCUSSIONS" className="col s12">
-              <div className="inner-wrapper">
-                19 Discussions
-                <button className="right btn theme-color waves-light">Start A Discussion</button>
-              </div>
               <div className="discussion-list">
                 <CommentList projectId={_id}/>
               </div>
@@ -80,8 +76,6 @@ class ProjectView extends React.Component {
               <TaskCreate projectId={_id}/>
               <TaskList projectId={_id}/>
             </section>
-          </section>
-          <section className="col s3 right">
           </section>
         </div>
 

@@ -31,8 +31,9 @@ class TaskCreate extends React.Component {
             <label>Assignee</label>
           </div>
         </div>
-        <button className="btn-floating waves-effect waves-light theme-color" onClick={this._create.bind(this)}><i
-          className="material-icons">add</i></button>
+        <button className="btn waves-effect waves-light theme-color" onClick={this._create.bind(this)}>
+          Create Task
+        </button>
       </section>
     );
   }

@@ -5,18 +5,18 @@ import {check} from 'meteor/check';
 export default function () {
   Meteor.methods({
     'invitations.send'(invite) {
-      check( invite, {
+      check(invite, {
         email: String,
         role: String
       });
-      const sendInvitation ={
+      const sendInvitation = {
         email: invite.email,
-        token: Random.hexString( 16 ),
+        token: Random.hexString(16),
         role: invite.role,
         date: ( new Date() ).toISOString()
 
       };
-      console.info('sending Invite',sendInvitation);
+      console.info('sending Invite', sendInvitation);
     }
   });
 }

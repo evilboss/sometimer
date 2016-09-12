@@ -24,19 +24,19 @@ Team.attachSchema(new SimpleSchema({
   members: {
     type: Array,
     optional: true,
-    autoform:{
-      'listGroupClass':'test',
-      'list-groupClass':'test',
-      'list':'list-custom',
+    autoform: {
+      'listGroupClass': 'test',
+      'list-groupClass': 'test',
+      'list': 'list-custom',
 
     }
   },
   "members.$": {
     type: Object,
     autoform: {
-      'listGroupClass':'test',
-      'list-groupClass':'test',
-      'listClass':'list-custom',
+      'listGroupClass': 'test',
+      'list-groupClass': 'test',
+      'listClass': 'list-custom',
       'panelClass': 'test',
 
       class: 'input-field',

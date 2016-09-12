@@ -4,12 +4,12 @@ import ProjectQuickView from '../components/project_quick_view.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('project-list').ready()) {
+  const dataReady = ()=> {
     const projects = Collections.Projects.find().fetch();
     onData(null, {projects});
-  } else {
-    onData();
-  }
+  };
+  const susbriptionsReady = [Meteor.subscribe('project-list').ready()];
+  (susbriptionsReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

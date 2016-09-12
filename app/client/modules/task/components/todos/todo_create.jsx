@@ -9,7 +9,7 @@ class TodoCreate extends React.Component {
     const {taskId, error} =this.props;
     return (
       <div>
-        TodoCreate
+        Todo Create
         {error ? this._renderError(error) : null}
         <div>
           <form className="new-task" onSubmit={this._create.bind(this)}>

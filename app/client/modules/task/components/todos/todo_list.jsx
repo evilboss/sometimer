@@ -21,7 +21,6 @@ class TodoList extends React.Component {
         TodoList
         <ul>
           {todoList.map((todo, index) =><li key={index}>
-
             <p>
               <input type="checkbox" id={todo._id}/>
               <label htmlFor={todo._id}>{todo.name}</label>

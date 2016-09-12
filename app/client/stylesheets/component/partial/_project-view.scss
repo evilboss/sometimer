@@ -1,5 +1,6 @@
 section#project-view {
   @extend .container-margin;
+  margin-bottom: 0;
   .row {
     @extend .no-section-margin;
     section:not(:last-child) {
@@ -33,6 +34,7 @@ section#project-view {
         border-top: solid 2px $gray-line;
       }
       ul.tabs {
+        overflow-x: hidden;
         width: 100% !important;
         border: 2px solid $gray-line;
         border-bottom: none;
@@ -59,6 +61,35 @@ section#project-view {
       .discussion-list {
         .discussion-item {
           @extend .inner-wrapper;
+        }
+      }
+      .react-select-popover {
+        @extend .no-padding
+      }
+      .comments, #task-create {
+        @extend .no-border;
+        @extend .no-vertical-margin;
+      }
+      .subproject {
+        @extend .comments;
+        article {
+          margin: 0 1em;
+        }
+        .card {
+          .content {
+            .card-title {
+              color: white;
+              background: $theme-color;
+              padding: 10px;
+            }
+            p {
+              color: gray;
+              padding: 0 10px;
+            }
+          }
+        }
+        .sub-create {
+          border-top: solid 1px $gray-line;
         }
       }
     }

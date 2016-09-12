@@ -1,4 +1,4 @@
-import {Teamlist} from '/lib/collections';
+import {Teamlist, Projects} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
@@ -18,6 +18,36 @@ export default function () {
             : {_id: {$in: stafflist}}
           : {_id: {$in: stafflist}}
         : {_id: {$in: stafflist}};
-    return [Teamlist.find(ownerOptions), Meteor.users.find(teamOptions)];
+    return [Teamlist.find(ownerOptions), Meteor.users.find(teamOptions, {
+      fields: {
+        createdAt: false,
+        emails: false,
+        services: false,
+        'profile.role': false,
+      }
+    })];
+  });
+
+  Meteor.publish('collaborators', (projectId)=> {
+    const currentProject = Projects.findOne(projectId);
+    const currentUser = Meteor.users.findOne(this.userId);
+    const teamOptions =
+      (currentUser) ?
+        (currentUser.profile) ?
+          (currentUser.profile.role == 'admin') ? {}
+            : {_id: {$in: currentProject.collaborators}}
+          : {_id: {$in: currentProject.collaborators}}
+        : {_id: {$in: currentProject.collaborators}};
+    const fields = {'': 1, _id: 1};
+    return Meteor.users.find(teamOptions, {
+      fields: {
+        createdAt: false,
+        emails: false,
+        services: false,
+        'profile.role': false,
+        'profile.staffType': false,
+        'profile.jobTitle': false,
+      }
+    });
   });
 }

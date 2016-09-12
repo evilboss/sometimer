@@ -10,9 +10,8 @@ class Todos extends React.Component {
     const {taskId} =this.props;
     return (
       <div>
-        Todos
-        <TodoCreate taskId={taskId}/>
         <TodoList taskId={taskId}/>
+        <TodoCreate taskId={taskId}/>
       </div>
     );
   }

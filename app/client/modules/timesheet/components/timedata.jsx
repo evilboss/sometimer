@@ -23,18 +23,19 @@ class Timedata extends React.Component {
   render() {
     const timelog = this.props.timelog;
     const userRole = this.props.activeRole;
+    const format = 'hh:mm A z';
     return (
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
         <td>{this.props.date.toDateString()}</td>
         <td>
-          {(timelog) ? (timelog.timeIn) ? (moment(timelog.timeIn).tz('Asia/Manila').format('hh:mm a z')) : '' : ''}
+          {(timelog) ? (timelog.timeIn) ? (moment(timelog.timeIn).tz('Asia/Manila').format(format)) : '' : ''}
         </td>
         <td>
           {(timelog) ? (timelog.totalBreak) ?
             <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
         </td>
         <td>
-          {(timelog) ? (timelog.timeOut) ? (moment(timelog.timeOut).tz('Asia/Manila').format('hh:mm a z')) : '' : ''}
+          {(timelog) ? (timelog.timeOut) ? (moment(timelog.timeOut).tz('Asia/Manila').format(format)) : '' : ''}
         </td>
         <td>
 

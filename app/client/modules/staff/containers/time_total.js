@@ -5,10 +5,9 @@ import TimeTotal from '../components/time_total.jsx';
 
 export const composer = ({context, date, userId}, onData) => {
   const {Meteor, Collections} = context();
-  const subscriptionReady = [Meteor.subscribe('timelogs.by.date', moment(date).format('DD:MM:YY'), userId).ready];
+  const subscriptionReady = [Meteor.subscribe('timelogs.by.date', moment(date).format('DD:MM:YY'), userId).ready, Meteor.subscribe('teamlist').ready()];
   if (subscriptionReady) {
     const selector = {userId: userId};
-    console.log(Collections.Timelogs.find(selector).fetch());
     const timelog = Collections.Timelogs.findOne(selector);
     console.log(timelog);
     if (Collections.Timelogs.findOne(selector)) {

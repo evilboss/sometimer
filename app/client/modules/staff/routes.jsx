@@ -13,41 +13,41 @@ import EditProfile from '../users/containers/profile_edit'
 import StaffSettings from './containers/staff_settings';
 /*TODO: add dashboardRoutes */
 export default function (injectDeps, {FlowRouter}) {
-	const MainLayoutCtx = injectDeps(MainLayout);
-	const PunchCardLayoutCtx = injectDeps(PunchcardLayout);
-	dashboardRoutes.route('/timetracker', {
-		name: 'users.timetracker',
-		action() {
-			mount(PunchCardLayoutCtx, {
-				content: ()=>(<TimeTracker />)
-			});
-		}
-	});
-	dashboardRoutes.route('/profile', {
-		name: 'users.profile',
-		action() {
-			mount(MainLayoutCtx, {
-				head: () => (<Header />), content: () => (<Profile />), footer: () => (<Footer />)
-			});
-		}
-	});
-	dashboardRoutes.route('/profile/edit', {
-		name: 'users.profile.edit',
-		action() {
-			mount(MainLayoutCtx, {
-				head: () => (<Header />), content: () => (<EditProfile />), footer: () => (<Footer />)
-			});
-		}
-	});
-	dashboardRoutes.route('/staff/settings/:staffId', {
-			name: 'staff.settings',
-			action(staffId){
-				mount(MainLayoutCtx, {
-					head: () => (<Header />),
-					content: () => (<StaffSettings staffId={staffId.staffId}/>),
-					footer: () => (<Footer />)
-				});
-			}
-		}
-	)
+  const MainLayoutCtx = injectDeps(MainLayout);
+  const PunchCardLayoutCtx = injectDeps(PunchcardLayout);
+  dashboardRoutes.route('/timetracker', {
+    name: 'users.timetracker',
+    action() {
+      mount(PunchCardLayoutCtx, {
+        title: 'TimeTracker: ' + DocHead.getTitle(),
+        content: ()=>(<TimeTracker />)
+      });
+    }
+  });
+  dashboardRoutes.route('/profile', {
+    name: 'users.profile',
+    action() {
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<Profile />), footer: () => (<Footer />)
+      });
+    }
+  });
+  dashboardRoutes.route('/profile/edit', {
+    name: 'users.profile.edit',
+    action() {
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<EditProfile />), footer: () => (<Footer />)
+      });
+    }
+  });
+  dashboardRoutes.route('/staff/settings/:staffId', {
+    name: 'staff.settings',
+    action(staffId){
+      mount(MainLayoutCtx, {
+        head: () => (<Header />),
+        content: () => (<StaffSettings staffId={staffId.staffId}/>),
+        footer: () => (<Footer />)
+      });
+    }
+  });
 }

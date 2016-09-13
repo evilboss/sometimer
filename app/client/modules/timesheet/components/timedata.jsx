@@ -114,7 +114,8 @@ class Timedata extends React.Component {
                 <ApprovalButton timelogId={timelog._id}/>
                 : 'Waiting for approval'
               : ''
-            : ''}</td>
+            : ''}
+        </td>
       </tr>
     );
   }

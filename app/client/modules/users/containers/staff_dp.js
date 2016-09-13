@@ -4,15 +4,16 @@ import StaffDp from '../components/staff_dp.jsx';
 
 export const composer = ({context, userId, projectId}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('collaborators', projectId).ready()) {
+  const subsribeTo = (projectId) ? Meteor.subscribe('collaborators', projectId).ready() : Meteor.subscribe('teamlist').ready();
+  const subscriptionReady = [subsribeTo];
+  const dataReady = ()=> {
     const teamlist = Collections.Teamlist.find().fetch();
     const options = {_id: userId};
     const staff = Meteor.users.findOne(options);
-    const displayPhoto = staff.profile.displayPhoto
-    onData(null, {displayPhoto});
-  } else {
-    onData();
-  }
+    const displayPhoto = ( staff) ? ( staff.profile) ? ( staff.profile.displayPhoto)? staff.profile.displayPhoto:'':'':'';
+      onData(null, {displayPhoto});
+  };
+  (subscriptionReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

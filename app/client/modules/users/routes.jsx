@@ -8,8 +8,8 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/login', {
     name: 'user.login', action() {
       mount(PublicLayoutCtx, {
+        title: 'Login: ' + DocHead.getTitle(),
         content: () => (<Login />),
-        title: 'Login: ' + DocHead.getTitle()
       });
     }
   });

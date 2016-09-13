@@ -24,7 +24,11 @@ export default function (injectDeps, {FlowRouter}) {
     }],
     action() {
       mount(MainLayoutCtx,
-        {head: () => (<DashboardHeader />), content: ()=>(<Dashboard />), footer: ()=>(<Foot/>),},
+        {
+          head: () => (<DashboardHeader />),
+          content: ()=>(<Dashboard />),
+          footer: ()=>(<Foot/>),
+        },
       );
     }
   });
@@ -39,11 +43,9 @@ export default function (injectDeps, {FlowRouter}) {
   dashboardRoutes.route('/staff/:staffId', {
     name: 'dashboard.staff',
     action(staffId){
-      console.log();
       mount(MainLayoutCtx, {
         head: () => (<Header />), content: () => (<Timesheet userId={staffId.staffId}/>), footer: () => (<Foot />)
       });
     }
   });
-
 }

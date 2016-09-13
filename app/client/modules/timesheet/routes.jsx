@@ -6,6 +6,7 @@ import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from './containers/timesheet';
 import Breaklogs from './containers/breaklogs';
 import {dashboardRoutes} from '/client/modules/dashboard/routes'
+import TimeRequest from '/client/modules/timesheet/containers/time_request';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -27,6 +28,16 @@ export default function (injectDeps, {FlowRouter}) {
         title: 'Break Logs: ' + DocHead.getTitle(),
         head: () => (<Header/>),
         content: ()=>(<Breaklogs timeLogId={timeLogId.timeLogId}/>),
+        footer: ()=>(<Foot/>)
+      });
+    }
+  });
+  dashboardRoutes.route('/timesheet/request', {
+    name: 'timesheet.request',
+    action() {
+      mount(MainLayoutCtx, {
+        head: () => (<Header/>),
+        content: ()=>(<TimeRequest />),
         footer: ()=>(<Foot/>)
       });
     }

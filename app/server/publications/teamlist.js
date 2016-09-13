@@ -18,6 +18,8 @@ export default function () {
             : {_id: {$in: stafflist}}
           : {_id: {$in: stafflist}}
         : {_id: {$in: stafflist}};
+    console.log(teamOptions);
+
     return [Teamlist.find(ownerOptions), Meteor.users.find(teamOptions, {
       fields: {
         createdAt: false,
@@ -38,16 +40,14 @@ export default function () {
             : {_id: {$in: currentProject.collaborators}}
           : {_id: {$in: currentProject.collaborators}}
         : {_id: {$in: currentProject.collaborators}};
-    const fields = {'': 1, _id: 1};
-    return Meteor.users.find(teamOptions, {
-      fields: {
-        createdAt: false,
-        emails: false,
-        services: false,
-        'profile.role': false,
-        'profile.staffType': false,
-        'profile.jobTitle': false,
-      }
-    });
+    const fields = {
+      createdAt: false,
+      emails: false,
+      services: false,
+      'profile.role': false,
+      'profile.staffType': false,
+      'profile.jobTitle': false,
+    };
+    return Meteor.users.find(teamOptions, {fields: {fields}});
   });
 }

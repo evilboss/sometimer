@@ -7,7 +7,23 @@ class EditHourRendered extends React.Component {
   }
 
   componentDidMount() {
-    $('.modal-trigger').leanModal();
+
+    $('.modal-trigger').leanModal({
+      dismissible: true,
+      opacity: 0.5,
+      ready: function () {
+        if ($(".lean-overlay").length > 1) {
+          $(".lean-overlay:not(:first)").each(function () {
+            $(this).remove();
+          });
+        }
+      },
+      complete: function () {
+        $(".lean-overlay").each(function () {
+          $(this).remove();
+        });
+      }
+    });
     $('select').material_select();
   }
 

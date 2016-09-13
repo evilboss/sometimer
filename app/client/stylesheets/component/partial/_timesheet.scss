@@ -27,7 +27,7 @@ section.timesheet {
       border-radius: 0;
       padding: 7px 5px;
     }
-    td.rendered {
+    td.rendered, .time-in, .time-out, .total-break {
       position: relative;
       div.chip {
         cursor: pointer;
@@ -40,7 +40,10 @@ section.timesheet {
         top: 5px;
       }
     }
-    td.rendered:hover div.chip {
+    td.rendered:hover div.chip,
+    .time-in:hover div.chip,
+    .time-out:hover div.chip,
+    .total-break:hover div.chip {
       display: inline-block !important;
     }
   }

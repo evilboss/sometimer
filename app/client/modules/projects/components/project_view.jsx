@@ -18,11 +18,10 @@ class ProjectView extends React.Component {
   }
 
   render() {
-    let {name, _id} = this.props.project;
+    const {name, _id} = (this.props.project) ? this.props.project : {name: '', _id: ''};
     return (
       <section id="project-view">
         <PageTitle title={name}/>
-
         <div className="row flex">
           <section className="col s2 left">
             <ul className="collection no-margin">

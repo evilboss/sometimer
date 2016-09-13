@@ -15,7 +15,12 @@ class Timesheet extends TrackerReact(React.Component) {
       dates: []
     }
   };
-  
+
+  componentDidMount() {
+
+    $('.modal-trigger').leanModal();
+    $('select').material_select();
+  }
 
   getDates(from = null, to = null) {
     const reactState = this;

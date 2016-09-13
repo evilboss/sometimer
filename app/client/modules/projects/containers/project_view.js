@@ -12,7 +12,7 @@ export const composer = ({context, projectId}, onData) => {
   const projectFromCache = Tracker.nonreactive(() => {
     return Collections.Projects.findOne(projectId);
   });
-  (subsriptionReady) ? dataReady() : (projectFromCache) ? onData(null, {project: projectFromCache}) : onData();
+  (subsriptionReady) ? (projectFromCache) ? onData(null, {project: projectFromCache}) : dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

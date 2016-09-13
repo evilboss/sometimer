@@ -45,18 +45,6 @@ class Timedata extends React.Component {
         <td className="total-break">
           {(timelog) ? (timelog.totalBreak) ?
             <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
-          {(userRole == 'manager' || userRole == 'admin') ?
-            (timelog) ?
-              (timelog._id) ?
-                <span>
-                  <div data-target={timelog._id} className="chip z-depth-1 modal-trigger" data-toggle="modal">
-                    Edit
-                  </div>
-                  <EditHoursRendered target={timelog._id}/>
-                </span>
-                : ''
-              : ''
-            : ''}
         </td>
         <td className="time-out">
           {(timelog) ? (timelog.timeOut) ? (moment(timelog.timeOut).tz('Asia/Manila').format(format)) : '' : ''}

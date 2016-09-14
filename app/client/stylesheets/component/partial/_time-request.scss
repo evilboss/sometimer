@@ -1,0 +1,19 @@
+section#time-request {
+  @extend .container-margin;
+  td.staff {
+    .dp {
+      margin-right: 5px;
+      img {
+        height: 2.5em;
+        width: 2.5em;
+      }
+    }
+    .name {
+      position: absolute;
+      top: 10px;
+    }
+  }
+  button {
+    margin: 5px 0;
+  }
+}

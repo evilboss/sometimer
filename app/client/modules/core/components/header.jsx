@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './navbar.jsx';
 import SideNav from './side_nav.jsx';
 import  NavbarProfile from './navbar_profile';
+import Notification from './notification';
 
 class Header extends React.Component {
   constructor(props) {
@@ -10,14 +11,6 @@ class Header extends React.Component {
 
   componentDidMount() {
     $('.account-menu').dropdown({
-        inDuration: 300,
-        outDuration: 225,
-        constrain_width: false,
-        belowOrigin: true,
-        alignment: 'left'
-      }
-    );
-    $('.notification-menu').dropdown({
         inDuration: 300,
         outDuration: 225,
         constrain_width: false,
@@ -51,25 +44,7 @@ class Header extends React.Component {
                     <span></span>
                   </li>
                   <li>
-                    <a href="" className="notification-menu" data-activates="notification-menu">
-                      <i className="mdi-social-notifications"></i>
-                    </a>
-                    <ul id='notification-menu' className='dropdown-content'>
-                      {(currentUser.profile) ?
-                        (currentUser.profile.role) ?
-                          (currentUser.profile.role == 'admin' || currentUser.profile.role == 'manager') ?
-                            <li>
-                              <a href="/dashboard/timesheet/request">
-                                Timelog Request
-                                <i className="material-icons right">exit_to_app</i>
-                              </a>
-                            </li>
-                            : ''
-                          : ''
-                        : ''}
-                      <li><a>Notifications
-                        <i className="material-icons right">exit_to_app</i></a></li>
-                    </ul>
+                    <Notification currentUser={currentUser}/>
 
                   </li>
                   <li>

@@ -17,7 +17,7 @@ class TimeRequest extends React.Component {
     const timeRequest = this.props.timeRequest;
     const format = 'hh:mm A z';
     return (
-      <section className="timerequest">
+      <section id="time-request">
         <PageTitle title='Time Request'/>
         <table className="centered bordered">
           <thead>
@@ -38,11 +38,15 @@ class TimeRequest extends React.Component {
               <td>
                 {request.date}
               </td>
-              <td>
+              <td className="staff">
                 {request.logs.map((log, index)=>
-                  <div key={index}>
+                  <div key={index} className="relative">
+                    <span className="dp">
                     <StaffDp userId={log.userId}/>
+                      </span>
+                    <span className="name">
                     <Username userId={log.userId}/>
+                      </span>
                   </div>
                 )}
               </td>

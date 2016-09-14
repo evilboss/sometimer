@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeTotal from '../containers/time_total';
+import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 class StaffDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +9,10 @@ class StaffDetails extends React.Component {
     };
   };
 
-  comingSoon(e) {
-    e.preventDefault();
-    sweetAlert("Coming Soon!");
-  }
 
   componentDidMount() {
     this.getToday();
+    console.log(sweetPrompts);
   };
 
   getToday() {
@@ -72,9 +70,9 @@ class StaffDetails extends React.Component {
               <a href={`/dashboard/staff/${staff._id}`}>
                 <img src="/Assets/icons/time.png"/>
               </a>
-              <img src="/Assets/icons/message.png" onClick={this.comingSoon.bind()}/>
-              <img src="/Assets/icons/phone.png" onClick={this.comingSoon.bind()}/>
-              <img src="/Assets/icons/file.png" onClick={this.comingSoon.bind()}/>
+              <img src="/Assets/icons/message.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
+              <img src="/Assets/icons/phone.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
+              <img src="/Assets/icons/file.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
               <a href={`/dashboard/staff/settings/${staff._id}`}>
                 <img src="/Assets/icons/settings.png"/>
               </a>

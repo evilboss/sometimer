@@ -89,7 +89,9 @@ class TimeRequest extends React.Component {
             </tr>
           )}
           </tbody>
+
         </table>
+        {(timeRequest.length == 0) ? <div>No Pending Request</div> : ''}
       </section>
     );
   }

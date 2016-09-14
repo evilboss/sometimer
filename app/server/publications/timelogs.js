@@ -35,10 +35,10 @@ export default function () {
     const timeLogOptions =
       (currentUser) ?
         (currentUser.profile) ?
-          (currentUser.profile.role == 'admin') ? {}
-            : {userId: {$in: stafflist}, completed: true}
-          : {userId: {$in: stafflist}, completed: true}
-        : {userId: {$in: stafflist}, completed: true};
+          (currentUser.profile.role == 'admin') ? {approved: {$exists: false}, completed: true}
+            : {userId: {$in: stafflist}, approved: {$exists: false}, completed: true}
+          : {userId: {$in: stafflist}, approved: {$exists: false}, completed: true}
+        : {userId: {$in: stafflist}, approved: {$exists: false}, completed: true};
     return Timelogs.find(timeLogOptions);
   });
 }

@@ -60,20 +60,22 @@ class Timedata extends React.Component {
           {(timelog) ? (timelog.timeIn) ? (moment(timelog.timeIn).tz('Asia/Manila').format(format)) : '' : ''}
             </span>
           <div className="clickedit">
-            <input type="text"/><i className="material-icons">border_color</i>
+            <input type="time"/><i className="material-icons">border_color</i>
           </div>
-          {(userRole == 'manager' || userRole == 'admin') ?
-            (timelog) ?
-              (timelog._id) ?
-                <span>
+          {
+            (userRole == 'manager' || userRole == 'admin') ? 
+              (timelog) ?
+                (timelog._id) ?
+                  <span>
                   <div data-target={timelog._id} className="edit modal-trigger" data-toggle="modal">
                     <i className="material-icons">border_color</i>
                   </div>
                   <EditHoursRendered target={timelog._id}/>
                 </span>
+                  : ''
                 : ''
               : ''
-            : ''}
+          }
         </td>
         <td className="total-break">
           {(timelog) ? (timelog.totalBreak) ?

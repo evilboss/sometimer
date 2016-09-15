@@ -17,12 +17,14 @@ class Notification extends React.Component {
   }
 
   render() {
+    const requestCount = this.props.requestCount;
     const currentUser = this.props.currentUser;
+    console.log(requestCount);
     return (
       <div>
         <a href="" className="notification-menu" data-activates="notification-menu">
           <i className="mdi-social-notifications"></i>
-          <small className="notification-badge">5</small>
+          {(requestCount) ? <small className="notification-badge">{requestCount}</small> : ''}
         </a>
         <ul id='notification-menu' className='dropdown-content'>
           {(currentUser.profile) ?
@@ -31,14 +33,13 @@ class Notification extends React.Component {
                 <li>
                   <a href="/dashboard/timesheet/request">
                     Timelog Request
-                    <small className="notification-badge right">5</small>
+                    {(requestCount) ? <small className="notification-badge">{requestCount}</small> : ''}
                   </a>
                 </li>
                 : ''
               : ''
             : ''}
-          <li><a>Notifications
-            <i className="material-icons right">exit_to_app</i></a></li>
+        
         </ul>
       </div>
     );

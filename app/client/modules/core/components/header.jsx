@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './navbar.jsx';
 import SideNav from './side_nav.jsx';
 import  NavbarProfile from './navbar_profile';
-import Notification from './notification';
+import Notification from '../containers/notification';
 
 class Header extends React.Component {
   constructor(props) {

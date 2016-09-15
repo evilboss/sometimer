@@ -49,6 +49,11 @@ section.timesheet {
         height: 23px;
         line-height: 23px;
       }
+      .cancel {
+        @extend .done;
+        background-color: $red;
+        margin-right: 5px;
+      }
     }
   }
   .modal {

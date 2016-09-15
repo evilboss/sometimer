@@ -48,6 +48,13 @@ class Timedata extends React.Component {
     $('td.' + timeLogType + ' .clickedit#' + timelogId).hide();
   }
 
+  cancel(timelogId, timeLogType, e) {
+    e.preventDefault();
+    $('td.' + timeLogType + ' span p#' + timelogId).show();
+    $('td.' + timeLogType + ' .edit#' + timelogId).show();
+    $('td.' + timeLogType + ' .clickedit#' + timelogId).hide();
+  }
+
 
   componentDidMount() {
 
@@ -83,6 +90,8 @@ class Timedata extends React.Component {
                       className={`time-in ${timelog._id}`}
                       onChange={this.onChange}
                     />
+                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-in')}><i
+                      className="material-icons">clear</i></button>
                     <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-in')}><i
                       className="material-icons">done</i></button>
                   </div>
@@ -116,6 +125,8 @@ class Timedata extends React.Component {
                       className={`time-out ${timelog._id}`}
                       onChange={this.onChange}
                     />
+                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-out')}><i
+                      className="material-icons">clear</i></button>
                     <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-out')}><i
                       className="material-icons">done</i></button>
                   </div>

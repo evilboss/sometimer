@@ -457,3 +457,18 @@ form {
     }
   }
 }
+
+.btn-add {
+  margin-top: 5em;
+  a {
+    border-radius: 50%;
+    i {
+      font-size: 3em;
+      color: white;
+      padding: 10px;
+    }
+  }
+  h6 {
+    color: $secondary-color;
+  }
+}

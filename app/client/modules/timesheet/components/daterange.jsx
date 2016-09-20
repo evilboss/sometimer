@@ -93,7 +93,7 @@ class Daterange extends React.Component {
 
         <div id="daterange-modal" className="modal">
           <div className="modal-content">
-            <h4 className="modal-title">Send Invitation</h4>
+            <h4 className="modal-title">Date Range</h4>
             <div className="modal-body">
               <DateRange
                 linkedCalendars={ true }

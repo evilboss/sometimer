@@ -4,7 +4,7 @@ import TeamList from '../components/team_list.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('team-list').ready()) {
+  if (Meteor.subscribe('team.list').ready()) {
     const team = Collections.Team.find().fetch();
     onData(null, {team});
   } else {

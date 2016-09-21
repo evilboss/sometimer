@@ -1,11 +1,11 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
 import CreateTeam from '../components/create_team.jsx';
-
+/*TODO: @aaron add new team */
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-
-  onData(null, {});
+  const team = Collections.Team;
+  onData(null, {team});
 };
 
 export const depsMapper = (context, actions) => ({

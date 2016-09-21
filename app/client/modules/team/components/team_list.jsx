@@ -1,6 +1,7 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
-/*TODO:@aaron add teamlist for admin and manager */
+import StaffDp from '/client/modules/users/containers/staff_dp';
+
 class TeamList extends React.Component {
   constructor(props) {
     super(props);
@@ -26,10 +27,12 @@ class TeamList extends React.Component {
                   <div className="card">
                     <div className="card-content">
                       <span className="card-title">{team.name}</span>
-                      <p className="subtext">desc</p>
+                      <p className="subtext">{team.description}</p>
                     </div>
                     <div className="card-action">
-                      collaborator
+                      {team.members.map((member, key)=>(
+                        (key <= 4) ? <StaffDp key={key} teamId={team._id} userId={member}/> : ''
+                      ))}
                     </div>
                   </div>
                 </article>

@@ -55,9 +55,9 @@ export default function (injectDeps, {FlowRouter}) {
 
   dashboardRoutes.route('/team/:teamId', {
     name: 'dashboard.myteam',
-    action(){
+    action(params){
       mount(MainLayoutCtx, {
-        head: () => (<Header />), content: () => (<StaffList />), footer: () => (<Foot />)
+        head: () => (<Header />), content: () => (<StaffList teamId={params.teamId}/>), footer: () => (<Foot />)
       });
     }
   });

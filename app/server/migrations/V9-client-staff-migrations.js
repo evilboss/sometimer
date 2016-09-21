@@ -20,7 +20,6 @@ const loadStaffs = ()=> {
   Meteor._sleepForMs(5000);
   const owner = Meteor.users.findOne({'emails.address': {$regex: 'client@client.com', $options: 'i'}});
   if (owner) {
-    console.log('owner found', owner);
     _.each(defaultStafflist, function (staffEmail) {
       const staff = Meteor.users.findOne({'emails.address': {$regex: staffEmail, $options: 'i'}});
       useridList.push(staff._id);
@@ -29,11 +28,9 @@ const loadStaffs = ()=> {
   }
 };
 const removeStaffs = ()=> {
-  console.info('removing stafflist');
   Meteor._sleepForMs(5000);
   const owner = Meteor.users.findOne({'emails.address': {$regex: 'client@client.com', $options: 'i'}});
   if (owner) {
-    console.log('owner found', owner);
     let currentTeamList = Teamlist.find({owner: owner._id}).fetch();
     _.each(currentTeamList, function (teamlist) {
       console.log(teamlist);

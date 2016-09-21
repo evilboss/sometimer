@@ -5,6 +5,7 @@ class PageTitle extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
       <div className="page-title">
@@ -12,6 +13,12 @@ class PageTitle extends React.Component {
       </div>
     );
   }
+}
+PageTitle.propTypes = {
+  title: React.PropTypes.string.isRequired,
+}
+PageTitle.defaultProps = {
+  title: 'No title'
 }
 
 export default PageTitle;

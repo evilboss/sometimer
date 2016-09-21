@@ -20,5 +20,4 @@ class Quickform extends React.Component {
     );
   }
 }
-
 export default Quickform;

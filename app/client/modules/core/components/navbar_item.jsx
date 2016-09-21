@@ -1,5 +1,5 @@
 import React from 'react';
-import FlowHelpers from '/client/utils/helpers/route-helpers'
+import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 class NavbarItem extends React.Component {
   constructor(props) {

@@ -7,6 +7,7 @@ class HeaderMenu extends React.Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     $('.account-menu').dropdown({
         inDuration: 300,
@@ -17,6 +18,7 @@ class HeaderMenu extends React.Component {
       }
     );
   };
+
   render() {
     const currentUser = this.props.currentUser;
     return (

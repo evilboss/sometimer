@@ -13,6 +13,8 @@ import PublicLayout from '/client/modules/core/components/public_layout';
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
+  const PublicLayoutCtx = injectDeps(PublicLayout);
+
   dashboardRoutes.route('/invite', {
     name: 'dashboard.invites',
     action(){
@@ -37,7 +39,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'invite.activate',
     action(params){
       console.log('this is invite route', params.token);
-      mount(MainLayoutCtx, {
+      mount(PublicLayoutCtx, {
         content: ()=>(<Invitee />),
       });
     }

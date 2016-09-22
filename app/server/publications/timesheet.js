@@ -6,4 +6,8 @@ export default function () {
   Meteor.publish('timesheet', function () {
     return Timesheet.find();
   });
+
+  Meteor.publish('staff.timesheet', function (userId) {
+    return Meteor.users.find(userId);
+  });
 }

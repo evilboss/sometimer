@@ -15,7 +15,6 @@ export default function () {
     const selectedTeam = Team.findOne(teamId);
     const staffList = selectedTeam.members;
     const teamOptions = {_id: {$in: staffList}};
-    console.log(Meteor.users.find(teamOptions).fetch());
     return Meteor.users.find(teamOptions, {
       fields: {
         createdAt: false,

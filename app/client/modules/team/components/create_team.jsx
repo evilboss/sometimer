@@ -4,7 +4,7 @@ import Formsy from 'formsy-react';
 import MyInput from '../../../utils/form/input';
 import TextArea from '../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
-import TeamQuickView from '/client/modules/team/containers/team_quick_view';
+
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -36,11 +36,7 @@ class CreateTeam extends React.Component {
       <section id="create-team">
         <PageTitle title="All Team"/>
         <div className="row flex no-section-margin">
-
-          <div className="col s2 no-horizontal-padding">
-            <TeamQuickView/>
-          </div>
-          <div className="col s10">
+          <div className="col s12">
             <section className="create-team">
               <h4>Create A Team</h4>
               <Formsy.Form onSubmit={this.addTeam.bind(this)}>

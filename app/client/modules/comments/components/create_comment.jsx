@@ -11,7 +11,7 @@ class CreateComment extends React.Component {
       <div>
         {error ? this._renderError(error) : null}
         <div className="input-field col s12">
-          <textarea ref='text' className="materialize-textarea" placeholder='Enter your comment here.'>
+          <textarea ref='comment' className="materialize-textarea" placeholder='Enter your comment here.'>
         </textarea>
           <label htmlFor="textarea1">Instruction</label>
         </div>
@@ -21,10 +21,11 @@ class CreateComment extends React.Component {
   }
 
   _create() {
-    const text = this.refs.text.value;
     const {create, projectId} = this.props;
+    const text = this.refs.comment.value;
+    console.log(create, projectId);
     create(projectId, text);
-    this.refs.text.value = '';
+    this.refs.comment.value = '';
   }
 
   _renderError(error) {

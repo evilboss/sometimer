@@ -17,7 +17,6 @@ export default function () {
             : {_id: {$in: stafflist}}
           : {_id: {$in: stafflist}}
         : {_id: {$in: stafflist}};
-    console.log(teamOptions);
 
     return [Teamlist.find(ownerOptions), Meteor.users.find(teamOptions, {
       fields: {

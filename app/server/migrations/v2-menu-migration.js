@@ -49,8 +49,8 @@ const menuItems = [
   {
     title: "MY TEAM",
     icon: "group",
-    url: '/dashboard/myteam',
-    name: 'dashboard.myteam',
+    url: '/dashboard/team/list',
+    name: 'dashboard.teamlist',
     roles: ['admin', 'manager', 'client']
 
   },

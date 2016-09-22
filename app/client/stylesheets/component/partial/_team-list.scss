@@ -1,19 +1,5 @@
-section.project-list {
+section#team-list {
   @extend .container-margin;
-  .project-view {
-    margin-left: 3em;
-    vertical-align: sub;
-    i {
-      font-size: 30px;
-    }
-    a {
-      color: $gray-line;
-    }
-    .active {
-      color: $theme-color;
-    }
-  }
-
   article {
     .card {
       animation: bottom-to-top 1.5s;

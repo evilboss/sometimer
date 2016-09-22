@@ -1,7 +1,5 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
 import SubCreate from '../components/sub_create.jsx';
-
 export const composer = ({context, clearErrors}, onData) => {
   const {LocalState} = context();
   const error = LocalState.get('CREATE_SUBPROJECT_ERROR');

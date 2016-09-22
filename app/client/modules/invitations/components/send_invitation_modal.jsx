@@ -9,9 +9,7 @@ class SendInvitationModal extends React.Component {
     $('select').material_select();
   }
 
-
   render() {
-    console.log(this.props);
     return (
       <div>
         <button className="modal-trigger btn theme-color pull-right" data-toggle="modal"
@@ -67,13 +65,13 @@ class SendInvitationModal extends React.Component {
               </div>
             </form>
           </div>
+          <button onClick={this._create.bind(this)}>Matubato</button>
         </section>
       </div>
     );
   }
 
   _create() {
-    const {create} = this.props;
     const invite = {
       email: this.refs.email.value,
       role: this.refs.role.value,
@@ -83,7 +81,32 @@ class SendInvitationModal extends React.Component {
       designation: this.refs.designation.value,
       status: this.refs.status.value,
     };
-    create(invite);
+    this.sendInvite(invite);
   }
+
+  sendInvite(invite) {
+    let errors = [];
+    (invite) ?
+      (invite.email) ?
+        (invite.firstName) ?
+          (invite.lastName) ?
+            (invite.department) ?
+              (invite.designation) ?
+                (invite.role) ?
+                  (invite.status) ?
+                    console.log(invite)
+                    : errors.push('Status must be specified')
+                  : errors.push('A user must have a role')
+                : errors.push('Designation must be specified')
+              : errors.push('Department is required')
+            : errors.push('email is required')
+          : errors.push('email is required')
+        : errors.push('Error')
+      : errors.push('Invite is required');
+    console.log(errors);
+    (errors)?'':'';
+  }
+
+
 }
 export default SendInvitationModal;

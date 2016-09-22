@@ -26,21 +26,29 @@ class Notification extends React.Component {
           <i className="mdi-social-notifications"></i>
           {(requestCount) ? <small className="notification-badge">{requestCount}</small> : ''}
         </a>
-        <ul id='notification-menu' className='dropdown-content'>
-          {(currentUser.profile) ?
-            (currentUser.profile.role) ?
-              (currentUser.profile.role == 'admin' || currentUser.profile.role == 'manager') ?
+
+        {(currentUser.profile) ?
+          (currentUser.profile.role) ?
+            (currentUser.profile.role == 'admin' || currentUser.profile.role == 'manager') ?
+              <ul id='notification-menu' className='dropdown-content'>
                 <li>
                   <a href="/dashboard/timesheet/request">
                     Timelog Request
-                    {(requestCount) ? <small className="notification-badge right">{requestCount}</small> : ''}
+                    {(requestCount) ? <small className="notification-badge">{requestCount}</small> : ''}
                   </a>
                 </li>
-                : ''
+                <li>
+                  <a href="/dashboard/invites">
+                    Invitations
+                    <small className="notification-badge">1</small>
+                  </a>
+                </li>
+              </ul>
               : ''
-            : ''}
+            : ''
+          : ''}
 
-        </ul>
+
       </div>
     );
   }

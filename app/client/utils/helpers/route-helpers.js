@@ -12,8 +12,10 @@ const currentRoute = (route) => {
   FlowRouter.watchPathChange();
   return FlowRouter.current().route.name === route ? 'active' : '';
 };
-export default FlowHelpers = {
+const FlowHelpers = {
   pathFor: pathFor,
   urlFor: urlFor,
   currentRoute: currentRoute
 };
+
+export{FlowHelpers};

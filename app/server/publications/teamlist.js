@@ -1,7 +1,6 @@
 import {Teamlist, Projects} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
-
 export default function () {
   Meteor.publish('teamlist', function () {
     let stafflist = [];
@@ -29,7 +28,7 @@ export default function () {
     })];
   });
 
-  Meteor.publish('collaborators', (projectId)=> {
+  Meteor.publish('collaborators', function (projectId) {
     const currentProject = Projects.findOne(projectId);
     const currentUser = Meteor.users.findOne(this.userId);
     const teamOptions =

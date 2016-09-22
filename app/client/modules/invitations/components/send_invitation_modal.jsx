@@ -13,7 +13,7 @@ class SendInvitationModal extends React.Component {
     const invite = {
       email: this.refs.email.value,
       role: this.refs.role.value
-    }
+    };
     Meteor.call('invitations.send', invite, (error, response) => {
       (error) ? alert(error.reason) : alert('Invitation Sent!');
     });

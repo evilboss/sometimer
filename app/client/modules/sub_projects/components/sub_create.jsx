@@ -40,14 +40,14 @@ class SubCreate extends React.Component {
   }
 
   _create() {
+    const {create, projectId} = this.props;
     const subProject = {
-      projectId: this.props.projectId,
+      projectId: projectId,
       name: this.refs.name.value,
       details: this.refs.details.value,
     };
     subProject.collaborators = this.state.staffList;
     subProject.collaborators.push(Meteor.userId());
-    const {create, projectId} = this.props;
     create(subProject);
     this.refs.name.value = '';
     this.refs.details.value = '';

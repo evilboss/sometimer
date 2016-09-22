@@ -4,9 +4,9 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.publish('team.list', function () {
-    const selector = {
-      members: {$all: [this.userId]}
-    };
+    const currentUser = Meteor.users.findOne(this.userId);
+    const selector =
+      (currentUser) ? (currentUser.profile) ? (currentUser.profile.role == 'admin') ? {} : {members: {$all: [this.userId]}} : {members: {$all: [this.userId]}} : {members: {$all: [this.userId]}};
     const options = {};
     return Team.find(selector, options);
   });

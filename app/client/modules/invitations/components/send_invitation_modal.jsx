@@ -4,10 +4,12 @@ class SendInvitationModal extends React.Component {
     super(props);
     this.sendInvite = this.sendInvite.bind(this);
   }
+
   componentDidMount() {
     $('.modal-trigger').leanModal();
     $('select').material_select();
   }
+
   sendInvite(e) {
     e.preventDefault();
     const invite = {
@@ -18,6 +20,7 @@ class SendInvitationModal extends React.Component {
       (error) ? alert(error.reason) : alert('Invitation Sent!');
     });
   }
+
   render() {
     return (
       <div>
@@ -35,7 +38,31 @@ class SendInvitationModal extends React.Component {
                            name="emailAddress"/>
                   </div>
                   <div className="form-group">
+                    <input ref="firstName" placeholder="First Name" type="text" className="form-control"
+                           name="firstName"/>
+                  </div>
+                  <div className="form-group">
+                    <input ref="lastName" placeholder="Last Name" type="text" className="form-control"
+                           name="lastName"/>
+                  </div>
+                  <div className="form-group">
+                    <input ref="department" placeholder="Department" type="text" className="form-control"
+                           name="department"/>
+                  </div>
+                  <div className="form-group">
+                    <input ref="designation" placeholder="Designation" type="text" className="form-control"
+                           name="designation"/>
+                  </div>
+                  <div className="form-group">
                     <select name="role" ref="role" className="input-field col s12" defaultValue="Choose Role">
+                      <option value="" disabled selected>Select Status</option>
+                      <option value="probationary">Probationary</option>
+                      <option value="regular">Regular</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <select name="role" ref="role" className="input-field col s12" defaultValue="Choose Role">
+                      <option value="" disabled selected>Select Role</option>
                       <option value="staff">Staff</option>
                       <option value="manager">Manager</option>
                       <option value="admin">Admin</option>

@@ -37,18 +37,29 @@ class InviteList extends React.Component {
           <div id="pending-invitations" className="col s12">
             <table>
               <thead>
-              <Invitee/>
+              <tr>
+                <td>email</td>
+                <td>first name</td>
+                <td>last name</td>
+                <td>role</td>
+              </tr>
+              <tr>
+                <td>one</td>
+                <td>one</td>
+                <td>one</td>
+                <td>one</td>
+                <td>one</td>
 
+              </tr>
               </thead>
               <tbody>
-
+              <Invitee/>
               </tbody>
             </table>
           </div>
-
           <div id="accepted-invitations" className="col s12"></div>
         </div>
-        <button onClick={this.callMail.bind(this)}>Send Email</button>
+        <SendInvitationModal/>
       </section>
     );
   }

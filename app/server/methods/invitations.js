@@ -7,27 +7,24 @@ export default function () {
     'invitations.send'(invite) {
       check(invite, {
         email: String,
-        role: String
+        role: String,
+        firstName: String,
+        lastName: String,
+        department: String,
+        designation: String,
+        status: String,
       });
-      const sendInvitation = {
-        email: invite.email,
-        token: Random.hexString(16),
-        role: invite.role,
-        date: ( new Date() ).toISOString()
+      invite.token = Random.hexString(16);
+      invite.date = ( new Date() ).toISOString();
+      invite.activationStatus = 'pending';
+      invite.inviter = Meteor.userId();
+      const invitationId = Invitations.insert(invite);
+      invite._id = invitationId;
+      remotivMailer.sendInvite(invite);
 
-      };
-      console.info('sending Invite', sendInvitation);
     },
     'invitation.sendMail'(){
       console.log('sending mail');
-      const options = {
-        from: 'notifications@remotiv.io',
-        to: 'aaron@bosstechlabs.com',
-        subject: 'Malati ka butu',
-        text: '',
-        html: '<b>ipasok si dick</b>'
-
-      };
       const message = {
         to: 'Aaron Randrup <aaron@bosstechlabs.com>',
         subject: 'Invitation Email',
@@ -36,7 +33,7 @@ export default function () {
         data: {token: 'Test'},
         attachments: []
       }
-      Mailer.send(message);
+      //Mailer.send(message);
     }
   });
 }

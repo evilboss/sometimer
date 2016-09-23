@@ -1,13 +1,18 @@
 import React from 'react';
+import moment from 'moment';
 import CreateComment from '../containers/create_comment';
 import Username from '/client/modules/users/containers/username';
 class CommentList extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     let comments = this.props.comments;
     let projectId = this.props.projectId;
+    const format = 'dddd, D MMMM YYYY hh:mm A z';
+
+    console.log(comments);
     return (
       <section className="comments white-wrapper">
         <h4>Instructions</h4>
@@ -19,12 +24,17 @@ class CommentList extends React.Component {
           {comments.length === 0 ? <p>No Comments Yet!</p> : null}
           <table>
             <tbody>
+
             {comments.map(comment => (
               <tr key={comment._id}>
-                <td className="avatar">img</td>
-                <td className="who"><Username userId={comment.author}/></td>
+                <td className="avatar"></td>
+                <td className="who">
+                  <span>
+                  <Username userId={comment.author}/>
+                    </span>
+                </td>
                 <td className="what">{comment.text}</td>
-                <td className="when">{comment.text}</td>
+                <td className="when">{moment(comment.createdAt).tz('Asia/Manila').format(format)}</td>
                 {comment.saving ? '...' : null}
               </tr>
             ))}

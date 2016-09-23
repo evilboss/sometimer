@@ -2,6 +2,7 @@ import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import SendInvitationModal from '../components/send_invitation_modal.jsx';
 import Invitee from '../containers/invitee';
+import moment from 'moment';
 class InviteList extends React.Component {
   constructor(props) {
     super(props);
@@ -13,17 +14,14 @@ class InviteList extends React.Component {
     });
   }
 
-  callMail() {
-    Meteor.call('invitation.sendMail');
-
-  }
-
   render() {
+    const {pendingInvites, closedInvites} = this.props;
     const tabs = [{content: '#open-invitations', label: 'Open', active: true}, {
       content: '#closed-invitations',
       label: 'Closed',
       active: false
     }];
+    const format = 'hh:mm A z';
     return (
       <section id="inviteList">
         <PageTitle title="Invitations"/>
@@ -39,26 +37,81 @@ class InviteList extends React.Component {
               <thead>
               <tr>
                 <td>email</td>
-                <td>first name</td>
-                <td>last name</td>
-                <td>role</td>
-              </tr>
-              <tr>
-                <td>one</td>
-                <td>one</td>
-                <td>one</td>
-                <td>one</td>
-                <td>one</td>
-
+                <td>Name</td>
+                <td>Role</td>
+                <td>Department</td>
+                <td>Designation</td>
+                <td>Date Invited</td>
               </tr>
               </thead>
               <tbody>
-              <Invitee/>
+              {(pendingInvites) ? pendingInvites.map((invite, index)=>(
+                <tr key={index}>
+                  <td>
+                    {invite.email}
+                  </td>
+                  <td>
+                    {invite.firstName} {invite.lastName}
+                  </td>
+                  <td>
+                    {invite.role}
+                  </td>
+                  <td>
+                    {invite.department}
+                  </td>
+                  <td>
+                    {invite.designation}
+                  </td>
+                  <td>
+                    {moment(invite.date).tz('Asia/Manila').format(format)}
+                  </td>
+                </tr>
+              )) : ''}
               </tbody>
             </table>
           </div>
-          <div id="accepted-invitations" className="col s12"></div>
+          <div id="accepted-invitations" className="col s12">
+            <table>
+              <thead>
+              <tr>
+                <td>email</td>
+                <td>Name</td>
+                <td>Role</td>
+                <td>Department</td>
+                <td>Designation</td>
+                <td>Date Invited</td>
+              </tr>
+              </thead>
+              <tbody>
+              {(closedInvites) ? closedInvites.map((invite, index)=>(
+                <tr>
+                  <td>
+                    {invite.email}
+                  </td>
+                  <td>
+                    {invite.firstName} {invite.lastName}
+                  </td>
+                  <td>
+                    {invite.role}
+                  </td>
+                  <td>
+                    {invite.department}
+                  </td>
+                  <td>
+                    {invite.designation}
+                  </td>
+                  <td>
+                    {console.log(invite.date)}
+                  </td>
+                </tr>
+              )) : ''}
+              </tbody>
+            </table>
+          </div>
+
         </div>
+
+
         <SendInvitationModal/>
       </section>
     );

@@ -33,7 +33,6 @@ Templates.invitation = {
     data: function (params) {
       return {
         token: params.token,
-        names: ['Johan', 'John', 'Paul', 'Ringo'],
         name: 'Aaron'
       };
     }

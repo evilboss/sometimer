@@ -11,6 +11,7 @@ import teamlist from './teamlist';
 import breaks from './breaks';
 import subProjects from './sub_projects';
 import todos from './todos';
+import invitations from './invitations';
 
 export default function () {
   timesheet();
@@ -26,4 +27,5 @@ export default function () {
   breaks();
   subProjects();
   todos();
+  invitations();
 }

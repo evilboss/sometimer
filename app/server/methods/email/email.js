@@ -2,17 +2,19 @@
  * Created by jr on 9/20/16.
  */
 import {Email} from 'meteor/email';
-const sendMail = (from, to, subject, text, html)=> {
-  const mailOptions = {
-    from: from, // sender address
-    to: to, // list of receivers
-    subject: subject, // Subject line
-    text: text,
-    html: html
+const sendInvite = (invite)=> {
+  const message = {
+    to: `${invite.firstName} ${invite.lastName} <${invite.email}>`,
+    subject: 'Invitation Email',
+    template: 'invitation',
+    replyTo: 'Remotiv Notifications <notifications@remotiv.com>',
+    data: {token: invite.token, name: `${invite.firstName} ${invite.lastName}`},
+    attachments: []
   };
-  Email.send(mailOptions);
-}
+  Mailer.send(message);
+  return true;
+};
 const remotivMailer = {
-  sendMail
+  sendInvite
 };
 export{remotivMailer};

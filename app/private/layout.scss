@@ -5,3 +5,15 @@ body, p {
   color: $color;
   text-align: center;
 }
+
+.email-content-wrapper {
+  margin-left: 9px;
+  background: #f1f1f1;
+  width: 631px;
+  padding-bottom: 1.5em;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}

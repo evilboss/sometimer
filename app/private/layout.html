@@ -9,56 +9,54 @@
 </head>
 <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
 <!-- start body table -->
-<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%" class="body-table">
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="600"
+       style="margin: 0 auto;background-color: #ffffff;" class="body-table">
   <tr>
-    <td class="body" align="center" valign="top">
-
-      <p class="hide preview-text">
-        {{#if preview}}
-          {{preview}}
-        {{else}}
-        {{/if}}</p>
-
-      <!-- begin all -->
-      <table cellspacing="0" cellpadding="0" border="0" width="100%">
-        <!-- start header -->
-        <tr class="header">
-          <td align="center">
-            <table cellspacing="0" cellpadding="0" border="0" class="container">
-              <tr>
-                <td class="header__content" valign="top" align="center">
-                  <h1>Remotiv IO</h1>
-                </td>
-              </tr>
-            </table>
+    <td><img src="{{emailUrlFor '/Assets/teams/default/background/top.gif'}}"/></td>
+  </tr>
+  <tr>
+    <td>
+      <table align="center" class="email-content-wrapper">
+        <tr>
+          <td class="header__content" valign="top" align="center">
+            <h1>Remotiv IO</h1>
           </td>
-        </tr><!-- end header -->
+        </tr>
 
+        <tr>
+          <td>
+            <p class="hide preview-text">
+              {{#if preview}}
+                {{preview}}
+              {{else}}
+              {{/if}}</p>
+          </td>
+        </tr>
         <!-- MAIN TEMPLATE CONTENT -->
-
         <tr class="template-content">
           <td align="center">
             {{{ body }}}
           </td>
         </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img style="margin-left: 9px;" src="{{emailUrlFor '/Assets/teams/default/background/bottom.gif'}}"/>
+    </td>
+  </tr>
+  <!-- end MAIN TEMPLATE CONTENT -->
 
-        <!-- end MAIN TEMPLATE CONTENT -->
 
-
-        <!-- begin footer -->
-        <tr class="footer">
-          <td>
-            <p>
-              <small>Remotiv.io</small>
-            </p>
-          </td>
-        </tr>
-        <!-- end footer -->
-
-      </table><!-- end -->
+  <!-- begin footer -->
+  <tr class="footer">
+    <td>
+      <p>
+        <small>Remotiv.io</small>
+      </p>
     </td>
   </tr>
 </table><!-- end body table -->
-
 </body>
 </html>

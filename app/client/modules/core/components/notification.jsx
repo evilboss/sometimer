@@ -34,13 +34,13 @@ class Notification extends React.Component {
                 <li>
                   <a href="/dashboard/timesheet/request">
                     Timelog Request
-                    {(requestCount) ? <small className="notification-badge">{requestCount}</small> : ''}
+                    {(requestCount) ? <small className="notification-badge right">{requestCount}</small> : ''}
                   </a>
                 </li>
                 <li>
                   <a href="/dashboard/invites">
                     Invitations
-                    <small className="notification-badge">1</small>
+                    <small className="notification-badge right">1</small>
                   </a>
                 </li>
               </ul>

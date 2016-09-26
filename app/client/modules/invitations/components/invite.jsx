@@ -19,7 +19,9 @@ class Invite extends React.Component {
                   <div className="form row circular-border">
                     <PageTitle title='Thanks for activating your account'/>
                     <div>
-                      <a className="btn" href="/login">click here to activate your account</a>
+                      <a className="btn" href={`/invite/activate/${this.props.token}`}>
+                        click here to activate your account
+                      </a>
                     </div>
                   </div>
                 </div>

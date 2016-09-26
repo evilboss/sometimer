@@ -2,6 +2,7 @@ import {Invitations} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {remotivMailer} from './email/email';
+import {remotivUser} from './user/remotiv_user';
 export default function () {
   Meteor.methods({
     'invitations.send'(invite) {
@@ -34,6 +35,31 @@ export default function () {
         attachments: []
       }
       //Mailer.send(message);
+    },
+    'invitation.activate'(invite){
+      const inviteToActivate = Invitations.findOne({token: invite.token});
+      const throwError = ()=> {
+        throw new Meteor.Error(500, 'Error 500: Not found', 'the Invite is not found');
+        return 'error';
+      };
+      const constructUser = (inviteToAdd)=> {
+        console.log(inviteToAdd)
+        const newUser = {
+          email: inviteToAdd.email,
+          password: invite.password,
+          profile: {
+            firstName: inviteToAdd.firstName,
+            lastName: inviteToAdd.lastName,
+            department: inviteToAdd.department,
+            staffType: inviteToAdd.status,
+            jobTitle: inviteToAdd.designation,
+            role: inviteToAdd.role,
+          }
+        }
+        remotivUser.add(newUser);
+      };
+      (inviteToActivate) ? constructUser(inviteToActivate) : throwError();
+      return inviteToActivate;
     }
   });
 }

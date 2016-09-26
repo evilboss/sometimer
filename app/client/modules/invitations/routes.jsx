@@ -8,6 +8,8 @@ import {dashboardRoutes} from '/client/modules/dashboard/routes'
 import InviteList from './containers/invite_list';
 import Invitee from './containers/invitee';
 import Invite from './containers/invite';
+import Activate from './containers/activate';
+
 
 import PublicLayout from '/client/modules/core/components/public_layout';
 export default function (injectDeps, {FlowRouter}) {
@@ -39,6 +41,14 @@ export default function (injectDeps, {FlowRouter}) {
       console.log('this is invite route', params.token);
       mount(PublicLayoutCtx, {
         content: ()=>(<Invite token={params.token}/>),
+      });
+    }
+  });
+  FlowRouter.route('/invite/activate/:inviteId', {
+    name: 'user.activate',
+    action(params) {
+      mount(PublicLayoutCtx, {
+        content: () => (<Activate inviteId={params.inviteId}/>),
       });
     }
   });

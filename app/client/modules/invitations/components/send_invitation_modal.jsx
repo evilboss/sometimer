@@ -5,8 +5,10 @@ class SendInvitationModal extends React.Component {
   }
 
   componentDidMount() {
-    $('.modal-trigger').leanModal();
-    $('select').material_select();
+    $(document).ready(function () {
+      $('select').material_select();
+      $('.modal-trigger').leanModal();
+    });
   }
 
   render() {
@@ -115,6 +117,7 @@ class SendInvitationModal extends React.Component {
       this.refs.department.value = '';
       this.refs.designation.value = '';
       this.refs.status.value = '';
+      $('#send-invitation-modal').modal('hide');
     }
   }
 

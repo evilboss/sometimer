@@ -2,6 +2,8 @@ import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import SendInvitationModal from '../components/send_invitation_modal.jsx';
 import Invitee from '../containers/invitee';
+
+/*TODO: @aaron fix invite list layout*/
 class InviteList extends React.Component {
   constructor(props) {
     super(props);
@@ -25,16 +27,16 @@ class InviteList extends React.Component {
       active: false
     }];
     return (
-      <section id="inviteList">
+      <section id="invite-list">
         <PageTitle title="Invitations"/>
-        <div className="row">
-          <div className="col s12">
+        <div className="row no-section-margin">
+          <div className="col s7">
             <ul className="tabs">
               <li className="tab col s3"><a href="#pending-invitations">Pending Invites</a></li>
               <li className="tab col s3"><a className="active" href="#accepted-invitations">Accepted</a></li>
             </ul>
           </div>
-          <div id="pending-invitations" className="col s12">
+          <section id="pending-invitations" className="col s12 white-wrapper">
             <table>
               <thead>
               <tr>
@@ -56,8 +58,9 @@ class InviteList extends React.Component {
               <Invitee/>
               </tbody>
             </table>
-          </div>
-          <div id="accepted-invitations" className="col s12"></div>
+          </section>
+
+          <section id="accepted-invitations" className="col s12"></section>
         </div>
         <SendInvitationModal/>
       </section>

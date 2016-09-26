@@ -23,33 +23,8 @@ class ProjectView extends React.Component {
       <section id="project-view">
         <PageTitle title={name}/>
         <div className="row flex">
-          <section className="col s2 left">
-            <ul className="collection no-margin">
-              <li className="collection-item role">Team Leader</li>
-              <li className="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" className="circle"/>
-                <span>Profile Name</span>
-              </li>
-            </ul>
 
-            <ul className="collection no-margin">
-              <li className="collection-item role">Team Members</li>
-              <li className="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" className="circle"/>
-                <span>Profile Name</span>
-              </li>
-              <li className="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" className="circle"/>
-                <span>Profile Name</span>
-              </li>
-              <li className="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" className="circle"/>
-                <span>Profile Name</span>
-              </li>
-            </ul>
-          </section>
-
-          <section className="col s10 middle">
+          <section className="col s12 middle">
             <div className="inner-wrapper">
               <h4>{name}</h4>
               <p>lorem ipsum ....</p>

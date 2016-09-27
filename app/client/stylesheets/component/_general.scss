@@ -357,6 +357,11 @@ form {
   button {
     background-color: $theme-color !important;
   }
+  .btn.cancel {
+    background-color: #DFDFDF !important;
+    box-shadow: none;
+    color: #9F9F9F !important;
+  }
   .modal-footer {
     button {
       margin-left: 5px;
@@ -470,5 +475,24 @@ form {
   }
   h6 {
     color: $secondary-color;
+  }
+}
+
+ul.tabs {
+  overflow-x: hidden;
+  width: 100% !important;
+  border: 2px solid $gray-line;
+  border-bottom: none;
+  height: 28px;
+  margin: -2px;
+  .tab {
+    line-height: 24px;
+    height: 24px;
+    a {
+      color: $theme-color;
+    }
+  }
+  .indicator {
+    background-color: $theme-color;
   }
 }

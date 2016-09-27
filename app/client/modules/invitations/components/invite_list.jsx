@@ -3,6 +3,8 @@ import PageTitle from '/client/modules/core/components/page_title';
 import SendInvitationModal from '../components/send_invitation_modal.jsx';
 import Invitee from '../containers/invitee';
 import moment from 'moment';
+
+/*TODO: @aaron fix invite list layout*/
 class InviteList extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,11 @@ class InviteList extends React.Component {
     });
   }
 
+  callMail() {
+    Meteor.call('invitation.sendMail');
+
+  }
+
   render() {
     const {pendingInvites, closedInvites} = this.props;
     const tabs = [{content: '#open-invitations', label: 'Open', active: true}, {
@@ -23,16 +30,16 @@ class InviteList extends React.Component {
     }];
     const format = 'hh:mm A z';
     return (
-      <section id="inviteList">
+      <section id="invite-list">
         <PageTitle title="Invitations"/>
-        <div className="row">
-          <div className="col s12">
+        <div className="row no-section-margin">
+          <div className="col s7 no-margin-bottom">
             <ul className="tabs">
               <li className="tab col s3"><a href="#pending-invitations">Pending Invites</a></li>
               <li className="tab col s3"><a className="active" href="#accepted-invitations">Accepted</a></li>
             </ul>
           </div>
-          <div id="pending-invitations" className="col s12">
+          <section id="pending-invitations" className="col s12 white-wrapper">
             <table>
               <thead>
               <tr>
@@ -69,8 +76,8 @@ class InviteList extends React.Component {
               )) : ''}
               </tbody>
             </table>
-          </div>
-          <div id="accepted-invitations" className="col s12">
+          </section>
+          <section id="accepted-invitations" className="col s12 white-wrapper">
             <table>
               <thead>
               <tr>
@@ -107,10 +114,8 @@ class InviteList extends React.Component {
               )) : ''}
               </tbody>
             </table>
-          </div>
-
+          </section>
         </div>
-
 
         <SendInvitationModal/>
       </section>

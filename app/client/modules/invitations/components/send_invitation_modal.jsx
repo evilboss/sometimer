@@ -11,6 +11,10 @@ class SendInvitationModal extends React.Component {
     });
   }
 
+  closeModal() {
+    $('#send-invitation-modal').closeModal();
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +65,9 @@ class SendInvitationModal extends React.Component {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn cancel" onClick={this.closeModal.bind(this)} data-dismiss="modal">
+                  Cancel
+                </button>
                 <button type="button" onClick={this._create.bind(this)} className="btn btn-success">Send Invitation
                 </button>
               </div>

@@ -56,18 +56,29 @@ class Activate extends React.Component {
                 </div>
                 <div className="container">
                   <div className="form row circular-border">
-                    <PageTitle title='Create your acocunt'/>
-                    <div className="container">
-                      {err ?
-                        <span className="error-container">
+                    <PageTitle title='Create your Account'/>
+
+                    {err ?
+                      <span className="error-container">
                           <span className="error-text">
                             {err}
                           </span>
                         </span>
-                        : '' }
-                      <input id="new_password" ref="password" autoComplete="off" type="password"/>
-                      <input id="password_confirm" ref="password_confirm" autoComplete="off" type="password"/>
-                      <button onClick={this._createAccount.bind(this)}> Create your Account</button>
+                      : '' }
+                    <div className="form">
+                      <div className="row form-group required col s12">
+                        <div className="input-field">
+                          <input id="new_password" ref="password" autoComplete="off" type="password"/>
+                          <label htmlFor="password">Password</label>
+                        </div>
+                        <div className="input-field">
+                          <input id="password_confirm" ref="password_confirm" autoComplete="off" type="password"/>
+                          <label htmlFor="password">Confirm Password</label>
+                        </div>
+                      </div>
+                      <button className="btn waves-effect waves-light theme-color"
+                              onClick={this._createAccount.bind(this)}> Create your Account
+                      </button>
                     </div>
                   </div>
                 </div>

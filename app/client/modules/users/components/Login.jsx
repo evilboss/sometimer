@@ -2,6 +2,7 @@ import React from 'react';
 import Formsy from 'formsy-react';
 
 import MyInput from '../../../utils/form/input';
+import PageTitle from '/client/modules/core/components/page_title';
 
 class Login extends React.Component {
   constructor(props) {
@@ -33,10 +34,8 @@ class Login extends React.Component {
 
                 <div className="container">
                   <div className="form row circular-border">
-                    <div className="theme-color ribbon">
-                      Login
-                    </div>
 
+                    <PageTitle title='Login'/>
                     {err ?
                       <span className="error-container">
                         <span className="error-text">

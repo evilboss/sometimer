@@ -357,6 +357,11 @@ form {
   button {
     background-color: $theme-color !important;
   }
+  .btn.cancel {
+    background-color: #DFDFDF !important;
+    box-shadow: none;
+    color: #9F9F9F !important;
+  }
   .modal-footer {
     button {
       margin-left: 5px;

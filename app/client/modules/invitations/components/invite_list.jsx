@@ -33,7 +33,7 @@ class InviteList extends React.Component {
       <section id="invite-list">
         <PageTitle title="Invitations"/>
         <div className="row no-section-margin">
-          <div className="col s7">
+          <div className="col s7 no-margin-bottom">
             <ul className="tabs">
               <li className="tab col s3"><a href="#pending-invitations">Pending Invites</a></li>
               <li className="tab col s3"><a className="active" href="#accepted-invitations">Accepted</a></li>
@@ -76,8 +76,8 @@ class InviteList extends React.Component {
               )) : ''}
               </tbody>
             </table>
-          </div>
-          <div id="accepted-invitations" className="col s12">
+          </section>
+          <section id="accepted-invitations" className="col s12 white-wrapper">
             <table>
               <thead>
               <tr>
@@ -114,10 +114,8 @@ class InviteList extends React.Component {
               )) : ''}
               </tbody>
             </table>
-          </div>
-
+          </section>
         </div>
-
 
         <SendInvitationModal/>
       </section>

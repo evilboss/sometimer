@@ -17,8 +17,7 @@ class Activate extends React.Component {
       console.log(params);
     };
     Meteor.call('invitation.activate', invite, (error, result)=> {
-      (error) ? this.setState({err: error.details}) : '';
-      console.log(result, error);
+      (error) ? this.setState({err: error.details}) : (result) ? FlowRouter.go('/login') : '';
     });
 
 

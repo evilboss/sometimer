@@ -3,6 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {remotivMailer} from './email/email';
 import {remotivUser} from './user/remotiv_user';
+
 export default function () {
   Meteor.methods({
     'invitations.send'(invite) {
@@ -22,7 +23,6 @@ export default function () {
       const invitationId = Invitations.insert(invite);
       invite._id = invitationId;
       remotivMailer.sendInvite(invite);
-
     },
     'invitation.sendMail'(){
       console.log('sending mail');
@@ -54,7 +54,8 @@ export default function () {
             staffType: inviteToAdd.status,
             jobTitle: inviteToAdd.designation,
             role: inviteToAdd.role,
-          }
+          },
+          inviteId: inviteToAdd._id
         }
         remotivUser.add(newUser);
       };

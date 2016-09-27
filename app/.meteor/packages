@@ -47,7 +47,6 @@ juliancwirko:postcss            # Use PostCSS with Meteor
 kevohagan:sweetalert            #  a responsive, themable, cross-browser replacement for JavaScript's alert() with beautiful dialog prompts.
 praneybehl:react-dropzone       # Simple HTML5 drag-drop zone for ReactJs packaged for Meteor
 ultimatejs:tracker-react        #No-Config reactive React Components with Meteor. Apply as composition, mixin or decorator.
-ostrio:flow-router-title        # Change document.title (page title) on the fly within flow-router
 lookback:emails                 # Send HTML emails with server side Blaze templates. Preview and debug in the browser.
 
 #custom package section

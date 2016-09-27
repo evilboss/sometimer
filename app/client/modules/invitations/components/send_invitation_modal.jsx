@@ -5,8 +5,10 @@ class SendInvitationModal extends React.Component {
   }
 
   componentDidMount() {
-    $('.modal-trigger').leanModal();
-    $('select').material_select();
+    $(document).ready(function () {
+      $('select').material_select();
+      $('.modal-trigger').leanModal();
+    });
   }
 
   render() {
@@ -43,14 +45,14 @@ class SendInvitationModal extends React.Component {
                   </div>
                   <div className="form-group">
                     <select name="role" ref="status" className="input-field col s12" defaultValue="Choose Role">
-                      <option value="" disabled selected>Select Status</option>
+                      <option value="" disabled defaultValue>Select Status</option>
                       <option value="probationary">Probationary</option>
                       <option value="regular">Regular</option>
                     </select>
                   </div>
                   <div className="form-group">
                     <select name="role" ref="role" className="input-field col s12" defaultValue="Choose Role">
-                      <option value="" disabled selected>Select Role</option>
+                      <option value="" disabled defaultValue="Select Role">Select Role</option>
                       <option value="staff">Staff</option>
                       <option value="manager">Manager</option>
                       <option value="admin">Admin</option>
@@ -65,7 +67,6 @@ class SendInvitationModal extends React.Component {
               </div>
             </form>
           </div>
-          <button onClick={this._create.bind(this)}>Matubato</button>
         </section>
       </div>
     );
@@ -94,17 +95,30 @@ class SendInvitationModal extends React.Component {
               (invite.designation) ?
                 (invite.role) ?
                   (invite.status) ?
-                    console.log(invite)
+                    console.log('this has passed', invite)
                     : errors.push('Status must be specified')
                   : errors.push('A user must have a role')
                 : errors.push('Designation must be specified')
               : errors.push('Department is required')
-            : errors.push('email is required')
-          : errors.push('email is required')
-        : errors.push('Error')
+            : errors.push('lastName is required')
+          : errors.push('firstName is required')
+        : errors.push('email is required')
       : errors.push('Invite is required');
-    console.log(errors);
-    (errors)?'':'';
+    console.log(errors.length);
+    if (errors.length == 0) {
+      console.log('No errors');
+      Meteor.call('invitations.send', invite, (err, res)=> {
+        console.log(err, res);
+      });
+      this.refs.email.value = '';
+      this.refs.role.value = '';
+      this.refs.firstName.value = '';
+      this.refs.lastName.value = '';
+      this.refs.department.value = '';
+      this.refs.designation.value = '';
+      this.refs.status.value = '';
+      $('#send-invitation-modal').modal('hide');
+    }
   }
 
 

@@ -2,32 +2,30 @@ import {Invitations} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {remotivMailer} from './email/email';
+import {remotivUser} from './user/remotiv_user';
+
 export default function () {
   Meteor.methods({
     'invitations.send'(invite) {
       check(invite, {
         email: String,
-        role: String
+        role: String,
+        firstName: String,
+        lastName: String,
+        department: String,
+        designation: String,
+        status: String,
       });
-      const sendInvitation = {
-        email: invite.email,
-        token: Random.hexString(16),
-        role: invite.role,
-        date: ( new Date() ).toISOString()
-
-      };
-      console.info('sending Invite', sendInvitation);
+      invite.token = Random.hexString(16);
+      invite.date = ( new Date() ).toISOString();
+      invite.activationStatus = 'pending';
+      invite.inviter = Meteor.userId();
+      const invitationId = Invitations.insert(invite);
+      invite._id = invitationId;
+      remotivMailer.sendInvite(invite);
     },
     'invitation.sendMail'(){
       console.log('sending mail');
-      const options = {
-        from: 'notifications@remotiv.io',
-        to: 'aaron@bosstechlabs.com',
-        subject: 'Malati ka butu',
-        text: '',
-        html: '<b>ipasok si dick</b>'
-
-      };
       const message = {
         to: 'Aaron Randrup <aaron@bosstechlabs.com>',
         subject: 'Invitation Email',
@@ -36,7 +34,33 @@ export default function () {
         data: {token: 'Test'},
         attachments: []
       }
-      Mailer.send(message);
+      //Mailer.send(message);
+    },
+    'invitation.activate'(invite){
+      const inviteToActivate = Invitations.findOne({token: invite.token});
+      const throwError = ()=> {
+        throw new Meteor.Error(500, 'Error 500: Not found', 'the Invite is not found');
+        return 'error';
+      };
+      const constructUser = (inviteToAdd)=> {
+        console.log(inviteToAdd)
+        const newUser = {
+          email: inviteToAdd.email,
+          password: invite.password,
+          profile: {
+            firstName: inviteToAdd.firstName,
+            lastName: inviteToAdd.lastName,
+            department: inviteToAdd.department,
+            staffType: inviteToAdd.status,
+            jobTitle: inviteToAdd.designation,
+            role: inviteToAdd.role,
+          },
+          inviteId: inviteToAdd._id
+        }
+        remotivUser.add(newUser);
+      };
+      (inviteToActivate) ? constructUser(inviteToActivate) : throwError();
+      return inviteToActivate;
     }
   });
 }

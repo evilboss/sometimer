@@ -5,6 +5,7 @@ class Invite extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <section className="blue-theme" id="login">
@@ -19,7 +20,7 @@ class Invite extends React.Component {
                   <div className="form row circular-border">
                     <PageTitle title='Thanks for activating your account'/>
                     <div>
-                      <a className="btn" href={`/invite/activate/${this.props.token}`}>
+                      <a className="btn theme-color" href={`/invite/activate/${this.props.token}`}>
                         click here to activate your account
                       </a>
                     </div>

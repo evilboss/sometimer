@@ -2,7 +2,7 @@ section#login {
 
   @extend section#body;
 
-  background-image: url("/Assets/landing/bg/poster.png");
+  background-image: url("/Assets/teams/default/background/punchcard_bg.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -44,8 +44,7 @@ section#login {
         color: $theme-color !important;
       }
     }
-    form {
-      margin-top: 2.5em;
+    form, .form {
       padding: 0 1em;
       .input-field {
         width: 100% !important;
@@ -53,6 +52,19 @@ section#login {
       button {
         @include margin(0.5em, 0.5em, 0, 0.5em);
       }
+    }
+  }
+  .circular-border {
+    padding-top: 0 !important;
+    .page-title {
+      border-top-left-radius: 0.5em;
+      border-top-right-radius: 0.5em;
+      margin: 0;
+      padding: 0;
+    }
+    a.btn {
+      height: 50px;
+      line-height: 50px;
     }
   }
 }

@@ -15,6 +15,7 @@ const add = (newUser)=> {
   });
   console.log(addAccount);
   (addAccount) ? updateInvite() : '';
+  return addAccount;
 };
 const remotivUser = {
   add: (newUser)=>add(newUser)

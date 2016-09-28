@@ -5,7 +5,6 @@ export const composer = ({context}, onData) => {
   if (Meteor.subscribe('team.list').ready()) {
     const team = Collections.Team.find().fetch();
     const currentUser = Meteor.user();
-    console.log(team);
     onData(null, {team, currentUser});
   } else {
     onData();

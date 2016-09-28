@@ -1,6 +1,6 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
-import SendInvitationModal from '../components/send_invitation_modal.jsx';
+import SendInvitationModal from '../containers/send_invitation_modal.js';
 import Invitee from '../containers/invitee';
 import moment from 'moment';
 

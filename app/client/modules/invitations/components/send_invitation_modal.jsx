@@ -16,6 +16,8 @@ class SendInvitationModal extends React.Component {
   }
 
   render() {
+    const teamListing = this.props.team;
+    console.log(teamListing);
     return (
       <div>
         <button className="modal-trigger btn theme-color pull-right" data-toggle="modal"
@@ -26,36 +28,45 @@ class SendInvitationModal extends React.Component {
             <form ref="inviteForm">
               <div className="modal-content">
                 <h4 className="modal-title" id="send-invitation">Send Invitation</h4>
-                <div className="modal-body">
-                  <div className="form-group">
+                <div className="row modal-body">
+                  <div className="form-group col s12">
                     <input ref="email" placeholder="Email Address" type="email" className="form-control"
                            name="emailAddress"/>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group col s6">
                     <input ref="firstName" placeholder="First Name" type="text" className="form-control"
                            name="firstName"/>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group col s6">
                     <input ref="lastName" placeholder="Last Name" type="text" className="form-control"
                            name="lastName"/>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group col s6">
                     <input ref="department" placeholder="Department" type="text" className="form-control"
                            name="department"/>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group col s6">
                     <input ref="designation" placeholder="Designation" type="text" className="form-control"
                            name="designation"/>
                   </div>
-                  <div className="form-group">
-                    <select name="role" ref="status" className="input-field col s12" defaultValue="Choose Role">
+                  <div className="form-group col s6">
+                    <select name="team" ref="team" className="input-field" defaultValue="Choose Team">
+                      <option value="" disabled defaultValue="Select Role">Select Team</option>
+                      {(teamListing) ?
+                        teamListing.map((team, index) => (
+                          <option key={index} value={team._id}>{team.name}</option>
+                        )) : ''}
+                    </select>
+                  </div>
+                  <div className="form-group col s6">
+                    <select name="role" ref="status" className="input-field" defaultValue="Choose Role">
                       <option value="" disabled defaultValue>Select Status</option>
                       <option value="probationary">Probationary</option>
                       <option value="regular">Regular</option>
                     </select>
                   </div>
-                  <div className="form-group">
-                    <select name="role" ref="role" className="input-field col s12" defaultValue="Choose Role">
+                  <div className="form-group col s12">
+                    <select name="role" ref="role" className="input-field" defaultValue="Choose Role">
                       <option value="" disabled defaultValue="Select Role">Select Role</option>
                       <option value="staff">Staff</option>
                       <option value="manager">Manager</option>
@@ -85,8 +96,9 @@ class SendInvitationModal extends React.Component {
       firstName: this.refs.firstName.value,
       lastName: this.refs.lastName.value,
       department: this.refs.department.value,
+      team: this.refs.team.value,
       designation: this.refs.designation.value,
-      status: this.refs.status.value,
+      status: this.refs.status.value
     };
     this.sendInvite(invite);
   }
@@ -98,13 +110,15 @@ class SendInvitationModal extends React.Component {
         (invite.firstName) ?
           (invite.lastName) ?
             (invite.department) ?
-              (invite.designation) ?
-                (invite.role) ?
-                  (invite.status) ?
-                    console.log('this has passed', invite)
-                    : errors.push('Status must be specified')
-                  : errors.push('A user must have a role')
-                : errors.push('Designation must be specified')
+              (invite.team) ?
+                (invite.designation) ?
+                  (invite.role) ?
+                    (invite.status) ?
+                      console.log('this has passed', invite)
+                      : errors.push('Status must be specified')
+                    : errors.push('A user must have a role')
+                  : errors.push('Designation must be specified')
+                : errors.push('Team is required')
               : errors.push('Department is required')
             : errors.push('lastName is required')
           : errors.push('firstName is required')
@@ -121,9 +135,10 @@ class SendInvitationModal extends React.Component {
       this.refs.firstName.value = '';
       this.refs.lastName.value = '';
       this.refs.department.value = '';
+      this.refs.team.value = '';
       this.refs.designation.value = '';
       this.refs.status.value = '';
-      $('#send-invitation-modal').modal('hide');
+      this.closeModal;
     }
   }
 

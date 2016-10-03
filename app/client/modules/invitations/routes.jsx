@@ -26,7 +26,7 @@ export default function (injectDeps, {FlowRouter}) {
   });
   dashboardRoutes.route('/invites', {
     name: 'dashboard.inviteList',
-    action(params){
+    action(){
       mount(MainLayoutCtx, {
         title: 'Break Logs: ' + DocHead.getTitle(),
         head: () => (<Header/>),

@@ -12,6 +12,7 @@ section#invite-list {
     overflow: auto;
   }
   #send-invitation-modal {
+    overflow: hidden;
     min-height: 39em;
     padding: 0 24px;
     box-shadow: none;
@@ -27,6 +28,9 @@ section#invite-list {
       button {
         margin: 0 2.5px;
       }
+    }
+    .dropdown-content {
+      max-height: 180px !important;
     }
   }
 }

@@ -102,7 +102,7 @@ class TimeTracker extends React.Component {
                           <div className="row">
                             <div className="col l4 m4 s12 center-align">
                               <img
-                                src={(currentUser.profile.displayPhoto) ? '/uploads/' + currentUser.profile.displayPhoto : '/uploads/default-img.png'}
+                                src={(currentUser.profile.displayPhoto) ? '/uploads/' + currentUser.profile.displayPhoto : '/uploads/defaults/default-img.png'}
                                 alt="dp"
                                 className="display-photo circle responsive-img"/>
                             </div>

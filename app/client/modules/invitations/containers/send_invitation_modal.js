@@ -1,9 +1,17 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import SendInvitationModal from '../components/send_invitation_modal.jsx';
 export const composer = ({context, clearErrors}, onData) => {
-  const {LocalState} = context();
-  const error = LocalState.get('CREATE_INVITE_ERROR');
-  onData(null, {error});
+  const {Meteor, Collections, LocalState} = context();
+
+  if (Meteor.subscribe('team.list').ready()) {
+    const error = LocalState.get('CREATE_INVITE_ERROR');
+    const team = Collections.Team.find().fetch();
+    const currentUser = Meteor.user();
+    onData(null, {team, currentUser});
+  } else {
+    onData();
+  }
+
   return clearErrors;
 };
 

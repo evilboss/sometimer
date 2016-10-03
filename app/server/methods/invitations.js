@@ -1,4 +1,4 @@
-import {Invitations} from '/lib/collections';
+import {Invitations, Team} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {remotivMailer} from './email/email';
@@ -13,6 +13,7 @@ export default function () {
         firstName: String,
         lastName: String,
         department: String,
+        team: String,
         designation: String,
         status: String,
       });
@@ -42,6 +43,12 @@ export default function () {
         throw new Meteor.Error(500, 'Error 500: Not found', 'the Invite is not found');
         return 'error';
       };
+      const addToTeam = (userId, inviteToAdd)=> {
+        const selectedTeam = Team.findOne({_id: inviteToAdd.team});
+        const members = (selectedTeam.members) ? selectedTeam.members : [];
+        members.push(userId);
+        Team.update({_id: inviteToAdd.team}, {$set: {members: _.unique(members)}});
+      };
       const constructUser = (inviteToAdd)=> {
         console.log(inviteToAdd)
         const newUser = {
@@ -57,8 +64,9 @@ export default function () {
           },
           inviteId: inviteToAdd._id
         }
-        remotivUser.add(newUser);
-      };
+        const addedUser = remotivUser.add(newUser);
+        (addedUser) ? addToTeam(addedUser, inviteToAdd) : '';
+      }
       (inviteToActivate) ? constructUser(inviteToActivate) : throwError();
       return inviteToActivate;
     }

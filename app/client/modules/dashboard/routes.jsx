@@ -10,6 +10,7 @@ import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';
 import TeamList from '/client/modules/team/containers/team_list';
 import CreateTeam from '/client/modules/team/containers/create_team';
+import {control} from '/lib/access-control/control';
 
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
@@ -22,10 +23,8 @@ export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   dashboardRoutes.route('/', {
     name: 'dashboard',
-    triggersEnter: [function (context, redirect) {
-      accessControl.isLoggedIn('dashboard', redirect);
-    }],
     action() {
+      control.canview.clients();
       mount(MainLayoutCtx,
         {
           head: () => (<DashboardHeader />),

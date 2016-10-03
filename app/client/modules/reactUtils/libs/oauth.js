@@ -10,9 +10,7 @@ let runTeamSearch=()=>{
 const Oauth = {
   directToTeam: (ctx, redirect, stop)=> {
     (TeamInfo.getTeamDomain())?runTeamSearch():'';
-
   }
 }
-
 export {Oauth};
 

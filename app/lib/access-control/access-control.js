@@ -12,9 +12,13 @@ const accessControl = {
     if (!currentUser) {
       redirect('/login');
     }
-  },
-  redirectLogin: function (routename) {
 
+  },
+  redirectLogin: function (routename, redirect) {
+    const currentUser = Meteor.userId();
+    if (currentUser) {
+      redirect(routename);
+    }
   },
   cannotAccess: function () {
 

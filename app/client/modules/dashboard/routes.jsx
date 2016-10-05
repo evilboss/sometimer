@@ -11,7 +11,6 @@ import Timesheet from '/client/modules/timesheet/containers/timesheet';
 import TeamList from '/client/modules/team/containers/team_list';
 import CreateTeam from '/client/modules/team/containers/create_team';
 import {control} from '/lib/access-control/control';
-
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {
@@ -24,7 +23,6 @@ export default function (injectDeps, {FlowRouter}) {
   dashboardRoutes.route('/', {
     name: 'dashboard',
     action() {
-      control.canview.clients();
       mount(MainLayoutCtx,
         {
           head: () => (<DashboardHeader />),

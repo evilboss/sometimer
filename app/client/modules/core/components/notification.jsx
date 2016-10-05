@@ -17,9 +17,7 @@ class Notification extends React.Component {
   }
 
   render() {
-    const requestCount = this.props.requestCount;
-    const currentUser = this.props.currentUser;
-    console.log(requestCount);
+    const {requestCount, currentUser} = this.props;
     return (
       <div>
         <a href="" className="notification-menu" data-activates="notification-menu">

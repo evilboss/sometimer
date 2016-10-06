@@ -1,4 +1,4 @@
-section#team-list {
+section#team {
   @extend .container-margin;
   article {
     .card {
@@ -6,10 +6,18 @@ section#team-list {
       animation-fill-mode: both;
       animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
       transition: all 0.2s ease-out;
+      .card-title {
+        padding: 10px;
+        background-color: $primary-color;
+        color: white;
+      }
       .card-content {
-        height: 12em;
-        .card-title {
+        min-height: 6em;
+        h6 {
           color: black;
+          small {
+            color: $dark-gray;
+          }
         }
       }
       .card-action {
@@ -18,10 +26,55 @@ section#team-list {
           width: 50px;
           height: 50px;
         }
+        span {
+          color: $red;
+        }
       }
       &:hover {
         transition: all 0.2s ease-out;
         box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+      }
+    }
+  }
+
+  .btn-add {
+    display: inline-block;
+    margin-top: 0;
+    border: 2px solid $primary-color;
+    a {
+      border-radius: 0;
+      color: $primary-color;
+      background-color: white;
+      span {
+        vertical-align: text-bottom;
+        padding: 5px;
+      }
+      i {
+        border-left: 1px solid $primary-color;
+        color: $primary-color;
+        font-size: 1.2em;
+        padding: 6px;
+      }
+    }
+  }
+  .drafts {
+    h5 {
+      color: $primary-color;
+    }
+  }
+  .drafts-list {
+    .draft-item {
+      border-bottom: 1px solid $gray-line;
+      margin-bottom: 0;
+      .col.s10 {
+        color: $dark-gray;
+        .message {
+          color: $red;
+        }
+      }
+      .material-icons {
+        color: $red;
+        margin-top: 17px;
       }
     }
   }

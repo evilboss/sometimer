@@ -28,7 +28,7 @@ class ProjectView extends React.Component {
             <div className="inner-wrapper">
               <h4>{name}</h4>
               <p>lorem ipsum ....</p>
-              <div className="col s7">
+              <div className="col s7 tab-nav">
                 <ul className="tabs">
                   <li className="tab col s3"><a href="#DISCUSSIONS">DISCUSSIONS</a></li>
                   <li className="tab col s3"><a href="#SUB">SUB PROJECTS</a></li>

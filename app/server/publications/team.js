@@ -14,7 +14,7 @@ export default function () {
   Meteor.publish('team.members', function (teamId) {
     const selectedTeam = Team.findOne(teamId);
     const staffList = selectedTeam.members;
-    const teamOptions = {_id: {$in: staffList}};
+    const teamOptions = (staffList) ? {_id: {$in: staffList}} : {_id: 'doesnotExist'};
     return Meteor.users.find(teamOptions, {
       fields: {
         createdAt: false,

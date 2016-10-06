@@ -101,6 +101,20 @@
   border: none;
 }
 
+.border-top {
+  border-top: 2px solid $gray-line;
+}
+
 .relative {
   position: relative;
+}
+
+.vertical-line:before {
+  content: '';
+  width: 0;
+  height: 100%;
+  position: absolute;
+  border: 1px solid $gray-line;
+  top: 0;
+
 }

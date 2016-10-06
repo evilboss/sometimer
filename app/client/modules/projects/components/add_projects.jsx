@@ -36,11 +36,7 @@ class AddProjects extends React.Component {
       <section className="Projects-New">
         <PageTitle title="Your Projects"/>
         <div className="row flex no-section-margin">
-
-          <div className="col s2 no-horizontal-padding">
-            <ProjectQuickView/>
-          </div>
-          <div className="col s10">
+          <div className="col s12">
             <section className="create-project">
               <h4>Create A Project</h4>
               <Formsy.Form onSubmit={this.addProject.bind(this)} className="login">

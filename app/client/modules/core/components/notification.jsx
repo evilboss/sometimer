@@ -4,7 +4,6 @@ class Notification extends React.Component {
   constructor(props) {
     super(props);
   }
-
   componentDidMount() {
     $('.notification-menu').dropdown({
         inDuration: 300,
@@ -15,7 +14,6 @@ class Notification extends React.Component {
       }
     );
   }
-
   render() {
     const {requestCount, currentUser} = this.props;
     return (

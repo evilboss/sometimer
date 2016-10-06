@@ -18,7 +18,6 @@ export default {
         FlowRouter.go(path);
       }
     });
-
   }
   ,
   recover_password({Meteor, LocalState}, email) {

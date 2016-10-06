@@ -485,8 +485,8 @@ ul.tabs {
   border: 2px solid $gray-line;
   border-bottom: none;
   height: 28px;
-  margin: -2px;
   .tab {
+    margin: 0;
     line-height: 24px;
     height: 24px;
     a {
@@ -496,4 +496,23 @@ ul.tabs {
   .indicator {
     background-color: $theme-color;
   }
+}
+
+.tabs-wrapper {
+  @extend .no-section-margin;
+  margin-top: 2em;
+  .tab-nav {
+    margin: -2px;
+  }
+  .tabs-content {
+    border: none;
+    border-top: solid 2px $gray-line;
+    @extend .no-margin;
+    @extend .white-wrapper;
+  }
+}
+
+.dp-small {
+  width: 50px;
+  height: 50px;
 }

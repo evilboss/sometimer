@@ -1,0 +1,26 @@
+section#ManageStaff {
+  table {
+    margin-top: 1em;
+    thead {
+      border-bottom-width: 2px;
+      th {
+        padding: 7px 5px;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 10px 5px;
+        }
+      }
+    }
+    .status {
+      margin-top: 1.5em;
+      .status-indicator {
+        vertical-align: baseline;
+        margin-left: 0.5em;
+        @extend .inline;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ section#team {
   @extend .container-margin;
   article {
     .card {
+      overflow: hidden;
       animation: bottom-to-top 1.5s;
       animation-fill-mode: both;
       animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
@@ -13,12 +14,6 @@ section#team {
       }
       .card-content {
         min-height: 6em;
-        h6 {
-          color: black;
-          small {
-            color: $dark-gray;
-          }
-        }
       }
       .card-action {
         padding: 0.5em;
@@ -33,7 +28,36 @@ section#team {
       &:hover {
         transition: all 0.2s ease-out;
         box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+        .card-hover-action {
+          top: 0%;
+        }
       }
+      .card-hover-action {
+        transition: top 0.3s;
+        position: absolute;
+        @include background-opacity($primary-color, 0.9);
+        height: 100%;
+        width: 100%;
+        top: 100%;
+        color: white;
+        .close {
+          padding: 5px;
+        }
+        .action-buttons {
+          margin: auto;
+          display: table;
+          a.btn {
+            @extend .block;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 0;
+            border: 1px solid white;
+            background-color: transparent;
+            margin: 1em 0;
+          }
+        }
+      }
+
     }
   }
 

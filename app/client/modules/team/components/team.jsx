@@ -2,6 +2,7 @@ import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import TeamList from '/client/modules/team/containers/team_list';
 import ManageStaff from '/client/modules/team/containers/manage_staff';
+import AddNewStaff from '/client/modules/team/containers/add_new_staff';
 class Team extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,11 @@ class Team extends React.Component {
     $(document).ready(function () {
       $('ul.tabs').tabs();
     });
+  }
+
+  addNewStaff(e) {
+    e.preventDefault();
+    console.log('utub');
   }
 
   render() {
@@ -31,7 +37,8 @@ class Team extends React.Component {
               <TeamList/>
             </section>
             <section id="ManageStaff" className="col s12">
-              <ManageStaff/>
+              
+              <AddNewStaff />
             </section>
 
             <section id="ManageClients" className="col s12">

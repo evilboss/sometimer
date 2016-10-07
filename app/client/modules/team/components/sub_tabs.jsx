@@ -6,13 +6,13 @@ class SubTabs extends React.Component {
   }
 
   render() {
-    
+   
     return (
       <div className="row no-margin-bottom">
         <div className="col s12 no-padding">
 
           <div className="btn-add">
-            <a href="/dashboard/team/new" className="waves-effect waves-light secondary-color">
+            <a href="" className="waves-effect waves-light secondary-color">
               <span>Add New Team</span>
               <i className="material-icons">add</i></a>
           </div>

@@ -11,7 +11,7 @@ class ManageStaff extends React.Component {
   render() {
     return (
       <div>
-        <SubTabs/>
+        <SubTabs />
         <div className="border-top row no-margin-bottom relative">
           <div className="col s12 no-padding">
             <table className="bordered">

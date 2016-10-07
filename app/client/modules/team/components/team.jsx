@@ -1,8 +1,12 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import TeamList from '/client/modules/team/containers/team_list';
-import ManageStaff from '/client/modules/team/containers/manage_staff';
-import AddNewStaff from '/client/modules/team/containers/add_new_staff';
+import ManageStaff from '/client/modules/team/containers/manage_staff/manage_staff';
+import AddNewStaff from '/client/modules/team/containers/manage_staff/add_new_staff';
+import StaffDetails from '/client/modules/team/containers/manage_staff/staff_details';
+import ManageClients from '/client/modules/team/containers/manage_clients/manage_clients';
+import CreateTeam from '/client/modules/team/containers/create_team';
+
 class Team extends React.Component {
   constructor(props) {
     super(props);
@@ -37,12 +41,11 @@ class Team extends React.Component {
               <TeamList/>
             </section>
             <section id="ManageStaff" className="col s12">
-              
-              <AddNewStaff />
+              <ManageStaff />
             </section>
 
             <section id="ManageClients" className="col s12">
-              utub
+              <ManageClients/>
             </section>
           </div>
         </div>

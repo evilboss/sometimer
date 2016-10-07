@@ -8,10 +8,11 @@ class TeamCardAction extends React.Component {
   render() {
     const teamRoute = this.props.teamRoute;
     return (
-      <div className="card-hover-action valign-wrapper">
+      <div className="card-hover-action">
+        <div className="clearfix"><i className="right material-icons close">delete_forever</i></div>
         <div className="action-buttons">
-          <a href={teamRoute} className="btn">Edit / Manage</a>
-          <a href="" className="btn">Delete Team</a>
+          <a href="" className="btn">Edit / Manage</a>
+          <a href={teamRoute} className="btn">View Team</a>
         </div>
       </div>
     );

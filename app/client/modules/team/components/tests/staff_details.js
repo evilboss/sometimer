@@ -1,8 +1,8 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import ManageStaff from '../manage_staff/manage_staff';
+import StaffDetails from '../manage_staff/staff_details';
 
-describe('team.components.manage_staff', () => {
+describe('team.components.staff_details', () => {
   it('should do something');
 });

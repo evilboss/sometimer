@@ -1,6 +1,6 @@
 import React from 'react';
-import PageTitle from '/client/modules/core/components/page_title';
 import Formsy from 'formsy-react';
+import SubTabs from '/client/modules/team/containers/sub_tabs';
 import MyInput from '../../../utils/form/input';
 import TextArea from '../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
@@ -34,23 +34,22 @@ class CreateTeam extends React.Component {
   render() {
     return (
       <section id="create-team">
-        <PageTitle title="All Team"/>
-        <div className="row flex no-section-margin">
-          <div className="col s12">
-            <section className="create-team">
-              <h4>Create A Team</h4>
-              <Formsy.Form onSubmit={this.addTeam.bind(this)}>
-                <MyInput name="name" ref="name" fieldSize="col s12" title="Team Name" required/>
-                <div className="row form-group required col s12 no-padding">
-                  <TextArea name="description" ref="description" title="Description" required/>
-                </div>
-                <StaffMultiSelect getData={this.getData.bind(this)}/>
-                <button className="btn waves-effect waves-light theme-color" type="submit">Start the Team
-                  <i className="material-icons right">send</i></button>
+        <SubTabs />
+        <div className="border-top row no-margin-bottom relative">
+          <Formsy.Form onSubmit={this.addTeam.bind(this)}>
+            <div className="col s12">
+              <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
+              <StaffMultiSelect getData={this.getData.bind(this)}/>
+              <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
+                       required/>
+              <div className="row form-group required col s12 no-padding">
+                <TextArea name="description" ref="description" title="Team's Objective" required/>
+              </div>
+              <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
+                <i className="material-icons right">send</i></button>
 
-              </Formsy.Form>
-            </section>
-          </div>
+            </div>
+          </Formsy.Form>
         </div>
       </section>
     );

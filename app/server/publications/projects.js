@@ -1,12 +1,10 @@
 import {Projects} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
-
+import {auth} from '/server/methods/auth/auth';
 export default function () {
   Meteor.publish('project-list', function () {
-    const selector = {
-      collaborators: {$all: [this.userId]}
-    };
+    const selector = (auth.isAdmin(this.userId)) ? {} : {collaborators: {$all: [this.userId]}};
     const options = {};
     return Projects.find(selector, options);
   });

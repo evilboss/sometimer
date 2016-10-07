@@ -5,7 +5,6 @@ export const composer = ({context, userId}, onData) => {
   const {Meteor, Collections} = context();
   const subscriptionsReady = [Meteor.subscribe("staff.timesheet", userId).ready, Meteor.subscribe("user.current").ready];
   if (subscriptionsReady) {
-    console.log(Meteor.users.find().fetch());
     const currentUser = (userId) ? Meteor.users.findOne({_id: userId}) : Meteor.user();
     onData(null, {currentUser});
   } else {

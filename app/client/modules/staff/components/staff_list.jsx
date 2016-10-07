@@ -4,6 +4,8 @@ import SendInvitationModal from '/client/modules/invitations/components/send_inv
 import StaffDetails from '../containers/staff_details';
 import PageTitle from '/client/modules/core/components/page_title';
 import DatePicker from '/client/modules/timesheet/components/datepicker';
+import DateRange from '/client/modules/timesheet/components/daterange';
+
 class StaffList extends React.Component {
   constructor(props) {
     super(props);
@@ -53,10 +55,11 @@ class StaffList extends React.Component {
   }
 
   render() {
+    const {team, staffList} = this.props;
     return (
       <div>
         <section id="staff-list">
-          <PageTitle title="My Team"/>
+          <PageTitle title={(team)?(team.name)?team.name:'':''}/>
           <div className="row">
             <div className="col s12">
               <div id="today" className="col s12">
@@ -69,7 +72,7 @@ class StaffList extends React.Component {
                 Period from {this.state.from} to {this.state.to}
               </div>
               <div id="custom" className="col s12">
-                <DatePicker changeDate={this.changeDate.bind(this)}/>
+                <DateRange changeDate={this.changeDate.bind(this)}/>
               </div>
             </div>
           </div>
@@ -83,7 +86,7 @@ class StaffList extends React.Component {
             </ul>
           </div>
           <div className="collection">
-            {this.props.staffList.map((staff, index) => (
+            {staffList.map((staff, index) => (
               <StaffDetails key={index} staff={staff} index={index}/>
             ))}
           </div>

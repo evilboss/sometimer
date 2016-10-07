@@ -12,20 +12,22 @@ Migrations.add({
     removeAllTeams();
   }
 });
-const teamlist = ['protos', 'ezyva'];
+const teamlist = [
+  {name: 'protos', description: 'Your Protots Company'},
+  {name: 'ezyva', description: 'High Perfromance Remote Teams'}
+];
 const loadTeams = ()=> {
   console.info('Loading Teams');
-  if (Team.find({}).count() === 0) {
-    _.each(teamlist, function (team) {
-      Team.insert({name: team});
-
-    });
-  }
+  _.each(teamlist, function (team) {
+    if (Team.find({name: team.name}).count() === 0) {
+      Team.insert(team);
+    }
+  });
 };
 const removeAllTeams = ()=> {
   console.info('Removing Teams');
   _.each(teamlist, function (team) {
-    const teamToRemove = Team.findOne({name: team});
+    const teamToRemove = Team.findOne({name: team.name});
     if (teamToRemove) {
       Team.remove(teamToRemove._id);
     }

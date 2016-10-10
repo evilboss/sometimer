@@ -6,7 +6,7 @@
  * @param permission : The permision required
  * @param userPermissions : List of permissions
  */
-const hasAccess = (permission, userPermissions)=> {
+const isPermitted = (permission, userPermissions)=> {
   return (permission) ?
     (userPermissions) ?
       _.contains(userPermissions, permission)
@@ -14,7 +14,7 @@ const hasAccess = (permission, userPermissions)=> {
     : console.error('User permissions required');
 };
 const control = {
-  hasAccess: (permission, userPermissions)=>hasAccess(permission, userPermissions)
+  isPermitted: (permission, userPermissions)=>isPermitted(permission, userPermissions)
 };
 export {
   control

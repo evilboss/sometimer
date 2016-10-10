@@ -1,6 +1,8 @@
 import React from 'react';
 import TimeTotal from '../containers/time_total';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
+import {control} from '/lib/access-control/control';
+
 class StaffDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +34,7 @@ class StaffDetails extends React.Component {
   }
 
   render() {
-    const {staff, index} = this.props;
+    const {staff, index, userPermissions} = this.props;
     return (
 
       <div className="collection-item avatar" key={index}>
@@ -67,15 +69,23 @@ class StaffDetails extends React.Component {
               {staff.profile.status}
             </div>
             <div className="icons center-align">
-              <a href={`/dashboard/staff/${staff._id}`}>
-                <img src="/Assets/icons/time.png"/>
-              </a>
+              {
+                (userPermissions) ? control.isPermitted('updateStaff', userPermissions) ?
+                  <a href={`/dashboard/staff/${staff._id}`}>
+                    <img src="/Assets/icons/time.png"/>
+                  </a>
+                  : '' : ''
+              }
               <img src="/Assets/icons/message.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
               <img src="/Assets/icons/phone.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
               <img src="/Assets/icons/file.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
-              <a href={`/dashboard/staff/settings/${staff._id}`}>
-                <img src="/Assets/icons/settings.png"/>
-              </a>
+              {
+                (userPermissions) ? control.isPermitted('updateStaff', userPermissions) ?
+                  <a href={`/dashboard/staff/settings/${staff._id}`}>
+                    <img src="/Assets/icons/settings.png"/>
+                  </a>
+                  : '' : ''
+              }
             </div>
           </div>
         </div>

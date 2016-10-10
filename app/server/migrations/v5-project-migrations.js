@@ -14,7 +14,7 @@ Migrations.add({
 });
 const projectnames = ['Project 1', 'project 2', 'test'];
 const loadProjects = ()=> {
-  let userList = ['jr@ezyva.com', 'admin@admin.com', 'aaron.randrup@ezyva.com', 'manager@manager.com'];
+  let userList = ['jr@ezyva.com', 'admin@admin.com', 'aaron.randrup@ezyva.com', 'manager@manager.com', 'staff@staff.com'];
   let members = [];
   _.each(userList, function (userEmail) {
     let member = Meteor.users.findOne({"emails.address": userEmail});

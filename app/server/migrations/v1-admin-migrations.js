@@ -76,8 +76,13 @@ const loadUsers = ()=> {
         permissions: [
           'readStaffs',
           'readManagers',
-          'readLeaders'
+          'readLeaders',
+          'readTeam',
+          'readProject',
+          'readSubProject',
+          'readTask',
         ]
+
       }
     });
     Accounts.createUser({

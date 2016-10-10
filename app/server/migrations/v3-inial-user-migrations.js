@@ -1,5 +1,5 @@
 Migrations.add({
-  version: 4,
+  version: 3,
   name: 'Add Initial users to app',
   up: function () {
     loadStaff();

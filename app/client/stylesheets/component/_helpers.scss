@@ -3,6 +3,10 @@
   display: inline-block !important;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -116,5 +120,10 @@
   position: absolute;
   border: 1px solid $gray-line;
   top: 0;
+}
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }

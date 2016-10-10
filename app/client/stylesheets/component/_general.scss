@@ -86,6 +86,10 @@ p {
   }
 }
 
+.btn {
+  margin: 0 0.5em;
+}
+
 // Label
 .table-row-active {
   background-color: #68c73f;
@@ -515,4 +519,31 @@ ul.tabs {
 .dp-small {
   width: 50px;
   height: 50px;
+}
+
+.dp-medium {
+  width: 80px;
+  height: 80px;
+}
+
+.staff-details {
+  h6 {
+    color: black;
+    small {
+      color: $dark-gray;
+    }
+  }
+}
+
+.status-indicator {
+  @include equal-height-width(15px);
+  $color-list: ($violet, $primary-color, $green, $yellow, $dark-gray);
+  $indicator-list: ('Invite', 'Responded', 'In', 'Break', 'Out');
+  border-radius: 50%;
+  @each $indicator in $indicator-list {
+    $i: index($indicator-list, $indicator);
+    &.#{$indicator} {
+      background-color: nth($color-list, $i);
+    }
+  }
 }

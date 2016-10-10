@@ -35,6 +35,15 @@
   margin: 0 -0.8em 0 -0.8em;
 }
 
+@mixin background-opacity($color, $opacity) {
+  background-color: rgba($color, $opacity);
+}
+
+@mixin equal-height-width($value) {
+  height: $value;
+  width: $value;
+}
+
 // Animations
 // ----------------------------------------------------------------------
 

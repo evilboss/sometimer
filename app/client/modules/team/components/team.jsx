@@ -1,6 +1,12 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import TeamList from '/client/modules/team/containers/team_list';
+import ManageStaff from '/client/modules/team/containers/manage_staff/manage_staff';
+import AddNewStaff from '/client/modules/team/containers/manage_staff/add_new_staff';
+import StaffDetails from '/client/modules/team/containers/manage_staff/staff_details';
+import ManageClients from '/client/modules/team/containers/manage_clients/manage_clients';
+import CreateTeam from '/client/modules/team/containers/create_team';
+
 class Team extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +18,11 @@ class Team extends React.Component {
     });
   }
 
+  addNewStaff(e) {
+    e.preventDefault();
+    console.log('utub');
+  }
+
   render() {
     return (
       <section id="team">
@@ -20,18 +31,22 @@ class Team extends React.Component {
           <div className="col s7 tab-nav">
             <ul className="tabs">
               <li className="tab col s3"><a href="#ManageTeam" className="active">Manage Team</a></li>
+              <li className="tab col s3"><a href="#ManageStaff" className="">Manage Staff</a></li>
               <li className="tab col s3"><a href="#ManageClients" className="">Manage Clients</a></li>
             </ul>
           </div>
 
           <div className="col s12 tabs-content no-padding">
-            <div id="ManageTeam" className="col s12">
+            <section id="ManageTeam" className="col s12">
               <TeamList/>
-            </div>
+            </section>
+            <section id="ManageStaff" className="col s12">
+              <ManageStaff />
+            </section>
 
-            <div id="ManageClients" className="col s12">
-utub
-            </div>
+            <section id="ManageClients" className="col s12">
+              <ManageClients/>
+            </section>
           </div>
         </div>
       </section>

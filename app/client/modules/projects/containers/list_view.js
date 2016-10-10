@@ -4,12 +4,14 @@ import ListView from '../components/list_view.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('project-list').ready()) {
+  const subsriptionReady = [Meteor.subscribe('project-list').ready(), Meteor.subscribe('user.current').ready()];
+  const dataReady = ()=> {
     const projects = Collections.Projects.find().fetch();
-    onData(null, {projects});
-  } else {
-    onData();
-  }
+    const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
+    console.log(userPermissions);
+    onData(null, {projects, userPermissions});
+  };
+  (subsriptionReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

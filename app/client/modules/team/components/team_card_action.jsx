@@ -1,4 +1,5 @@
 import React from 'react';
+import {control} from '/lib/access-control/control';
 
 class TeamCardAction extends React.Component {
   constructor(props) {
@@ -6,12 +7,20 @@ class TeamCardAction extends React.Component {
   }
 
   render() {
-    const teamRoute = this.props.teamRoute;
+    const {teamRoute, userPermissions} = this.props;
     return (
       <div className="card-hover-action">
-        <div className="clearfix"><i className="right material-icons close">delete_forever</i></div>
+        {
+          (userPermissions) ? control.isPermitted('deleteTeam', userPermissions) ?
+            <div className="clearfix"><i className="right material-icons close">delete_forever</i></div>
+            : '' : ''
+        }
         <div className="action-buttons">
-          <a href="" className="btn">Edit / Manage</a>
+          {
+            (userPermissions) ? control.isPermitted('updateTeam', userPermissions) ?
+              <a href="" className="btn">Edit / Manage</a>
+              : '' : ''
+          }
           <a href={teamRoute} className="btn">View Team</a>
         </div>
       </div>

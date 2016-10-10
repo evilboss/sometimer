@@ -10,13 +10,10 @@ class TeamList extends React.Component {
   }
 
   render() {
-    const currentUser = this.props.currentUser;
-    const teamListing = this.props.team;
-
-
+    const {currentUser, teamListing} = this.props;
     return (
       <section id="team-list">
-        <SubTabs />
+        <SubTabs target="/team/add" text="Add Team" permission="createTeam"/>
         <div className="border-top row no-margin-bottom relative">
           <div className="col s12 no-padding">
             <div className="row">

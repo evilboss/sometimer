@@ -5,9 +5,9 @@ export const composer = ({context}, onData) => {
   const subscriptionReady = [Meteor.subscribe('menu').ready(), Meteor.subscribe('user.current').ready()];
   const dataReady = ()=> {
     const currentUser = Meteor.user();
-    const userRole = (currentUser) ? (currentUser.profile) ? (currentUser.profile.role) ? currentUser.profile.role : '' : '' : '';
-    options = {roles: {$elemMatch: {$in: [userRole]}}};
-    const menu = Collections.Menu.find(options).fetch();
+    //const userRole = (currentUser) ? (currentUser.profile) ? (currentUser.profile.role) ? currentUser.profile.role : '' : '' : '';
+    options = {};
+    const menu = Collections.Menu.find().fetch();
     onData(null, {menu, currentUser});
   };
   (subscriptionReady) ? dataReady() : onData();

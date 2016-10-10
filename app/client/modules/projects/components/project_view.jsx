@@ -5,6 +5,7 @@ import TaskCreate from '/client/modules/task/containers/task/task_create';
 import CreatePhase from './add_phase';
 import SubProjectList from '/client/modules/sub_projects/containers/sub_project_list';
 import PageTitle from '/client/modules/core/components/page_title';
+import {control} from '/lib/access-control/control';
 
 class ProjectView extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class ProjectView extends React.Component {
   }
 
   render() {
+    const {userPermissions} = this.props;
     const {name, _id} = (this.props.project) ? this.props.project : {name: '', _id: ''};
     return (
       <section id="project-view">
@@ -26,8 +28,6 @@ class ProjectView extends React.Component {
 
           <section className="col s12 middle">
             <div className="inner-wrapper">
-              <h4>{name}</h4>
-              <p>lorem ipsum ....</p>
               <div className="col s7 tab-nav">
                 <ul className="tabs">
                   <li className="tab col s3"><a href="#DISCUSSIONS">DISCUSSIONS</a></li>
@@ -47,13 +47,19 @@ class ProjectView extends React.Component {
             </section>
 
             <section id="TASK" className="col s12">
-              <TaskCreate projectId={_id}/>
-              <TaskList projectId={_id}/>
+              {
+                (userPermissions) ? control.isPermitted('createTask', userPermissions) ?
+                  <TaskCreate projectId={_id}/>
+                  : '' : ''
+              }
+              {
+                (userPermissions) ? control.isPermitted('readTask', userPermissions) ?
+                  <TaskList projectId={_id}/>
+                  : '' : ''
+              }
             </section>
           </section>
         </div>
-
-
       </section>
     );
   }

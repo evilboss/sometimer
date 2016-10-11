@@ -1,37 +1,45 @@
 import React from 'react';
 import {mount} from 'react-mounter';
-
+import MainLayout from '/client/modules/core/components/main_layout.jsx';
+import Foot from '/client/modules/core/components/footer.jsx';
+import Header from '/client/modules/core/containers/header';
+import {accessControl} from '/lib/access-control/access-control';
 import PublicLayout from '/client/modules/core/components/public_layout.jsx';
 import CreateTeam from './components/create_team/create_team'
-import TeamName from './components/create_team/forms/team_name';
-import TeamEmail from './components/create_team/forms/team_email';
+import {ManageStaff, AddNewStaff} from '/client/modules/team/containers/manage_staff/';
+
+const dashboardRoutes = FlowRouter.group({
+  prefix: "/dashboard",
+  triggersEnter: [function (context, redirect) {
+    accessControl.isLoggedIn('dashboard', redirect);
+  }]
+});
+export {dashboardRoutes};
 export default function (injectDeps, {FlowRouter}) {
-  const PublicLayoutCtx = injectDeps(PublicLayout);
+  const MainLayoutCtx = injectDeps(MainLayout);
+  dashboardRoutes.route('/team/manage-staff', {
+    name: 'dashboard.manageStaff',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<ManageStaff />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
 
-  FlowRouter.route('/team/create', {
-    name: 'team.create',
+  dashboardRoutes.route('/team/manage-staff/new', {
+    name: 'dashboard.manageStaff',
     action() {
-      mount(PublicLayoutCtx, {
-        content: () => (<CreateTeam formData='team.create' target="/team/create/name"/>)
-      });
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<AddNewStaff />),
+          footer: ()=>(<Foot/>),
+        },
+      );
     }
   });
-  FlowRouter.route('/team/create/name', {
-    name: 'team.create.name',
-    action() {
-      mount(PublicLayoutCtx, {
-        content: () => (< CreateTeam formData='team.create.name'/>)
-      });
-    }
-  });
-  FlowRouter.route('/team/create/members', {
-    name: 'team.create.members',
-    action() {
-      console.log('add team members');
-      mount(PublicLayoutCtx, {
-        content: () => (< CreateTeam formData='team.create.members'/>)
-
-      });
-    }
-  });
-}
+};

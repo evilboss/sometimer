@@ -8,7 +8,7 @@ import StaffList from '/client/modules/staff/containers/staff_list';
 import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';
-import Team from '/client/modules/team/containers/team';
+import TeamList from '/client/modules/team/containers/manage_team/team_list';
 import CreateTeam from '/client/modules/team/containers/create_team';
 import {control} from '/lib/access-control/control';
 const dashboardRoutes = FlowRouter.group({
@@ -36,7 +36,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'dashboard.team',
     action(){
       mount(MainLayoutCtx, {
-        head: () => (<Header />), content: () => (<Team />), footer: () => (<Foot />)
+        head: () => (<Header />), content: () => (<TeamList />), footer: () => (<Foot />)
       });
     }
   });

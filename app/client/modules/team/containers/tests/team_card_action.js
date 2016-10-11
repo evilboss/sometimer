@@ -1,7 +1,7 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../team_card_action';
+import {composer} from '../manage_team/team_card_action';
 
 describe('team.containers.team_card_action', () => {
   describe('composer', () => {

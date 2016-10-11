@@ -1,5 +1,5 @@
 Migrations.add({
-  version: 4,
+  version: 3,
   name: 'Add Initial users to app',
   up: function () {
     loadStaff();
@@ -20,7 +20,15 @@ const newStaffs = [
       jobTitle: 'Account Support Manager',
       displayPhoto: 'defaults/teams/ezyva/profiles/kim/kimDP.jpg',
       role: 'staff',
-
+      permissions: [
+        'readStaffs',
+        'readManagers',
+        'readLeaders',
+        'readTeam',
+        'readProject',
+        'readSubProject',
+        'readTask',
+      ]
     }
   },
   {
@@ -34,6 +42,15 @@ const newStaffs = [
       jobTitle: 'Associate Software Engineer',
       displayPhoto: 'defaults/teams/ezyva/profiles/iob/iobDP.jpg',
       role: 'staff',
+      permissions: [
+        'readStaffs',
+        'readManagers',
+        'readLeaders',
+        'readTeam',
+        'readProject',
+        'readSubProject',
+        'readTask',
+      ]
 
     }
   },
@@ -48,7 +65,15 @@ const newStaffs = [
       jobTitle: 'Client Support Manager',
       displayPhoto: 'defaults/teams/ezyva/profiles/dan/danDp.jpg',
       role: 'staff',
-
+      permissions: [
+        'readStaffs',
+        'readManagers',
+        'readLeaders',
+        'readTeam',
+        'readProject',
+        'readSubProject',
+        'readTask',
+      ]
     }
   },
   {
@@ -62,7 +87,15 @@ const newStaffs = [
       jobTitle: 'Senior Software Engineer',
       displayPhoto: 'defaults/teams/ezyva/profiles/aaron/jaredDp.jpg',
       role: 'staff',
-
+      permissions: [
+        'readStaffs',
+        'readManagers',
+        'readLeaders',
+        'readTeam',
+        'readProject',
+        'readSubProject',
+        'readTask',
+      ]
     }
   },
   {
@@ -76,7 +109,15 @@ const newStaffs = [
       jobTitle: 'Senior Software Engineer',
       displayPhoto: 'defaults/teams/ezyva/profiles/jr/rockAndRollToTheWorld.jpg',
       role: 'staff',
-
+      permissions: [
+        'readStaffs',
+        'readManagers',
+        'readLeaders',
+        'readTeam',
+        'readProject',
+        'readSubProject',
+        'readTask',
+      ]
     }
   },
 ];

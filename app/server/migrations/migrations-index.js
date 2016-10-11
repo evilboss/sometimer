@@ -4,8 +4,8 @@
 /*
  * V1: Admin users migration
  * V2: Menu list with user role
- * V3: Team migrations
- * V4: Initial user./ Staff migration
+ * V3: Initial user./ Staff migration
+ * V4: Team migrations
  * V5: Project Migration
  * V6: Timelogs for staff@staff.com user
  * v7: Teamlist migrations

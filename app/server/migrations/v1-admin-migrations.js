@@ -25,7 +25,18 @@ const loadUsers = ()=> {
         staffType: 'Regular',
         jobTitle: 'Administrator',
         displayPhoto: 'defaults/teams/default/profiles/admin/admin.gif',
-        role: 'admin'
+        role: 'admin',
+        permissions: [
+          'createClients', 'readClients', 'updateClients', 'deleteClients',
+          'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
+          'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
+          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
+          'createAdmin', 'readAdmin', 'updateAdmin', 'deleteAdmin',
+          'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
+          'createProject', 'readProject', 'updateProject', 'deleteProject',
+          'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
+          'createTask', 'readTask', 'updateTask', 'deleteTask',
+        ]
       }
     });
     Accounts.createUser({
@@ -38,7 +49,17 @@ const loadUsers = ()=> {
         staffType: 'Regular',
         jobTitle: 'Manager',
         displayPhoto: 'defaults/teams/default/profiles/manager/joker.jpg',
-        role: 'manager'
+        role: 'manager',
+        permissions: [
+          'createClients', 'readClients', 'updateClients', 'deleteClients',
+          'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
+          'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
+          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
+          'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
+          'createProject', 'readProject', 'updateProject', 'deleteProject',
+          'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
+          'createTask', 'readTask', 'updateTask', 'deleteTask',
+        ]
       }
     });
     Accounts.createUser({
@@ -51,7 +72,17 @@ const loadUsers = ()=> {
         staffType: 'Regular',
         jobTitle: 'Virtual Assistant',
         displayPhoto: 'defaults/teams/default/profiles/staff/rick.jpg',
-        role: 'staff'
+        role: 'staff',
+        permissions: [
+          'readStaffs',
+          'readManagers',
+          'readLeaders',
+          'readTeam',
+          'readProject',
+          'readSubProject',
+          'readTask',
+        ]
+
       }
     });
     Accounts.createUser({
@@ -62,9 +93,41 @@ const loadUsers = ()=> {
         lastName: 'Torrance',
         department: 'Admin',
         staffType: 'Regular',
-        jobTitle: 'CEO',
+        jobTitle: 'client',
         displayPhoto: 'defaults/teams/default/profiles/jack/JackTorrance.jpg',
-        role: 'client'
+        role: 'client',
+        permissions: [
+          'readStaffs',
+          'readManagers',
+          'readLeaders',
+          'readTeam',
+          'readProject',
+          'readSubProject',
+          'readTask',
+        ]
+      }
+    });
+    Accounts.createUser({
+      email: "ceo@ceo.com",
+      password: "password",
+      profile: {
+        firstName: ' Jack',
+        lastName: 'Torrance',
+        department: 'Admin',
+        staffType: 'Regular',
+        jobTitle: 'client',
+        role: 'client',
+        permissions: [
+          'createClients', 'readClients', 'updateClients', 'deleteClients',
+          'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
+          'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
+          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
+          'createAdmin', 'readAdmin', 'updateAdmin', 'deleteAdmin',
+          'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
+          'createProject', 'readProject', 'updateProject', 'deleteProject',
+          'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
+          'createTask', 'readTask', 'updateTask', 'deleteTask',
+        ]
       }
     });
   }

@@ -2,6 +2,8 @@ import {Timelogs, Teamlist} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import moment from 'moment/moment';
 import {check} from 'meteor/check';
+import {auth} from "/server/methods/auth/auth";
+
 import {getDates, generateDateToday} from '/server/methods/timeDate/timeDate';
 
 export default function () {
@@ -31,14 +33,12 @@ export default function () {
     _.each(teamList, function (team) {
       stafflist = _.union(stafflist, team.stafflist);
     });
-    const currentUser = Meteor.users.findOne(this.userId);
     const timeLogOptions =
-      (currentUser) ?
-        (currentUser.profile) ?
-          (currentUser.profile.role == 'admin') ? {approved: {$exists: false}, completed: true}
-            : {userId: {$in: stafflist}, approved: {$exists: false}, completed: true}
-          : {userId: {$in: stafflist}, approved: {$exists: false}, completed: true}
-        : {userId: {$in: stafflist}, approved: {$exists: false}, completed: true};
+      (auth.isAdmin(this.userId)) ? {approved: {$exists: false}, completed: true} : {
+        userId: {$in: stafflist},
+        approved: {$exists: false},
+        completed: true
+      }
     return Timelogs.find(timeLogOptions);
   });
 }

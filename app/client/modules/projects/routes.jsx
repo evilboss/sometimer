@@ -3,6 +3,7 @@ import {mount} from 'react-mounter';
 import {Footer} from '../core/components';
 import Header from '../core/containers/header';
 import {AddProjects, ViewProjects, ListView, ProjectView} from './containers';
+import {accessControl} from '/lib/access-control/access-control';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 export default function (injectDeps, {FlowRouter}) {
@@ -10,7 +11,10 @@ export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   const projectRoutes = FlowRouter.group({
     name: 'projectRouteGroup',
-    prefix: "/projects"
+    prefix: "/projects",
+    triggersEnter: [function (context, redirect) {
+      accessControl.isLoggedIn('projects', redirect);
+    }]
   });
   projectRoutes.route('/tileView', {
     name: 'projects.tileview',

@@ -4,15 +4,14 @@ import ProjectView from '../components/project_view.jsx';
 
 export const composer = ({context, projectId}, onData) => {
   const {Meteor, Collections} = context();
-  const subsriptionReady = [Meteor.subscribe('project.single', projectId).ready(), Meteor.subscribe('collaborators', projectId).ready()];
+  const subsriptionReady = [Meteor.subscribe('project.single', projectId).ready(), Meteor.subscribe('collaborators', projectId).ready(), Meteor.subscribe('user.current').ready()];
   const dataReady = ()=> {
     const project = Collections.Projects.findOne(projectId);
-    onData(null, {project});
+    const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
+
+    onData(null, {project, userPermissions});
   };
-  const projectFromCache = Tracker.nonreactive(() => {
-    return Collections.Projects.findOne(projectId);
-  });
-  (subsriptionReady) ? (projectFromCache) ? onData(null, {project: projectFromCache}) : dataReady() : onData();
+  (subsriptionReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

@@ -8,15 +8,12 @@ const hasCollaborators = (project)=> {
 export default function () {
   Meteor.publish('teamlist', function () {
     let stafflist = [];
-    const currentUser = Meteor.users.findOne(this.userId);
     const ownerOptions = (auth.isAdmin(this.userId)) ? {} : {owner: this.userId};
     const teamList = Teamlist.find(ownerOptions).fetch();
     _.each(teamList, function (team) {
       stafflist = _.union(stafflist, team.stafflist);
     });
-
-    const teamOptions = (auth.isAdmin(this.userId)) ? {} : {_id: {$in: stafflist}};
-    console.log(ownerOptions);
+    const teamOptions = (auth.isAdmin(this.userId)) ? {} : (stafflist) ? {_id: 'none'} : {_id: {$in: stafflist}};
     return [Teamlist.find(ownerOptions), Meteor.users.find(teamOptions, {
       fields: fields
     })];
@@ -24,7 +21,7 @@ export default function () {
 
   Meteor.publish('collaborators', function (projectId) {
     const currentProject = Projects.findOne(projectId);
-    const teamOptions = (auth.isAdmin(this.userId)) ? {} :(hasCollaborators(currentProject))?{_id: {$in: currentProject.collaborators}}: {_id: 'none'};
+    const teamOptions = (auth.isAdmin(this.userId)) ? {} : (hasCollaborators(currentProject)) ? {_id: {$in: currentProject.collaborators}} : {_id: 'none'};
     return Meteor.users.find(teamOptions, {fields: fields});
   });
 }

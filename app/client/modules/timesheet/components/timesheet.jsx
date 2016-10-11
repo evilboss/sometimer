@@ -17,7 +17,6 @@ class Timesheet extends TrackerReact(React.Component) {
   };
 
   componentDidMount() {
-
     $('.modal-trigger').leanModal();
     $('select').material_select();
   }
@@ -43,8 +42,8 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
   render() {
-    let currentUser = this.props.currentUser;
-    let dates = this.state.dates;
+    const {currentUser} = this.props;
+    const {dates}  = this.state;
     return (
       <section className="timesheet">
 

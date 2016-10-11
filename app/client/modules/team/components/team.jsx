@@ -6,6 +6,7 @@ import AddNewStaff from '/client/modules/team/containers/manage_staff/add_new_st
 import StaffDetails from '/client/modules/team/containers/manage_staff/staff_details';
 import ManageClients from '/client/modules/team/containers/manage_clients/manage_clients';
 import CreateTeam from '/client/modules/team/containers/create_team';
+import {control} from '/lib/access-control/control';
 
 class Team extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Team extends React.Component {
   }
 
   render() {
+    const {userPermissions} = this.props;
     return (
       <section id="team">
         <PageTitle title="All Team"/>
@@ -31,8 +33,17 @@ class Team extends React.Component {
           <div className="col s7 tab-nav">
             <ul className="tabs">
               <li className="tab col s3"><a href="#ManageTeam" className="active">Manage Team</a></li>
-              <li className="tab col s3"><a href="#ManageStaff" className="">Manage Staff</a></li>
-              <li className="tab col s3"><a href="#ManageClients" className="">Manage Clients</a></li>
+              {
+                (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
+                  <li className="tab col s3"><a href="#ManageStaff" className="">Manage Staff</a></li>
+                  : '' : ''
+              }
+              {
+                (userPermissions) ? control.isPermitted('updateClients', userPermissions) ?
+                  <li className="tab col s3"><a href="#ManageClients" className="">Manage Clients</a></li>
+                  : '' : ''
+              }
+
             </ul>
           </div>
 
@@ -40,13 +51,20 @@ class Team extends React.Component {
             <section id="ManageTeam" className="col s12">
               <TeamList/>
             </section>
-            <section id="ManageStaff" className="col s12">
-              <ManageStaff />
-            </section>
-
-            <section id="ManageClients" className="col s12">
-              <ManageClients/>
-            </section>
+            {
+              (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
+                <section id="ManageStaff" className="col s12">
+                  <ManageStaff />
+                </section>
+                : '' : ''
+            }
+            {
+              (userPermissions) ? control.isPermitted('updateClients', userPermissions) ?
+                <section id="ManageClients" className="col s12">
+                  <ManageClients/>
+                </section>
+                : '' : ''
+            }
           </div>
         </div>
       </section>

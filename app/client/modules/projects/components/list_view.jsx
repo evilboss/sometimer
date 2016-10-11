@@ -1,4 +1,5 @@
 import React from 'react';
+import {control} from '/lib/access-control/control';
 
 class ListView extends React.Component {
   constructor(props) {
@@ -6,6 +7,7 @@ class ListView extends React.Component {
   }
 
   render() {
+    const {userPermissions, projects} = this.props;
     return (
       <section className="project-list">
         <div className="page-title">
@@ -20,19 +22,28 @@ class ListView extends React.Component {
 
         <div className="row">
           <div className="col s2 center-align">
-            <div className="btn-add">
-              <a href="/projects/new" className="waves-effect waves-light secondary-color">
-                <i className="material-icons">add</i></a>
-              <h6>New Project</h6>
-            </div>
+            {
+              (userPermissions) ? control.isPermitted('createProject', userPermissions) ?
+                <div className="btn-add">
+                  <a href="/projects/new" className="waves-effect waves-light secondary-color">
+                    <i className="material-icons">add</i></a>
+                  <h6>New Project</h6>
+                </div>
+                : '' : ''
+            }
           </div>
-          <div className="col s10">
-            <div className="collection">
-              {this.props.projects.map(project => (
+          {
+            (userPermissions) ? control.isPermitted('readProject', userPermissions) ?
+              projects.map(project => (
                 <a href={`/project/${project._id}`} key={project._id} className="collection-item">
                   <b>{project.name}</b>
                 </a>
-              ))}
+              ))
+              : '' : ''
+          }
+          <div className="col s10">
+            <div className="collection">
+
             </div>
           </div>
         </div>

@@ -27,6 +27,11 @@ section.timesheet {
       border-radius: 0;
       padding: 7px 5px;
     }
+    tbody {
+      tr:hover {
+        background-color: yellow;
+      }
+    }
     td.rendered, .time-in, .time-out, .total-break {
       position: relative;
       div.edit {
@@ -42,20 +47,43 @@ section.timesheet {
     .clickedit {
       display: none;
       input {
-        width: 55%;
+        width: 100%;
+        margin-bottom: 0;
       }
       .done {
-        padding: 0;
-        height: 23px;
-        line-height: 23px;
+        @extend .cancel;
+        margin-left: 10px !important;
+        background-color: $primary-color !important;
       }
       .cancel {
-        @extend .done;
+        margin: 0 2.5px;
+        padding: 0 1px;
+        height: 23px;
+        line-height: 23px;
         background-color: $red;
-        margin-right: 5px;
+      }
+    }
+    .status-indicator {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 auto;
+    }
+    .approval-btn {
+      .done {
+        @extend .cancel;
+        margin-left: 10px !important;
+        background-color: $primary-color !important;
+      }
+      .cancel {
+        margin: 0 2.5px;
+        padding: 0 1px;
+        height: 23px;
+        line-height: 23px;
+        background-color: $red;
       }
     }
   }
+
   .modal {
     overflow: visible;
   }
@@ -73,6 +101,7 @@ section.timesheet {
 .rc-time-picker {
   display: inline-block;
   box-sizing: border-box;
+  width: 65px !important;
 }
 
 .rc-time-picker * {

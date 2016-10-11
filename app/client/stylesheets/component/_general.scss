@@ -537,8 +537,8 @@ ul.tabs {
 
 .status-indicator {
   @include equal-height-width(15px);
-  $color-list: ($violet, $primary-color, $green, $yellow, $dark-gray);
-  $indicator-list: ('Invite', 'Responded', 'In', 'Break', 'Out');
+  $color-list: ($violet, $primary-color, $green, $yellow, $dark-gray, $dark-green, $red, $yellow);
+  $indicator-list: ('Invite', 'Responded', 'In', 'Break', 'Out', 'Approved', 'Declined', 'Pending');
   border-radius: 50%;
   @each $indicator in $indicator-list {
     $i: index($indicator-list, $indicator);

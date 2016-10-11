@@ -25,8 +25,10 @@ class ManageStaff extends React.Component {
                 <div className="col s12 no-padding">
                   <table className="bordered">
                     <thead>
-                    <th>Staff</th>
-                    <th className="right">Status</th>
+                    <tr>
+                      <th>Staff</th>
+                      <th className="right">Status</th>
+                    </tr>
                     </thead>
                     <tbody>
                     <tr>

@@ -3,8 +3,8 @@ import Formsy from 'formsy-react';
 import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
-import MyInput from '../../../utils/form/input';
-import TextArea from '../../../utils/form/textarea';
+import MyInput from '../../../../utils/form/input';
+import TextArea from '../../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 
 

@@ -7,6 +7,7 @@ import {accessControl} from '/lib/access-control/access-control';
 import PublicLayout from '/client/modules/core/components/public_layout.jsx';
 import CreateTeam from './components/create_team/create_team'
 import {ManageStaff, AddNewStaff} from '/client/modules/team/containers/manage_staff/';
+import ManageClients from '/client/modules/team/containers/manage_clients/manage_clients';
 
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
@@ -31,12 +32,38 @@ export default function (injectDeps, {FlowRouter}) {
   });
 
   dashboardRoutes.route('/team/manage-staff/new', {
-    name: 'dashboard.manageStaff',
+    name: 'dashboard.manageStaff.new',
     action() {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
           content: ()=>(<AddNewStaff />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
+
+  dashboardRoutes.route('/team/manage-clients', {
+    name: 'dashboard.manageClients',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<ManageClients />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
+
+  dashboardRoutes.route('/team/manage-clients/new', {
+    name: 'dashboard.manageClients.new',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<ManageClients />),
           footer: ()=>(<Foot/>),
         },
       );

@@ -103,6 +103,7 @@ const approve = (timelogId)=> {
     $set: {approved: true}
   }) : ''
 }
+
 const timelogs = {
   startShift: ()=>startShift(),
   endShift: ()=>endShift(),

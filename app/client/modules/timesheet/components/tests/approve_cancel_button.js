@@ -1,8 +1,8 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import TeamCardAction from '../manage_team/team_card_action';
+import ApproveCancelButton from '../approve_cancel_button';
 
-describe('team.components.team_card_action', () => {
+describe('timesheet.components.approve_cancel_button', () => {
   it('should do something');
 });

@@ -4,12 +4,26 @@ class ApprovalButton extends React.Component {
   constructor(props) {
     super(props);
   }
-  approveTimelog(e){
+
+  approveTimelog(e) {
+    e.preventDefault();
     this.props.approveTimelog(this.props.timelogId);
   }
+
+  declineTimelog(e) {
+    e.preventDefault();
+    this.props.declineTimelog(this.props.timelogId);
+  }
+
   render() {
     return (
-      <button onClick={this.approveTimelog.bind(this)} className="ui right btn waves-effect waves-light theme-color">Approve</button>
+      <div className="approval-btn">
+        <div className="status-indicator Pending"></div>
+        <button className="btn done theme-color"><i
+          className="material-icons" onClick={this.approveTimelog.bind(this)}>done</i></button>
+        <button className="btn cancel" onClick={this.declineTimelog.bind(this)}><i
+          className="material-icons">clear</i></button>
+      </div>
     );
   }
 }

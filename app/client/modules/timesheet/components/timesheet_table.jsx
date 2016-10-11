@@ -19,7 +19,6 @@ class TimesheetTable extends React.Component {
             <th>Time In</th>
             <th>Total Break</th>
             <th>Time Out</th>
-            <th>Leave</th>
             <th>Hours Rendered</th>
             <th>Approval</th>
           </tr>

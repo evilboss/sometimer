@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
-
+/*TODO: @aaron declined timelog*/
 import tz from 'moment-timezone';
 import ApprovalButton from '/client/modules/manager/containers/approval_button';
 import EditHoursRendered from './edit_hour_rendered';
@@ -90,10 +90,10 @@ class Timedata extends React.Component {
                       className={`time-in ${timelog._id}`}
                       onChange={this.onChange}
                     />
-                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-in')}><i
-                      className="material-icons">clear</i></button>
                     <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-in')}><i
                       className="material-icons">done</i></button>
+                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-in')}><i
+                      className="material-icons">clear</i></button>
                   </div>
                   <div onClick={this.edit.bind(this,timelog._id,'time-in')} className="edit" id={timelog._id}>
                     <i className="material-icons">border_color</i>
@@ -125,10 +125,10 @@ class Timedata extends React.Component {
                       className={`time-out ${timelog._id}`}
                       onChange={this.onChange}
                     />
-                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-out')}><i
-                      className="material-icons">clear</i></button>
                     <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-out')}><i
                       className="material-icons">done</i></button>
+                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-out')}><i
+                      className="material-icons">clear</i></button>
                   </div>
                   <div onClick={this.edit.bind(this,timelog._id,'time-out')} className="edit" id={timelog._id}>
                     <i className="material-icons">border_color</i>
@@ -138,9 +138,6 @@ class Timedata extends React.Component {
               : ''
             : ''}
         </td>
-        <td>
-
-        </td>
         <td className="rendered">
           {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
         </td>
@@ -148,10 +145,10 @@ class Timedata extends React.Component {
           {(timelog) ?
             (timelog.completed) ?
               (timelog.approved) ?
-                'Approved'
+                <div className="status-indicator Approved"></div>
                 : (userRole == 'manager' || userRole == 'admin') ?
                 <ApprovalButton timelogId={timelog._id}/>
-                : 'Waiting for approval'
+                : <div className="status-indicator Pending"></div>
               : ''
             : ''}
         </td>

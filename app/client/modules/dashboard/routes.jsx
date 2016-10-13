@@ -9,7 +9,7 @@ import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';
 import TeamList from '/client/modules/team/containers/manage_team/team_list';
-import CreateTeam from '/client/modules/team/containers/create_team';
+import CreateTeam from '/client/modules/team/containers/manage_team/create_team';
 import {control} from '/lib/access-control/control';
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",

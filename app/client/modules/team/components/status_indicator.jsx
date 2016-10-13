@@ -9,7 +9,7 @@ class StatusIndicator extends React.Component {
     const indicatorClass = this.props.class;
     return (
       <div className="right">
-        <span>{indicatorClass}</span>
+        <span>{indicatorClass} </span>
         <div className={`status-indicator ${indicatorClass}`}>
         </div>
       </div>

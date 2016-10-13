@@ -483,7 +483,7 @@ form {
   }
 }
 
-ul.tabs, div.tabs {
+ul.tabs {
   overflow-x: hidden;
   width: 100% !important;
   border: 2px solid $gray-line;
@@ -508,18 +508,32 @@ ul.tabs, div.tabs {
   }
 }
 
-.tabs-wrapper {
+.tab-nav-wrapper {
+  border-bottom: 1px solid #E8E8E8;
+  margin-top: -0.8em;
+  padding: 1em;
+  background-color: white;
   @extend .no-section-margin;
-  margin-top: 2em;
   .tab-nav {
-    margin: -2px;
+    padding: 0.3em 0;
+    border: 2px solid $primary-color;
+    a:not(:last-child) {
+      border-right: 1px solid $gray-line;
+    }
+    a {
+      color: $dark-gray;
+      padding: 0.45em 1em;
+    }
+    a.active {
+      color: $primary-color;
+      background-color: $dark-gray;
+    }
   }
-  .tabs-content {
-    border: none;
-    border-top: solid 2px $gray-line;
-    @extend .no-margin;
-    @extend .white-wrapper;
-  }
+}
+
+.tabs-content {
+  border: none;
+  @extend .no-margin;
 }
 
 .dp-small {

@@ -1,7 +1,7 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {stub, spy} from 'sinon';
-import {composer} from '../create_team';
+import {composer} from '../manage_team/create_team';
 
 describe('team.containers.create_team', () => {
   describe('composer', () => {

@@ -10,20 +10,19 @@ class Tabs extends React.Component {
 
     const {userPermissions} = this.props;
     return (
-      <div className="col s7 tab-nav">
-        <div className="tabs">
-          <div className="tab col s3"><a href="/dashboard/team">Manage Team</a></div>
+      <div className="tab-nav-wrapper">
+        <div className="tab-nav inline">
+          <a href="/dashboard/team">My Team</a>
           {
             (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-              <div className="tab col s3"><a href="/dashboard/team/manage-staff">Manage Staff</a></div>
+              <a href="/dashboard/team/manage-staff">My Staff</a>
               : '' : ''
           }
           {
             (userPermissions) ? control.isPermitted('updateClients', userPermissions) ?
-              <div className="tab col s3"><a href="/dashboard/team/manage-clients">Manage Clients</a></div>
+              <a href="/dashboard/team/manage-clients">Client</a>
               : '' : ''
           }
-
         </div>
       </div>
     );

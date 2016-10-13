@@ -8,20 +8,17 @@ class SubTabs extends React.Component {
   render() {
     const {target, text, permission, userPermissions} = this.props;
     return (
-      <div className="row no-margin-bottom">
-        <div className="col s12 no-padding">
-          {
-            (userPermissions) ? control.isPermitted(permission, userPermissions) ?
-              <div className="btn-add">
-                <a href={(target)?target:''} className="waves-effect waves-light secondary-color">
-                  <span>{(text) ? text : ''}</span>
-                  <i className="material-icons">add</i></a>
-              </div>
-              : '' : ''
-          }
-
-        </div>
-      </div>
+      <section id="sub-tabs" className="border-bottom">
+        {
+          (userPermissions) ? control.isPermitted(permission, userPermissions) ?
+            <div className="btn-add">
+              <a href={(target)?target:''} className="waves-effect waves-light secondary-color">
+                <span>{(text) ? text : ''}</span>
+                <i className="material-icons">add</i></a>
+            </div>
+            : '' : ''
+        }
+      </section>
     );
   }
 }

@@ -36,31 +36,27 @@ class CreateTeam extends React.Component {
   render() {
     return (
       <section id="team">
-        <PageTitle title="All Team"/>
-        <div className="row tabs-wrapper">
-          <Tabs/>
-          <div className="col s12 tabs-content no-padding">
-            <section id="create-team" className="col s12">
-              <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
-              <div className="border-top row no-margin-bottom relative">
-                <Formsy.Form onSubmit={this.addTeam.bind(this)}>
-                  <div className="col s12">
-                    <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
-                    <StaffMultiSelect getData={this.getData.bind(this)}/>
-                    <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
-                             required/>
-                    <div className="row form-group required col s12 no-padding">
-                      <TextArea name="description" ref="description" title="Team's Objective" required/>
-                    </div>
-                    <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
-                      <i className="material-icons right">send</i></button>
 
-                  </div>
-                </Formsy.Form>
+        <Tabs/>
+        <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
+        <section id="create-team" className="col s12">
+          <div className="row no-margin-bottom">
+            <Formsy.Form onSubmit={this.addTeam.bind(this)}>
+              <div className="col s12">
+                <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
+                <StaffMultiSelect getData={this.getData.bind(this)}/>
+                <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
+                         required/>
+                <div className="row form-group required col s12 no-padding">
+                  <TextArea name="description" ref="description" title="Team's Objective" required/>
+                </div>
+                <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
+                  <i className="material-icons right">send</i></button>
+
               </div>
-            </section>
+            </Formsy.Form>
           </div>
-        </div>
+        </section>
       </section>
 
     );

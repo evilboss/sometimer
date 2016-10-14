@@ -1,10 +1,15 @@
 export default {
-  update({Meteor, LocalState}, timeData) {
+  update({Meteor, LocalState}, timelogId, timelogType, time) {
     LocalState.set('TIMESHEET_ERROR', null);
-    if (timeData) {
-      LocalState.set('TIMESHEET_ERROR', 'time data is required');
+    if (!timelogId) {
+      LocalState.set('TIMESHEET_ERROR', {timelogId: timelogId, timelogType: timelogType, message: 'Timesheet Error'});
       return;
     }
+    if (!time) {
+      LocalState.set('TIMESHEET_ERROR', {timelogId: timelogId, timelogType: timelogType, message: 'time is required'});
+      return;
+    }
+    console.log(time);
   },
   clearErrors({LocalState}) {
     return LocalState.set('TIMESHEET_ERROR', null);

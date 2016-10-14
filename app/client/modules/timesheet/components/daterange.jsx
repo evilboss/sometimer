@@ -54,8 +54,6 @@ class Daterange extends React.Component {
   }
 
   handleChange(which, dateRange) {
-
-    console.log(dateRange);
     this.setState({
       [which]: dateRange
     });

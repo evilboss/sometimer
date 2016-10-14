@@ -68,6 +68,12 @@ section#staff-list {
   .tabs-background {
     background-color: $primary-color;
     margin: auto -0.8em;
+    h5 {
+      position: absolute;
+      margin-left: 1em;
+      margin-top: 10px;
+      color: white;
+    }
   }
   .tabs-wrapper {
     height: 3em;

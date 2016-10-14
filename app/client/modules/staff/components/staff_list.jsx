@@ -60,6 +60,7 @@ class StaffList extends React.Component {
       <div>
         <section id="staff-list">
           <PageTitle title={(team)?(team.name)?team.name:'':''}/>
+          <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
           <div className="row">
             <div className="col s12">
               <div id="today" className="col s12">

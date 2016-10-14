@@ -3,9 +3,9 @@ import TeamList from '../../components/manage_team/team_list.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('team.list').ready()) {
-    const teamListing = Collections.Team.find().fetch();
+    const teamList = Collections.Team.find().fetch();
     const currentUser = Meteor.user();
-    onData(null, {teamListing, currentUser});
+    onData(null, {teamList, currentUser});
   } else {
     onData();
   }

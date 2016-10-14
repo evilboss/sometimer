@@ -11,7 +11,7 @@ class TeamList extends React.Component {
   }
 
   render() {
-    const {currentUser, teamListing} = this.props;
+    const {currentUser, teamList} = this.props;
     return (
       <section id="team">
         <Tabs/>
@@ -20,8 +20,8 @@ class TeamList extends React.Component {
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">
               <div className="row">
-                {(teamListing) ?
-                  teamListing.map((team, index) => (
+                {(teamList) ?
+                  teamList.map((team, index) => (
                     <div key={index} className="collection-item">
                       <article className="col s12 m6 l4">
                         <div className="card">

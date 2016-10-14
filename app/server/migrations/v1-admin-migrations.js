@@ -36,6 +36,7 @@ const loadUsers = ()=> {
           'createProject', 'readProject', 'updateProject', 'deleteProject',
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
+          'updatePermissions',
         ]
       }
     });

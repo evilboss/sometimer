@@ -46,7 +46,10 @@ const changeStatus = (status = 'Out')=> {
     Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.status': statusChange}});
   }
 };
+const changeTimelog = ()=> {
+}
 const dtr = {
-  changeStatus: (status)=>changeStatus(status)
+  changeStatus: (status)=>changeStatus(status),
+  changeTimelog: ()=>changeTimelog()
 };
 export {dtr};

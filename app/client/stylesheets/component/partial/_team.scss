@@ -1,5 +1,8 @@
 section#team {
   @extend .container-margin;
+  .page-title {
+    background-color: transparent;
+  }
   article {
     .card {
       overflow: hidden;
@@ -61,26 +64,6 @@ section#team {
     }
   }
 
-  .btn-add {
-    display: inline-block;
-    margin-top: 0;
-    border: 2px solid $primary-color;
-    a {
-      border-radius: 0;
-      color: $primary-color;
-      background-color: white;
-      span {
-        vertical-align: text-bottom;
-        padding: 5px;
-      }
-      i {
-        border-left: 1px solid $primary-color;
-        color: $primary-color;
-        font-size: 1.2em;
-        padding: 6px;
-      }
-    }
-  }
   .drafts {
     h5 {
       color: $primary-color;

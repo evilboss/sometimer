@@ -15,12 +15,12 @@ class Tabs extends React.Component {
           <a href="/dashboard/team">My Team</a>
           {
             (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-              <a href="/dashboard/team/manage-staff">My Staff</a>
+              <a href="/dashboard/team/manage-staff">All Staffs</a>
               : '' : ''
           }
           {
             (userPermissions) ? control.isPermitted('updateClients', userPermissions) ?
-              <a href="/dashboard/team/manage-clients">Client</a>
+              <a href="/dashboard/team/manage-clients">Clients</a>
               : '' : ''
           }
         </div>

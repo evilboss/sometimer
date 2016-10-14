@@ -1,6 +1,5 @@
 section#manage-staff {
   table {
-    margin-top: 1em;
     thead {
       border-bottom-width: 2px;
       th {
@@ -14,11 +13,15 @@ section#manage-staff {
         }
       }
     }
+    th:not(:first-child),
+    td:not(:first-child) {
+      text-align: center;
+    }
     .status {
       margin-top: 1.5em;
       .status-indicator {
-        vertical-align: baseline;
-        margin-left: 0.5em;
+        vertical-align: text-top;
+        margin-right: 0.5em;
         @extend .inline;
       }
     }

@@ -28,7 +28,7 @@ class TeamList extends React.Component {
                           <div className="card-title">{team.name}</div>
                           <div className="card-content">
                             <img
-                              src='http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'
+                              src='/uploads/defaults/default_user.png'
                               alt="Team Lead" className="circle responsive-img dp-small left"/>
                             <div className="col s8 staff-details no-margin">
                               <h6>Manager Name<br/>
@@ -42,7 +42,7 @@ class TeamList extends React.Component {
                                 (key <= 4) ? <StaffDp key={key} teamId={team._id} userId={member}/> : ''
                               )) : <div className="row no-margin">
                               <img
-                                src='http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'
+                                src='/uploads/defaults/default_user.png'
                                 alt="Team Lead" className="circle responsive-img dp-small left"/>
                               <div className="col s8 no-margin">
                               <span>Needs a Staff!<br/>

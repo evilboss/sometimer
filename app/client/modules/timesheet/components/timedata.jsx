@@ -1,13 +1,16 @@
 import React from 'react';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
-/*TODO: @aaron declined timelog*/
 import tz from 'moment-timezone';
 import ApprovalButton from '/client/modules/manager/containers/approval_button';
 import EditHoursRendered from './edit_hour_rendered';
+/*TODO: @aaron declined timelog*/
 class Timedata extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      time: '08:00'
+    }
   }
 
   isToday(date) {
@@ -29,6 +32,8 @@ class Timedata extends React.Component {
    * @param e : event triggered by html object
    */
   edit(timelogId, timeLogType, e) {
+    const {clearErrors} = this.props;
+    clearErrors();
     e.preventDefault();
     $('td.' + timeLogType + ' span p#' + timelogId).hide();
     $('td.' + timeLogType + ' .edit#' + timelogId).hide();
@@ -42,53 +47,75 @@ class Timedata extends React.Component {
    * @param e
    */
   done(timelogId, timeLogType, e) {
-    e.preventDefault();
-    $('td.' + timeLogType + ' span p#' + timelogId).show();
-    $('td.' + timeLogType + ' .edit#' + timelogId).show();
-    $('td.' + timeLogType + ' .clickedit#' + timelogId).hide();
+    const {update}= this.props;
+    console.log(this.state.time);
+    update(timelogId, timeLogType, this.state.time);
+    this.toggleEditTimelog(timelogId, timeLogType, e);
   }
 
+  /**
+   *
+   * @param timelogId
+   * @param timeLogType
+   * @param e
+   */
   cancel(timelogId, timeLogType, e) {
+    console.log('Cancel');
+    this.toggleEditTimelog(timelogId, timeLogType, e);
+  }
+
+  toggleEditTimelog(timelogId, timeLogType, e) {
+    const self = this;
     e.preventDefault();
     $('td.' + timeLogType + ' span p#' + timelogId).show();
     $('td.' + timeLogType + ' .edit#' + timelogId).show();
     $('td.' + timeLogType + ' .clickedit#' + timelogId).hide();
-  }
-
-
-  componentDidMount() {
-
+    self.setState({time: '08:00'});
   }
 
   onChange(value) {
-    console.log(value && value.format(str));
+    const self = this;
+    const showSecond = false;
+    const format = showSecond ? 'HH:mm:ss' : 'HH:mm';
+    const time = ((format) && value.format(format)) ? value.format(format) : '';
+    (time) ? self.setState({time: time}) : '';
   }
 
   render() {
-    const showSecond = true;
+    const showSecond = false;
     const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
-    const timelog = this.props.timelog;
-    const userRole = this.props.activeRole;
+    const {activeRole, timelog, err} = this.props;
+    const {timelogId, message, timelogType}=(err) ? err : '';
     const format = 'hh:mm A z';
     return (
       <tr key={this.props.keyIndex} className={this.getRowClass(this.props.date)}>
+
         <td>{this.props.date.toDateString()}</td>
         <td className="time-in">
           <span className="inline">
           {(timelog) ? (timelog.timeIn) ?
             <p id={timelog._id}>{moment(timelog.timeIn).tz('Asia/Manila').format(format)}</p> : '' : ''}
+            {
+              err ? (timelogId == timelog._id) ? (timelogType == 'time-in') ?
+                < td className="error-container">
+                < span className="error-text">
+                {message}</span>
+                </td>
+                : null : null : null
+            }
           </span>
-          {(userRole == 'manager' || userRole == 'admin') ?
+          {(activeRole == 'manager' || activeRole == 'admin') ?
             (timelog) ?
               (timelog._id) ?
                 <div className="inline">
                   <div className="clickedit" id={timelog._id}>
                     <TimePicker
+                      id={`time-in-${timelog._id}`}
                       style={{ width: 100 }}
                       showSecond={showSecond}
                       defaultValue={moment()}
                       className={`time-in ${timelog._id}`}
-                      onChange={this.onChange}
+                      onChange={this.onChange.bind(this)}
                     />
                     <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-in')}><i
                       className="material-icons">done</i></button>
@@ -110,10 +137,20 @@ class Timedata extends React.Component {
         <td className="time-out">
           <span className="inline">
           {(timelog) ? (timelog.timeOut) ?
-            <p id={timelog._id}>{moment(timelog.timeOut).tz('Asia/Manila').format(format)}</p> : '' : ''}
+
+            <p id={timelog._id}>{moment(timelog.timeOut).tz('Asia/Manila').format(format)}
+              {
+                err ? (timelogId == timelog._id) ? (timelogType == 'time-out') ?
+                  < td className="error-container">
+                < span className="error-text">
+                {message}</span>
+                  </td>
+                  : null : null : null
+              }
+            </p> : '' : ''}
           </span>
 
-          {(userRole == 'manager' || userRole == 'admin') ?
+          {(activeRole == 'manager' || activeRole == 'admin') ?
             (timelog) ?
               (timelog._id) ?
                 <div className="inline">
@@ -146,7 +183,7 @@ class Timedata extends React.Component {
             (timelog.completed) ?
               (timelog.approved) ?
                 <div className="status-indicator Approved"></div>
-                : (userRole == 'manager' || userRole == 'admin') ?
+                : (activeRole == 'manager' || activeRole == 'admin') ?
                 <ApprovalButton timelogId={timelog._id}/>
                 : <div className="status-indicator Pending"></div>
               : ''

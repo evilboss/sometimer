@@ -4,6 +4,7 @@ import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
+import {control} from '/lib/access-control/control';
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class AddNewStaff extends React.Component {
   }
 
   render() {
+    const {userPermissions} = this.props;
     return (
       <section id="team">
         <Tabs/>
@@ -48,6 +50,8 @@ class AddNewStaff extends React.Component {
                 </div>
                 <div className="col s6">
                   <div className="col s12">
+                    {
+                      (userPermissions) ? control.isPermitted('updatePermissions', userPermissions) ?
                     <table>
                       <thead>
                       <tr>
@@ -135,6 +139,8 @@ class AddNewStaff extends React.Component {
                       </tr>
                       </tbody>
                     </table>
+                        : '' : ''
+                    }
                     <div className="right save">
                       <button className="btn">Save and Invite</button>
                     </div>

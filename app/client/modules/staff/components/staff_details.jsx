@@ -14,7 +14,6 @@ class StaffDetails extends React.Component {
 
   componentDidMount() {
     this.getToday();
-    console.log(sweetPrompts);
   };
 
   getToday() {
@@ -36,7 +35,6 @@ class StaffDetails extends React.Component {
   render() {
     const {staff, index, userPermissions} = this.props;
     return (
-
       <div className="collection-item avatar" key={index}>
         <img src={"/uploads/" + staff.profile.displayPhoto} alt="" className="circle"/>
         <div className="row">
@@ -70,7 +68,7 @@ class StaffDetails extends React.Component {
             </div>
             <div className="icons center-align">
               {
-                (userPermissions) ? control.isPermitted('updateStaff', userPermissions) ?
+                (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
                   <a href={`/dashboard/staff/${staff._id}`}>
                     <img src="/Assets/icons/time.png"/>
                   </a>
@@ -80,7 +78,7 @@ class StaffDetails extends React.Component {
               <img src="/Assets/icons/phone.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
               <img src="/Assets/icons/file.png" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}/>
               {
-                (userPermissions) ? control.isPermitted('updateStaff', userPermissions) ?
+                (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
                   <a href={`/dashboard/staff/settings/${staff._id}`}>
                     <img src="/Assets/icons/settings.png"/>
                   </a>

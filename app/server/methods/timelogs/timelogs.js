@@ -90,8 +90,11 @@ const endBreak = ()=> {
     }
   });
 };
+//TODO: evilboss make editlogs work.
 const editLogs = (timeLogId, totalRendered)=> {
-  Timelogs.update({_id: timeLogId}, {$set: {totalRendered: totalRendered}});
+  const currentTimelog = Timelogs.findOne(timeLogId);
+  console.log(currentTimelog);
+  //Timelogs.update({_id: timeLogId}, {$set: {totalRendered: totalRendered}});
 };
 /**
  *

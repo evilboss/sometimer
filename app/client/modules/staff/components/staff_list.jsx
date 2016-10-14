@@ -66,6 +66,7 @@ class StaffList extends React.Component {
         <Tabs/>
         <SubTabs target="/dashboard/manage-clients/new" text="Add New Client" permission="createClients"/>
         <PageTitle title={(team)?(team.name)?team.name:'':''}/>
+        <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
         <div className="row">
           <div className="col s12">
             <div id="today" className="col s12">

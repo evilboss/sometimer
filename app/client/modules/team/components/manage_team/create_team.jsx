@@ -38,7 +38,7 @@ class CreateTeam extends React.Component {
       <section id="team">
 
         <Tabs/>
-        <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
+        <PageTitle title="Add a New Team"/>
         <section id="create-team" className="col s12">
           <div className="row no-margin-bottom">
             <Formsy.Form onSubmit={this.addTeam.bind(this)}>

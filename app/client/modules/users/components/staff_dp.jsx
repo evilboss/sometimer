@@ -9,7 +9,7 @@ class StaffDp extends React.Component {
     const displayPhoto = this.props.displayPhoto;
     return (
       <img
-        src={(displayPhoto)?`/uploads/${displayPhoto}`:'http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'}
+        src={(displayPhoto)?`/uploads/${displayPhoto}`:'/uploads/defaults/default_user.png'}
         alt="people" className="circle responsive-img"/>
     );
   }

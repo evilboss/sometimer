@@ -24,7 +24,9 @@ class ManageStaff extends React.Component {
                 <thead>
                 <tr>
                   <th>Staff</th>
-                  <th className="right">Status</th>
+                  <th>Setup Status</th>
+                  <th>Team</th>
+                  <th>Time log Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,6 +40,12 @@ class ManageStaff extends React.Component {
                         <small>Manager</small>
                       </h6>
                     </div>
+                  </td>
+                  <td>
+                    Setup Incomplete
+                  </td>
+                  <td>
+                    Unassigned
                   </td>
                   <td className="status">
                     <StatusIndicator class="Invite"/>

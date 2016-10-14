@@ -5,6 +5,11 @@ import StaffDetails from '../containers/staff_details';
 import PageTitle from '/client/modules/core/components/page_title';
 import DatePicker from '/client/modules/timesheet/components/datepicker';
 import DateRange from '/client/modules/timesheet/components/daterange';
+import Tabs from '/client/modules/team/containers/tabs';
+import SubTabs from '/client/modules/team/containers/sub_tabs';
+
+
+/*TODO: @aaron tabs-background*/
 
 class StaffList extends React.Component {
   constructor(props) {
@@ -57,25 +62,27 @@ class StaffList extends React.Component {
   render() {
     const {team, staffList} = this.props;
     return (
-      <div>
-        <section id="staff-list">
-          <PageTitle title={(team)?(team.name)?team.name:'':''}/>
-          <div className="row">
-            <div className="col s12">
-              <div id="today" className="col s12">
-                Today is {moment().format('LL')}
-              </div>
-              <div id="week" className="col s12">
-                Period from {this.state.from} to {this.state.to}
-              </div>
-              <div id="month" className="col s12">
-                Period from {this.state.from} to {this.state.to}
-              </div>
-              <div id="custom" className="col s12">
-                <DateRange changeDate={this.changeDate.bind(this)}/>
-              </div>
+      <section id="staff-list">
+        <Tabs/>
+        <SubTabs target="/dashboard/manage-clients/new" text="Add New Client" permission="createClients"/>
+        <PageTitle title={(team)?(team.name)?team.name:'':''}/>
+        <div className="row">
+          <div className="col s12">
+            <div id="today" className="col s12">
+              Today is {moment().format('LL')}
+            </div>
+            <div id="week" className="col s12">
+              Period from {this.state.from} to {this.state.to}
+            </div>
+            <div id="month" className="col s12">
+              Period from {this.state.from} to {this.state.to}
+            </div>
+            <div id="custom" className="col s12">
+              <DateRange changeDate={this.changeDate.bind(this)}/>
             </div>
           </div>
+        </div>
+        <div className="tabs-background">
           <div className="tabs-wrapper">
             <ul className="tabs">
               <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
@@ -85,16 +92,16 @@ class StaffList extends React.Component {
               <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom Date</a></li>
             </ul>
           </div>
-          <div className="collection">
-            {staffList.map((staff, index) => (
-              <StaffDetails key={index} staff={staff} index={index}/>
-            ))}
-          </div>
-          <div id="invitationButton">
-            <SendInvitationModal/>
-          </div>
-        </section>
-      </div>
+        </div>
+        <div className="collection">
+          {staffList.map((staff, index) => (
+            <StaffDetails key={index} staff={staff} index={index}/>
+          ))}
+        </div>
+        <div id="invitationButton">
+          <SendInvitationModal/>
+        </div>
+      </section>
     );
   }
 }

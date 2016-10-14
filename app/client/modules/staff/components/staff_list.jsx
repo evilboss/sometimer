@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import SendInvitationModal from '/client/modules/invitations/components/send_invitation_modal';
 import StaffDetails from '../containers/staff_details';
-import PageTitle from '/client/modules/core/components/page_title';
 import DatePicker from '/client/modules/timesheet/components/datepicker';
 import DateRange from '/client/modules/timesheet/components/daterange';
 import Tabs from '/client/modules/team/containers/tabs';
@@ -64,8 +63,7 @@ class StaffList extends React.Component {
     return (
       <section id="staff-list">
         <Tabs/>
-        <SubTabs target="/dashboard/manage-clients/new" text="Add New Client" permission="createClients"/>
-        <PageTitle title={(team)?(team.name)?team.name:'':''}/>
+        <SubTabs target="/dashboard/team/manage-staff/new" text="Add New Staff" permission="createStaffs"/>
         <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
         <div className="row">
           <div className="col s12">
@@ -84,6 +82,7 @@ class StaffList extends React.Component {
           </div>
         </div>
         <div className="tabs-background">
+          <h5>{(team) ? (team.name) ? team.name : '' : ''}</h5>
           <div className="tabs-wrapper">
             <ul className="tabs">
               <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
@@ -99,9 +98,7 @@ class StaffList extends React.Component {
             <StaffDetails key={index} staff={staff} index={index}/>
           ))}
         </div>
-        <div id="invitationButton">
-          <SendInvitationModal/>
-        </div>
+
       </section>
     );
   }

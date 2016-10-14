@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { setComposerStub } from 'react-komposer';
+import {storiesOf, action} from '@kadira/storybook';
+import {setComposerStub} from 'react-komposer';
 import StaffDetails from '../../../staff/components/staff_details.jsx';
 
 storiesOf('client_module.StaffDetails', module)

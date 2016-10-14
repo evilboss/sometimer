@@ -1,7 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
 import CommentList from '../components/comment_list.jsx';
-
 export const composer = ({context, clearErrors, projectId}, onData) => {
   const {Meteor, Collections} = context();
   if (Meteor.subscribe('comments.projects', projectId).ready()) {
@@ -15,11 +14,9 @@ export const composer = ({context, clearErrors, projectId}, onData) => {
     onData();
   }
 };
-
 export const depsMapper = (context, actions) => ({
   context: () => context
 });
-
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)

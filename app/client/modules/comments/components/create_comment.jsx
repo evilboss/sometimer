@@ -1,10 +1,8 @@
 import React from 'react';
-
 class CreateComment extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const {error} = this.props;
     return (
@@ -19,7 +17,6 @@ class CreateComment extends React.Component {
       </div>
     );
   }
-
   _create() {
     const {create, projectId} = this.props;
     const text = this.refs.comment.value;
@@ -27,7 +24,6 @@ class CreateComment extends React.Component {
     create(projectId, text);
     this.refs.comment.value = '';
   }
-
   _renderError(error) {
     return (
       <div className='error'>

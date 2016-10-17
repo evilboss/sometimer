@@ -2,7 +2,6 @@
   border: 3px solid white;
   display: inline-block;
   position: absolute;
-  @include margin(1.5em, 0, 0, 2em);
   background-color: #F48762;
   height: 1.5em;
   width: 1.5em;
@@ -13,8 +12,8 @@
 .beacon.Back.From.Lunch:before {
   position: absolute;
   content: "";
-  height: 1em;
-  width: 0.95em;
+  height: 1.1em;
+  width: 1.1em;
   left: 0;
   top: 0;
   background-color: transparent;

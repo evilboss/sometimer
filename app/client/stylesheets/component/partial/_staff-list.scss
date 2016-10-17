@@ -39,21 +39,6 @@ section#staff-list {
           color: $theme-color;
         }
       }
-      .status {
-        @extend .total-time;
-        color: #999999;
-        width: 100px;
-        position: relative;
-        border-right: 1px dotted $gray-line;
-        .beacon {
-          position: relative;
-          display: block;
-          border: none;
-          height: 1em;
-          width: 1em;
-          margin: 0.8em auto 0.7em auto;
-        }
-      }
       .icons {
         @extend .total-time;
         position: relative;
@@ -63,6 +48,11 @@ section#staff-list {
           padding: 5px;
         }
       }
+    }
+  }
+  .status {
+    span {
+      margin-left: 35px;
     }
   }
   .tabs-background {

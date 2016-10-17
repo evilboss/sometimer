@@ -79,14 +79,16 @@ class Daterange extends React.Component {
             />
             <label className="active" htmlFor="from">View Date Range</label>
           </div>
-          <input
-            type='text'
-            readOnly
-            value={ rangePicker['endDate'] && rangePicker['endDate'].format(format).toString() }
-            data-target="daterange-modal"
-            className="modal-trigger inline"
-            data-toggle="modal"
-          />
+          <div className="inline input-field">
+            <input
+              type='text'
+              readOnly
+              value={ rangePicker['endDate'] && rangePicker['endDate'].format(format).toString() }
+              data-target="daterange-modal"
+              className="modal-trigger"
+              data-toggle="modal"
+            />
+          </div>
         </div>
 
         <div id="daterange-modal" className="modal">

@@ -93,10 +93,25 @@ class StaffList extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="collection">
-          {staffList.map((staff, index) => (
-            <StaffDetails key={index} staff={staff} index={index}/>
-          ))}
+
+        <div className="row white-wrapper no-section-margin">
+          <div className="col s12">
+            <table className="bordered">
+              <thead>
+              <tr>
+                <th>Staff</th>
+                <th className="center-align">Break</th>
+                <th className="center-align">Time Log Status</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              {staffList.map((staff, index) => (
+                <StaffDetails key={index} staff={staff} index={index}/>
+              ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </section>

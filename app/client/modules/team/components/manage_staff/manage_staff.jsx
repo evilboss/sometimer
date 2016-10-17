@@ -7,9 +7,7 @@ import StatusIndicator from '/client/modules/team/components/status_indicator';
 class ManageStaff extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ManageStaff: true
-    }
+
   }
 
   render() {

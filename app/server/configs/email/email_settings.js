@@ -1,6 +1,8 @@
 /**
  * Created by jr on 9/19/16.
  */
+import {Accounts} from 'meteor/accounts-base';
+
 Mailer.config({
   from: 'Remotiv Notifications<notifications@remotiv.io>',
   replyTo: 'Remotiv Notifications <notifications@remotiv.io>',
@@ -22,8 +24,8 @@ Meteor.startup(function () {
       path: 'layout.html',   // Relative to 'private' dir.
       scss: 'layout.scss'
     },
-    data:{
-      name:'Aaron',
+    data: {
+      name: 'Aaron',
     }
   });
 });

@@ -13,6 +13,8 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  create: actions.staff.create,
+  clearErrors: actions.staff.clearErrors,
   context: () => context
 });
 

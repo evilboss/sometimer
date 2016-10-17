@@ -1,7 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {remotivUser} from './user/remotiv_user';
-
 export default function () {
   Meteor.methods({
     'user.update-photo'(id, imgPath){
@@ -9,6 +8,9 @@ export default function () {
     },
     'user.update-permissions'(id, permissions){
       remotivUser.update(id, 'profile.permissions', permissions);
+    },
+    'users.add'(user){
+      remotivUser.addNew(user);
     }
   });
 }

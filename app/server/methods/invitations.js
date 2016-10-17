@@ -38,7 +38,10 @@ export default function () {
       //Mailer.send(message);
     },
     'invitation.activate'(invite){
+      console.log(invite.token);;
+      console.log(invite);
       const inviteToActivate = Invitations.findOne({token: invite.token});
+      console.log(inviteToActivate);
       const throwError = ()=> {
         throw new Meteor.Error(500, 'Error 500: Not found', 'the Invite is not found');
         return 'error';
@@ -51,21 +54,24 @@ export default function () {
       };
       const constructUser = (inviteToAdd)=> {
         console.log(inviteToAdd)
-        const newUser = {
-          email: inviteToAdd.email,
-          password: invite.password,
-          profile: {
-            firstName: inviteToAdd.firstName,
-            lastName: inviteToAdd.lastName,
-            department: inviteToAdd.department,
-            staffType: inviteToAdd.status,
-            jobTitle: inviteToAdd.designation,
-            role: inviteToAdd.role,
-          },
-          inviteId: inviteToAdd._id
-        }
-        const addedUser = remotivUser.add(newUser);
-        (addedUser) ? addToTeam(addedUser, inviteToAdd) : '';
+        Accounts.setPassword(inviteToAdd.userId, invite.password);
+        /*
+         const newUser = {
+         email: inviteToAdd.email,
+         password: invite.password,
+         profile: {
+         firstName: inviteToAdd.firstName,
+         lastName: inviteToAdd.lastName,
+         department: inviteToAdd.department,
+         staffType: inviteToAdd.status,
+         jobTitle: inviteToAdd.designation,
+         role: inviteToAdd.role,
+         },
+         inviteId: inviteToAdd._id
+         }*/
+        const addedUser = Accounts.findUserByEmail(inviteToAdd.email);
+        console.log(addedUser);
+//        (addedUser) ? addToTeam(addedUser, inviteToAdd) : '';
       }
       (inviteToActivate) ? constructUser(inviteToActivate) : throwError();
       return inviteToActivate;

@@ -108,7 +108,7 @@ class AddNewStaff extends React.Component {
                               <label htmlFor="managers-view"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="managers-view"/>
+                              <input type="checkbox" id="managers-add"/>
                               <label htmlFor="managers-add"></label>
                             </td>
                             <td className="center">

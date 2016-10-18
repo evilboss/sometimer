@@ -6,7 +6,8 @@ export const composer = ({context, staffId}, onData) => {
   const subscriptionReady = [Meteor.subscribe('user.current').ready()];
   const dataReady = ()=> {
     const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
-    onData(null, {staffId, userPermissions});
+    const user = Meteor.user();
+    onData(null, {staffId, userPermissions, user});
   };
   (subscriptionReady) ? dataReady() : onData(null, {});
 };

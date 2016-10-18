@@ -23,7 +23,8 @@ class StaffSettings extends React.Component {
 
 
   render() {
-    const {userPermissions} = this.props;
+    const {userPermissions, user} = this.props;
+    const {firstName, lastName}= (user) ? (user.profile) ? user.profile : '' : '';
     return (
       <section id="team">
         <Tabs/>
@@ -34,8 +35,15 @@ class StaffSettings extends React.Component {
               <div className="col s12 no-padding">
                 <div className="col s6">
                   <div className="input-field col s12">
-                    <input id="name" ref="name" type="text" className="validate"/>
-                    <label htmlFor="name">Name</label>
+                    <input id="firstName" ref="firstName" type="text" className="validate"
+                           defaultValue={(firstName)?firstName:''}/>
+                    <label htmlFor="firstName" className={(firstName) ?'active':''}>First Name</label>
+                  </div>
+                  <div className="input-field col s12">
+                    <input id="lastName" ref="LastName" type="text" className="validate"
+                           defaultValue={(lastName) ? lastName : ''}
+                    />
+                    <label htmlFor="lastName" className={(lastName) ?'active':''}>Last Name</label>
                   </div>
                   <div className="input-field col s12">
                     <input id="department" ref="department" type="text" className="validate"/>

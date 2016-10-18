@@ -103,8 +103,7 @@ class AddNewStaff extends React.Component {
                     <label htmlFor="email">Email</label>
                   </div>
                   <div className="input-field col s12">
-          <textarea ref='positionDescription' className="materialize-textarea">
-        </textarea>
+                  <textarea ref='positionDescription' className="materialize-textarea"></textarea>
                     <label htmlFor="textarea1">Brief description of position (optional)</label>
                   </div>
                 </div>
@@ -195,7 +194,7 @@ class AddNewStaff extends React.Component {
                               <label htmlFor="managers-delete"></label>
                             </td>
                           </tr>
-                          
+
                           <tr>
                             <td>Team Leaders</td>
                             <td className="center">

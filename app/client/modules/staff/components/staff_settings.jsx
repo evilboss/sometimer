@@ -21,6 +21,12 @@ class StaffSettings extends React.Component {
     Meteor.call('teamlist.insert', this.props.staffId, this.state.staffList);
   }
 
+  isChecked(permission) {
+    const {user} = this.props;
+    const {permissions} = (user) ? (user.profile) ? user.profile : [] : [];
+    console.log(user);
+    return (permissions) ? (_.contains(permissions, permission)) ? 'checked' : '' : '';
+  }
 
   render() {
     const {userPermissions, user} = this.props;
@@ -88,95 +94,77 @@ class StaffSettings extends React.Component {
                           <tr>
                             <td>Clients</td>
                             <td className="center">
-                              <input type="checkbox" id="client-view"/>
+                              <input type="checkbox" checked={this.isChecked('readClients')} id="client-view"/>
                               <label htmlFor="client-view"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="client-add"/>
+                              <input type="checkbox" checked={this.isChecked('createClients')} id="client-add"/>
                               <label htmlFor="client-add"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="client-edit"/>
+                              <input type="checkbox" checked={this.isChecked('updateClients')} id="client-edit"/>
                               <label htmlFor="client-edit"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="client-delete"/>
+                              <input type="checkbox" checked={this.isChecked('deleteClients')} id="client-delete"/>
                               <label htmlFor="client-delete"></label>
                             </td>
                           </tr>
                           <tr>
                             <td>Staff</td>
                             <td className="center">
-                              <input type="checkbox" id="staff-view"/>
+                              <input type="checkbox" checked={this.isChecked('readStaffs')} id="staff-view"/>
                               <label htmlFor="staff-view"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="staff-add"/>
+                              <input type="checkbox" checked={this.isChecked('createStaffs')} id="staff-add"/>
                               <label htmlFor="staff-add"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="staff-edit"/>
+                              <input type="checkbox" checked={this.isChecked('updateStaffs')} id="staff-edit"/>
                               <label htmlFor="staff-edit"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="staff-delete"/>
+                              <input type="checkbox" checked={this.isChecked('deleteStaffs')} id="staff-delete"/>
                               <label htmlFor="staff-delete"></label>
                             </td>
                           </tr>
                           <tr>
                             <td>Managers</td>
                             <td className="center">
-                              <input type="checkbox" id="managers-view"/>
+                              <input type="checkbox" checked={this.isChecked('readManagers')} id="managers-view"/>
                               <label htmlFor="managers-view"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="managers-view"/>
+                              <input type="checkbox" checked={this.isChecked('createManagers')} id="managers-view"/>
                               <label htmlFor="managers-add"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="managers-edit"/>
+                              <input type="checkbox" checked={this.isChecked('updateManagers')} id="managers-edit"/>
                               <label htmlFor="managers-edit"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="managers-delete"/>
+                              <input type="checkbox" checked={this.isChecked('deleteManagers')} id="managers-delete"/>
                               <label htmlFor="managers-delete"></label>
                             </td>
                           </tr>
-                          <tr>
-                            <td>Executive Team</td>
-                            <td className="center">
-                              <input type="checkbox" id="executive-view"/>
-                              <label htmlFor="executive-view"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="executive-add"/>
-                              <label htmlFor="executive-add"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="executive-edit"/>
-                              <label htmlFor="executive-edit"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="executive-delete"/>
-                              <label htmlFor="executive-delete"></label>
-                            </td>
-                          </tr>
+
                           <tr>
                             <td>Team Leaders</td>
                             <td className="center">
-                              <input type="checkbox" id="leaders-view"/>
+                              <input type="checkbox" checked={this.isChecked('readClients')} id="leaders-view"/>
                               <label htmlFor="leaders-view"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="leaders-add"/>
+                              <input type="checkbox" checked={this.isChecked('readClients')} id="leaders-add"/>
                               <label htmlFor="leaders-add"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="leaders-edit"/>
+                              <input type="checkbox" checked={this.isChecked('readClients')} id="leaders-edit"/>
                               <label htmlFor="leaders-edit"></label>
                             </td>
                             <td className="center">
-                              <input type="checkbox" id="leaders-delete"/>
+                              <input type="checkbox" checked={this.isChecked('readClients')} id="leaders-delete"/>
                               <label htmlFor="leaders-delete"></label>
                             </td>
                           </tr>

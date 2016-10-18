@@ -483,6 +483,28 @@ form {
   }
 }
 
+.approval-btn {
+  .done {
+    @extend .cancel;
+    margin-left: 10px !important;
+    background-color: $primary-color !important;
+  }
+  .cancel {
+    margin: 0 2.5px !important;
+    padding: 0 1px;
+    height: 23px;
+    line-height: 23px;
+    background-color: $red;
+  }
+}
+
+.status-indicator {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  margin-right: 10px;
+}
+
 ul.tabs {
   overflow-x: hidden;
   width: 100% !important;

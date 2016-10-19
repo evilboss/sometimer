@@ -1,6 +1,9 @@
 section#project-view {
   @extend .container-margin;
   margin-bottom: 0;
+  .tabs-background {
+    margin: 0;
+  }
   .row {
     @extend .no-section-margin;
     section:not(:last-child) {
@@ -31,7 +34,6 @@ section#project-view {
       }
       section {
         border: none;
-        border-top: solid 2px $gray-line;
       }
 
       #DISCUSSIONS {

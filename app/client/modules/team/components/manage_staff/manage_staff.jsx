@@ -31,7 +31,7 @@ class ManageStaff extends React.Component {
                 <tr>
                   <td>
                     <img
-                      src='http://www.genengnews.com/app_themes/genconnect/images/default_profile.jpg'
+                      src='/uploads/defaults/default_user.png'
                       alt="Staff" className="circle responsive-img dp-small left"/>
                     <div className="col staff-details no-margin">
                       <h6>Manager Name<br/>

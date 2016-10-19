@@ -24,18 +24,20 @@ class ProjectView extends React.Component {
     return (
       <section id="project-view">
         <PageTitle title={name}/>
-        <div className="row flex">
-
+        <div className="row">
           <section className="col s12 middle">
-            <div className="inner-wrapper">
-              <div className="col s7 tab-nav">
+            <div className="tabs-background">
+              <div className="tabs-wrapper">
                 <ul className="tabs">
-                  <li className="tab col s3"><a href="#DISCUSSIONS">DISCUSSIONS</a></li>
+                  <li className="tab col s3">
+                    <a className="active" href="#DISCUSSIONS">DISCUSSIONS</a></li>
                   <li className="tab col s3"><a href="#SUB">SUB PROJECTS</a></li>
                   <li className="tab col s3"><a href="#TASK">TASK</a></li>
                 </ul>
               </div>
             </div>
+
+
             <section id="DISCUSSIONS" className="col s12">
               <div className="discussion-list">
                 <CommentList projectId={_id}/>

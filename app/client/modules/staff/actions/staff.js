@@ -3,7 +3,10 @@
  */
 
 export default {
-  status_change:function () {
+  status_change: function () {
     console.info('status change');
+  },
+  updateStaff({Meteor}, userId, key, value) {
+    Meteor.call('users.update', userId, key, value);
   }
 }

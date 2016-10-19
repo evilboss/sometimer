@@ -82,7 +82,8 @@ class TimeRequest extends React.Component {
               <td>
                 {request.logs.map((log, index)=>
                   <div key={index}>
-                    {(log.approved) ? 'Approved' : <ApprovalButton timelogId={log._id}/>}
+                    {(log.approved) ? <div className="status-indicator Approved"></div>
+                      : <ApprovalButton timelogId={log._id}/>}
                   </div>
                 )}
               </td>

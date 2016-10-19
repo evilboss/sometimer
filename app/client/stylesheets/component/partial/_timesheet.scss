@@ -63,25 +63,7 @@ section.timesheet {
         background-color: $red;
       }
     }
-    .status-indicator {
-      display: inline-block;
-      vertical-align: middle;
-      margin: 0 auto;
-    }
-    .approval-btn {
-      .done {
-        @extend .cancel;
-        margin-left: 10px !important;
-        background-color: $primary-color !important;
-      }
-      .cancel {
-        margin: 0 2.5px;
-        padding: 0 1px;
-        height: 23px;
-        line-height: 23px;
-        background-color: $red;
-      }
-    }
+
   }
 
   .modal {
@@ -90,6 +72,7 @@ section.timesheet {
   section.daterange {
     .form-group {
       margin-bottom: 1em;
+
       input {
         width: auto;
         cursor: pointer;

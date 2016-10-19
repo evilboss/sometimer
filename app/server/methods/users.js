@@ -11,6 +11,9 @@ export default function () {
     },
     'users.add'(user){
       remotivUser.addNew(user);
+    },
+    'users.update'(user, key, value){
+      remotivUser.update(user, key, value);
     }
   });
 }

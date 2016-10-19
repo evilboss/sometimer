@@ -7,7 +7,8 @@ export const composer = ({context, staffId}, onData) => {
   const dataReady = ()=> {
     const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
     const user = Meteor.users.findOne(staffId);
-    onData(null, {staffId, userPermissions, user});
+    const permissions = (user) ? (user.profile) ? (user.profile.permissions) ? user.profile.permissions : [] : [] : [];
+    onData(null, {staffId, userPermissions, user, permissions});
   };
   (subscriptionReady) ? dataReady() : onData(null, {});
 };

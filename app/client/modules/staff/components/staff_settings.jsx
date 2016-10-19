@@ -19,7 +19,6 @@ class StaffSettings extends React.Component {
   }
 
   setInitialPermissions(permissions) {
-    console.log(permissions);
     this.setState({permissions: permissions});
   }
 
@@ -30,14 +29,13 @@ class StaffSettings extends React.Component {
 
   isChecked(permission) {
     let permissions = this.state.permissions;
-    return (_.contains(permissions, permission)) ? 'checked' : '';
+    return (_.contains(permissions, permission)) ? true : false;
   }
 
   _changePermissions(e) {
     const permission = e.target.attributes.getNamedItem('data-permission').value;
     const hasThisPermission = this.isChecked(permission);
     (hasThisPermission) ? this._removePermissions(permission) : console.log('no');
-
   }
 
   _addToPermissions(permission) {
@@ -71,12 +69,14 @@ class StaffSettings extends React.Component {
       <section id="team">
         <Tabs/>
         <PageTitle title="Staff Settings"/>
+
         <section id="staff-settings">
           <div className="row no-margin-bottom">
             <form onSubmit={this.saveTeamList.bind(this)}>
               <div className="col s12 no-padding">
                 <div className="col s6">
                   <div className="input-field col s12">
+
                     <input id="firstName" ref="firstName" type="text" className="validate"
                            defaultValue={(firstName)?firstName:''}/>
                     <label htmlFor="firstName" className={(firstName) ?'active':''}>First Name</label>
@@ -131,7 +131,7 @@ class StaffSettings extends React.Component {
                             <td>Clients</td>
                             <td className="center">
                               <input type="checkbox" defaultValue="true" id="client-view"
-
+                                     defaultChecked={this.isChecked('readClients')}
                                      data-permission="readClients"/>
                               <label htmlFor="client-view"></label>
                             </td>

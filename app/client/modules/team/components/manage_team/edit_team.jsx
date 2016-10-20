@@ -7,49 +7,39 @@ import TextArea from '../../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 
 
-class CreateTeam extends React.Component {
+class EditTeam extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      staffList: []
-    }
-  }
-
-  componentDidMount() {
-    $(document).ready(function () {
-      $('select').material_select();
-    });
-  }
-
-  getData(data) {
-    this.setState({staffList: data})
-  }
-
-  addTeam(team) {
-    team.members = this.state.staffList;
-    team.members.push(Meteor.userId());
-    Meteor.call('team.insert', team);
-    FlowRouter.go('/dashboard/team');
   }
 
   render() {
+    const {team, staffList} = this.props;
+
     return (
       <section id="team">
 
         <Tabs/>
-        <PageTitle title="Add a New Team"/>
-        <section id="create-team" className="col s12">
+        <PageTitle title="Edit Team"/>
+        <section id="edit-team" className="col s12">
           <div className="row no-margin-bottom">
-            <Formsy.Form onSubmit={this.addTeam.bind(this)}>
+            <Formsy.Form>
               <div className="col s12">
-                <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
-                <StaffMultiSelect getData={this.getData.bind(this)}/>
+                <div className="input-field col s12">
+
+                  <input id="name" ref="name" type="text" className="validate"
+                         defaultValue={(team) ? (team.name) ? team.name : '' : ''}
+                  />
+                  <label htmlFor="Name of Team / Department" className={(team) ? (team.name) ?'active': '':''}>Name of
+                    Team /
+                    Department</label>
+                </div>
+                <StaffMultiSelect />
                 <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
                          required/>
                 <div className="row form-group required col s12 no-padding">
                   <TextArea name="description" ref="description" title="Team's Objective" required/>
                 </div>
-                <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
+                <button className="btn waves-effect waves-light theme-color" type="button">Update Team
                   <i className="material-icons right">send</i></button>
 
               </div>
@@ -57,9 +47,8 @@ class CreateTeam extends React.Component {
           </div>
         </section>
       </section>
-
     );
   }
 }
 
-export default CreateTeam;
+export default EditTeam;

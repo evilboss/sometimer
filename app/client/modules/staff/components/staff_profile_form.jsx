@@ -7,9 +7,22 @@ class StaffProfileForm extends React.Component {
       staffList: null,
     }
   }
-  
+
+  _update() {
+    const {profileUpdate, user} = this.props;
+    const {firstName, lastName, department, position}= this.refs;
+    const profile = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      department: department.value,
+      position: position.value,
+    };
+    console.log('jsx', profile);
+    profileUpdate(user._id, profile);
+  }
+
   render() {
-    const user = this.props.user;
+    const {user} = this.props;
     const {firstName, lastName, department, jobTitle}= (user) ? (user.profile) ? user.profile : '' : '';
     return (
       <form>
@@ -20,7 +33,7 @@ class StaffProfileForm extends React.Component {
           <label htmlFor="firstName" className={(firstName) ?'active':''}>First Name</label>
         </div>
         <div className="input-field col s12">
-          <input id="lastName" ref="LastName" type="text" className="validate"
+          <input id="lastName" ref="lastName" type="text" className="validate"
                  defaultValue={(lastName) ? lastName : ''}
           />
           <label htmlFor="lastName" className={(lastName) ?'active':''}>Last Name</label>
@@ -37,7 +50,7 @@ class StaffProfileForm extends React.Component {
         </div>
 
         <div className="right save">
-          <button className="btn theme-color" type="submit">Update</button>
+          <button className="btn theme-color" type="button" onClick={this._update.bind(this)}>Update</button>
         </div>
       </form>
     );

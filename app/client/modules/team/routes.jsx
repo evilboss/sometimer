@@ -11,6 +11,7 @@ import TeamList from '/client/modules/team/containers/manage_team/team_list';
 import CreateTeam from '/client/modules/team/containers/manage_team/create_team';
 
 
+
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {

@@ -39,6 +39,7 @@ const updatePhoto = (id, imgPath)=> {
   Meteor.users.update({_id: id}, {$set: {'profile.displayPhoto': imgPath}})
 };
 const update = (id, key, value)=> {
+ 
   Meteor.users.update({_id: id}, {$set: {[key]: value}})
 };
 const remotivUser = {

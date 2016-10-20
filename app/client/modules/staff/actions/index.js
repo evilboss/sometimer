@@ -1,5 +1,5 @@
-import staff from './staff';
-const actions = {
-  staff
+import staff_actions from './staff_actions';
+
+export default {
+  staff_actions
 };
-export default actions;

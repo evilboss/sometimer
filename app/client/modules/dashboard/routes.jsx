@@ -8,8 +8,9 @@ import StaffList from '/client/modules/staff/containers/staff_list';
 import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';
-
+import EditTeam from '/client/modules/team/containers/manage_team/edit_team';
 import {control} from '/lib/access-control/control';
+
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {
@@ -32,7 +33,14 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-
+  dashboardRoutes.route('/team/edit/:teamId', {
+    name: 'dashboard.team.edit',
+    action(params){
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<EditTeam teamId={params.teamId}/>), footer: () => (<Foot />)
+      });
+    }
+  });
   dashboardRoutes.route('/team/:teamId', {
     name: 'dashboard.myteam',
     action(params){

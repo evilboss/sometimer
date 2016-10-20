@@ -8,8 +8,6 @@ import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 
 
-/*TODO: @aaron tabs-background*/
-
 class StaffList extends React.Component {
   constructor(props) {
     super(props);

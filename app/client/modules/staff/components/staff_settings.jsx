@@ -3,7 +3,7 @@ import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_selec
 import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import StaffProfileForm from '/client/modules/staff/containers/staff_profile_form';
-import PermissionForm from '/client/modules/staff/components/permission_form';
+import PermissionForm from '/client/modules/staff/containers/permission_form';
 
 class StaffSettings extends React.Component {
   constructor(props) {

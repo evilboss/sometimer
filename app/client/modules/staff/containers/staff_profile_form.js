@@ -4,12 +4,11 @@ import StaffProfileForm from '../components/staff_profile_form.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-
   onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({
-  userUpdate: actions.staff.updateStaff,
+  profileUpdate: actions.staff_actions.profileUpdate,
   context: () => context
 });
 

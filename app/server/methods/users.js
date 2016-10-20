@@ -12,8 +12,10 @@ export default function () {
     'users.add'(user){
       remotivUser.addNew(user);
     },
-    'users.update'(user, key, value){
-      remotivUser.update(user, key, value);
+    'users.update.profile'(userId, profile){
+      _.each(profile, function (value, key) {
+        remotivUser.update(userId, `profile.${key}`, value);
+      });
     }
   });
 }

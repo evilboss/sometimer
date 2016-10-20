@@ -7,7 +7,7 @@ class TeamCardAction extends React.Component {
   }
 
   render() {
-    const {teamRoute, userPermissions} = this.props;
+    const {teamRoute, editTeam, userPermissions} = this.props;
     return (
       <div className="card-hover-action">
         {
@@ -18,7 +18,7 @@ class TeamCardAction extends React.Component {
         <div className="action-buttons">
           {
             (userPermissions) ? control.isPermitted('updateTeam', userPermissions) ?
-              <a href="" className="btn">Edit / Manage</a>
+              <a href={editTeam} className="btn">Edit / Manage</a>
               : '' : ''
           }
           <a href={teamRoute} className="btn">View Team</a>

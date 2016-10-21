@@ -57,7 +57,7 @@ export default function () {
         Accounts.setPassword(inviteToAdd.userId, invite.password);
         remotivUser.update(inviteToAdd.userId, 'profile.status', 'completed');
         const addedUser = Accounts.findUserByEmail(inviteToAdd.email);
-      }
+      };
       (inviteToActivate) ? constructUser(inviteToActivate) : throwError();
       return inviteToActivate;
     }

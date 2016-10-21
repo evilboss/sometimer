@@ -4,7 +4,7 @@ import SelectPopover from 'react-select-popover';
 class StaffMultiSelect extends React.Component {
   constructor(props) {
     super(props);
-   
+
   }
 
   onChange(obj) {
@@ -12,7 +12,6 @@ class StaffMultiSelect extends React.Component {
       const staffs = [];
       this.props.getData(_.pluck(obj.value, 'value'));
     }
-
   }
 
 

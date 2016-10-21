@@ -22,17 +22,19 @@ class AddNewStaff extends React.Component {
   }
 
   _create() {
-    const {create} = this.props;
-    const {name, department, position, dateHired, email, positionDescription} = this.refs;
+    let {create} = this.props;
+    let {firstName, lastName, department, position, dateHired, email, positionDescription, role} = this.refs;
+    role = role.value.toLowerCase();
+    console.log(role);
     const user = {
       profile: {
         firstName: firstName.value,
         lastName: lastName.value,
         department: department.value,
         position: position.value,
-        dateHired: dateHired.value,
-        positionDescription: positionDescription.value,
-        permissions: this.state.permissions
+        permissions: this.state.permissions,
+        role: role,
+        status: 'invited',
       },
       email: email.value,
     };
@@ -98,10 +100,10 @@ class AddNewStaff extends React.Component {
                   </div>
 
                   <div className="input-field col s12">
-                    <select>
+                    <select ref="role">
                       <option defaultValue="" disabled selected>Choose User Role</option>
-                      <option defaultValue="Staff">Staff</option>
-                      <option defaultValue="Client">Client</option>
+                      <option defaultValue="staff">Staff</option>
+                      <option defaultValue="client">Client</option>
                     </select>
                     <label>User Role</label>
                   </div>

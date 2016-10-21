@@ -38,7 +38,8 @@ export default function () {
       //Mailer.send(message);
     },
     'invitation.activate'(invite){
-      console.log(invite.token);;
+      console.log(invite.token);
+      ;
       console.log(invite);
       const inviteToActivate = Invitations.findOne({token: invite.token});
       console.log(inviteToActivate);
@@ -53,25 +54,9 @@ export default function () {
         Team.update({_id: inviteToAdd.team}, {$set: {members: _.unique(members)}});
       };
       const constructUser = (inviteToAdd)=> {
-        console.log(inviteToAdd)
         Accounts.setPassword(inviteToAdd.userId, invite.password);
-        /*
-         const newUser = {
-         email: inviteToAdd.email,
-         password: invite.password,
-         profile: {
-         firstName: inviteToAdd.firstName,
-         lastName: inviteToAdd.lastName,
-         department: inviteToAdd.department,
-         staffType: inviteToAdd.status,
-         jobTitle: inviteToAdd.designation,
-         role: inviteToAdd.role,
-         },
-         inviteId: inviteToAdd._id
-         }*/
+        remotivUser.update(inviteToAdd.userId, 'profile.status', 'completed');
         const addedUser = Accounts.findUserByEmail(inviteToAdd.email);
-        console.log(addedUser);
-//        (addedUser) ? addToTeam(addedUser, inviteToAdd) : '';
       }
       (inviteToActivate) ? constructUser(inviteToActivate) : throwError();
       return inviteToActivate;

@@ -13,21 +13,43 @@ Migrations.add({
   }
 });
 const teamlist = [
-  {name: 'protos', description: 'Your Protots Company'},
-  {name: 'ezyva', description: 'High Perfromance Remote Teams'}
+  {
+    name: 'Protos',
+    description: 'Offshore Outsourcing companies, is well established to',
+    members: ['staff@staff.com'],
+    teamLeader: 'manager@manager.com'
+  },
+  {
+    name: 'EZyVa',
+    description: 'High Perfromance Remote Teams',
+    members: ['kimberly.ocariz@ezyva.com', 'dan.arceo@ezyva.com'],
+    teamLeader: 'dan.arceo@ezyva.com'
+  },
+  {
+    name: 'Remotiv',
+    description: 'Your Remote Staff Solution',
+    members: ['jr@ezyva.com', 'aaron.randrup@ezyva.com'],
+    teamLeader: 'jr@ezyva.com',
+  }
+
 ];
 const loadTeams = ()=> {
-  let userList = ['jr@ezyva.com', 'admin@admin.com', 'aaron.randrup@ezyva.com', 'manager@manager.com', 'staff@staff.com'];
-  let members = [];
-  _.each(userList, function (userEmail) {
-    let member = Meteor.users.findOne({"emails.address": userEmail});
-    members.push(member._id);
-  });
-  console.info('Loading Teams');
   _.each(teamlist, function (team) {
     if (Team.find({name: team.name}).count() === 0) {
-      team.members = members;
-      Team.insert(team);
+      let members = [];
+      _.each(team.members, (userEmail)=> {
+        let member = Meteor.users.findOne({"emails.address": userEmail})._id;
+        members.push(member);
+      });
+      let teamLeader = Meteor.users.findOne({"emails.address": team.teamLeader})._id;
+      const newTeam = {
+        createdAt: new Date(),
+        name: team.name,
+        description: team.description,
+        teamLeader: teamLeader,
+        members: members,
+      };
+      Team.insert(newTeam);
     }
   });
 };

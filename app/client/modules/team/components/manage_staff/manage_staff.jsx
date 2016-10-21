@@ -14,8 +14,7 @@ class ManageStaff extends React.Component {
     let {teams} = this.props;
     let teamName = '';
     _.each(teams, (team)=> {
-      console.log(_.contains(team.members, userId));
-      teamName = team.name;
+      (teamName) ? null : teamName = (_.contains(team.members, userId)) ? team.name : '';
     });
     return (teamName) ? teamName : 'Unassigned';
   }
@@ -58,7 +57,7 @@ class ManageStaff extends React.Component {
                       {this.getAssignedTeam(staff._id)}
                     </td>
                     <td className="status">
-                      <StatusIndicator class="Invite"/>
+                      <StatusIndicator class={staff.profile.status}/>
                     </td>
                   </tr>
                 ))}

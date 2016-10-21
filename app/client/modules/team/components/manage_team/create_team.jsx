@@ -16,11 +16,6 @@ class CreateTeam extends React.Component {
       staffList: [],
       object: {},
     }
-    this.callbackFunction = this.callbackFunction.bind(this);
-  }
-
-  callbackFunction(selected) {
-    this.setState({object: selected})
   }
 
   getData(data) {
@@ -34,8 +29,15 @@ class CreateTeam extends React.Component {
     FlowRouter.go('/dashboard/team');
   }
 
+  callbackFunction(selected) {
+    console.log(selected);
+  }
+
+
   render() {
-    const {allStaff} = this.props;
+    let {allStaff} = this.props;
+    console.log(allStaff);
+
     return (
       <section id="team">
 
@@ -46,16 +48,13 @@ class CreateTeam extends React.Component {
             <Formsy.Form onSubmit={this.addTeam.bind(this)}>
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
-
                 <div className="input-field col s12">
-                  <ReactMaterialSelect label="Choose a Team Leader" resetLabel="None of them"
-                                       onChange={this.callbackFunction}>
-                    {(allStaff) ?
-                      allStaff.map((staff, index) => (
-                        <option dataValue={staff._id}>
-                          <DisplayManager userId={staff._id}/>
-                        </option>
-                      )) : ''}
+                  <ReactMaterialSelect label="Choose a Team Leader" onChange={this.callbackFunction.bind(this)}>
+                    {allStaff.map((staff) => (
+                      <option key={staff._id} value={staff._id}>
+                        <DisplayManager userId={staff._id}/>
+                      </option>
+                    ))}
                   </ReactMaterialSelect>
                 </div>
 

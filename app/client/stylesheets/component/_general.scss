@@ -127,6 +127,10 @@ p {
 }
 
 //inputs
+input[type=text]:not(.search-input) {
+  margin: 0;
+}
+
 input:not([type]):focus:not([readonly]),
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),

@@ -5,7 +5,8 @@ import Tabs from '/client/modules/team/containers/tabs';
 import MyInput from '../../../../utils/form/input';
 import TextArea from '../../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
-
+import ReactMaterialSelect from 'react-material-select';
+import 'react-material-select/lib/css/reactMaterialSelect.css';
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -13,12 +14,6 @@ class CreateTeam extends React.Component {
     this.state = {
       staffList: []
     }
-  }
-
-  componentDidMount() {
-    $(document).ready(function () {
-      $('select').material_select();
-    });
   }
 
   getData(data) {
@@ -33,6 +28,7 @@ class CreateTeam extends React.Component {
   }
 
   render() {
+    const {allStaff} = this.props;
     return (
       <section id="team">
 
@@ -43,12 +39,23 @@ class CreateTeam extends React.Component {
             <Formsy.Form onSubmit={this.addTeam.bind(this)}>
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
-                <StaffMultiSelect getData={this.getData.bind(this)}/>
+
+                <div className="input-field col s12">
+                  <ReactMaterialSelect ref="teamLeader" label="Choose a Team Leader">
+                    {(allStaff) ?
+                      allStaff.map((staff, index) => (
+                        <option key={index} dataValue={staff._id}>
+                          {staff.profile.firstName}
+                        </option>
+                      )) : ''}
+                  </ReactMaterialSelect>
+                </div>
+
                 <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
                          required/>
-                <div className="row form-group required col s12 no-padding">
-                  <TextArea name="description" ref="description" title="Team's Objective" required/>
-                </div>
+                <StaffMultiSelect getData={this.getData.bind(this)}/>
+
+
                 <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
                   <i className="material-icons right">send</i></button>
 

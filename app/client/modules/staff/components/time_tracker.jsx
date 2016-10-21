@@ -110,7 +110,8 @@ class TimeTracker extends React.Component {
                               <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
                                 <h6>{currentUser.profile.jobTitle}</h6>
                                 <div className="status">
-                                  <TimeIn action={this.startShift.bind(this)} status={currentUser.profile.status}/>
+                                  <TimeIn action={this.startShift.bind(this)}
+                                          status={(currentUser.profile.status=='completed')?'':currentUser.profile.status}/>
                                   <TimeOut endShiftAction={this.endShift.bind(this)}
                                            startBreakAction={this.startBreak.bind(this)}
                                            status={currentUser.profile.status}/>

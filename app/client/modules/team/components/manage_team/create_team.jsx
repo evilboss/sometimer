@@ -7,12 +7,14 @@ import TextArea from '../../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import ReactMaterialSelect from 'react-material-select';
 import 'react-material-select/lib/css/reactMaterialSelect.css';
+import DisplayManager from '/client/modules/manager/containers/display_manager';
 
 class CreateTeam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      staffList: []
+      staffList: [],
+      object: {},
     }
   }
 
@@ -27,8 +29,15 @@ class CreateTeam extends React.Component {
     FlowRouter.go('/dashboard/team');
   }
 
+  callbackFunction(selected) {
+    console.log(selected);
+  }
+
+
   render() {
-    const {allStaff} = this.props;
+    let {allStaff} = this.props;
+    console.log(allStaff);
+
     return (
       <section id="team">
 
@@ -39,15 +48,13 @@ class CreateTeam extends React.Component {
             <Formsy.Form onSubmit={this.addTeam.bind(this)}>
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
-
                 <div className="input-field col s12">
-                  <ReactMaterialSelect ref="teamLeader" label="Choose a Team Leader">
-                    {(allStaff) ?
-                      allStaff.map((staff, index) => (
-                        <option key={index} dataValue={staff._id}>
-                          {staff.profile.firstName}
-                        </option>
-                      )) : ''}
+                  <ReactMaterialSelect label="Choose a Team Leader" onChange={this.callbackFunction.bind(this)}>
+                    {allStaff.map((staff) => (
+                      <option key={staff._id} value={staff._id}>
+                        <DisplayManager userId={staff._id}/>
+                      </option>
+                    ))}
                   </ReactMaterialSelect>
                 </div>
 

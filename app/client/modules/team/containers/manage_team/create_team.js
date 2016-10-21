@@ -4,7 +4,7 @@ import CreateTeam from '../../components/manage_team/create_team.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  let subscriptionsReady = [Meteor.subscribe('users.allstaff').ready(), Meteor.subscribe('team.list').ready()];
+  let subscriptionsReady = [Meteor.subscribe('users.allstaff').ready()];
   const dataReady = ()=> {
     let team = Collections.Team;
     let allStaff = Meteor.users.find({'profile.role': 'staff'}).fetch();

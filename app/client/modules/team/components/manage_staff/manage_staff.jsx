@@ -3,6 +3,7 @@ import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import StatusIndicator from '/client/modules/team/components/status_indicator';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
 
 class ManageStaff extends React.Component {
   constructor(props) {
@@ -51,13 +52,13 @@ class ManageStaff extends React.Component {
                       </div>
                     </td>
                     <td>
-                      {staff.profile.status}
+                      {formatHelper.capitalize(staff.profile.status)}
                     </td>
                     <td>
                       {this.getAssignedTeam(staff._id)}
                     </td>
                     <td className="status">
-                      <StatusIndicator class={staff.profile.status}/>
+                      <StatusIndicator class={formatHelper.capitalize(staff.profile.status)}/>
                     </td>
                   </tr>
                 ))}

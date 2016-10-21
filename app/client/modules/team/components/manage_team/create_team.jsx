@@ -7,13 +7,20 @@ import TextArea from '../../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import ReactMaterialSelect from 'react-material-select';
 import 'react-material-select/lib/css/reactMaterialSelect.css';
+import DisplayManager from '/client/modules/manager/containers/display_manager';
 
 class CreateTeam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      staffList: []
+      staffList: [],
+      object: {},
     }
+    this.callbackFunction = this.callbackFunction.bind(this);
+  }
+
+  callbackFunction(selected) {
+    this.setState({object: selected})
   }
 
   getData(data) {
@@ -41,11 +48,12 @@ class CreateTeam extends React.Component {
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
 
                 <div className="input-field col s12">
-                  <ReactMaterialSelect ref="teamLeader" label="Choose a Team Leader">
+                  <ReactMaterialSelect label="Choose a Team Leader" resetLabel="None of them"
+                                       onChange={this.callbackFunction}>
                     {(allStaff) ?
                       allStaff.map((staff, index) => (
-                        <option key={index} dataValue={staff._id}>
-                          {staff.profile.firstName}
+                        <option dataValue={staff._id}>
+                          <DisplayManager userId={staff._id}/>
                         </option>
                       )) : ''}
                   </ReactMaterialSelect>

@@ -632,3 +632,7 @@ ul.tabs {
     }
   }
 }
+
+.rms-item {
+  @extend .clearfix;
+}

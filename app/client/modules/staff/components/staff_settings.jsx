@@ -18,7 +18,6 @@ class StaffSettings extends React.Component {
     const {userPermissions, user, permissions, staffId} = this.props;
     return (
       <section id="team">
-        <Tabs/>
         <PageTitle title="Staff Settings"/>
 
         <section id="staff-settings">

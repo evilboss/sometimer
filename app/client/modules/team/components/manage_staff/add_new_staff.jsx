@@ -15,6 +15,12 @@ class AddNewStaff extends React.Component {
     }
   }
 
+  componentDidMount() {
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+  }
+
   _create() {
     const {create} = this.props;
     const {name, department, position, dateHired, email, positionDescription} = this.refs;
@@ -71,7 +77,7 @@ class AddNewStaff extends React.Component {
     return (
       <section id="team">
         <Tabs/>
-        <PageTitle title="Add a New Staff"/>
+        <PageTitle title="Add New User"/>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm">
@@ -90,6 +96,17 @@ class AddNewStaff extends React.Component {
                     <input id="department" ref="department" type="text" className="validate"/>
                     <label htmlFor="department">Department</label>
                   </div>
+
+                  <div className="input-field col s12">
+                    <select>
+                      <option defaultValue="" disabled selected>Choose User Role</option>
+                      <option defaultValue="Staff">Staff</option>
+                      <option defaultValue="Client">Client</option>
+                    </select>
+                    <label>User Role</label>
+                  </div>
+
+
                   <div className="input-field col s12">
                     <input id="position" ref="position" type="text" className="validate"/>
                     <label htmlFor="position">Position</label>
@@ -103,7 +120,7 @@ class AddNewStaff extends React.Component {
                     <label htmlFor="email">Email</label>
                   </div>
                   <div className="input-field col s12">
-                  <textarea ref='positionDescription' className="materialize-textarea"></textarea>
+                    <textarea ref='positionDescription' className="materialize-textarea"></textarea>
                     <label htmlFor="textarea1">Brief description of position (optional)</label>
                   </div>
                 </div>

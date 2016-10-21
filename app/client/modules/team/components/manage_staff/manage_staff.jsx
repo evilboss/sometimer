@@ -14,7 +14,7 @@ class ManageStaff extends React.Component {
     return (
       <section id="team">
         <Tabs/>
-        <SubTabs target="/dashboard/team/manage-staff/new" text="Add New Staff" permission="createStaffs"/>
+        <SubTabs target="/dashboard/team/user/new" text="Add New User" permission="createStaffs"/>
         <section id="manage-staff" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">

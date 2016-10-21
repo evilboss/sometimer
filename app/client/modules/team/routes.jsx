@@ -11,7 +11,6 @@ import TeamList from '/client/modules/team/containers/manage_team/team_list';
 import CreateTeam from '/client/modules/team/containers/manage_team/create_team';
 
 
-
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {
@@ -52,8 +51,8 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  dashboardRoutes.route('/team/manage-staff/new', {
-    name: 'dashboard.manageStaff.new',
+  dashboardRoutes.route('/team/user/new', {
+    name: 'dashboard.user.new',
     action() {
       mount(MainLayoutCtx,
         {
@@ -78,16 +77,4 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  dashboardRoutes.route('/team/manage-clients/new', {
-    name: 'dashboard.manageClients.new',
-    action() {
-      mount(MainLayoutCtx,
-        {
-          head: () => (<Header />),
-          content: ()=>(<ManageClients />),
-          footer: ()=>(<Foot/>),
-        },
-      );
-    }
-  });
 };

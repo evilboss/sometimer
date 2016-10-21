@@ -12,7 +12,7 @@ class ManageClients extends React.Component {
     return (
       <section id="team">
         <Tabs/>
-        <SubTabs target="/dashboard/manage-clients/new" text="Add New Client" permission="createClients"/>
+        <SubTabs target="/dashboard/team/user/new" text="Add New User" permission="createClients"/>
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">

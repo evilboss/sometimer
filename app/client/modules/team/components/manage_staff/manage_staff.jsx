@@ -10,7 +10,18 @@ class ManageStaff extends React.Component {
 
   }
 
+  getAssignedTeam(userId) {
+    let {teams} = this.props;
+    let teamName = '';
+    _.each(teams, (team)=> {
+      console.log(_.contains(team.members, userId));
+      teamName = team.name;
+    });
+    return (teamName) ? teamName : 'Unassigned';
+  }
+
   render() {
+    let {allStaff} = this.props;
     return (
       <section id="team">
         <Tabs/>
@@ -28,27 +39,30 @@ class ManageStaff extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>
-                    <img
-                      src='/uploads/defaults/default_user.png'
-                      alt="Staff" className="circle responsive-img dp-small left"/>
-                    <div className="col staff-details no-margin">
-                      <h6>Manager Name<br/>
-                        <small>Manager</small>
-                      </h6>
-                    </div>
-                  </td>
-                  <td>
-                    Setup Incomplete
-                  </td>
-                  <td>
-                    Unassigned
-                  </td>
-                  <td className="status">
-                    <StatusIndicator class="Invite"/>
-                  </td>
-                </tr>
+                {allStaff.map((staff, index) => (
+                  <tr key={index}>
+                    <td>
+                      <img
+                        src={(staff.profile.displayPhoto)?`/uploads/${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                        alt="Staff" className="circle responsive-img dp-small left"/>
+                      <div className="col staff-details no-margin">
+                        <h6>{staff.profile.firstName} {staff.profile.lastName}<br/>
+                          <small>{staff.profile.jobTitle}</small>
+                        </h6>
+                      </div>
+                    </td>
+                    <td>
+                      {staff.profile.status}
+                    </td>
+                    <td>
+                      {this.getAssignedTeam(staff._id)}
+                    </td>
+                    <td className="status">
+                      <StatusIndicator class="Invite"/>
+                    </td>
+                  </tr>
+                ))}
+
                 </tbody>
               </table>
             </div>

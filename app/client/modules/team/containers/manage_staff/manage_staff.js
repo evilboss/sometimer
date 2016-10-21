@@ -4,8 +4,13 @@ import ManageStaff from '../../components/manage_staff/manage_staff.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-
-  onData(null, {});
+  let subscriptionsReady = [Meteor.subscribe('users.allstaff').ready(), Meteor.subscribe('team.list').ready()];
+  const dataReady = ()=> {
+    let allStaff = Meteor.users.find({'profile.role': 'staff'}).fetch();
+    let teams = Collections.Team.find().fetch();
+    onData(null, {allStaff, teams});
+  };
+  (subscriptionsReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

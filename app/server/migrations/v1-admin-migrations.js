@@ -112,12 +112,12 @@ const loadUsers = ()=> {
       email: "ceo@ceo.com",
       password: "password",
       profile: {
-        firstName: ' Jack',
-        lastName: 'Torrance',
+        firstName: ' Ryo',
+        lastName: 'Takatsuki',
         department: 'Admin',
         staffType: 'Regular',
-        jobTitle: 'client',
-        role: 'client',
+        jobTitle: 'CEO',
+        role: 'admin',
         permissions: [
           'createClients', 'readClients', 'updateClients', 'deleteClients',
           'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',

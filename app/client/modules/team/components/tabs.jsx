@@ -1,7 +1,6 @@
 import React from 'react';
 import {control} from '/lib/access-control/control';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
-
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
@@ -33,5 +32,4 @@ class Tabs extends React.Component {
     );
   }
 }
-
 export default Tabs;

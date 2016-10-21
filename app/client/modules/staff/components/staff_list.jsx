@@ -60,7 +60,6 @@ class StaffList extends React.Component {
     const {team, staffList} = this.props;
     return (
       <section id="staff-list">
-        <Tabs/>
         <SubTabs target="/dashboard/team/manage-staff/new" text="Add New Staff" permission="createStaffs"/>
         <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
         <div className="row">

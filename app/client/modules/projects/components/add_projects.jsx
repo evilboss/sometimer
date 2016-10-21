@@ -43,12 +43,12 @@ class AddProjects extends React.Component {
                 <MyInput name="name" ref="name" fieldSize="col s6" title="Project Title" required/>
                 <div className="row form-group required col s6">
                   <div className="input-field col s12 no-padding">
-                    <label>Publish Settings</label>
                     <select>
-                      <option defaultValue="Choose your option" disabled></option>
+                      <option defaultValue="Choose your option" disabled>Choose your option</option>
                       <option value="published">Published</option>
                       <option value="draft">Draft</option>
                     </select>
+                    <label>Publish Settings</label>
                   </div>
                 </div>
                 <div className="row form-group required col s12 no-padding">

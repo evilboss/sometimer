@@ -4,7 +4,7 @@ import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import TeamCardAction from '/client/modules/team/containers/manage_team/team_card_action';
-
+import DisplayManager from '/client/modules/manager/containers/display_manager';
 class TeamList extends React.Component {
   constructor(props) {
     super(props);
@@ -27,14 +27,8 @@ class TeamList extends React.Component {
                         <div className="card">
                           <div className="card-title">{team.name}</div>
                           <div className="card-content">
-                            <img
-                              src='/uploads/defaults/default_user.png'
-                              alt="Team Lead" className="circle responsive-img dp-small left"/>
-                            <div className="col s8 staff-details no-margin">
-                              <h6>Manager Name<br/>
-                                <small>Manager</small>
-                              </h6>
-                            </div>
+
+                            <DisplayManager userId={team.teamLeader}/>
                           </div>
                           <div className="card-action">
                             {(team.members) ?

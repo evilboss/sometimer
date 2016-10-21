@@ -37,7 +37,8 @@ const loadUsers = ()=> {
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
           'updatePermissions',
-        ]
+        ],
+        status: 'completed',
       }
     });
     Accounts.createUser({
@@ -60,7 +61,8 @@ const loadUsers = ()=> {
           'createProject', 'readProject', 'updateProject', 'deleteProject',
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
-        ]
+        ],
+        status: 'completed',
       }
     });
     Accounts.createUser({
@@ -82,7 +84,8 @@ const loadUsers = ()=> {
           'readProject',
           'readSubProject',
           'readTask',
-        ]
+        ],
+        status: 'completed',
 
       }
     });
@@ -105,7 +108,8 @@ const loadUsers = ()=> {
           'readProject',
           'readSubProject',
           'readTask',
-        ]
+        ],
+        status: 'completed',
       }
     });
     Accounts.createUser({

@@ -28,7 +28,8 @@ const newStaffs = [
         'readProject',
         'readSubProject',
         'readTask',
-      ]
+      ],
+      status: 'completed',
     }
   },
   {
@@ -50,7 +51,8 @@ const newStaffs = [
         'readProject',
         'readSubProject',
         'readTask',
-      ]
+      ],
+      status: 'completed',
 
     }
   },
@@ -73,7 +75,8 @@ const newStaffs = [
         'readProject',
         'readSubProject',
         'readTask',
-      ]
+      ],
+      status: 'completed',
     }
   },
   {
@@ -95,7 +98,8 @@ const newStaffs = [
         'readProject',
         'readSubProject',
         'readTask',
-      ]
+      ],
+      status: 'completed',
     }
   },
   {
@@ -117,7 +121,8 @@ const newStaffs = [
         'readProject',
         'readSubProject',
         'readTask',
-      ]
+      ],
+      status:'completed',
     }
   },
 ];

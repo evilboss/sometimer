@@ -8,7 +8,6 @@ import {formatHelper} from '/client/utils/helpers/format-helpers';
 class ManageStaff extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   getAssignedTeam(userId) {

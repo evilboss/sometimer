@@ -59,7 +59,6 @@ class Timesheet extends TrackerReact(React.Component) {
   getDiff(timeIn, timeOut) {
     let dateB = moment(timeOut, 'HH:MM:SS');
     let dateC = moment(timeIn, 'HH:MM:SS');
-    console.log(dateB.diff(dateC));
   }
 
 }

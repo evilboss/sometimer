@@ -30,13 +30,11 @@ class CreateTeam extends React.Component {
   }
 
   callbackFunction(selected) {
-    console.log(selected);
   }
 
 
   render() {
     let {allStaff} = this.props;
-    console.log(allStaff);
 
     return (
       <section id="team">

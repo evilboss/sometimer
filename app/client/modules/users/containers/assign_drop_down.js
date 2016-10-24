@@ -4,7 +4,6 @@ import AssignDropDown from '../components/assign_drop_down.jsx';
 
 export const composer = ({context,userId}, onData) => {
   const {Meteor, Collections} = context();
-  console.log('composer', userId);
   Meteor.subscribe('user.name.by.id', userId, () => {
     const user = Meteor.users.findOne(userId);
     onData(null, {user});

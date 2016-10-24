@@ -11,8 +11,6 @@ class CommentList extends React.Component {
     let comments = this.props.comments;
     let projectId = this.props.projectId;
     const format = 'dddd, D MMMM YYYY hh:mm A z';
-
-    console.log(comments);
     return (
       <section className="comments white-wrapper">
         <h4>Instructions</h4>

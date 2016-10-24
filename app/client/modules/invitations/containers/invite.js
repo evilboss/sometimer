@@ -4,7 +4,6 @@ import Invite from '../components/invite.jsx';
 
 export const composer = ({context,token}, onData) => {
   const {Meteor, Collections} = context();
-  console.log(token);
   onData(null, {});
 };
 

@@ -32,8 +32,7 @@ class EditHourRendered extends React.Component {
     let min = this.refs.mins.value;
     let hour = this.refs.hours.value;
     Meteor.call('timelogs.editLogs', this.props.target, hour + ':' + min + ':00');
-
-    console.log('changing time', hour, min);
+    
     $('#' + this.props.target).closeModal();
 
   }

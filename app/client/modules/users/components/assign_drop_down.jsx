@@ -9,7 +9,7 @@ class AssignDropDown extends React.Component {
     let role = this.props.user.profile.role;
     return (
       <div>
-        {console.log(role)}
+        
         {(role =='manager'||role=='admin')?<div className="input-field">
           <select className="icons">
             <option value="" disabled selected>assign to</option>

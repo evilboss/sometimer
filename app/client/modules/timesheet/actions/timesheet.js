@@ -9,7 +9,6 @@ export default {
       LocalState.set('TIMESHEET_ERROR', {timelogId: timelogId, timelogType: timelogType, message: 'time is required'});
       return;
     }
-    console.log(time);
   },
   clearErrors({LocalState}) {
     return LocalState.set('TIMESHEET_ERROR', null);

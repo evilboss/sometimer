@@ -17,7 +17,7 @@ class SendInvitationModal extends React.Component {
 
   render() {
     const teamListing = this.props.team;
-    console.log(teamListing);
+
     return (
       <div>
         <button className="modal-trigger btn theme-color pull-right" data-toggle="modal"
@@ -124,9 +124,7 @@ class SendInvitationModal extends React.Component {
           : errors.push('firstName is required')
         : errors.push('email is required')
       : errors.push('Invite is required');
-    console.log(errors.length);
     if (errors.length == 0) {
-      console.log('No errors');
       Meteor.call('invitations.send', invite, (err, res)=> {
         console.log(err, res);
       });

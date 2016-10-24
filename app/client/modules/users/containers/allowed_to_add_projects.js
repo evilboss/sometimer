@@ -4,7 +4,6 @@ import AllowedToAddProjects from '../components/allowed_to_add_projects.jsx';
 import TaskCreate from '/client/modules/task/containers/task/task_create';
 export const composer = ({context,userId,projectId}, onData) => {
   const {Meteor, Collections} = context();
-  console.log('composer', userId);
   Meteor.subscribe('user.name.by.id', userId, () => {
     const user = Meteor.users.findOne(userId);
     onData(null, {user,projectId});

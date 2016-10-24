@@ -25,7 +25,6 @@ class AddNewStaff extends React.Component {
     let {create} = this.props;
     let {firstName, lastName, department, position, dateHired, email, positionDescription, role} = this.refs;
     role = role.value.toLowerCase();
-    console.log(role);
     const user = {
       profile: {
         firstName: firstName.value,
@@ -67,7 +66,6 @@ class AddNewStaff extends React.Component {
     let permissions = this.state.permissions;
     const index = permissions.indexOf(permission);
     permissions.splice(index, 1);
-    console.log(permissions);
     this.setState({
       permissions: permissions
     });

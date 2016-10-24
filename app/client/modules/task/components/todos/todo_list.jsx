@@ -16,7 +16,6 @@ class TodoList extends React.Component {
 
   isChecked(todo, event) {
     (todo.isDone) ? todo.isDone = false : todo.isDone = true;
-    console.log(todo);
   }
 
   render() {

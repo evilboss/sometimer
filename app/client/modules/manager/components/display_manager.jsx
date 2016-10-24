@@ -7,7 +7,6 @@ class DisplayManager extends React.Component {
 
   render() {
     let {teamLeader} = this.props;
-    console.log(teamLeader);
     return (
       <div>
         <img

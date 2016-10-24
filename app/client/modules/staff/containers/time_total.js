@@ -9,7 +9,6 @@ export const composer = ({context, date, userId}, onData) => {
   if (subscriptionReady) {
     const selector = {userId: userId};
     const timelog = Collections.Timelogs.findOne(selector);
-    console.log(timelog);
     if (Collections.Timelogs.findOne(selector)) {
       const totalBreak = Collections.Timelogs.findOne(selector).totalBreak;
       const totalRendered = Collections.Timelogs.findOne(selector).totalRendered;

@@ -34,7 +34,6 @@ export default function (injectDeps, {FlowRouter}) {
   });
   projectRoutes.route('/view', {
     action(){
-      console.log('Project View');
     }
   });
   projectRoutes.route('/new', {

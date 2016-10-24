@@ -8,7 +8,6 @@ export const composer = ({context}, onData) => {
   const dataReady = ()=> {
     const projects = Collections.Projects.find().fetch();
     const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
-    console.log(userPermissions);
     onData(null, {projects, userPermissions});
   };
   (subsriptionReady) ? dataReady() : onData();

@@ -18,7 +18,6 @@ export default function (injectDeps, {FlowRouter}) {
   dashboardRoutes.route('/invite', {
     name: 'dashboard.invites',
     action(){
-      console.log('loading invites');
       mount(MainLayoutCtx, {
         head: () => (<Header />), content: () => (<InviteList />), footer: () => (<Footer />)
       });
@@ -38,7 +37,6 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/invite/:token', {
     name: 'invite.activate',
     action(params){
-      console.log('this is invite route', params.token);
       mount(PublicLayoutCtx, {
         content: ()=>(<Invite token={params.token}/>),
       });

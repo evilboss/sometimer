@@ -14,8 +14,6 @@ class TimeTotal extends React.Component {
   }
 
   componentWillReceiveProps() {
-    console.log('props recived');
-    console.log(this.props.totalBreak, this.props.totalRendered);
     (this.props.totalRendered) ? this.setState({totalRendered: this.props.totalRendered}) : '';
     (this.props.totalBreak) ? this.setState({totalBreak: this.props.totalBreak}) : '';
   }

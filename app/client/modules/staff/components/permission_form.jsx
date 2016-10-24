@@ -39,7 +39,6 @@ class PermissionForm extends React.Component {
     permissions.push(permission);
     permissions.push(permission);
     permissions = _.uniq(permissions);
-    console.log(permission, permissions);
     this.setState({
       ommitList: permissions
     });

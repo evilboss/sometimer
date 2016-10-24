@@ -20,7 +20,6 @@ class CreateComment extends React.Component {
   _create() {
     const {create, projectId} = this.props;
     const text = this.refs.comment.value;
-    console.log(create, projectId);
     create(projectId, text);
     this.refs.comment.value = '';
   }

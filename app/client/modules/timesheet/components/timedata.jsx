@@ -48,7 +48,6 @@ class Timedata extends React.Component {
    */
   done(timelogId, timeLogType, e) {
     const {update}= this.props;
-    console.log(this.state.time);
     update(timelogId, timeLogType, this.state.time);
     this.toggleEditTimelog(timelogId, timeLogType, e);
   }
@@ -60,7 +59,6 @@ class Timedata extends React.Component {
    * @param e
    */
   cancel(timelogId, timeLogType, e) {
-    console.log('Cancel');
     this.toggleEditTimelog(timelogId, timeLogType, e);
   }
 

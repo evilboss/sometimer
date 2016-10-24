@@ -28,7 +28,6 @@ class StaffList extends React.Component {
     var curr = new Date;
     var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
     var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6));
-    console.log(firstday, lastday);
   }
 
   changeView(e) {

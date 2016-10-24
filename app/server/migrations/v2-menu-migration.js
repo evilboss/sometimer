@@ -50,7 +50,7 @@ const menuItems = [
     title: "MY TEAM",
     icon: "group",
     url: '/dashboard/team',
-    name: 'dashboard.teamlist',
+    name: 'dashboard.team',
     roles: ['admin', 'manager', 'client']
 
   },

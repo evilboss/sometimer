@@ -6,13 +6,33 @@ class TeamCardAction extends React.Component {
     super(props);
   }
 
+  _delete() {
+    sweetAlert({
+      title: "Confirm Delete?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0a84ad",
+      cancelButtonText: "No",
+      confirmButtonText: "Yes",
+      closeOnConfirm: false,
+      closeOnCancel: true,
+      allowEscapeKey: true,
+      allowOutsideClick: true
+    }, function (isConfirm) {
+      if (isConfirm) {
+        sweetAlert("Delete!", ".", "success");
+      }
+    });
+  }
+
   render() {
     const {teamRoute, editTeam, userPermissions} = this.props;
     return (
       <div className="card-hover-action">
         {
           (userPermissions) ? control.isPermitted('deleteTeam', userPermissions) ?
-            <div className="clearfix"><i className="right material-icons close">delete_forever</i></div>
+            <div className="clearfix">
+              <i className="right material-icons close" onClick={this._delete.bind(this)}>delete_forever</i></div>
             : '' : ''
         }
         <div className="action-buttons">

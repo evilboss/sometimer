@@ -1,11 +1,19 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
-
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import {control} from '/lib/access-control/control';
+import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
+
+
+/*
+ TODO: create team cant select team leader
+ TODO: edit team not working
+ TODO: staff settings data missing after refresh
+ TODO: edit timesheet not working*/
+
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -37,7 +45,25 @@ class AddNewStaff extends React.Component {
       },
       email: email.value,
     };
-    create(user);
+    let error = [];
+    (firstName.value == '') ? error.push('First Name') : '';
+    (lastName.value == '') ? error.push('Last Name') : '';
+    (department.value == '') ? error.push('Department') : '';
+    (position.value == '') ? error.push('Position') : '';
+    (role.value == '') ? error.push('Role') : '';
+    (email.value == '') ? error.push('Email') : '';
+    const doCreate = ()=> {
+      create(user);
+      firstName.value = '',
+        lastName.value = '',
+        department.value = '',
+        position.value = '',
+        role.value = '',
+        status.value = '',
+        email.value = '',
+        sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success');
+    };
+    (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
   }
 
   _renderError(error) {
@@ -111,17 +137,10 @@ class AddNewStaff extends React.Component {
                     <input id="position" ref="position" type="text" className="validate"/>
                     <label htmlFor="position">Position</label>
                   </div>
-                  <div className="input-field col s12">
-                    <input id="dateHired" ref="dateHired" type="text" className="validate"/>
-                    <label htmlFor="dateHired">Date Hired (optional)</label>
-                  </div>
+
                   <div className="input-field col s12">
                     <input id="email" ref="email" type="email" className="validate"/>
                     <label htmlFor="email">Email</label>
-                  </div>
-                  <div className="input-field col s12">
-                    <textarea ref='positionDescription' className="materialize-textarea"></textarea>
-                    <label htmlFor="textarea1">Brief description of position (optional)</label>
                   </div>
                 </div>
                 <div className="col s6">

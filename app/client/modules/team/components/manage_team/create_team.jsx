@@ -25,6 +25,7 @@ class CreateTeam extends React.Component {
   addTeam(team) {
     team.members = this.state.staffList;
     team.members.push(Meteor.userId());
+    team.teamLeader = this.refs.teamLeader.getValue();
     Meteor.call('team.insert', team);
     FlowRouter.go('/dashboard/team');
   }
@@ -47,10 +48,11 @@ class CreateTeam extends React.Component {
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
                 <div className="input-field col s12">
-                  <ReactMaterialSelect label="Choose a Team Leader" onChange={this.callbackFunction.bind(this)}>
+                  <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader">
                     {allStaff.map((staff) => (
-                      <option key={staff._id} value={staff._id}>
-                        <DisplayManager userId={staff._id}/>
+                      <option key={staff._id} dataValue={staff._id}>
+                        {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
+
                       </option>
                     ))}
                   </ReactMaterialSelect>

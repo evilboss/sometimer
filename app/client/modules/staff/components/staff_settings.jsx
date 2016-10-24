@@ -30,16 +30,7 @@ class StaffSettings extends React.Component {
 
               </div>
               <div className="col s6">
-                <div className="col s12">
-                  <h5>The staff that this user can see</h5>
-                  <form>
-                    <input name="owner" id="owner" type="hidden" defaultValue={this.props.staffId}/>
-                    <StaffMultiSelect getData={this.getData.bind(this)}/>
-                    <div className="right save">
-                      <button className="btn theme-color">Save</button>
-                    </div>
-                  </form>
-                </div>
+                
                 <PermissionForm userPermissions={userPermissions} permissions={permissions}/>
               </div>
             </div>

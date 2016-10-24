@@ -7,6 +7,10 @@ const sweetOkPrompt = (message, e)=> {
   e.preventDefault;
   sweetAlert(message);
 };
+
+const sweetSucces = (prompt, title, style)=> {
+  sweetAlert(prompt, title, style);
+};
 /**
  *
  * @param e: event
@@ -16,8 +20,7 @@ const sweetYesNo = (e, message)=> {
 };
 
 const sweetPrompts = {
-  sweetOkPrompt
+  sweetOkPrompt,
+  sweetSucces: (prompt, title, style)=>sweetSucces(prompt, title, style),
 };
 export{sweetPrompts};
-
-  

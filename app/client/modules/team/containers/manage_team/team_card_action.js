@@ -11,9 +11,8 @@ export const composer = ({context}, onData) => {
   };
   (subsriptionReady) ? dataReady() : onData();
 };
-
 export const depsMapper = (context, actions) => ({
-  deleteTeam: actions.team.deleteTeam,
+  deleteTeam: actions.team_actions.deleteTeam,
   context: () => context
 });
 

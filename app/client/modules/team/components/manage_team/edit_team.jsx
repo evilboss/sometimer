@@ -11,16 +11,30 @@ import 'react-material-select/lib/css/reactMaterialSelect.css';
 class EditTeam extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      staffList: [],
+    }
   }
 
   _update() {
-    let {name} = this.refs;
-    const team = {};
+    let {update, team} = this.props;
+    let {name, teamLeader} = this.refs;
+    let {staffList} = this.state;
+    const updateTeam = {
+      name: name.value,
+      teamLeader: teamLeader.getValue(),
+      members: staffList
+    };
+    update(team._id, updateTeam);
+  }
+
+  getData(data) {
+    this.setState({staffList: data})
   }
 
   render() {
-    const {team, staffList} = this.props;
-
+    const {team, staffList, error} = this.props;
+    console.log(team);
     return (
       <section id="team">
 
@@ -28,12 +42,14 @@ class EditTeam extends React.Component {
         <PageTitle title="Edit Team"/>
         <section id="edit-team" className="col s12">
           <div className="row no-margin-bottom">
-            <Formsy.Form>
+            {error ? <div className='error'>
+              {error}
+            </div> : null}
+            {team ? <Formsy.Form>
               <div className="col s12">
                 <div className="input-field col s12">
-
                   <input id="name" ref="name" type="text" className="validate"
-                         defaultValue={(team) ? (team.name) ? team.name : '' : ''}
+                         defaultValue={ (team.name) ? team.name : '' }
                   />
                   <label htmlFor="Name of Team / Department" className={(team) ? (team.name) ?'active': '':''}>Name of
                     Team /
@@ -42,21 +58,21 @@ class EditTeam extends React.Component {
 
                 <div className="input-field col s12">
                   <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader"
-                                       defaultValue={(team) ?(team.teamLeader)?team.teamLeader:'':''}>
+                                       defaultValue={(team.teamLeader)? team.teamLeader: ''}>
                     {staffList.map((staff) => (
                       <option key={staff._id} dataValue={staff._id}>
-                        {console.log(staff._id)}
                         {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
                       </option>
                     ))}
                   </ReactMaterialSelect>
                 </div>
-                <StaffMultiSelect />
+                <StaffMultiSelect getData={this.getData.bind(this)}/>
                 <button className="btn waves-effect waves-light theme-color" type="button"
                         onClick={this._update.bind(this)}>Update Team
                   <i className="material-icons right">send</i></button>
               </div>
-            </Formsy.Form>
+            </Formsy.Form> : null}
+
           </div>
         </section>
       </section>

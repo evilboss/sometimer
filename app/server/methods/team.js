@@ -7,6 +7,10 @@ export default function () {
     'team.insert'(team) {
       Team.insert(team);
     },
+    'team.update'(id, team){
+      Team.update(id, {$set: team});
+    },
+    
     'team.remove'(teamId) {
       Team.remove({_id: teamId});
     }

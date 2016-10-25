@@ -1,5 +1,7 @@
 import staff from './staff';
+import team from './team';
 
 export default {
-  staff
+  staff,
+  team
 };

@@ -46,7 +46,7 @@ class TeamList extends React.Component {
                             </div>}
                           </div>
 
-                          <TeamCardAction editTeam={`/dashboard/team/edit/${team._id}`}
+                          <TeamCardAction teamId={team._id} editTeam={`/dashboard/team/edit/${team._id}`}
                                           teamRoute={`/dashboard/team/${team._id}`}/>
                         </div>
                       </article>

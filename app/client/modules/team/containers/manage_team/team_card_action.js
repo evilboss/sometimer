@@ -13,6 +13,7 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  deleteTeam: actions.team.deleteTeam,
   context: () => context
 });
 

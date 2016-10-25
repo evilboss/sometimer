@@ -32,18 +32,18 @@ class ListView extends React.Component {
                 : '' : ''
             }
           </div>
-          {
-            (userPermissions) ? control.isPermitted('readProject', userPermissions) ?
-              projects.map(project => (
-                <a href={`/project/${project._id}`} key={project._id} className="collection-item">
-                  <b>{project.name}</b>
-                </a>
-              ))
-              : '' : ''
-          }
+
           <div className="col s10">
             <div className="collection">
-
+              {
+                (userPermissions) ? control.isPermitted('readProject', userPermissions) ?
+                  projects.map(project => (
+                    <a href={`/projects/${project._id}`} key={project._id} className="collection-item">
+                      <b>{project.name}</b>
+                    </a>
+                  ))
+                  : '' : ''
+              }
             </div>
           </div>
         </div>

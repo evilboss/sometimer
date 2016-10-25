@@ -6,6 +6,10 @@ export default function () {
   Meteor.methods({
     'team.insert'(team) {
       Team.insert(team);
+    },
+    'team.remove'(teamId) {
+      Team.remove({_id: teamId});
     }
+
   });
 }

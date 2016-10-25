@@ -4,7 +4,7 @@ import EditTeam from '../../components/manage_team/edit_team.jsx';
 
 export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
-  let subscriptionReady = [Meteor.subscribe('teamList', teamId).ready()];
+  let subscriptionReady = [Meteor.subscribe('team.list', teamId).ready()];
   const dataReady = ()=> {
     let team = Collections.Team.findOne(teamId);
     let options = {_id: {$ne: Meteor.userId()}};

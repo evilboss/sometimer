@@ -7,6 +7,7 @@ class TeamCardAction extends React.Component {
   }
 
   _delete() {
+    let {deleteTeam, teamId} = this.props;
     sweetAlert({
       title: "Confirm Delete?",
       type: "warning",
@@ -20,6 +21,7 @@ class TeamCardAction extends React.Component {
       allowOutsideClick: true
     }, function (isConfirm) {
       if (isConfirm) {
+        deleteTeam(teamId);
         sweetAlert("Delete!", ".", "success");
       }
     });

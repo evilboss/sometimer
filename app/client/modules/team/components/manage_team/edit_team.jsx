@@ -13,6 +13,11 @@ class EditTeam extends React.Component {
     super(props);
   }
 
+  _update() {
+    let {name} = this.refs;
+    const team = {};
+  }
+
   render() {
     const {team, staffList} = this.props;
 
@@ -34,20 +39,22 @@ class EditTeam extends React.Component {
                     Team /
                     Department</label>
                 </div>
+
                 <div className="input-field col s12">
-                  <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader">
+                  <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader"
+                                       defaultValue={(team) ?(team.teamLeader)?team.teamLeader:'':''}>
                     {staffList.map((staff) => (
                       <option key={staff._id} dataValue={staff._id}>
+                        {console.log(staff._id)}
                         {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
-
                       </option>
                     ))}
                   </ReactMaterialSelect>
                 </div>
                 <StaffMultiSelect />
-                <button className="btn waves-effect waves-light theme-color" type="button">Update Team
+                <button className="btn waves-effect waves-light theme-color" type="button"
+                        onClick={this._update.bind(this)}>Update Team
                   <i className="material-icons right">send</i></button>
-
               </div>
             </Formsy.Form>
           </div>

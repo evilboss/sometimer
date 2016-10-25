@@ -10,19 +10,21 @@ export default function () {
     let teamOptions = (auth.isAdmin(this.userId)) ? {} : {members: {$elemMatch: {$eq: this.userId}}};
     let teamMembers = [];
     let teamList = Team.find(teamOptions).fetch();
-    _.each(teamList, (team)=> {
-      _.each(team.members, (members)=> {
-        teamMembers.push(members);
+    const addMembers = ()=> {
+      _.each(teamList, (team)=> {
+        _.each(team.members, (members)=> {
+          teamMembers.push(members);
+        });
       });
-    });
-    let subscriptionOptions = (teamMembers) ? {_id: {$in: teamMembers}} : auth.isAdmin(this.userId) ? {} : {none: 'none'};
+    };
+    (_.isEmpty(teamOptions)) ? '' : addMembers();
+    let subscriptionOptions = (!_.isEmpty(teamMembers)) ? {_id: {$in: teamMembers}} : auth.isAdmin(this.userId) ? {} : {none: 'none'};
     return Meteor.users.find(subscriptionOptions, {fields: fields});
   });
 
   Meteor.publish('collaborators', function (projectId) {
     let currentProject = Projects.findOne(projectId);
     let teamOptions = (auth.isAdmin(this.userId)) ? {} : (hasCollaborators(currentProject)) ? {_id: {$in: currentProject.collaborators}} : {_id: 'none'};
-    console.log(teamOptions);
     return Meteor.users.find(teamOptions, {fields: fields});
   });
 }

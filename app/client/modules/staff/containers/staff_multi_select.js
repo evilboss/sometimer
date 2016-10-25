@@ -4,14 +4,13 @@ import StaffMultiSelect from '../components/staff_multi_select.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('teamlist').ready()) {
-    const teamlist = Collections.Teamlist.find().fetch();
+  let subscriptionReady = [Meteor.subscribe('teamlist').ready()];
+  const dataReady = ()=> {
     const options = {_id: {$ne: Meteor.userId()}};
     const staffList = Meteor.users.find(options).fetch();
     onData(null, {staffList});
-  } else {
-    onData();
-  }
+  };
+  (subscriptionReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

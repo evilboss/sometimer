@@ -57,9 +57,6 @@ class CreateTeam extends React.Component {
                     ))}
                   </ReactMaterialSelect>
                 </div>
-
-                <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
-                         required/>
                 <StaffMultiSelect getData={this.getData.bind(this)}/>
 
 

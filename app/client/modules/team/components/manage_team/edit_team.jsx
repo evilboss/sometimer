@@ -5,7 +5,8 @@ import Tabs from '/client/modules/team/containers/tabs';
 import MyInput from '../../../../utils/form/input';
 import TextArea from '../../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
-
+import ReactMaterialSelect from 'react-material-select';
+import 'react-material-select/lib/css/reactMaterialSelect.css';
 
 class EditTeam extends React.Component {
   constructor(props) {
@@ -33,12 +34,17 @@ class EditTeam extends React.Component {
                     Team /
                     Department</label>
                 </div>
-                <StaffMultiSelect />
-                <MyInput name="name" ref="teamLeadDesignation" fieldSize="col s12" title="Team Leader Designation"
-                         required/>
-                <div className="row form-group required col s12 no-padding">
-                  <TextArea name="description" ref="description" title="Team's Objective" required/>
+                <div className="input-field col s12">
+                  <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader">
+                    {staffList.map((staff) => (
+                      <option key={staff._id} dataValue={staff._id}>
+                        {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
+
+                      </option>
+                    ))}
+                  </ReactMaterialSelect>
                 </div>
+                <StaffMultiSelect />
                 <button className="btn waves-effect waves-light theme-color" type="button">Update Team
                   <i className="material-icons right">send</i></button>
 

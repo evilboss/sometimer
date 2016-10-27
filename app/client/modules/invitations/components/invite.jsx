@@ -14,7 +14,7 @@ class Invite extends React.Component {
             <div className="col s12">
               <div className="header-wrapper center-align">
                 <div className="big-logo">
-                  <img className="responsive-img" src="/Assets/teams/default/logo/remotiv_io_logo_style1.png"/>
+                  <img className="responsive-img" src="/Assets/teams/default/logo/Remotiv_logo_square_onblack.png"/>
                 </div>
                 <div className="container">
                   <div className="form row circular-border">

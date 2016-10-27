@@ -11,11 +11,6 @@ class NavbarItem extends React.Component {
     return (
 
       <div>
-        <a href="/dashboard">
-          <div className="menu-item center-align ">
-            DASHBOARD
-          </div>
-        </a>
         {menu.map(menu => (<a key={menu._id} href={menu.url}>
             <div className={`menu-item center-align ${FlowHelpers.currentRoute(menu.name)}`}
                  onClick={(menu.title =='WORK FLOW'||menu.title =='TOOLBOX')? sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!'):''}>

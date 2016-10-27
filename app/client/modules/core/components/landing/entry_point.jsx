@@ -19,7 +19,7 @@ class EntryPoint extends React.Component {
           </div>
           <div className="remotiv-text">
             <h1>Remotiv<span>.io</span></h1>
-            <h5 className="sub-text">Business Beyond Boundaries</h5>
+            <h5 className="sub-text">Virtual. Workforce. Intelligence.</h5>
           </div>
           <CreateTeamButton />
         </div>

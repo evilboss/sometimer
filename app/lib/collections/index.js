@@ -12,6 +12,7 @@ import Teamlist from './teamlist';
 import Invitations from './invitations';
 import SubProjects from './sub_projects';
 import Todos from './todos';
+import Files from './files';
 
 
 export {
@@ -28,5 +29,6 @@ export {
   Teamlist,
   Invitations,
   SubProjects,
-  Todos
+  Todos,
+  Files
 };

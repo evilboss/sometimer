@@ -11,10 +11,7 @@ export default {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
       if (Meteor.user()) {
-        let path = '/dashboard/timetracker';
-        if (Meteor.user().profile.role === 'admin' || Meteor.user().profile.role === 'client') {
-          path = '/dashboard'
-        }
+        let path = '/dashboard/team';
         FlowRouter.go(path);
       }
     });

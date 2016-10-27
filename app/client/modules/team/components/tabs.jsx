@@ -17,14 +17,13 @@ class Tabs extends React.Component {
           {
             (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
               <a href="/dashboard/team/manage-staff"
-                 className={`${FlowHelpers.currentRoute('dashboard.manageStaff')} ${FlowHelpers.currentRoute('dashboard.manageStaff.new')}`}>All
-                Staffs</a>
+                 className={`${FlowHelpers.currentRoute('dashboard.manageStaff')} ${FlowHelpers.currentRoute('dashboard.manageStaff.new')}`}>Staff</a>
               : '' : ''
           }
           {
             (userPermissions) ? control.isPermitted('updateClients', userPermissions) ?
               <a href="/dashboard/team/manage-clients"
-                 className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Clients</a>
+                 className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Client</a>
               : '' : ''
           }
         </div>

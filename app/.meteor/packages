@@ -48,7 +48,9 @@ kevohagan:sweetalert            #  a responsive, themable, cross-browser replace
 praneybehl:react-dropzone       # Simple HTML5 drag-drop zone for ReactJs packaged for Meteor
 ultimatejs:tracker-react        #No-Config reactive React Components with Meteor. Apply as composition, mixin or decorator.
 lookback:emails                 # Send HTML emails with server side Blaze templates. Preview and debug in the browser.
-
+browser-policy
+edgee:slingshot
+themeteorchef:bert
 #custom package section
 
 #dev only packages

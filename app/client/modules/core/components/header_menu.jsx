@@ -28,7 +28,9 @@ class HeaderMenu extends React.Component {
             <nav>
               <div className="nav-wrapper">
                 <a href="/dashboard" className="brand-logo">
-                  <div className="remotiv-text inline">Company Logo</div>
+                  <div className="inline">
+                    <img src="/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png"/>
+                  </div>
                 </a>
                 <ul className="right">
                   <li>

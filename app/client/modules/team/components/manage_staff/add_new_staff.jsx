@@ -6,6 +6,7 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import {control} from '/lib/access-control/control';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
+import UploadFile from '/client/modules/team/components/upload_file';
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -89,6 +90,8 @@ class AddNewStaff extends React.Component {
   }
 
 
+  
+
   change() {
     let {role} = this.refs;
     (role.value == 'Client') ?
@@ -110,11 +113,16 @@ class AddNewStaff extends React.Component {
       <section id="team">
         <Tabs/>
         <PageTitle title="Add New User"/>
+
+        <UploadFile/>
+
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm">
               <div className="col s12 no-padding">
                 {error ? this._renderError(error) : null}
+
+
                 <div className="col s6">
                   <div className="input-field col s12">
                     <input id="firstName" ref="firstName" type="text" className="validate"/>

@@ -24,9 +24,9 @@ class TimeRequest extends React.Component {
           <tr>
             <th>Date</th>
             <th>Staff</th>
-            <th>Time In</th>
+            <th>Log In</th>
             <th>Total Break</th>
-            <th>Time Out</th>
+            <th>Log Out</th>
             <th>Leave</th>
             <th>Hours Rendered</th>
             <th>Approval</th>

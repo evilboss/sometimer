@@ -8,7 +8,6 @@ const storeUrlInDatabase = (url)=> {
   check(url, String);
   const urlToSave = encodeURI(url);
   //Modules.both.checkUrlValidity(urlToSave);
-
   try {
     Files.insert({
       url: urlToSave,

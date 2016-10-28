@@ -10,6 +10,7 @@ import subProjects from './sub_projects';
 import todos from './todos';
 import team from './team';
 import download from './download';
+import file from './file';
 
 export default function () {
   users();
@@ -24,4 +25,5 @@ export default function () {
   todos();
   team();
   download();
+  file();
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import Quickform from '/client/modules/reactUtils/components/quickform';
-import Dropzone from 'react-dropzone';
 import Formsy from 'formsy-react';
 import MyInput from '../../../utils/form/input';
+import UploadFile from '/client/modules/team/containers/upload_file';
 
 class ProfileEdit extends React.Component {
   constructor(props) {
@@ -43,10 +43,7 @@ class ProfileEdit extends React.Component {
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
 
-              <Dropzone className="dropzone-wrapper" onDrop={this.onDrop}>
-                <div className="dropzone-container">Drop File here or click to upload.
-                </div>
-              </Dropzone>
+              <UploadFile methodType="updateDisplayPhoto"/>
             </div>
             <div className="col s12 m10 l10">
               <h5 className="title">Account Information</h5>

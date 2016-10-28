@@ -11,7 +11,7 @@ export default {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
       if (Meteor.user()) {
-        let path = '/dashboard/team';
+        let path = (Meteor.user().profile.displayPhoto) ? '/dashboard/team' : '/dashboard/profile';
         FlowRouter.go(path);
       }
     });

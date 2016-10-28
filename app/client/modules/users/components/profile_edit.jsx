@@ -7,25 +7,6 @@ import UploadFile from '/client/modules/team/containers/upload_file';
 class ProfileEdit extends React.Component {
   constructor(props) {
     super(props);
-    this.onDrop = (files)=> {
-      _.each(files, function (file) {
-        file.owner = Meteor.userId(); //before upload also save the owner of that file
-        Images.insert(file, function (err, fileObj) {
-          if (err) {
-            console.error(err); //in case there is an error, log it to the console
-          } else {
-
-            let imagePath = 'images-' + fileObj._id + '-' + file.name;
-            Meteor.call('user.update-photo', Meteor.userId(), imagePath);
-            sweetAlert("Success!", "Click OK to close", "success");
-          }
-        });
-      });
-    };
-    this.onSubmit = (data)=> {
-      this.props.submitAction(data.oldPassword, data.newPassword);
-
-    };
   }
 
 
@@ -44,32 +25,7 @@ class ProfileEdit extends React.Component {
                 className="display-photo responsive-img center-block"/>
               <UploadFile methodType="updateDisplayPhoto"/>
             </div>
-            <div className="col s12 m10 l10">
-              <h5 className="title">Account Information</h5>
-              <div className="no-horizontal-margin row z-depth-1-half card-top-border">
-                {<Quickform
-                  buttonText="Update Profile"
-                  field={this.props.users}
-                  doc={this.props.user}
-                  ommited="emails,profile.status,services,createdAt,roles,profile.displayPhoto"
-                  operation="update"
-                  name="updateProfileForm"
-                />}
-              </div>
-              <h5 className="title">Account Password</h5>
-              <div className="no-horizontal-margin row z-depth-1-half card-top-border">
-                <Formsy.Form onSubmit={this.onSubmit} onValidSubmit={this.onSubmit} className="login">
-                  <MyInput name="oldPassword" title="oldPassword" type="password"/>
-                  <MyInput name="newPassword" title="newPassword" type="password"/>
-                  <div className="row">
-                    <div className="col s12">
-                      <button className="btn waves-effect waves-light theme-color" type="submit">Change Password
-                      </button>
-                    </div>
-                  </div>
-                </Formsy.Form>
-              </div>
-            </div>
+
           </div>
           : ''}
       </section>

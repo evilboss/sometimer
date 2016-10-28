@@ -17,7 +17,7 @@ class SideNav extends React.Component {
           <li><a href=""><i className="material-icons">view_module</i></a></li>
           <li><a href=""><i className="material-icons">refresh</i></a></li>
           <li><a href="" onClick={this.toggleFullscreen}><i className="material-icons">settings_overscan</i></a></li>
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login">Sign in</a></li>
 
         </ul>
       </section>

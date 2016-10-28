@@ -30,7 +30,7 @@ class NavbarProfile extends React.Component {
   render() {
     return (
       <ul id='account-menu' className='dropdown-content'>
-        <li><a href="" onClick={this.hanldeLogOut}>Log out
+        <li><a href="" onClick={this.hanldeLogOut}>Sign out
           <i className="material-icons right">exit_to_app</i></a></li>
       </ul>
     );

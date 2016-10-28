@@ -65,7 +65,7 @@ class TimeTracker extends React.Component {
 
   render() {
     let backgroundImage = '/Assets/teams/default/background/punchcard_bg.png';
-    let appLogo = '/Assets/teams/default/logo/remotiv_io_logo_style2.png';
+    let appLogo = '/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png';
     let boardStyle;
     let inOutLogo = (appLogo) ? inOutLogo = appLogo : '/Assets/teams/ezyva/logo/ezyva-logo.png';
     (backgroundImage) ? boardStyle = {
@@ -90,8 +90,8 @@ class TimeTracker extends React.Component {
                           <li><a href="/dashboard/timesheet" className="theme-text">
                             <i className="material-icons">grid_on</i><span>Timesheet</span></a>
                           </li>
-                          <li><a href="/dashboard" className="theme-text">
-                            <i className="material-icons">dashboard</i><span>Dashboard</span></a>
+                          <li><a href="/dashboard/team" className="theme-text">
+                            <i className="material-icons">group</i><span>Team</span></a>
                           </li>
                         </ul>
                       </div>

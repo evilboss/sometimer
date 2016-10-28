@@ -23,20 +23,20 @@ class UploadFile extends React.Component {
     let {file} = this.states;
     return (
       <div>
-        <p><strong>Note</strong>: only <code>.png</code>, <code>.jpeg</code>, and <code>.gif</code> files are allowed in
-          this demo.</p>
-        <h4 className="page-header">Upload a File to Amazon S3</h4>
-        <div className="upload-area">
+        <h5>Change Display Photo</h5>
+        <p><strong>Note</strong>: only <code>.png</code>, <code>.jpeg</code></p>
+        <div className="upload-area col s4">
           <form id="upload">
-            <p className="alert alert-success text-center">
-              <span>Click or Drag a File Here to Upload</span>
-              <input onChange={this.fileChange.bind(this)} ref="file" type="file"/>
-            </p>
-            <button type="button" onClick={this.uploadFile.bind(this)}>Upload</button>
+            <div className="file-field input-field">
+              <div className="btn theme-color">
+                <span>Upload File</span>
+                <input onChange={this.fileChange.bind(this)} ref="file" type="file"/>
+              </div>
+              <div className="file-path-wrapper">
+                <input className="file-path validate" onChange={this.fileChange.bind(this)} ref="file" type="text"/>
+              </div>
+            </div>
           </form>
-          {console.log(file)
-          }
-          <img src={file}/>
         </div>
       </div>
     );

@@ -43,9 +43,10 @@ juliancwirko:postcss            # Use PostCSS with Meteor
 kevohagan:sweetalert            #  a responsive, themable, cross-browser replacement for JavaScript's alert() with beautiful dialog prompts.
 ultimatejs:tracker-react        #No-Config reactive React Components with Meteor. Apply as composition, mixin or decorator.
 lookback:emails                 # Send HTML emails with server side Blaze templates. Preview and debug in the browser.
-browser-policy
-edgee:slingshot
-themeteorchef:bert
+browser-policy                  # Configure security policies enforced by the browser
+edgee:slingshot                 # Directly post files to cloud storage services, such as AWS-S3.
+themeteorchef:bert              # A client side, multi-style alerts system for Meteor.
+lfergon:exportcsv               # Meteor export mongo collection to csv
 #custom package section
 
 #dev only packages

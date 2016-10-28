@@ -24,31 +24,40 @@ const generateLogs = ()=> {
 };
 const addTimelogs = ()=> {
   console.info('Adding timelogs');
-  const staff = Meteor.users.findOne({'emails.address': {$regex: 'staff@staff.com', $options: 'i'}});
-  const staffLogs = Timelogs.find({userId: staff._id});
-  if (staffLogs.count() === 0) {
-    const logs = generateLogs();
-    logs.every(function (log) {
-        if (moment(log).isSame(moment(), 'day')) {
-          return false;
-        }
-        if (!(moment(log).isoWeekday() === 6 || moment(log).isoWeekday() === 7)) {
-          let timeIn = setTime(log, '08:00');
-          let timeOut = setTime(log, '17:00');
-          Timelogs.insert({
-            timeIn: timeIn,
-            timeOut: timeOut,
-            userId: staff._id,
-            completed: true,
-            date: moment(log).format('DD:MM:YY'),
-          });
-        }
+  const staffEmails=[
+    'staff@staff.com',
+    'dan.arceo@ezyva.com',
+    'aaron.randrup@ezyva.com',
+    'jr@ezyva.com'
+  ];
+  _.each(staffEmails,(email)=>{
+    const staff = Meteor.users.findOne({'emails.address': {$regex: email, $options: 'i'}});
+    const staffLogs = Timelogs.find({userId: staff._id});
+    if (staffLogs.count() === 0) {
+      const logs = generateLogs();
+      logs.every(function (log) {
+          if (moment(log).isSame(moment(), 'day')) {
+            return false;
+          }
+          if (!(moment(log).isoWeekday() === 6 || moment(log).isoWeekday() === 7)) {
+            let timeIn = setTime(log, '08:00');
+            let timeOut = setTime(log, '17:00');
+            Timelogs.insert({
+              timeIn: timeIn,
+              timeOut: timeOut,
+              userId: staff._id,
+              completed: true,
+              date: moment(log).format('DD:MM:YY'),
+            });
+          }
 
-        return true;
-      }
-    );
+          return true;
+        }
+      );
 
-  }
+    }
+  });
+
 };
 const removeTimelogs = ()=> {
   console.info('Removing timelogs');

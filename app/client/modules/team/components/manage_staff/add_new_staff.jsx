@@ -96,9 +96,6 @@ class AddNewStaff extends React.Component {
     });
   }
 
-  selectKey(event) {
-
-  }
 
   change() {
     let {role} = this.refs;
@@ -108,6 +105,15 @@ class AddNewStaff extends React.Component {
 
   render() {
     const {userPermissions, error, userRole} = this.props;
+    const permissionList = [
+      {label: 'Client', types: ['readClients', 'createClients', 'updateClients']},
+      {label: 'Staff', types: ['readStaffs', 'createStaffs', 'updateStaffs']},
+      {label: 'Manager', types: ['readManagers', 'createManagers', 'updateManagers']},
+      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam']},
+      {label: 'Project', types: ['readProject', 'createProject', 'updateProject']},
+      {label: 'SubProject', types: ['readSubProject', 'createSubProject', 'updateSubProject']},
+      {label: 'Task', types: ['readTask', 'createTask', 'updateTask']},
+    ];
     return (
       <section id="team">
         <Tabs/>
@@ -130,10 +136,7 @@ class AddNewStaff extends React.Component {
                     <input id="department" ref="department" type="text" className="validate"/>
                     <label htmlFor="department">{this.state.details}</label>
                   </div>
-                  <div className="input-field col s12">
-                    <p>{this.state.exampleState}</p>
 
-                  </div>
                   <div className="input-field col s12">
                     <select ref="role">
                       <option key={0} defaultValue="" disabled selected>Choose User Role</option>
@@ -172,103 +175,25 @@ class AddNewStaff extends React.Component {
                             <th className="center">View</th>
                             <th className="center">Add</th>
                             <th className="center">Edit</th>
-                            <th className="center">Delete</th>
                           </tr>
                           </thead>
                           <tbody>
-                          <tr>
-                            <td>Clients</td>
-                            <td className="center">
-                              <input type="checkbox" id="client-view"
-                                     data-permission="readClients" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="client-view"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="client-add"
-                                     data-permission="createClients" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="client-add"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="client-edit"
-                                     data-permission="updateClients" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="client-edit"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="client-delete"
-                                     data-permission="deleteClients" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="client-delete"></label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Staff</td>
-                            <td className="center">
-                              <input type="checkbox" id="staff-view"
-                                     data-permission="readStaffs" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="staff-view"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="staff-add"
-                                     data-permission="createStaffs" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="staff-add"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="staff-edit"
-                                     data-permission="updateStaffs" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="staff-edit"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="staff-delete"
-                                     data-permission="deleteStaffs" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="staff-delete"></label>
-                            </td>
-                          </tr>
-                          <tr>
+                          {permissionList.map((permission, index)=>
+                            <tr key={index}>
+                              <td>{permission.label}</td>
+                              {(permission.types) ?
+                                permission.types.map((type, typeIndex)=>
+                                  <td className="center" key={typeIndex}>
+                                    <input type="checkbox" id={type}
+                                           data-permission={type} onChange={this._changePermissions.bind(this)}/>
+                                    <label htmlFor={type}></label>
+                                  </td>
+                                )
+                                : null
+                              }
+                            </tr>
+                          )}
 
-                            <td>Managers</td>
-                            <td className="center">
-                              <input type="checkbox" id="managers-view"
-                                     data-permission="readManagers" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="managers-view"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="managers-add"
-                                     data-permission="createManagers" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="managers-add"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="managers-edit"
-                                     data-permission="updateManagers" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="managers-edit"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="managers-delete"
-                                     data-permission="deleteManagers" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="managers-delete"></label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Team Leaders</td>
-                            <td className="center">
-                              <input type="checkbox" id="leaders-view"
-                                     data-permission="readLeaders" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="leaders-view"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="leaders-add"
-                                     data-permission="createLeaders" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="leaders-add"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="leaders-edit"
-                                     data-permission="updateLeaders" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="leaders-edit"></label>
-                            </td>
-                            <td className="center">
-                              <input type="checkbox" id="leaders-delete"
-                                     data-permission="deleteLeaders" onChange={this._changePermissions.bind(this)}/>
-                              <label htmlFor="leaders-delete"></label>
-                            </td>
-                          </tr>
                           </tbody>
                         </table>
                         : null : null
@@ -289,4 +214,6 @@ class AddNewStaff extends React.Component {
   }
 }
 
-export default AddNewStaff;
+export
+default
+AddNewStaff;

@@ -48,7 +48,6 @@ edgee:slingshot                 # Directly post files to cloud storage services,
 themeteorchef:bert              # A client side, multi-style alerts system for Meteor.
 lfergon:exportcsv               # Meteor export mongo collection to csv
 #custom package section
-
 #dev only packages
 meteortoys:allthings # Insanely Handy Development Tools
 

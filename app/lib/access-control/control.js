@@ -13,8 +13,14 @@ const isPermitted = (permission, userPermissions)=> {
       : console.error('user permissions required')
     : console.error('User permissions required');
 };
+
+const isAdmin = (userId)=> {
+  const selectedUser = Meteor.users.findOne({_id: userId});
+  return (selectedUser) ? (selectedUser.profile) ? (selectedUser.profile.role) ? (selectedUser.profile.role == 'admin') : false : false : false;
+};
 const control = {
-  isPermitted: (permission, userPermissions)=>isPermitted(permission, userPermissions)
+  isPermitted: (permission, userPermissions)=>isPermitted(permission, userPermissions),
+  isAdmin: (userId)=>isAdmin(userId),
 };
 export {
   control

@@ -23,15 +23,11 @@ email                           # Send email messages
 reactive-dict                   # general-purpose reactive datatype for use with tracker.
 
 # Atmosphere Third Party packages
-
 aldeed:simple-schema            # A simple schema validation object with reactivity. Used by collection2 and autoform.
 aldeed:collection2              # Automatic validation of insert and update operations on the client and server.
 aldeed:autoform                 # UI components and helpers to easily create basic forms with automatic insert and update events
 matb33:collection-hooks         # Extends Mongo.Collection with before/after hooks for insert, update, remove, find, and findOne.
 gildaspk:autoform-materialize   # Adds materialize templates for autoform.
-cfs:standard-packages           # Filesystem for Meteor, collectionFS
-cfs:filesystem                  # Filesystem storage adapter for CollectionFS
-cfs:graphicsmagick              # Adds `gm` to scope with the ability to perform GraphicsMagick or ImageMagick manipulation
 alanning:roles                  # Authorization package for Meteor
 fortawesome:fontawesome         # Font Awesome (official): 500+ scalable vector icons, customizable via CSS, Retina friendly
 mdg:validation-error            # A simple wrapper for Meteor.methods
@@ -45,7 +41,6 @@ percolate:migrations            # A simple migration system for Meteor supportin
 thereactivestack:blazetoreact   #Transform a Blaze template into a React.js component while keeping the reactivity
 juliancwirko:postcss            # Use PostCSS with Meteor
 kevohagan:sweetalert            #  a responsive, themable, cross-browser replacement for JavaScript's alert() with beautiful dialog prompts.
-praneybehl:react-dropzone       # Simple HTML5 drag-drop zone for ReactJs packaged for Meteor
 ultimatejs:tracker-react        #No-Config reactive React Components with Meteor. Apply as composition, mixin or decorator.
 lookback:emails                 # Send HTML emails with server side Blaze templates. Preview and debug in the browser.
 browser-policy

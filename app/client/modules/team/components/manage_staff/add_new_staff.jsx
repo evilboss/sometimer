@@ -19,14 +19,13 @@ class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      permissions: []
+      permissions: [],
+      details: 'Department',
     }
   }
 
   componentDidMount() {
-    $(document).ready(function () {
-      $('select').material_select();
-    });
+    $('select').material_select(this.change.bind(this));
   }
 
   _create() {
@@ -97,9 +96,18 @@ class AddNewStaff extends React.Component {
     });
   }
 
-  render() {
+  selectKey(event) {
 
-    const {userPermissions, error} = this.props;
+  }
+
+  change() {
+    let {role} = this.refs;
+    (role.value == 'Client') ?
+      this.setState({details: 'Company'}) : this.setState({details: 'Department'});
+  }
+
+  render() {
+    const {userPermissions, error, userRole} = this.props;
     return (
       <section id="team">
         <Tabs/>
@@ -120,24 +128,34 @@ class AddNewStaff extends React.Component {
                   </div>
                   <div className="input-field col s12">
                     <input id="department" ref="department" type="text" className="validate"/>
-                    <label htmlFor="department">Department</label>
+                    <label htmlFor="department">{this.state.details}</label>
                   </div>
+                  <div className="input-field col s12">
+                    <p>{this.state.exampleState}</p>
 
+                  </div>
                   <div className="input-field col s12">
                     <select ref="role">
-                      <option defaultValue="" disabled selected>Choose User Role</option>
-                      <option defaultValue="staff">Staff</option>
-                      <option defaultValue="client">Client</option>
+                      <option key={0} defaultValue="" disabled selected>Choose User Role</option>
+                      {
+                        (userRole == 'admin') ?
+                          <option key={1} defaultValue="admin">Admin</option>
+                          : ''
+                      }
+                      {
+                        (userRole == 'admin') ?
+                          <option key={2} defaultValue="manager"> Manager </option>
+                          : ''
+                      }
+                      <option key={3} defaultValue="staff">Staff</option>
+                      <option key={4} defaultValue="client">Client</option>
                     </select>
                     <label>User Role</label>
                   </div>
-
-
                   <div className="input-field col s12">
                     <input id="position" ref="position" type="text" className="validate"/>
                     <label htmlFor="position">Position</label>
                   </div>
-
                   <div className="input-field col s12">
                     <input id="email" ref="email" type="email" className="validate"/>
                     <label htmlFor="email">Email</label>
@@ -182,8 +200,6 @@ class AddNewStaff extends React.Component {
                             </td>
                           </tr>
                           <tr>
-
-
                             <td>Staff</td>
                             <td className="center">
                               <input type="checkbox" id="staff-view"
@@ -230,7 +246,6 @@ class AddNewStaff extends React.Component {
                               <label htmlFor="managers-delete"></label>
                             </td>
                           </tr>
-
                           <tr>
                             <td>Team Leaders</td>
                             <td className="center">
@@ -264,7 +279,6 @@ class AddNewStaff extends React.Component {
                       </button>
                     </div>
                   </div>
-
                 </div>
               </div>
             </form>

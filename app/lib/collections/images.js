@@ -1,7 +1,7 @@
-Images = new FS.Collection("images", {
+/*Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: process.env.PWD + "/public/uploads/"})]
-});
-if (Meteor.isServer) {
+});*/
+/*if (Meteor.isServer) {
   Images.allow({
     'insert': function () {
       // add custom authentication code here
@@ -19,6 +19,6 @@ if (Meteor.isServer) {
       return true
     }
   });
-}
+}*/
 
-export default Images;
+/*export default Images;*/

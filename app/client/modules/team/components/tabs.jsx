@@ -12,7 +12,7 @@ class Tabs extends React.Component {
       <div className="tab-nav-wrapper">
         <div className="tab-nav inline">
           <a href="/dashboard/team"
-             className={`${FlowHelpers.currentRoute('dashboard.team')} ${FlowHelpers.currentRoute('dashboard.team.new')} ${FlowHelpers.currentRoute('dashboard.myteam')}`}>My
+             className={`${FlowHelpers.currentRoute('dashboard.team')} ${FlowHelpers.currentRoute('dashboard.team.new')} ${FlowHelpers.currentRoute('dashboard.myteam')}`}>
             Team</a>
           {
             (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?

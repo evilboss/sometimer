@@ -47,7 +47,7 @@ class Login extends React.Component {
                       <MyInput name="email" title="Email" validations="isEmail"
                                validationError="This is not a valid email" required/>
                       <MyInput name="password" title="Password" type="password" required/>
-                      <button className="btn waves-effect waves-light theme-color" type="submit">Login <i
+                      <button className="btn waves-effect waves-light theme-color" type="submit">Sign in <i
                         className="material-icons right">send</i></button>
                     </Formsy.Form>
 

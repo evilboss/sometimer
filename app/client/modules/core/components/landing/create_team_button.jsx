@@ -8,7 +8,7 @@ class CreateTeamButton extends React.Component {
   render() {
     return (
       <a href="/login" className="waves-effect waves-light btn-large light-green darken-1"><b>
-        Login to Remotiv</b></a>
+        Sign in to Remotiv</b></a>
     );
   }
 }

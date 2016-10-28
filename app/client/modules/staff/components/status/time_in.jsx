@@ -12,7 +12,7 @@ class TimeIn extends React.Component {
         {(!status || status == 'Out') ?
           <button className="ui btn waves-effect waves-light theme-color" onClick={this.props.action.bind(this)}>
             <i className="material-icons left">cached</i>
-            Time In
+            Log In
           </button> : ''}
       </section>
 

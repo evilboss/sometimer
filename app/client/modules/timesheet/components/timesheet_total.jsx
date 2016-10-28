@@ -6,6 +6,17 @@ class TimesheetTotal extends React.Component {
     super(props);
   }
 
+  exportToCSV() {
+    const timelogs = this.props.timelogs;
+    var nameFile = 'fileDownloaded.csv';
+    Meteor.call('download.csv', function (err, fileContent) {
+      if (fileContent) {
+        var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, nameFile);
+      }
+    });
+  }
+
   render() {
     const timelogs = this.props.timelogs;
     const totalBreak = _.pluck(timelogs, 'totalBreak').reduce((a, b) => addTime(a, b), 0);
@@ -14,23 +25,29 @@ class TimesheetTotal extends React.Component {
     }), 'totalRendered').reduce((a, b) => addTime(a, b), 0);
     const totalPaid = _.pluck(_.where(timelogs, {approved: true}), 'totalRendered').reduce((a, b) => addTime(a, b), 0);
     return (
-      <tr>
-        <th>Total:</th>
-        <th></th>
-        <th>{totalBreak}</th>
-        <th></th>
-        <th></th>
-        <th>
-          Approved:
-          <span className="green-text">
+      <div>
+        <tr>
+          <th>Total:</th>
+          <th></th>
+          <th>{totalBreak}</th>
+          <th></th>
+          <th></th>
+          <th>
+            Approved:
+            <span className="green-text">
             {totalPaid}
           </span>
-          / Unapproved:
-          <span className="red-text">
+            / Unapproved:
+            <span className="red-text">
             {totalUnpaid}
           </span>
-        </th>
-      </tr>
+          </th>
+        </tr>
+        <div className="row">
+          <button className="btn" onClick={this.exportToCSV.bind(this)}>Export</button>
+        </div>
+      </div>
+
     );
   }
 }

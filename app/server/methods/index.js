@@ -9,6 +9,7 @@ import teamlist from './teamlist';
 import subProjects from './sub_projects';
 import todos from './todos';
 import team from './team';
+import download from './download';
 
 export default function () {
   users();
@@ -22,4 +23,5 @@ export default function () {
   subProjects();
   todos();
   team();
+  download();
 }

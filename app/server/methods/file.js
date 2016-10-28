@@ -14,7 +14,6 @@ export default function () {
       } catch (exception) {
         return exception;
       }
-
     },
     'updateSitePhoto'(url){
       check(url, String);

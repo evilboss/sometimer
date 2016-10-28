@@ -9,10 +9,9 @@ class StaffDp extends React.Component {
     const displayPhoto = this.props.displayPhoto;
     return (
       <img
-        src={(displayPhoto)?`/uploads/${displayPhoto}`:'/uploads/defaults/default_user.png'}
+        src={(displayPhoto)?`${displayPhoto}`:'/uploads/defaults/default_user.png'}
         alt="people" className="circle responsive-img"/>
     );
   }
 }
-
 export default StaffDp;

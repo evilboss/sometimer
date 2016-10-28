@@ -38,7 +38,7 @@ class StaffDetails extends React.Component {
 
       <tr key={index}>
         <td>
-          <img src={"/uploads/" + staff.profile.displayPhoto} alt="Staff"
+          <img src={staff.profile.displayPhoto} alt="Staff"
                className="circle responsive-img dp-small left"/>
           <div className="col staff-details no-margin">
             <h6>{staff.profile.firstName}<br/>

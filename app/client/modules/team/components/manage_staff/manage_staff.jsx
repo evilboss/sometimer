@@ -42,7 +42,7 @@ class ManageStaff extends React.Component {
                   <tr key={index}>
                     <td>
                       <img
-                        src={(staff.profile.displayPhoto)?`/uploads/${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                        src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
                         alt="Staff" className="circle responsive-img dp-small left"/>
                       <div className="col staff-details no-margin">
                         <h6>{staff.profile.firstName} {staff.profile.lastName}<br/>

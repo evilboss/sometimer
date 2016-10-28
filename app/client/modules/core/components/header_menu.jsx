@@ -51,7 +51,7 @@ class HeaderMenu extends React.Component {
                   <li>
                     <a href='#' className="account-menu" data-activates='account-menu'>
                       <img className="inline"
-                           src={(currentUser.profile.displayPhoto) ? `/uploads/${currentUser.profile.displayPhoto}` : '/uploads/defaults/default-img.png'}/>
+                           src={(currentUser.profile.displayPhoto) ? `${currentUser.profile.displayPhoto}` : '/uploads/defaults/default-img.png'}/>
                     </a>
                     <NavbarProfile />
                   </li>

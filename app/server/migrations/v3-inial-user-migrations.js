@@ -18,7 +18,7 @@ const newStaffs = [
       department: 'Accounts Support',
       staffType: 'Regular',
       jobTitle: 'Account Support Manager',
-      displayPhoto: 'defaults/teams/ezyva/profiles/kim/kimDP.jpg',
+      displayPhoto: '/uploads/defaults/teams/ezyva/profiles/kim/kimDP.jpg',
       role: 'staff',
       permissions: [
         'readStaffs',
@@ -41,7 +41,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Associate Software Engineer',
-      displayPhoto: 'defaults/teams/ezyva/profiles/iob/iobDP.jpg',
+      displayPhoto: '/uploads/defaults/teams/ezyva/profiles/iob/iobDP.jpg',
       role: 'staff',
       permissions: [
         'readStaffs',
@@ -65,7 +65,7 @@ const newStaffs = [
       department: 'Accounts Support',
       staffType: 'Regular',
       jobTitle: 'Client Support Manager',
-      displayPhoto: 'defaults/teams/ezyva/profiles/dan/danDp.jpg',
+      displayPhoto: '/uploads/defaults/teams/ezyva/profiles/dan/danDp.jpg',
       role: 'staff',
       permissions: [
         'readStaffs',
@@ -88,7 +88,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
-      displayPhoto: 'defaults/teams/ezyva/profiles/aaron/jaredDp.jpg',
+      displayPhoto: '/uploads/defaults/teams/ezyva/profiles/aaron/jaredDp.jpg',
       role: 'staff',
       permissions: [
         'readStaffs',
@@ -111,7 +111,7 @@ const newStaffs = [
       department: 'Development',
       staffType: 'Probitionary',
       jobTitle: 'Senior Software Engineer',
-      displayPhoto: 'defaults/teams/ezyva/profiles/jr/rockAndRollToTheWorld.jpg',
+      displayPhoto: '/uploads/defaults/teams/ezyva/profiles/jr/rockAndRollToTheWorld.jpg',
       role: 'staff',
       permissions: [
         'readStaffs',

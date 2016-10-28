@@ -14,8 +14,7 @@ class UploadFile extends React.Component {
   }
 
   fileChange(event) {
-    let {methodType} = event.props;
-    console.log(methodType,event.props.methodType, "tub");
+    let {methodType} = this.props;
     uploadToAmazonS3.upload({event: event}, methodType);
   }
 
@@ -31,7 +30,7 @@ class UploadFile extends React.Component {
           <form id="upload">
             <p className="alert alert-success text-center">
               <span>Click or Drag a File Here to Upload</span>
-              <input onChange={this.fileChange} ref="file" type="file"/>
+              <input onChange={this.fileChange.bind(this)} ref="file" type="file"/>
             </p>
             <button type="button" onClick={this.uploadFile.bind(this)}>Upload</button>
           </form>

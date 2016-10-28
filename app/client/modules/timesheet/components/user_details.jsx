@@ -16,7 +16,7 @@ class UserDetails extends React.Component {
 								<div className="col s12 m6 l6">
 									<div className="col s4">
 										<img
-											src={(currentUser.profile.displayPhoto) ? `/uploads/${currentUser.profile.displayPhoto}` : '/uploads/defaults/default-img.png'}
+											src={(currentUser.profile.displayPhoto) ? `${currentUser.profile.displayPhoto}` : '/uploads/defaults/default-img.png'}
 											alt="dp"
 											className="display-photo responsive-img center-block circle"/>
 									</div>

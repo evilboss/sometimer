@@ -24,7 +24,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Administrator',
-        displayPhoto: 'defaults/teams/default/profiles/admin/admin.gif',
+        displayPhoto: '/uploads/defaults/teams/default/profiles/admin/admin.gif',
         role: 'admin',
         permissions: [
           'createClients', 'readClients', 'updateClients', 'deleteClients',
@@ -50,7 +50,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'Manager',
-        displayPhoto: 'defaults/teams/default/profiles/manager/joker.jpg',
+        displayPhoto: '/uploads/defaults/teams/default/profiles/manager/joker.jpg',
         role: 'manager',
         permissions: [
           'createClients', 'readClients', 'updateClients', 'deleteClients',
@@ -74,7 +74,7 @@ const loadUsers = ()=> {
         department: 'Virtual Assistants',
         staffType: 'Regular',
         jobTitle: 'Virtual Assistant',
-        displayPhoto: 'defaults/teams/default/profiles/staff/rick.jpg',
+        displayPhoto: '/uploads/defaults/teams/default/profiles/staff/rick.jpg',
         role: 'staff',
         permissions: [
           'readStaffs',
@@ -98,7 +98,7 @@ const loadUsers = ()=> {
         department: 'Admin',
         staffType: 'Regular',
         jobTitle: 'client',
-        displayPhoto: 'defaults/teams/default/profiles/jack/JackTorrance.jpg',
+        displayPhoto: '/uploads/defaults/teams/default/profiles/jack/JackTorrance.jpg',
         role: 'client',
         permissions: [
           'readStaffs',

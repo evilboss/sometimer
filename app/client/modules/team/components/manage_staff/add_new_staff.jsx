@@ -7,14 +7,6 @@ import TimePicker from 'rc-time-picker';
 import {control} from '/lib/access-control/control';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 
-
-/*
- TODO: create team cant select team leader
- TODO: edit team not working
- TODO: staff settings data missing after refresh
- TODO: edit timesheet not working*/
-
-
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -165,9 +157,10 @@ class AddNewStaff extends React.Component {
                   </div>
                 </div>
                 <div className="col s6">
+
                   <div className="col s12">
                     {
-                      (userPermissions) ? control.isPermitted('updatePermissions', userPermissions) ?
+                      (this.state.details == 'Department') ?
                         <table>
                           <thead>
                           <tr>
@@ -195,8 +188,7 @@ class AddNewStaff extends React.Component {
                           )}
 
                           </tbody>
-                        </table>
-                        : null : null
+                        </table> : null
                     }
                     <div className="right save">
                       <button type="button" className="btn" onClick={this._create.bind(this)}>
@@ -213,7 +205,4 @@ class AddNewStaff extends React.Component {
     );
   }
 }
-
-export
-default
-AddNewStaff;
+export default AddNewStaff;

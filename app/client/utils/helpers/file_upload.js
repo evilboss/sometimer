@@ -1,8 +1,6 @@
 /**
  * Created by aaron on 10/28/16.
  */
-let template;
-
 const _getFileFromInput = (event) => event.target.files[0];
 
 const _setPlaceholderText = (string = "Click to Upload") => {
@@ -23,7 +21,6 @@ const _addUrlToDatabase = (url, type) => {
 
 const _uploadFileToAmazon = (file, type) => {
   const uploader = new Slingshot.Upload("uploadToAmazonS3");
-  console.log(uploader);
   uploader.send(file, (error, url) => {
     if (error) {
       Bert.alert(error.message, "warning");

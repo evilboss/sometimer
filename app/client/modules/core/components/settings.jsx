@@ -8,6 +8,7 @@ class Settings extends React.Component {
   }
 
   render() {
+    const {sitePhoto} = this.props;
     return (
       <section id="settings">
         <PageTitle title="Settings"/>
@@ -15,7 +16,7 @@ class Settings extends React.Component {
         <div className="row">
           <div className="col s12 center-align">
             <img
-              src='/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png'
+              src={(sitePhoto) ? sitePhoto : '/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png'}
               alt="dp"
               className="display-photo responsive-img center-block"/>
             <UploadFile methodType="updateSitePhoto" text="Change Site Logo"/>

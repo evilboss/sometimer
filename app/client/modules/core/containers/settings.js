@@ -4,8 +4,15 @@ import Settings from '../components/settings.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
+  const subscriptionReady = [Meteor.subscribe('settings').ready()];
 
-  onData(null, {});
+  const dataReady =()=>{
+    let settings = Collections.Settings.findOne();
+    let sitePhoto = (settings) ? (settings.url) ? settings.url : '' : '';
+    onData(null, {sitePhoto});
+
+  };
+  (subscriptionReady) ? dataReady() : onData();
 };
 
 export const depsMapper = (context, actions) => ({

@@ -10,7 +10,6 @@ class UploadFile extends React.Component {
 
   uploadFile() {
     let {file} = this.refs;
-    console.log(file.value);
   }
 
   fileChange(event) {

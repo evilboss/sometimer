@@ -8,10 +8,10 @@ class Header extends React.Component {
 
 
   render() {
-    const currentUser = this.props.currentUser;
+    const {currentUser, sitePhoto} = this.props;
     return (
       <div>
-        <HeaderMenu currentUser={currentUser}/>
+        <HeaderMenu sitePhoto={sitePhoto} currentUser={currentUser}/>
         <Navbar menu={this.props.menu}/>
       </div>
     );

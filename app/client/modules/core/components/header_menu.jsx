@@ -55,11 +55,13 @@ class HeaderMenu extends React.Component {
                     </a>
                     <NavbarProfile />
                   </li>
-                  <li>
-                    <a href="/dashboard/settings">
-                      <i className="material-icons">settings</i>
-                    </a>
-                  </li>
+                  {(currentUser.profile.role === 'admin') ?
+                    <li>
+                      <a href="/dashboard/settings">
+                        <i className="material-icons">settings</i>
+                      </a>
+                    </li>
+                    : ''}
                   <li>
                     <img className="inline"
                          src={sitePhoto ? sitePhoto : '/Assets/teams/default/logo/remotiv_io_logo_style3.png'}/></li>

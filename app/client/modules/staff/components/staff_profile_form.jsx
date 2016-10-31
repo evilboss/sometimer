@@ -17,6 +17,7 @@ class StaffProfileForm extends React.Component {
       department: department.value,
       position: position.value,
     };
+    
     profileUpdate(user._id, profile);
   }
 

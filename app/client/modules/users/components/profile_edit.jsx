@@ -17,14 +17,13 @@ class ProfileEdit extends React.Component {
         <h5 className="title">Edit Profile</h5>
         {(user) ?
           <div className="row">
-            <div className="col s12 m2 l2">
+            <div className="col s12 center-align">
               <img
                 src={(user.profile.displayPhoto)?user.profile.displayPhoto:'/uploads/default-img.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
               <UploadFile methodType="updateDisplayPhoto"/>
             </div>
-
           </div>
           : ''}
       </section>

@@ -4,6 +4,7 @@ class Notification extends React.Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     $('.notification-menu').dropdown({
         inDuration: 300,
@@ -14,6 +15,7 @@ class Notification extends React.Component {
       }
     );
   }
+
   render() {
     const {requestCount, currentUser} = this.props;
     return (
@@ -31,12 +33,6 @@ class Notification extends React.Component {
                   <a href="/dashboard/timesheet/request">
                     Timelog Request
                     {(requestCount) ? <small className="notification-badge right">{requestCount}</small> : ''}
-                  </a>
-                </li>
-                <li>
-                  <a href="/dashboard/invites">
-                    Invitations
-                    <small className="notification-badge right">1</small>
                   </a>
                 </li>
               </ul>

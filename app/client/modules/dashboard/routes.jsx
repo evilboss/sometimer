@@ -9,6 +9,7 @@ import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';
 import EditTeam from '/client/modules/team/containers/manage_team/edit_team';
+import Settings from '/client/modules/core/containers/settings';
 import {control} from '/lib/access-control/control';
 
 const dashboardRoutes = FlowRouter.group({
@@ -41,6 +42,16 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
+
+  dashboardRoutes.route('/settings', {
+    name: 'dashboard.settings',
+    action(params){
+      mount(MainLayoutCtx, {
+        head: () => (<Header />), content: () => (<Settings />), footer: () => (<Foot />)
+      });
+    }
+  });
+
   dashboardRoutes.route('/team/:teamId', {
     name: 'dashboard.myteam',
     action(params){

@@ -56,7 +56,7 @@ class HeaderMenu extends React.Component {
                     <NavbarProfile />
                   </li>
                   <li>
-                    <a href="">
+                    <a href="/dashboard/settings">
                       <i className="material-icons">settings</i>
                     </a>
                   </li>

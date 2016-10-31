@@ -16,10 +16,8 @@ export default function () {
     'updateSitePhoto'(url){
       check(url, String);
       const urlToSave = encodeURI(url);
-      console.log(urlToSave);
       try {
         const siteSettings = Settings.findOne();
-        console.log(siteSettings);
         Settings.update({_id: siteSettings._id}, {$set: {url: urlToSave}})
       } catch (exception) {
         return exception;

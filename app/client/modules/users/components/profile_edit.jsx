@@ -22,7 +22,7 @@ class ProfileEdit extends React.Component {
                 src={(user.profile.displayPhoto)?user.profile.displayPhoto:'/uploads/default-img.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
-              <UploadFile methodType="updateDisplayPhoto"/>
+              <UploadFile methodType="updateDisplayPhoto" text="Change Display Photo"/>
             </div>
           </div>
           : ''}

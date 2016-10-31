@@ -90,8 +90,6 @@ class AddNewStaff extends React.Component {
   }
 
 
-  
-
   change() {
     let {role} = this.refs;
     (role.value == 'Client') ?
@@ -113,9 +111,7 @@ class AddNewStaff extends React.Component {
       <section id="team">
         <Tabs/>
         <PageTitle title="Add New User"/>
-
-        <UploadFile/>
-
+        
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm">

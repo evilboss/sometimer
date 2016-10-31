@@ -18,7 +18,7 @@ class Settings extends React.Component {
               src='/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png'
               alt="dp"
               className="display-photo responsive-img center-block"/>
-            <UploadFile methodType="updateDisplayPhoto"/>
+            <UploadFile methodType="updateSitePhoto" text="Change Site Logo"/>
           </div>
         </div>
       </section>

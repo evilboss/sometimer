@@ -19,11 +19,11 @@ class UploadFile extends React.Component {
   }
 
   render() {
-    let {methodType} = this.props;
+    let {methodType, text} = this.props;
     let {file} = this.states;
     return (
       <div>
-        <h5>Change Display Photo</h5>
+        <h5>{text}</h5>
         <p><strong>Note</strong>: only <code>.png</code>, <code>.jpeg</code></p>
         <div className="upload-area col s4">
           <form id="upload">

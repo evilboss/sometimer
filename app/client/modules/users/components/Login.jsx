@@ -35,7 +35,7 @@ class Login extends React.Component {
                 <div className="container">
                   <div className="form row circular-border">
 
-                    <PageTitle title='Login'/>
+                    <PageTitle title='Sign In'/>
                     {err ?
                       <span className="error-container">
                         <span className="error-text">

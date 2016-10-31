@@ -2,13 +2,14 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import Header from '../components/header.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  const subscriptionReady = [Meteor.subscribe('menu').ready(), Meteor.subscribe('user.current').ready()];
+  const subscriptionReady = [Meteor.subscribe('menu').ready(), Meteor.subscribe('user.current').ready(), Meteor.subscribe('settings').ready()];
   const dataReady = ()=> {
     const currentUser = Meteor.user();
-    //const userRole = (currentUser) ? (currentUser.profile) ? (currentUser.profile.role) ? currentUser.profile.role : '' : '' : '';
     options = {};
     const menu = Collections.Menu.find().fetch();
-    onData(null, {menu, currentUser});
+    let settings = Collections.Settings.findOne();
+    let sitePhoto = (settings) ? (settings.url) ? settings.url : '' : '';
+    onData(null, {menu, currentUser, sitePhoto});
   };
   (subscriptionReady) ? dataReady() : onData();
 };

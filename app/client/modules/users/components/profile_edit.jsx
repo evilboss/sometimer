@@ -11,7 +11,6 @@ class ProfileEdit extends React.Component {
 
 
   render() {
-
     const user = Meteor.user();
     return (
       <section id="edit-profile">

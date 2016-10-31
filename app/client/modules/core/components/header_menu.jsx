@@ -20,7 +20,7 @@ class HeaderMenu extends React.Component {
   };
 
   render() {
-    const currentUser = this.props.currentUser;
+    let {currentUser, sitePhoto} = this.props;
     return (
       <div>
         {(currentUser) ? (currentUser.profile) ?
@@ -61,7 +61,8 @@ class HeaderMenu extends React.Component {
                     </a>
                   </li>
                   <li>
-                    <img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/></li>
+                    <img className="inline"
+                         src={sitePhoto ? sitePhoto : '/Assets/teams/default/logo/remotiv_io_logo_style3.png'}/></li>
                 </ul>
 
                 <SideNav />

@@ -1,4 +1,4 @@
-import {File} from '/lib/collections';
+import {File, Settings} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {remotivUser} from './user/remotiv_user';
@@ -18,6 +18,12 @@ export default function () {
     'updateSitePhoto'(url){
       check(url, String);
       const urlToSave = encodeURI(url);
+      try {
+        const siteSettings = Settings.findOne();
+        Settings.update({_id:siteSettings._id},{$set:{url:urlToSave}})
+      } catch (exception) {
+        return exception;
+      }
     }
 
   });

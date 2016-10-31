@@ -13,6 +13,7 @@ import subProjects from './sub_projects';
 import todos from './todos';
 import invitations from './invitations';
 import files from './files';
+import settings from './settings';
 
 export default function () {
   timesheet();
@@ -30,4 +31,5 @@ export default function () {
   todos();
   invitations();
   files();
+  settings();
 }

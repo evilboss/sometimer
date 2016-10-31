@@ -7,8 +7,6 @@ export default function () {
     'updateDisplayPhoto'(url){
       check(url, String);
       const urlToSave = encodeURI(url);
-      //Modules.both.checkUrlValidity(urlToSave);
-
       try {
         remotivUser.update(this.userId, 'profile.displayPhoto', urlToSave);
       } catch (exception) {
@@ -20,7 +18,7 @@ export default function () {
       const urlToSave = encodeURI(url);
       try {
         const siteSettings = Settings.findOne();
-        Settings.update({_id:siteSettings._id},{$set:{url:urlToSave}})
+        Settings.update({_id: siteSettings._id}, {$set: {url: urlToSave}})
       } catch (exception) {
         return exception;
       }

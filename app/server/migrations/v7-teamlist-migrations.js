@@ -1,5 +1,5 @@
 import {Teamlist} from '/lib/collections';
-Migrations.add({
+/*Migrations.add({
   version: 7,
   name: 'Add Team list to app',
   up: function () {
@@ -8,7 +8,7 @@ Migrations.add({
   down: function () {
     removeAllStaffList();
   }
-});
+});*/
 const defaultstafflist = ['aaron.randrup@ezyva.com', 'manager@manager.com', 'staff@staff.com', 'jr@ezyva.com'];
 const loadStaffList = ()=> {
   console.info('Loading stafflist');

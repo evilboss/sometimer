@@ -4,7 +4,7 @@
 import {setTime, getDates, generateDateToday, getHoursRendered} from '/server/methods/timeDate/timeDate';
 import {Timelogs} from '/lib/collections/';
 import moment from 'moment';
-
+/*
 Migrations.add({
   version: 6,
   name: 'Add Sample timelogs',
@@ -14,7 +14,7 @@ Migrations.add({
   down: function () {
     removeTimelogs();
   }
-});
+});*/
 const generateLogs = ()=> {
   const {day, month, year} = generateDateToday();
   const startDate = (day <= 15) ? moment([year, month]).add(-1, "month") : moment(moment([year, month]).add(-1, "month")).add(15, "days");

@@ -1,3 +1,4 @@
+/*
 Migrations.add({
   version: 3,
   name: 'Add Initial users to app',
@@ -8,6 +9,7 @@ Migrations.add({
     removeStaff();
   }
 });
+*/
 const newStaffs = [
   {
     email: 'kimberly.ocariz@ezyva.com',

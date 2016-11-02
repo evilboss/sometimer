@@ -5,7 +5,7 @@ import {Timelogs, Breaks} from '/lib/collections/';
 import {getHoursRendered} from '/server/methods/timeDate/timeDate';
 import {getRandomInt} from '/lib/lib/utils';
 import {addTime, subtractTime} from '/lib/lib/time';
-Migrations.add({
+/*Migrations.add({
   version: 8,
   name: 'Add Breaks to staff@staff.com user',
   up: function () {
@@ -14,7 +14,7 @@ Migrations.add({
   down: function () {
     removeBreaks();
   }
-});
+});*/
 const getTimelogs = (staffId)=> Timelogs.find({userId: staffId}).fetch();
 const loadBreaks = ()=> {
   console.info('Adding breaks to staff');

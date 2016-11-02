@@ -2,7 +2,7 @@
  * Created by jr on 8/26/16.
  */
 import {Teamlist} from '/lib/collections';
-Migrations.add({
+/*Migrations.add({
   version: 9,
   name: 'Add Stafflist to client',
   up: function () {
@@ -11,7 +11,7 @@ Migrations.add({
   down: function () {
     removeStaffs();
   }
-});
+});*/
 
 const defaultStafflist = ['aaron.randrup@ezyva.com', 'manager@manager.com', 'jr@ezyva.com', 'dan.arceo@ezyva.com', 'kimberly.ocariz@ezyva.com'];
 const loadStaffs = ()=> {

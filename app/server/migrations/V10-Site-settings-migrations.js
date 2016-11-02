@@ -2,7 +2,7 @@
  * Created by jr on 8/26/16.
  */
 import {Settings} from '/lib/collections';
-Migrations.add({
+/*Migrations.add({
   version: 10,
   name: 'Add Default settings to remotiv',
   up: function () {
@@ -11,7 +11,7 @@ Migrations.add({
   down: function () {
     removeSettings();
   }
-});
+});*/
 
 const loadSettings = ()=> {
   console.info('Loading Settings');

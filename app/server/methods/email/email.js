@@ -8,7 +8,7 @@ const sendInvite = (invite)=> {
     subject: 'Invitation Email',
     template: 'invitation',
     replyTo: 'Remotiv Notifications <notifications@remotiv.com>',
-    data: {token: invite.token, name: `${invite.firstName} ${invite.lastName}`},
+    data: {token: invite.token, name: `${invite.firstName} ${invite.lastName}`, role: invite.role},
     attachments: []
   };
   Mailer.send(message);

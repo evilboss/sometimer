@@ -8,7 +8,12 @@ const sendInvite = (invite)=> {
     subject: 'Invitation Email',
     template: 'invitation',
     replyTo: 'Remotiv Notifications <notifications@remotiv.com>',
-    data: {token: invite.token, name: `${invite.firstName} ${invite.lastName}`, role: invite.role},
+    data: {
+      token: invite.token,
+      name: `${invite.firstName} ${invite.lastName}`,
+      position: invite.position,
+      site: `www.${invite.site}.${Meteor.absoluteUrl()}`
+    },
     attachments: []
   };
   Mailer.send(message);

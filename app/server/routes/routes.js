@@ -24,5 +24,4 @@ Picker.route('/csv', (params, request, response, next) => {
   });
   this.response.writeHead(200, headers);
   return this.response.end(fileData);
-
 });

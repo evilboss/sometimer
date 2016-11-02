@@ -30,6 +30,8 @@ const addNew = (user)=> {
     inviter: Meteor.userId(),
     firstName: user.profile.firstName,
     lastName: user.profile.lastName,
+    site: user.profile.site,
+    position: user.profile.position,
     email: user.email,
     userId: userId
   };

@@ -10,18 +10,16 @@ export default function () {
     return Meteor.users.find({_id: usersId});
   });
   Meteor.publish('users.allstaff', function (site) {
-    const selector = (auth.isSuperAdmin(this.userId)) ?
-    {'profile.role': 'staff'} :
-    {
-      'profile.role': 'staff',
-      'profile.site': (site) ?
-        site
-        : 'mustnotreturnanything'
-
+      const selector = (site) ?
+      {'profile.role': 'staff', 'profile.site': site} :
+        (auth.isSuperAdmin(this.userId))
+          ? {'profile.role': 'staff', 'profile.site': site}
+          : {'_id': 'none'};
+      console.log(selector);
+      return Meteor.users.find(selector);
     }
-    console.log(selector);
-    return Meteor.users.find(selector);
-  });
+  )
+  ;
   Meteor.publish('users.allClients', function () {
     return Meteor.users.find({'profile.role': 'client'});
   });

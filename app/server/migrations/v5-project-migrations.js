@@ -2,6 +2,7 @@
  * Created by jr on 8/4/16.
  */
 import {Projects} from '/lib/collections';
+/*
 Migrations.add({
   version: 5,
   name: 'Adds Projects to db.',
@@ -12,6 +13,7 @@ Migrations.add({
     removeProjects();
   }
 });
+*/
 const projectnames = ['Project 1', 'project 2', 'test'];
 const loadProjects = ()=> {
   let userList = ['jr@ezyva.com', 'admin@admin.com', 'aaron.randrup@ezyva.com', 'manager@manager.com', 'staff@staff.com'];

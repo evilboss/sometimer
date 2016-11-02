@@ -1,8 +1,10 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import ViewProjects from '../components/view_projects.jsx';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  const subsriptionReady = [Meteor.subscribe('project-list').ready(), Meteor.subscribe('user.current').ready()];
+  const subsriptionReady = [Meteor.subscribe('project-list', domainHelpers.getSubdomain()).ready(), Meteor.subscribe('user.current').ready()];
 
   const dataReady = ()=> {
     const projects = Collections.Projects.find().fetch();

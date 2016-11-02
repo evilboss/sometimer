@@ -2,6 +2,7 @@
  * Created by jr on 6/8/16.
  */
 import {Team} from '/lib/collections';
+/*
 Migrations.add({
   version: 4,
   name: 'Add Default Teams to app',
@@ -12,6 +13,7 @@ Migrations.add({
     removeAllTeams();
   }
 });
+*/
 const teamlist = [
   {
     name: 'Protos',

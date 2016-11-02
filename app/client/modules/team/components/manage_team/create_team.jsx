@@ -8,6 +8,7 @@ import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_selec
 import ReactMaterialSelect from 'react-material-select';
 import 'react-material-select/lib/css/reactMaterialSelect.css';
 import DisplayManager from '/client/modules/manager/containers/display_manager';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class CreateTeam extends React.Component {
     team.members = this.state.staffList;
     team.members.push(Meteor.userId());
     team.teamLeader = this.refs.teamLeader.getValue();
+    team.site = domainHelpers.getSubdomain();
     Meteor.call('team.insert', team);
     FlowRouter.go('/dashboard/team');
   }

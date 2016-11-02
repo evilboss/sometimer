@@ -11,11 +11,13 @@ import Timesheet from '/client/modules/timesheet/containers/timesheet';
 import EditTeam from '/client/modules/team/containers/manage_team/edit_team';
 import Settings from '/client/modules/core/containers/settings';
 import {control} from '/lib/access-control/control';
-
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 const dashboardRoutes = FlowRouter.group({
   prefix: "/dashboard",
   triggersEnter: [function (context, redirect) {
     accessControl.isLoggedIn('dashboard', redirect);
+  }, (context, redirect)=> {
+    console.log(domainHelpers.getSubdomain());
   }]
 });
 export {dashboardRoutes};

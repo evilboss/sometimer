@@ -3,8 +3,9 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import {auth} from '/server/methods/auth/auth';
 export default function () {
-  Meteor.publish('project-list', function () {
+  Meteor.publish('project-list', function (site) {
     const selector = (auth.isAdmin(this.userId)) ? {} : {collaborators: {$all: [this.userId]}};
+    selector.site = (auth.isSuperAdmin(this.userId)) ? '' : site;
     const options = {};
     return Projects.find(selector, options);
   });

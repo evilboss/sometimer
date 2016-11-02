@@ -16,7 +16,7 @@ const loadUsers = ()=> {
   if (Meteor.users.find({}).count() === 0) {
     console.info('migrating user admins');
     Accounts.createUser({
-      email: "admin@admin.com",
+      email: "admin@remotiv.io",
       password: "password",
       profile: {
         firstName: 'Admin',
@@ -25,7 +25,7 @@ const loadUsers = ()=> {
         staffType: 'Regular',
         jobTitle: 'Administrator',
         displayPhoto: '/uploads/defaults/teams/default/profiles/admin/admin.gif',
-        role: 'admin',
+        role: 'super-admin',
         permissions: [
           'createClients', 'readClients', 'updateClients', 'deleteClients',
           'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
@@ -39,8 +39,35 @@ const loadUsers = ()=> {
           'updatePermissions',
         ],
         status: 'completed',
+        site: 'remote',
       }
     });
+    Accounts.createUser({
+      email: "notifications@remotiv.io",
+      password: "password",
+      profile: {
+        firstName: 'Notification',
+        lastName: 'Mager',
+        department: 'Admin',
+        staffType: 'Regular',
+        jobTitle: 'Manager',
+        displayPhoto: '/uploads/defaults/teams/default/profiles/manager/joker.jpg',
+        role: 'manager',
+        permissions: [
+          'createClients', 'readClients', 'updateClients', 'deleteClients',
+          'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
+          'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
+          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
+          'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
+          'createProject', 'readProject', 'updateProject', 'deleteProject',
+          'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
+          'createTask', 'readTask', 'updateTask', 'deleteTask',
+        ],
+        status: 'completed',
+        site: 'remote',
+      }
+    });
+
     Accounts.createUser({
       email: "manager@manager.com",
       password: "password",
@@ -63,6 +90,7 @@ const loadUsers = ()=> {
           'createTask', 'readTask', 'updateTask', 'deleteTask',
         ],
         status: 'completed',
+        site: 'remote',
       }
     });
     Accounts.createUser({
@@ -86,6 +114,7 @@ const loadUsers = ()=> {
           'readTask',
         ],
         status: 'completed',
+        site: 'remote'
 
       }
     });
@@ -110,6 +139,8 @@ const loadUsers = ()=> {
           'readTask',
         ],
         status: 'completed',
+        site: 'remote',
+
       }
     });
     Accounts.createUser({
@@ -133,7 +164,9 @@ const loadUsers = ()=> {
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
         ]
-      }
+      },
+      status: 'completed',
+      site: 'remote',
     });
   }
 };

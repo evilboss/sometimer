@@ -1,9 +1,12 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
+
 import SendInvitationModal from '../components/send_invitation_modal.jsx';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+
 export const composer = ({context, clearErrors}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  if (Meteor.subscribe('team.list').ready()) {
+  if (Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()) {
     const error = LocalState.get('CREATE_INVITE_ERROR');
     const team = Collections.Team.find().fetch();
     const currentUser = Meteor.user();

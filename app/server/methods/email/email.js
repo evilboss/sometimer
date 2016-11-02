@@ -2,6 +2,13 @@
  * Created by jr on 9/20/16.
  */
 import {Email} from 'meteor/email';
+const addSubdomain=(subDomain)=>{
+  let baseUrl = Meteor.absoluteUrl();
+  console.log(Meteor.absoluteUrl());
+  let urlParts = baseUrl.split('//');
+  console.log(urlParts);
+  return `${urlParts[0]}//${subDomain}.${urlParts[1]}`;
+};
 const sendInvite = (invite)=> {
   const message = {
     to: `${invite.firstName} ${invite.lastName} <${invite.email}>`,
@@ -12,7 +19,7 @@ const sendInvite = (invite)=> {
       token: invite.token,
       name: `${invite.firstName} ${invite.lastName}`,
       position: invite.position,
-      site: `www.${invite.site}.${Meteor.absoluteUrl()}`
+      site: addSubdomain(invite.site)
     },
     attachments: []
   };

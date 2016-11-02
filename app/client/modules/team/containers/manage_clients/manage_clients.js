@@ -1,8 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-
 import ManageClients from '../../components/manage_clients/manage_clients.jsx';
-
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionsReady = [Meteor.subscribe('users.allClients', domainHelpers.getSubdomain()).ready()];
@@ -12,7 +10,6 @@ export const composer = ({context}, onData) => {
   };
   (subscriptionsReady) ? dataReady() : onData();
 };
-
 export const depsMapper = (context, actions) => ({
   context: () => context
 });

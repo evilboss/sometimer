@@ -19,7 +19,7 @@ class ProfileEdit extends React.Component {
           <div className="row">
             <div className="col s12 center-align">
               <img
-                src={(user.profile.displayPhoto)?user.profile.displayPhoto:'/uploads/default_user.png'}
+                src={(user.profile.displayPhoto)?user.profile.displayPhoto:'/uploads/defaults/default_user.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
               <UploadFile methodType="updateDisplayPhoto" text="Change Display Photo"/>

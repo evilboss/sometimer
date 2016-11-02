@@ -4,8 +4,8 @@ section#profile, section#edit-profile {
     display: none;
   }
   .display-photo {
-    width: 11em;
-    height: 11em;
+    max-width: 14em;
+    max-height: 14em;
     border-radius: 1em;
   }
   ul.collection {

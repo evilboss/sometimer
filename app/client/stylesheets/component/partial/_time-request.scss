@@ -16,4 +16,10 @@ section#time-request {
   button {
     margin: 5px 0;
   }
+  .content-padding {
+    padding: 10px 0;
+  }
+  td, th {
+    vertical-align: initial !important;
+  }
 }

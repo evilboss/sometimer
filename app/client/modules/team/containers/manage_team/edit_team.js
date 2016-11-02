@@ -21,7 +21,6 @@ export const depsMapper = (context, actions) => ({
   clearErrors: actions.team_actions.clearErrors,
   context: () => context
 });
-
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)

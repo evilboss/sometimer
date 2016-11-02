@@ -32,15 +32,12 @@ export default class Profile extends React.Component {
                 <li className="collection-item">Email: <span>{(user.emails[0]) ? user.emails[0].address : ''}</span>
                 </li>
                 <li className="collection-item">First Name:
-                  <span>{(user.profile.firstName) ? user.profile.firstName : ''}</span></li>
+                  <span> {(user.profile.firstName) ? user.profile.firstName : ''}</span></li>
                 <li className="collection-item">Last Name:
-                  <span>{(user.profile.lastName) ? user.profile.lastName : ''}</span></li>
+                  <span> {(user.profile.lastName) ? user.profile.lastName : ''}</span></li>
                 <li className="collection-item">Department:
-                  <span>{(user.profile.department) ? user.profile.department : ''}</span></li>
-                <li className="collection-item">Designation:
-                  <span>{(user.profile.jobTitle) ? user.profile.jobTitle : ''}</span></li>
-                <li className="collection-item">Status:
-                  <span>{(user.profile.staffType) ? user.profile.staffType : ''}</span></li>
+                  <span> {(user.profile.department) ? user.profile.department : ''}</span></li>
+
               </ul>
             </div>
 

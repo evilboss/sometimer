@@ -3,9 +3,16 @@ section#profile, section#edit-profile {
   .card-title {
     display: none;
   }
+  section#edit-profile {
+    .display-photo {
+      max-width: 14em;
+      max-height: 14em;
+      border-radius: 1em;
+    }
+  }
   .display-photo {
-    max-width: 14em;
-    max-height: 14em;
+    width: 11em;
+    height: 11em;
     border-radius: 1em;
   }
   ul.collection {

@@ -23,7 +23,7 @@ class TimeRequest extends React.Component {
           <thead>
           <tr>
             <th>Date</th>
-            <th>Staff</th>
+            <th colSpan="3">Staff</th>
             <th>Log In</th>
             <th>Total Break</th>
             <th>Log Out</th>
@@ -38,9 +38,9 @@ class TimeRequest extends React.Component {
               <td>
                 {request.date}
               </td>
-              <td className="staff">
+              <td colSpan="3" className="staff">
                 {request.logs.map((log, index)=>
-                  <div key={index} className="relative">
+                  <div key={index} className="relative ">
                     <span className="dp">
                     <StaffDp userId={log.userId}/>
                       </span>
@@ -52,13 +52,13 @@ class TimeRequest extends React.Component {
               </td>
               <td>
                 {request.logs.map((log, index)=>
-                  (log.timeIn) ? <div key={index}>{moment(log.timeIn).tz('Asia/Manila').format(format)}</div> : ''
+                  (log.timeIn) ? <div key={index} className="content-padding">{moment(log.timeIn).tz('Asia/Manila').format(format)}</div> : ''
                 )}
               </td>
               <td>
                 {request.logs.map((log, index)=>
                   (log.totalBreak) ?
-                    <div key={index}>
+                    <div key={index} className="content-padding">
                       <a href={`/dashboard/timesheet/breaks/${log._id}`}>
                         {log.totalBreak}
                       </a>
@@ -68,7 +68,7 @@ class TimeRequest extends React.Component {
               </td>
               <td>
                 {request.logs.map((log, index)=>
-                  (log.timeOut) ? <div key={index}>{moment(log.timeOut).tz('Asia/Manila').format(format)}</div> : ''
+                  (log.timeOut) ? <div className="content-padding" key={index}>{moment(log.timeOut).tz('Asia/Manila').format(format)}</div> : ''
                 )}
               </td>
               <td>
@@ -76,12 +76,12 @@ class TimeRequest extends React.Component {
               </td>
               <td>
                 {request.logs.map((log, index)=>
-                  (log.totalRendered) ? <div key={index}>{log.totalRendered}</div> : ''
+                  (log.totalRendered) ? <div className="content-padding" key={index}>{log.totalRendered}</div> : ''
                 )}
               </td>
               <td>
                 {request.logs.map((log, index)=>
-                  <div key={index}>
+                  <div key={index} className="content-padding">
                     {(log.approved) ? <div className="status-indicator Approved"></div>
                       : <ApprovalButton timelogId={log._id}/>}
                   </div>

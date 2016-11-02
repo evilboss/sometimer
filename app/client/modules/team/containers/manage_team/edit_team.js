@@ -1,9 +1,10 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import EditTeam from '../../components/manage_team/edit_team.jsx';
+
 export const composer = ({context, clearErrors, teamId}, onData) => {
   const {Meteor, Collections, LocalState} = context();
-  let subscriptionReady = [Meteor.subscribe('team.list', teamId).ready()];
+  let subscriptionReady = [Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
     const error = LocalState.get('UPDATE_TEAM_ERROR');
     let team = Collections.Team.findOne(teamId);

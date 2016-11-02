@@ -4,9 +4,7 @@
 import {Email} from 'meteor/email';
 const addSubdomain=(subDomain)=>{
   let baseUrl = Meteor.absoluteUrl();
-  console.log(Meteor.absoluteUrl());
   let urlParts = baseUrl.split('//');
-  console.log(urlParts);
   return `${urlParts[0]}//${subDomain}.${urlParts[1]}`;
 };
 const sendInvite = (invite)=> {

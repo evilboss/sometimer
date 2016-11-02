@@ -6,8 +6,7 @@ const fields = {'profile': 1, 'emails': 1};
 export default function () {
   Meteor.publish('team.list', function (site) {
     const selector = (auth.isAdmin(this.userId)) ? {} : {members: {$all: [this.userId]}};
-    selector.site = (auth.isSuperAdmin(this.userId)) ? '' : site;
-    console.log(selector);
+    (auth.canManage(this.userId)) ? selector.site = site : '';
     const options = {};
     return Team.find(selector, options);
   });

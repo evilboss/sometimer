@@ -144,7 +144,7 @@ class AddNewStaff extends React.Component {
                           : ''
                       }
                       {
-                        (userRole == 'admin') ?
+                        ((userRole == 'admin' || userRole == 'super-admin')) ?
                           <option key={2} defaultValue="manager"> Manager </option>
                           : ''
                       }

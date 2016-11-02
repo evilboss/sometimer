@@ -22,7 +22,14 @@ class Notification extends React.Component {
       <div>
         <a href="" className="notification-menu" data-activates="notification-menu">
           <i className="mdi-social-notifications"></i>
-          {(requestCount) ? <small className="notification-badge">{requestCount}</small> : ''}
+          {(currentUser.profile) ?
+            (currentUser.profile.role) ?
+              (currentUser.profile.role == 'admin' || currentUser.profile.role == 'manager') ?
+                (requestCount) ? <small className="notification-badge">{requestCount}</small> : ''
+                : ''
+              : ''
+            : ''}
+
         </a>
 
         {(currentUser.profile) ?

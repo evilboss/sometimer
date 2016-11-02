@@ -16,7 +16,7 @@
   "app": "../../app",
   "env": {
     "PORT": 80,
-    "ROOT_URL": "http://ec2-52-91-186-237.compute-1.amazonaws.com",
+    "ROOT_URL": "http://www.remotiv.io/",
     "NODE_ENV": "staging"
   },
   "deployCheckWaitTime": 60

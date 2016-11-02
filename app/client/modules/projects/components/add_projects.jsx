@@ -4,6 +4,7 @@ import MyInput from '../../../utils/form/input';
 import TextArea from '../../../utils/form/textarea';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import PageTitle from '/client/modules/core/components/page_title';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import ProjectQuickView from '/client/modules/projects/containers/project_quick_view';
 /*TODO:@aaron project create fields*/
 class AddProjects extends React.Component {
@@ -18,6 +19,7 @@ class AddProjects extends React.Component {
     $(document).ready(function () {
       $('select').material_select();
     });
+    console.log();
   }
 
   getData(data) {
@@ -26,6 +28,7 @@ class AddProjects extends React.Component {
 
   addProject(project) {
     project.collaborators = this.state.staffList;
+    project.site= domainHelpers.getSubdomain();
     project.collaborators.push(Meteor.userId());
     Meteor.call('projects.insert', project);
     FlowRouter.go('/projects/tileview');

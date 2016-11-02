@@ -14,6 +14,7 @@ import SubProjects from './sub_projects';
 import Todos from './todos';
 import Files from './files';
 import Settings from './settings';
+import Sites from './sites';
 
 
 export {
@@ -32,5 +33,6 @@ export {
   SubProjects,
   Todos,
   Files,
-  Settings
+  Settings,
+  Sites
 };

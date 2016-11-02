@@ -35,9 +35,6 @@ function buildDomain(sub, url) {
   //find & remove port number
   port = domain.split(':')[1];
   domain = domain.split(':')[0];
-
-
-
   let newUrl = protocol + '//' + sub + '.' + domain
   if (port) {
     newUrl = newUrl + ':' + port;

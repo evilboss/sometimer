@@ -7,6 +7,7 @@ import TimePicker from 'rc-time-picker';
 import {control} from '/lib/access-control/control';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 import UploadFile from '/client/modules/team/components/upload_file';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class AddNewStaff extends React.Component {
         permissions: this.state.permissions,
         role: role,
         status: 'invited',
+        site: domainHelpers.getSubdomain()
       },
       email: email.value,
     };
@@ -111,7 +113,7 @@ class AddNewStaff extends React.Component {
       <section id="team">
         <Tabs/>
         <PageTitle title="Add New User"/>
-        
+
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm">

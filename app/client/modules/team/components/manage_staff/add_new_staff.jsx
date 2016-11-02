@@ -139,12 +139,12 @@ class AddNewStaff extends React.Component {
                     <select ref="role">
                       <option key={0} defaultValue="" disabled selected>Choose User Role</option>
                       {
-                        (userRole == 'admin') ?
+                        ((userRole == 'admin' || userRole == 'super-admin')) ?
                           <option key={1} defaultValue="admin">Admin</option>
                           : ''
                       }
                       {
-                        (userRole == 'admin') ?
+                        ((userRole == 'admin' || userRole == 'super-admin')) ?
                           <option key={2} defaultValue="manager"> Manager </option>
                           : ''
                       }

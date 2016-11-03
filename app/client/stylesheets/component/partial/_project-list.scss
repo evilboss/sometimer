@@ -13,6 +13,12 @@ section.project-list {
       color: $theme-color;
     }
   }
+  .page-title {
+    .btn-add {
+      margin-left: 1.5em;
+      vertical-align: super;
+    }
+  }
 
   article {
     .card {
@@ -20,11 +26,8 @@ section.project-list {
       animation-fill-mode: both;
       animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
       transition: all 0.2s ease-out;
-      .card-content {
-        height: 12em;
-        .card-title {
-          color: black;
-        }
+      i.close {
+        color: $dark-gray;
       }
       .card-action {
         padding: 0.5em;

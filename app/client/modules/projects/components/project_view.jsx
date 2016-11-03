@@ -29,10 +29,12 @@ class ProjectView extends React.Component {
             <div className="tabs-background">
               <div className="tabs-wrapper">
                 <ul className="tabs">
+
                   <li className="tab col s3">
-                    <a className="active" href="#DISCUSSIONS">DISCUSSIONS</a></li>
-                  <li className="tab col s3"><a href="#SUB">SUB PROJECTS</a></li>
+                    <a className="active" href="#SUB">SUB PROJECTS</a></li>
                   <li className="tab col s3"><a href="#TASK">TASK</a></li>
+                  <li className="tab col s3">
+                    <a href="#DISCUSSIONS">DISCUSSIONS</a></li>
                 </ul>
               </div>
             </div>

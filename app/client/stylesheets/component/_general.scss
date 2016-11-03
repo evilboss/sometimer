@@ -44,6 +44,7 @@ nav {
 .page-title {
   background-color: white;
   margin: -0.8em;
+  height: 4.35em;
   padding: 0.5em 1.5em;
   border-bottom: 1px solid #E8E8E8;
   margin-bottom: 0;
@@ -383,6 +384,24 @@ form {
   }
 }
 
+article {
+  .card {
+    overflow: hidden;
+    animation: bottom-to-top 1.5s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    transition: all 0.2s ease-out;
+    .card-title {
+      padding: 15px 20px;
+      background-color: $primary-color;
+      color: white;
+    }
+    .card-content {
+      min-height: 6em;
+    }
+  }
+}
+
 .dropzone-wrapper {
   margin: 0.5em;
   width: 100%;
@@ -473,17 +492,22 @@ form {
 }
 
 .btn-add {
-  margin-top: 5em;
+  display: inline-block;
+  margin-top: 0;
+  border-radius: 2px;
   a {
-    border-radius: 50%;
-    i {
-      font-size: 3em;
-      color: white;
-      padding: 10px;
+    color: white;
+    background-color: $dark-green;
+    span {
+      vertical-align: text-bottom;
+      padding: 5px;
     }
-  }
-  h6 {
-    color: $secondary-color;
+    i {
+      border-left: 1px solid $primary-color;
+      color: white;
+      font-size: 1.2em;
+      padding: 6px;
+    }
   }
 }
 
@@ -566,6 +590,8 @@ ul.tabs {
           color: white;
           &.active {
             color: $theme-color;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
           }
         }
       }

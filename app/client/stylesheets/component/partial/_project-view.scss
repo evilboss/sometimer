@@ -72,6 +72,9 @@ section#project-view {
               padding: 0 10px;
             }
           }
+          i.close {
+            color: $dark-gray;
+          }
         }
         .sub-create {
           border-top: solid 1px $gray-line;

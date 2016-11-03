@@ -23,9 +23,10 @@ class SubProjectList extends React.Component {
                       {subProject.name}
                       {subProject.saving ? '...' : null}
                     </div>
+                    <div className="clearfix">
+                      <i className="right material-icons close">delete_forever</i>
+                    </div>
                     <p>{subProject.details}</p>
-                  </div>
-                  <div className="card-action">
                   </div>
                 </div>
               </article>

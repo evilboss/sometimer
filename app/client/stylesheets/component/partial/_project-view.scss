@@ -1,6 +1,42 @@
 section#project-view {
+
   @extend .container-margin;
   margin-bottom: 0;
+  h4 {
+    color: $primary-color;
+  }
+  .page-title {
+    .btn-add {
+      margin-left: 1.5em;
+      vertical-align: super;
+    }
+  }
+  .project-title {
+    .collaborators {
+      direction: rtl;
+      p {
+        margin-bottom: 0;
+      }
+      img {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+
+  .project-view {
+    margin-left: 3em;
+    vertical-align: sub;
+    i {
+      font-size: 30px;
+    }
+    a {
+      color: $gray-line;
+    }
+    .active {
+      color: $theme-color;
+    }
+  }
   .tabs-background {
     margin: 0;
   }
@@ -70,6 +106,7 @@ section#project-view {
             p {
               color: gray;
               padding: 0 10px;
+              margin-top: 0;
             }
           }
           i.close {

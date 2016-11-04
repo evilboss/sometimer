@@ -1,37 +1,14 @@
 section.comments {
   .instruction-list {
+    height: 36vh;
+    border-right: 1px solid $gray-line;
     table {
       tr {
         border-bottom: 1px solid $gray-line;
       }
-      td.avatar {
-        min-width: 42px;
-        width: 42px;
-      }
-      td.who {
-        width: 1%;
-        white-space: nowrap;
-        text-align: left;
-        span {
-          padding: 5px 14px 5px 0;
-          display: block;
-          white-space: nowrap;
-          max-width: 120px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-      td.what {
-        max-width: 450px;
-        min-width: 450px;
-        line-height: 18px;
-        padding-bottom: 0;
-        padding-top: 6px;
-      }
-      td.when {
-        white-space: nowrap;
-        text-align: right;
-      }
     }
+  }
+  .materialize-textarea{
+
   }
 }

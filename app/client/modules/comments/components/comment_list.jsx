@@ -13,31 +13,32 @@ class CommentList extends React.Component {
     const format = 'dddd, D MMMM YYYY hh:mm A z';
     return (
       <section className="comments white-wrapper">
-        <h4>Instructions</h4>
-
-        <div>
-          <CreateComment projectId={projectId}/>
-        </div>
-        <div className="instruction-list">
-          {comments.length === 0 ? <p>No Comments Yet!</p> : null}
-          <table>
-            <tbody>
-
-            {comments.map(comment => (
-              <tr key={comment._id}>
-                <td className="avatar"></td>
-                <td className="who">
-                  <span>
-                  <Username userId={comment.author}/>
-                    </span>
-                </td>
-                <td className="what">{comment.text}</td>
-                <td className="when">{moment(comment.createdAt).tz('Asia/Manila').format(format)}</td>
-                {comment.saving ? '...' : null}
-              </tr>
-            ))}
-            </tbody>
-          </table>
+        <h4>Discussions</h4>
+        <div className="row border-top">
+          <div className="instruction-list col s5">
+            {comments.length === 0 ? <p>No Comments Yet!</p> : null}
+            <table>
+              <tbody>
+              {comments.map(comment => (
+                <tr key={comment._id}>
+                  <td className="avatar center-align">
+                    <img src="/uploads/defaults/teams/default/profiles/jack/JackTorrance.jpg" alt="people"
+                         className="circle dp-xs center-block"/>
+                    <Username userId={comment.author}/>
+                  </td>
+                  <td className="what">
+                    {comment.text}
+                    <div>{moment(comment.createdAt).tz('Asia/Manila').format(format)}</div>
+                  </td>
+                  {comment.saving ? '...' : null}
+                </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="col s7">
+            <CreateComment projectId={projectId}/>
+          </div>
         </div>
       </section>
     );

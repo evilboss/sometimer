@@ -23,7 +23,35 @@ class ProjectView extends React.Component {
     const {name, _id} = (this.props.project) ? this.props.project : {name: '', _id: ''};
     return (
       <section id="project-view">
-        <PageTitle title={name}/>
+        <div className="page-title">
+          <h5 className="inline">Project Management</h5>
+          {
+            (userPermissions) ? control.isPermitted('createProject', userPermissions) ?
+              <div className="btn-add">
+                <a href="/projects/new" className="waves-effect waves-light secondary-color">
+                  <span>Add New Project</span>
+                  <i className="material-icons">add</i></a>
+              </div>
+              : '' : ''
+          }
+
+          <div className="project-view inline right">
+            <a href="/projects/tileview"><i className="material-icons">view_module</i></a>
+            <i className="material-icons active">list</i>
+          </div>
+          <div className="project-title">
+            <h5 className="inline">
+              Project: {name}
+            </h5>
+            <div className="collaborators right">
+              <p>PROJECT COLLABORATORS</p>
+              <img src="/uploads/defaults/teams/default/profiles/jack/JackTorrance.jpg" alt="people"
+                   className="circle"/>
+            </div>
+          </div>
+        </div>
+
+
         <div className="row">
           <section className="col s12 middle">
             <div className="tabs-background">

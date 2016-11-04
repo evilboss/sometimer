@@ -21,7 +21,7 @@ class SubCreate extends React.Component {
           (userPermissions) ? control.isPermitted('createSubProject', userPermissions) ?
             <div class="sub-create">
 
-              <h4>Create Sub Project</h4>
+              <h4>Create A Sub Project</h4>
               {error ? this._renderError(error) : null}
 
               <div>
@@ -37,8 +37,8 @@ class SubCreate extends React.Component {
                 </div>
 
                 <StaffMultiSelect getData={this.getData.bind(this)}/>
-                <button className="btn waves-effect waves-light theme-color" onClick={this._create.bind(this)}>Add
-                  Sub-Project
+                <button className="btn waves-effect waves-light theme-color" onClick={this._create.bind(this)}>
+                  Create Sub Project
                 </button>
               </div>
 

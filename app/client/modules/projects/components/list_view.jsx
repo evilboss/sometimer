@@ -11,29 +11,26 @@ class ListView extends React.Component {
     return (
       <section className="project-list">
         <div className="page-title">
-          <h5 className="inline">ProjectList</h5>
+          <h5 className="inline">Project Management</h5>
+          {
+            (userPermissions) ? control.isPermitted('createProject', userPermissions) ?
+              <div className="btn-add">
+                <a href="/projects/new" className="waves-effect waves-light secondary-color">
+                  <span>Add New Project</span>
+                  <i className="material-icons">add</i></a>
+              </div>
+              : '' : ''
+          }
 
-          <div className="project-view inline">
-            <a href="/projects/tileview"><i className="material-icons ">view_module</i></a>
+          <div className="project-view inline right">
+            <a href="/projects/tileview"><i className="material-icons">view_module</i></a>
             <i className="material-icons active">list</i>
           </div>
         </div>
 
 
         <div className="row">
-          <div className="col s2 center-align">
-            {
-              (userPermissions) ? control.isPermitted('createProject', userPermissions) ?
-                <div className="btn-add">
-                  <a href="/projects/new" className="waves-effect waves-light secondary-color">
-                    <i className="material-icons">add</i></a>
-                  <h6>New Project</h6>
-                </div>
-                : '' : ''
-            }
-          </div>
-
-          <div className="col s10">
+          <div className="col s12">
             <div className="collection">
               {
                 (userPermissions) ? control.isPermitted('readProject', userPermissions) ?

@@ -14,6 +14,7 @@ export default function () {
         'profile.role': 'staff',
         'profile.site': site
       } : {'_id': 'none'};
+      console.log(selector);
       console.log(Meteor.users.find(selector).fetch());
       return Meteor.users.find(selector);
     }

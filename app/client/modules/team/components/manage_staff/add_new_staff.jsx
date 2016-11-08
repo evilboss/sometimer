@@ -55,7 +55,7 @@ class AddNewStaff extends React.Component {
         role.value = '',
         status.value = '',
         email.value = '',
-        sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success');
+        sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success','/dashboard/team/manage-staff');
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
   }

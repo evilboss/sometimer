@@ -15,15 +15,27 @@ class Tabs extends React.Component {
              className={`${FlowHelpers.currentRoute('dashboard.team')} ${FlowHelpers.currentRoute('dashboard.team.new')} ${FlowHelpers.currentRoute('dashboard.myteam')}`}>
             Team</a>
           {
-            (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
+            (userPermissions) ? control.isPermitted('readStaffs', userPermissions) ?
               <a href="/dashboard/team/manage-staff"
                  className={`${FlowHelpers.currentRoute('dashboard.manageStaff')} ${FlowHelpers.currentRoute('dashboard.manageStaff.new')}`}>Staff</a>
               : '' : ''
           }
           {
-            (userPermissions) ? control.isPermitted('updateClients', userPermissions) ?
+            (userPermissions) ? control.isPermitted('readClients', userPermissions) ?
               <a href="/dashboard/team/manage-clients"
                  className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Client</a>
+              : '' : ''
+          }
+          {
+            (userPermissions) ? control.isPermitted('readManagers', userPermissions) ?
+              <a href="/dashboard/team/manage-clients"
+                 className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Manager</a>
+              : '' : ''
+          }
+          {
+            (userPermissions) ? control.isPermitted('readAdmin', userPermissions) ?
+              <a href="/dashboard/team/manage-clients"
+                 className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Admin</a>
               : '' : ''
           }
         </div>

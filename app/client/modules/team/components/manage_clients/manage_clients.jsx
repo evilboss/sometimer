@@ -8,7 +8,6 @@ class ManageClients extends React.Component {
   constructor(props) {
     super(props);
   }
-
   getAssignedTeam(userId) {
     let {teams} = this.props;
     let teamName = '';
@@ -20,7 +19,7 @@ class ManageClients extends React.Component {
 
 
   render() {
-    let {allManagers} = this.props;
+    let {allClients} = this.props;
 
     return (
       <section id="team">
@@ -36,7 +35,7 @@ class ManageClients extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {allManagers.map((staff, index) => (
+                {allClients.map((staff, index) => (
                   <tr key={index}>
                     <td>
                       <img
@@ -65,8 +64,6 @@ class ManageClients extends React.Component {
           </div>
         </section>
       </section>
-
-
     );
   }
 }

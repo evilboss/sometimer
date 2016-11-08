@@ -46,7 +46,6 @@ class StaffDetails extends React.Component {
             </h6>
           </div>
         </td>
-        <TimeTotal userId={staff._id} date={this.state.date}/>
         <td className="center-align">
           <div className="status">
             <div className={`beacon ${staff.profile.status}`}></div>

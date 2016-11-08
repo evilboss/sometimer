@@ -5,8 +5,9 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionsReady = [Meteor.subscribe('users.allClients', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
-    let allManagers = Meteor.users.find({'profile.role': 'client'}).fetch();
-    onData(null, {allManagers});
+    let allClients = Meteor.users.find({'profile.role': 'client'}).fetch();
+    console.log(allClients);
+    onData(null, {allClients});
   };
   (subscriptionsReady) ? dataReady() : onData();
 };

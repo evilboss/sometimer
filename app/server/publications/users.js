@@ -22,7 +22,21 @@ export default function () {
   ;
   Meteor.publish('users.allClients', function (site) {
     const selector = (site) ? {
-      'profile.role': 'staff',
+      'profile.role': 'client',
+      'profile.site': site
+    } : {'_id': 'none'};
+    return Meteor.users.find(selector);
+  });
+  Meteor.publish('users.allAdmins', function (site) {
+    const selector = (site) ? {
+      'profile.role': 'admin',
+      'profile.site': site
+    } : {'_id': 'none'};
+    return Meteor.users.find(selector);
+  });
+  Meteor.publish('users.allManagers', function (site) {
+    const selector = (site) ? {
+      'profile.role': 'manager',
       'profile.site': site
     } : {'_id': 'none'};
     return Meteor.users.find(selector);

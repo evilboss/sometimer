@@ -95,7 +95,6 @@ class StaffList extends React.Component {
               <thead>
               <tr>
                 <th>Staff</th>
-                <th className="center-align">Break</th>
                 <th className="center-align">Time Log Status</th>
                 <th></th>
               </tr>

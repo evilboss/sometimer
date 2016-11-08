@@ -9,6 +9,7 @@ import ReactMaterialSelect from 'react-material-select';
 import 'react-material-select/lib/css/reactMaterialSelect.css';
 import DisplayManager from '/client/modules/manager/containers/display_manager';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -42,7 +43,15 @@ class CreateTeam extends React.Component {
     return (
       <section id="team">
 
-        <Tabs/>
+        <div className="tab-nav-wrapper">
+          <div className="tab-nav inline">
+            <a href="/dashboard/team/new"
+               className={`${FlowHelpers.currentRoute('dashboard.team.new')}`}>
+              Add Team</a>
+            <a href="/dashboard/user/new">
+              Add User</a>
+          </div>
+        </div>
         <PageTitle title="Add a New Team"/>
         <section id="create-team" className="col s12">
           <div className="row no-margin-bottom">

@@ -8,6 +8,7 @@ import {control} from '/lib/access-control/control';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 import UploadFile from '/client/modules/team/components/upload_file';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class AddNewStaff extends React.Component {
         role.value = '',
         status.value = '',
         email.value = '',
-        sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success','/dashboard/team/manage-staff');
+        sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', '/dashboard/team/manage-staff');
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
   }
@@ -111,7 +112,15 @@ class AddNewStaff extends React.Component {
     ];
     return (
       <section id="team">
-        <Tabs/>
+        <div className="tab-nav-wrapper">
+          <div className="tab-nav inline">
+            <a href="/dashboard/team/new">
+              Add Team</a>
+            <a href="/dashboard/user/new"
+               className={`${FlowHelpers.currentRoute('dashboard.user.new')}`}>
+              Add User</a>
+          </div>
+        </div>
         <PageTitle title="Add New User"/>
 
         <section id="add-new-staff">

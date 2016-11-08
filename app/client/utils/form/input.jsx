@@ -16,6 +16,7 @@ const MyInput = React.createClass({
           <input
             type={this.props.type || 'text'}
             name={this.props.name}
+            id={this.props.name}
             onChange={this.changeValue}
             value={this.getValue()}
             checked={this.props.type === 'checkbox' && this.getValue() ? 'checked' : null}

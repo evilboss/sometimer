@@ -15,6 +15,7 @@ const TextArea = React.createClass({
         <div className="input-field col s12">
           <textarea className="materialize-textarea"
                     name={this.props.name}
+                    id={this.props.name}
                     onChange={this.changeValue}
                     value={this.getValue()}
                     checked={this.props.type === 'checkbox' && this.getValue() ? 'checked' : null}

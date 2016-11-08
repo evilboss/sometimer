@@ -116,6 +116,7 @@ class AddNewStaff extends React.Component {
 
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
+
             <form ref="inviteForm">
               <div className="col s12 no-padding">
                 {error ? this._renderError(error) : null}
@@ -124,11 +125,11 @@ class AddNewStaff extends React.Component {
                 <div className="col s6">
                   <div className="input-field col s12">
                     <input id="firstName" ref="firstName" type="text" className="validate"/>
-                    <label htmlFor="name">First Name</label>
+                    <label htmlFor="firstName">First Name</label>
                   </div>
                   <div className="input-field col s12">
                     <input id="lastName" ref="lastName" type="text" className="validate"/>
-                    <label htmlFor="name">Last Name</label>
+                    <label htmlFor="lastName">Last Name</label>
                   </div>
                   <div className="input-field col s12">
                     <input id="department" ref="department" type="text" className="validate"/>

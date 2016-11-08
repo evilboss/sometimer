@@ -1,0 +1,12 @@
+div.darkroom {
+  menu {
+    ul {
+      li {
+        @extend .inline;
+      }
+    }
+  }
+  .darkroom-canvas {
+    margin: 0 auto;
+  }
+}

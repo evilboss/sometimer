@@ -138,18 +138,18 @@ class AddNewStaff extends React.Component {
                   <div className="input-field col s12">
                     <select ref="role">
                       <option key={0} defaultValue="" disabled selected>Choose User Role</option>
+                      <option key={1} defaultValue="staff">Staff</option>
+                      <option key={2} defaultValue="client">Client</option>
                       {
                         (userRole == 'admin' || userRole == 'super-admin') ?
-                          <option key={1} defaultValue="admin">Admin</option>
+                          <option key={3} defaultValue="admin">Admin</option>
                           : ''
                       }
                       {
                         ((userRole == 'admin' || userRole == 'super-admin')) ?
-                          <option key={2} defaultValue="manager"> Manager </option>
+                          <option key={4} defaultValue="manager"> Manager </option>
                           : ''
                       }
-                      <option key={3} defaultValue="staff">Staff</option>
-                      <option key={4} defaultValue="client">Client</option>
                     </select>
                     <label>User Role</label>
                   </div>

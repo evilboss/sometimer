@@ -33,7 +33,8 @@ const _uploadFileToAmazon = (file, type) => {
 
 const upload = (options, type) => {
   //template = options.template;
-  let file = _getFileFromInput(options.event);
+  let file = (options.event) ? _getFileFromInput(options.event) : options.file;
+  console.log(file);
   // _setPlaceholderText(`Uploading ${file.name}...`);
   _uploadFileToAmazon(file, type);
 };

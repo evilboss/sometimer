@@ -27,4 +27,10 @@ export default function () {
     } : {'_id': 'none'};
     return Meteor.users.find(selector);
   });
+  Meteor.publish('users.all', function (site) {
+    const selector = (site) ? {
+      'profile.site': site
+    } : {'_id': 'none'};
+    return Meteor.users.find(selector);
+  });
 }

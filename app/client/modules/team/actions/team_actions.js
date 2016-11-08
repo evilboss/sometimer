@@ -1,7 +1,7 @@
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 const updateTeam = (id, team)=> {
   Meteor.call('team.update', id, team);
-  sweetPrompts.sweetSucces('Team Updated', 'Click OK To continue', 'success');
+  sweetPrompts.sweetSucces('Team Updated', 'Click OK To continue', 'success','/dashboard/team');
 };
 const updateError = (LocalState, error)=> {
   LocalState.set('UPDATE_TEAM_ERROR', `Required ${error}`);

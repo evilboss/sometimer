@@ -29,14 +29,16 @@ const menuItems = [
     icon: "group",
     url: '',
     name: 'dashboard.workflow',
-    roles: ['staff', 'admin', 'manager', 'client']
+    roles: ['staff', 'admin', 'manager', 'client'],
+    permission: 'readWorkflow',
   },
   {
     title: "PROJECTS",
     icon: "assignment",
     url: '/projects/tileview',
     name: 'projects.tileview',
-    roles: ['staff', 'admin', 'manager', 'client']
+    roles: ['staff', 'admin', 'manager', 'client'],
+    permission:'readProject'
   },
   {
     title: "TOOLBOX",

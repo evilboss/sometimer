@@ -12,7 +12,7 @@ class Navbar extends React.Component {
         <nav id="horizontal-nav">
           <div className="nav-wrapper">
 
-            <NavbarItem menu={this.props.menu} currentUser={this.props.currentUser}/>
+            <NavbarItem menu={this.props.menu} role={this.props.role} userPermissions={this.props.userPermissions}/>
           </div>
         </nav>
       </section>

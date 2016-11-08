@@ -52,8 +52,7 @@ class PermissionForm extends React.Component {
       {label: 'Manager', types: ['readManagers', 'createManagers', 'updateManagers']},
       {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam']},
       {label: 'Project', types: ['readProject', 'createProject', 'updateProject']},
-      {label: 'SubProject', types: ['readSubProject', 'createSubProject', 'updateSubProject']},
-      {label: 'Task', types: ['readTask', 'createTask', 'updateTask']},
+      {label: 'Workflow', types: ['readWorkflow', 'createWorkflow', 'updateWorkflow']},
     ];
     return (
       <div className="col s12">

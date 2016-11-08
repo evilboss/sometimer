@@ -7,6 +7,8 @@ import {accessControl} from '/lib/access-control/access-control';
 import PublicLayout from '/client/modules/core/components/public_layout.jsx';
 import {ManageStaff, AddNewStaff} from '/client/modules/team/containers/manage_staff/';
 import ManageClients from '/client/modules/team/containers/manage_clients/manage_clients';
+import ManageAdmins from '/client/modules/team/containers/manage_admins/manage_admins';
+import ManageManagers from '/client/modules/team/containers/manage_managers/manage_managers';
 import TeamList from '/client/modules/team/containers/manage_team/team_list';
 import CreateTeam from '/client/modules/team/containers/manage_team/create_team';
 
@@ -76,5 +78,40 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
-
+  dashboardRoutes.route('/team/manage-clients', {
+    name: 'dashboard.manageClients',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<ManageClients />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
+  dashboardRoutes.route('/team/manage-admins', {
+    name: 'dashboard.manageAdmins',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<ManageAdmins />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
+  dashboardRoutes.route('/team/manage-managers', {
+    name: 'dashboard.manageManagers',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<ManageManagers />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
 };

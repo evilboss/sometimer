@@ -1,14 +1,14 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
-import CreateTeam from '../../components/manage_team/create_team.jsx';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+import ManageAdmins from '/client/modules/team/components/manage_admins/manage_admins.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  let subscriptionsReady = [Meteor.subscribe('users.allstaff').ready()];
+  let subscriptionsReady = [Meteor.subscribe('users.allAdmins', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
-    let team = Collections.Team;
-    let allStaff = Meteor.users.find().fetch();
-    onData(null, {allStaff, team});
+    let allAdmins = Meteor.users.find({'profile.role': 'admin'}).fetch();
+    console.log(allAdmins);
+    onData(null, {allAdmins});
   };
   (subscriptionsReady) ? dataReady() : onData();
 };
@@ -20,4 +20,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(CreateTeam);
+)(ManageAdmins);

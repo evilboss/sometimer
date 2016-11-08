@@ -8,11 +8,11 @@ class Header extends React.Component {
 
 
   render() {
-    const {currentUser, sitePhoto} = this.props;
+    const {currentUser, sitePhoto, role, userPermissions} = this.props;
     return (
       <div>
         <HeaderMenu sitePhoto={sitePhoto} currentUser={currentUser}/>
-        <Navbar menu={this.props.menu}/>
+        <Navbar menu={this.props.menu} role={role} userPermissions={userPermissions}/>
       </div>
     );
   }

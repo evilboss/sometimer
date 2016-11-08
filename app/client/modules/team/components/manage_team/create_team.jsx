@@ -48,7 +48,7 @@ class CreateTeam extends React.Component {
             <a href="/dashboard/team/new"
                className={`${FlowHelpers.currentRoute('dashboard.team.new')}`}>
               Add Team</a>
-            <a href="/dashboard/user/new">
+            <a href="/dashboard/team/user/new">
               Add User</a>
           </div>
         </div>

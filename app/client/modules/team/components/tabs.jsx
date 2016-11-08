@@ -28,14 +28,14 @@ class Tabs extends React.Component {
           }
           {
             (userPermissions) ? control.isPermitted('readManagers', userPermissions) ?
-              <a href="/dashboard/team/manage-clients"
-                 className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Manager</a>
+              <a href="/dashboard/team/manage-managers"
+                 className={`${FlowHelpers.currentRoute('dashboard.manageManagers')}`}>Manager</a>
               : '' : ''
           }
           {
             (userPermissions) ? control.isPermitted('readAdmin', userPermissions) ?
-              <a href="/dashboard/team/manage-clients"
-                 className={`${FlowHelpers.currentRoute('dashboard.manageClients')}`}>Admin</a>
+              <a href="/dashboard/team/manage-admins"
+                 className={`${FlowHelpers.currentRoute('dashboard.manageAdmins')}`}>Admin</a>
               : '' : ''
           }
         </div>

@@ -49,14 +49,15 @@ class AddNewStaff extends React.Component {
     (email.value == '') ? error.push('Email') : '';
     const doCreate = ()=> {
       create(user);
-      firstName.value = '',
-        lastName.value = '',
-        department.value = '',
-        position.value = '',
-        role.value = '',
-        status.value = '',
-        email.value = '',
-        sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', '/dashboard/team/manage-staff');
+      firstName.value = '';
+      lastName.value = '';
+      department.value = '';
+      position.value = '';
+      role.value = '';
+      status.value = '';
+      email.value = '';
+      let target = (user.profile.role == 'staff') ? user.profile.role : `${user.profile.role}s`;
+      sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', `/dashboard/team/manage-${target}`);
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
   }
@@ -107,8 +108,7 @@ class AddNewStaff extends React.Component {
       {label: 'Manager', types: ['readManagers', 'createManagers', 'updateManagers']},
       {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam']},
       {label: 'Project', types: ['readProject', 'createProject', 'updateProject']},
-      {label: 'SubProject', types: ['readSubProject', 'createSubProject', 'updateSubProject']},
-      {label: 'Task', types: ['readTask', 'createTask', 'updateTask']},
+      {label: 'Workflow', types: ['readWorkflow', 'createWorkflow', 'updateWorkflow']},
     ];
     return (
       <section id="team">

@@ -37,6 +37,8 @@ const loadUsers = ()=> {
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
           'updatePermissions',
+          'readWorkflow', 'createWorkflow', 'updateWorkflow',
+
         ],
         status: 'completed',
         site: 'remote',
@@ -64,6 +66,7 @@ const loadUsers = ()=> {
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
           'updatePermissions',
+          'readWorkflow', 'createWorkflow', 'updateWorkflow',
         ],
         status: 'completed',
         site: 'remote',
@@ -90,6 +93,7 @@ const loadUsers = ()=> {
           'createProject', 'readProject', 'updateProject', 'deleteProject',
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
+          'readWorkflow', 'createWorkflow', 'updateWorkflow',
         ],
         status: 'completed',
         site: 'remote',
@@ -165,10 +169,37 @@ const loadUsers = ()=> {
           'createProject', 'readProject', 'updateProject', 'deleteProject',
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
-        ]
-      },
-      status: 'completed',
-      site: 'remote',
+        ],
+        status: 'completed',
+        site: 'remote',
+      }
+
+    });
+    Accounts.createUser({
+      email: "monty@montyghooke.com",
+      password: "MontFox4521",
+      profile: {
+        firstName: ' Monty',
+        lastName: 'Hooke',
+        department: 'Admin',
+        staffType: 'Regular',
+        jobTitle: 'CEO',
+        role: 'admin',
+        permissions: [
+          'createClients', 'readClients', 'updateClients', 'deleteClients',
+          'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
+          'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
+          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
+          'createAdmin', 'readAdmin', 'updateAdmin', 'deleteAdmin',
+          'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
+          'createProject', 'readProject', 'updateProject', 'deleteProject',
+          'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
+          'createTask', 'readTask', 'updateTask', 'deleteTask',
+          'readWorkflow', 'createWorkflow', 'updateWorkflow',
+        ],
+        status: 'completed',
+        site: 'ezyva',
+      }
     });
   }
 };
@@ -180,6 +211,5 @@ const removeAllUsers = ()=> {
     if (removeUser) {
       Meteor.users.remove(removeUser._id);
     }
-
   });
 };

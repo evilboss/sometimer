@@ -161,7 +161,7 @@ class ProfileEdit extends React.Component {
 
     let newImage = Transform.cropImage(source, {x, y, width, height}, {width: canvasWidth, height: canvasHeight})
       .then(image => this.update({type: 'CONFIRM_CROP', image}));
-
+    console.log(newImage, 'butus');
 
   }
 
@@ -179,10 +179,9 @@ class ProfileEdit extends React.Component {
   }
 
   onSave(event) {
-    let {fileselect}=this.refs;
     let {source} = this.state.thread[this.state.step];
-    console.log(fileselect.files[0]);
-    uploadToAmazonS3.upload({file: fileselect.files[0]}, "updateDisplayPhoto");
+    console.log(source);
+    uploadToAmazonS3.upload({file: source}, "updateDisplayPhoto");
   }
 
 

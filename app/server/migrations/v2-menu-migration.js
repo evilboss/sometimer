@@ -15,21 +15,21 @@ const menuItems = [
     icon: "access_time",
     url: '/dashboard/timetracker',
     name: 'users.timetracker',
-    roles: ['staff', 'admin', 'manager']
+    roles: ['super-admin', 'staff', 'admin', 'manager']
   },
   {
     title: "TIMESHEET",
     icon: "grid_on",
     url: '/dashboard/timesheet',
     name: 'timesheet',
-    roles: ['staff', 'admin', 'manager']
+    roles: ['super-admin', 'staff', 'admin', 'manager']
   },
   {
     title: "WORK FLOW",
     icon: "group",
     url: '',
     name: 'dashboard.workflow',
-    roles: ['staff', 'admin', 'manager', 'client'],
+    roles: ['super-admin', 'staff', 'admin', 'manager', 'client'],
     permission: 'readWorkflow',
   },
   {
@@ -37,15 +37,15 @@ const menuItems = [
     icon: "assignment",
     url: '/projects/tileview',
     name: 'projects.tileview',
-    roles: ['staff', 'admin', 'manager', 'client'],
-    permission:'readProject'
+    roles: ['super-admin', 'staff', 'admin', 'manager', 'client'],
+    permission: 'readProject'
   },
   {
     title: "TOOLBOX",
     icon: "group",
     url: '',
     name: 'dashboard.toolbox',
-    roles: ['staff', 'admin', 'manager', 'client']
+    roles: ['super-admin', 'staff', 'admin', 'manager', 'client']
 
   },
   {
@@ -53,7 +53,7 @@ const menuItems = [
     icon: "group",
     url: '/dashboard/team',
     name: 'dashboard.team',
-    roles: ['admin', 'manager', 'client']
+    roles: ['super-admin', 'admin', 'manager', 'client']
 
   },
 ];

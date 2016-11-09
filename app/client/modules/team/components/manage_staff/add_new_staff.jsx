@@ -10,18 +10,15 @@ import UploadFile from '/client/modules/team/components/upload_file';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 import {formatHelper} from '/client/utils/helpers/format-helpers'
-
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      permissions: [],
-      details: 'Department',
+      permissions: []
     }
   }
 
   componentDidMount() {
-    $('select').material_select(this.change.bind(this));
   }
 
   _create() {

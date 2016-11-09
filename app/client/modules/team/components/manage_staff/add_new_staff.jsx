@@ -91,13 +91,6 @@ class AddNewStaff extends React.Component {
     });
   }
 
-
-  change() {
-    let {role} = this.refs;
-    (role.value == 'Client') ?
-      this.setState({details: 'Company'}) : this.setState({details: 'Department'});
-  }
-
   render() {
     const {userPermissions, error, userRole, userType} = this.props;
     const permissionList = [
@@ -106,7 +99,11 @@ class AddNewStaff extends React.Component {
         types: ['readClients', 'createClients', 'updateClients'],
         userTypes: ['super-admin', 'admin', 'manager']
       },
-      {label: 'Staff', types: ['readStaffs', 'createStaffs', 'updateStaffs'], userTypes: ['super-admin', 'admin']},
+      {
+        label: 'Staff',
+        types: ['readStaffs', 'createStaffs', 'updateStaffs'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
       {
         label: 'Manager',
         types: ['readManagers', 'createManagers', 'updateManagers'],
@@ -116,15 +113,19 @@ class AddNewStaff extends React.Component {
       {
         label: 'Project',
         types: ['readProject', 'createProject', 'updateProject'],
-        userTypes: ['super-admin', 'admin', 'manager']
+        userTypes: ['super-admin', 'admin', 'manager', 'staff']
       },
       {
         label: 'Workflow',
         types: ['readWorkflow', 'createWorkflow', 'updateWorkflow'],
-        userTypes: ['super-admin', 'admin', 'manager']
+        userTypes: ['super-admin', 'admin', 'manager', 'staff']
       },
+      {
+        label: 'Admin',
+        types: ['readAdmin', 'createAdmin', 'updateAdmin'],
+        userTypes: ['super-admin', 'admin']
+      }
     ];
-    console.log(userType);
     return (
       <section id="team">
         <Tabs userType={userType}/>
@@ -161,7 +162,7 @@ class AddNewStaff extends React.Component {
                 <div className="col s6">
                   <div className="col s12">
                     {
-                      (!userType == 'client') ?
+                      (_.contains(['staff', 'admin', 'manager'], userType)) ?
                         <table>
                           <thead>
                           <tr>
@@ -173,19 +174,20 @@ class AddNewStaff extends React.Component {
                           </thead>
                           <tbody>
                           {permissionList.map((permission, index)=>
-                            <tr key={index}>
-                              <td>{permission.label}</td>
-                              {(permission.types) ?
-                                permission.types.map((type, typeIndex)=>
-                                  <td className="center" key={typeIndex}>
-                                    <input type="checkbox" id={type}
-                                           data-permission={type} onChange={this._changePermissions.bind(this)}/>
-                                    <label htmlFor={type}></label>
-                                  </td>
-                                )
-                                : null
-                              }
-                            </tr>
+                            (_.contains(permission.userTypes, userType)) ?
+                              <tr key={index}>
+                                <td>{permission.label}</td>
+                                {(permission.types) ?
+                                  permission.types.map((type, typeIndex)=>
+                                    <td className="center" key={typeIndex}>
+                                      <input type="checkbox" id={type}
+                                             data-permission={type} onChange={this._changePermissions.bind(this)}/>
+                                      <label htmlFor={type}></label>
+                                    </td>
+                                  )
+                                  : null
+                                }
+                              </tr> : null
                           )}
 
                           </tbody>

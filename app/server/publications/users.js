@@ -9,7 +9,7 @@ export default function () {
   Meteor.publish('user.name.by.id', function (usersId) {
     return Meteor.users.find({_id: usersId});
   });
-  Meteor.publish('users.allstaff', function (site) {
+  Meteor.publish('users.allStaff', function (site) {
       const selector = (site) ? {
         'profile.role': 'staff',
         'profile.site': site

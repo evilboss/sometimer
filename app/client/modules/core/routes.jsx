@@ -14,7 +14,7 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/', {
     name: 'home',
     triggersEnter: [function (context, redirect) {
-      accessControl.redirectLogin('/dashboard', redirect);
+      accessControl.redirectLogin('/dashboard/team', redirect);
     }],
     action() {
       mount(PublicLayoutCtx,

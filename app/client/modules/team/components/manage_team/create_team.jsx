@@ -44,13 +44,7 @@ class CreateTeam extends React.Component {
       <section id="team">
 
         <div className="tab-nav-wrapper">
-          <div className="tab-nav inline">
-            <a href="/dashboard/team/new"
-               className={`${FlowHelpers.currentRoute('dashboard.team.new')}`}>
-              Add Team</a>
-            <a href="/dashboard/team/user/new">
-              Add User</a>
-          </div>
+          <Tabs/>
         </div>
         <PageTitle title="Add a New Team"/>
         <section id="create-team" className="col s12">

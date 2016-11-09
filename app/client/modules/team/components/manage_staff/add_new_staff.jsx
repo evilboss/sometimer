@@ -9,6 +9,7 @@ import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 import UploadFile from '/client/modules/team/components/upload_file';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
+import {formatHelper} from '/client/utils/helpers/format-helpers'
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -24,9 +25,8 @@ class AddNewStaff extends React.Component {
   }
 
   _create() {
-    let {create} = this.props;
+    let {create, userType} = this.props;
     let {firstName, lastName, department, position, dateHired, email, positionDescription, role} = this.refs;
-    role = role.value.toLowerCase();
     const user = {
       profile: {
         firstName: firstName.value,
@@ -34,7 +34,7 @@ class AddNewStaff extends React.Component {
         department: department.value,
         position: position.value,
         permissions: this.state.permissions,
-        role: role,
+        role: userType,
         status: 'invited',
         site: domainHelpers.getSubdomain()
       },
@@ -45,7 +45,6 @@ class AddNewStaff extends React.Component {
     (lastName.value == '') ? error.push('Last Name') : '';
     (department.value == '') ? error.push('Department') : '';
     (position.value == '') ? error.push('Position') : '';
-    (role.value == '') ? error.push('Role') : '';
     (email.value == '') ? error.push('Email') : '';
     const doCreate = ()=> {
       create(user);
@@ -53,7 +52,6 @@ class AddNewStaff extends React.Component {
       lastName.value = '';
       department.value = '';
       position.value = '';
-      role.value = '';
       status.value = '';
       email.value = '';
       let target = (user.profile.role == 'staff') ? user.profile.role : `${user.profile.role}s`;
@@ -101,36 +99,42 @@ class AddNewStaff extends React.Component {
   }
 
   render() {
-    const {userPermissions, error, userRole} = this.props;
+    const {userPermissions, error, userRole, userType} = this.props;
     const permissionList = [
-      {label: 'Client', types: ['readClients', 'createClients', 'updateClients']},
-      {label: 'Staff', types: ['readStaffs', 'createStaffs', 'updateStaffs']},
-      {label: 'Manager', types: ['readManagers', 'createManagers', 'updateManagers']},
-      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam']},
-      {label: 'Project', types: ['readProject', 'createProject', 'updateProject']},
-      {label: 'Workflow', types: ['readWorkflow', 'createWorkflow', 'updateWorkflow']},
+      {
+        label: 'Client',
+        types: ['readClients', 'createClients', 'updateClients'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
+      {label: 'Staff', types: ['readStaffs', 'createStaffs', 'updateStaffs'], userTypes: ['super-admin', 'admin']},
+      {
+        label: 'Manager',
+        types: ['readManagers', 'createManagers', 'updateManagers'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
+      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam'], userTypes: ['super-admin', 'admin', 'manager']},
+      {
+        label: 'Project',
+        types: ['readProject', 'createProject', 'updateProject'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
+      {
+        label: 'Workflow',
+        types: ['readWorkflow', 'createWorkflow', 'updateWorkflow'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
     ];
+    console.log(userType);
     return (
       <section id="team">
-        <div className="tab-nav-wrapper">
-          <div className="tab-nav inline">
-            <a href="/dashboard/team/new">
-              Add Team</a>
-            <a href="/dashboard/user/new"
-               className={`${FlowHelpers.currentRoute('dashboard.user.new')}`}>
-              Add User</a>
-          </div>
-        </div>
-        <PageTitle title="Add New User"/>
+        <Tabs userType={userType}/>
 
+        <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
-
             <form ref="inviteForm">
               <div className="col s12 no-padding">
                 {error ? this._renderError(error) : null}
-
-
                 <div className="col s6">
                   <div className="input-field col s12">
                     <input id="firstName" ref="firstName" type="text" className="validate"/>
@@ -140,28 +144,10 @@ class AddNewStaff extends React.Component {
                     <input id="lastName" ref="lastName" type="text" className="validate"/>
                     <label htmlFor="lastName">Last Name</label>
                   </div>
-                  <div className="input-field col s12">
-                    <input id="department" ref="department" type="text" className="validate"/>
-                    <label htmlFor="department">{this.state.details}</label>
-                  </div>
 
                   <div className="input-field col s12">
-                    <select ref="role">
-                      <option key={0} defaultValue="" disabled selected>Choose User Role</option>
-                      <option key={1} defaultValue="staff">Staff</option>
-                      <option key={2} defaultValue="client">Client</option>
-                      {
-                        (userRole == 'admin' || userRole == 'super-admin') ?
-                          <option key={3} defaultValue="admin">Admin</option>
-                          : ''
-                      }
-                      {
-                        ((userRole == 'admin' || userRole == 'super-admin')) ?
-                          <option key={4} defaultValue="manager"> Manager </option>
-                          : ''
-                      }
-                    </select>
-                    <label>User Role</label>
+                    <input id="department" ref="department" type="text" className="validate"/>
+                    <label htmlFor="department">{(userType == 'client') ? 'Company' : 'Department'}</label>
                   </div>
                   <div className="input-field col s12">
                     <input id="position" ref="position" type="text" className="validate"/>
@@ -173,10 +159,9 @@ class AddNewStaff extends React.Component {
                   </div>
                 </div>
                 <div className="col s6">
-
                   <div className="col s12">
                     {
-                      (this.state.details == 'Department') ?
+                      (!userType == 'client') ?
                         <table>
                           <thead>
                           <tr>

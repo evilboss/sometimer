@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import TileView from './tile_view';
 import ListView from './list_view';
 import {control} from '/lib/access-control/control';
-
 class ViewProjects extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const {userPermissions, projects} = this.props;
     return (
@@ -30,8 +28,6 @@ class ViewProjects extends React.Component {
             <a href="/projects/listview"><i className="material-icons">list</i></a>
           </div>
         </div>
-
-
         <div className="row">
           {
             (userPermissions) ? control.isPermitted('readProject', userPermissions) ?
@@ -42,7 +38,6 @@ class ViewProjects extends React.Component {
       </section>
     );
   }
-
 }
 
 export default ViewProjects;

@@ -7,14 +7,14 @@ class ManageAdmins extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
 
   render() {
     let {allAdmins} = this.props;
     return (
       <section id="team">
         <Tabs/>
-        <SubTabs target="/dashboard/team/user/new" text="Add New User" permission="createClients"/>
+        <SubTabs target="/dashboard/team/user/new?user=admin" text="Add New Admin" permission="createClients"/>
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">

@@ -12,10 +12,15 @@ const currentRoute = (route) => {
   FlowRouter.watchPathChange();
   return FlowRouter.current().route.name === route ? 'active' : '';
 };
+const currentRoutes = (routes) => {
+  FlowRouter.watchPathChange();
+  return (_.contains(routes, FlowRouter.current().route.name)) ? 'active' : '';
+};
 const FlowHelpers = {
   pathFor: pathFor,
   urlFor: urlFor,
-  currentRoute: currentRoute
+  currentRoute: currentRoute,
+  currentRoutes: currentRoutes
 };
 
 export{FlowHelpers};

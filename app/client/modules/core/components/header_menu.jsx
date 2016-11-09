@@ -43,7 +43,7 @@ class HeaderMenu extends React.Component {
                 </a>
                 <ul className="right">
                   <li>
-                    <a href="#" data-activates="nav-mobile" className="button-collapse btn-menu"><i
+                    <a href="" data-activates="nav-mobile" className="button-collapse btn-menu"><i
                       className="material-icons">menu</i></a>
                   </li>
                 </ul>
@@ -58,7 +58,7 @@ class HeaderMenu extends React.Component {
 
                   </li>
                   <li>
-                    <a href='#' className="account-menu" data-activates='account-menu'>
+                    <a href='' className="account-menu" data-activates='account-menu'>
                       <img className="inline"
                            src={(currentUser.profile.displayPhoto) ? `${currentUser.profile.displayPhoto}` : '/uploads/defaults/default-img.png'}/>
                     </a>

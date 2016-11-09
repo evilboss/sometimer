@@ -11,13 +11,6 @@ Migrations.add({
 });
 const menuItems = [
   {
-    title: "TIME TRACKER",
-    icon: "access_time",
-    url: '/dashboard/timetracker',
-    name: 'users.timetracker',
-    roles: ['super-admin', 'staff', 'admin', 'manager']
-  },
-  {
     title: "TIMESHEET",
     icon: "grid_on",
     url: '/dashboard/timesheet',

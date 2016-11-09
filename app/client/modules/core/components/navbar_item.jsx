@@ -9,7 +9,18 @@ class NavbarItem extends React.Component {
   renderMenu(menu) {
     return (<a key={menu._id} href={menu.url}>
         <div
-          className={`menu-item center-align ${(menu.name=='dashboard.team')? FlowHelpers.currentRoutes(['dashboard.team','dashboard.user.new','dashboard.team.new','dashboard.manageStaff','dashboard.manageClients','dashboard.manageAdmins','dashboard.manageManagers']):FlowHelpers.currentRoute(menu.name)}`}
+          className={`menu-item center-align 
+          ${(menu.name=='dashboard.team')?
+           FlowHelpers.currentRoutes(['dashboard.team','dashboard.user.new','dashboard.team.new','dashboard.manageStaff','dashboard.manageClients','dashboard.manageAdmins','dashboard.manageManagers','dashboard.myteam','dashboard.team.edit','staff.settings','dashboard.staff'])
+           :FlowHelpers.currentRoute(menu.name)} 
+           
+           ${(menu.name=='projects.tileview')?
+           FlowHelpers.currentRoutes(['projects.listview'])
+           :FlowHelpers.currentRoute(menu.name)}
+           
+           
+           `}
+
           onClick={(menu.title =='WORK FLOW'||menu.title =='TOOLBOX')? sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!'):''}>
           {menu.title}</div>
       </a>

@@ -9,7 +9,7 @@ class LandingHeader extends React.Component {
     return (
       <nav className="landing-header z-depth-0">
         <div className="container nav-wrapper">
-          <a href="#" className="brand-logo">
+          <a href="" className="brand-logo">
             <img className="inline" src="/Assets/teams/default/logo/remotiv_io_logo_style3.png"/>
             <div className="remotiv-text inline">
               <h5>Remotiv<span>.io</span></h5>

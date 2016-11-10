@@ -8,8 +8,10 @@ import {control} from '/lib/access-control/control';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 import UploadFile from '/client/modules/team/components/upload_file';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {FlowHelpers} from '/client/utils/helpers/route-helpers'
-import {formatHelper} from '/client/utils/helpers/format-helpers'
+import {FlowHelpers} from '/client/utils/helpers/route-helpers';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
+import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
+
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -123,11 +125,15 @@ class AddNewStaff extends React.Component {
         userTypes: ['super-admin', 'admin']
       }
     ];
+    let target = (userType == 'staff') ? userType : `${userType}s`;
+
     return (
       <section id="team">
         <Tabs userType={userType}/>
 
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
+        <Breadcrumbs crumbs={
+        [{text: `${formatHelper.capitalize(userType)}`, path: `dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: 'dashboard.user.new', params: userType}]}/>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm">

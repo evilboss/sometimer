@@ -3,7 +3,6 @@
  */
 const pathFor = (path, params) => {
   let query = params && params.query ? FlowRouter._qs.parse(params.query) : {};
-  console.log(FlowRouter.path(path, params), params, path);
   return `${FlowRouter.path(path)}/${params}`;
 };
 const urlFor = (path, params) => {

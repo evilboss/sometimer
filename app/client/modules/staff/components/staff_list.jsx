@@ -102,7 +102,7 @@ class StaffList extends React.Component {
               </thead>
               <tbody>
               {staffList.map((staff, index) => (
-                <StaffDetails key={index} staff={staff} index={index}/>
+                <StaffDetails key={index} staff={staff} index={index} teamId={team._id}/>
               ))}
               </tbody>
             </table>

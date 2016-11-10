@@ -63,11 +63,13 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  dashboardRoutes.route('/staff/:staffId', {
+  dashboardRoutes.route('/staff/:teamId/:staffId', {
     name: 'dashboard.staff',
-    action(staffId){
+    action(params){
       mount(MainLayoutCtx, {
-        head: () => (<Header />), content: () => (<Timesheet userId={staffId.staffId}/>), footer: () => (<Foot />)
+        head: () => (<Header />),
+        content: () => (<Timesheet userId={params.staffId} teamId={params.teamId}/>),
+        footer: () => (<Foot />)
       });
     }
   });

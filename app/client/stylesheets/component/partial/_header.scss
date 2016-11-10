@@ -9,6 +9,24 @@ section#header {
     }
   }
   ul.right {
+    .time-log-status {
+      .input-field {
+        margin-top: 15px;
+      }
+      .status-indicator {
+        position: absolute;
+        right: 0;
+        top: 7.5px;
+      }
+
+      .status {
+        line-height: 1.7em;
+        height: 2em;
+        border: 2px solid white;
+        border-radius: 30px;
+        padding: 0 28px 0 10px;
+      }
+    }
     .notification-menu {
       i {
         display: inline-block;
@@ -33,7 +51,7 @@ section#header {
     }
 
     li:first-child {
-      margin-right: 2em;
+      margin-right: 1em;
     }
     .account-menu {
       img {

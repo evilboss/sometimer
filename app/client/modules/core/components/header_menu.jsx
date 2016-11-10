@@ -2,6 +2,7 @@ import React from "react";
 import SideNav from "./side_nav.jsx";
 import NavbarProfile from "./navbar_profile";
 import Notification from "../containers/notification";
+import TimeTracker from '/client/modules/timesheet/containers/time_tracker';
 
 class HeaderMenu extends React.Component {
   constructor(props) {
@@ -17,14 +18,25 @@ class HeaderMenu extends React.Component {
         alignment: 'left'
       }
     );
+
+    $('.status').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: false,
+        belowOrigin: true,
+        alignment: 'left'
+      }
+    );
   }
 
   componentDidMount() {
     this.initDropdown();
+    $('select').material_select();
   };
 
   componentDidUpdate() {
     this.initDropdown();
+    $('select').material_select();
   };
 
   render() {
@@ -41,18 +53,18 @@ class HeaderMenu extends React.Component {
                       src={(sitePhoto) ? sitePhoto : '/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png'}/>
                   </div>
                 </a>
-                <ul className="right">
-                  <li>
-                    <a href="" data-activates="nav-mobile" className="button-collapse btn-menu"><i
-                      className="material-icons">menu</i></a>
-                  </li>
-                </ul>
+
 
                 <ul className="right">
                   <li>Welcome
                     back, {(currentUser.profile) ? (currentUser.profile.firstName) ? currentUser.profile.firstName : '' : ''}!
                     <span></span>
                   </li>
+
+                  <li className="time-log-status">
+                    <TimeTracker/>
+                  </li>
+
                   <li>
                     <Notification currentUser={currentUser}/>
 

@@ -27,12 +27,13 @@ aldeed:simple-schema            # A simple schema validation object with reactiv
 aldeed:collection2              # Automatic validation of insert and update operations on the client and server.
 aldeed:autoform                 # UI components and helpers to easily create basic forms with automatic insert and update events
 matb33:collection-hooks         # Extends Mongo.Collection with before/after hooks for insert, update, remove, find, and findOne.
+gildaspk:autoform-materialize   # Adds materialize templates for autoform.
 alanning:roles                  # Authorization package for Meteor
 fortawesome:fontawesome         # Font Awesome (official): 500+ scalable vector icons, customizable via CSS, Retina friendly
 mdg:validation-error            # A simple wrapper for Meteor.methods
 kadira:flow-router              # Same as kadira:flow-router, but with SSR support
 kadira:dochead                  # DocHead is an isomorphic way to manipulate document.head for Meteor apps.
-materialize:materialize         # Materialize (official): A modern responsive front-end framework based on Material Design
+materialize:materialize@=0.97.7         # Materialize (official): A modern responsive front-end framework based on Material Design
 fourseven:scss                  # Style with attitude. Sass and SCSS support for Meteor.js (with autoprefixer and sourcemaps)
 meteorhacks:picker              # Server Side Router for Meteor
 percolate:migrations            # A simple migration system for Meteor supporting up/downwards migrations and command line usage. Forked to experiment with package data migrations.

@@ -3,9 +3,7 @@
  */
 const processUrl = (url)=> {
   let parts = url.split('.');
-  console.log(parts);
   let sub = ( parts[0] == 'www') ? parts[1] : parts[0];
-  console.log(sub);
   let domain = (parts.length < 2) ? parts[1] : parts[2];
   return (parts.length != 1) ? sub : '';
 };

@@ -10,7 +10,7 @@ import 'react-material-select/lib/css/reactMaterialSelect.css';
 import DisplayManager from '/client/modules/manager/containers/display_manager';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
-
+import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 class CreateTeam extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +47,8 @@ class CreateTeam extends React.Component {
           <Tabs/>
         </div>
         <PageTitle title="Add a New Team"/>
+        <Breadcrumbs crumbs={
+        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: 'Add Team', path: 'dashboard.team.new', params: ''}]}/>
         <section id="create-team" className="col s12">
           <div className="row no-margin-bottom">
             <Formsy.Form onSubmit={this.addTeam.bind(this)}>

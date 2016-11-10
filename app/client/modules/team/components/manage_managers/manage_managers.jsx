@@ -22,7 +22,7 @@ class ManageManagers extends React.Component {
     return (
       <section id="team">
         <Tabs/>
-        <SubTabs target="/dashboard/team/user/new?user=manager" text="Add New Manager" permission="createClients"/>
+        <SubTabs target="/dashboard/team/user/new/manager" text="Add New Manager" permission="createClients"/>
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">

@@ -7,6 +7,7 @@ import UserDetails from './user_details';
 import TimesheetTable from './timesheet_table';
 import DateRange from './daterange';
 const DateData = new ReactiveVar();
+import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 
 class Timesheet extends TrackerReact(React.Component) {
   constructor(props) {
@@ -42,13 +43,20 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
   render() {
-    const {currentUser} = this.props;
+    const {currentUser, teamId,teamName} = this.props;
     const {dates}  = this.state;
     return (
       <section className="timesheet">
 
         <PageTitle
           title={(currentUser)?`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`:''}/>
+        {(teamId) ? <Breadcrumbs crumbs={
+                 [
+                 {text: 'Team', path: 'dashboard.team', params: ''},
+                  {text: (teamName)?teamName:'Team', path: 'dashboard.myteam', params: teamId},
+                  {text: (currentUser)?`${currentUser.profile.firstName} ${currentUser.profile.lastName}`:'', path: 'dashboard.myteam', params: `${teamId}/${(currentUser)?currentUser._id:''}`}
+                  ]}/>
+          : null}
         <UserDetails currentUser={currentUser}/>
         <DateRange changeDate={this.changeDate.bind(this)}/>
         <TimesheetTable currentUser={currentUser} dates={dates}/>

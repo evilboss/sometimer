@@ -33,10 +33,9 @@ fortawesome:fontawesome         # Font Awesome (official): 500+ scalable vector 
 mdg:validation-error            # A simple wrapper for Meteor.methods
 kadira:flow-router              # Same as kadira:flow-router, but with SSR support
 kadira:dochead                  # DocHead is an isomorphic way to manipulate document.head for Meteor apps.
-materialize:materialize         # Materialize (official): A modern responsive front-end framework based on Material Design
+materialize:materialize@=0.97.7         # Materialize (official): A modern responsive front-end framework based on Material Design
 fourseven:scss                  # Style with attitude. Sass and SCSS support for Meteor.js (with autoprefixer and sourcemaps)
 meteorhacks:picker              # Server Side Router for Meteor
-std:accounts-material           # Material UI – Accounts UI for React in Meteor 1.3
 percolate:migrations            # A simple migration system for Meteor supporting up/downwards migrations and command line usage. Forked to experiment with package data migrations.
 thereactivestack:blazetoreact   #Transform a Blaze template into a React.js component while keeping the reactivity
 juliancwirko:postcss            # Use PostCSS with Meteor

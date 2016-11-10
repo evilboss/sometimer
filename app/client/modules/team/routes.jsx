@@ -30,13 +30,13 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-  dashboardRoutes.route('/team/user/new', {
+  dashboardRoutes.route('/team/user/new/:userType', {
     name: 'dashboard.user.new',
     action(params, queryParams) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<AddNewStaff userType={queryParams.user}/>),
+          content: ()=>(<AddNewStaff userType={params.userType}/>),
           footer: ()=>(<Foot/>),
         },
       );
@@ -64,20 +64,7 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
-
-
-  dashboardRoutes.route('/team/manage-clients', {
-    name: 'dashboard.manageClients',
-    action() {
-      mount(MainLayoutCtx,
-        {
-          head: () => (<Header />),
-          content: ()=>(<ManageClients />),
-          footer: ()=>(<Foot/>),
-        },
-      );
-    }
-  });
+  
   dashboardRoutes.route('/team/manage-clients', {
     name: 'dashboard.manageClients',
     action() {

@@ -33,7 +33,7 @@ class StaffDetails extends React.Component {
   }
 
   render() {
-    const {staff, index, userPermissions} = this.props;
+    const {staff, index, userPermissions, teamId} = this.props;
     return (
 
       <tr key={index}>
@@ -56,7 +56,7 @@ class StaffDetails extends React.Component {
           <div className="icons center-align">
             {
               (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-                <a href={`/dashboard/staff/${staff._id}`}>
+                <a href={`/dashboard/staff/${teamId}/${staff._id}`}>
                   <img src="/Assets/icons/time.png"/>
                 </a>
                 : '' : ''

@@ -6,8 +6,7 @@ import DatePicker from '/client/modules/timesheet/components/datepicker';
 import DateRange from '/client/modules/timesheet/components/daterange';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
-
-
+import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 class StaffList extends React.Component {
   constructor(props) {
     super(props);
@@ -88,6 +87,8 @@ class StaffList extends React.Component {
             </ul>
           </div>
         </div>
+        <Breadcrumbs crumbs={
+        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
 
         <div className="row white-wrapper no-section-margin">
           <div className="col s12">
@@ -101,7 +102,7 @@ class StaffList extends React.Component {
               </thead>
               <tbody>
               {staffList.map((staff, index) => (
-                <StaffDetails key={index} staff={staff} index={index}/>
+                <StaffDetails key={index} staff={staff} index={index} teamId={team._id}/>
               ))}
               </tbody>
             </table>

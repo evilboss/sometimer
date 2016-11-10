@@ -5,8 +5,10 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionReady = [Meteor.subscribe('users.all', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
+    let selector = {'profile.role': {$in: ['staff', 'client', 'manager']}};
+
     const options = {_id: {$ne: Meteor.userId()}};
-    const staffList = Meteor.users.find(options).fetch();
+    const staffList = Meteor.users.find(selector, options).fetch();
     onData(null, {staffList});
   };
   (subscriptionReady) ? dataReady() : onData();

@@ -38,7 +38,7 @@ class CreateTeam extends React.Component {
 
 
   render() {
-    let {allStaff} = this.props;
+    let {allManagers} = this.props;
 
     return (
       <section id="team">
@@ -54,9 +54,9 @@ class CreateTeam extends React.Component {
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
                 <div className="input-field col s12">
                   <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader">
-                    {allStaff.map((staff) => (
-                      <option key={staff._id} dataValue={staff._id}>
-                        {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
+                    {allManagers.map((manager) => (
+                      <option key={manager._id} dataValue={manager._id}>
+                        {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
 
                       </option>
                     ))}

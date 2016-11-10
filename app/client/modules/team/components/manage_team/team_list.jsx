@@ -14,6 +14,7 @@ class TeamList extends React.Component {
     const {currentUser, teamList} = this.props;
     return (
       <section id="team">
+        <PageTitle/>
         <Tabs/>
         <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
         <section id="ManageTeam" className="col s12">

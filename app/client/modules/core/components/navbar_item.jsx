@@ -12,16 +12,13 @@ class NavbarItem extends React.Component {
           className={`menu-item center-align 
           ${(menu.name=='dashboard.team')?
            FlowHelpers.currentRoutes(['dashboard.team','dashboard.user.new','dashboard.team.new','dashboard.manageStaff','dashboard.manageClients','dashboard.manageAdmins','dashboard.manageManagers','dashboard.myteam','dashboard.team.edit','staff.settings','dashboard.staff'])
-           :FlowHelpers.currentRoute(menu.name)} 
-           
+           :FlowHelpers.currentRoute(menu.name)}
            ${(menu.name=='projects.tileview')?
            FlowHelpers.currentRoutes(['projects.listview'])
            :FlowHelpers.currentRoute(menu.name)}
-           
-           
            `}
 
-          onClick={(menu.title =='WORK FLOW'||menu.title =='TOOLBOX')? sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!'):''}>
+          onClick={(menu.name =='dashboard'||menu.name =='dashboard.workflow'||menu.name =='dashboard.toolbox')? sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!'):''}>
           {menu.title}</div>
       </a>
     )

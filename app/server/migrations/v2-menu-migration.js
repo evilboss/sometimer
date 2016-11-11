@@ -11,6 +11,13 @@ Migrations.add({
 });
 const menuItems = [
   {
+    title: "DASHBOARD",
+    icon: "grid_on",
+    url: '/dashboard',
+    name: 'dashboard',
+    roles: ['super-admin', 'staff', 'admin', 'manager']
+  },
+  {
     title: "TIMESHEET",
     icon: "grid_on",
     url: '/dashboard/timesheet',
@@ -18,7 +25,7 @@ const menuItems = [
     roles: ['super-admin', 'staff', 'admin', 'manager']
   },
   {
-    title: "WORK FLOW",
+    title: "WORK FLOW PLANNING",
     icon: "group",
     url: '',
     name: 'dashboard.workflow',
@@ -26,7 +33,7 @@ const menuItems = [
     permission: 'readWorkflow',
   },
   {
-    title: "PROJECTS",
+    title: "PROJECT MANAGEMENT",
     icon: "assignment",
     url: '/projects/tileview',
     name: 'projects.tileview',
@@ -40,6 +47,13 @@ const menuItems = [
     name: 'dashboard.toolbox',
     roles: ['super-admin', 'staff', 'admin', 'manager', 'client']
 
+  },
+  {
+    title: "MY ACCOUNT",
+    icon: "grid_on",
+    url: '/dashboard/profile',
+    name: 'timesheet',
+    roles: ['super-admin', 'staff', 'admin', 'manager']
   },
   {
     title: "MY TEAM",

@@ -13,9 +13,6 @@ export default function (injectDeps, {FlowRouter}) {
   const PublicLayoutCtx = injectDeps(PublicLayout);
   FlowRouter.route('/', {
     name: 'home',
-    triggersEnter: [function (context, redirect) {
-      accessControl.redirectLogin('/dashboard/team', redirect);
-    }],
     action() {
       mount(PublicLayoutCtx,
         {head: () => (<Header/>), content: ()=>(<Entry />), footer: ()=>(<Foot/>)}

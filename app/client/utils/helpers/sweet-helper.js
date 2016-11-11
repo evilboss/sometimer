@@ -9,6 +9,7 @@ const sweetOkPrompt = (message, e)=> {
 };
 
 const sweetSucces = (prompt, title, style, path)=> {
+  event.preventDefault();
   console.log(path);
   swal({
     title: title,

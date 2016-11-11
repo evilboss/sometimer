@@ -22,7 +22,7 @@ class StaffMultiSelect extends React.Component {
       options.push({label: staff.profile.firstName + ' ' + staff.profile.lastName, value: staff._id})
     });
     var selectFieldName = "collaborators";
-    var selectPlaceholder = "Select Collaborators...";
+    var selectPlaceholder = "Select Members";
     return (
       <SelectPopover
         options={options}

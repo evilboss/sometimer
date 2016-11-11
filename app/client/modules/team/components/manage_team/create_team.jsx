@@ -61,9 +61,9 @@ class CreateTeam extends React.Component {
                     ))}
                   </ReactMaterialSelect>
                 </div>
-                <StaffMultiSelect getData={this.getData.bind(this)}/>
-
-
+                <div className="input-field">
+                  <StaffMultiSelect getData={this.getData.bind(this)}/>
+                </div>
                 <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
                   <i className="material-icons right">send</i></button>
 

@@ -135,23 +135,24 @@ class AddNewStaff extends React.Component {
 
     return (
       <section id="team">
-        <Tabs userType={userType}/>
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
+        <Tabs userType={userType}/>
         <Breadcrumbs crumbs={
         [{text: `${formatHelper.capitalize(userType)}`, path: `dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: 'dashboard.user.new', params: userType}]}/>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
-            <form ref="inviteForm">
+            <form ref="inviteForm" className="twbs">
               <div className="col s12 no-padding">
                 {error ? this._renderError(error) : null}
-                <div className="col s6">
+
+                <div className="col s4">
                   <div className="input-field col s12">
-                    <input id="firstName" ref="firstName" type="text" className="validate"/>
-                    <label htmlFor="firstName">First Name</label>
+                    <input placeholder="First Name" id="firstName" ref="firstName" type="text" className="validate"/>
+                    <label htmlFor="firstName" className="active">First Name</label>
                   </div>
                   <div className="input-field col s12">
-                    <input id="lastName" ref="lastName" type="text" className="validate"/>
-                    <label htmlFor="lastName">Last Name</label>
+                    <input placeholder="Last Name" id="lastName" ref="lastName" type="text" className="validate"/>
+                    <label htmlFor="lastName" className="active">Last Name</label>
                   </div>
 
                   <div className="input-field col s12">
@@ -168,21 +169,21 @@ class AddNewStaff extends React.Component {
                         </option>
                       ))}
                     </ReactMaterialSelect>}
-
+                    <button type="button" className="add-team btn inline" onClick={this._addTeam.bind(this)}>Add Team
+                    </button>
                   </div>
 
-
-                  <button type="button" onClick={this._addTeam.bind(this)}>Add Team</button>
                   <div className="input-field col s12">
-                    <input id="position" ref="position" type="text" className="validate"/>
-                    <label htmlFor="position">Position</label>
+                    <input id="position" placeholder="Position" ref="position" type="text" className="validate"/>
+                    <label htmlFor="position" className="active">Position</label>
                   </div>
                   <div className="input-field col s12">
-                    <input id="email" ref="email" type="email" className="validate"/>
-                    <label htmlFor="email">Email</label>
+                    <input placeholder="Email" id="email" ref="email" type="email" className="validate"/>
+                    <label htmlFor="email" className="active">Email</label>
                   </div>
                 </div>
-                <div className="col s6">
+
+                <div className="col s4">
                   <div className="col s12">
                     {
                       (_.contains(['staff', 'admin', 'manager'], userType)) ?
@@ -216,11 +217,21 @@ class AddNewStaff extends React.Component {
                           </tbody>
                         </table> : null
                     }
-                    <div className="right save">
-                      <button type="button" className="btn" onClick={this._create.bind(this)}>
-                        Save and Invite
-                      </button>
-                    </div>
+                  </div>
+                </div>
+                <div className="col s4">
+                  <div className="input-field col s12">
+                    <textarea placeholder="Add a personal message" id="message" ref="message"
+                              className="materialize-textarea"></textarea>
+                  </div>
+                  <div className="right save">
+                    <a href={FlowHelpers.pathFor(`dashboard.manage${formatHelper.capitalize(target)}`,'')} type="button"
+                       className="btn cancel">
+                      Cancel
+                    </a>
+                    <button type="button" className="btn" onClick={this._create.bind(this)}>
+                      Save and Invite
+                    </button>
                   </div>
                 </div>
               </div>

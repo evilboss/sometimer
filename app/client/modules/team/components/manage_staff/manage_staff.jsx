@@ -3,6 +3,7 @@ import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import StatusIndicator from '/client/modules/team/components/status_indicator';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
 
 class ManageStaff extends React.Component {
@@ -23,6 +24,7 @@ class ManageStaff extends React.Component {
     let {allStaff} = this.props;
     return (
       <section id="team">
+        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs/>
         <SubTabs target="/dashboard/team/user/new/staff" text="Add New Staff" permission="createStaffs"/>
         <section id="manage-staff" className="col s12">

@@ -5,6 +5,9 @@ import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import TeamCardAction from '/client/modules/team/containers/manage_team/team_card_action';
 import DisplayManager from '/client/modules/manager/containers/display_manager';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
+
 class TeamList extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +17,7 @@ class TeamList extends React.Component {
     const {currentUser, teamList} = this.props;
     return (
       <section id="team">
-        <PageTitle/>
+        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs/>
         <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
         <section id="ManageTeam" className="col s12">

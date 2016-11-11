@@ -42,16 +42,13 @@ class CreateTeam extends React.Component {
 
     return (
       <section id="team">
-
-        <div className="tab-nav-wrapper">
-          <Tabs/>
-        </div>
         <PageTitle title="Add a New Team"/>
-        <Breadcrumbs crumbs={
-        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: 'Add Team', path: 'dashboard.team.new', params: ''}]}/>
+        <Tabs/>
         <section id="create-team" className="col s12">
-          <div className="row no-margin-bottom">
-            <Formsy.Form onSubmit={this.addTeam.bind(this)}>
+          <div className="row">
+            <Breadcrumbs crumbs={
+        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: 'Add Team', path: 'dashboard.team.new', params: ''}]}/>
+            <Formsy.Form onSubmit={this.addTeam.bind(this)} className="twbs">
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
                 <div className="input-field col s12">

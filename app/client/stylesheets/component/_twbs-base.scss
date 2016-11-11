@@ -1,0 +1,44 @@
+.twbs {
+  // input
+  .input-field {
+    input,
+    .rms-text span {
+      border: 1px solid #9e9e9e;
+      border-radius: 4px;
+      text-indent: 10px;
+    }
+    label {
+      top: 0.4em !important;
+    }
+    .rms-wrapper {
+      .rms-text span {
+        border: 1px solid #9e9e9e;
+        border-radius: 4px;
+        text-indent: 10px;
+        height: 3em;
+        margin: 0;
+        padding: 23px 0;
+      }
+      .rms-caret {
+        top: 13px;
+        color: rgba(0, 0, 0, .7);
+      }
+    }
+  }
+  input:focus:not([readonly]) {
+    border: 1px solid $primary-color;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba($primary-color, .6);
+  }
+
+  // buttons
+  .btn-add {
+    border-radius: 4px !important;
+    line-height: inherit !important;
+    height: auto;
+    padding: 0;
+    text-transform: none;
+    a {
+      border-radius: 4px !important;
+    }
+  }
+}

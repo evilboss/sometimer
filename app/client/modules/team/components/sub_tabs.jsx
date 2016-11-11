@@ -8,13 +8,14 @@ class SubTabs extends React.Component {
   render() {
     const {target, text, permission, userPermissions} = this.props;
     return (
-      <section id="sub-tabs">
+      <section id="sub-tabs" className="twbs">
         {
           (userPermissions) ? control.isPermitted(permission, userPermissions) ?
-            <div className="btn-add">
+            <div className="btn btn-add">
               <a href={(target)?target:''} className="waves-effect waves-light secondary-color">
+                <i className="material-icons">add</i>
                 <span>{(text) ? text : ''}</span>
-                <i className="material-icons">add</i></a>
+              </a>
             </div>
             : '' : ''
         }

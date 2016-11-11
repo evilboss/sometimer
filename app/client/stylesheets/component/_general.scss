@@ -499,13 +499,14 @@ article {
     background-color: $dark-green;
     span {
       vertical-align: text-bottom;
-      padding: 5px;
+      padding: 10px;
     }
     i {
-      border-left: 1px solid $primary-color;
+      border-right: 1px solid #0f8a16;
       color: white;
+      font-weight: bold;
       font-size: 1.2em;
-      padding: 6px;
+      padding: 6px 10px;
     }
   }
 }
@@ -598,11 +599,10 @@ ul.tabs {
 }
 
 .tab-nav-wrapper {
-  margin-bottom: -4px;
   padding: 1em 1em 0 1em;
   background-color: #f0f0f1;
   .tab-nav {
-    padding: 0.75em 1em;
+    padding: 0.75em 1em 0.54em 1em;
     a:not(:last-child) {
       border-right: 1px solid rgba(0, 0, 0, 0.15);
     }

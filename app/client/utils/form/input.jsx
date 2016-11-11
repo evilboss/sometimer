@@ -17,12 +17,13 @@ const MyInput = React.createClass({
             type={this.props.type || 'text'}
             name={this.props.name}
             id={this.props.name}
+            placeholder={this.props.title}
             onChange={this.changeValue}
             value={this.getValue()}
             checked={this.props.type === 'checkbox' && this.getValue() ? 'checked' : null}
             className="validate"
           />
-          <label htmlFor={this.props.name}>{this.props.title}</label>
+          <label htmlFor={this.props.name} className="active">{this.props.title}</label>
           <div className='validation-error left-align'>{errorMessage}</div>
         </div>
       </div>

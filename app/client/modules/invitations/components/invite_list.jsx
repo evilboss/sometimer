@@ -32,7 +32,7 @@ class InviteList extends React.Component {
     return (
       <section id="invite-list">
         <PageTitle title="Invitations"/>
-        <div className="row no-section-margin">
+        <div className="row">
           <div className="col s7 no-margin-bottom">
             <ul className="tabs">
               <li className="tab col s3"><a href="#pending-invitations">Pending Invites</a></li>

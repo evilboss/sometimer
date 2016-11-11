@@ -16,9 +16,9 @@ section#body {
   background-size: cover;
   .body-container {
     @extend section#body;
-    margin: 0 4em;
+    margin: 0 1em;
     main#main {
-      background-color: #f6f6f6;
+      background-color: #ffffff;
     }
   }
 }
@@ -43,7 +43,6 @@ nav {
 
 .page-title {
   background-color: white;
-  margin: -0.8em;
   height: 4.35em;
   padding: 0.5em 1.5em;
   border-bottom: 1px solid #E8E8E8;
@@ -559,7 +558,6 @@ ul.tabs {
 
 .tabs-background {
   background-color: $primary-color;
-  margin: auto -0.8em;
   h5 {
     position: absolute;
     margin-left: 1em;
@@ -600,12 +598,11 @@ ul.tabs {
 }
 
 .tab-nav-wrapper {
+  margin-bottom: -4px;
   padding: 1em 1em 0 1em;
-  @extend .no-section-margin;
+  background-color: #f0f0f1;
   .tab-nav {
-    padding: 0.3em 0;
-    border-top-left-radius: 2em;
-    border-top-right-radius: 1em;
+    padding: 0.75em 1em;
     a:not(:last-child) {
       border-right: 1px solid rgba(0, 0, 0, 0.15);
     }
@@ -618,7 +615,7 @@ ul.tabs {
     a {
       color: white;
       background-color: $secondary-color;
-      padding: 0.45em 1em;
+      padding: 0.75em 1em
     }
     a.active {
       color: $primary-color;
@@ -656,4 +653,8 @@ ul.tabs {
 
 .rms-item {
   @extend .clearfix;
+}
+
+.nav-wrapper, .tab-nav-wrapper, .breadcrumbs {
+  letter-spacing: 1px;
 }

@@ -12,7 +12,7 @@ class Breaklogs extends React.Component {
     return (
       <section id="breaklogs">
         <PageTitle title="breaklogs"/>
-        <div className="no-section-margin">
+        <div>
           <table className="centered responsive-table bordered">
             <thead>
             <tr>

@@ -1,6 +1,4 @@
 section#project-view {
-
-  @extend .container-margin;
   margin-bottom: 0;
   h4 {
     color: $primary-color;
@@ -41,7 +39,6 @@ section#project-view {
     margin: 0;
   }
   .row {
-    @extend .no-section-margin;
     section:not(:last-child) {
       border-right: solid 2px $gray-line;
     }

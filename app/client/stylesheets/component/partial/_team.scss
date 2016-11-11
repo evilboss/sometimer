@@ -1,5 +1,4 @@
 section#team {
-  @extend .container-margin;
   article {
     .card {
       .card-action {
@@ -72,7 +71,6 @@ section#team {
   }
   #manage-staff, #ManageTeam, #manage-clients, #manage-admins {
     background-color: white;
-    @extend .remove-section-margin;
   }
 
 }

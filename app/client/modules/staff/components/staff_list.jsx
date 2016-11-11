@@ -90,7 +90,7 @@ class StaffList extends React.Component {
         <Breadcrumbs crumbs={
         [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
 
-        <div className="row white-wrapper no-section-margin">
+        <div className="row white-wrapper">
           <div className="col s12">
             <table className="bordered">
               <thead>

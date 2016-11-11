@@ -1,7 +1,5 @@
 section#staff-list {
-  @extend .container-margin;
   .collection {
-    @include remove-section-margin;
     .collection-item {
       padding: 5px 0px 5px 90px;
       img.circle {

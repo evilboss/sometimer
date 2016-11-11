@@ -1,8 +1,4 @@
 section#invite-list {
-  @extend .container-margin;
-  .no-section-margin {
-    height: 55vh;
-  }
   section#pending-invitations,
   section#accepted-invitations {
     margin-top: 0;

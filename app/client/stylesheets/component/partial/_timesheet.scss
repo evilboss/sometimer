@@ -1,5 +1,4 @@
 section.timesheet {
-  @extend .container-margin;
   .approve-btn {
     margin-top: 1em;
   }
@@ -10,13 +9,10 @@ section.timesheet {
   section.user-details {
 
   }
-
   section.datepicker-wrapper {
-    margin: -0.8em;
     border-top: 1px solid #E8E8E8;
   }
   section.timesheet-table {
-    @include remove-section-margin;
     thead {
       background-color: #454648;
       th {

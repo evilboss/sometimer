@@ -38,7 +38,7 @@ class AddProjects extends React.Component {
     return (
       <section className="Projects-New">
         <PageTitle title="Your Projects"/>
-        <div className="row flex no-section-margin">
+        <div className="row flex">
           <div className="col s12">
             <section className="create-project">
               <h4>Create A Project</h4>

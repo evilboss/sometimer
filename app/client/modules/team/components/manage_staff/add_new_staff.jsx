@@ -157,11 +157,6 @@ class AddNewStaff extends React.Component {
 
                   <div className="input-field col s12">
                     {(userType == 'client') ? <ReactMaterialSelect label="Company" ref="company">
-                      {teams.map((team, index) => (
-                        <option key={index} dataValue={team._id}>
-                          {team.name}
-                        </option>
-                      ))}
                     </ReactMaterialSelect> : <ReactMaterialSelect label="Department" ref="department">
                       {teams.map((team, index) => (
                         <option key={index} dataValue={team._id}>
@@ -169,8 +164,6 @@ class AddNewStaff extends React.Component {
                         </option>
                       ))}
                     </ReactMaterialSelect>}
-                    <button type="button" className="add-team btn inline" onClick={this._addTeam.bind(this)}>Add Team
-                    </button>
                   </div>
 
                   <div className="input-field col s12">

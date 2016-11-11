@@ -28,7 +28,7 @@ class AddProjects extends React.Component {
 
   addProject(project) {
     project.collaborators = this.state.staffList;
-    project.site= domainHelpers.getSubdomain();
+    project.site = domainHelpers.getSubdomain();
     project.collaborators.push(Meteor.userId());
     Meteor.call('projects.insert', project);
     FlowRouter.go('/projects/tileview');
@@ -36,7 +36,7 @@ class AddProjects extends React.Component {
 
   render() {
     return (
-      <section className="Projects-New">
+      <section className="Projects-New twbs">
         <PageTitle title="Your Projects"/>
         <div className="row flex">
           <div className="col s12">
@@ -57,7 +57,9 @@ class AddProjects extends React.Component {
                 <div className="row form-group required col s12 no-padding">
                   <TextArea name="description" title="Description" required/>
                 </div>
-                <StaffMultiSelect getData={this.getData.bind(this)}/>
+                <div className="input-field">
+                  <StaffMultiSelect getData={this.getData.bind(this)}/>
+                </div>
                 <button className="btn waves-effect waves-light theme-color" type="submit">Start the Project
                   <i className="material-icons right">send</i></button>
 

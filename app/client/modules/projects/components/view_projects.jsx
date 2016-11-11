@@ -7,18 +7,20 @@ class ViewProjects extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const {userPermissions, projects} = this.props;
     return (
-      <section className="project-list">
+      <section className="project-list twbs">
         <div className="page-title">
           <h5 className="inline">Project Management</h5>
           {
             (userPermissions) ? control.isPermitted('createProject', userPermissions) ?
               <div className="btn-add">
                 <a href="/projects/new" className="waves-effect waves-light secondary-color">
+                  <i className="material-icons">add</i>
                   <span>Add New Project</span>
-                  <i className="material-icons">add</i></a>
+                </a>
               </div>
               : '' : ''
           }

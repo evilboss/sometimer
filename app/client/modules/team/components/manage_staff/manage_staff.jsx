@@ -70,8 +70,7 @@ class ManageStaff extends React.Component {
           </div>
         </section>
       </ section >
-    )
-      ;
+    );
   }
 }
 

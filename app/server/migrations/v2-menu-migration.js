@@ -25,7 +25,7 @@ const menuItems = [
     roles: ['super-admin', 'staff', 'admin', 'manager']
   },
   {
-    title: "WORK FLOW PLANNING",
+    title: "WORK FLOW",
     icon: "group",
     url: '',
     name: 'dashboard.workflow',
@@ -33,7 +33,7 @@ const menuItems = [
     permission: 'readWorkflow',
   },
   {
-    title: "PROJECT MANAGEMENT",
+    title: "PROJECTS",
     icon: "assignment",
     url: '/projects/tileview',
     name: 'projects.tileview',

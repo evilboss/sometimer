@@ -26,7 +26,7 @@ class AddNewStaff extends React.Component {
 
   _create() {
     let {create, userType, teams} = this.props;
-    let {firstName, lastName, department, position, dateHired, email, positionDescription, role} = this.refs;
+    let {firstName, lastName, department, position, dateHired, email, positionDescription, role, message} = this.refs;
     const user = {
       profile: {
         firstName: firstName.value,
@@ -47,7 +47,7 @@ class AddNewStaff extends React.Component {
     (position.value == '') ? error.push('Position') : '';
     (email.value == '') ? error.push('Email') : '';
     const doCreate = ()=> {
-      create(user);
+      create(user, message.value);
       firstName.value = '';
       lastName.value = '';
       position.value = '';

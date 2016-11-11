@@ -2,7 +2,7 @@
  * Created by jr on 9/20/16.
  */
 import {Email} from 'meteor/email';
-const addSubdomain=(subDomain)=>{
+const addSubdomain = (subDomain)=> {
   let baseUrl = Meteor.absoluteUrl();
   let urlParts = baseUrl.split('//');
   return `${urlParts[0]}//${subDomain}.${urlParts[1]}`;
@@ -17,6 +17,7 @@ const sendInvite = (invite)=> {
       token: invite.token,
       name: `${invite.firstName} ${invite.lastName}`,
       position: invite.position,
+      message: invite.message,
       site: addSubdomain(invite.site)
     },
     attachments: []

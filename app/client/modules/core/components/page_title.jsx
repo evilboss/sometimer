@@ -16,9 +16,9 @@ class PageTitle extends React.Component {
 }
 PageTitle.propTypes = {
   title: React.PropTypes.string.isRequired,
-}
+};
 PageTitle.defaultProps = {
-  title: 'No title'
-}
+  title: 'No Title'
+};
 
 export default PageTitle;

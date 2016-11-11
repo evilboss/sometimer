@@ -8,7 +8,7 @@ class SubTabs extends React.Component {
   render() {
     const {target, text, permission, userPermissions} = this.props;
     return (
-      <section id="sub-tabs" className="border-bottom">
+      <section id="sub-tabs">
         {
           (userPermissions) ? control.isPermitted(permission, userPermissions) ?
             <div className="btn-add">

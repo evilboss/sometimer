@@ -48,5 +48,5 @@ themeteorchef:bert              # A client side, multi-style alerts system for M
 lfergon:exportcsv               # Meteor export mongo collection to csv
 #custom package section
 #dev only packages
-meteortoys:allthings # Insanely Handy Development Tools
+meteortoys:allthings # Insanely Handy Develo1pment Tools
 

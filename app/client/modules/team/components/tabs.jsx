@@ -1,6 +1,8 @@
 import React from 'react';
 import {control} from '/lib/access-control/control';
-import {FlowHelpers} from '/client/utils/helpers/route-helpers'
+import {FlowHelpers} from '/client/utils/helpers/route-helpers';
+import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
+
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,7 @@ class Tabs extends React.Component {
         <div className="tab-nav inline">
           <a href="/dashboard/team"
              className={`${FlowHelpers.currentRoutes(['dashboard.team','dashboard.team.new','dashboard.myteam'])}`}>
-            Team</a>
+            Teams</a>
           {
             (userPermissions) ? control.isPermitted('readStaffs', userPermissions) ?
               <a href="/dashboard/team/manage-staff"
@@ -26,6 +28,8 @@ class Tabs extends React.Component {
                  className={`${FlowHelpers.currentRoutes(['dashboard.manageClients',(userType=='client')?'dashboard.user.new':''])}`}>Client</a>
               : '' : ''
           }
+          <a href="" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}
+             className={``}>Team Org</a>
           {
             (userPermissions) ? control.isPermitted('readManagers', userPermissions) ?
               <a href="/dashboard/team/manage-managers"

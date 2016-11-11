@@ -10,18 +10,20 @@ class Breadcrumbs extends React.Component {
     let {crumbs} = this.props;
     console.log(crumbs);
     return (
-      <div>
-
+      <section id="breadcrumbs">
         {crumbs.map((crumb, index) => (
           <a key={index} href={FlowHelpers.pathFor(crumb.path,crumb.params)}
              className={(index>=(crumbs.length-1))?'active':'collection-item'}>
             <b>{(index > 0) ? ' > ' : ''}{crumb.text}</b>
           </a>
         ))}
-      </div>
+      </section>
 
     );
   }
+}
+Breadcrumbs.propTypes = {
+  crumbs: React.PropTypes.array.isRequired,
 }
 Breadcrumbs.defaultProps = {
   crumbs: [{text: 'Home', path: 'home', params: ''}, {text: 'Home', path: 'home', params: ''}, {

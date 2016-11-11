@@ -11,6 +11,7 @@ import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
+import ReactMaterialSelect from 'react-material-select';
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -24,13 +25,14 @@ class AddNewStaff extends React.Component {
   }
 
   _create() {
-    let {create, userType} = this.props;
+    let {create, userType, teams} = this.props;
     let {firstName, lastName, department, position, dateHired, email, positionDescription, role} = this.refs;
     const user = {
       profile: {
         firstName: firstName.value,
         lastName: lastName.value,
-        department: department.value,
+        department: (this.refs.department) ? this.refs.department.getValue() : '',
+        company: (this.refs.company) ? this.refs.company.getValue() : '',
         position: position.value,
         permissions: this.state.permissions,
         role: userType,
@@ -42,14 +44,12 @@ class AddNewStaff extends React.Component {
     let error = [];
     (firstName.value == '') ? error.push('First Name') : '';
     (lastName.value == '') ? error.push('Last Name') : '';
-    (department.value == '') ? error.push('Department') : '';
     (position.value == '') ? error.push('Position') : '';
     (email.value == '') ? error.push('Email') : '';
     const doCreate = ()=> {
       create(user);
       firstName.value = '';
       lastName.value = '';
-      department.value = '';
       position.value = '';
       status.value = '';
       email.value = '';
@@ -90,8 +90,14 @@ class AddNewStaff extends React.Component {
     });
   }
 
+  _addTeam() {
+    const {add}= this.props;
+    add('text');
+    console.log('Adding team');
+  }
+
   render() {
-    const {userPermissions, error, userRole, userType} = this.props;
+    const {userPermissions, error, userRole, userType, teams} = this.props;
     const permissionList = [
       {
         label: 'Client',
@@ -130,7 +136,6 @@ class AddNewStaff extends React.Component {
     return (
       <section id="team">
         <Tabs userType={userType}/>
-
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
         <Breadcrumbs crumbs={
         [{text: `${formatHelper.capitalize(userType)}`, path: `dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: 'dashboard.user.new', params: userType}]}/>
@@ -150,9 +155,24 @@ class AddNewStaff extends React.Component {
                   </div>
 
                   <div className="input-field col s12">
-                    <input id="department" ref="department" type="text" className="validate"/>
-                    <label htmlFor="department">{(userType == 'client') ? 'Company' : 'Department'}</label>
+                    {(userType == 'client') ? <ReactMaterialSelect label="Company" ref="company">
+                      {teams.map((team, index) => (
+                        <option key={index} dataValue={team._id}>
+                          {team.name}
+                        </option>
+                      ))}
+                    </ReactMaterialSelect> : <ReactMaterialSelect label="Department" ref="department">
+                      {teams.map((team, index) => (
+                        <option key={index} dataValue={team._id}>
+                          {team.name}
+                        </option>
+                      ))}
+                    </ReactMaterialSelect>}
+
                   </div>
+
+
+                  <button type="button" onClick={this._addTeam.bind(this)}>Add Team</button>
                   <div className="input-field col s12">
                     <input id="position" ref="position" type="text" className="validate"/>
                     <label htmlFor="position">Position</label>
@@ -211,4 +231,5 @@ class AddNewStaff extends React.Component {
     );
   }
 }
+AddNewStaff.defaultProps = {};
 export default AddNewStaff;

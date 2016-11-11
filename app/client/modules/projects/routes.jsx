@@ -32,11 +32,8 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
-  projectRoutes.route('/view', {
-    action(){
-    }
-  });
   projectRoutes.route('/new', {
+    name:'projects.new',
     action() {
       mount(MainLayoutCtx, {
         head: () => (<Header />), content: () => (<AddProjects />), footer: () => (<Footer />)

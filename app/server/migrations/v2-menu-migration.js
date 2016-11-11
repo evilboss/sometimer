@@ -15,14 +15,16 @@ const menuItems = [
     icon: "grid_on",
     url: '/dashboard',
     name: 'dashboard',
-    roles: ['super-admin', 'staff', 'admin', 'manager']
+    roles: ['super-admin', 'staff', 'admin', 'manager'],
+    routes: ['']
   },
   {
     title: "TIMESHEET",
     icon: "grid_on",
     url: '/dashboard/timesheet',
     name: 'timesheet',
-    roles: ['super-admin', 'staff', 'admin', 'manager']
+    roles: ['super-admin', 'staff', 'admin', 'manager'],
+    routes: ['timesheet'],
   },
   {
     title: "WORK FLOW",
@@ -31,6 +33,7 @@ const menuItems = [
     name: 'dashboard.workflow',
     roles: ['super-admin', 'staff', 'admin', 'manager', 'client'],
     permission: 'readWorkflow',
+    routes: ['']
   },
   {
     title: "PROJECTS",
@@ -38,14 +41,16 @@ const menuItems = [
     url: '/projects/tileview',
     name: 'projects.tileview',
     roles: ['super-admin', 'staff', 'admin', 'manager', 'client'],
-    permission: 'readProject'
+    permission: 'readProject',
+    routes: ['projects.tileview', 'projects.listview', 'project.single', 'projects.new']
   },
   {
     title: "TOOLBOX",
     icon: "group",
     url: '',
     name: 'dashboard.toolbox',
-    roles: ['super-admin', 'staff', 'admin', 'manager', 'client']
+    roles: ['super-admin', 'staff', 'admin', 'manager', 'client'],
+    routes: ['']
 
   },
   {
@@ -53,14 +58,18 @@ const menuItems = [
     icon: "grid_on",
     url: '/dashboard/profile',
     name: 'timesheet',
-    roles: ['super-admin', 'staff', 'admin', 'manager']
+    roles: ['super-admin', 'staff', 'admin', 'manager'],
+    routes: ['users.profile', 'users.profile.edit']
+
   },
   {
     title: "MY TEAM",
     icon: "group",
     url: '/dashboard/team',
     name: 'dashboard.team',
-    roles: ['super-admin', 'admin', 'manager', 'client']
+    roles: ['super-admin', 'admin', 'manager', 'client'],
+    routes: ['dashboard.team', 'dashboard.user.new', 'dashboard.team.new', 'dashboard.manageStaff', 'dashboard.manageClients', 'dashboard.manageAdmins', 'dashboard.manageManagers', 'dashboard.myteam', 'dashboard.team.edit', 'staff.settings', 'dashboard.staff'],
+
 
   },
 ];

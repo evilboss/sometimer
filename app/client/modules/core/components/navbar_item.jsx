@@ -7,20 +7,12 @@ class NavbarItem extends React.Component {
   }
 
   renderMenu(menu) {
-    return (<a key={menu._id}
-               href={(_.contains(['dashboard', 'dashboard.workflow', 'dashboard.toolbox'], menu.name)) ? '' : menu.url}>
-        <div
-          className={`menu-item center-align 
-          ${(menu.name == 'dashboard.team') ?
-            FlowHelpers.currentRoutes(['dashboard.team', 'dashboard.user.new', 'dashboard.team.new', 'dashboard.manageStaff', 'dashboard.manageClients', 'dashboard.manageAdmins', 'dashboard.manageManagers', 'dashboard.myteam', 'dashboard.team.edit', 'staff.settings', 'dashboard.staff'])
-            : FlowHelpers.currentRoute(menu.name)}
-           ${(menu.name == 'projects.tileview') ?
-            FlowHelpers.currentRoutes(['projects.listview'])
-            : FlowHelpers.currentRoute(menu.name)}
-           `}
-
-          onClick={(_.contains(['dashboard', 'dashboard.workflow', 'dashboard.toolbox'], menu.name)) ? sweetPrompts.sweetOkPrompt.bind(this, 'Coming Soon!') : ''}>
-          {menu.title}</div>
+    return (
+      <a key={menu._id}
+         href={(_.contains(['dashboard', 'dashboard.workflow', 'dashboard.toolbox'], menu.name)) ? '' : menu.url}
+         className={`menu-item center-align ${FlowHelpers.currentRoutes(menu.routes)}`}
+         onClick={(_.contains(['dashboard', 'dashboard.workflow', 'dashboard.toolbox'], menu.name)) ? sweetPrompts.sweetOkPrompt.bind(this, 'Coming Soon!') : ''}>
+        <div>{menu.title}</div>
       </a>
     )
   }

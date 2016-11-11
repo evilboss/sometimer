@@ -9,8 +9,9 @@ export default function () {
     'user.update-permissions'(id, permissions){
       remotivUser.update(id, 'profile.permissions', permissions);
     },
-    'users.add'(user){
-      remotivUser.addNew(user);
+    'users.add'(user, message){
+      console.log('users.add.called');
+      remotivUser.addNew(user, message);
     },
     'users.update.profile'(userId, profile){
       _.each(profile, function (value, key) {

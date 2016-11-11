@@ -5,7 +5,7 @@ export default {
       LocalState.set('CREATE_USER_ERROR', 'USER is required.');
       return;
     }
-    Meteor.call('users.add', user, (err) => {
+    Meteor.call('users.add', user, '', (err) => {
       (err) ? LocalState.set('CREATE_USER_ERROR', `user creating failed: ${err.message}`) : '';
     });
   },

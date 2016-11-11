@@ -31,7 +31,8 @@ class AddNewStaff extends React.Component {
       profile: {
         firstName: firstName.value,
         lastName: lastName.value,
-        department: department.value,
+        department: (this.refs.department) ? this.refs.department.getValue() : '',
+        company: (this.refs.company) ? this.refs.company.getValue() : '',
         position: position.value,
         permissions: this.state.permissions,
         role: userType,
@@ -49,7 +50,6 @@ class AddNewStaff extends React.Component {
       create(user);
       firstName.value = '';
       lastName.value = '';
-      department.value = '';
       position.value = '';
       status.value = '';
       email.value = '';

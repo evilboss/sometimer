@@ -2,7 +2,10 @@ import React from 'react';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import StatusIndicator from '/client/modules/team/components/status_indicator';
+import PageTitle from '/client/modules/core/components/page_title';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
+
 class ManageManagers extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +24,7 @@ class ManageManagers extends React.Component {
     let {allManagers} = this.props;
     return (
       <section id="team">
+        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs/>
         <SubTabs target="/dashboard/team/user/new/manager" text="Add New Manager" permission="createClients"/>
         <section id="manage-clients" className="col s12">

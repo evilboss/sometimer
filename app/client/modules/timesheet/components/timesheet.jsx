@@ -43,10 +43,10 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
   render() {
-    const {currentUser, teamId,teamName} = this.props;
+    const {currentUser, teamId, teamName} = this.props;
     const {dates}  = this.state;
     return (
-      <section className="timesheet">
+      <section className="twbs timesheet">
 
         <PageTitle
           title={(currentUser)?`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`:''}/>

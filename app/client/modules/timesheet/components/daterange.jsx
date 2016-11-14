@@ -67,7 +67,7 @@ class Daterange extends React.Component {
     return (
       <section className="daterange">
         <div className="form-group pull-right">
-          <div className="inline input-field">
+          <div className="inline input-field col s12">
             <input
               type='text'
               readOnly

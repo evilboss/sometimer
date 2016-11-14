@@ -21,7 +21,7 @@ class Notification extends React.Component {
     return (
       <div>
         <a href="" className="notification-menu" data-activates="notification-menu">
-          <i className="mdi-social-notifications"></i>
+          <i className="material-icons">notifications</i>
           {(currentUser.profile) ?
             (currentUser.profile.role) ?
               (currentUser.profile.role == 'admin' || currentUser.profile.role == 'manager') ?

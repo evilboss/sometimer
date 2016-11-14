@@ -4,15 +4,18 @@ import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()) {
+
+  const subsriptionReady = [Meteor.subscribe('user.current').ready(), Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
+  const dataReady = ()=> {
     const teamList = Collections.Team.find().fetch();
     const currentUser = Meteor.user();
-    onData(null, {teamList, currentUser});
-  } else {
-    onData();
-  }
+    const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
+    onData(null, {teamList, currentUser, userPermissions});
+  };
+  (subsriptionReady) ? dataReady() : onData();
 };
 export const depsMapper = (context, actions) => ({
+  deleteTeam: actions.team_actions.deleteTeam,
   context: () => context
 });
 export default composeAll(

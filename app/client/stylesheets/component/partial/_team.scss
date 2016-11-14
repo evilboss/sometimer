@@ -1,6 +1,15 @@
 section#team {
   article {
     .card {
+      .card-title {
+        i {
+          margin-top: 5px;
+          color: #454648;
+          &:hover {
+
+          }
+        }
+      }
       .card-action {
         padding: 0.5em;
         img {
@@ -11,40 +20,6 @@ section#team {
           color: $red;
         }
       }
-      &:hover {
-        transition: all 0.2s ease-out;
-        box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
-        .card-hover-action {
-          top: 0%;
-        }
-      }
-      .card-hover-action {
-        transition: top 0.3s;
-        position: absolute;
-        @include background-opacity($primary-color, 0.9);
-        height: 100%;
-        width: 100%;
-        top: 100%;
-        color: white;
-        .close {
-          cursor: pointer;
-          padding: 5px;
-        }
-        .action-buttons {
-          margin: auto;
-          display: table;
-          a.btn {
-            @extend .block;
-            height: 50px;
-            line-height: 50px;
-            border-radius: 0;
-            border: 1px solid white;
-            background-color: transparent;
-            margin: 1em 0;
-          }
-        }
-      }
-
     }
   }
 

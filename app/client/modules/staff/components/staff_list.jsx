@@ -4,8 +4,11 @@ import SendInvitationModal from '/client/modules/invitations/components/send_inv
 import StaffDetails from '../containers/staff_details';
 import DatePicker from '/client/modules/timesheet/components/datepicker';
 import DateRange from '/client/modules/timesheet/components/daterange';
+import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 class StaffList extends React.Component {
   constructor(props) {
@@ -58,6 +61,11 @@ class StaffList extends React.Component {
     const {team, staffList} = this.props;
     return (
       <section id="staff-list">
+        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
+        <Tabs/>
+        <Breadcrumbs crumbs={
+        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
+
         <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
         <div className="row">
           <div className="col s12">
@@ -75,6 +83,7 @@ class StaffList extends React.Component {
             </div>
           </div>
         </div>
+
         <div className="tabs-background">
           <h5>{(team) ? (team.name) ? team.name : '' : ''}</h5>
           <div className="tabs-wrapper">
@@ -87,10 +96,9 @@ class StaffList extends React.Component {
             </ul>
           </div>
         </div>
-        <Breadcrumbs crumbs={
-        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
 
-        <div className="row white-wrapper">
+
+        <div className="row border-top">
           <div className="col s12">
             <table className="bordered">
               <thead>

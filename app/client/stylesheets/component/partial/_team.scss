@@ -1,6 +1,10 @@
 section#team {
   article {
     .card {
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
       .card-title {
         i {
           margin-top: 5px;

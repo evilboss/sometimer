@@ -560,12 +560,6 @@ ul.tabs {
 }
 
 .tabs-background {
-  h5 {
-    position: absolute;
-    margin-left: 1em;
-    margin-top: 10px;
-    color: white;
-  }
   .tabs-wrapper {
     height: 3em;
     width: 30em;
@@ -584,10 +578,14 @@ ul.tabs {
         z-index: -1;
       }
       .tab {
-        border: 1px solid $gray-line;
+        border: 1px solid $dark-gray;
         line-height: 5em;
         height: inherit;
         background-color: $secondary-color;
+        border-bottom: none;
+        &:not(:first-child) {
+          border-left: none;
+        }
         &:nth-child(4) {
           border-top-right-radius: 4px;
         }

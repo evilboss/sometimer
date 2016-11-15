@@ -60,15 +60,18 @@ class StaffList extends React.Component {
   render() {
     const {team, staffList} = this.props;
     return (
-      <section id="staff-list">
+      <section id="staff-list" className="twbs">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs/>
-        <Breadcrumbs crumbs={
-        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
 
-        <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
         <div className="row">
-          <div className="col s12">
+          <div className="col s6">
+            <Breadcrumbs crumbs={
+        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
+            <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
+          </div>
+
+          <div className="col s6 right-align">
             <div id="today" className="col s12">
               Today is {moment().format('LL')}
             </div>
@@ -84,16 +87,31 @@ class StaffList extends React.Component {
           </div>
         </div>
 
-        <div className="tabs-background">
-          <h5>{(team) ? (team.name) ? team.name : '' : ''}</h5>
-          <div className="tabs-wrapper">
-            <ul className="tabs">
-              <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
-                                            href="#today">Today</a></li>
-              <li className="tab col s3"><a onClick={this.getWeek.bind(this)} href="#week">This Week</a></li>
-              <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#month">This Month</a></li>
-              <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom Date</a></li>
-            </ul>
+
+        <div className="row no-margin-bottom">
+          <div className="col s4 no-margin">
+            <h5 className="no-margin-bottom">{(team) ? (team.name) ? team.name : '' : ''}</h5>
+          </div>
+          <div className="col s5 no-margin">
+            <div className="tabs-background">
+              <div className="tabs-wrapper">
+                <ul className="tabs">
+                  <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
+                                                href="#today">Today</a></li>
+                  <li className="tab col s3"><a onClick={this.getWeek.bind(this)} href="#week">This Week</a></li>
+                  <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#month">This Month</a></li>
+                  <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom Date</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="col s3 no-margin">
+            <div className="btn btn-add">
+              <a href="" className="waves-effect waves-light secondary-color">
+                <i className="material-icons">add</i>
+                <span>Add a new staff</span>
+              </a>
+            </div>
           </div>
         </div>
 

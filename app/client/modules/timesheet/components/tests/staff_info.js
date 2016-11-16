@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import StaffInfo from '../staff_info';
 
 describe('timesheet.components.staff_info', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

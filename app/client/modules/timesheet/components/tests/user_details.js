@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import UserDetails from '../user_details';
 
 describe('timesheet.components.user_details', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

@@ -3,11 +3,14 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import ManageStaff from '../../components/manage_staff/manage_staff.jsx';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 
-export const composer = ({context}, onData) => {
+export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionsReady = [Meteor.subscribe('users.allStaff', domainHelpers.getSubdomain()).ready(), Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
-    let allStaff = Meteor.users.find({'profile.role': 'staff'}).fetch();
+    const team = (teamId) ? Collections.Team.findOne(teamId) : null;
+    console.log(team);
+    const selector = (team) ? {'profile.role': 'staff', _id: {$in: team.members}} : {'profile.role': 'staff'};
+    let allStaff = Meteor.users.find(selector).fetch();
     let teams = Collections.Team.find().fetch();
     onData(null, {allStaff, teams});
   };

@@ -62,12 +62,11 @@ class StaffList extends React.Component {
     return (
       <section id="staff-list" className="twbs">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
-        <Tabs/>
-
+        <Tabs teamId={team._id}/>
         <div className="row">
           <div className="col s6">
             <Breadcrumbs crumbs={
-        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
+        [{text: 'Teams', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
             <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
           </div>
 
@@ -107,7 +106,8 @@ class StaffList extends React.Component {
           </div>
           <div className="col s3 no-margin">
             <div className="btn btn-add">
-              <a href="" className="waves-effect waves-light secondary-color">
+              <a href={`/dashboard/team/${team._id}/user/new/staff`}
+                 className="waves-effect waves-light secondary-color">
                 <i className="material-icons">add</i>
                 <span>Add a new staff</span>
               </a>

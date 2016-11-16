@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import EditHourRendered from '../edit_hour_rendered';
 
 describe('timesheet.components.edit_hour_rendered', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

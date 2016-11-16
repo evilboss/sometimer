@@ -25,13 +25,13 @@ class AddNewStaff extends React.Component {
   }
 
   _create() {
-    let {create, userType, teams} = this.props;
+    let {create, userType, teams, teamId} = this.props;
     let {firstName, lastName, department, position, dateHired, email, positionDescription, role, message} = this.refs;
     const user = {
       profile: {
         firstName: firstName.value,
         lastName: lastName.value,
-        department: (this.refs.department) ? this.refs.department.getValue() : '',
+        department: (teamId) ? teamId : (this.refs.department) ? this.refs.department.getValue() : '',
         company: (this.refs.company) ? this.refs.company.getValue() : '',
         position: position.value,
         permissions: this.state.permissions,
@@ -54,7 +54,7 @@ class AddNewStaff extends React.Component {
       status.value = '';
       email.value = '';
       let target = (user.profile.role == 'staff') ? user.profile.role : `${user.profile.role}s`;
-      sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', `/dashboard/team/manage-${target}`);
+      sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', (teamId) ? `/dashboard/team/${teamId}/manage-${target}` : `/dashboard/team/manage-${target}`);
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
   }
@@ -97,7 +97,7 @@ class AddNewStaff extends React.Component {
   }
 
   render() {
-    const {userPermissions, error, userRole, userType, teams} = this.props;
+    const {userPermissions, error, userRole, userType, teams, teamId} = this.props;
     const permissionList = [
       {
         label: 'Client',
@@ -136,9 +136,9 @@ class AddNewStaff extends React.Component {
     return (
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
-        <Tabs userType={userType}/>
+        <Tabs userType={userType} teamId={teamId}/>
         <Breadcrumbs crumbs={
-        [{text: `${formatHelper.capitalize(userType)}`, path: `dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: 'dashboard.user.new', params: userType}]}/>
+        [{text: (teamId)?'team':`${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}`:`dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}/user/new/`:'dashboard.user.new', params: userType}]}/>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm" className="twbs">
@@ -154,18 +154,18 @@ class AddNewStaff extends React.Component {
                     <input placeholder="Last Name" id="lastName" ref="lastName" type="text" className="validate"/>
                     <label htmlFor="lastName" className="active">Last Name</label>
                   </div>
-
-                  <div className="input-field col s12">
-                    {(userType == 'client') ? <ReactMaterialSelect label="Company" ref="company">
-                    </ReactMaterialSelect> : <ReactMaterialSelect label="Department" ref="department">
-                      {teams.map((team, index) => (
-                        <option key={index} dataValue={team._id}>
-                          {team.name}
-                        </option>
-                      ))}
-                    </ReactMaterialSelect>}
-                  </div>
-
+                  {(teamId) ? null :
+                    <div className="input-field col s12">
+                      {(userType == 'client') ? <ReactMaterialSelect label="Company" ref="company">
+                      </ReactMaterialSelect> : <ReactMaterialSelect label="Department" ref="department">
+                        {teams.map((team, index) => (
+                          <option key={index} dataValue={team._id}>
+                            {team.name}
+                          </option>
+                        ))}
+                      </ReactMaterialSelect>}
+                    </div>
+                  }
                   <div className="input-field col s12">
                     <input id="position" placeholder="Position" ref="position" type="text" className="validate"/>
                     <label htmlFor="position" className="active">Position</label>

@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import Timedata from '../timedata';
 
 describe('staff.components.timedata', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

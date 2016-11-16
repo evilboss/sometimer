@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import Datepicker from '../datepicker';
 
 describe('timesheet.components.datepicker', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

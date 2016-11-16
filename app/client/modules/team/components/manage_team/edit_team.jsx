@@ -4,7 +4,7 @@ import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import ReactMaterialSelect from 'react-material-select';
-import 'react-material-select/lib/css/reactMaterialSelect.css';
+//import 'react-material-select/lib/css/reactMaterialSelect.css';
 class EditTeam extends React.Component {
   constructor(props) {
     super(props);

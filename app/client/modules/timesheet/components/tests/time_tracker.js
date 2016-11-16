@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import TimeTracker from '../time_tracker';
 
 describe('timesheet.components.time_tracker', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

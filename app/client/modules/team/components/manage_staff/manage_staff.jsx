@@ -5,7 +5,6 @@ import SubTabs from '/client/modules/team/containers/sub_tabs';
 import StatusIndicator from '/client/modules/team/components/status_indicator';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
-
 class ManageStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -21,11 +20,11 @@ class ManageStaff extends React.Component {
   }
 
   render() {
-    let {allStaff} = this.props;
+    let {allStaff, teamId} = this.props;
     return (
       <section id="team">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
-        <Tabs/>
+        <Tabs teamId={teamId}/>
         <SubTabs target="/dashboard/team/user/new/staff" text="Add New Staff" permission="createStaffs"/>
         <section id="manage-staff" className="col s12">
           <div className="row no-margin-bottom">

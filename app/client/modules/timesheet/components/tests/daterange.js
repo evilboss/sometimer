@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import Daterange from '../daterange';
 
 describe('timesheet.components.daterange', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

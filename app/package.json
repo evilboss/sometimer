@@ -3,7 +3,23 @@
   "version": "0.0.3",
   "description": "Remotive platform",
   "scripts": {
-    "test": "mocha .scripts/mocha_boot.js client/**/tests/**/*.js --compilers js:babel-core/register"
+    "test": "mocha .scripts/mocha_boot.js client/**/tests/**/*.js --compilers js:babel-core/register",
+    "test-server": "mocha server/**/tests/**/*.js --compilers js:babel-core/register",
+    "lint": "eslint ./"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
   },
   "repository": {
     "type": "git",
@@ -71,7 +87,7 @@
     "chai": "3.x.x",
     "cssnano": "^3.6.2",
     "enzyme": "^2.2.0",
-    "eslint": "2.7.x",
+    "eslint": "^3.1.1",
     "eslint-plugin-react": "4.3.x",
     "jsdom": "^8.0.4",
     "mocha": "2.x.x",

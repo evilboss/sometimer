@@ -1,8 +1,8 @@
 /**
  * Created by jr on 6/7/16.
  */
-import {Team} from '/lib/collections';
-import {Meteor} from 'meteor/meteor';
+//import {Team} from '/lib/collections';
+//import {Meteor} from 'meteor/meteor';
 function extractDomain(url) {
   var domain;
   //find & remove protocol (http, ftp, etc.) and get domain
@@ -43,9 +43,9 @@ function buildDomain(sub, url) {
 }
 
 function getTeamInfo() {
-  if (Meteor.subscribe('team.current', getSubdomain()).ready) {
+  /*if (Meteor.subscribe('team.current', getSubdomain()).ready) {
     return (Team.find().count()) ? Team.find().fetch() : null;
-  }
+  }*/
 
 
 }

@@ -1,7 +1,7 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import AddNewStaff from '../../components/manage_staff/add_new_staff.jsx';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-export const composer = ({context}, onData) => {
+export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   let subsriptionReady = [Meteor.subscribe('user.current').ready(), Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {

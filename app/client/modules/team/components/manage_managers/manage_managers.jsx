@@ -21,12 +21,13 @@ class ManageManagers extends React.Component {
   }
 
   render() {
-    let {allManagers} = this.props;
+    let {allManagers, teamId} = this.props;
     return (
       <section id="team">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
-        <Tabs/>
-        <SubTabs target="/dashboard/team/user/new/manager" text="Add New Manager" permission="createClients"/>
+        <Tabs teamId={teamId}/>
+        <SubTabs target={(teamId)?`/dashboard/team/${teamId}/user/new/manager`:'/dashboard/team/user/new/manager'}
+                 text="Add New Manager" permission="createManagers"/>
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">

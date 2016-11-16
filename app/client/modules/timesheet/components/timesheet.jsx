@@ -1,15 +1,14 @@
 import React from 'react';
 import moment from 'moment';
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
+//import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import DatePicker from './datepicker';
 import PageTitle from '/client/modules/core/components/page_title';
 import UserDetails from './user_details';
 import TimesheetTable from './timesheet_table';
 import DateRange from './daterange';
-const DateData = new ReactiveVar();
+//const DateData = new ReactiveVar();
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
-
-class Timesheet extends TrackerReact(React.Component) {
+class Timesheet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,15 +46,14 @@ class Timesheet extends TrackerReact(React.Component) {
     const {dates}  = this.state;
     return (
       <section className="twbs timesheet">
-
         <PageTitle
           title={(currentUser)?`${(Meteor.userId()==currentUser._id)?'Your':`${currentUser.profile.firstName}'s`} Time Tracker`:''}/>
         {(teamId) ? <Breadcrumbs crumbs={
-                 [
-                 {text: 'Team', path: 'dashboard.team', params: ''},
-                  {text: (teamName)?teamName:'Team', path: 'dashboard.myteam', params: teamId},
-                  {text: (currentUser)?`${currentUser.profile.firstName} ${currentUser.profile.lastName}`:'', path: 'dashboard.myteam', params: `${teamId}/${(currentUser)?currentUser._id:''}`}
-                  ]}/>
+ [
+ {text: 'Team', path: 'dashboard.team', params: ''},
+ {text: (teamName)?teamName:'Team', path: 'dashboard.myteam', params: teamId},
+ {text: (currentUser)?`${currentUser.profile.firstName} ${currentUser.profile.lastName}`:'', path: 'dashboard.myteam', params: `${teamId}/${(currentUser)?currentUser._id:''}`}
+ ]}/>
           : null}
         <UserDetails currentUser={currentUser}/>
         <DateRange changeDate={this.changeDate.bind(this)}/>
@@ -70,5 +68,6 @@ class Timesheet extends TrackerReact(React.Component) {
   }
 
 }
+
 export default Timesheet;
 

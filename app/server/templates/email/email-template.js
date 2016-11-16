@@ -1,6 +1,7 @@
 /**
  * Created by jr on 9/21/16.
  */
+import Spacebars from 'meteor/spacebars';
 TemplateHelpers = {
   enumerate(arr, limit, oxfordComma) {
     if (arr) {

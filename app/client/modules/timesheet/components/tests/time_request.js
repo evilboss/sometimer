@@ -4,5 +4,7 @@ import {shallow} from 'enzyme';
 import TimeRequest from '../time_request';
 
 describe('timesheet.components.time_request', () => {
-  it('should do something');
+  it('should do something', (done)=> {
+    done();
+  });
 });

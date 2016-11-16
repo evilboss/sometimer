@@ -117,11 +117,12 @@ class StaffList extends React.Component {
 
 
         <div className="row border-top">
-          <div className="col s12">
-            <table className="bordered">
+          <div className="col s12 no-padding">
+            <table className="striped">
               <thead>
               <tr>
-                <th>Staff</th>
+                <th></th>
+                <th>Staff Name</th>
                 <th className="center-align">Time Log Status</th>
                 <th></th>
               </tr>

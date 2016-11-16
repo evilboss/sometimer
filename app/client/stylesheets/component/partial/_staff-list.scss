@@ -1,56 +1,32 @@
 section#staff-list {
-  .collection {
-    .collection-item {
-      padding: 5px 0px 5px 90px;
-      img.circle {
-        margin-top: 1em;
-        width: 60px;
-        height: 60px;
-      }
-      table {
-        width: auto;
-        display: inline-block;
-        td, th {
-          padding: 0 5px;
-        }
-      }
-      .col {
-        padding: 0;
-      }
-      .total-time {
-        margin-top: 1.6em;
-        div:first-child {
-          border-left: 1px dotted $gray-line;
-          border-right: 1px dotted $gray-line;
-        }
-        div {
-          border-right: 1px dotted $gray-line;
-        }
+  table {
+    th, td {
+      padding: 10px;
+    }
+    .staff-dp {
+      width: 66px;
+      padding-right: 0 !important;
+    }
 
-        div.center-align {
-          color: #999999;
-          display: inline-block;
-          padding: 0 1.5em;
-        }
-        h4 {
-          margin: 0;
-          color: $theme-color;
-        }
-      }
-      .icons {
-        @extend .total-time;
-        position: relative;
-        padding: 10px;
-        img {
-          cursor: pointer;
-          padding: 5px;
+    .staff-details {
+      padding-left: 0 !important;
+      h6 {
+        color: black;
+        small {
+          color: $dark-gray;
         }
       }
     }
   }
+
   .status {
     span {
       margin-left: 35px;
+    }
+  }
+  .icons {
+    a {
+      padding: 10px;
     }
   }
 

@@ -66,8 +66,8 @@ class Daterange extends React.Component {
     const format = 'dddd, D MMMM YYYY';
     return (
       <section className="daterange">
-        <div className="form-group pull-right">
-          <div className="inline input-field col s12">
+        <div className="form-group">
+          <div className="input-field col s6">
             <input
               type='text'
               readOnly
@@ -79,7 +79,7 @@ class Daterange extends React.Component {
             />
             <label className="active" htmlFor="from">View Date Range</label>
           </div>
-          <div className="inline input-field">
+          <div className="input-field col s6">
             <input
               type='text'
               readOnly

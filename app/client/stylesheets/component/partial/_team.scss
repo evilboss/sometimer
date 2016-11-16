@@ -3,7 +3,7 @@ section#team {
     .card {
 
       &:hover {
-        border: 1px solid $secondary-color;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 #1596cf;
       }
       .card-title {
         i {

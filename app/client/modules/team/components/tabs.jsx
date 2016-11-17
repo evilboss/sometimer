@@ -1,6 +1,5 @@
 import React from 'react';
 import {control} from '/lib/access-control/control';
-import {FlowHelpers} from '/client/utils/helpers/route-helpers';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 
 class Tabs extends React.Component {
@@ -9,7 +8,7 @@ class Tabs extends React.Component {
   }
 
   render() {
-    const {userPermissions, userType, teamId} = this.props;
+    const {userPermissions, userType, teamId, FlowHelpers} = this.props;
     return (
       <div className="tab-nav-wrapper">
         <div className="tab-nav inline">
@@ -42,4 +41,15 @@ class Tabs extends React.Component {
     );
   }
 }
+Tabs.defaultProps = {
+  FlowHelpers: {
+    currentRoutes: (event)=> {
+    }
+  },
+  crumbs: [{text: 'Home', path: 'home', params: ''}, {text: 'Home', path: 'home', params: ''}, {
+    text: 'Home',
+    path: 'home',
+    params: ''
+  }]
+};
 export default Tabs;

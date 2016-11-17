@@ -1,11 +1,12 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
+import {FlowHelpers} from '/client/utils/helpers/route-helpers';
 
 import Breadcrumbs from '../components/breadcrumbs.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  onData(null, {});
+  onData(null, {FlowHelpers});
 };
 
 export const depsMapper = (context, actions) => ({

@@ -5,7 +5,9 @@
   "scripts": {
     "test": "mocha .scripts/mocha_boot.js client/**/tests/**/*.js --compilers js:babel-core/register",
     "test-server": "mocha server/**/tests/**/*.js --compilers js:babel-core/register",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -76,6 +78,10 @@
     "webpack": "^1.13.1"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
+    "enzyme": "^2.2.0",
+    "jsdom": "^8.0.4",
+    "eslint": "^3.1.1",
     "autoprefixer": "^6.3.5",
     "babel-core": "6.x.x",
     "babel-plugin-react-require": "2.x.x",
@@ -84,18 +90,15 @@
     "babel-preset-react": "6.x.x",
     "babel-preset-stage-2": "6.x.x",
     "babel-root-slash-import": "1.x.x",
+    "sinon": "1.17.x",
     "chai": "3.x.x",
     "cssnano": "^3.6.2",
-    "enzyme": "^2.2.0",
-    "eslint": "^3.1.1",
     "eslint-plugin-react": "4.3.x",
-    "jsdom": "^8.0.4",
     "mocha": "2.x.x",
     "postcss-easy-import": "^1.0.1",
     "postcss-scss": "^0.1.8",
     "react-addons-test-utils": "^15.0.0",
-    "rucksack-css": "^0.8.6",
-    "sinon": "1.17.x"
+    "rucksack-css": "^0.8.6"
   },
   "postcss": {
     "plugins": {

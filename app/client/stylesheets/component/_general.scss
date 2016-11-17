@@ -664,3 +664,9 @@ ul.tabs {
 .nav-wrapper, .tab-nav-wrapper, .breadcrumbs {
   letter-spacing: 1px;
 }
+
+.daterange {
+  input {
+    width: 16em !important;
+  }
+}

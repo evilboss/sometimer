@@ -60,10 +60,10 @@ class StaffList extends React.Component {
   render() {
     const {team, staffList} = this.props;
     return (
-      <section id="staff-list" className="twbs">
+      <section id="staff-list">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs teamId={team._id}/>
-        <div className="row">
+        <div className="row no-margin-bottom">
           <div className="col s6">
             <Breadcrumbs crumbs={
         [{text: 'Teams', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
@@ -104,7 +104,7 @@ class StaffList extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col s3 no-margin">
+          <div className="col s3 no-margin twbs">
             <div className="btn btn-add">
               <a href={`/dashboard/team/${team._id}/user/new/staff`}
                  className="waves-effect waves-light secondary-color">

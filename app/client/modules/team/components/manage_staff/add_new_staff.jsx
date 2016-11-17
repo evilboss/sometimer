@@ -26,13 +26,13 @@ class AddNewStaff extends React.Component {
 
   _create() {
     let {create, userType, teams, teamId} = this.props;
-    let {firstName, lastName, department, position, dateHired, email, positionDescription, role, message} = this.refs;
+    let {firstName, lastName, department, company, position, dateHired, email, positionDescription, role, message} = this.refs;
     const user = {
       profile: {
         firstName: firstName.value,
         lastName: lastName.value,
-        department: (teamId) ? teamId : (this.refs.department) ? this.refs.department.getValue() : '',
-        company: (this.refs.company) ? this.refs.company.getValue() : '',
+        department: (teamId) ? teamId : (department) ? department.getValue() : '',
+        company: (company) ? company.value : '',
         position: position.value,
         permissions: this.state.permissions,
         role: userType,
@@ -156,14 +156,19 @@ class AddNewStaff extends React.Component {
                   </div>
                   {(teamId) ? null :
                     <div className="input-field col s12">
-                      {(userType == 'client') ? <ReactMaterialSelect label="Company" ref="company">
-                      </ReactMaterialSelect> : <ReactMaterialSelect label="Department" ref="department">
-                        {teams.map((team, index) => (
-                          <option key={index} dataValue={team._id}>
-                            {team.name}
-                          </option>
-                        ))}
-                      </ReactMaterialSelect>}
+                      {(userType == 'client') ?
+                        <div className="input-field col s12">
+                          <input placeholder="Company" id="lastName" ref="company" type="text" className="validate"/>
+                          <label htmlFor="company" className="active">Company</label>
+                        </div>
+                        :
+                        <ReactMaterialSelect label="Department" ref="department">
+                          {teams.map((team, index) => (
+                            <option key={index} dataValue={team._id}>
+                              {team.name}
+                            </option>
+                          ))}
+                        </ReactMaterialSelect>}
                     </div>
                   }
                   <div className="input-field col s12">

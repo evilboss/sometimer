@@ -1,6 +1,7 @@
 /**
  * Created by jr on 8/25/16.
  */
+import {FlowRouter} from 'meteor/kadira:flow-router';
 const pathFor = (path, params) => {
   let query = params && params.query ? FlowRouter._qs.parse(params.query) : {};
   return `${FlowRouter.path(path)}/${params}`;

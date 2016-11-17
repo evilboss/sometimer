@@ -67,6 +67,18 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
+  dashboardRoutes.route('/team/manage-clients/:clientId', {
+    name: 'dashboard.team.manageClients',
+    action(params) {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<Header />),
+          content: ()=>(<TeamList clientId={params.clientId}/>),
+          footer: ()=>(<Foot/>)
+        },
+      );
+    }
+  });
   dashboardRoutes.route('/team/manage-admins', {
     name: 'dashboard.manageAdmins',
     action() {
@@ -131,6 +143,7 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
+
   dashboardRoutes.route('/team/:teamId/manage-managers', {
     name: 'dashboard.team.manageManagers',
     action(params) {

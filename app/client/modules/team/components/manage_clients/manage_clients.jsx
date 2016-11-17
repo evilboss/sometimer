@@ -40,26 +40,28 @@ class ManageClients extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {allClients.map((staff, index) => (
+                {allClients.map((client, index) => (
                   <tr key={index}>
                     <td>
-                      <img
-                        src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
-                        alt="Staff" className="circle responsive-img dp-small left"/>
-                      <div className="col staff-details no-margin">
-                        <h6>{staff.profile.firstName} {staff.profile.lastName}<br/>
-                          <small>{staff.profile.jobTitle}</small>
-                        </h6>
-                      </div>
+                      <a href={`/dashboard/team/manage-clients/${client._id}`}>
+                        <img
+                          src={(client.profile.displayPhoto)?`${client.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                          alt="client" className="circle responsive-img dp-small left"/>
+                        <div className="col client-details no-margin">
+                          <h6>{client.profile.company}<br/>
+                            <small>{client.profile.firstName} {client.profile.lastName}</small>
+                          </h6>
+                        </div>
+                      </a>
                     </td>
                     <td>
-                      {formatHelper.capitalize(staff.profile.status)}
+                      {formatHelper.capitalize(client.profile.status)}
                     </td>
                     <td>
-                      {this.getAssignedTeam(staff._id)}
+                      {this.getAssignedTeam(client._id)}
                     </td>
                     <td className="status">
-                      <StatusIndicator class={formatHelper.capitalize(staff.profile.status)}/>
+                      <StatusIndicator class={formatHelper.capitalize(client.profile.status)}/>
                     </td>
                   </tr>
                 ))}

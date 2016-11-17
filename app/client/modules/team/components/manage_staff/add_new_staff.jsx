@@ -53,8 +53,8 @@ class AddNewStaff extends React.Component {
       position.value = '';
       status.value = '';
       email.value = '';
-      let target = (user.profile.role == 'staff') ? user.profile.role : `${user.profile.role}s`;
-      sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', (teamId) ? `/dashboard/team/${teamId}/manage-${target}` : `/dashboard/team/manage-${target}`);
+      let target = (user.profile.role == 'staff') ? '' : `manage-${user.profile.role}s`;
+      sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', (teamId) ? `/dashboard/team/${teamId}/${target}` : `/dashboard/team/${target}`);
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
   }

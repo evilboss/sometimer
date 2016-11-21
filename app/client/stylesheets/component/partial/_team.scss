@@ -52,4 +52,12 @@ section#team {
     background-color: white;
   }
 
+  .tab-page-header {
+    margin: 1.5em 2em;
+    margin-bottom: 0;
+    border-bottom: 1px solid $gray-line;
+    #breadcrumbs {
+      padding: 0 !important;
+    }
+  }
 }

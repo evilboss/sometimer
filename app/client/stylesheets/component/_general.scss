@@ -91,6 +91,19 @@ p {
 }
 
 // Label
+label.required:before {
+  content: "*";
+  margin-right: 2px;
+  color: $red;
+}
+
+.class-info {
+  color: $dark-gray;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted $dark-gray;
+  display: table;
+}
+
 .table-row-active {
   background-color: #68c73f;
   color: white;
@@ -127,6 +140,7 @@ p {
 }
 
 //inputs
+input[type=email],
 input[type=text]:not(.search-input) {
   margin: 0;
 }

@@ -137,52 +137,94 @@ class AddNewStaff extends React.Component {
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
         <Tabs userType={userType} teamId={teamId}/>
-        <Breadcrumbs crumbs={
+
+        <div className="tab-page-header">
+          <Breadcrumbs crumbs={
         [{text: (teamId)?'team':`${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}`:`dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}/user/new/`:'dashboard.user.new', params: userType}]}/>
+          <h5>Add Staff to Team Name</h5>
+        </div>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
             <form ref="inviteForm" className="twbs">
+              <p>Please fill in the fields below to add a new staff and invite him / her into the system,</p>
               <div className="col s12 no-padding">
                 {error ? this._renderError(error) : null}
 
-                <div className="col s4">
-                  <div className="input-field col s12">
-                    <input placeholder="First Name" id="firstName" ref="firstName" type="text" className="validate"/>
-                    <label htmlFor="firstName" className="active">First Name</label>
+                <div className="col s8 no-padding">
+                  <div className="class-info">
+                    PERSONAL INFORMATION
                   </div>
-                  <div className="input-field col s12">
-                    <input placeholder="Last Name" id="lastName" ref="lastName" type="text" className="validate"/>
-                    <label htmlFor="lastName" className="active">Last Name</label>
+                  <div className="col s6 no-padding">
+                    <div className="input-field">
+                      <input placeholder="First Name" id="firstName" ref="firstName" type="text" className="validate"/>
+                      <label htmlFor="firstName" className="active required">First Name</label>
+                    </div>
+                  </div>
+                  <div className="col s6">
+                    <div className="input-field">
+                      <input placeholder="Last Name" id="lastName" ref="lastName" type="text" className="validate"/>
+                      <label htmlFor="lastName" className="active required">Last Name</label>
+                    </div>
                   </div>
                   {(teamId) ? null :
-                    <div className="input-field col s12">
-                      {(userType == 'client') ?
-                        <div className="input-field col s12">
-                          <input placeholder="Company" id="lastName" ref="company" type="text" className="validate"/>
-                          <label htmlFor="company" className="active">Company</label>
-                        </div>
-                        :
-                        <ReactMaterialSelect label="Department" ref="department">
-                          {teams.map((team, index) => (
-                            <option key={index} dataValue={team._id}>
-                              {team.name}
-                            </option>
-                          ))}
-                        </ReactMaterialSelect>}
+                    <div className="col s6">
+                      <div className="input-field">
+                        {(userType == 'client') ?
+                          <div className="input-field col s6">
+                            <input placeholder="Company" id="lastName" ref="company" type="text" className="validate"/>
+                            <label htmlFor="company" className="active required">Company</label>
+                          </div>
+                          :
+                          <ReactMaterialSelect label="Department" ref="department">
+                            {teams.map((team, index) => (
+                              <option key={index} dataValue={team._id}>
+                                {team.name}
+                              </option>
+                            ))}
+                          </ReactMaterialSelect>}
+                      </div>
                     </div>
                   }
-                  <div className="input-field col s12">
-                    <input id="position" placeholder="Position" ref="position" type="text" className="validate"/>
-                    <label htmlFor="position" className="active">Position</label>
+                  <div className="class-info">
+                    CONTACT INFORMATION
                   </div>
-                  <div className="input-field col s12">
-                    <input placeholder="Email" id="email" ref="email" type="email" className="validate"/>
-                    <label htmlFor="email" className="active">Email</label>
+                  <div className=" col s6 no-padding">
+                    <div className="input-field">
+                      <input placeholder="Email" id="email" ref="email" type="email" className="validate"/>
+                      <label htmlFor="email" className="active required">Email</label>
+                    </div>
+                  </div>
+                  <div className=" col s6">
+                    <div className="input-field">
+                      <input placeholder="Country" id="country" ref="country" type="text" className="validate"/>
+                      <label htmlFor="country" className="active required">Country(working from what part of the
+                        world?)</label>
+                    </div>
+                  </div>
+                  <div className=" col s6 no-padding">
+                    <div className="input-field">
+                      <input placeholder="Contact Number" id="contactNumber" ref="contactNumber" type="text"
+                             className="validate"/>
+                      <label htmlFor="contactNumber" className="active required">Landline / Mobile Number</label>
+                    </div>
+                  </div>
+                  <div className=" col s6">
+                    <div className="input-field">
+                      <input placeholder="Skype ID" id="skypeID" ref="skypeID" type="text" className="validate"/>
+                      <label htmlFor="skypeID" className="active required">Skype ID</label>
+                    </div>
+                  </div>
+                  <div className="class-info">
+                    WORK INFO
+                  </div>
+                  <div className="input-field col s12 no-padding">
+                    <input id="position" placeholder="Position" ref="position" type="text" className="validate"/>
+                    <label htmlFor="position" className="active required">Position</label>
                   </div>
                 </div>
 
-                <div className="col s4">
-                  <div className="col s12">
+                <div className="col s8 no-padding">
+                  <div className="col s12 no-padding">
                     {
                       (_.contains(['staff', 'admin', 'manager'], userType)) ?
                         <table>
@@ -217,7 +259,7 @@ class AddNewStaff extends React.Component {
                     }
                   </div>
                 </div>
-                <div className="col s4">
+                <div className="col s8 no-padding">
                   <div className="input-field col s12">
                     <textarea placeholder="Add a personal message" id="message" ref="message"
                               className="materialize-textarea"></textarea>

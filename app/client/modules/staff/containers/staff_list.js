@@ -1,6 +1,7 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
+import React from 'react';
 import StaffList from '../components/staff_list.jsx';
+const Loading = () => React.createElement("div", null, "hmmm...");
 
 export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
@@ -21,6 +22,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loading),
   useDeps(depsMapper)
 )(StaffList);

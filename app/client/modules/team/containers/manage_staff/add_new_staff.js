@@ -8,10 +8,9 @@ export const composer = ({context, teamId}, onData) => {
     let userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
     let userRole = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.role) ? Meteor.user().profile.role : '' : '' : '';
     const team = (teamId) ? Collections.Team.findOne(teamId) : null;
-    const selector = (team) ? {'profile.role': 'staff', _id: {$in: team.members}} : {'profile.role': 'staff'};
-    let allStaff = Meteor.users.find(selector).fetch();
+    let allStaff = Meteor.users.find({'profile.role': 'staff'}).fetch();
     let teams = Collections.Team.find().fetch();
-    console.log(userRole);
+    console.log(allStaff, 'allstaff');
     onData(null, {userPermissions, userRole, allStaff, teams});
   };
   (subsriptionReady) ? dataReady() : onData();

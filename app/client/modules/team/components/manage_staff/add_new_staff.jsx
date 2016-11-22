@@ -97,7 +97,7 @@ class AddNewStaff extends React.Component {
   }
 
   render() {
-    const {allStaff, userPermissions, error, userRole, userType, teams, teamId} = this.props;
+    const {allStaff, teamAllStaff, userPermissions, error, userRole, userType, teams, teamId} = this.props;
     const permissionList = [
       {
         label: 'Client',
@@ -132,7 +132,7 @@ class AddNewStaff extends React.Component {
       }
     ];
     let target = (userType == 'staff') ? userType : `${userType}s`;
-    console.log(allStaff, 'butu')
+    console.log(allStaff, 'pekpek')
     return (
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>

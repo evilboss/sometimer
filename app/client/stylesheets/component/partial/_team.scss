@@ -53,9 +53,13 @@ section#team {
   }
 
   .tab-page-header {
-    margin: 1.5em 2em;
-    margin-bottom: 0;
+    padding: 1.5em 2em;
+    padding-bottom: 0;
     border-bottom: 1px solid $gray-line;
+    h5 {
+      vertical-align: bottom;
+      margin-bottom: 13px;
+    }
     #breadcrumbs {
       padding: 0 !important;
     }

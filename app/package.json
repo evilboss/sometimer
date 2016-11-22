@@ -75,6 +75,7 @@
     "screenfull": "^3.0.0",
     "simple-react-form": "^1.2.0",
     "simple-react-form-material-ui": "^1.2.3",
+    "smartlogic-react-typeahead": "^1.1.5",
     "webpack": "^1.13.1"
   },
   "devDependencies": {

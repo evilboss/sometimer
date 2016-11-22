@@ -12,7 +12,7 @@ import {FlowHelpers} from '/client/utils/helpers/route-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import ReactMaterialSelect from 'react-material-select';
-
+import {Typeahead} from 'smartlogic-react-typeahead';
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -97,7 +97,7 @@ class AddNewStaff extends React.Component {
   }
 
   render() {
-    const {userPermissions, error, userRole, userType, teams, teamId} = this.props;
+    const {allStaff, userPermissions, error, userRole, userType, teams, teamId} = this.props;
     const permissionList = [
       {
         label: 'Client',
@@ -132,16 +132,24 @@ class AddNewStaff extends React.Component {
       }
     ];
     let target = (userType == 'staff') ? userType : `${userType}s`;
-
+    console.log(allStaff, 'butu')
     return (
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
         <Tabs userType={userType} teamId={teamId}/>
 
-        <div className="tab-page-header">
+        <div className="twbs tab-page-header">
           <Breadcrumbs crumbs={
         [{text: (teamId)?'team':`${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}`:`dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}/user/new/`:'dashboard.user.new', params: userType}]}/>
-          <h5>Add Staff to Team Name</h5>
+          <h5 className="inline">Add Staff to Team Name</h5>
+          <div className="inline input-field">
+            <Typeahead
+              options={['John', 'Paul', 'reng', 'Ringo', 'ring']}
+              maxVisible={2}
+              placeholder="Enter a registered staff to quickly add them to the team"
+            />
+          </div>
+          <div className="inline typeahead-btn-add">+</div>
         </div>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
@@ -166,25 +174,6 @@ class AddNewStaff extends React.Component {
                       <label htmlFor="lastName" className="active required">Last Name</label>
                     </div>
                   </div>
-                  {(teamId) ? null :
-                    <div className="col s6">
-                      <div className="input-field">
-                        {(userType == 'client') ?
-                          <div className="input-field col s6">
-                            <input placeholder="Company" id="lastName" ref="company" type="text" className="validate"/>
-                            <label htmlFor="company" className="active required">Company</label>
-                          </div>
-                          :
-                          <ReactMaterialSelect label="Department" ref="department">
-                            {teams.map((team, index) => (
-                              <option key={index} dataValue={team._id}>
-                                {team.name}
-                              </option>
-                            ))}
-                          </ReactMaterialSelect>}
-                      </div>
-                    </div>
-                  }
                   <div className="class-info">
                     CONTACT INFORMATION
                   </div>
@@ -217,20 +206,47 @@ class AddNewStaff extends React.Component {
                   <div className="class-info">
                     WORK INFO
                   </div>
-                  <div className="input-field col s12 no-padding">
-                    <input id="position" placeholder="Position" ref="position" type="text" className="validate"/>
-                    <label htmlFor="position" className="active required">Position</label>
+                  <div className=" col s6 no-padding">
+                    <div className="input-field">
+                      <input id="position" placeholder="Position" ref="position" type="text" className="validate"/>
+                      <label htmlFor="position" className="active required">Position</label>
+                    </div>
                   </div>
+                  {(teamId) ? null :
+                    <div className="col s6">
+
+                      {(userType == 'client') ?
+                        <div className="input-field">
+                          <input placeholder="Company" id="lastName" ref="company" type="text"
+                                 className="validate"/>
+                          <label htmlFor="company" className="active required">Company</label>
+                        </div>
+                        :
+                        <div className="input-field">
+                          <ReactMaterialSelect label="Department" id="department" ref="department">
+                            {teams.map((team, index) => (
+                              <option key={index} dataValue={team._id}>
+                                {team.name}
+                              </option>
+                            ))}
+                          </ReactMaterialSelect>
+                          <label htmlFor="department" className="active required">Department</label>
+                        </div>}
+                    </div>
+                  }
                 </div>
 
                 <div className="col s8 no-padding">
-                  <div className="col s12 no-padding">
-                    {
-                      (_.contains(['staff', 'admin', 'manager'], userType)) ?
+                  {
+                    (_.contains(['staff', 'admin', 'manager'], userType)) ?
+                      <div className="col s12 no-padding">
+                        <div className="class-info">
+                          SET SYSTEM PERMISSIONS
+                        </div>
                         <table>
                           <thead>
                           <tr>
-                            <th>Set Permissions</th>
+                            <th>Permissions for</th>
                             <th className="center">View</th>
                             <th className="center">Add</th>
                             <th className="center">Edit</th>
@@ -255,14 +271,21 @@ class AddNewStaff extends React.Component {
                           )}
 
                           </tbody>
-                        </table> : null
-                    }
-                  </div>
+                        </table>
+                      </div> : null
+                  }
                 </div>
                 <div className="col s8 no-padding">
-                  <div className="input-field col s12">
+                  <div className="class-info">
+                    INVITATION SETTINGS
+                  </div>
+                  <div className=" col s12 no-padding">
+                    <div className="input-field">
                     <textarea placeholder="Add a personal message" id="message" ref="message"
                               className="materialize-textarea"></textarea>
+                      <label htmlFor="message" className="active">Add a personal message when the person receives the
+                        invite(optional)</label>
+                    </div>
                   </div>
                   <div className="right save">
                     <a href={FlowHelpers.pathFor(`dashboard.manage${formatHelper.capitalize(target)}`,'')} type="button"
@@ -270,7 +293,7 @@ class AddNewStaff extends React.Component {
                       Cancel
                     </a>
                     <button type="button" className="btn" onClick={this._create.bind(this)}>
-                      Save and Invite
+                      Add and Invite Staff
                     </button>
                   </div>
                 </div>
@@ -278,8 +301,10 @@ class AddNewStaff extends React.Component {
             </form>
           </div>
         </section>
-      </section>
-    );
+      </
+        section >
+    )
+      ;
   }
 }
 AddNewStaff.defaultProps = {};

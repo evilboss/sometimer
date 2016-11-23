@@ -9,7 +9,7 @@ class StatusBreak extends React.Component {
     return (
       <div className="input-field">
         <a href='/dashboard/timetracker' className="status">
-          Break Time
+          Enter Time Tracker
           <div className="status-indicator Break"></div>
         </a>
       </div>

@@ -15,7 +15,6 @@ class BackToWork extends React.Component {
             Back To Work
           </button> : ''}
       </section>
-
     );
   }
 }

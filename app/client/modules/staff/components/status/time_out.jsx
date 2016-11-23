@@ -19,7 +19,7 @@ class TimeOut extends React.Component {
             <button className="ui btn waves-effect waves-light theme-color btn-block time-out"
                     onClick={this.props.endShiftAction.bind(this)}>
               <i className="material-icons left">cached</i>
-              Logged Out
+              Log Out
             </button>
           </section> : ''}
       </div>

@@ -11,7 +11,21 @@ class EditTeam extends React.Component {
     super(props);
     this.state = {
       staffList: [],
+      transfer: false,
     }
+  }
+
+  _transfer() {
+    this.setState({transfer: !this.state.transfer});
+  };
+
+  _confirmTransfer() {
+    let {transferTeam, team} = this.props;
+    let {newAdmin} = this.refs;
+    const updateTeam = {
+      creator: newAdmin.getValue()
+    };
+    transferTeam(team._id, updateTeam);
   }
 
   _update() {
@@ -52,16 +66,19 @@ class EditTeam extends React.Component {
   }
 
   render() {
-    const {team, staffList, error, managerList} = this.props;
+    const {team, staffList, error, managerList, adminList} = this.props;
+    const {transfer} = this.state;
     return (
       <section id="team" className="relative">
-
         <Tabs/>
         <PageTitle title="Edit Team"/>
-        <button className="btn delete waves-effect waves-light theme-color" type="button"
-                onClick={this._delete.bind(this, team._id)}>Delete Team
-          <i className="right material-icons close">
-            delete_forever</i></button>
+        {(team) ?
+          <button className="btn delete waves-effect waves-light theme-color" type="button"
+                  onClick={this._delete.bind(this, team._id)}>Delete Team
+            <i className="right material-icons close">
+              delete_forever</i></button> : null
+        }
+
         <section id="edit-team" className="twbs col s12">
           <div className="row no-margin-bottom">
             {error ? <div className='error'>
@@ -84,6 +101,7 @@ class EditTeam extends React.Component {
                                        defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
                     {managerList.map((staff) => (
                       <option key={staff._id} dataValue={staff._id}>
+
                         {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
                       </option>
                     ))}
@@ -91,6 +109,22 @@ class EditTeam extends React.Component {
                 </div>
                 <div className="input-field">
                   <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
+                </div>
+                <div className="input-field">
+                  {(transfer) ?
+                    <div>
+                      <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin">
+                        {adminList.map((staff) => (
+                          <option key={staff._id} dataValue={staff._id}>
+                            {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
+                          </option>
+                        ))}
+                      </ReactMaterialSelect>
+                      <button className="btn cancel" onClick={this._transfer.bind(this)}>Cancel Transfer</button>
+                      <button className="btn" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer</button>
+                    </div> :
+                    <button className="btn" onClick={this._transfer.bind(this)}>Transfer</button>
+                  }
                 </div>
 
                 <CancelBtn route="/dashboard/team/"/>

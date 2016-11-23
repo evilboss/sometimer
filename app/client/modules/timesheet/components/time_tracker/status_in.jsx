@@ -9,14 +9,10 @@ class StatusIn extends React.Component {
   render() {
     return (
       <div className="input-field">
-        <a href='' className="status" data-activates='status'>
+        <a href='/dashboard/timetracker' className="status">
           Log In
           <div className="status-indicator In"></div>
         </a>
-        <ul id='status' className='dropdown-content'>
-          <li><a href="" onClick={this.props.startBreakAction.bind(this)}>Break Time</a></li>
-          <li><a href="" onClick={this.props.endShiftAction.bind(this)}>Log Out</a></li>
-        </ul>
       </div>
     );
   }

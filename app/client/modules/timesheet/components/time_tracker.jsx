@@ -32,14 +32,14 @@ class TimeTracker extends React.Component {
     let status = currentUser.profile.status;
     return (
       <div>
-        {(!status || status == 'In' || status == 'completed') ?
-          <StatusIn startBreakAction={this.startBreak.bind(this)} endShiftAction={this.endShift.bind(this)}/>
+        {(!status || status == 'In') ?
+          <StatusIn />
           : ''}
-        {(!status || status == 'Out') ?
-          <StatusOut action={this.startShift.bind(this)}/>
+        {(!status || status == 'Out' || status == 'completed') ?
+          <StatusOut />
           : ''}
         {(!status || status == 'Break') ?
-          <StatusBreak action={this.endBreak.bind(this)}/>
+          <StatusBreak />
           : ''}
       </div>
     );

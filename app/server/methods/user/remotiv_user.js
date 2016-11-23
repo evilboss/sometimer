@@ -18,7 +18,9 @@ const add = (newUser)=> {
   (addAccount) ? updateInvite() : '';
   return addAccount;
 };
-
+const remove = (userId)=> {
+  Meteor.users.remove(userId)
+};
 const postAdd = (invite, teamId)=> {
   remotivMailer.sendInvite(invite);
   let team = (teamId) ? Team.findOne(teamId) : null;
@@ -56,8 +58,10 @@ const updatePhoto = (id, imgPath)=> {
 const update = (id, key, value)=> {
   Meteor.users.update({_id: id}, {$set: {[key]: value}})
 };
+
 const remotivUser = {
   add: (newUser)=>add(newUser),
+  remove: (userId)=>remove(userId),
   updatePhoto: updatePhoto(),
   update: (id, key, value)=>update(id, key, value),
   addNew: (user, message)=>addNew(user, message),

@@ -38,8 +38,14 @@ class StaffDetails extends React.Component {
 
       <tr key={index}>
         <td className="staff-dp">
-          <img src={staff.profile.displayPhoto} alt="Staff"
-               className="circle responsive-img dp-small"/>
+          {(staff) ? (staff.profile) ?
+            <img
+              src={(staff.profile.displayPhoto !== '') ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
+              alt="Staff"
+              className="circle responsive-img dp-small"/>
+            : ''
+            : ''}
+
         </td>
         <td className="staff-details">
           <div className="col no-margin">

@@ -11,6 +11,27 @@ class StaffSettings extends React.Component {
     super(props);
   }
 
+  _removeStaff(userId) {
+    let {removeStaff} = this.props;
+    sweetAlert({
+      title: "Confirm Delete?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0a84ad",
+      cancelButtonText: "No",
+      confirmButtonText: "Yes",
+      closeOnConfirm: false,
+      closeOnCancel: true,
+      allowEscapeKey: true,
+      allowOutsideClick: true
+    }, function (isConfirm) {
+      if (isConfirm) {
+        removeStaff(userId);
+
+      }
+    });
+  }
+
   getData(data) {
     this.setState({staffList: data})
   }
@@ -19,11 +40,15 @@ class StaffSettings extends React.Component {
     const {userPermissions, user, permissions, staffId} = this.props;
     const {role} = (user) ? (user.profile) ? user.profile : '' : '';
     return (
-      <section id="team">
+      <section id="team" className="relative">
         <PageTitle title="Staff Settings"/>
         <Tabs/>
-
+        <button className="btn delete waves-effect waves-light theme-color" type="button"
+                onClick={this._removeStaff.bind(this, user._id)}>Delete Staff
+          <i className="right material-icons close">
+            delete_forever</i></button>
         <section id="staff-settings">
+
           <div className="row no-margin-bottom">
 
             <div className="col s12 no-padding">

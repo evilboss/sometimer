@@ -14,6 +14,7 @@ export const composer = ({context, staffId}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  removeStaff: actions.staff_actions.removeStaff,
   context: () => context
 });
 

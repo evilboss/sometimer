@@ -13,6 +13,11 @@ export default function () {
       console.log('users.add.called');
       remotivUser.addNew(user, message);
     },
+
+    'users.remove'(userId) {
+      console.log(userId, 'server na ako');
+      remotivUser.remove({_id: userId});
+    },
     'users.update.profile'(userId, profile){
       _.each(profile, function (value, key) {
         remotivUser.update(userId, `profile.${key}`, value);

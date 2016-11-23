@@ -16,7 +16,7 @@ class StaffMultiSelect extends React.Component {
 
 
   render() {
-    const staffList = this.props.staffList;
+    const {staffList} = this.props;
     let options = [];
     _.each(staffList, function (staff) {
       options.push({label: staff.profile.firstName + ' ' + staff.profile.lastName, value: staff._id})

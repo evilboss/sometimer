@@ -51,7 +51,7 @@ class EditTeam extends React.Component {
   }
 
   render() {
-    const {team, staffList, error} = this.props;
+    const {team, staffList, error, managerList} = this.props;
     return (
       <section id="team">
 
@@ -77,7 +77,7 @@ class EditTeam extends React.Component {
                 <div className="input-field col s12">
                   <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader"
                                        defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
-                    {staffList.map((staff) => (
+                    {managerList.map((staff) => (
                       <option key={staff._id} dataValue={staff._id}>
                         {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
                       </option>

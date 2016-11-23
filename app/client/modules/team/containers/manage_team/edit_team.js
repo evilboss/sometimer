@@ -9,9 +9,11 @@ export const composer = ({context, clearErrors, teamId}, onData) => {
     const error = LocalState.get('UPDATE_TEAM_ERROR');
     let team = Collections.Team.findOne(teamId);
     const selector = {'profile.role': 'staff'};
+    const managerSelector = {'profile.role': 'manager'};
     let options = {_id: {$ne: Meteor.userId()}};
+    const managerList = Meteor.users.find(managerSelector, options).fetch();
     let staffList = Meteor.users.find(selector, options).fetch();
-    onData(null, {staffList, team, error});
+    onData(null, {staffList, managerList, team, error});
   };
   (subscriptionReady) ? dataReady() : onData();
   return clearErrors;

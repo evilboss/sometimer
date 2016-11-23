@@ -25,6 +25,27 @@ class EditTeam extends React.Component {
     update(team._id, updateTeam);
   }
 
+  _delete(teamId) {
+    let {deleteTeam} = this.props;
+    sweetAlert({
+      title: "Confirm Delete?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0a84ad",
+      cancelButtonText: "No",
+      confirmButtonText: "Yes",
+      closeOnConfirm: false,
+      closeOnCancel: true,
+      allowEscapeKey: true,
+      allowOutsideClick: true
+    }, function (isConfirm) {
+      if (isConfirm) {
+        deleteTeam(teamId);
+
+      }
+    });
+  }
+
   getData(data) {
     this.setState({staffList: data})
   }
@@ -37,7 +58,7 @@ class EditTeam extends React.Component {
 
         <Tabs/>
         <PageTitle title="Edit Team"/>
-        <section id="edit-team" className="col s12">
+        <section id="edit-team" className="twbs col s12">
           <div className="row no-margin-bottom">
             {error ? <div className='error'>
               {error}
@@ -48,14 +69,15 @@ class EditTeam extends React.Component {
                   <input id="name" ref="name" type="text" className="validate"
                          defaultValue={ (team.name) ? team.name : '' }
                   />
-                  <label htmlFor="Name of Team / Department" className={(team) ? (team.name) ?'active': '':''}>Name of
+                  <label htmlFor="Name of Team / Department" className={(team) ? (team.name) ? 'active' : '' : ''}>Name
+                    of
                     Team /
                     Department</label>
                 </div>
 
                 <div className="input-field col s12">
                   <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader"
-                                       defaultValue={(team.teamLeader)? team.teamLeader: ''}>
+                                       defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
                     {staffList.map((staff) => (
                       <option key={staff._id} dataValue={staff._id}>
                         {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
@@ -63,7 +85,15 @@ class EditTeam extends React.Component {
                     ))}
                   </ReactMaterialSelect>
                 </div>
-                <StaffMultiSelect getData={this.getData.bind(this)}/>
+                <div className="input-field">
+                  <StaffMultiSelect getData={this.getData.bind(this)}/>
+                </div>
+
+                <a href="/dashboard/team/" type="button" className="btn cancel">Cancel</a>
+                <button className="btn waves-effect waves-light theme-color" type="button"
+                        onClick={this._delete.bind(this, team._id)}>Delete Team
+                  <i className="right material-icons close">
+                    delete_forever</i></button>
                 <button className="btn waves-effect waves-light theme-color" type="button"
                         onClick={this._update.bind(this)}>Update Team
                   <i className="material-icons right">send</i></button>

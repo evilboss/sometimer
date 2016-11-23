@@ -17,7 +17,6 @@ export const composer = ({context, clientId}, onData) => {
   (subsriptionReady) ? dataReady() : onData();
 };
 export const depsMapper = (context, actions) => ({
-  deleteTeam: actions.team_actions.deleteTeam,
   context: () => context
 });
 export default composeAll(

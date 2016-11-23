@@ -18,6 +18,7 @@ export const composer = ({context, clearErrors, teamId}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   update: actions.team_actions.update,
+  deleteTeam: actions.team_actions.deleteTeam,
   clearErrors: actions.team_actions.clearErrors,
   context: () => context
 });

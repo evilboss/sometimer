@@ -19,6 +19,7 @@ export default {
   },
   deleteTeam({Meteor, LocalState}, teamId) {
     Meteor.call('team.remove', teamId)
+    sweetPrompts.sweetSucces('Team Deleted', 'Click OK To continue', 'success', '/dashboard/team');
   },
   add({Meteor, LocalState}, teamName){
     console.log(teamName);

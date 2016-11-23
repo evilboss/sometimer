@@ -14,26 +14,7 @@ class TeamList extends React.Component {
     super(props);
   }
 
-  _delete(teamId) {
-    let {deleteTeam} = this.props;
-    sweetAlert({
-      title: "Confirm Delete?",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#0a84ad",
-      cancelButtonText: "No",
-      confirmButtonText: "Yes",
-      closeOnConfirm: false,
-      closeOnCancel: true,
-      allowEscapeKey: true,
-      allowOutsideClick: true
-    }, function (isConfirm) {
-      if (isConfirm) {
-        deleteTeam(teamId);
-        sweetAlert("Delete!", ".", "success");
-      }
-    });
-  }
+
 
   render() {
     const {currentUser, teamList, userPermissions} = this.props;
@@ -53,14 +34,6 @@ class TeamList extends React.Component {
                         <article className="col s12 m6 l4">
                           <div className="card">
                             <div className="card-title">{team.name}
-                              {
-                                (userPermissions) ? control.isPermitted('deleteTeam', userPermissions) ?
-                                  <a href="" onClick={this._delete.bind(this, team._id)}>
-                                    <i className="right material-icons close">
-                                      delete_forever</i>
-                                  </a>
-                                  : '' : ''
-                              }
                               {
                                 (userPermissions) ? control.isPermitted('updateTeam', userPermissions) ?
                                   <a href={`/dashboard/team/edit/${team._id}`}>

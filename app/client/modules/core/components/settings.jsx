@@ -6,13 +6,11 @@ class Settings extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const {sitePhoto} = this.props;
     return (
       <section id="settings">
         <PageTitle title="Settings"/>
-
         <div className="row">
           <div className="col s12 center-align">
             <img

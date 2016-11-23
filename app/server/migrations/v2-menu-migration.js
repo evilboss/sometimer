@@ -19,6 +19,16 @@ const menuItems = [
     routes: ['']
   },
   {
+    title: "MY TEAM",
+    icon: "group",
+    url: '/dashboard/team',
+    name: 'dashboard.team',
+    roles: ['super-admin', 'admin', 'manager', 'client'],
+    routes: ['dashboard.team', 'dashboard.user.new', 'dashboard.team.new', 'dashboard.manageStaff', 'dashboard.manageClients', 'dashboard.manageAdmins', 'dashboard.manageManagers', 'dashboard.myteam', 'dashboard.team.edit', 'staff.settings', 'dashboard.staff'],
+
+
+  },
+  {
     title: "TIMESHEET",
     icon: "grid_on",
     url: '/dashboard/timesheet',
@@ -62,16 +72,7 @@ const menuItems = [
     routes: ['users.profile', 'users.profile.edit']
 
   },
-  {
-    title: "MY TEAM",
-    icon: "group",
-    url: '/dashboard/team',
-    name: 'dashboard.team',
-    roles: ['super-admin', 'admin', 'manager', 'client'],
-    routes: ['dashboard.team', 'dashboard.user.new', 'dashboard.team.new', 'dashboard.manageStaff', 'dashboard.manageClients', 'dashboard.manageAdmins', 'dashboard.manageManagers', 'dashboard.myteam', 'dashboard.team.edit', 'staff.settings', 'dashboard.staff'],
 
-
-  },
 ];
 const loadMenus = ()=> {
   console.info('Loading Menus');

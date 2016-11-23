@@ -12,7 +12,6 @@ import {FlowHelpers} from '/client/utils/helpers/route-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import ReactMaterialSelect from 'react-material-select';
-import {Typeahead} from 'smartlogic-react-typeahead';
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -70,7 +69,7 @@ class AddNewStaff extends React.Component {
   _changePermissions(e) {
     const permission = e.target.attributes.getNamedItem('data-permission').value;
     (e.target.checked) ? this._addToPermissions(permission) : this._removePermissions(permission);
-  }
+  };
 
   _addToPermissions(permission) {
     let permissions = this.state.permissions;
@@ -112,7 +111,7 @@ class AddNewStaff extends React.Component {
       {
         label: 'Manager',
         types: ['readManagers', 'createManagers', 'updateManagers'],
-        userTypes: ['super-admin', 'admin', 'manager']
+        userTypes: ['super-admin', 'admin']
       },
       {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam'], userTypes: ['super-admin', 'admin', 'manager']},
       {
@@ -142,14 +141,7 @@ class AddNewStaff extends React.Component {
           <Breadcrumbs crumbs={
         [{text: (teamId)?'team':`${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}`:`dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}/user/new/`:'dashboard.user.new', params: userType}]}/>
           <h5 className="inline">Add Staff to Team Name</h5>
-          <div className="inline input-field">
-            <Typeahead
-              options={['John', 'Paul', 'reng', 'Ringo', 'ring']}
-              maxVisible={2}
-              placeholder="Enter a registered staff to quickly add them to the team"
-            />
-          </div>
-          <div className="inline typeahead-btn-add">+</div>
+
         </div>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">

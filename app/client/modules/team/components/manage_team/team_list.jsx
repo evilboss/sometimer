@@ -70,13 +70,15 @@ class TeamList extends React.Component {
                               }
                             </div>
                             <div className="card-content">
-
-                              <DisplayManager userId={team.teamLeader}/>
+                              <DisplayManager userId={team.teamLeader}
+                                              target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ?`/dashboard/staff/settings/${team.teamLeader}/${member}`:'':''}/>
                             </div>
                             <div className="card-action">
                               {(team.members) ?
                                 team.members.map((member, key)=>(
-                                  (key <= 4) ? <StaffDp key={key} teamId={team._id} userId={member}/> : ''
+                                  (key <= 4) ?
+                                    <StaffDp staffType="staff" key={key} teamId={team._id} userId={member}
+                                             target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?`/dashboard/staff/settings/${team._id}/${member}`:'':''}/> : ''
                                 )) : <div className="row no-margin">
                                 <img
                                   src='/uploads/defaults/default_user.png'

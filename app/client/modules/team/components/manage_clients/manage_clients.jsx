@@ -43,16 +43,17 @@ class ManageClients extends React.Component {
                 {allClients.map((client, index) => (
                   <tr key={index}>
                     <td>
-                      <a href={`/dashboard/team/manage-clients/${client._id}`}>
+                      <a href={(teamId)?`/dashboard/staff/settings/${teamId}/${client._id}`:`/dashboard/staff/settings/${client._id}`}>
                         <img
                           src={(client.profile.displayPhoto)?`${client.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
                           alt="client" className="circle responsive-img dp-small left"/>
-                        <div className="col client-details no-margin">
-                          <h6>{client.profile.company}<br/>
-                            <small>{client.profile.firstName} {client.profile.lastName}</small>
-                          </h6>
-                        </div>
                       </a>
+                      <div className="col client-details no-margin">
+                        <h6>{client.profile.company}<br/>
+                          <small>{client.profile.firstName} {client.profile.lastName}</small>
+                        </h6>
+                      </div>
+
                     </td>
                     <td>
                       {formatHelper.capitalize(client.profile.status)}

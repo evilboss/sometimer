@@ -120,7 +120,7 @@ class PermissionForm extends React.Component {
             : '' : ''
         }
         <div className="right save">
-          <button className="btn theme-color">Save</button>
+          <button className="btn theme-color">Update Permissions</button>
         </div>
       </div>
     );

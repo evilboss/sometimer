@@ -24,10 +24,8 @@ class StaffProfileForm extends React.Component {
 
   render() {
     const {user} = this.props;
-    const {firstName, lastName, department, jobTitle}= (user) ? (user.profile) ? user.profile : '' : '';
+    const {firstName, lastName, department, jobTitle, role}= (user) ? (user.profile) ? user.profile : '' : '';
     return (
-
-
       <form className="twbs">
         <div className="class-info">
           PERSONAL INFORMATION
@@ -47,35 +45,7 @@ class StaffProfileForm extends React.Component {
             <label htmlFor="lastName" className={(lastName) ? 'active required' : ''}>Last Name</label>
           </div>
         </div>
-        <div className="class-info">
-          CONTACT INFORMATION
-        </div>
-        <div className=" col s6 no-padding">
-          <div className="input-field">
-            <input placeholder="Email" id="email" ref="email" type="email" className="validate"/>
-            <label htmlFor="email" className="active required">Email</label>
-          </div>
-        </div>
-        <div className=" col s6">
-          <div className="input-field">
-            <input placeholder="Country" id="country" ref="country" type="text" className="validate"/>
-            <label htmlFor="country" className="active required">Country(working from what part of the
-              world?)</label>
-          </div>
-        </div>
-        <div className=" col s6 no-padding">
-          <div className="input-field">
-            <input placeholder="Contact Number" id="contactNumber" ref="contactNumber" type="text"
-                   className="validate"/>
-            <label htmlFor="contactNumber" className="active required">Landline / Mobile Number</label>
-          </div>
-        </div>
-        <div className=" col s6">
-          <div className="input-field">
-            <input placeholder="Skype ID" id="skypeID" ref="skypeID" type="text" className="validate"/>
-            <label htmlFor="skypeID" className="active required">Skype ID</label>
-          </div>
-        </div>
+
         <div className="class-info">
           WORK INFO
         </div>
@@ -89,6 +59,8 @@ class StaffProfileForm extends React.Component {
 
 
         <div className=" col s6">
+          {(role == 'client') ? 'client' : 'staff'
+          }
           <div className="input-field">
             <input id="department" ref="department" type="text" className="validate"
                    defaultValue={(department) ? department : ''}/>

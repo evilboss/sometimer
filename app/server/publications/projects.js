@@ -4,7 +4,7 @@ import {check} from 'meteor/check';
 import {auth} from '/server/methods/auth/auth';
 export default function () {
   Meteor.publish('project-list', function (site) {
-    const selector = (auth.isAdmin(this.userId)) ? {} : {collaborators: {$all: [this.userId]}};
+    const selector = (auth.hasPermission(this.userId, 'viewAllProjects')) ? {} : {collaborators: {$all: [this.userId]}};
     (auth.canManage(this.userId)) ? selector.site = site : '';
     const options = {};
     return Projects.find(selector, options);

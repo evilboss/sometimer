@@ -38,6 +38,7 @@ const loadUsers = ()=> {
           'createTask', 'readTask', 'updateTask', 'deleteTask',
           'updatePermissions',
           'readWorkflow', 'createWorkflow', 'updateWorkflow',
+          'viewAllProjects', 'viewAllTeams'
 
         ],
         status: 'completed',
@@ -67,6 +68,7 @@ const loadUsers = ()=> {
           'createTask', 'readTask', 'updateTask', 'deleteTask',
           'updatePermissions',
           'readWorkflow', 'createWorkflow', 'updateWorkflow',
+          'viewAllProjects', 'viewAllTeams'
         ],
         status: 'completed',
         site: 'remote',
@@ -87,9 +89,6 @@ const loadUsers = ()=> {
         permissions: [
           'createClients', 'readClients', 'updateClients', 'deleteClients',
           'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
-          'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
-          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
-          'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
           'createProject', 'readProject', 'updateProject', 'deleteProject',
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
@@ -163,8 +162,6 @@ const loadUsers = ()=> {
           'createClients', 'readClients', 'updateClients', 'deleteClients',
           'createStaffs', 'readStaffs', 'updateStaffs', 'deleteStaffs',
           'createManagers', 'readManagers', 'updateManagers', 'deleteManagers',
-          'createLeaders', 'readLeaders', 'updateLeaders', 'deleteLeaders',
-          'createAdmin', 'readAdmin', 'updateAdmin', 'deleteAdmin',
           'createTeam', 'readTeam', 'updateTeam', 'deleteTeam',
           'createProject', 'readProject', 'updateProject', 'deleteProject',
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
@@ -196,6 +193,7 @@ const loadUsers = ()=> {
           'createSubProject', 'readSubProject', 'updateSubProject', 'deleteSubProject',
           'createTask', 'readTask', 'updateTask', 'deleteTask',
           'readWorkflow', 'createWorkflow', 'updateWorkflow',
+          'viewAllProjects', 'viewAllTeams'
         ],
         status: 'completed',
         site: 'ezyva',

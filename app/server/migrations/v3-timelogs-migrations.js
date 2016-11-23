@@ -4,9 +4,8 @@
 import {setTime, getDates, generateDateToday, getHoursRendered} from '/server/methods/timeDate/timeDate';
 import {Timelogs} from '/lib/collections/';
 import moment from 'moment';
-/*
 Migrations.add({
-  version: 6,
+  version: 3,
   name: 'Add Sample timelogs',
   up: function () {
     addTimelogs();
@@ -14,7 +13,7 @@ Migrations.add({
   down: function () {
     removeTimelogs();
   }
-});*/
+});
 const generateLogs = ()=> {
   const {day, month, year} = generateDateToday();
   const startDate = (day <= 15) ? moment([year, month]).add(-1, "month") : moment(moment([year, month]).add(-1, "month")).add(15, "days");
@@ -24,13 +23,10 @@ const generateLogs = ()=> {
 };
 const addTimelogs = ()=> {
   console.info('Adding timelogs');
-  const staffEmails=[
-    'staff@staff.com',
-    'dan.arceo@ezyva.com',
-    'aaron.randrup@ezyva.com',
-    'jr@ezyva.com'
+  const staffEmails = [
+    'staff@staff.com'
   ];
-  _.each(staffEmails,(email)=>{
+  _.each(staffEmails, (email)=> {
     const staff = Meteor.users.findOne({'emails.address': {$regex: email, $options: 'i'}});
     const staffLogs = Timelogs.find({userId: staff._id});
     if (staffLogs.count() === 0) {

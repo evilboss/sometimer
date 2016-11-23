@@ -113,7 +113,7 @@ class AddNewStaff extends React.Component {
         types: ['readManagers', 'createManagers', 'updateManagers'],
         userTypes: ['super-admin', 'admin']
       },
-      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam'], userTypes: ['super-admin', 'admin', 'manager']},
+      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam'], userTypes: ['super-admin', 'admin']},
       {
         label: 'Project',
         types: ['readProject', 'createProject', 'updateProject'],
@@ -127,11 +127,10 @@ class AddNewStaff extends React.Component {
       {
         label: 'Admin',
         types: ['readAdmin', 'createAdmin', 'updateAdmin'],
-        userTypes: ['super-admin', 'admin']
+        userTypes: ['super-admin']
       }
     ];
     let target = (userType == 'staff') ? userType : `${userType}s`;
-    console.log(allStaff, 'pekpek')
     return (
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>

@@ -161,7 +161,6 @@ class ProfileEdit extends React.Component {
 
     let newImage = Transform.cropImage(source, {x, y, width, height}, {width: canvasWidth, height: canvasHeight})
       .then(image => this.update({type: 'CONFIRM_CROP', image}));
-    console.log(newImage, 'butus');
 
   }
 

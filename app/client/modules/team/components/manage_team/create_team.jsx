@@ -25,7 +25,7 @@ class CreateTeam extends React.Component {
 
   addTeam(team) {
     team.members = this.state.staffList;
-    team.members.push(Meteor.userId());
+    team.creator = Meteor.userId();
     team.teamLeader = this.refs.teamLeader.getValue();
     team.site = domainHelpers.getSubdomain();
     Meteor.call('team.insert', team);

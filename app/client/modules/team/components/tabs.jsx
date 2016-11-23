@@ -13,7 +13,7 @@ class Tabs extends React.Component {
       <div className="tab-nav-wrapper">
         <div className="tab-nav inline">
           <a href={(teamId)?`/dashboard/team/${teamId}`:`/dashboard/team`}
-             className={`${FlowHelpers.currentRoutes(['dashboard.team','dashboard.team.new','dashboard.myteam'])}`}>
+             className={`${FlowHelpers.currentRoutes(['dashboard.team','dashboard.team.edit','dashboard.team.new','dashboard.myteam'])}`}>
             Team{(teamId) ? '' : 's'}</a>
 
           {

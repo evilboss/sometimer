@@ -52,7 +52,6 @@ class EditTeam extends React.Component {
 
   render() {
     const {team, staffList, error} = this.props;
-    console.log(team);
     return (
       <section id="team">
 
@@ -86,7 +85,7 @@ class EditTeam extends React.Component {
                   </ReactMaterialSelect>
                 </div>
                 <div className="input-field">
-                  <StaffMultiSelect getData={this.getData.bind(this)}/>
+                  <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
                 </div>
 
                 <a href="/dashboard/team/" type="button" className="btn cancel">Cancel</a>

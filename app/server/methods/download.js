@@ -12,7 +12,6 @@ export default function () {
       const selector = {userId: selectedUserId, date: {$gte: dateFrom, $lte: dateTo}};
       const timelogs = Timelogs.find(selector).fetch();
       const collection = (timelogs) ? timelogs : [{"status": "invalid date"}];
-      console.log(collection);
       return exportcsv.exportToCSV(collection);
 
     }

@@ -1,7 +1,7 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import ViewProjects from '../components/view_projects.jsx';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-
+import Loader from '/client/utils/loader/loader';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
   const subsriptionReady = [Meteor.subscribe('project-list', domainHelpers.getSubdomain()).ready(), Meteor.subscribe('user.current').ready()];
@@ -20,6 +20,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(ViewProjects);

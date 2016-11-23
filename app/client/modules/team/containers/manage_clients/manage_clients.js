@@ -1,5 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+import Loader from '/client/utils/loader/loader';
 import ManageClients from '../../components/manage_clients/manage_clients.jsx';
 export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
@@ -18,6 +19,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(ManageClients);

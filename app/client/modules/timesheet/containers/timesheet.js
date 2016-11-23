@@ -1,5 +1,5 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
+import Loader from '/client/utils/loader/loader';
 import Timesheet from '../components/timesheet.jsx';
 export const composer = ({context, userId, teamId}, onData) => {
   const {Meteor, Collections} = context();
@@ -18,6 +18,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(Timesheet);

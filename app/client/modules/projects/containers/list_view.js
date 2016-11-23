@@ -1,6 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-
+import Loader from '/client/utils/loader/loader';
 import ListView from '../components/list_view.jsx';
 
 export const composer = ({context}, onData) => {
@@ -19,6 +19,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(ListView);

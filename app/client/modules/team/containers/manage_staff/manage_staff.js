@@ -1,5 +1,5 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
+import Loader from '/client/utils/loader/loader';
 import ManageStaff from '../../components/manage_staff/manage_staff.jsx';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 
@@ -22,6 +22,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(ManageStaff);

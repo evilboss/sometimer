@@ -1,7 +1,7 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import ManageManagers from '/client/modules/team/components/manage_managers/manage_managers.jsx';
-
+import Loader from '/client/utils/loader/loader';
 export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionsReady = [Meteor.subscribe('users.allManagers', domainHelpers.getSubdomain()).ready(), Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
@@ -19,6 +19,6 @@ export const depsMapper = (context, actions) => ({
 });
 
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(ManageManagers);

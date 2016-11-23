@@ -16,7 +16,7 @@ class ViewProjects extends React.Component {
           <h5 className="inline">Project Management</h5>
           {
             (userPermissions) ? control.isPermitted('createProject', userPermissions) ?
-              <div className="btn-add">
+              <div className="btn btn-add">
                 <a href="/projects/new" className="waves-effect waves-light secondary-color">
                   <i className="material-icons">add</i>
                   <span>Add New Project</span>

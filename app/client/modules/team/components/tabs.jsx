@@ -19,7 +19,7 @@ class Tabs extends React.Component {
           {
             (userPermissions) ? control.isPermitted('readClients', userPermissions) ?
               <a href={(teamId) ? `/dashboard/team/${teamId}/manage-clients` : `/dashboard/team/manage-clients`}
-                 className={`${FlowHelpers.currentRoutes(['dashboard.manageClients','dashboard.team.manageClients',(userType=='client')?'dashboard.user.new':''])}`}>Client</a>
+                 className={`${FlowHelpers.currentRoutes(['dashboard.manageClients','dashboard.team.manageClients',(userType=='client')?'dashboard.user.new':''])}`}>Clients</a>
               : '' : ''
           }
           <a href="" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}
@@ -27,7 +27,7 @@ class Tabs extends React.Component {
           {
             (userPermissions) ? control.isPermitted('readManagers', userPermissions) ?
               <a href={(teamId) ? `/dashboard/team/${teamId}/manage-managers` : `/dashboard/team/manage-managers`}
-                 className={`${FlowHelpers.currentRoutes(['dashboard.manageManagers','dashboard.team.manageManagers',(userType=='manager')?'dashboard.user.new':''])}`}>Manager</a>
+                 className={`${FlowHelpers.currentRoutes(['dashboard.manageManagers','dashboard.team.manageManagers',(userType=='manager')?'dashboard.user.new':''])}`}>Managers</a>
               : '' : ''
           }
           {

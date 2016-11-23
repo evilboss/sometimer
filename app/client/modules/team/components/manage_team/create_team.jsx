@@ -10,6 +10,8 @@ import DisplayManager from '/client/modules/manager/containers/display_manager';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
+import CancelBtn from '/client/utils/buttons/cancel_btn';
+
 class CreateTeam extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +48,11 @@ class CreateTeam extends React.Component {
         <section id="create-team" className="col s12">
           <div className="row">
             <Breadcrumbs crumbs={
-        [{text: 'Team', path: 'dashboard.team', params: ''}, {text: 'Add Team', path: 'dashboard.team.new', params: ''}]}/>
+              [{text: 'Team', path: 'dashboard.team', params: ''}, {
+                text: 'Add Team',
+                path: 'dashboard.team.new',
+                params: ''
+              }]}/>
             <Formsy.Form onSubmit={this.addTeam.bind(this)} className="twbs">
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
@@ -63,6 +69,7 @@ class CreateTeam extends React.Component {
                 <div className="input-field">
                   <StaffMultiSelect getData={this.getData.bind(this)}/>
                 </div>
+                <CancelBtn route="/dashboard/team/"/>
                 <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
                   <i className="material-icons right">send</i></button>
 

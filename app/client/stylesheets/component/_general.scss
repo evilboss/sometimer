@@ -90,6 +90,12 @@ p {
   margin: 0 0.5em;
 }
 
+.btn.delete {
+  position: absolute;
+  right: 12px;
+  top: 70px;
+}
+
 // Label
 label.required:before {
   content: "*";
@@ -394,6 +400,7 @@ form {
     box-shadow: none;
     color: #9F9F9F !important;
   }
+
   .modal-footer {
     button {
       margin-left: 5px;

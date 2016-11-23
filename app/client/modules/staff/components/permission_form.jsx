@@ -45,47 +45,78 @@ class PermissionForm extends React.Component {
   }
 
   render() {
-    const {userPermissions, permissions} = this.props;
+    const {userPermissions, permissions, user} = this.props;
     const permissionList = [
-      {label: 'Client', types: ['readClients', 'createClients', 'updateClients']},
-      {label: 'Staff', types: ['readStaffs', 'createStaffs', 'updateStaffs']},
-      {label: 'Manager', types: ['readManagers', 'createManagers', 'updateManagers']},
-      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam']},
-      {label: 'Project', types: ['readProject', 'createProject', 'updateProject']},
-      {label: 'Workflow', types: ['readWorkflow', 'createWorkflow', 'updateWorkflow']},
+      {
+        label: 'Client',
+        types: ['readClients', 'createClients', 'updateClients'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
+      {
+        label: 'Staff',
+        types: ['readStaffs', 'createStaffs', 'updateStaffs'],
+        userTypes: ['super-admin', 'admin', 'manager']
+      },
+      {
+        label: 'Manager',
+        types: ['readManagers', 'createManagers', 'updateManagers'],
+        userTypes: ['super-admin', 'admin']
+      },
+      {label: 'Team', types: ['readTeam', 'createTeam', 'updateTeam'], userTypes: ['super-admin', 'admin', 'manager']},
+      {
+        label: 'Project',
+        types: ['readProject', 'createProject', 'updateProject'],
+        userTypes: ['super-admin', 'admin', 'manager', 'staff']
+      },
+      {
+        label: 'Workflow',
+        types: ['readWorkflow', 'createWorkflow', 'updateWorkflow'],
+        userTypes: ['super-admin', 'admin', 'manager', 'staff']
+      },
+      {
+        label: 'Admin',
+        types: ['readAdmin', 'createAdmin', 'updateAdmin'],
+        userTypes: ['super-admin', 'admin']
+      }
     ];
     return (
-      <div className="col s12">
+      <div className="col s8 no-padding">
         {
           (userPermissions) ? control.isPermitted('updatePermissions', userPermissions) ?
-            <table>
-              <thead>
-              <tr>
-                <th>Set Permissions</th>
-                <th className="center">View</th>
-                <th className="center">Add</th>
-                <th className="center">Edit</th>
-              </tr>
-              </thead>
-              <tbody>
-              {permissionList.map((permission, index)=>
-                <tr key={index}>
-                  <td>{permission.label}</td>
-                  {(permission.types) ?
-                    permission.types.map((type, typeIndex)=>
-                      <td className="center" key={typeIndex}>
-                        <input type="checkbox" defaultValue="true" id={type}
-                               defaultChecked={this.isChecked(type)}
-                               data-permission={type}/>
-                        <label htmlFor={type}></label>
-                      </td>
-                    )
-                    : null
-                  }
+            <div className="col s12 no-padding">
+              <div className="class-info">
+                SET SYSTEM PERMISSIONS
+              </div>
+              <table>
+                <thead>
+                <tr>
+                  <th>Permissions for</th>
+                  <th className="center">View</th>
+                  <th className="center">Add</th>
+                  <th className="center">Edit</th>
                 </tr>
-              )}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                {permissionList.map((permission, index)=>
+                  (_.contains(permission.userTypes, user.profile.role)) ?
+                    <tr key={index}>
+                      <td>{permission.label}</td>
+                      {(permission.types) ?
+                        permission.types.map((type, typeIndex)=>
+                          <td className="center" key={typeIndex}>
+                            <input type="checkbox" defaultValue="true" id={type}
+                                   defaultChecked={this.isChecked(type)}
+                                   data-permission={type}/>
+                            <label htmlFor={type}></label>
+                          </td>
+                        )
+                        : null
+                      }
+                    </tr> : null
+                )}
+                </tbody>
+              </table>
+            </div>
             : '' : ''
         }
         <div className="right save">

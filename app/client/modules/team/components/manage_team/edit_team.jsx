@@ -4,6 +4,7 @@ import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import ReactMaterialSelect from 'react-material-select';
+import CancelBtn from '/client/utils/buttons/cancel_btn';
 //import 'react-material-select/lib/css/reactMaterialSelect.css';
 class EditTeam extends React.Component {
   constructor(props) {
@@ -53,10 +54,14 @@ class EditTeam extends React.Component {
   render() {
     const {team, staffList, error, managerList} = this.props;
     return (
-      <section id="team">
+      <section id="team" className="relative">
 
         <Tabs/>
         <PageTitle title="Edit Team"/>
+        <button className="btn delete waves-effect waves-light theme-color" type="button"
+                onClick={this._delete.bind(this, team._id)}>Delete Team
+          <i className="right material-icons close">
+            delete_forever</i></button>
         <section id="edit-team" className="twbs col s12">
           <div className="row no-margin-bottom">
             {error ? <div className='error'>
@@ -88,11 +93,7 @@ class EditTeam extends React.Component {
                   <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
                 </div>
 
-                <a href="/dashboard/team/" type="button" className="btn cancel">Cancel</a>
-                <button className="btn waves-effect waves-light theme-color" type="button"
-                        onClick={this._delete.bind(this, team._id)}>Delete Team
-                  <i className="right material-icons close">
-                    delete_forever</i></button>
+                <CancelBtn route="/dashboard/team/"/>
                 <button className="btn waves-effect waves-light theme-color" type="button"
                         onClick={this._update.bind(this)}>Update Team
                   <i className="material-icons right">send</i></button>

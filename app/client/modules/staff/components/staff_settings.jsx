@@ -4,7 +4,8 @@ import PageTitle from '/client/modules/core/components/page_title';
 import Tabs from '/client/modules/team/containers/tabs';
 import StaffProfileForm from '/client/modules/staff/containers/staff_profile_form';
 import PermissionForm from '/client/modules/staff/containers/permission_form';
-
+import {formatHelper} from '/client/utils/helpers/format-helpers';
+import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 class StaffSettings extends React.Component {
   constructor(props) {
     super(props);
@@ -19,20 +20,17 @@ class StaffSettings extends React.Component {
     return (
       <section id="team">
         <PageTitle title="Staff Settings"/>
+        <Tabs/>
 
         <section id="staff-settings">
           <div className="row no-margin-bottom">
 
             <div className="col s12 no-padding">
-              <div className="col s6">
 
+              <div className="col s8 no-padding">
                 <StaffProfileForm user={user} staffId={staffId}/>
-
               </div>
-              <div className="col s6">
-                
-                <PermissionForm userPermissions={userPermissions} permissions={permissions}/>
-              </div>
+              <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/>
             </div>
           </div>
         </section>

@@ -12,6 +12,7 @@ import {FlowHelpers} from '/client/utils/helpers/route-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import ReactMaterialSelect from 'react-material-select';
+import CancelBtn from '/client/utils/buttons/cancel_btn';
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -138,7 +139,15 @@ class AddNewStaff extends React.Component {
 
         <div className="twbs tab-page-header">
           <Breadcrumbs crumbs={
-        [{text: (teamId)?'team':`${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}`:`dashboard.manage${formatHelper.capitalize(target)}`, params: ''}, {text: `Add ${formatHelper.capitalize(userType)}`, path: (teamId)?`/dashboard/team/${teamId}/user/new/`:'dashboard.user.new', params: userType}]}/>
+            [{
+              text: (teamId) ? 'team' : `${formatHelper.capitalize(userType)}`,
+              path: (teamId) ? `/dashboard/team/${teamId}` : `dashboard.manage${formatHelper.capitalize(target)}`,
+              params: ''
+            }, {
+              text: `Add ${formatHelper.capitalize(userType)}`,
+              path: (teamId) ? `/dashboard/team/${teamId}/user/new/` : 'dashboard.user.new',
+              params: userType
+            }]}/>
           <h5 className="inline">Add Staff to Team Name</h5>
 
         </div>
@@ -279,10 +288,7 @@ class AddNewStaff extends React.Component {
                     </div>
                   </div>
                   <div className="right save">
-                    <a href={FlowHelpers.pathFor(`dashboard.manage${formatHelper.capitalize(target)}`,'')} type="button"
-                       className="btn cancel">
-                      Cancel
-                    </a>
+                    <CancelBtn route={FlowHelpers.pathFor(`dashboard.manage${formatHelper.capitalize(target)}`, '')}/>
                     <button type="button" className="btn" onClick={this._create.bind(this)}>
                       Add and Invite Staff
                     </button>

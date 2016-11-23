@@ -71,7 +71,7 @@ class TeamList extends React.Component {
                             </div>
                             <div className="card-content">
                               <DisplayManager userId={team.teamLeader}
-                                              target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ?`/dashboard/staff/settings/${team.teamLeader}/${member}`:'':''}/>
+                                              target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ?`/dashboard/staff/settings/${team._id}/${team.teamLeader}`:'':''}/>
                             </div>
                             <div className="card-action">
                               {(team.members) ?

@@ -6,13 +6,9 @@ export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionsReady = [Meteor.subscribe('users.allManagers', domainHelpers.getSubdomain()).ready(), Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
-    console.log(teamId);
     const team = (teamId) ? Collections.Team.findOne(teamId) : null;
-    console.log(team);
-    const selector = (team) ? {'profile.role': 'manager', _id: {$in: team.members}} : {'profile.role': 'manager'};
-
+    const selector = (team) ? {'profile.role': 'manager', _id: team.teamLeader} : {'profile.role': 'manager'};
     let allManagers = Meteor.users.find(selector).fetch();
-    console.log(allManagers);
     onData(null, {allManagers});
   };
   (subscriptionsReady) ? dataReady() : onData();

@@ -33,9 +33,12 @@ class ManageAdmins extends React.Component {
                 {allAdmins.map((staff, index) => (
                   <tr key={index}>
                     <td>
-                      <img
-                        src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
-                        alt="Staff" className="circle responsive-img dp-small left"/>
+                      <a
+                        href={`/dashboard/staff/settings/${staff._id}`}>
+                        <img
+                          src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                          alt="Staff" className="circle responsive-img dp-small left"/>
+                      </a>
                       <div className="col staff-details no-margin">
                         <h6>{staff.profile.firstName} {staff.profile.lastName}<br/>
                           <small>{staff.profile.jobTitle}</small>

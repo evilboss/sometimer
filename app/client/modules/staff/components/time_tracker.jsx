@@ -10,13 +10,11 @@ class TimeTracker extends React.Component {
       loaded: false,
     }
   };
-
   changeStatus() {
     var status = this.state.status;
     (status == 'Out') ? this.setState({status: 'In'}) : this.setState({status: 'Out'});
     Meteor.call('timelogs.change-status');
   };
-
   startShift() {
     Meteor.call('timelogs.startShift');
   };

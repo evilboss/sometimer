@@ -66,16 +66,18 @@ class Activate extends React.Component {
                           </span>
                         </span>
                       : '' }
-                    <div className="form">
+                    <div className="form twbs">
                       <div className="row form-group required col s12">
 
-                        <div className="input-field">
+                        <div className="input-field initial-text-align no-margin-bottom">
                           <input id="new_password" ref="password" autoComplete="off" type="password"/>
-                          <label htmlFor="password">Password</label>
+                          <label htmlFor="password" className="active">Password</label>
                         </div>
-                        <div className="input-field">
+                      </div>
+                      <div className="row form-group required col s12">
+                        <div className="input-field initial-text-align no-margin-bottom">
                           <input id="password_confirm" ref="password_confirm" autoComplete="off" type="password"/>
-                          <label htmlFor="password">Confirm Password</label>
+                          <label htmlFor="password" className="active">Confirm Password</label>
                         </div>
                       </div>
                       <button className="btn waves-effect waves-light theme-color"

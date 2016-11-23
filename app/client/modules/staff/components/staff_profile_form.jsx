@@ -20,7 +20,6 @@ class StaffProfileForm extends React.Component {
       company: (company) ? company.value : '',
       position: position.value,
     };
-
     profileUpdate(user._id, profile);
   }
 

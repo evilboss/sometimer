@@ -1,5 +1,6 @@
-import React from 'react';
-import CancelBtn from '/client/utils/buttons/cancel_btn';
+import React from "react";
+import CancelBtn from "/client/utils/buttons/cancel_btn";
+import {formatHelper} from '/client/utils/helpers/format-helpers';
 
 class StaffProfileForm extends React.Component {
   constructor(props) {
@@ -11,11 +12,12 @@ class StaffProfileForm extends React.Component {
 
   _update() {
     const {profileUpdate, user} = this.props;
-    const {firstName, lastName, department, position}= this.refs;
+    const {firstName, lastName, department, position, company}= this.refs;
     const profile = {
       firstName: firstName.value,
       lastName: lastName.value,
-      department: department.value,
+      department: (department) ? department.value : '',
+      company: (company) ? company.value : '',
       position: position.value,
     };
 
@@ -25,6 +27,7 @@ class StaffProfileForm extends React.Component {
   render() {
     const {user} = this.props;
     const {firstName, lastName, department, jobTitle, role}= (user) ? (user.profile) ? user.profile : '' : '';
+    const detailType = (role == 'client') ? 'company' : 'department';
     return (
       <form className="twbs">
         <div className="class-info">
@@ -59,12 +62,11 @@ class StaffProfileForm extends React.Component {
 
 
         <div className=" col s6">
-          {(role == 'client') ? 'client' : 'staff'
-          }
           <div className="input-field">
-            <input id="department" ref="department" type="text" className="validate"
+            <input id={detailType} ref={detailType} type="text" className="validate"
                    defaultValue={(department) ? department : ''}/>
-            <label htmlFor="department" className={(department) ? 'active required' : ''}>Department</label>
+            <label htmlFor={detailType}
+                   className={(detailType) ? 'active required' : ''}>{formatHelper.capitalize(detailType)}</label>
           </div>
         </div>
         <div className="right save">

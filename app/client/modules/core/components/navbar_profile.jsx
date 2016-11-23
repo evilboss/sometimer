@@ -5,7 +5,7 @@ class NavbarProfile extends React.Component {
     super(props);
     this.hanldeLogOut = ()=> {
       sweetAlert({
-        title: "Confirm Log-out?",
+        title: "Confirm Sign-out?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#0a84ad",
@@ -17,7 +17,7 @@ class NavbarProfile extends React.Component {
         allowOutsideClick: true
       }, function (isConfirm) {
         if (isConfirm) {
-          sweetAlert("Log-out!", ".", "success");
+          sweetAlert("Sign-out!", ".", "success");
           Meteor.logout();
           FlowRouter.go('/login');
         }

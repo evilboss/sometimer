@@ -1,15 +1,19 @@
-import {Download} from '/lib/collections';
+import {Timelogs} from '/lib/collections';
+import moment from 'moment/moment';
+
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
-
 export default function () {
   Meteor.methods({
-    'download.csv'() {
-      console.log('Generatign CSV');
-      var collection = [{timeIn:5,timeout:5,total:30}];
-      var heading = true; // Optional, defaults to true
-      var delimiter = ";" // Optional, defaults to ",";
-      return exportcsv.exportToCSV(collection, heading, delimiter);
+    'download.csv'(selectedUserId, from, to) {
+      console.log('Generatign CSV', selectedUserId, from, to);
+      const dateFrom = moment(from).format('DD:MM:YY');
+      const dateTo = moment(to).format('DD:MM:YY');
+      const selector = {userId: selectedUserId, date: {$gte: dateFrom, $lte: dateTo}};
+      const timelogs = Timelogs.find(selector).fetch();
+      const collection = (timelogs) ? timelogs : [{"status": "invalid date"}];
+      console.log(collection);
+      return exportcsv.exportToCSV(collection);
 
     }
   });

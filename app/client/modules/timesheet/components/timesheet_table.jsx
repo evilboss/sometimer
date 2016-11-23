@@ -8,8 +8,8 @@ class TimesheetTable extends React.Component {
   }
 
   render() {
-    const currentUser = this.props.currentUser;
-    const dates = this.props.dates;
+    const {dates, currentUser} = this.props;
+    const currentUserId = (currentUser) ? currentUser._id : '';
     return (
       <section className="timesheet-table">
         <table className="centered bordered">
@@ -30,8 +30,7 @@ class TimesheetTable extends React.Component {
 
           </tbody>
           <tfoot>
-          <TimesheetTotal from={_.first(dates)} to={_.last(dates)}/>
-
+          <TimesheetTotal selectedUserId={currentUserId} from={_.first(dates)} to={_.last(dates)}/>
           </tfoot>
         </table>
 

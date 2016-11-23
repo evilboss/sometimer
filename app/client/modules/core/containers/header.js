@@ -7,8 +7,6 @@ export const composer = ({context}, onData) => {
     const currentUser = Meteor.user();
     let role = (currentUser) ? (currentUser.profile) ? (currentUser.profile.role) ? currentUser.profile.role : '' : '' : '';
     let userPermissions = (currentUser) ? (currentUser.profile) ? (currentUser.profile.permissions) ? currentUser.profile.permissions : '' : '' : '';
-
-    console.log(currentUser);
     options = {};
     const menu = Collections.Menu.find().fetch();
     let settings = Collections.Settings.findOne();

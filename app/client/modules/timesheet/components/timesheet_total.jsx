@@ -7,9 +7,9 @@ class TimesheetTotal extends React.Component {
   }
 
   exportToCSV() {
-    const timelogs = this.props.timelogs;
-    var nameFile = 'fileDownloaded.csv';
-    Meteor.call('download.csv', function (err, fileContent) {
+    const {timelogs, selectedUserId, from, to} = this.props;
+    var nameFile = `${selectedUserId}.csv`;
+    Meteor.call('download.csv', selectedUserId, from, to, function (err, fileContent) {
       if (fileContent) {
         var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
         saveAs(blob, nameFile);

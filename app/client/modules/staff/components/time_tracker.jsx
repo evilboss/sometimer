@@ -10,11 +10,13 @@ class TimeTracker extends React.Component {
       loaded: false,
     }
   };
+
   changeStatus() {
     var status = this.state.status;
     (status == 'Out') ? this.setState({status: 'In'}) : this.setState({status: 'Out'});
     Meteor.call('timelogs.change-status');
   };
+
   startShift() {
     Meteor.call('timelogs.startShift');
   };
@@ -85,11 +87,8 @@ class TimeTracker extends React.Component {
                       <div className="right center-align">
 
                         <ul className="no-margin">
-                          <li><a href="/dashboard/timesheet" className="theme-text">
-                            <i className="material-icons">grid_on</i><span>Timesheet</span></a>
-                          </li>
                           <li><a href="/dashboard/team" className="theme-text">
-                            <i className="material-icons">group</i><span>Team</span></a>
+                            <i className="material-icons">exit_to_app</i><span>Exit Time tracker</span></a>
                           </li>
                         </ul>
                       </div>

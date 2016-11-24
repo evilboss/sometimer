@@ -148,8 +148,6 @@ class AddNewStaff extends React.Component {
               path: (teamId) ? `/dashboard/team/${teamId}/user/new/` : 'dashboard.user.new',
               params: userType
             }]}/>
-          <h5 className="inline">Add Staff to Team Name</h5>
-
         </div>
         <section id="add-new-staff">
           <div className="row no-margin-bottom">
@@ -230,7 +228,7 @@ class AddNewStaff extends React.Component {
                               </option>
                             ))}
                           </ReactMaterialSelect>
-                          <label htmlFor="department" className="active required">Department</label>
+                          <label htmlFor="department" className="active">Department/Team (optional)</label>
                         </div>}
                     </div>
                   }

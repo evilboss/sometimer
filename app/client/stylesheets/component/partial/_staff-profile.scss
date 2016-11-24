@@ -1,0 +1,20 @@
+#staffProfile {
+  .staff-profile-details {
+    margin-bottom: 4em;
+    margin-right: -30px;
+    border: solid 1px $gray-line;
+    div:nth-child(2) {
+      margin-left: 15px;
+      min-width: 50%;
+    }
+  }
+  .dp-medium {
+    margin-left: 3em;
+    margin-top: 10px;
+    padding: 4px;
+    width: 90px;
+    height: 90px;
+    background: white;
+    margin-bottom: -43px;
+  }
+}

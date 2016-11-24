@@ -6,9 +6,22 @@ import StaffProfileForm from '/client/modules/staff/containers/staff_profile_for
 import PermissionForm from '/client/modules/staff/containers/permission_form';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
+import StaffProfile from '/client/modules/staff/containers/staff_profile';
 class StaffSettings extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    $(document).ready(function () {
+      $('ul.tabs').tabs();
+    });
+  }
+
+  componentWillUpdate() {
+    $(document).ready(function () {
+      $('ul.tabs').tabs();
+    });
   }
 
   _removeStaff(userId) {
@@ -44,23 +57,34 @@ class StaffSettings extends React.Component {
         <PageTitle title="Staff Settings"/>
         <Tabs/>
         <button className="btn delete waves-effect waves-light theme-color" type="button"
-                onClick={this._removeStaff.bind(this, user._id)}>Delete Staff
+                onClick={(user)?this._removeStaff.bind(this, user._id):''}>Delete Staff
           <i className="right material-icons close">
             delete_forever</i></button>
         <section id="staff-settings">
 
           <div className="row no-margin-bottom">
-
-            <div className="col s12 no-padding">
-
-              <div className="col s8 no-padding">
-                <StaffProfileForm user={user} staffId={staffId}/>
-              </div>
-              {
-                (role == 'client') ? null :
-                  <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/>
-              }
+            <div className="col s2 tabs-vertical">
+              <ul className="tabs">
+                <li className="tab col s3"><a className="active" href="#staffProfile">Profile</a></li>
+                <li className="tab col s3"><a href="#StaffProfileForm">Basic info</a></li>
+                {
+                  (role == 'client') ? null :
+                    <li className="tab col s3"><a href="#permissions">Permissions</a></li>
+                }
+              </ul>
             </div>
+
+            <div id="staffProfile" className="col s10 no-padding">
+              <StaffProfile/>
+            </div>
+            <div id="StaffProfileForm" className="col s10 no-padding">
+              <StaffProfileForm user={user} staffId={staffId}/>
+            </div>
+            {
+              (role == 'client') ? null :
+                <div id="permissions" className="col s10 no-padding">
+                  <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/>
+                </div>}
           </div>
         </section>
       </section>

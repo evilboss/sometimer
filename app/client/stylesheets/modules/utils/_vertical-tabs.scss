@@ -1,0 +1,35 @@
+.tabs-vertical {
+  .tabs {
+    height: auto;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .tab {
+    width: 100%;
+    height: auto !important;
+    background-color: $secondary-color;
+    a {
+      color: white !important;
+      padding: 14px;
+    }
+    .active {
+      background-color: white;
+      color: $secondary-color !important;
+      -moz-transition: border-color .5s ease;
+      -o-transition: border-color .5s ease;
+      -webkit-transition: border-color .5s ease;
+      transition: border-color .5s ease;
+      border-right: 3px solid $secondary-color;
+    }
+
+    :hover {
+      border-right: 3px solid #eeeeee;
+    }
+  }
+
+  .indicator {
+    display: none;
+  }
+}

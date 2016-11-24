@@ -63,6 +63,7 @@ class StaffSettings extends React.Component {
             </div>
           </div>
         </section>
+
       </section>
     );
   }

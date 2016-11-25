@@ -5,11 +5,11 @@ import {auth} from '/server/methods/auth/auth';
 const fields = {'profile': 1, 'emails': 1};
 export default function () {
   Meteor.publish('team.list', function (site) {
-    const selector = (auth.hasPermission(this.userId, 'viewAllTeams')) ? {}
-      : (auth.isAdmin(this.userId))
-      ? {creator: this.userId}
-      : (auth.isManager(this.userId))
-      ? {teamLeader: this.userId} : {
+    const selector = (auth.hasPermission(this.userId, 'viewAllTeams')) ?
+    {} : (auth.isAdmin(this.userId)) ?
+    {creator: this.userId}
+      : (auth.isManager(this.userId)) ?
+    {teamLeader: this.userId} : {
       members: {
         $all: [this.userId]
       }

@@ -15,7 +15,7 @@ const menuItems = [
     icon: "grid_on",
     url: '/dashboard',
     name: 'dashboard',
-    roles: ['super-admin', 'staff', 'admin', 'manager'],
+    roles: ['super-admin', 'staff', 'admin', 'manager', 'client'],
     routes: ['']
   },
   {
@@ -23,7 +23,7 @@ const menuItems = [
     icon: "group",
     url: '/dashboard/team',
     name: 'dashboard.team',
-    roles: ['super-admin', 'admin', 'manager', 'client'],
+    roles: ['super-admin', 'admin', 'manager', 'staff', 'client'],
     routes: ['dashboard.team', 'dashboard.user.new', 'dashboard.team.new', 'dashboard.manageStaff', 'dashboard.manageClients', 'dashboard.manageAdmins', 'dashboard.manageManagers', 'dashboard.myteam', 'dashboard.team.edit', 'staff.settings', 'dashboard.staff'],
 
 
@@ -91,6 +91,5 @@ const removeAllMenus = ()=> {
       Menu.remove(removeMenu._id);
     }
   });
-
   Menu.remove({});
 };

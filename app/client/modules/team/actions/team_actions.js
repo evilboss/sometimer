@@ -10,7 +10,6 @@ const updateError = (LocalState, error)=> {
   LocalState.set('UPDATE_TEAM_ERROR', `Required ${error}`);
   return;
 };
-
 export default {
   update({Meteor, LocalState}, id, team) {
     LocalState.set('UPDATE_TEAM_ERROR', null);

@@ -31,8 +31,11 @@ export default {
   add({Meteor, LocalState}, teamName){
     console.log(teamName);
   },
+  assignTeam({Meteor, LocalState}, teamId, userId){
+    LocalState.set('UPDATE_TEAM_ERROR', null);
+    Meteor.call('team.assign', teamId, userId);
+  },
   clearErrors({LocalState}) {
     return LocalState.set('UPDATE_TEAM_ERROR', null);
   }
-
 }

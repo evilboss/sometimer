@@ -21,14 +21,17 @@ const add = (newUser)=> {
 const remove = (userId)=> {
   Meteor.users.remove(userId)
 };
-const postAdd = (invite, teamId)=> {
+const postAdd = (invite, teamId, userRole)=> {
   remotivMailer.sendInvite(invite);
   let team = (teamId) ? Team.findOne(teamId) : null;
-  (team) ? addToTeam(teamId, team.members, invite.userId) : null;
+  (team) ?
+    addToTeam(teamId, team.members, invite.userId, userRole) :
+    null;
 };
-const addToTeam = (teamId, teamMembers, userId)=> {
+const addToTeam = (teamId, teamMembers, userId, userRole)=> {
   teamMembers.push(userId);
-  Team.update(teamId, {$set: {members: teamMembers}})
+  //if manager set to team leader, else just add to team members
+  (userRole == 'manager') ? Team.update(teamId, {$set: {teamLeader: userId}}) : Team.update(teamId, {$set: {members: teamMembers}});
 };
 const addNew = (user, message)=> {
   console.log('adding new');
@@ -50,7 +53,7 @@ const addNew = (user, message)=> {
     message: message
   };
   Invitations.insert(invite);
-  (userId) ? postAdd(invite, ( user.profile.department) ? user.profile.department : null) : null;
+  (userId) ? postAdd(invite, ( user.profile.department) ? user.profile.department : null, (user.profile.role) ? user.profile.role : null) : null;
 };
 const updatePhoto = (id, imgPath)=> {
   Meteor.users.update({_id: id}, {$set: {'profile.displayPhoto': imgPath}})

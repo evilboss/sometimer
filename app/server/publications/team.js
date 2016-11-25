@@ -5,6 +5,7 @@ import {auth} from '/server/methods/auth/auth';
 const fields = {'profile': 1, 'emails': 1};
 export default function () {
   Meteor.publish('team.list', function (site) {
+    console.log('team.list');
     const selector = (auth.hasPermission(this.userId, 'viewAllTeams')) ?
     {} : (auth.isAdmin(this.userId)) ?
     {creator: this.userId}
@@ -16,6 +17,7 @@ export default function () {
     };
     (auth.canManage(this.userId)) ? selector.site = site : '';
     const options = {};
+    console.log(selector);
     return Team.find(selector, options);
   });
   Meteor.publish('team.members', function (teamId) {

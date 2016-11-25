@@ -2,6 +2,7 @@ import React from 'react';
 import Tabs from '/client/modules/team/containers/tabs';
 import SubTabs from '/client/modules/team/containers/sub_tabs';
 import StatusIndicator from '/client/modules/team/components/status_indicator';
+import Assignproject from '/client/modules/team/containers/manage_managers/assignproject';
 import PageTitle from '/client/modules/core/components/page_title';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {formatHelper} from '/client/utils/helpers/format-helpers';
@@ -9,19 +10,19 @@ import {formatHelper} from '/client/utils/helpers/format-helpers';
 class ManageManagers extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   getAssignedTeam(userId) {
     let {teams, team} = this.props;
-    let teamName = (team) ? (team.name) ? team.name : '' : '';
-    _.each(teams, (team)=> {
-      (teamName) ? null : teamName = (_.contains(team.teamLeader, userId)) ? team.name : '';
-    });
-    return (teamName) ? teamName : 'Unassigned';
+    const firstTeam = _.first(_.where(teams, {teamLeader: userId}));
+    let teamName = (team) ? (team.name) ? team.name : '' :
+      (firstTeam) ? firstTeam.name : '';
+    return (teamName) ? teamName : null;
   }
 
   render() {
-    let {allManagers, teamId} = this.props;
+    let {allManagers, teamId, teams} = this.props;
     return (
       <section id="team">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
@@ -64,7 +65,8 @@ class ManageManagers extends React.Component {
                       {formatHelper.capitalize(staff.profile.status)}
                     </td>
                     <td>
-                      {this.getAssignedTeam(staff._id)}
+                      {(this.getAssignedTeam(staff._id)) ? this.getAssignedTeam(staff._id) :
+                        <Assignproject userId={staff._id} teams={teams}/>}
                     </td>
                     <td className="status">
                       <StatusIndicator class={formatHelper.capitalize(staff.profile.status)}/>

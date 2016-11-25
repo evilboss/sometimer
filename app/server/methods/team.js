@@ -10,10 +10,12 @@ export default function () {
     'team.update'(id, team){
       Team.update(id, {$set: team});
     },
-    
+
     'team.remove'(teamId) {
       Team.remove({_id: teamId});
+    },
+    'team.assign'(teamId, userId){
+      Team.update(teamId, {$set: {teamLeader: userId}});
     }
-
   });
 }

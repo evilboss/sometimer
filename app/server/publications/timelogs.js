@@ -32,12 +32,9 @@ export default function () {
       creator: this.userId
     } : (auth.isManager(this.userId)) ? {teamLeader: this.userId} :
     {_id: 'nonexistend'};
-    console.log('teamselector', teamSelector);
     const teams = Team.find(teamSelector).fetch();
-    console.log('the teams', teams);
+
     _.each(teams, (team)=> {
-      console.log(team);
-      console.log('team mb', team.members);
       (team.members) ?
         staffList.push.apply(staffList, team.members)
         :

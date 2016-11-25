@@ -34,14 +34,14 @@ class StaffProfileForm extends React.Component {
         </div>
         <div className="col s6 no-padding">
           <div className="input-field">
-            <input id="firstName" ref="firstName" type="text" className="validate"
+            <input id="firstName" ref="firstName" type="text" className="validate" placeholder="First Name"
                    defaultValue={(firstName) ? firstName : ''}/>
             <label htmlFor="firstName" className={(firstName) ? 'active required' : ''}>First Name</label>
           </div>
         </div>
         <div className="col s6">
           <div className="input-field">
-            <input id="lastName" ref="lastName" type="text" className="validate"
+            <input id="lastName" ref="lastName" type="text" className="validate" placeholder="Last Name"
                    defaultValue={(lastName) ? lastName : ''}
             />
             <label htmlFor="lastName" className={(lastName) ? 'active required' : ''}>Last Name</label>
@@ -62,10 +62,11 @@ class StaffProfileForm extends React.Component {
 
         <div className=" col s6">
           <div className="input-field">
-            <input id={detailType} ref={detailType} type="text" className="validate"
+            <input id={detailType} ref={detailType} placeholder={`${formatHelper.capitalize(detailType)}/Team`}
+                   type="text" className="validate"
                    defaultValue={(department) ? department : ''}/>
             <label htmlFor={detailType}
-                   className={(detailType) ? 'active required' : ''}>{formatHelper.capitalize(detailType)}</label>
+                   className={(detailType) ? 'active required' : ''}>{formatHelper.capitalize(detailType)}/Team</label>
           </div>
         </div>
         <div className="right save">

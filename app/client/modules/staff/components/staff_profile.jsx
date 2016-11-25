@@ -40,13 +40,15 @@ class StaffProfile extends React.Component {
           </div>
         </div>
 
-        <section id="staff-project-list">
+        <section id="staff-project-list" className="col s11">
           <div className="title">
             <h5>Projects</h5>
             <ul>
               {projects.map((project, index)=>
                 <li key={index}>
-                  {project.name}
+                  <a href={`/projects/${project._id}`}>
+                    {project.name}
+                  </a>
                 </li>
               )}
 

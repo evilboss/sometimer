@@ -87,7 +87,8 @@ class EditTeam extends React.Component {
             {team ? <Formsy.Form>
               <div className="col s12">
                 <div className="input-field col s12">
-                  <input id="name" ref="name" type="text" className="validate"
+                  <input id="name" ref="name" type="text" className="validate" placeholder="Name of
+                    Team / Department"
                          defaultValue={ (team.name) ? team.name : '' }
                   />
                   <label htmlFor="Name of Team / Department" className={(team) ? (team.name) ? 'active' : '' : ''}>Name

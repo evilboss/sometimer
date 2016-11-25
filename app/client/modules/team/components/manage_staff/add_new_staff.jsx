@@ -228,7 +228,7 @@ class AddNewStaff extends React.Component {
                               </option>
                             ))}
                           </ReactMaterialSelect>
-                          <label htmlFor="department" className="active">Department/Team (optional)</label>
+                          <label htmlFor="department" className="active">Department/Team (or assign later)</label>
                         </div>}
                     </div>
                   }

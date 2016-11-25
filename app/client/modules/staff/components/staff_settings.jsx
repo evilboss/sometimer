@@ -54,7 +54,7 @@ class StaffSettings extends React.Component {
     const {role} = (user) ? (user.profile) ? user.profile : '' : '';
     return (
       <section id="team" className="relative">
-        <PageTitle title="Staff Settings"/>
+        <PageTitle title={`${user.profile.firstName} ${user.profile.lastName}`}/>
         <Tabs/>
         <button className="btn delete waves-effect waves-light theme-color" type="button"
                 onClick={(user)?this._removeStaff.bind(this, user._id):''}>Delete Staff

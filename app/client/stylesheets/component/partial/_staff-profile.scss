@@ -1,7 +1,6 @@
 #staffProfile {
   .staff-profile-details {
     margin-bottom: 4em;
-    margin-right: -30px;
     border: solid 1px $gray-line;
     div:nth-child(2) {
       margin-left: 15px;
@@ -16,5 +15,17 @@
     height: 90px;
     background: white;
     margin-bottom: -43px;
+  }
+  #staff-project-list {
+    float: right;
+    ul {
+      li {
+        list-style-type: initial;
+        a {
+          text-decoration: underline;
+          color: #38428c;
+        }
+      }
+    }
   }
 }

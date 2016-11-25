@@ -9,7 +9,7 @@ export const composer = ({context, teamId}, onData) => {
     const team = (teamId) ? Collections.Team.findOne(teamId) : null;
     const selector = (team) ? {'profile.role': 'manager', _id: team.teamLeader} : {'profile.role': 'manager'};
     let allManagers = Meteor.users.find(selector).fetch();
-    onData(null, {allManagers});
+    onData(null, {allManagers, team});
   };
   (subscriptionsReady) ? dataReady() : onData();
 };

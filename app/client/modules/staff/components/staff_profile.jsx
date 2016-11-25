@@ -1,12 +1,14 @@
 import React from 'react';
 import StatusIndicator from '/client/modules/team/components/status_indicator';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
+import moment from 'moment';
 class StaffProfile extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {user, team} = this.props;
+    const {user, team, projects} = this.props;
     const {profile} = (user) ? user : '';
 
     return (
@@ -19,11 +21,11 @@ class StaffProfile extends React.Component {
                 <td>
                   <h5 className="no-margin">{`${profile.firstName} ${profile.lastName}`}</h5>
                   <h6 className="no-margin">{profile.role}&nbsp;
-                    <small>{profile.createdAt}</small>
+                    <small>{moment(user.createdAt).fromNow()}</small>
                   </h6>
                 </td>
                 <td>
-                  <StatusIndicator class="In"/>
+                  <StatusIndicator class={(profile.status)? formatHelper.capitalize(profile.status):''}/>
                 </td>
                 <td className="center-align">
                   <div className="icons center-align">
@@ -41,6 +43,14 @@ class StaffProfile extends React.Component {
         <section id="staff-project-list">
           <div className="title">
             <h5>Projects</h5>
+            <ul>
+              {projects.map((project, index)=>
+                <li key={index}>
+                  {project.name}
+                </li>
+              )}
+
+            </ul>
           </div>
         </section>
       </section>
@@ -50,12 +60,12 @@ class StaffProfile extends React.Component {
 StaffProfile.defaultProps = {
   user: {
     _id: 'sampleID',
+    createdAt: 'sample date started',
     profile: {
       displayPhoto: '/uploads/defaults/default_user.png',
       firstName: 'Gwen',
       lastName: 'Manansala',
       role: 'sample role',
-      createdAt: 'sample date started'
     }
   },
   team: {

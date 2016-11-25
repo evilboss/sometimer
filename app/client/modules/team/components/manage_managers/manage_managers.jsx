@@ -12,10 +12,10 @@ class ManageManagers extends React.Component {
   }
 
   getAssignedTeam(userId) {
-    let {teams} = this.props;
-    let teamName = '';
+    let {teams, team} = this.props;
+    let teamName = (team) ? (team.name) ? team.name : '' : '';
     _.each(teams, (team)=> {
-      (teamName) ? null : teamName = (_.contains(team.members, userId)) ? team.name : '';
+      (teamName) ? null : teamName = (_.contains(team.teamLeader, userId)) ? team.name : '';
     });
     return (teamName) ? teamName : 'Unassigned';
   }
@@ -35,6 +35,13 @@ class ManageManagers extends React.Component {
                 <thead>
                 <tr>
                   <th>Managers</th>
+
+                  <th>Invite Status</th>
+
+                  <th>Team</th>
+
+                  <th> Timelog Status
+                  </th>
                 </tr>
                 </thead>
                 <tbody>

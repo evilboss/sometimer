@@ -50,7 +50,7 @@ class StaffSettings extends React.Component {
   }
 
   render() {
-    const {userPermissions, user, permissions, staffId} = this.props;
+    const {userPermissions, user, permissions, staffId, projects} = this.props;
     const {role} = (user) ? (user.profile) ? user.profile : '' : '';
     return (
       <section id="team" className="relative">
@@ -75,7 +75,7 @@ class StaffSettings extends React.Component {
             </div>
 
             <div id="staffProfile" className="col s10 no-padding">
-              <StaffProfile/>
+              <StaffProfile user={user} projects={projects}/>
             </div>
             <div id="StaffProfileForm" className="col s10 no-padding">
               <StaffProfileForm user={user} staffId={staffId}/>

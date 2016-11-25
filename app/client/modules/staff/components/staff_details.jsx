@@ -40,7 +40,7 @@ class StaffDetails extends React.Component {
         <td className="staff-dp">
           {(staff) ? (staff.profile) ?
             <img
-              src={(staff.profile.displayPhoto !== '') ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
+              src={(staff.profile.displayPhoto) ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
               alt="Staff"
               className="circle responsive-img dp-small"/>
             : ''

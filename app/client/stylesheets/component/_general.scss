@@ -84,12 +84,21 @@ p {
 }
 
 // Button
+.btn.cancel {
+  background-color: #DFDFDF !important;
+  box-shadow: none;
+  color: #9F9F9F !important;
+}
 
 .btn-menu {
   padding: 0 5px;
   &:hover {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   }
+}
+
+.tranfer-btn-action {
+  margin-top: 1em;
 }
 
 .btn {
@@ -99,7 +108,7 @@ p {
 .btn.delete {
   position: absolute;
   right: 12px;
-  top: 70px;
+  top: 76px;
 }
 
 // Label
@@ -401,11 +410,6 @@ form {
 
   button {
     background-color: $theme-color !important;
-  }
-  .btn.cancel {
-    background-color: #DFDFDF !important;
-    box-shadow: none;
-    color: #9F9F9F !important;
   }
 
   .modal-footer {

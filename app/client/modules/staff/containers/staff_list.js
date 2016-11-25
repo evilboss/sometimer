@@ -11,8 +11,10 @@ export const composer = ({context, teamId}, onData) => {
     const members = (team) ? (team.members) ? team.members : [] : [];
     const selector = {'profile.role': 'staff'};
     const options = {_id: {$ne: Meteor.userId()}, _id: {$in: members}};
+    const teamLeaderSelector = (team) ? (team.teamLeader) ? {_id: team.teamLeader} : {_id: 'wontwork'} : {_id: 'wontwork'};
+    const teamLeader = Meteor.users.findOne(teamLeaderSelector);
     const staffList = Meteor.users.find(selector, options).fetch();
-    onData(null, {staffList, team});
+    onData(null, {staffList, team, teamLeader});
   } else {
     onData();
   }

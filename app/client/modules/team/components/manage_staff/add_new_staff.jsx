@@ -13,12 +13,28 @@ import {formatHelper} from '/client/utils/helpers/format-helpers';
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import ReactMaterialSelect from 'react-material-select';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
+import PermissionCheckbox from '/client/modules/team/components/permission_checkbox';
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      permissions: []
+      permissions: [],
+      isCheckall: false,
+      checkall: false
     }
+  }
+
+  checkall() {
+    this.setState({
+      isCheckall: !this.state.isCheckall
+    });
+    console.log($('input[checkbox]'));
+    $('input[checkbox]').prop('checked', this.state.isCheckall);
+
+  }
+
+  unCheckall() {
+
   }
 
   componentDidMount() {
@@ -132,6 +148,7 @@ class AddNewStaff extends React.Component {
       }
     ];
     let target = (userType == 'staff') ? userType : `${userType}s`;
+    const {isCheckall, checkall}=this.state;
     return (
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
@@ -258,8 +275,8 @@ class AddNewStaff extends React.Component {
                                 {(permission.types) ?
                                   permission.types.map((type, typeIndex)=>
                                     <td className="center" key={typeIndex}>
-                                      <input type="checkbox" id={type}
-                                             data-permission={type} onChange={this._changePermissions.bind(this)}/>
+                                      <PermissionCheckbox type={type} isChecked={isCheckall}
+                                                          changePermissions={this._changePermissions}/>
                                       <label htmlFor={type}></label>
                                     </td>
                                   )
@@ -270,6 +287,14 @@ class AddNewStaff extends React.Component {
 
                           </tbody>
                         </table>
+                        {(isCheckall) ?
+                          <button type="button" className="btn cancel" onClick={this.checkall.bind(this)}>Uncheck
+                            all</button>
+                          : <button type="button" className="btn theme-color" onClick={this.checkall.bind(this)}>Check
+                          all</button>
+                        }
+
+
                       </div> : null
                   }
                 </div>

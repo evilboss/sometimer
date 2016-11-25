@@ -10,11 +10,11 @@ class StaffProfile extends React.Component {
   render() {
     const {user, team, projects} = this.props;
     const {profile} = (user) ? user : '';
-
     return (
       <section>
         <div className="staff-profile-details">
-          <img src={profile.displayPhoto} className="circle responsive-img dp-medium"/>
+          <img src={(profile.displayPhoto)?profile.displayPhoto:'/uploads/defaults/default_user.png'}
+               className="circle responsive-img dp-medium"/>
           <div className="inline">
             <table className="responsive-table">
               <tr>
@@ -44,13 +44,15 @@ class StaffProfile extends React.Component {
           <div className="title">
             <h5>Projects</h5>
             <ul>
-              {projects.map((project, index)=>
-                <li key={index}>
-                  <a href={`/projects/${project._id}`}>
-                    {project.name}
-                  </a>
-                </li>
-              )}
+
+              {(projects.length !== 0) ?
+                projects.map((project, index)=>
+                  <li key={index}>
+                    <a href={`/projects/${project._id}`}>
+                      {project.name}
+                    </a>
+                  </li>
+                ) : <li>No Projects Yet!</li>}
 
             </ul>
           </div>

@@ -62,7 +62,7 @@ class StaffSettings extends React.Component {
             delete_forever</i></button>
         <section id="staff-settings">
 
-          <div className="row no-margin-bottom">
+          <div className="row">
             <div className="col s2 tabs-vertical">
               <ul className="tabs">
                 <li className="tab col s3"><a className="active" href="#staffProfile">Profile</a></li>

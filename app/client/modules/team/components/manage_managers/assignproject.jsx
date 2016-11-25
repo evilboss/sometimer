@@ -29,7 +29,7 @@ class Assignproject extends React.Component {
     const {teams} = this.props;
     const {isAssigning, err} = this.state;
     return (
-      <div>
+      <div className="twbs">
         {err ?
           <span className="error-container">
             <span className="error-text">
@@ -38,17 +38,23 @@ class Assignproject extends React.Component {
           </span> : null }
         {(isAssigning) ?
           <div>
-            <ReactMaterialSelect label="Team" id="Team" ref="teamId">
-              {teams.map((team, index) => (
-                <option key={index} dataValue={team._id}>
-                  {team.name}
-                </option>
-              ))}
-            </ReactMaterialSelect>
-            <button class="btn-add btn-sm" onClick={this.assignTeam.bind(this)}>Assign</button>
-            <button className="btn btn-sm" onClick={this.assign.bind(this)}>Cancel</button>
+            <div className="col s7">
+              <div className="input-field no-margin">
+                <ReactMaterialSelect label="Team" id="Team" ref="teamId">
+                  {teams.map((team, index) => (
+                    <option key={index} dataValue={team._id}>
+                      {team.name}
+                    </option>
+                  ))}
+                </ReactMaterialSelect>
+              </div>
+            </div>
+            <div className="col s5 assign-action">
+              <button className="btn cancel" onClick={this.assign.bind(this)}>Cancel</button>
+              <button className="btn theme-color" onClick={this.assignTeam.bind(this)}>Assign</button>
+            </div>
           </div>
-          : <button className="btn btn-sm btn-cancel" onClick={this.assign.bind(this)}>Assign Team</button>}
+          : <button className="btn theme-color" onClick={this.assign.bind(this)}>Assign Team</button>}
       </div>
     );
   }

@@ -15,11 +15,11 @@ class StaffDp extends React.Component {
   }
 
   render() {
-    const {displayPhoto, displayAPhoto, target} = this.props;
+    const {displayPhoto, target} = this.props;
     return (
       <a href={(target)?target:''} onClick={this._hasPermission.bind(this)}>
         <img src={(displayPhoto)?`${displayPhoto}`:'/uploads/defaults/default_user.png'} alt="people"
-             className={`circle responsive-img ${(displayAPhoto)?'hide':''}`}/>
+             className={`circle responsive-img`}/>
       </a>
     );
   }

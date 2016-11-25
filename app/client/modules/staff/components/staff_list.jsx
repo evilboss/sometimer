@@ -58,7 +58,7 @@ class StaffList extends React.Component {
   }
 
   render() {
-    const {team, staffList} = this.props;
+    const {team, staffList, teamLeader} = this.props;
     return (
       <section id="staff-list">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
@@ -122,8 +122,21 @@ class StaffList extends React.Component {
               <thead>
               <tr>
                 <th></th>
-                <th>Staff Name</th>
+                <th>Team Leader</th>
                 <th className="center-align">Time Log Status</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <StaffDetails staff={teamLeader} index={312809} teamId={team._id}/>
+              </tbody>
+            </table>
+            <table className="striped">
+              <thead>
+              <tr>
+                <th></th>
+                <th>Staff Name</th>
+                <th className="center-align"></th>
                 <th></th>
               </tr>
               </thead>

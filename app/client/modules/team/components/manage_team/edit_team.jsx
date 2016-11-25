@@ -111,9 +111,9 @@ class EditTeam extends React.Component {
                 <div className="input-field">
                   <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
                 </div>
-                <div className="input-field">
+                <div>
                   {(transfer) ?
-                    <div>
+                    <div className="input-field col s12">
                       <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin">
                         {adminList.map((staff) => (
                           <option key={staff._id} dataValue={staff._id}>
@@ -121,8 +121,10 @@ class EditTeam extends React.Component {
                           </option>
                         ))}
                       </ReactMaterialSelect>
-                      <button className="btn cancel" onClick={this._transfer.bind(this)}>Cancel Transfer</button>
-                      <button className="btn" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer</button>
+                      <div className="tranfer-btn-action">
+                        <button className="btn cancel" onClick={this._transfer.bind(this)}>Cancel Transfer</button>
+                        <button className="btn" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer</button>
+                      </div>
                     </div> :
                     <button className="btn" onClick={this._transfer.bind(this)}>Transfer</button>
                   }

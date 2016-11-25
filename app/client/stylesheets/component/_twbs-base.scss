@@ -11,6 +11,7 @@
       border: 1px solid #9e9e9e;
       border-radius: 4px;
       text-indent: 10px;
+      height: 34px;
     }
     .typeahead {
       width: 26em;
@@ -39,16 +40,15 @@
       top: 0.4em !important;
     }
     .rms-wrapper {
+      height: 34px;
       .rms-text span {
         border: 1px solid #9e9e9e;
         border-radius: 4px;
         text-indent: 10px;
-        height: 3em;
         margin: 0;
-        padding: 23px 0;
       }
       .rms-caret {
-        top: 13px;
+        top: 9px;
         color: rgba(0, 0, 0, .7);
       }
       .rms-label {

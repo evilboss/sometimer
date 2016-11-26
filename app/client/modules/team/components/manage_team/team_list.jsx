@@ -45,16 +45,19 @@ class TeamList extends React.Component {
                               {(team.teamLeader) ?
                                 <DisplayManager userId={team.teamLeader}
                                                 target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ? `/dashboard/staff/settings/${team._id}/${team.teamLeader}` : '' : ''}/>
-                                : <div className="row no-margin">
-                                <img
-                                  src='/uploads/defaults/default_user.png'
-                                  alt="Team Lead" className="circle responsive-img dp-small left"/>
-                                <div className="col s8 no-margin">
+                                :
+                                <a href={`${team._id}/manage-managers`}>
+                                  <div className="row no-margin">
+                                    <img
+                                      src='/uploads/defaults/default_user.png'
+                                      alt="Team Lead" className="circle responsive-img dp-small left"/>
+                                    <div className="col s8 no-margin">
                                     <span>
                                       Needs a Team Leader!<br/>Manage now.
                                     </span>
-                                </div>
-                              </div>
+                                    </div>
+                                  </div>
+                                </a>
                               }
 
                             </div>
@@ -62,7 +65,8 @@ class TeamList extends React.Component {
                               {(!_.isEmpty(team.members)) ?
                                 team.members.map((member, key)=>(
                                   (key <= 4) ?
-                                    <StaffDp staffType="staff" key={key} teamId={team._id} userId={member} target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff/settings/${team._id}/${member}` : '' : ''}/> : ''
+                                    <StaffDp staffType="staff" key={key} teamId={team._id} userId={member}
+                                             target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff/settings/${team._id}/${member}` : '' : ''}/> : ''
                                 ))
                                 :
                                 <div className="row no-margin">

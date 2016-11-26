@@ -40,7 +40,7 @@ class AddNewStaff extends React.Component {
     const currentPermissions = [];
     this.permissionList().map((permission, index)=>
       (_.contains(permission.userTypes, userType)) ? currentPermissions.push.apply(currentPermissions, permission.types) : '');
-    return currentPermissions;
+    return _.uniq(currentPermissions);
   }
 
   componentDidMount() {
@@ -91,7 +91,6 @@ class AddNewStaff extends React.Component {
 
   _changePermissions(e) {
     const permission = e.target.attributes.getNamedItem('data-permission').value;
-
     (e.target.checked) ? this._addToPermissions(permission) : this._removePermissions(permission);
     console.log((this.getUserPemissions().length == this.state.permissions.length));
     this.setState({

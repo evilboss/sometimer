@@ -66,7 +66,11 @@ class StaffList extends React.Component {
         <div className="row no-margin-bottom">
           <div className="col s6">
             <Breadcrumbs crumbs={
-        [{text: 'Teams', path: 'dashboard.team', params: ''}, {text: team.name, path: 'dashboard.myteam', params: team._id}]}/>
+              [{text: 'Teams', path: 'dashboard.team', params: ''}, {
+                text: team.name,
+                path: 'dashboard.myteam',
+                params: team._id
+              }]}/>
             <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
           </div>
 
@@ -128,7 +132,10 @@ class StaffList extends React.Component {
               </tr>
               </thead>
               <tbody>
-              <StaffDetails staff={teamLeader} index={312809} teamId={team._id}/>
+              {(teamLeader) ? <StaffDetails staff={teamLeader} index={312809} teamId={team._id}/> :
+                <tr>
+                  <td>No team lead yet</td>
+                </tr>}
               </tbody>
             </table>
             <table className="striped">

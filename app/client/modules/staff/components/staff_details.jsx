@@ -35,52 +35,59 @@ class StaffDetails extends React.Component {
   render() {
     const {staff, index, userPermissions, teamId} = this.props;
     return (
+      (staff) ?
+        (staff.profile) ?
+          <tr key={index}>
+            <td className="staff-dp">
+              <img
+                src={(staff.profile.displayPhoto) ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
+                alt="Staff"
+                className="circle responsive-img dp-small"/>
 
-      <tr key={index}>
-        <td className="staff-dp">
-          {(staff) ? (staff.profile) ?
-            <img
-              src={(staff.profile.displayPhoto) ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
-              alt="Staff"
-              className="circle responsive-img dp-small"/>
-            : ''
-            : ''}
+            </td>
+            < td className="staff-details">
+              < div className="col no-margin">
 
-        </td>
-        <td className="staff-details">
-          <div className="col no-margin">
-            <h6>{staff.profile.firstName}<br/>
-              <small>{staff.profile.jobTitle}</small>
-            </h6>
-          </div>
-        </td>
-        <td className="center-align">
-          <div className="status">
-            <div className={`beacon ${staff.profile.status}`}></div>
-            <span>{staff.profile.status}</span>
-          </div>
-        </td>
-        <td className="center-align">
-          <div className="icons center-align">
-            {
-              (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-                <a href={`/dashboard/staff/${teamId}/${staff._id}`}>
-                  <img src="/Assets/icons/time.png"/>
-                </a>
-                : '' : ''
-            }
-            {
-              (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-                <a href={`/dashboard/staff/settings/${staff._id}`}>
-                  <img src="/Assets/icons/settings.png"/>
-                </a>
-                : '' : ''
-            }
-          </div>
-        </td>
-      </tr>
+                < h6 > {staff.profile.firstName}<br/>
+                  <small>{staff.profile.jobTitle}</small>
+                </h6>
 
-    );
+              </div>
+            </td>
+
+            <td className="center-align">
+
+              <div className="status">
+                <div className={`beacon ${staff.profile.status}`}></div>
+                <span>{staff.profile.status}</span>
+              </div>
+
+            </td>
+
+            <td className="center-align">
+
+              <div className="icons center-align">
+                {
+                  (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
+                    <a href={`/dashboard/staff/${teamId}/${staff._id}`}>
+                      <img src="/Assets/icons/time.png"/>
+                    </a>
+                    : '' : ''
+                }
+                {
+                  (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
+                    <a href={`/dashboard/staff/settings/${staff._id}`}>
+                      <img src="/Assets/icons/settings.png"/>
+                    </a>
+                    : '' : ''
+                }
+              </div>
+
+            </td>
+          </tr>
+          : '' : ''
+    )
+      ;
   }
 }
 

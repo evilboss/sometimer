@@ -24,7 +24,7 @@ class AddNewStaff extends React.Component {
     }
   }
 
-  checkall() {
+  checkAll() {
     const {userType} = this.props;
     const currentPermissions = this.getUserPemissions();
     this.setState({
@@ -191,7 +191,6 @@ class AddNewStaff extends React.Component {
               <p>Please fill in the fields below to add a new staff and invite him / her into the system,</p>
               <div className="col s12 no-padding">
                 {error ? this._renderError(error) : null}
-
                 <div className="col s8 no-padding">
                   <div className="class-info">
                     PERSONAL INFORMATION
@@ -309,13 +308,14 @@ class AddNewStaff extends React.Component {
                           </tbody>
                         </table>
                         {(isCheckall) ?
-                          <button type="button" className="btn cancel" onClick={this.checkall.bind(this)}>Uncheck
-                            all</button>
-                          : <button type="button" className="btn theme-color" onClick={this.checkall.bind(this)}>Check
-                          all</button>
+                          <button type="button" className="btn cancel" onClick={this.checkAll.bind(this)}>Uncheck
+                            all
+                          </button>
+                          :
+                          <button type="button" className="btn theme-color" onClick={this.checkAll.bind(this)}>Check
+                            all
+                          </button>
                         }
-
-
                       </div> : null
                   }
                 </div>
@@ -326,9 +326,11 @@ class AddNewStaff extends React.Component {
                   <div className=" col s12 no-padding">
                     <div className="input-field">
                     <textarea placeholder="Add a personal message" id="message" ref="message"
-                              className="materialize-textarea"></textarea>
+                              className="materialize-textarea">
+                    </textarea>
                       <label htmlFor="message" className="active">Add a personal message when the person receives the
-                        invite(optional)</label>
+                        invite(optional)
+                      </label>
                     </div>
                   </div>
                   <div className="right save">

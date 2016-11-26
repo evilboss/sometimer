@@ -25,16 +25,22 @@ class AddNewStaff extends React.Component {
   }
 
   checkall() {
+    const {userType} = this.props;
+    const currentPermissions = this.getUserPemissions();
+    this.setState({
+      permissions: (!this.state.isCheckall) ? currentPermissions : []
+    });
     this.setState({
       isCheckall: !this.state.isCheckall
     });
-    console.log($('input[checkbox]'));
-    $('input[checkbox]').prop('checked', this.state.isCheckall);
-
   }
 
-  unCheckall() {
-
+  getUserPemissions() {
+    const {userType} = this.props;
+    const currentPermissions = [];
+    this.permissionList().map((permission, index)=>
+      (_.contains(permission.userTypes, userType)) ? currentPermissions.push.apply(currentPermissions, permission.types) : '');
+    return currentPermissions;
   }
 
   componentDidMount() {
@@ -85,7 +91,12 @@ class AddNewStaff extends React.Component {
 
   _changePermissions(e) {
     const permission = e.target.attributes.getNamedItem('data-permission').value;
+
     (e.target.checked) ? this._addToPermissions(permission) : this._removePermissions(permission);
+    console.log((this.getUserPemissions().length == this.state.permissions.length));
+    this.setState({
+      isCheckall: (this.getUserPemissions().length == this.state.permissions.length)
+    });
   };
 
   _addToPermissions(permission) {
@@ -112,8 +123,11 @@ class AddNewStaff extends React.Component {
     console.log('Adding team');
   }
 
-  render() {
-    const {allStaff, teamAllStaff, userPermissions, error, userRole, userType, teams, teamId} = this.props;
+  hasPermission(type) {
+    return (_.contains(this.state.permissions, type)) ? true : false;
+  }
+
+  permissionList() {
     const permissionList = [
       {
         label: 'Client',
@@ -147,6 +161,11 @@ class AddNewStaff extends React.Component {
         userTypes: ['super-admin']
       }
     ];
+    return permissionList
+  }
+
+  render() {
+    const {allStaff, teamAllStaff, userPermissions, error, userRole, userType, teams, teamId} = this.props;
     let target = (userType == 'staff') ? userType : `${userType}s`;
     const {isCheckall, checkall}=this.state;
     return (
@@ -268,15 +287,17 @@ class AddNewStaff extends React.Component {
                           </tr>
                           </thead>
                           <tbody>
-                          {permissionList.map((permission, index)=>
+                          {this.permissionList().map((permission, index)=>
                             (_.contains(permission.userTypes, userType)) ?
                               <tr key={index}>
                                 <td>{permission.label}</td>
                                 {(permission.types) ?
                                   permission.types.map((type, typeIndex)=>
                                     <td className="center" key={typeIndex}>
-                                      <PermissionCheckbox type={type} isChecked={isCheckall}
-                                                          changePermissions={this._changePermissions}/>
+                                      <input type="checkbox" id={type}
+                                             value={this.hasPermission(type)}
+                                             checked={this.hasPermission(type)}
+                                             data-permission={type} onChange={this._changePermissions.bind(this)}/>
                                       <label htmlFor={type}></label>
                                     </td>
                                   )

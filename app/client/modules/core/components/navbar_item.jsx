@@ -30,7 +30,6 @@ class NavbarItem extends React.Component {
             : null
         ))}
       </div>
-
     );
   }
 }

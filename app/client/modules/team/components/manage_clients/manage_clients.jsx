@@ -33,33 +33,29 @@ class ManageClients extends React.Component {
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">
-              <table className="bordered">
+              <table className="bordered staff-list">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Clients</th>
+                  <th>Invite Status</th>
                 </tr>
                 </thead>
                 <tbody>
                 {allClients.map((client, index) => (
                   <tr key={index}>
-                    <td>
-                      <a href={(teamId)?`/dashboard/staff/settings/${teamId}/${client._id}`:`/dashboard/staff/settings/${client._id}`}>
-                        <img
-                          src={(client.profile.displayPhoto)?`${client.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
-                          alt="client" className="circle responsive-img dp-small left"/>
-                      </a>
+                    <td className="staff-dp"><a
+                      href={(teamId)?`/dashboard/staff/settings/${teamId}/${client._id}`:`/dashboard/staff/settings/${client._id}`}>
+                      <img
+                        src={(client.profile.displayPhoto)?`${client.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                        alt="client" className="circle responsive-img dp-small left"/>
+                    </a></td>
+                    <td className="staff-details">
                       <div className="col client-details no-margin">
                         <h6>{client.profile.company}<br/>
                           <small>{client.profile.firstName} {client.profile.lastName}</small>
                         </h6>
                       </div>
-
-                    </td>
-                    <td>
-                      {formatHelper.capitalize(client.profile.status)}
-                    </td>
-                    <td>
-                      {this.getAssignedTeam(client._id)}
                     </td>
                     <td className="status">
                       <StatusIndicator class={formatHelper.capitalize(client.profile.status)}/>

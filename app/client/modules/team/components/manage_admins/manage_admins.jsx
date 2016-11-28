@@ -23,22 +23,27 @@ class ManageAdmins extends React.Component {
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
             <div className="col s12 no-padding">
-              <table className="bordered">
+              <table className="bordered staff-list">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Admins</th>
+                  <th>Team</th>
+                  <th>Timelog Status</th>
                 </tr>
                 </thead>
                 <tbody>
                 {allAdmins.map((staff, index) => (
                   <tr key={index}>
-                    <td>
+                    <td className="staff-dp">
                       <a
                         href={`/dashboard/staff/settings/${staff._id}`}>
                         <img
                           src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
                           alt="Staff" className="circle responsive-img dp-small left"/>
                       </a>
+                    </td>
+                    <td className="staff-details">
                       <div className="col staff-details no-margin">
                         <h6>{staff.profile.firstName} {staff.profile.lastName}<br/>
                           <small>{staff.profile.jobTitle}</small>

@@ -44,18 +44,20 @@ section#in-out-board {
       margin-top: 1.5em;
     }
     .display-photo {
-      height: 10em;
-      width: 10em;
+      height: 9em;
+      width: 9em;
+      margin-top: 2em;
     }
   }
   .staff-details {
     color: white;
+    border-left: 1px solid $gray-line;
     .current-log {
       display: inline-block;
     }
-    h4 {
-      font-weight: 500;
-      margin-bottom: 0.3em;
+    h3 {
+      font-weight: 600;
+      margin-bottom: 0;
     }
     h6 {
       font-size: 1.2rem;
@@ -63,6 +65,10 @@ section#in-out-board {
   }
   .status {
     margin: 1em 0;
+  }
+  .time {
+    margin: 0;
+    font-weight: 400 !important;
   }
   .time-out {
     padding-right: 3.7em;

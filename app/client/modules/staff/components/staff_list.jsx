@@ -122,7 +122,7 @@ class StaffList extends React.Component {
 
         <div className="row border-top">
           <div className="col s12 no-padding">
-            <table className="striped">
+            <table className="striped staff-list">
               <thead>
               <tr>
                 <th></th>
@@ -138,7 +138,7 @@ class StaffList extends React.Component {
                 </tr>}
               </tbody>
             </table>
-            <table className="striped">
+            <table className="striped staff-list">
               <thead>
               <tr>
                 <th></th>

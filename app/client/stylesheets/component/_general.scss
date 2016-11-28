@@ -315,6 +315,27 @@ textarea.materialize-textarea {
 }
 
 // table
+
+table.staff-list {
+  th, td {
+    padding: 10px;
+  }
+  .staff-dp {
+    width: 66px;
+    padding-right: 0 !important;
+  }
+
+  .staff-details {
+    padding-left: 0 !important;
+    h6 {
+      color: black;
+      small {
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
 table.centered tfoot tr th, table.centered tfoot tr td {
   text-align: center;
 }

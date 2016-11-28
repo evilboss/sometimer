@@ -6,7 +6,8 @@ class TimeTracker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      today: moment().format('LL hh:mm:ss'),
+      dateToday: moment().format('LL'),
+      timeToday: moment().format('LTS'),
       loaded: false,
     }
   };
@@ -33,17 +34,26 @@ class TimeTracker extends React.Component {
     Meteor.call('timelogs.endBreak');
   };
 
-  setTime() {
-    this.setState({today: moment().format('LL hh:mm:ss')});
+  setDate() {
+    this.setState({dateToday: moment().format('LL')});
   };
 
+  setTime() {
+    this.setState({timeToday: moment().format('LTS')});
+  };
+
+  getDate() {
+    return this.state.dateToday;
+  }
+
   getTime() {
-    return this.state.today;
+    return this.state.timeToday;
   }
 
   componentWillMount() {
     this.setState({loaded: true});
     this.setTime();
+    this.setDate();
   };
 
   componentWillUnMount() {
@@ -54,6 +64,7 @@ class TimeTracker extends React.Component {
     if (this.state.loaded) {
       timerId = setInterval(function () {
         this.setTime();
+        this.setDate();
       }.bind(this), 1000);
     }
   };
@@ -104,8 +115,8 @@ class TimeTracker extends React.Component {
                                 className="display-photo circle responsive-img"/>
                             </div>
                             <div className="staff-details col l8 m8 s12">
-                              <div><h4>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h4>
-                                <h6>{currentUser.profile.jobTitle}</h6>
+                              <div><h3>{currentUser.profile.firstName + ' ' + currentUser.profile.lastName}</h3>
+                                <h5>{currentUser.profile.jobTitle}</h5>
                                 <div className="status">
                                   <TimeIn action={this.startShift.bind(this)}
                                           status={(currentUser.profile.status=='completed')?'':currentUser.profile.status}/>
@@ -117,7 +128,8 @@ class TimeTracker extends React.Component {
                               </div>
                               <div className="row no-vertical-margin">
                               </div>
-                              <div><b>{this.getTime()}</b></div>
+                              <h3 className="time">{this.getTime()}</h3>
+                              <div><b>{this.getDate()}</b></div>
                             </div>
                           </div>
                         </div> : ''

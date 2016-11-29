@@ -11,6 +11,7 @@ import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
+import EmptyList from '/client/utils/buttons/empty_list';
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class CreateTeam extends React.Component {
 
   render() {
     let {allManagers} = this.props;
-
+    console.log(allManagers, 'managers');
     return (
       <section id="team">
         <PageTitle title="Add a New Team"/>
@@ -57,14 +58,21 @@ class CreateTeam extends React.Component {
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
                 <div className="input-field col s12">
-                  <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader">
-                    {allManagers.map((manager) => (
-                      <option key={manager._id} dataValue={manager._id}>
-                        {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
+                  {(allManagers.length != 0) ?
+                    <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
+                                         resetLabel="Clear Selected Option">
+                      {allManagers.map((manager) => (
+                        <option key={manager._id}
+                                dataValue={manager._id}>
+                          {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
 
-                      </option>
-                    ))}
-                  </ReactMaterialSelect>
+                        </option>
+                      ))}
+                    </ReactMaterialSelect>
+                    :
+                    <EmptyList userType="manager"/>
+                  }
+
                 </div>
                 <div className="input-field">
                   <StaffMultiSelect getData={this.getData.bind(this)}/>

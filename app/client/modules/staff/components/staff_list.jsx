@@ -122,7 +122,7 @@ class StaffList extends React.Component {
 
         <div className="row border-top">
           <div className="col s12 no-padding">
-            <table className="striped staff-list">
+            <table className="striped staff-list twbs">
               <thead>
               <tr>
                 <th></th>
@@ -134,7 +134,15 @@ class StaffList extends React.Component {
               <tbody>
               {(teamLeader) ? <StaffDetails staff={teamLeader} index={312809} teamId={team._id}/> :
                 <tr>
-                  <td>No team lead yet</td>
+                  <td></td>
+                  <td colSpan="3">
+                    <div className="empty-list btn-add">
+                      No assigned manager yet. &nbsp;
+                      <a href={(team._id)?`/dashboard/team/${team._id}/user/new/manager`:''}
+                         className="waves-effect waves-light secondary-color"><i
+                        className="material-icons">add</i><span>Add a new manager</span></a>
+                    </div>
+                  </td>
                 </tr>}
               </tbody>
             </table>
@@ -148,9 +156,17 @@ class StaffList extends React.Component {
               </tr>
               </thead>
               <tbody>
-              {staffList.map((staff, index) => (
-                <StaffDetails key={index} staff={staff} index={index} teamId={team._id}/>
-              ))}
+              {(!_.isEmpty(staffList)) ?
+                staffList.map((staff, index) => (
+                  <StaffDetails key={index} staff={staff} index={index} teamId={team._id}/>
+                ))
+                : <tr>
+                <td></td>
+                <td colSpan="3">
+                  No added staff yet.
+                </td>
+              </tr>
+              }
               </tbody>
             </table>
           </div>

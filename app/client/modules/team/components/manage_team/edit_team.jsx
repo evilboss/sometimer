@@ -5,6 +5,7 @@ import Tabs from '/client/modules/team/containers/tabs';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import ReactMaterialSelect from 'react-material-select';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
+import EmptyList from '/client/utils/buttons/empty_list';
 //import 'react-material-select/lib/css/reactMaterialSelect.css';
 class EditTeam extends React.Component {
   constructor(props) {
@@ -68,6 +69,7 @@ class EditTeam extends React.Component {
   render() {
     const {team, staffList, error, managerList, adminList} = this.props;
     const {transfer} = this.state;
+    console.log(managerList, 'manager');
     return (
       <section id="team" className="relative">
         <Tabs/>
@@ -98,23 +100,38 @@ class EditTeam extends React.Component {
                 </div>
 
                 <div className="input-field col s12">
-                  <ReactMaterialSelect label="Choose a Team Leader" ref="teamLeader"
-                                       defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
-                    {managerList.map((staff) => (
-                      <option key={staff._id} dataValue={staff._id}>
+                  {(managerList) ?
+                    (_.isEmpty(managerList)) ?
+                      <div className="col s12">
+                        <EmptyList userType="manager"/>
+                      </div>
+                      : <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
+                                             resetLabel="Clear Selected Option"
+                                             defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
+                      {managerList.map((manager) => (
+                        <option key={manager._id}
+                                dataValue={manager._id}>
+                          {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
 
-                        {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
-                      </option>
-                    ))}
-                  </ReactMaterialSelect>
+                        </option>
+                      ))}
+                    </ReactMaterialSelect>
+                    : ''
+                  }
                 </div>
-                <div className="input-field">
-                  <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
+
+                <div className="input-field col s12 no-margin">
+
+                  {_.isEmpty(staffList) ?
+                    <div className="col s12">
+                      <EmptyList userType="staff"/>
+                    </div> : <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>}
                 </div>
                 <div>
                   {(transfer) ?
                     <div className="input-field col s12">
-                      <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin">
+                      <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin"
+                                           resetLabel="Clear Selected Option">
                         {adminList.map((staff) => (
                           <option key={staff._id} dataValue={staff._id}>
                             {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}

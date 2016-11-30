@@ -34,6 +34,8 @@ class StaffDetails extends React.Component {
 
   render() {
     const {staff, index, userPermissions, teamId} = this.props;
+    const {role} = staff.profile;
+    console.log(staff, 'staff');
     return (
       (staff) ?
         (staff.profile) ?
@@ -45,10 +47,10 @@ class StaffDetails extends React.Component {
                 className="circle responsive-img dp-small"/>
 
             </td>
-            < td className="staff-details">
-              < div className="col no-margin">
+            <td className="staff-details">
+              <div className="col no-margin">
 
-                < h6 > {staff.profile.firstName}<br/>
+                <h6> {staff.profile.firstName}<br/>
                   <small>{staff.profile.jobTitle}</small>
                 </h6>
 
@@ -67,6 +69,13 @@ class StaffDetails extends React.Component {
             <td className="center-align">
 
               <div className="icons center-align">
+                {(role == 'manager') ?
+                  (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
+                    <a href='/dashboard/team/manage-managers'>
+                      <i className="material-icons">edit</i>
+                    </a>
+                    : '' : '' : ''
+                }
                 {
                   (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
                     <a href={`/dashboard/staff/${teamId}/${staff._id}`}>

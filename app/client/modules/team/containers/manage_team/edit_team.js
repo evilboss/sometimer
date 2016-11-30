@@ -1,10 +1,13 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import EditTeam from '../../components/manage_team/edit_team.jsx';
+import Loader from '/client/utils/loader/loader';
 
 export const composer = ({context, clearErrors, teamId}, onData) => {
   const {Meteor, Collections, LocalState} = context();
-  let subscriptionReady = [Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready(), Meteor.subscribe('users.allStaff', domainHelpers.getSubdomain()).ready()];
+  let subscriptionReady = [Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready(),
+    Meteor.subscribe('users.allStaff', domainHelpers.getSubdomain()).ready(),
+    Meteor.subscribe('users.allManagers', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
     const error = LocalState.get('UPDATE_TEAM_ERROR');
     let team = Collections.Team.findOne(teamId);
@@ -12,7 +15,7 @@ export const composer = ({context, clearErrors, teamId}, onData) => {
     const managerSelector = {'profile.role': 'manager'};
     const adminSelector = {'profile.role': 'admin'};
     let options = {_id: {$ne: Meteor.userId()}};
-    const managerList = Meteor.users.find(managerSelector, options).fetch();
+    const managerList = Meteor.users.find(managerSelector).fetch();
     const adminList = Meteor.users.find(adminSelector, options).fetch();
     let staffList = Meteor.users.find(selector, options).fetch();
     onData(null, {staffList, managerList, adminList, team, error});
@@ -24,11 +27,11 @@ export const composer = ({context, clearErrors, teamId}, onData) => {
 export const depsMapper = (context, actions) => ({
   update: actions.team_actions.update,
   deleteTeam: actions.team_actions.deleteTeam,
-  transferTeam:actions.team_actions.transferTeam,
+  transferTeam: actions.team_actions.transferTeam,
   clearErrors: actions.team_actions.clearErrors,
   context: () => context
 });
 export default composeAll(
-  composeWithTracker(composer),
+  composeWithTracker(composer, Loader),
   useDeps(depsMapper)
 )(EditTeam);

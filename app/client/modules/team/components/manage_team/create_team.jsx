@@ -41,6 +41,7 @@ class CreateTeam extends React.Component {
 
   render() {
     let {allManagers} = this.props;
+    const staffList = this.state.staffList;
     console.log(allManagers, 'managers');
     return (
       <section id="team">
@@ -58,9 +59,13 @@ class CreateTeam extends React.Component {
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
                 <div className="input-field col s12">
-                  {(allManagers.length != 0) ?
-                    <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
-                                         resetLabel="Clear Selected Option">
+                  {
+                    (_.isEmpty(allManagers)) ?
+                      <div className="col s12">
+                        <EmptyList userType="manager"/>
+                      </div>
+                      : <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
+                                             resetLabel="Clear Selected Option">
                       {allManagers.map((manager) => (
                         <option key={manager._id}
                                 dataValue={manager._id}>
@@ -69,18 +74,24 @@ class CreateTeam extends React.Component {
                         </option>
                       ))}
                     </ReactMaterialSelect>
-                    :
-                    <EmptyList userType="manager"/>
                   }
+                </div>
 
+
+                <div className="input-field col s12 no-margin">
+
+                  {_.isEmpty(staffList) ?
+                    <div className="col s12">
+                      <EmptyList userType="staff"/>
+                    </div> : <StaffMultiSelect getData={this.getData.bind(this)}/>}
                 </div>
-                <div className="input-field">
-                  <StaffMultiSelect getData={this.getData.bind(this)}/>
-                </div>
+
+              </div>
+              <div>
                 <CancelBtn route="/dashboard/team/"/>
                 <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
                   <i className="material-icons right">send</i></button>
-
+               
               </div>
             </Formsy.Form>
           </div>

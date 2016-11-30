@@ -72,6 +72,9 @@ p {
 .icons {
   a {
     padding: 10px;
+    i {
+      color: $secondary-color;
+    }
   }
 }
 
@@ -479,7 +482,6 @@ article {
 }
 
 .react-select-popover {
-  padding: 0 0.75em;
   width: 100%;
   .select-wrapper.hidden-select-box {
     display: none !important;
@@ -571,6 +573,7 @@ article {
       padding: 5px 10px;
     }
     i {
+      line-height: inherit;
       border-right: 1px solid #0f8a16;
       color: white;
       font-weight: bold;

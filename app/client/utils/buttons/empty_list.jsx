@@ -6,18 +6,21 @@ class EmptyList extends React.Component {
   }
 
   render() {
-    const {userType} = this.props;
+    const {userType, message} = this.props;
     return (
       <div className="empty-list btn-add">
-        No {userType} exist in the system
-        <a href={`/dashboard/team/user/new/${userType}`} class="waves-effect waves-light secondary-color"><i
-          class="material-icons">add</i><span>Add a new {userType}</span></a>
+        No {userType} {message}.&nbsp;
+        <a href={(userType=="team")?`/dashboard/team/new`
+        :`/dashboard/team/user/new/${userType}`}
+           className="waves-effect waves-light secondary-color"><i
+          className="material-icons">add</i><span>Add a new {userType}</span></a>
       </div>
     );
   }
 }
 EmptyList.defaultProps = {
-  userType: 'manager'
+  userType: 'staff',
+  message: 'exist in the system. Continue to create team. you can add later'
 }
 
 

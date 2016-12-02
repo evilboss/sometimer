@@ -1,0 +1,43 @@
+.manager-guide,
+.staff-guide,
+.team-guide {
+  &:hover {
+    .step-guide-wrapper {
+      display: inherit;
+    }
+  }
+}
+
+.manager.step-guide-wrapper,
+.staff.step-guide-wrapper,
+.team.step-guide-wrapper {
+  display: none;
+  position: absolute;
+  -webkit-transition: .25s ease;
+  transition: .25s ease;
+  top: 0;
+  left: 103%;
+  width: 22em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  z-index: 1000;
+
+  .step-guide {
+    padding: 10px;
+    border-left: 1px solid $red;
+  }
+
+}
+
+.step-guide::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 40%;
+  margin-top: -13px;
+  border-bottom: 15px solid rgba(255, 0, 0, 0);
+  border-top: 15px solid rgba(255, 0, 0, 0);
+  border-right: 16px solid #cc2121;
+}

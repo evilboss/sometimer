@@ -11,7 +11,7 @@ import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
-import EmptyList from '/client/utils/buttons/empty_list';
+import StepGuide from '/client/utils/buttons/step_guide';
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -19,11 +19,19 @@ class CreateTeam extends React.Component {
     this.state = {
       staffList: [],
       object: {},
+      stepGuide: false,
     }
   }
 
   getData(data) {
     this.setState({staffList: data})
+  }
+
+  onFocus() {
+    this.setState({
+      stepGuide: true,
+    })
+    console.log('yow')
   }
 
   addTeam(team) {
@@ -57,41 +65,32 @@ class CreateTeam extends React.Component {
               }]}/>
             <Formsy.Form onSubmit={this.addTeam.bind(this)} className="twbs">
               <div className="col s12">
-                <MyInput name="name" ref="name" fieldSize="col s12" title="Name of Team / Department" required/>
-                <div className="input-field col s12">
-                  {
-                    (_.isEmpty(allManagers)) ?
-                      <div className="col s12">
-                        <EmptyList userType="manager"/>
-                      </div>
-                      : <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
-                                             resetLabel="Clear Selected Option">
-                      {allManagers.map((manager) => (
-                        <option key={manager._id}
-                                dataValue={manager._id}>
-                          {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
+                <MyInput name="name" ref="name" fieldSize="col s5" title="Name of Team / Department" required/>
+                <div className="input-field col s5 manager-guide">
+                  <ReactMaterialSelect label="Choose a Team Leader/ Manager" onChange={this.onFocus.bind(this)}
+                                       ref="teamLeader"
+                                       resetLabel="Clear Selected Option">
+                    {allManagers.map((manager) => (
+                      <option key={manager._id}
+                              dataValue={manager._id}>
+                        {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
 
-                        </option>
-                      ))}
-                    </ReactMaterialSelect>
-                  }
+                      </option>
+                    ))}
+                  </ReactMaterialSelect>
+                  <StepGuide userType="manager" pageTitle="Team"/>
                 </div>
 
-
-                <div className="input-field col s12 no-margin">
-
-                  {_.isEmpty(staffList) ?
-                    <div className="col s12">
-                      <EmptyList userType="staff"/>
-                    </div> : <StaffMultiSelect getData={this.getData.bind(this)}/>}
+                <div className="input-field col s5 no-margin staff-guide">
+                  <StaffMultiSelect getData={this.getData.bind(this)}/>
+                  <StepGuide userType="staff" pageTitle="Team"/>
                 </div>
-
               </div>
               <div>
                 <CancelBtn route="/dashboard/team/"/>
                 <button className="btn waves-effect waves-light theme-color" type="submit">Create Team
                   <i className="material-icons right">send</i></button>
-               
+
               </div>
             </Formsy.Form>
           </div>

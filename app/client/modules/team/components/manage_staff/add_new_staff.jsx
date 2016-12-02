@@ -14,7 +14,7 @@ import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import ReactMaterialSelect from 'react-material-select';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
 import PermissionCheckbox from '/client/modules/team/components/permission_checkbox';
-import EmptyList from '/client/utils/buttons/empty_list';
+import StepGuide from '/client/utils/buttons/step_guide';
 
 class AddNewStaff extends React.Component {
   constructor(props) {
@@ -257,22 +257,21 @@ class AddNewStaff extends React.Component {
                         </div>
                         :
                         <div>
-                          {(!_.isEmpty(teams)) ?
-                            <div className="input-field">
-                              <ReactMaterialSelect label="Department" id="department"
-                                                   resetLabel="Clear Selected Option"
-                                                   ref="department">
-                                {teams.map((team, index) => (
-                                  <option key={index} dataValue={team._id}>
-                                    {team.name}
-                                  </option>
-                                ))}
-                              </ReactMaterialSelect>
-                              <label htmlFor="department" className="active">Department/Team (or assign later)</label>
-                            </div>
-                            : <div className="input-field">
-                            <EmptyList userType="team" message="exist in the system"/>
-                          </div>}
+
+                          <div className="input-field team-guide">
+                            <ReactMaterialSelect label="Department" id="department"
+                                                 resetLabel="Clear Selected Option"
+                                                 ref="department">
+                              {teams.map((team, index) => (
+                                <option key={index} dataValue={team._id}>
+                                  {team.name}
+                                </option>
+                              ))}
+                            </ReactMaterialSelect>
+                            <label htmlFor="department" className="active">Department/Team (or assign later)</label>
+                            <StepGuide userType="team" pageTitle={userType}/>
+                          </div>
+
                         </div>
                       }
                     </div>

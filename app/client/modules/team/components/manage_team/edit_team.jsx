@@ -5,8 +5,8 @@ import Tabs from '/client/modules/team/containers/tabs';
 import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
 import ReactMaterialSelect from 'react-material-select';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
-import EmptyList from '/client/utils/buttons/empty_list';
-//import 'react-material-select/lib/css/reactMaterialSelect.css';
+import StepGuide from '/client/utils/buttons/step_guide';
+
 class EditTeam extends React.Component {
   constructor(props) {
     super(props);
@@ -88,7 +88,7 @@ class EditTeam extends React.Component {
             </div> : null}
             {team ? <Formsy.Form>
               <div className="col s12">
-                <div className="input-field col s12">
+                <div className="input-field col s5">
                   <input id="name" ref="name" type="text" className="validate" placeholder="Name of
                     Team / Department"
                          defaultValue={ (team.name) ? team.name : '' }
@@ -99,58 +99,50 @@ class EditTeam extends React.Component {
                     Department</label>
                 </div>
 
-                <div className="input-field col s12">
-                  {(managerList) ?
-                    (_.isEmpty(managerList)) ?
-                      <div className="col s12">
-                        <EmptyList userType="manager"/>
-                      </div>
-                      : <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
-                                             resetLabel="Clear Selected Option"
-                                             defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
-                      {managerList.map((manager) => (
-                        <option key={manager._id}
-                                dataValue={manager._id}>
-                          {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
+                <div className="input-field col s5 manager-guide">
+                  <ReactMaterialSelect label="Choose a Team Leader/ Manager" ref="teamLeader"
+                                       resetLabel="Clear Selected Option"
+                                       defaultValue={(team.teamLeader) ? team.teamLeader : ''}>
+                    {managerList.map((manager) => (
+                      <option key={manager._id}
+                              dataValue={manager._id}>
+                        {(manager.profile) ? `${manager.profile.firstName} ${manager.profile.lastName}` : ''}
 
-                        </option>
-                      ))}
-                    </ReactMaterialSelect>
-                    : ''
-                  }
+                      </option>
+                    ))}
+                  </ReactMaterialSelect>
+                  <StepGuide userType="manager" pageTitle="Team"/>
                 </div>
 
-                <div className="input-field col s12 no-margin">
-
-                  {_.isEmpty(staffList) ?
-                    <div className="col s12">
-                      <EmptyList userType="staff"/>
-                    </div> : <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>}
+                <div className="input-field col s5 no-margin staff-guide">
+                  <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
+                  <StepGuide userType="staff" pageTitle="Team"/>
                 </div>
-                <div>
-                  {(transfer) ?
-                    <div className="input-field col s12">
-                      <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin"
-                                           resetLabel="Clear Selected Option">
-                        {adminList.map((staff) => (
-                          <option key={staff._id} dataValue={staff._id}>
-                            {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
-                          </option>
-                        ))}
-                      </ReactMaterialSelect>
-                      <div className="tranfer-btn-action">
-                        <button className="btn cancel" onClick={this._transfer.bind(this)}>Cancel Transfer</button>
-                        <button className="btn" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer</button>
-                      </div>
-                    </div> :
-                    <button className="btn" onClick={this._transfer.bind(this)}>Transfer</button>
-                  }
+                <div className="input-field col s5">
+                  <div>
+                    {(transfer) ?
+                      <div className="input-field col s5">
+                        <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin"
+                                             resetLabel="Clear Selected Option">
+                          {adminList.map((staff) => (
+                            <option key={staff._id} dataValue={staff._id}>
+                              {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
+                            </option>
+                          ))}
+                        </ReactMaterialSelect>
+                        <div className="tranfer-btn-action">
+                          <button className="btn cancel" onClick={this._transfer.bind(this)}>Cancel Transfer</button>
+                          <button className="btn" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer</button>
+                        </div>
+                      </div> :
+                      <button className="btn transfer" onClick={this._transfer.bind(this)}>Transfer</button>
+                    }
+                  </div>
+                  <CancelBtn route="/dashboard/team/"/>
+                  <button className="btn waves-effect waves-light theme-color" type="button"
+                          onClick={this._update.bind(this)}>Update Team
+                    <i className="material-icons right">send</i></button>
                 </div>
-
-                <CancelBtn route="/dashboard/team/"/>
-                <button className="btn waves-effect waves-light theme-color" type="button"
-                        onClick={this._update.bind(this)}>Update Team
-                  <i className="material-icons right">send</i></button>
               </div>
             </Formsy.Form> : null}
 

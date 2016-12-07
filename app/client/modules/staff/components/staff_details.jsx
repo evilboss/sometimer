@@ -50,11 +50,13 @@ class StaffDetails extends React.Component {
             <td className="staff-details">
               <div className="col no-margin">
 
-                <h6> {staff.profile.firstName}<br/>
-                  <small>{staff.profile.jobTitle}</small>
+                <h6> {staff.profile.firstName}
                 </h6>
 
               </div>
+            </td>
+            <td>
+              <h6>{staff.profile.position}</h6>
             </td>
 
             <td className="center-align">

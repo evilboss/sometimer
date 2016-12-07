@@ -46,7 +46,6 @@ class TeamList extends React.Component {
                                 <DisplayManager userId={team.teamLeader}
                                                 target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ? `/dashboard/staff/settings/${team._id}/${team.teamLeader}` : '' : ''}/>
                                 :
-                                <a href={`${team._id}/manage-managers`}>
                                   <div className="row no-margin">
                                     <img
                                       src='/uploads/defaults/default_user.png'
@@ -57,7 +56,6 @@ class TeamList extends React.Component {
                                     </span>
                                     </div>
                                   </div>
-                                </a>
                               }
 
                             </div>

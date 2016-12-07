@@ -12,6 +12,7 @@ import {FlowHelpers} from '/client/utils/helpers/route-helpers'
 import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
 import StepGuide from '/client/utils/buttons/step_guide';
+import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -39,8 +40,8 @@ class CreateTeam extends React.Component {
     team.creator = Meteor.userId();
     team.teamLeader = this.refs.teamLeader.getValue();
     team.site = domainHelpers.getSubdomain();
+    sweetPrompts.sweetIfElseSucces('Team Created', 'Click OK To continue', 'success', '/dashboard/team/new', '/dashboard/team');
     Meteor.call('team.insert', team);
-    FlowRouter.go('/dashboard/team');
   }
 
   callbackFunction(selected) {

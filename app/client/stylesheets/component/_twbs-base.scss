@@ -71,12 +71,14 @@
 
   // buttons
   .btn-add {
+    background: transparent;
     border-radius: 4px !important;
     line-height: inherit !important;
     height: auto;
     padding: 0;
     text-transform: none;
     a {
+      margin: 0 5px;
       border-radius: 4px !important;
     }
   }

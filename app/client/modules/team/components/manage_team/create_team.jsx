@@ -35,16 +35,20 @@ class CreateTeam extends React.Component {
     console.log('yow')
   }
 
+  _createTeam(team) {
+    sweetPrompts.sweetIfElseSucces('', 'Team Created', 'success',
+      {path: '/dashboard/team/new', text: 'Add another'},
+      {path: '/dashboard/team', text: 'Team Overview'})
+    Meteor.call('team.insert', team);
+  };
+
   addTeam(team) {
     team.members = this.state.staffList;
     team.creator = Meteor.userId();
     team.teamLeader = this.refs.teamLeader.getValue();
     team.site = domainHelpers.getSubdomain();
-    sweetPrompts.sweetIfElseSucces('Team Created', 'Click OK To continue', 'success', '/dashboard/team/new', '/dashboard/team');
-    Meteor.call('team.insert', team);
-  }
+    (team.name) ? this._createTeam(team) : sweetPrompts.sweetSucces('Team/Department name is required', 'Team not Created','error');
 
-  callbackFunction(selected) {
   }
 
 
@@ -59,7 +63,7 @@ class CreateTeam extends React.Component {
         <section id="create-team" className="col s12">
           <div className="row">
             <Breadcrumbs crumbs={
-              [{text: 'Team', path: 'dashboard.team', params: ''}, {
+              [{text: 'Team Overview', path: 'dashboard.team', params: ''}, {
                 text: 'Add Team',
                 path: 'dashboard.team.new',
                 params: ''

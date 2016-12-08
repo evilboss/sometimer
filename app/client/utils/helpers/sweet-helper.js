@@ -3,12 +3,18 @@
  * @param e: event
  * @param message: String
  */
-const sweetOkPrompt = (message, e)=> {
+const sweetOkPrompt = (message, e) => {
   e.preventDefault;
   sweetAlert(message);
 };
-
-const sweetSucces = (prompt, title, style, path)=> {
+/**
+ *
+ * @param prompt
+ * @param title
+ * @param style
+ * @param path
+ */
+const sweetSucces = (prompt, title, style, path) => {
   event.preventDefault();
   console.log(path);
   swal({
@@ -17,32 +23,31 @@ const sweetSucces = (prompt, title, style, path)=> {
     type: style,
     confirmButtonText: "Ok",
     closeOnConfirm: true,
-    html: false
-  }, ()=> {
+    html: true
+  }, () => {
     console.log('callback', path);
     (path) ? FlowRouter.go(path) : '';
   });
   //sweetAlert(prompt, title, style,()=>{console.log('callback')});
 };
 
-const sweetIfElseSucces = (prompt, title, style, reRoute, path)=> {
+const sweetIfElseSucces = (prompt, title, style, reRoute, target) => {
   event.preventDefault();
-  console.log(path);
   swal({
     title: title,
     text: prompt,
     type: style,
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "No, cancel plx!",
+    confirmButtonText: target.text,
+    cancelButtonText: reRoute.text,
     closeOnConfirm: true,
     closeOnCancel: true,
     html: false
-  }, (isConfirm)=> {
+  }, (isConfirm) => {
     if (isConfirm) {
-      swal("Deleted!", "Your imaginary file has been deleted.", "success");
+      FlowRouter.go(target.path)
     } else {
-      swal("Cancelled", "Your imaginary file is safe :)", "error");
+      location.reload();
     }
   });
 
@@ -53,12 +58,12 @@ const sweetIfElseSucces = (prompt, title, style, reRoute, path)=> {
  * @param e: event
  * @param message: String
  */
-const sweetYesNo = (e, message)=> {
+const sweetYesNo = (e, message) => {
 };
 
 const sweetPrompts = {
   sweetOkPrompt,
-  sweetIfElseSucces: (prompt, title, style, reRoute, path)=>sweetIfElseSucces(prompt, title, style, reRoute, path),
-  sweetSucces: (prompt, title, style, path)=>sweetSucces(prompt, title, style, path),
+  sweetIfElseSucces: (prompt, title, style, reRoute, path) => sweetIfElseSucces(prompt, title, style, reRoute, path),
+  sweetSucces: (prompt, title, style, path) => sweetSucces(prompt, title, style, path),
 };
 export{sweetPrompts};

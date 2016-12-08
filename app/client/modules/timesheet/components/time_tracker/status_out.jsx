@@ -9,7 +9,7 @@ class StatusOut extends React.Component {
     return (
       <div className="input-field">
         <a href='/dashboard/timetracker' className="status">
-          Enter Time Tracker
+          Timetracker
           <div className="status-indicator Out"></div>
         </a>
       </div>

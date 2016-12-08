@@ -66,7 +66,7 @@ class StaffList extends React.Component {
         <div className="row no-margin-bottom">
           <div className="col s6">
             <Breadcrumbs crumbs={
-              [{text: 'Teams', path: 'dashboard.team', params: ''}, {
+              [{text: 'Team Overview', path: 'dashboard.team', params: ''}, {
                 text: team.name,
                 path: 'dashboard.myteam',
                 params: team._id

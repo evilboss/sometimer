@@ -10,7 +10,7 @@ class StatusIn extends React.Component {
     return (
       <div className="input-field">
         <a href='/dashboard/timetracker' className="status">
-          Enter Time Tracker<br/>
+          Timetracker<br/>
           <div className="status-indicator In"></div>
         </a>
       </div>

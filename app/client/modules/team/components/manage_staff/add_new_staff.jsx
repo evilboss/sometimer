@@ -40,7 +40,7 @@ class AddNewStaff extends React.Component {
   getUserPemissions() {
     const {userType} = this.props;
     const currentPermissions = [];
-    this.permissionList().map((permission, index)=>
+    this.permissionList().map((permission, index) =>
       (_.contains(permission.userTypes, userType)) ? currentPermissions.push.apply(currentPermissions, permission.types) : '');
     return _.uniq(currentPermissions);
   }
@@ -70,7 +70,7 @@ class AddNewStaff extends React.Component {
     (lastName.value == '') ? error.push('Last Name') : '';
     (position.value == '') ? error.push('Position') : '';
     (email.value == '') ? error.push('Email') : '';
-    const doCreate = ()=> {
+    const doCreate = () => {
       create(user, message.value);
       firstName.value = '';
       lastName.value = '';
@@ -78,9 +78,13 @@ class AddNewStaff extends React.Component {
       status.value = '';
       email.value = '';
       let target = (user.profile.role == 'staff') ? '' : `manage-${user.profile.role}s`;
-      sweetPrompts.sweetSucces('User Succesfully Added', 'click Ok to Continue', 'success', (teamId) ? `/dashboard/team/${teamId}/${target}` : `/dashboard/team/${target}`);
+      sweetPrompts.sweetIfElseSucces('fgddf', 'Invite Sent!', 'success', {
+          path: (teamId) ? `/dashboard/team/${teamId}/user/new/${target}` : `/dashboard/team/user/new/${target}`,
+          text: 'Add another'
+        },
+        {path: (teamId) ? `/dashboard/team/${teamId}/${target}` : `/dashboard/team/${target}`, text: 'View Team'})
     };
-    (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`${error.toString()} Required`, 'click Ok to Continue', 'error');
+    (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`You forgot to fill in some required fields <br/><div class="red-text">${error.toString()}</div>`, 'Sorry', 'error');
   }
 
   _renderError(error) {
@@ -177,7 +181,7 @@ class AddNewStaff extends React.Component {
         <div className="twbs tab-page-header">
           <Breadcrumbs crumbs={
             [{
-              text: (teamId) ? 'team' : `${formatHelper.capitalize(userType)}`,
+              text: (teamId) ? 'Team Overview' : `${formatHelper.capitalize(userType)}`,
               path: (teamId) ? `/dashboard/team/${teamId}` : `dashboard.manage${formatHelper.capitalize(target)}`,
               params: ''
             }, {
@@ -228,13 +232,13 @@ class AddNewStaff extends React.Component {
                     <div className="input-field">
                       <input placeholder="Contact Number" id="contactNumber" ref="contactNumber" type="text"
                              className="validate"/>
-                      <label htmlFor="contactNumber" className="active required">Landline / Mobile Number</label>
+                      <label htmlFor="contactNumber" className="active">Landline / Mobile Number</label>
                     </div>
                   </div>
                   <div className=" col s6">
                     <div className="input-field">
                       <input placeholder="Skype ID" id="skypeID" ref="skypeID" type="text" className="validate"/>
-                      <label htmlFor="skypeID" className="active required">Skype ID</label>
+                      <label htmlFor="skypeID" className="active">Skype ID</label>
                     </div>
                   </div>
                   <div className="class-info">
@@ -295,12 +299,12 @@ class AddNewStaff extends React.Component {
                           </tr>
                           </thead>
                           <tbody>
-                          {this.permissionList().map((permission, index)=>
+                          {this.permissionList().map((permission, index) =>
                             (_.contains(permission.userTypes, userType)) ?
                               <tr key={index}>
                                 <td>{permission.label}</td>
                                 {(permission.types) ?
-                                  permission.types.map((type, typeIndex)=>
+                                  permission.types.map((type, typeIndex) =>
                                     <td className="center" key={typeIndex}>
                                       <input type="checkbox" id={type}
                                              value={this.hasPermission(type)}
@@ -321,7 +325,8 @@ class AddNewStaff extends React.Component {
                             all
                           </button>
                           :
-                          <button type="button" className="btn theme-color" onClick={this.checkAll.bind(this)}>Check
+                          <button type="button" className="pull-right btn theme-color"
+                                  onClick={this.checkAll.bind(this)}>Check
                             all
                           </button>
                         }

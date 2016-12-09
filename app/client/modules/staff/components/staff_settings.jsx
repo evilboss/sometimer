@@ -57,7 +57,7 @@ class StaffSettings extends React.Component {
         <PageTitle title={`${user.profile.firstName} ${user.profile.lastName}`}/>
         <Tabs/>
         <button className="btn delete waves-effect waves-light theme-color" type="button"
-                onClick={(user)?this._removeStaff.bind(this, user._id):''}>Delete Staff
+                onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete
           <i className="right material-icons close">
             delete_forever</i></button>
         <section id="staff-settings">

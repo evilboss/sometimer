@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PageTitle from '/client/modules/core/components/page_title';
 
 export default class Profile extends React.Component {
 
@@ -11,34 +11,46 @@ export default class Profile extends React.Component {
 
   render() {
     const user = Meteor.user();
+    console.log(user);
     return (
       <section id="profile">
-        <h5 className="title">My Account</h5>
+        <PageTitle title='Account Information'/>
         {(user) ?
           <div className="row">
+            <h5>{`${user.profile.firstName} ${user.profile.lastName}`}</h5>
             <div className="col s12 m2 l2">
               <img
-                src={(user.profile.displayPhoto)?user.profile.displayPhoto:'/uploads/defaults/default_user.png'}
+                src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
                 alt="dp"
-                className="display-photo responsive-img center-block"/>
+                className="display-photo responsive-img center-block circle"/>
             </div>
+            <div className="col s12 m10 l10 no-horizontal-margin row">
 
-            <div className="col s12 m10 l10 no-horizontal-margin row z-depth-1-half card-top-border">
-              <h5>Account Information
-                <span className="icon-span">
-                  <a href="/dashboard/profile/edit" className="btn-floating waves-effect waves-light theme-color">
-                  <i className="material-icons">edit</i></a></span></h5>
-              <ul className="collection">
-                <li className="collection-item">Email: <span>{(user.emails[0]) ? user.emails[0].address : ''}</span>
-                </li>
-                <li className="collection-item">First Name:
-                  <span> {(user.profile.firstName) ? user.profile.firstName : ''}</span></li>
-                <li className="collection-item">Last Name:
-                  <span> {(user.profile.lastName) ? user.profile.lastName : ''}</span></li>
-                <li className="collection-item">Department:
-                  <span> {(user.profile.department) ? user.profile.department : ''}</span></li>
-
-              </ul>
+              <div class="col s8">
+                <table>
+                  <tbody>
+                  <tr>
+                    <th>Email:</th>
+                    <td>{(user.emails[0]) ? user.emails[0].address : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>First Name:</th>
+                    <td>{(user.profile.firstName) ? user.profile.firstName : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>Last Name:</th>
+                    <td>{(user.profile.lastName) ? user.profile.lastName : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>Department/Team:</th>
+                    <td>{(user.profile.department) ? user.profile.department : ''}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <a href="/dashboard/profile/edit" className="btn edit waves-effect waves-light theme-color">
+                Edit Account
+              </a>
             </div>
 
           </div>

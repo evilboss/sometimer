@@ -184,7 +184,7 @@ class StaffList extends React.Component {
                 {(teamLeader) ? <StaffDetails staff={teamLeader} index={312809} teamId={team._id}/> :
                   <tr>
                     <td></td>
-                    <td colSpan="3">
+                    <td colSpan="4">
                       <div className="empty-list red-text btn-add">
                         There is no Manager assigned to this team yet. &nbsp;
                         <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}

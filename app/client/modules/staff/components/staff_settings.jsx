@@ -56,10 +56,12 @@ class StaffSettings extends React.Component {
       <section id="team" className="relative">
         <PageTitle title={(user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : ''}/>
         <Tabs teamId={(teamId) ? teamId : ''}/>
-        <button className="btn delete waves-effect waves-light theme-color" type="button"
-                onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete {role}
-          <i className="right material-icons close">
-            delete_forever</i></button>
+        {(role == 'Manager') ?
+          <button className="btn delete waves-effect waves-light theme-color" type="button"
+                  onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete {role}
+            <i className="right material-icons close">
+              delete_forever</i></button>
+          : ''}
         {(teamId) ?
           <div className="col s6">
             <Breadcrumbs crumbs={

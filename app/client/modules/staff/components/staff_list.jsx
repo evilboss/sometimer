@@ -66,7 +66,7 @@ class StaffList extends React.Component {
   }
 
   render() {
-    const {team, staffList, teamLeader, userPermissions} = this.props;
+    const {team, staffList, teamLeader, currentUser, userPermissions} = this.props;
     return (
       <section id="staff-list">
         {(team) ?
@@ -208,7 +208,9 @@ class StaffList extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {(teamLeader) ? <StaffDetails staff={teamLeader} index={312809} teamId={team._id}/> :
+                    {(teamLeader) ?
+                      <StaffDetails currentUser={currentUser._id} staff={teamLeader} index={312809}
+                                    teamId={team._id}/> :
                       <tr>
                         <td></td>
                         <td colSpan="4">

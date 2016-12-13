@@ -33,7 +33,7 @@ class StaffDetails extends React.Component {
   }
 
   render() {
-    const {staff, index, userPermissions, teamId} = this.props;
+    const {staff, index, userPermissions, currentUser, teamId} = this.props;
     const {role} = staff.profile;
     console.log(staff, 'staff');
     return (
@@ -71,7 +71,7 @@ class StaffDetails extends React.Component {
             <td className="center-align">
 
               <div className="icons center-align">
-                {(role == 'manager') ?
+                {(control.isAdmin(currentUser)) ?
                   (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
                     <a href='/dashboard/team/manage-managers'>
                       <i className="material-icons">edit</i>

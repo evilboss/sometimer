@@ -8,6 +8,7 @@ export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   const subscriptionReady = [Meteor.subscribe('team.members', teamId).ready(), Meteor.subscribe('user.current').ready()]
   const dataReady = () => {
+    const currentUser = Meteor.userId();
     const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
     const team = Collections.Team.findOne(teamId);
     const members = (team) ? (team.members) ? team.members : [] : [];
@@ -16,7 +17,7 @@ export const composer = ({context, teamId}, onData) => {
     const teamLeaderSelector = (team) ? (team.teamLeader) ? {_id: team.teamLeader} : {_id: 'wontwork'} : {_id: 'wontwork'};
     const teamLeader = Meteor.users.findOne(teamLeaderSelector);
     const staffList = Meteor.users.find(selector, options).fetch();
-    onData(null, {staffList, team, teamLeader, userPermissions});
+    onData(null, {staffList, team, teamLeader, currentUser, userPermissions});
   }
   (subscriptionReady) ? dataReady() : onData();
 

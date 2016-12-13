@@ -31,15 +31,18 @@ class CreateTeam extends React.Component {
   onFocus() {
     this.setState({
       stepGuide: true,
-    })
-    console.log('yow')
+    });
   }
 
   _createTeam(team) {
-    sweetPrompts.sweetIfElseSucces('', 'Team Created', 'success',
-      {path: '/dashboard/team/new', text: 'Add another'},
-      {path: '/dashboard/team', text: 'Team Overview'})
-    Meteor.call('team.insert', team);
+    Meteor.call('team.insert', team, (err, createdTeam) => {
+      if (createdTeam) {
+        sweetPrompts.sweetIfElseSucces('', 'Team Created', 'success',
+          {path: '/dashboard/team/new', text: 'Add another'},
+          {path: `/dashboard/team/${createdTeam}`, text: 'Team Overview'})
+      }
+    });
+
   };
 
   addTeam(team) {
@@ -47,7 +50,7 @@ class CreateTeam extends React.Component {
     team.creator = Meteor.userId();
     team.teamLeader = this.refs.teamLeader.getValue();
     team.site = domainHelpers.getSubdomain();
-    (team.name) ? this._createTeam(team) : sweetPrompts.sweetSucces('Team/Department name is required', 'Team not Created','error');
+    (team.name) ? this._createTeam(team) : sweetPrompts.sweetSucces('Team/Department name is required', 'Team not Created', 'error');
 
   }
 
@@ -55,7 +58,6 @@ class CreateTeam extends React.Component {
   render() {
     let {allManagers} = this.props;
     const staffList = this.state.staffList;
-    console.log(allManagers, 'managers');
     return (
       <section id="team">
         <PageTitle title="Add a New Team"/>
@@ -63,7 +65,7 @@ class CreateTeam extends React.Component {
         <section id="create-team" className="col s12">
           <div className="row">
             <Breadcrumbs crumbs={
-              [{text: 'Team Overview', path: 'dashboard.team', params: ''}, {
+              [{text: 'All Teams', path: 'dashboard.team', params: ''}, {
                 text: 'Add Team',
                 path: 'dashboard.team.new',
                 params: ''
@@ -74,7 +76,7 @@ class CreateTeam extends React.Component {
                 <div className="input-field col s5 manager-guide">
                   <ReactMaterialSelect label="Choose a Team Leader/ Manager" onChange={this.onFocus.bind(this)}
                                        ref="teamLeader"
-                                       resetLabel="Clear Selected Option">
+                                       resetLabel={(_.isEmpty(allManagers)) ? 'No Manager exist in the system' : 'Clear Selected Option'}>
                     {allManagers.map((manager) => (
                       <option key={manager._id}
                               dataValue={manager._id}>

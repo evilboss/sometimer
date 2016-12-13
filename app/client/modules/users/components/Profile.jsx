@@ -18,13 +18,13 @@ export default class Profile extends React.Component {
         {(user) ?
           <div className="row">
             <h5>{`${user.profile.firstName} ${user.profile.lastName}`}</h5>
-            <div className="col s12 m2 l2">
+            <div className="col s12 m3 l3">
               <img
                 src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block circle"/>
             </div>
-            <div className="col s12 m10 l10 no-horizontal-margin row">
+            <div className="col s12 m9 l9 no-horizontal-margin row">
 
               <div class="col s8">
                 <table>

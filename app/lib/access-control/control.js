@@ -16,7 +16,7 @@ const isPermitted = (permission, userPermissions)=> {
 
 const isAdmin = (userId)=> {
   const selectedUser = Meteor.users.findOne({_id: userId});
-  return (selectedUser) ? (selectedUser.profile) ? (selectedUser.profile.role) ? (selectedUser.profile.role == 'admin') : false : false : false;
+  return (selectedUser) ? (selectedUser.profile) ? (selectedUser.profile.role) ? (selectedUser.profile.role == 'admin' || selectedUser.profile.role == 'super-admin') : false : false : false;
 };
 const control = {
   isPermitted: (permission, userPermissions)=>isPermitted(permission, userPermissions),

@@ -50,18 +50,29 @@ class StaffSettings extends React.Component {
   }
 
   render() {
-    const {userPermissions, user, permissions, staffId, projects} = this.props;
+    const {userPermissions, user, permissions, staffId, teamId, team, projects} = this.props;
     const {role} = (user) ? (user.profile) ? user.profile : '' : '';
     return (
       <section id="team" className="relative">
-        <PageTitle title={`${user.profile.firstName} ${user.profile.lastName}`}/>
-        <Tabs/>
+        <PageTitle title={(user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : ''}/>
+        <Tabs teamId={(teamId) ? teamId : ''}/>
         <button className="btn delete waves-effect waves-light theme-color" type="button"
-                onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete
+                onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete {role}
           <i className="right material-icons close">
             delete_forever</i></button>
+        {(teamId) ?
+          <div className="col s6">
+            <Breadcrumbs crumbs={
+              [{text: 'All Teams', path: 'dashboard.team', params: ''}, {
+                text: team.name,
+                path: 'dashboard.myteam',
+                params: team._id
+              },
+                {text: 'Staff Settings', path: 'staff.team.settings', params: ''}]}/>
+            <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
+          </div>
+          : ''}
         <section id="staff-settings">
-
           <div className="row">
             <div className="col s2 tabs-vertical">
               <ul className="tabs">

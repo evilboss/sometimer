@@ -3,6 +3,7 @@ import UploadFile from '/client/modules/team/containers/upload_file';
 import {Darkroom, Canvas, History, Toolbar, FilePicker, CropMenu} from 'react-darkroom';
 import {Transform} from '/client/utils/cropper/';
 import {uploadToAmazonS3} from '/client/utils/helpers/file_upload';
+import PageTitle from '/client/modules/core/components/page_title';
 
 const canvasWidth = 300;
 const canvasHeight = 300;
@@ -189,27 +190,27 @@ class ProfileEdit extends React.Component {
     let current = this.state.thread[this.state.step];
     let {angle, source, crop} = current;
     let hasFile = source !== null;
-
     let selectFile = () => {
       this.refs.fileselect.click();
     };
     return (
       <section id="edit-profile">
-        <h5 className="title">Edit Profile</h5>
+        <PageTitle title='Account Information'/>
         {(user) ?
           <div className="row">
-            <div className="col s12 center-align">
+            <div className="col s12 m3 l3">
               <img
-                src={(user.profile.displayPhoto)?user.profile.displayPhoto:'/uploads/defaults/default_user.png'}
+                src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
-              <UploadFile methodType="updateDisplayPhoto" text="Change Display Photo"/>
               <Darkroom>
                 <Toolbar>
-                  <button onClick={selectFile} data-tipsy="Select Image" className="tipsy tipsy--s">
-                    <i className="material-icons">photo</i>
+                  <button onClick={selectFile} data-tipsy="Select Image" className="btn theme-color">
+                    Change Profile Image
                     <input type="file" ref="fileselect" onChange={this.onFileChange} style={{display: 'none'}}/>
                   </button>
+
+                  <p>Note: Only use .png and .jpeg</p>
                   <button disabled={!hasFile} onClick={this.onRotateLeft} data-tipsy="Rotate Left"
                           className="tipsy tipsy--sw">
                     <i className="material-icons">rotate_left</i>
@@ -248,6 +249,43 @@ class ProfileEdit extends React.Component {
                   <FilePicker hasFile={hasFile} onChange={this.onFileChange}/>
                 </Canvas>
               </Darkroom>
+            </div>
+            <div className="col s12 m4 l4 no-horizontal-margin row">
+
+              <form ref="updateAccountForm" className="twbs">
+                <div className="col s12 no-padding">
+                  <div className="input-field">
+                    <input placeholder="Email" id="email" ref="email" type="text"
+                           className="validate"/>
+                    <label htmlFor="Email" className="active required">Email</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <div className="input-field">
+                    <input placeholder="First Name" id="firstName" ref="firstName" type="text"
+                           className="validate"/>
+                    <label htmlFor="firstName" className="active required">First Name</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <div className="input-field">
+                    <input placeholder="Last Name" id="lastName" ref="lastName" type="text"
+                           className="validate"/>
+                    <label htmlFor="lastName" className="active required">Last Name</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <div className="input-field">
+                    <input placeholder="Department/Team" id="department" ref="department" type="text"
+                           className="validate"/>
+                    <label htmlFor="department" className="active required">Department/Team</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <button className="btn cancel">Cancel</button>
+                  <button className="btn theme-color">Update Account</button>
+                </div>
+              </form>
 
             </div>
           </div>

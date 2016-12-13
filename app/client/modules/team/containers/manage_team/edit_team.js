@@ -8,7 +8,8 @@ export const composer = ({context, clearErrors, teamId}, onData) => {
   let subscriptionReady = [Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready(),
     Meteor.subscribe('users.allStaff', domainHelpers.getSubdomain()).ready(),
     Meteor.subscribe('users.allManagers', domainHelpers.getSubdomain()).ready()];
-  const dataReady = ()=> {
+  const dataReady = () => {
+    const currentUser = Meteor.userId();
     const error = LocalState.get('UPDATE_TEAM_ERROR');
     let team = Collections.Team.findOne(teamId);
     const selector = {'profile.role': 'staff'};
@@ -18,7 +19,7 @@ export const composer = ({context, clearErrors, teamId}, onData) => {
     const managerList = Meteor.users.find(managerSelector).fetch();
     const adminList = Meteor.users.find(adminSelector, options).fetch();
     let staffList = Meteor.users.find(selector, options).fetch();
-    onData(null, {staffList, managerList, adminList, team, error});
+    onData(null, {staffList, managerList, adminList, team, error, currentUser});
   };
   (subscriptionReady) ? dataReady() : onData();
   return clearErrors;

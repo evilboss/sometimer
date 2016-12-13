@@ -29,8 +29,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<AddNewStaff userType={params.userType}/>),
-          footer: ()=>(<Foot/>),
+          content: () => (<AddNewStaff userType={params.userType}/>),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -49,8 +49,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageStaff />),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageStaff />),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -61,8 +61,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageClients />),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageClients />),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -73,8 +73,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<TeamList clientId={params.clientId}/>),
-          footer: ()=>(<Foot/>)
+          content: () => (<TeamList clientId={params.clientId}/>),
+          footer: () => (<Foot/>)
         },
       );
     }
@@ -85,8 +85,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageAdmins />),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageAdmins />),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -97,8 +97,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageManagers />),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageManagers />),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -114,6 +114,7 @@ export default function (injectDeps, {FlowRouter}) {
   dashboardRoutes.route('/team/:teamId', {
     name: 'dashboard.myteam',
     action(params){
+      console.log(params);
       mount(MainLayoutCtx, {
         head: () => (<Header />), content: () => (<StaffList teamId={params.teamId}/>), footer: () => (<Foot />)
       });
@@ -125,8 +126,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageStaff teamId={params.teamId}/>),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageStaff teamId={params.teamId}/>),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -137,8 +138,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageClients teamId={params.teamId}/>),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageClients teamId={params.teamId}/>),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -150,8 +151,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<ManageManagers teamId={params.teamId}/>),
-          footer: ()=>(<Foot/>),
+          content: () => (<ManageManagers teamId={params.teamId}/>),
+          footer: () => (<Foot/>),
         },
       );
     }
@@ -162,8 +163,8 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx,
         {
           head: () => (<Header />),
-          content: ()=>(<AddNewStaff userType={params.userType} teamId={params.teamId}/>),
-          footer: ()=>(<Foot/>),
+          content: () => (<AddNewStaff userType={params.userType} teamId={params.teamId}/>),
+          footer: () => (<Foot/>),
         },
       );
     }

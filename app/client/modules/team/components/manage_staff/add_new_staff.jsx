@@ -49,7 +49,7 @@ class AddNewStaff extends React.Component {
   }
 
   _create() {
-    let {create, userType, teams, teamId} = this.props;
+    let {create, userType, teams, team, teamId} = this.props;
     let {firstName, lastName, department, company, position, dateHired, email, positionDescription, role, message} = this.refs;
     const user = {
       profile: {
@@ -78,11 +78,14 @@ class AddNewStaff extends React.Component {
       status.value = '';
       email.value = '';
       let target = (user.profile.role == 'staff') ? '' : `manage-${user.profile.role}s`;
-      sweetPrompts.sweetIfElseSucces('fgddf', 'Invite Sent!', 'success', {
+      sweetPrompts.sweetIfElseSucces('', 'Invite Sent!', 'success', {
           path: (teamId) ? `/dashboard/team/${teamId}/user/new/${target}` : `/dashboard/team/user/new/${target}`,
           text: 'Add another'
         },
-        {path: (teamId) ? `/dashboard/team/${teamId}/${target}` : `/dashboard/team/${target}`, text: 'View Team'})
+        {
+          path: (teamId) ? `/dashboard/team/${teamId}/${target}`
+            : `/dashboard/team/${target}`, text: `View ${team.name}`
+        })
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`You forgot to fill in some required fields <br/><div class="red-text">${error.toString()}</div>`, 'Sorry', 'error');
   }
@@ -170,9 +173,10 @@ class AddNewStaff extends React.Component {
   }
 
   render() {
-    const {allStaff, teamAllStaff, userPermissions, error, userRole, userType, teams, teamId} = this.props;
+    const {allStaff, teamAllStaff, userPermissions, error, userRole, userType, teams, team, teamId} = this.props;
     let target = (userType == 'staff') ? userType : `${userType}s`;
     const {isCheckall, checkall}=this.state;
+    console.log(team, 'team');
     return (
       <section id="team">
         <PageTitle title={`Add New ${formatHelper.capitalize(userType)}`}/>
@@ -350,7 +354,7 @@ class AddNewStaff extends React.Component {
                   <div className="right save">
                     <CancelBtn route={FlowHelpers.pathFor(`dashboard.manage${formatHelper.capitalize(target)}`, '')}/>
                     <button type="button" className="btn" onClick={this._create.bind(this)}>
-                      Add and Invite Staff
+                      Add and Invite {userType}
                     </button>
                   </div>
                 </div>

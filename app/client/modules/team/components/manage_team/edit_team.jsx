@@ -6,6 +6,7 @@ import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_selec
 import ReactMaterialSelect from 'react-material-select';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
 import StepGuide from '/client/utils/buttons/step_guide';
+import {control} from '/lib/access-control/control';
 
 class EditTeam extends React.Component {
   constructor(props) {
@@ -67,9 +68,9 @@ class EditTeam extends React.Component {
   }
 
   render() {
-    const {team, staffList, error, managerList, adminList} = this.props;
+    const {team, staffList, error, managerList, adminList, currentUser} = this.props;
     const {transfer} = this.state;
-    console.log(managerList, 'manager');
+
     return (
       <section id="team" className="relative">
         <Tabs/>
@@ -120,22 +121,28 @@ class EditTeam extends React.Component {
                 </div>
                 <div className="input-field col s5">
                   <div>
-                    {(transfer) ?
-                      <div className="input-field col s5">
-                        <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin"
-                                             resetLabel="Clear Selected Option">
-                          {adminList.map((staff) => (
-                            <option key={staff._id} dataValue={staff._id}>
-                              {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
-                            </option>
-                          ))}
-                        </ReactMaterialSelect>
-                        <div className="tranfer-btn-action">
-                          <button className="btn cancel" onClick={this._transfer.bind(this)}>Cancel Transfer</button>
-                          <button className="btn" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer</button>
-                        </div>
-                      </div> :
-                      <button className="btn transfer" onClick={this._transfer.bind(this)}>Transfer</button>
+
+                    {
+                      (control.isAdmin()) ?
+                        (transfer) ?
+                          <div className="input-field col s12 no-padding">
+                            <ReactMaterialSelect label="Select New Admin to manage this Team" ref="newAdmin"
+                                                 resetLabel="Clear Selected Option">
+                              {adminList.map((staff) => (
+                                <option key={staff._id} dataValue={staff._id}>
+                                  {(staff.profile) ? `${staff.profile.firstName} ${staff.profile.lastName}` : ''}
+                                </option>
+                              ))}
+                            </ReactMaterialSelect>
+                            <div className="tranfer-btn-action col s12 no-padding">
+                              <button className="btn cancel inline" onClick={this._transfer.bind(this)}>Cancel Transfer
+                              </button>
+                              <button className="btn inline" onClick={this._confirmTransfer.bind(this)}>Confirm Transfer
+                              </button>
+                            </div>
+                          </div> :
+                          <button className="btn transfer" onClick={this._transfer.bind(this)}>Transfer Team</button>
+                        : ''
                     }
                   </div>
                   <CancelBtn route="/dashboard/team/"/>

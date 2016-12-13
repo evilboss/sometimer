@@ -20,7 +20,7 @@ export default function (injectDeps, {FlowRouter}) {
     action() {
       mount(PunchCardLayoutCtx, {
         title: 'TimeTracker: ' + DocHead.getTitle(),
-        content: ()=>(<TimeTracker />)
+        content: () => (<TimeTracker />)
       });
     }
   });
@@ -41,12 +41,23 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
   dashboardRoutes.route('/staff/settings/:projectId/:staffId', {
-    name: 'staff.team.settings',
+    name: 'staff.project.settings',
     action(params){
       console.log('staffSettings project');
       mount(MainLayoutCtx, {
         head: () => (<Header />),
         content: () => (<StaffSettings staffId={params.staffId}/>),
+        footer: () => (<Footer />)
+      });
+    }
+  });
+  dashboardRoutes.route('/staff-settings/team/:teamId/:staffId', {
+    name: 'staff.team.settings',
+    action(params){
+      console.log('staffSettings team');
+      mount(MainLayoutCtx, {
+        head: () => (<Header />),
+        content: () => (<StaffSettings teamId={params.teamId} staffId={params.staffId}/>),
         footer: () => (<Footer />)
       });
     }

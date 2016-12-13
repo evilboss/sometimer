@@ -23,11 +23,12 @@ class ManageManagers extends React.Component {
 
   render() {
     let {allManagers, teamId, teams} = this.props;
+    console.log(teamId, 'oo');
     return (
       <section id="team">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs teamId={teamId}/>
-        <SubTabs target={(teamId)?`/dashboard/team/${teamId}/user/new/manager`:'/dashboard/team/user/new/manager'}
+        <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/manager` : '/dashboard/team/user/new/manager'}
                  text="Add New Manager" permission="createManagers"/>
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
@@ -51,9 +52,9 @@ class ManageManagers extends React.Component {
                   <tr key={index}>
                     <td className="staff-dp">
                       <a
-                        href={(teamId)?`/dashboard/staff/settings/${teamId}/${staff._id}`:`/dashboard/staff/settings/${staff._id}`}>
+                        href={(teamId) ? `/dashboard/staff/settings/${teamId}/${staff._id}` : `/dashboard/staff/settings/${staff._id}`}>
                         <img
-                          src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                          src={(staff.profile.displayPhoto) ? `${staff.profile.displayPhoto}` : '/uploads/defaults/default_user.png'}
                           alt="Staff" className="circle responsive-img dp-small left"/>
                       </a>
                     </td>

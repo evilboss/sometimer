@@ -87,7 +87,7 @@ class StaffDetails extends React.Component {
                 }
                 {
                   (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-                    <a href={`/dashboard/staff/settings/${staff._id}`}>
+                    <a href={`/dashboard/staff-settings/team/${teamId}/${staff._id}`}>
                       <img src="/Assets/icons/settings.png"/>
                     </a>
                     : '' : ''

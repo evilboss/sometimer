@@ -13,7 +13,7 @@ class StaffProfile extends React.Component {
     return (
       <section>
         <div className="staff-profile-details">
-          <img src={(profile.displayPhoto)?profile.displayPhoto:'/uploads/defaults/default_user.png'}
+          <img src={(profile.displayPhoto) ? profile.displayPhoto : '/uploads/defaults/default_user.png'}
                className="circle responsive-img dp-medium"/>
           <div className="inline">
             <table className="responsive-table">
@@ -25,7 +25,7 @@ class StaffProfile extends React.Component {
                   </h6>
                 </td>
                 <td>
-                  <StatusIndicator class={(profile.status)? formatHelper.capitalize(profile.status):''}/>
+                  <StatusIndicator class={(profile.status) ? formatHelper.capitalize(profile.status) : ''}/>
                 </td>
                 <td className="center-align">
                   <div className="icons center-align">
@@ -46,7 +46,7 @@ class StaffProfile extends React.Component {
             <ul>
 
               {(projects.length !== 0) ?
-                projects.map((project, index)=>
+                projects.map((project, index) =>
                   <li key={index}>
                     <a href={`/projects/${project._id}`}>
                       {project.name}

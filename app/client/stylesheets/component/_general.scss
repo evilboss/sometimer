@@ -18,6 +18,7 @@ section#body {
     @extend section#body;
     margin: 0 1em;
     main#main {
+      overflow: hidden;
       background-color: #ffffff;
     }
   }
@@ -110,12 +111,6 @@ p {
 
 .btn {
   margin: 0 0.5em;
-}
-
-.btn.delete {
-  position: absolute;
-  right: 12px;
-  top: 76px;
 }
 
 // Label

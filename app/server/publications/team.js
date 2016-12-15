@@ -7,10 +7,10 @@ export default function () {
   Meteor.publish('team.list', function (site) {
     console.log('team.list');
     const selector = (auth.hasPermission(this.userId, 'viewAllTeams')) ?
-    {} : (auth.isAdmin(this.userId)) ?
-    {creator: this.userId}
+      {} : (auth.isAdmin(this.userId)) ?
+      {creator: this.userId}
       : (auth.isManager(this.userId)) ?
-    {teamLeader: this.userId} : {
+      {teamLeader: this.userId} : {
       members: {
         $all: [this.userId]
       }
@@ -30,5 +30,9 @@ export default function () {
   });
   Meteor.publish('team.current', function (name) {
     return Team.find({name: name});
+  });
+  Meteor.publish('team.user', function (userId) {
+    const selectedTeam = Team.find({members: userId});
+    return selectedTeam;
   });
 }

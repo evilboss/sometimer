@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import tz from 'moment-timezone';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
 import {TimeIn, TimeOut, BackToWork} from './status/index';
 var timerId;
 class TimeTracker extends React.Component {
@@ -39,7 +41,15 @@ class TimeTracker extends React.Component {
   };
 
   setTime() {
-    this.setState({timeToday: moment().format('LTS')});
+    let {currentUser} =this.props;
+    let timezone = (currentUser) ?
+      (currentUser.profile) ?
+        (currentUser.profile.timezone) ?
+          currentUser.profile.timezone
+          : 'Asia/Manila'
+        : 'Asia/Manila'
+      : 'Asia/Manila';
+    this.setState({timeToday: moment().tz(timezone).format('LTS z')});
   };
 
   getDate() {
@@ -119,7 +129,7 @@ class TimeTracker extends React.Component {
                                 <h5>{currentUser.profile.jobTitle}</h5>
                                 <div className="status">
                                   <TimeIn action={this.startShift.bind(this)}
-                                          status={(currentUser.profile.status=='completed')?'':currentUser.profile.status}/>
+                                          status={(currentUser.profile.status == 'completed') ? '' : currentUser.profile.status}/>
                                   <TimeOut endShiftAction={this.endShift.bind(this)}
                                            startBreakAction={this.startBreak.bind(this)}
                                            status={currentUser.profile.status}/>
@@ -129,6 +139,9 @@ class TimeTracker extends React.Component {
                               <div className="row no-vertical-margin">
                               </div>
                               <h3 className="time">{this.getTime()}</h3>
+                              <div><b>
+                                {(currentUser.profile.timezone) ? formatHelper.getCountry(currentUser.profile.timezone) : 'Manila'}
+                              </b></div>
                               <div><b>{this.getDate()}</b></div>
                             </div>
                           </div>

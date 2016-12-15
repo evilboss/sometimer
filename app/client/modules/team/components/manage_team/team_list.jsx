@@ -17,6 +17,7 @@ class TeamList extends React.Component {
 
   render() {
     const {currentUser, teamList, userPermissions} = this.props;
+    console.log(currentUser, 'current');
     return (
       <section id="team">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
@@ -46,14 +47,21 @@ class TeamList extends React.Component {
                                 <DisplayManager userId={team.teamLeader}
                                                 target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ? `/dashboard/staff/settings/${team._id}/${team.teamLeader}` : '' : ''}/>
                                 :
+
                                 <div className="row no-margin">
                                   <img
                                     src='/uploads/defaults/default_user.png'
                                     alt="Team Lead" className="circle responsive-img dp-small left"/>
                                   <div className="col s8 no-margin red-text">
-                                    <span>
+                                    {(control.isAdmin(currentUser._id)) ?
+                                      <span>
                                       Needs a Team Leader!<br/>Manage now.
                                     </span>
+                                      : <span>
+                                     There is no Manager assigned to this team yet.
+                                    </span>}
+
+
                                   </div>
                                 </div>
                               }

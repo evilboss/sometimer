@@ -33,7 +33,7 @@ class StaffDetails extends React.Component {
   }
 
   render() {
-    const {staff, index, userPermissions, currentUser, teamId} = this.props;
+    const {staff, index, userPermissions, currentUser, teamId, isStaff} = this.props;
     const {role} = staff.profile;
     console.log(staff, 'staff');
     return (
@@ -60,11 +60,13 @@ class StaffDetails extends React.Component {
             </td>
 
             <td className="center-align">
+              {(isStaff) ? null :
+                <div className="status">
+                  <div className={`beacon ${staff.profile.status}`}></div>
+                  <span>{staff.profile.status}</span>
+                </div>
+              }
 
-              <div className="status">
-                <div className={`beacon ${staff.profile.status}`}></div>
-                <span>{staff.profile.status}</span>
-              </div>
 
             </td>
 

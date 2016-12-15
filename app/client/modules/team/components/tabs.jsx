@@ -12,28 +12,28 @@ class Tabs extends React.Component {
     return (
       <div className="tab-nav-wrapper">
         <div className="tab-nav inline">
-          <a href={(teamId)?`/dashboard/team/${teamId}`:`/dashboard/team`}
-             className={`${FlowHelpers.currentRoutes(['dashboard.team','dashboard.team.edit','dashboard.team.new','dashboard.myteam'])}`}>
+          <a href={(teamId) ? `/dashboard/team/${teamId}` : `/dashboard/team`}
+             className={`${FlowHelpers.currentRoutes(['dashboard.team', 'dashboard.team.edit', 'dashboard.team.new', 'dashboard.myteam', 'dashboard.team.user.new', 'staff.team.settings'])}`}>
             Team{(teamId) ? '' : 's'}</a>
 
           {
             (userPermissions) ? control.isPermitted('readClients', userPermissions) ?
               <a href={(teamId) ? `/dashboard/team/${teamId}/manage-clients` : `/dashboard/team/manage-clients`}
-                 className={`${FlowHelpers.currentRoutes(['dashboard.manageClients','dashboard.team.manageClients',(userType=='client')?'dashboard.user.new':''])}`}>Clients</a>
+                 className={`${FlowHelpers.currentRoutes(['dashboard.manageClients', 'dashboard.team.manageClients', (userType == 'client') ? 'dashboard.user.new' : ''])}`}>Clients</a>
               : '' : ''
           }
-          <a href="" onClick={sweetPrompts.sweetOkPrompt.bind(this,'Coming Soon!')}
+          <a href="" onClick={sweetPrompts.sweetOkPrompt.bind(this, 'Coming Soon!')}
              className={``}>Team Org</a>
           {
             (userPermissions) ? control.isPermitted('readManagers', userPermissions) ?
               <a href={(teamId) ? `/dashboard/team/${teamId}/manage-managers` : `/dashboard/team/manage-managers`}
-                 className={`${FlowHelpers.currentRoutes(['dashboard.manageManagers','dashboard.team.manageManagers',(userType=='manager')?'dashboard.user.new':''])}`}>Managers</a>
+                 className={`${FlowHelpers.currentRoutes(['dashboard.manageManagers', 'dashboard.team.manageManagers', (userType == 'manager') ? 'dashboard.user.new' : ''])}`}>Managers</a>
               : '' : ''
           }
           {
             (userPermissions) ? control.isPermitted('readAdmin', userPermissions) ?
               <a href={`/dashboard/team/manage-admins`}
-                 className={`${FlowHelpers.currentRoutes(['dashboard.manageAdmins',(userType=='admin')?'dashboard.user.new':''])}`}>Admin</a>
+                 className={`${FlowHelpers.currentRoutes(['dashboard.manageAdmins', (userType == 'admin') ? 'dashboard.user.new' : ''])}`}>Admin</a>
               : '' : ''
           }
         </div>
@@ -43,7 +43,7 @@ class Tabs extends React.Component {
 }
 Tabs.defaultProps = {
   FlowHelpers: {
-    currentRoutes: (event)=> {
+    currentRoutes: (event) => {
     }
   },
   crumbs: [{text: 'Home', path: 'home', params: ''}, {text: 'Home', path: 'home', params: ''}, {

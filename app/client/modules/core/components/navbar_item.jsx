@@ -9,9 +9,9 @@ class NavbarItem extends React.Component {
   renderMenu(menu) {
     return (
       <a key={menu._id}
-         href={(_.contains(['dashboard', 'dashboard.workflow', 'dashboard.toolbox'], menu.name)) ? '' : menu.url}
+         href={(_.contains(['dashboard', 'dashboard.workflow', 'projects.tileview', 'dashboard.toolbox'], menu.name)) ? '' : menu.url}
          className={`menu-item center-align ${FlowHelpers.currentRoutes(menu.routes)}`}
-         onClick={(_.contains(['dashboard', 'dashboard.workflow', 'dashboard.toolbox'], menu.name)) ? sweetPrompts.sweetOkPrompt.bind(this, 'Coming Soon!') : ''}>
+         onClick={(_.contains(['dashboard', 'dashboard.workflow', 'projects.tileview', 'dashboard.toolbox'], menu.name)) ? sweetPrompts.sweetOkPrompt.bind(this, 'Coming Soon!') : ''}>
         <div>{menu.title}</div>
       </a>
     )

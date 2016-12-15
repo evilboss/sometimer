@@ -38,8 +38,8 @@ class CreateTeam extends React.Component {
     Meteor.call('team.insert', team, (err, createdTeam) => {
       if (createdTeam) {
         sweetPrompts.sweetIfElseSucces('', 'Team Created', 'success',
-          {path: '/dashboard/team/new', text: 'Add another'},
-          {path: `/dashboard/team/${createdTeam}`, text: 'Team Overview'})
+          {path: '/dashboard/team/new', text: 'Add another Team'},
+          {path: `/dashboard/team/${createdTeam}`, text: `View ${team.name}`})
       }
     });
 

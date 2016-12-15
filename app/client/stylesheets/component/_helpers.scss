@@ -3,7 +3,7 @@
   display: inline-block !important;
 }
 
-.initial-text-align{
+.initial-text-align {
   text-align: initial;
 }
 
@@ -143,4 +143,9 @@
 .dp-medium {
   width: 80px;
   height: 80px;
+}
+
+.dp-large {
+  height: 9em;
+  width: 9em;
 }

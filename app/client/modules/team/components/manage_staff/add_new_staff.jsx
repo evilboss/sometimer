@@ -15,12 +15,13 @@ import ReactMaterialSelect from 'react-material-select';
 import CancelBtn from '/client/utils/buttons/cancel_btn';
 import PermissionCheckbox from '/client/modules/team/components/permission_checkbox';
 import StepGuide from '/client/utils/buttons/step_guide';
-
+import TimezonePicker from 'react-timezone';
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       permissions: [],
+      timezone: 'Asia/Manila',
       isCheckall: false,
       checkall: false
     }
@@ -49,6 +50,7 @@ class AddNewStaff extends React.Component {
   }
 
   _create() {
+    let timezone = this.state.timezone;
     let {create, userType, teams, team, teamId} = this.props;
     let {firstName, lastName, department, company, position, dateHired, email, positionDescription, role, message} = this.refs;
     const user = {
@@ -58,6 +60,7 @@ class AddNewStaff extends React.Component {
         department: (teamId) ? teamId : (department) ? department.getValue() : '',
         company: (company) ? company.value : '',
         position: position.value,
+        timezone: timezone,
         permissions: this.state.permissions,
         role: userType,
         status: 'invited',
@@ -80,11 +83,11 @@ class AddNewStaff extends React.Component {
       let target = (user.profile.role == 'staff') ? '' : `manage-${user.profile.role}s`;
       sweetPrompts.sweetIfElseSucces('', 'Invite Sent!', 'success', {
           path: (teamId) ? `/dashboard/team/${teamId}/user/new/${target}` : `/dashboard/team/user/new/${target}`,
-          text: 'Add another'
+          text: `Add another ${userType}`
         },
         {
-          path: (teamId) ? `/dashboard/team/${teamId}/${target}`
-            : `/dashboard/team/${target}`, text: `View ${team.name}`
+          path: (teamId) ? `/dashboard/team/${teamId}`
+            : `/dashboard/team/${target}`, text: (teamId) ? `View ${team.name}` : `View all ${userType}s`
         })
     };
     (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`You forgot to fill in some required fields <br/><div class="red-text">${error.toString()}</div>`, 'Sorry', 'error');
@@ -172,9 +175,15 @@ class AddNewStaff extends React.Component {
     return permissionList
   }
 
+  changeTimezone(timezone) {
+    console.log('New Timezone', timezone);
+    this.setState({timezone: timezone});
+  }
+
   render() {
     const {allStaff, teamAllStaff, userPermissions, error, userRole, userType, teams, team, teamId} = this.props;
     let target = (userType == 'staff') ? userType : `${userType}s`;
+    let value = this.state.timezone;
     const {isCheckall, checkall}=this.state;
     console.log(team, 'team');
     return (
@@ -184,11 +193,18 @@ class AddNewStaff extends React.Component {
 
         <div className="twbs tab-page-header">
           <Breadcrumbs crumbs={
-            [{
-              text: (teamId) ? 'Team Overview' : `${formatHelper.capitalize(userType)}`,
-              path: (teamId) ? `/dashboard/team/${teamId}` : `dashboard.manage${formatHelper.capitalize(target)}`,
-              params: ''
-            }, {
+            [
+              (teamId) ?
+                {
+                  text: 'All Teams',
+                  path: '/dashboard/team/',
+                  params: ''
+                } : {},
+              {
+                text: (teamId) ? `${team.name}` : `${formatHelper.capitalize(userType)}`,
+                path: (teamId) ? `/dashboard/team/${teamId}` : `dashboard.manage${formatHelper.capitalize(target)}`,
+                params: ''
+              }, {
               text: `Add ${formatHelper.capitalize(userType)}`,
               path: (teamId) ? `/dashboard/team/${teamId}/user/new/` : 'dashboard.user.new',
               params: userType
@@ -284,6 +300,19 @@ class AddNewStaff extends React.Component {
                       }
                     </div>
                   }
+                  <div className="col s12 no-padding">
+                    <div className="input-field col s6 no-padding">
+                      <TimezonePicker
+                        value={value}
+                        onChange={this.changeTimezone.bind(this)}
+                        inputProps={{
+                          placeholder: 'Select Timezone...',
+                          name: 'timezone',
+                        }}
+                      />
+                      <label htmlFor="timezone" className="active">Timezone</label>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="col s8 no-padding">
@@ -325,7 +354,8 @@ class AddNewStaff extends React.Component {
                           </tbody>
                         </table>
                         {(isCheckall) ?
-                          <button type="button" className="btn cancel" onClick={this.checkAll.bind(this)}>Uncheck
+                          <button type="button" className="pull-right btn cancel" onClick={this.checkAll.bind(this)}>
+                            Uncheck
                             all
                           </button>
                           :

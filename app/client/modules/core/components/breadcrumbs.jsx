@@ -10,10 +10,11 @@ class Breadcrumbs extends React.Component {
     return (
       <section id="breadcrumbs">
         {crumbs.map((crumb, index) => (
-          <a key={index} href={(FlowHelpers)?FlowHelpers.pathFor(crumb.path,crumb.params):''}
-             className={(index>=(crumbs.length-1))?'active':'collection-item'}>
-            <b>{(index > 0) ? ' > ' : ''}{crumb.text}</b>
-          </a>
+          (crumb.path) ? <a key={index} href={(FlowHelpers) ? FlowHelpers.pathFor(crumb.path, crumb.params) : ''}
+                            className={(index >= (crumbs.length - 1)) ? 'active' : 'collection-item'}>
+            {console.log(_.first(crumbs), 'first')}
+            <b>{(index > 0) ? (index == 1) ? (_.first(crumbs)) ? ' > ' : '' : ' > ' : ''}{crumb.text}</b>
+          </a> : ''
         ))}
       </section>
 
@@ -25,7 +26,7 @@ Breadcrumbs.propTypes = {
 }
 Breadcrumbs.defaultProps = {
   FlowHelpers: {
-    pathFor: (path, params)=> {
+    pathFor: (path, params) => {
       return ``
     }
   },

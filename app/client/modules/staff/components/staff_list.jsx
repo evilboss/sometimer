@@ -67,6 +67,8 @@ class StaffList extends React.Component {
 
   render() {
     const {team, staffList, teamLeader, currentUser, userPermissions} = this.props;
+    const {role} = (currentUser) ? (currentUser.profile) ? currentUser.profile : 'staff' : 'staff';
+
     return (
       <section id="staff-list">
         {(team) ?
@@ -103,7 +105,7 @@ class StaffList extends React.Component {
 
             <div className="row no-margin-bottom">
               <div className="col s12 no-margin">
-                <h5 className="no-margin-bottom">{(team) ? (team.name) ? team.name : '' : ''}</h5>
+                <h5 className="team-name">{(team) ? (team.name) ? team.name : '' : ''}</h5>
               </div>
 
               <div className="col s4 no-margin twbs">
@@ -203,14 +205,14 @@ class StaffList extends React.Component {
                       <th></th>
                       <th>Staff</th>
                       <th>Position</th>
-                      <th className="center-align">Time Log Status</th>
+                      <th className="center-align">Status</th>
                       <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {(teamLeader) ?
                       <StaffDetails currentUser={currentUser._id} staff={teamLeader} index={312809}
-                                    teamId={team._id}/> :
+                                    teamId={team._id} isStaff={control.isStaff(Meteor.userId())}/> :
                       <tr>
                         <td></td>
                         <td colSpan="4">
@@ -234,7 +236,8 @@ class StaffList extends React.Component {
 
                     {(!_.isEmpty(staffList)) ?
                       staffList.map((staff, index) => (
-                        <StaffDetails key={index} staff={staff} index={index} teamId={team._id}/>
+                        <StaffDetails key={index} staff={staff} index={index} teamId={team._id}
+                                      isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
                       ))
                       : <tr>
                       <td></td>

@@ -1,20 +1,9 @@
 #staffProfile {
-  .staff-profile-details {
-    margin-bottom: 4em;
-    border: solid 1px $gray-line;
-    div:nth-child(2) {
-      margin-left: 15px;
-      min-width: 50%;
+  table {
+    width: auto !important;
+    th {
+      padding-right: 4em;
     }
-  }
-  .dp-medium {
-    margin-left: 3em;
-    margin-top: 10px;
-    padding: 4px;
-    width: 90px;
-    height: 90px;
-    background: white;
-    margin-bottom: -43px;
   }
   #staff-project-list {
     float: right;

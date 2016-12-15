@@ -97,12 +97,12 @@ class PermissionForm extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {permissionList.map((permission, index)=>
+                {permissionList.map((permission, index) =>
                   (_.contains(permission.userTypes, user.profile.role)) ?
                     <tr key={index}>
                       <td>{permission.label}</td>
                       {(permission.types) ?
-                        permission.types.map((type, typeIndex)=>
+                        permission.types.map((type, typeIndex) =>
                           <td className="center" key={typeIndex}>
                             <input type="checkbox" defaultValue="true" id={type}
                                    defaultChecked={this.isChecked(type)}
@@ -116,12 +116,12 @@ class PermissionForm extends React.Component {
                 )}
                 </tbody>
               </table>
+              <div className="right save">
+                <button className="btn theme-color">Update Permissions</button>
+              </div>
             </div>
             : '' : ''
         }
-        <div className="right save">
-          <button className="btn theme-color">Update Permissions</button>
-        </div>
       </div>
     );
   }

@@ -72,6 +72,7 @@
     "react-simple-di": "^1.0.1",
     "react-tap-event-plugin": "^1.0.0",
     "react-time": "^4.2.0",
+    "react-timezone": "^0.1.0",
     "screenfull": "^3.0.0",
     "simple-react-form": "^1.2.0",
     "simple-react-form-material-ui": "^1.2.3",

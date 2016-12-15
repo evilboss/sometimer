@@ -8,8 +8,14 @@ const capsAll = (string) => {
   return string.toUpperCase();
 };
 
+const getCountry = (timezone) => {
+  let area = timezone.split('/');
+  return area[1];
+};
+
 const formatHelper = {
   capitalize: capitalize,
-  capsAll: capsAll
+  capsAll: capsAll,
+  getCountry: getCountry
 };
 export {formatHelper}

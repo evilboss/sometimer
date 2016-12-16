@@ -70,6 +70,7 @@ class StaffSettings extends React.Component {
 
   render() {
     const {currentUser, userPermissions, user, permissions, staffId, teamId, team, projects, teams} = this.props;
+
     const {role} = (user) ? (user.profile) ? user.profile : '' : '';
     const {profile} = (user) ? user : '';
     let showPermission = this.state.showPermission;
@@ -79,11 +80,12 @@ class StaffSettings extends React.Component {
         {(teamId) ?
           <div className="col s6">
             <Breadcrumbs crumbs={
-              [{text: 'All Teams', path: 'dashboard.team', params: ''}, {
-                text: (team) ? team.name : '',
-                path: 'dashboard.myteam',
-                params: (team) ? team._id : ''
-              },
+              [{text: 'All Teams', path: 'dashboard.team', params: ''},
+                {
+                  text: (team) ? team.name : '',
+                  path: 'dashboard.myteam',
+                  params: (team) ? team._id : ''
+                },
                 {
                   text: (user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : null,
                   path: 'staff.team.settings',
@@ -91,11 +93,26 @@ class StaffSettings extends React.Component {
                 }]}/>
             <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
           </div>
-          : ''}
+          : <div className="col s6">
+          <Breadcrumbs crumbs={
+            [
+              {
+                text: `All ${((user) ? (user.profile) ? `${user.profile.role}s` : '' : '')}`,
+                path: (user) ? (user.profile) ? `dashboard.manage${formatHelper.capitalize(user.profile.role)}s` : '' : '',
+                params: ''
+              },
+              {
+                text: (user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : '',
+                path: 'staff.team.settings',
+                params: ''
+              }
+            ]
+          }/>
+
+        </div>}
         <div className="col s12 border-bottom">
-          <h5 className="viewed-profile ">You Are
-            Viewing {(user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : ''}
-            &nbsp; Profile</h5>
+          <h5 className="viewed-profile">
+            Viewing {(user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : ''}</h5>
         </div>
         <section id="staff-settings">
           <div className="row">
@@ -113,64 +130,73 @@ class StaffSettings extends React.Component {
               </ul>
             </div>
             <div className="col s10 no-padding">
-              <div className="col s7 staff-profile-details">
-                <img src={(profile) ?
-                  (profile.displayPhoto)
-                    ? profile.displayPhoto
-                    : '/uploads/defaults/default_user.png'
-                  : '/uploads/defaults/default_user.png'}
-                     className="circle responsive-img dp-large"/>
-                <div className="inline profile-header">
-                  <table className="responsive-table">
-                    <tr>
-                      <td>
-                        <div className="status">
-                          <h5 className="no-margin">{
-                            (profile) ?
-                              `${profile.firstName} ${profile.lastName}`
-                              : ''}</h5>
-                          <StatusIndicator class={(profile) ?
-                            (profile.status) ? formatHelper.capitalize(profile.status)
-                              : '' : ''}/>
-                        </div>
-                      </td>
-                      <td className="center-align">
-                        <div className="icons center-align">
-
-                          <a href={(team) ? `/dashboard/staff/${team._id}/${user._id}` : ''}>
-                            <img src="/Assets/icons/time.png"/>
-                          </a>
-                          {
-                            (role == 'client') ? null :
-                              <a onClick={this.togglePermission.bind(this)}>
-                                <img src="/Assets/icons/settings.png"/>
-                              </a>
-                          }
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
               {
                 (role == 'client') ? null :
                   <div id="permissions" className={`no-padding z-depth-2 ${showPermission}`}>
                     <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/>
                     <div className="col s12 no-padding">
-                      {(!control.isStaff(currentUser)) ?
-                        <button className="pull-right btn delete waves-effect waves-light theme-color" type="button"
-                                onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete {role}
-                          <i className="right material-icons close">
-                            delete_forever</i></button>
+                      {(currentUser) ?
+                        (!control.isStaff(currentUser)) ?
+                          (user) ?
+                            (user._id == currentUser) ? null :
+                              <button className="pull-right btn delete waves-effect waves-light theme-color"
+                                      type="button"
+                                      onClick={(user) ? this._removeStaff.bind(this, user._id) : ''}>Delete {role}
+                                <i className="right material-icons close">
+                                  delete_forever</i>
+                              </button>
+                            : ''
+                          : ''
                         : ''}
                     </div>
                   </div>}
 
-              <div id="staffProfile" className="col s7 no-padding">
-                <StaffProfile user={user} teams={teams} projects={projects}/>
+              <div id="staffProfile" className="col s7">
+                <div className="col s12 staff-profile-details">
+                  <img src={(profile) ?
+                    (profile.displayPhoto)
+                      ? profile.displayPhoto
+                      : '/uploads/defaults/default_user.png'
+                    : '/uploads/defaults/default_user.png'}
+                       className="circle responsive-img dp-large"/>
+                  <div className="inline profile-header">
+                    <table className="responsive-table">
+                      <tr>
+                        <td>
+                          <div className="status">
+                            <h5 className="no-margin">{
+                              (profile) ?
+                                `${profile.firstName} ${profile.lastName}`
+                                : ''}</h5>
+                            <StatusIndicator class={(profile) ?
+                              (profile.status) ? formatHelper.capitalize(profile.status)
+                                : '' : ''}/>
+                          </div>
+                        </td>
+                        <td className="center-align">
+                          <div className="icons center-align">
+
+                            <a href={(team) ? `/dashboard/staff/${team._id}/${user._id}` : ''}>
+                              <img src="/Assets/icons/time.png"/>
+                            </a>
+                            {
+                              (role == 'client') ? null :
+                                <a onClick={this.togglePermission.bind(this)}>
+                                  <img src="/Assets/icons/settings.png"/>
+                                </a>
+                            }
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <StaffProfile user={user} teams={(teams) ? teams : ''} projects={projects}/>
               </div>
-              <div id="StaffTeams" className="col s7 no-padding">
-                <StaffTeams user={user} teams={teams} staffId={staffId}/>
+              <div id="StaffTeams" className="col s7">
+                <StaffTeams user={user} teams={(teams) ? teams : ''} currentUser={currentUser}
+                            permissions={userPermissions}
+                            staffId={staffId}/>
               </div>
             </div>
           </div>

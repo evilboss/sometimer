@@ -46,6 +46,8 @@ class PermissionForm extends React.Component {
 
   render() {
     const {userPermissions, permissions, user} = this.props;
+    const {profile} = (user) ? user : '';
+    const {role} = (profile) ? profile : '';
     const permissionList = [
       {
         label: 'Client',
@@ -79,10 +81,26 @@ class PermissionForm extends React.Component {
         userTypes: ['super-admin', 'admin']
       }
     ];
+    let currentUserPermission = 'no-permission-for-this';
+
+    switch (role) {
+      case 'staff':
+        currentUserPermission = 'updateStaffs';
+        break;
+      case 'manager':
+        currentUserPermission = 'updateManagers';
+        break;
+      case 'admin':
+        currentUserPermission = 'updateAdmin';
+        break;
+      default:
+    }
+
+    console.log(currentUserPermission);
     return (
       <div className="col s8 no-padding">
         {
-          (userPermissions) ? control.isPermitted('updatePermissions', userPermissions) ?
+          (userPermissions) ?
             <div className="col s12 no-padding">
               <div className="class-info">
                 SET SYSTEM PERMISSIONS
@@ -98,7 +116,7 @@ class PermissionForm extends React.Component {
                 </thead>
                 <tbody>
                 {permissionList.map((permission, index) =>
-                  (_.contains(permission.userTypes, user.profile.role)) ?
+                  (_.contains(permission.userTypes, role)) ?
                     <tr key={index}>
                       <td>{permission.label}</td>
                       {(permission.types) ?
@@ -116,11 +134,15 @@ class PermissionForm extends React.Component {
                 )}
                 </tbody>
               </table>
-              <div className="right save">
-                <button className="btn theme-color">Update Permissions</button>
-              </div>
+              {
+
+                control.isPermitted(currentUserPermission, userPermissions) ?
+                  <div className="right save">
+                    <button className="btn theme-color">Update Permissions</button>
+                  </div>
+                  : ''}
             </div>
-            : '' : ''
+            : ''
         }
       </div>
     );

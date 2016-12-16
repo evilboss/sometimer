@@ -28,8 +28,8 @@ class ManageAdmins extends React.Component {
                 <tr>
                   <th></th>
                   <th>Admins</th>
-                  <th>Team</th>
-                  <th>Timelog Status</th>
+
+                  <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,9 +49,6 @@ class ManageAdmins extends React.Component {
                           <small>{staff.profile.jobTitle}</small>
                         </h6>
                       </div>
-                    </td>
-                    <td>
-                      {formatHelper.capitalize(staff.profile.status)}
                     </td>
                     <td className="status">
                       <StatusIndicator class={formatHelper.capitalize(staff.profile.status)}/>

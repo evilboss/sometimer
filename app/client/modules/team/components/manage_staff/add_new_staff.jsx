@@ -201,7 +201,7 @@ class AddNewStaff extends React.Component {
                   params: ''
                 } : {},
               {
-                text: (teamId) ? `${team.name}` : `${formatHelper.capitalize(userType)}`,
+                text: (teamId) ? `${team.name}` : `All ${formatHelper.capitalize(userType)}`,
                 path: (teamId) ? `/dashboard/team/${teamId}` : `dashboard.manage${formatHelper.capitalize(target)}`,
                 params: ''
               }, {

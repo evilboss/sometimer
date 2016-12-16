@@ -74,6 +74,14 @@ section#team {
     }
   }
   .viewed-profile {
-    padding: 0 22px;
+    border: 2px solid #DEDEDE;
+    display: inline;
+    border-top-left-radius: 5px;
+    padding: 5px 20px 3px 20px;
+    font-size: 1.5em;
+    background: white;
+    margin-left: 1em;
+    border-top-right-radius: 5px;
+    border-bottom: none;
   }
 }

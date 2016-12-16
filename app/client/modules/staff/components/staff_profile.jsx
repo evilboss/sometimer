@@ -24,11 +24,12 @@ class StaffProfile extends React.Component {
             <tr>
               <th>Team</th>
               <td>
-                {teams.map((team, index) => (
-                  <span key={index}>
+                {(teams) ?
+                  teams.map((team, index) => (
+                    <span key={index}>
                     {`${team.name} `}
                     </span>
-                ))}
+                  )) : ''}
 
               </td>
             </tr>

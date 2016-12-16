@@ -32,7 +32,8 @@ export default function () {
     return Team.find({name: name});
   });
   Meteor.publish('team.user', function (userId) {
-    const selectedTeam = Team.find({members: userId});
+    const selectedTeam = Team.find(
+      {$or: [{members: userId}, {teamLeader: userId}, {creator: userId}]});
     return selectedTeam;
   });
 }

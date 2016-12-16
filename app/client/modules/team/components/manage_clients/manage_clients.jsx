@@ -14,7 +14,7 @@ class ManageClients extends React.Component {
   getAssignedTeam(userId) {
     let {teams} = this.props;
     let teamName = '';
-    _.each(teams, (team)=> {
+    _.each(teams, (team) => {
       (teamName) ? null : teamName = (_.contains(team.members, userId)) ? team.name : '';
     });
     return (teamName) ? teamName : 'Unassigned';
@@ -28,7 +28,7 @@ class ManageClients extends React.Component {
       <section id="team">
         <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
         <Tabs teamId={teamId}/>
-        <SubTabs target={(teamId)?`/dashboard/team/${teamId}/user/new/client`:'/dashboard/team/user/new/client'}
+        <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/client` : '/dashboard/team/user/new/client'}
                  text="Add New Client" permission="createClients"/>
         <section id="manage-clients" className="col s12">
           <div className="row no-margin-bottom">
@@ -38,16 +38,16 @@ class ManageClients extends React.Component {
                 <tr>
                   <th></th>
                   <th>Clients</th>
-                  <th>Invite Status</th>
+                  <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
                 {allClients.map((client, index) => (
                   <tr key={index}>
                     <td className="staff-dp"><a
-                      href={(teamId)?`/dashboard/staff/settings/${teamId}/${client._id}`:`/dashboard/staff/settings/${client._id}`}>
+                      href={(teamId) ? `/dashboard/staff/settings/${teamId}/${client._id}` : `/dashboard/staff/settings/${client._id}`}>
                       <img
-                        src={(client.profile.displayPhoto)?`${client.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                        src={(client.profile.displayPhoto) ? `${client.profile.displayPhoto}` : '/uploads/defaults/default_user.png'}
                         alt="client" className="circle responsive-img dp-small left"/>
                     </a></td>
                     <td className="staff-details">

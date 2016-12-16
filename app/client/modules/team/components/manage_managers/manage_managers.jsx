@@ -43,7 +43,7 @@ class ManageManagers extends React.Component {
 
                   <th>Team</th>
 
-                  <th> Timelog Status
+                  <th>Status
                   </th>
                 </tr>
                 </thead>

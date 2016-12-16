@@ -45,9 +45,9 @@ class TeamList extends React.Component {
                             <div className="card-content">
                               {(team.teamLeader) ?
                                 <DisplayManager userId={team.teamLeader}
-                                                target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions) ? `/dashboard/staff/settings/${team._id}/${team.teamLeader}` : '' : ''}/>
+                                                target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions)
+                                                  ? `/dashboard/staff-settings/team/${team._id}/${team.teamLeader}` : '' : ''}/>
                                 :
-
                                 <div className="row no-margin">
                                   <img
                                     src='/uploads/defaults/default_user.png'
@@ -72,7 +72,7 @@ class TeamList extends React.Component {
                                 team.members.map((member, key) => (
                                   (key <= 4) ?
                                     <StaffDp staffType="staff" key={key} teamId={team._id} userId={member}
-                                             target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff/settings/${team._id}/${member}` : '' : ''}/> : ''
+                                             target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff-settings/team/${team._id}/${member}` : '' : ''}/> : ''
                                 ))
                                 :
                                 <div className="row no-margin">

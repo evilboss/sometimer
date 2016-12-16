@@ -17,7 +17,11 @@ export const composer = ({context, staffId, teamId}, onData) => {
     const currentUser = Meteor.userId();
     const user = Meteor.users.findOne(staffId);
     const team = Collections.Team.findOne(teamId);
-    const teams = Collections.Team.find().fetch();
+
+    const teams = (user) ?
+      Collections.Team.find({$or: [{members: user._id}, {teamLeader: user._id}, {creator: user._id}]}).fetch()
+      : '';
+
     const projectSelector = {collaborators: {$all: [staffId]}};
     const projects = Collections.Projects.find(projectSelector).fetch();
     const permissions = (user) ? (user.profile) ? (user.profile.permissions) ? user.profile.permissions : [] : [] : [];

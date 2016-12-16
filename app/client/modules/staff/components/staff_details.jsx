@@ -2,6 +2,8 @@ import React from 'react';
 import TimeTotal from '../containers/time_total';
 import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
 import {control} from '/lib/access-control/control';
+import StatusIndicator from '/client/modules/team/components/status_indicator';
+import {formatHelper} from '/client/utils/helpers/format-helpers';
 
 class StaffDetails extends React.Component {
   constructor(props) {
@@ -61,12 +63,10 @@ class StaffDetails extends React.Component {
 
             <td className="center-align">
               {(isStaff) ? null :
-                <div className="status">
-                  <div className={`beacon ${staff.profile.status}`}></div>
-                  <span>{staff.profile.status}</span>
-                </div>
+                <StatusIndicator class={(staff.profile) ?
+                  (staff.profile.status) ? formatHelper.capitalize(staff.profile.status)
+                    : '' : ''}/>
               }
-
 
             </td>
 

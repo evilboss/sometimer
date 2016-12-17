@@ -1,5 +1,5 @@
-import React from 'react';
-import {control} from '/lib/access-control/control';
+import React from "react";
+import {control} from "/lib/access-control/control";
 
 class PermissionForm extends React.Component {
   constructor(props) {
@@ -32,6 +32,10 @@ class PermissionForm extends React.Component {
     this.setState({
       permissions: permissions
     });
+  }
+
+  _updatePermissions() {
+
   }
 
   _removePermissions(permission) {
@@ -138,7 +142,8 @@ class PermissionForm extends React.Component {
 
                 control.isPermitted(currentUserPermission, userPermissions) ?
                   <div className="right save">
-                    <button className="btn theme-color">Update Permissions</button>
+                    <button onClick={this._updatePermissions.bind(this)} className="btn theme-color">Update Permissions
+                    </button>
                   </div>
                   : ''}
             </div>

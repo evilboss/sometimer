@@ -1,7 +1,6 @@
-import React from 'react';
-import StatusIndicator from '/client/modules/team/components/status_indicator';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
-import moment from 'moment';
+import React from "react";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
+import moment from "moment";
 
 class StaffProfile extends React.Component {
   constructor(props) {
@@ -33,13 +32,23 @@ class StaffProfile extends React.Component {
 
               </td>
             </tr>
+
             <tr>
-              <th>Location</th>
-              <td>{(user.profile.timezone) ? formatHelper.getCountry(user.profile.timezone) : 'Manila'}</td>
+              <th>Country:</th>
+              <td>{(user.profile.country) ? user.profile.country : ''}</td>
             </tr>
             <tr>
               <th>Time Zone</th>
               <td>{(user.profile.timezone) ? moment().tz(user.profile.timezone).format('z') : moment().tz('Asia/Manila').format('z')}</td>
+            </tr>
+
+            <tr>
+              <th>Skype ID:</th>
+              <td>{(user.profile.skypeID) ? user.profile.skypeID : ''}</td>
+            </tr>
+            <tr>
+              <th>Contact Number:</th>
+              <td>{(user.profile.contactNumber) ? user.profile.contactNumber : ''}</td>
             </tr>
             </tbody>
           </table>

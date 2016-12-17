@@ -1,5 +1,5 @@
-import React from 'react';
-import PageTitle from '/client/modules/core/components/page_title';
+import React from "react";
+import PageTitle from "/client/modules/core/components/page_title";
 
 export default class Profile extends React.Component {
 
@@ -42,9 +42,30 @@ export default class Profile extends React.Component {
                     <td>{(user.profile.lastName) ? user.profile.lastName : ''}</td>
                   </tr>
                   <tr>
-                    <th>Department/Team:</th>
-                    <td>{(user.profile.department) ? user.profile.department : ''}</td>
+                    <th>Country:</th>
+                    <td>{(user.profile.country) ? user.profile.country : ''}</td>
                   </tr>
+                  <tr>
+                    <th>Position:</th>
+                    <td>{(user.profile.position) ? user.profile.position : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>TimeZone:</th>
+                    <td>{(user.profile.timezone) ? user.profile.timezone : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>Skype ID:</th>
+                    <td>{(user.profile.skypeID) ? user.profile.skypeID : ''}</td>
+                  </tr>
+                  <tr>
+                    <th>Contact Number:</th>
+                    <td>{(user.profile.contactNumber) ? user.profile.contactNumber : ''}</td>
+                  </tr>
+
+                  {/*<tr>
+                   <th>Department/Team:</th>
+                   <td>{(user.profile.department) ? user.profile.department : ''}</td>
+                   </tr>*/}
                   </tbody>
                 </table>
               </div>

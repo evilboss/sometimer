@@ -1,21 +1,16 @@
-import React from 'react';
-import PageTitle from '/client/modules/core/components/page_title';
-import Tabs from '/client/modules/team/containers/tabs';
-import SubTabs from '/client/modules/team/containers/sub_tabs';
-import moment from 'moment';
-import TimePicker from 'rc-time-picker';
-import {control} from '/lib/access-control/control';
-import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
-import UploadFile from '/client/modules/team/components/upload_file';
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {FlowHelpers} from '/client/utils/helpers/route-helpers';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
-import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
-import ReactMaterialSelect from 'react-material-select';
-import CancelBtn from '/client/utils/buttons/cancel_btn';
-import PermissionCheckbox from '/client/modules/team/components/permission_checkbox';
-import StepGuide from '/client/utils/buttons/step_guide';
-import TimezonePicker from 'react-timezone';
+import React from "react";
+import PageTitle from "/client/modules/core/components/page_title";
+import Tabs from "/client/modules/team/containers/tabs";
+import {control} from "/lib/access-control/control";
+import {sweetPrompts} from "/client/utils/helpers/sweet-helper";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import {FlowHelpers} from "/client/utils/helpers/route-helpers";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
+import Breadcrumbs from "/client/modules/core/containers/breadcrumbs";
+import ReactMaterialSelect from "react-material-select";
+import CancelBtn from "/client/utils/buttons/cancel_btn";
+import StepGuide from "/client/utils/buttons/step_guide";
+import TimezonePicker from "react-timezone";
 class AddNewStaff extends React.Component {
   constructor(props) {
     super(props);
@@ -52,11 +47,17 @@ class AddNewStaff extends React.Component {
   _create() {
     let timezone = this.state.timezone;
     let {create, userType, teams, team, teamId} = this.props;
-    let {firstName, lastName, department, company, position, dateHired, email, positionDescription, role, message} = this.refs;
+    let {
+      firstName, lastName, department, company, position, email, role, message,
+      country, contactNumber, skypeID
+    } = this.refs;
     const user = {
       profile: {
         firstName: firstName.value,
         lastName: lastName.value,
+        country: country.value,
+        contactNumber: contactNumber.value,
+        skypeID: skypeID.value,
         department: (teamId) ? teamId : (department) ? department.getValue() : '',
         company: (company) ? company.value : '',
         position: position.value,
@@ -243,8 +244,8 @@ class AddNewStaff extends React.Component {
                   </div>
                   <div className=" col s6">
                     <div className="input-field">
-                      <input placeholder="Country" id="country" ref="country" type="text" className="validate"/>
-                      <label htmlFor="country" className="active required">Country(working from what part of the
+                      <input placeholder="Country" id="country" ref="country" type="text" className=""/>
+                      <label htmlFor="country" className="active">Country(working from what part of the
                         world?)</label>
                     </div>
                   </div>

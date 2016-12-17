@@ -1,9 +1,7 @@
-import React from 'react';
-import UploadFile from '/client/modules/team/containers/upload_file';
-import {Darkroom, Canvas, History, Toolbar, FilePicker, CropMenu} from 'react-darkroom';
-import {Transform} from '/client/utils/cropper/';
-import {uploadToAmazonS3} from '/client/utils/helpers/file_upload';
-import PageTitle from '/client/modules/core/components/page_title';
+import React from "react";
+import {Transform} from "/client/utils/cropper/";
+import {uploadToAmazonS3} from "/client/utils/helpers/file_upload";
+import PageTitle from "/client/modules/core/components/page_title";
 
 const canvasWidth = 300;
 const canvasHeight = 300;
@@ -68,10 +66,6 @@ class ProfileEdit extends React.Component {
       'onRotateRight'].forEach((method) => {
       this[method] = this[method].bind(this);
     });
-  }
-
-  componentDidUpdate() {
-    console.timeEnd('State changed');
   }
 
   update(action) {
@@ -165,6 +159,22 @@ class ProfileEdit extends React.Component {
 
   }
 
+  updateAccount() {
+    console.info('starting to update account');
+    const user = Meteor.user();
+    const {profileUpdate} = this.props;
+    let {firstName, lastName, position, email, country, contactNumber, skypeID} = this.refs;
+    const profile = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      country: country.value,
+      contactNumber: contactNumber.value,
+      skypeID: skypeID.value,
+      position: position.value,
+    };
+    profileUpdate(user._id, profile);
+  }
+
   getBase64Image(img) {
     var canvas = document.createElement("canvas");
     canvas.width = img.width;
@@ -203,87 +213,59 @@ class ProfileEdit extends React.Component {
                 src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
                 alt="dp"
                 className="display-photo responsive-img center-block"/>
-              <Darkroom>
-                <Toolbar>
-                  <button onClick={selectFile} data-tipsy="Select Image" className="btn theme-color">
-                    Change Profile Image
-                    <input type="file" ref="fileselect" onChange={this.onFileChange} style={{display: 'none'}}/>
-                  </button>
-
-                  <p>Note: Only use .png and .jpeg</p>
-                  <button disabled={!hasFile} onClick={this.onRotateLeft} data-tipsy="Rotate Left"
-                          className="tipsy tipsy--sw">
-                    <i className="material-icons">rotate_left</i>
-                  </button>
-                  <button disabled={!hasFile} onClick={this.onRotateRight} data-tipsy="Rotate Right"
-                          className="tipsy tipsy--sw">
-                    <i className="material-icons">rotate_right</i>
-                  </button>
-                  <CropMenu isCropping={crop}>
-                    <button disabled={!hasFile} data-showOnlyWhen='croppingIsOff' onClick={this.onCropStart}
-                            data-tipsy="Crop" className="tipsy tipsy--sw">
-                      <span className="icon icon-crop"/>croppingIsOff
-                    </button>
-                    <button disabled={!hasFile} data-showOnlyWhen='croppingIsOn' style={{color: 'cyan'}}>
-                      <span className="icon icon-crop"/>
-                      croppingIsOn
-                    </button>
-                    <button disabled={!hasFile} data-showOnlyWhen='croppingIsOn' onClick={this.onCropConfirm}
-                            style={{color: 'green'}} data-tipsy="Confirm" className="tipsy tipsy--sw">
-                      <span className="icon icon-checkmark"/>
-                      croppingIsOn
-                    </button>
-                    <button disabled={!hasFile} data-showOnlyWhen='croppingIsOn' onClick={this.onCropCancel}
-                            style={{color: 'red'}} data-tipsy="Cancel" className="tipsy tipsy--sw">
-                      <span className="icon icon-cross"/>
-                      croppingIsOn
-                    </button>
-                  </CropMenu>
-                  <button disabled={!hasFile} onClick={this.onSave.bind(this)} data-tipsy="Save"
-                          className="tipsy tipsy--sw">
-                    Save
-                  </button>
-                </Toolbar>
-                <Canvas ref="canvasWrapper" crop={crop} source={source} angle={angle} width={canvasWidth}
-                        height={canvasHeight}>
-                  <FilePicker hasFile={hasFile} onChange={this.onFileChange}/>
-                </Canvas>
-              </Darkroom>
             </div>
             <div className="col s12 m4 l4 no-horizontal-margin row">
 
               <form ref="updateAccountForm" className="twbs">
-                <div className="col s12 no-padding">
-                  <div className="input-field">
-                    <input placeholder="Email" id="email" ref="email" type="text"
-                           className="validate"/>
-                    <label htmlFor="Email" className="active required">Email</label>
-                  </div>
-                </div>
+
                 <div className="col s12 no-padding">
                   <div className="input-field">
                     <input placeholder="First Name" id="firstName" ref="firstName" type="text"
-                           className="validate"/>
+                           className="validate" defaultValue={(user.profile.firstName) ? user.profile.firstName : ''}/>
                     <label htmlFor="firstName" className="active required">First Name</label>
                   </div>
                 </div>
                 <div className="col s12 no-padding">
                   <div className="input-field">
                     <input placeholder="Last Name" id="lastName" ref="lastName" type="text"
-                           className="validate"/>
+                           className="validate" defaultValue={(user.profile.lastName) ? user.profile.lastName : ''}/>
                     <label htmlFor="lastName" className="active required">Last Name</label>
                   </div>
                 </div>
                 <div className="col s12 no-padding">
                   <div className="input-field">
-                    <input placeholder="Department/Team" id="department" ref="department" type="text"
-                           className="validate"/>
-                    <label htmlFor="department" className="active required">Department/Team</label>
+                    <input placeholder="Country" id="country" ref="country" type="text"
+                           className="validate" defaultValue={(user.profile.country) ? user.profile.country : ''}/>
+                    <label htmlFor="country" className="active">Country</label>
                   </div>
                 </div>
                 <div className="col s12 no-padding">
-                  <button className="btn cancel">Cancel</button>
-                  <button className="btn theme-color">Update Account</button>
+                  <div className="input-field">
+                    <input placeholder="Position" id="country" ref="position" type="text"
+                           className="validate" defaultValue={(user.profile.position) ? user.profile.position : ''}/>
+                    <label htmlFor="position" className="required active">Position</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <div className="input-field">
+                    <input placeholder="SkypeID" id="skypeID" ref="skypeID" type="text"
+                           className="validate" defaultValue={(user.profile.skypeID) ? user.profile.skypeID : ''}/>
+                    <label htmlFor="SkypeID" className="active">SkypeID</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <div className="input-field">
+                    <input placeholder="Contact Number" id="contactNumber" ref="contactNumber" type="text"
+                           className="validate"
+                           defaultValue={(user.profile.contactNumber) ? user.profile.contactNumber : ''}/>
+                    <label htmlFor="contactNumber" className="active">Contact Number</label>
+                  </div>
+                </div>
+                <div className="col s12 no-padding">
+                  <a href="/dashboard/profile" className="btn cancel">Cancel</a>
+                  <button type="button" onClick={this.updateAccount.bind(this)} className="btn theme-color">Update
+                    Account
+                  </button>
                 </div>
               </form>
 

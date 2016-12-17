@@ -1,6 +1,5 @@
-import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
-import ProfileEdit from '../components/profile_edit.jsx';
+import {useDeps, composeAll, composeWithTracker, compose} from "mantra-core";
+import ProfileEdit from "../components/profile_edit.jsx";
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
@@ -13,9 +12,11 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  submitAction: actions.users.change_password,
-  context: () => context
-});
+    submitAction: actions.users.change_password,
+    profileUpdate: actions.staff_actions.profileUpdate,
+    context: () => context
+  })
+  ;
 
 export default composeAll(
   composeWithTracker(composer),

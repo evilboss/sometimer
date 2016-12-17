@@ -1,6 +1,5 @@
-import {Meteor} from 'meteor/meteor';
-import {check} from 'meteor/check';
-import {remotivUser} from './user/remotiv_user';
+import {Meteor} from "meteor/meteor";
+import {remotivUser} from "./user/remotiv_user";
 export default function () {
   Meteor.methods({
     'user.update-photo'(id, imgPath){

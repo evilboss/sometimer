@@ -1,22 +1,20 @@
-import React from 'react';
-import StaffMultiSelect from '/client/modules/staff/containers/staff_multi_select';
-import PageTitle from '/client/modules/core/components/page_title';
-import Tabs from '/client/modules/team/containers/tabs';
-import StaffTeams from '/client/modules/staff/containers/staff_teams';
-import PermissionForm from '/client/modules/staff/containers/permission_form';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
-import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
-import StaffProfile from '/client/modules/staff/containers/staff_profile';
-import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
-import moment from 'moment';
-import StatusIndicator from '/client/modules/team/components/status_indicator';
-import {control} from '/lib/access-control/control';
+import React from "react";
+import Tabs from "/client/modules/team/containers/tabs";
+import StaffTeams from "/client/modules/staff/containers/staff_teams";
+import PermissionForm from "/client/modules/staff/containers/permission_form";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
+import Breadcrumbs from "/client/modules/core/containers/breadcrumbs";
+import StaffProfile from "/client/modules/staff/containers/staff_profile";
+import {sweetPrompts} from "/client/utils/helpers/sweet-helper";
+import StatusIndicator from "/client/modules/team/components/status_indicator";
+import {control} from "/lib/access-control/control";
 
 class StaffSettings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showPermission: false,
+      editProfile: false,
     }
   }
 
@@ -54,14 +52,9 @@ class StaffSettings extends React.Component {
   }
 
   togglePermission() {
-    let showPermission = this.state.showPermission;
-    (showPermission === false) ?
-      this.setState({
-        showPermission: true
-      }) : this.setState({
-      showPermission: false
-    })
-    console.log(showPermission)
+    this.setState({
+      showPermission: !this.state.showPermission
+    });
   }
 
   getData(data) {
@@ -133,6 +126,9 @@ class StaffSettings extends React.Component {
               {
                 (role == 'client') ? null :
                   <div id="permissions" className={`no-padding z-depth-2 ${showPermission}`}>
+                    <a onClick={this.togglePermission.bind(this)}>
+                      <i className="material-icons right">close</i>
+                    </a>
                     <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/>
                     <div className="col s12 no-padding">
                       {(currentUser) ?
@@ -182,9 +178,13 @@ class StaffSettings extends React.Component {
                             {
                               (role == 'client') ? null :
                                 <a onClick={this.togglePermission.bind(this)}>
-                                  <img src="/Assets/icons/settings.png"/>
+                                  <i className="material-icons">lock</i>
                                 </a>
                             }
+                            <a onClick={this.togglePermission.bind(this)}>
+                              <i className="material-icons">edit</i>
+                            </a>
+
                           </div>
                         </td>
                       </tr>

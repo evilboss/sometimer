@@ -20,7 +20,7 @@ class TeamList extends React.Component {
     console.log(currentUser, 'current');
     return (
       <section id="team">
-        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
+        <PageTitle title="  "/>
         <Tabs/>
         <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
         <section id="ManageTeam" className="col s12">

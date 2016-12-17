@@ -26,7 +26,7 @@ class ManageClients extends React.Component {
 
     return (
       <section id="team">
-        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
+        <PageTitle title="   "/>
         <Tabs teamId={teamId}/>
         <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/client` : '/dashboard/team/user/new/client'}
                  text="Add New Client" permission="createClients"/>

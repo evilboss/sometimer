@@ -26,7 +26,7 @@ class ManageManagers extends React.Component {
     console.log(teamId, 'oo');
     return (
       <section id="team">
-        <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
+        <PageTitle title="   "/>
         <Tabs teamId={teamId}/>
         <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/manager` : '/dashboard/team/user/new/manager'}
                  text="Add New Manager" permission="createManagers"/>

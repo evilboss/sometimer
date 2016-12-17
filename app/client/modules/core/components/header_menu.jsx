@@ -1,8 +1,9 @@
 import React from "react";
-import SideNav from "./side_nav.jsx";
 import NavbarProfile from "./navbar_profile";
 import Notification from "../containers/notification";
-import TimeTracker from '/client/modules/timesheet/containers/time_tracker';
+import TimeTracker from "/client/modules/timesheet/containers/time_tracker";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
 
 class HeaderMenu extends React.Component {
   constructor(props) {
@@ -51,7 +52,9 @@ class HeaderMenu extends React.Component {
                   <div className="inline">
                     <img
                       src={(sitePhoto) ? sitePhoto : '/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png'}/>
+
                   </div>
+                  <span>{formatHelper.capsAll(domainHelpers.getSubdomain())}</span>
                 </a>
 
 

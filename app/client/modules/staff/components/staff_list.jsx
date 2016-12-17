@@ -8,7 +8,7 @@ import {domainHelpers} from "/client/utils/helpers/domain-helpers";
 import {formatHelper} from "/client/utils/helpers/format-helpers";
 import Breadcrumbs from "/client/modules/core/containers/breadcrumbs";
 import {control} from "/lib/access-control/control";
-import TimeRequest from '/client/modules/timesheet/containers/time_request';
+import TimeRequest from "/client/modules/timesheet/containers/time_request";
 
 class StaffList extends React.Component {
   constructor(props) {
@@ -278,7 +278,7 @@ class StaffList extends React.Component {
                 }
               </div>
             </div>
-            <div id="request" class="col s12"><TimeRequest/></div>
+            <div id="request" className="col s12"><TimeRequest/></div>
 
           </div> : ''}
 

@@ -1,13 +1,12 @@
-import React from 'react';
-import StaffDp from '/client/modules/users/containers/staff_dp';
-import PageTitle from '/client/modules/core/components/page_title';
-import Tabs from '/client/modules/team/containers/tabs';
-import SubTabs from '/client/modules/team/containers/sub_tabs';
-import TeamCardAction from '/client/modules/team/containers/manage_team/team_card_action';
-import DisplayManager from '/client/modules/manager/containers/display_manager';
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
-import {control} from '/lib/access-control/control';
+import React from "react";
+import StaffDp from "/client/modules/users/containers/staff_dp";
+import PageTitle from "/client/modules/core/components/page_title";
+import Tabs from "/client/modules/team/containers/tabs";
+import SubTabs from "/client/modules/team/containers/sub_tabs";
+import DisplayManager from "/client/modules/manager/containers/display_manager";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
+import {control} from "/lib/access-control/control";
 
 class TeamList extends React.Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class TeamList extends React.Component {
     console.log(currentUser, 'current');
     return (
       <section id="team">
-        <PageTitle title="  "/>
+        <PageTitle title="All Teams"/>
         <Tabs/>
         <SubTabs target="/dashboard/team/new" text="Add New Team" permission="createTeam"/>
         <section id="ManageTeam" className="col s12">

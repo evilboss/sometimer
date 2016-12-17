@@ -16,7 +16,7 @@ class ManageAdmins extends React.Component {
     let {allAdmins} = this.props;
     return (
       <section id="team">
-        <PageTitle title="All Managers"/>
+        <PageTitle title="All Administrators"/>
         <Tabs/>
         <SubTabs target="/dashboard/team/user/new/admin" text="Add New Admin" permission="createClients"/>
         <section id="manage-clients" className="col s12">

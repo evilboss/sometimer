@@ -37,7 +37,6 @@ class EditTeam extends React.Component {
     const updateTeam = {
       name: name.value,
       teamLeader: teamLeader.getValue(),
-      members: staffList
     };
     update(team._id, updateTeam);
   }
@@ -116,7 +115,6 @@ class EditTeam extends React.Component {
                 </div>
 
                 <div className="input-field col s5 no-margin staff-guide">
-                  <StaffMultiSelect selectedValues={team.members} getData={this.getData.bind(this)}/>
                   <StepGuide userType="staff" pageTitle="Team"/>
                 </div>
                 <div className="input-field col s5">

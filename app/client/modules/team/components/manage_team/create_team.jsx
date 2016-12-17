@@ -46,7 +46,6 @@ class CreateTeam extends React.Component {
   };
 
   addTeam(team) {
-    team.members = this.state.staffList;
     team.creator = Meteor.userId();
     team.teamLeader = this.refs.teamLeader.getValue();
     team.site = domainHelpers.getSubdomain();
@@ -74,7 +73,7 @@ class CreateTeam extends React.Component {
               <div className="col s12">
                 <MyInput name="name" ref="name" fieldSize="col s5" title="Name of Team / Department" required/>
                 <div className="input-field col s5 manager-guide">
-                  <ReactMaterialSelect label="Choose a Team Leader/ Manager" onChange={this.onFocus.bind(this)}
+                  <ReactMaterialSelect label="Choose a Team Leader/ Manager"
                                        ref="teamLeader"
                                        resetLabel={(_.isEmpty(allManagers)) ? 'No Manager exist in the system' : 'Clear Selected Option'}>
                     {allManagers.map((manager) => (
@@ -89,7 +88,6 @@ class CreateTeam extends React.Component {
                 </div>
 
                 <div className="input-field col s5 no-margin staff-guide">
-                  <StaffMultiSelect getData={this.getData.bind(this)}/>
                   <StepGuide userType="staff" pageTitle="Team"/>
                 </div>
               </div>

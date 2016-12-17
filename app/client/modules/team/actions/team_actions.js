@@ -1,4 +1,4 @@
-import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
+import {sweetPrompts} from "/client/utils/helpers/sweet-helper";
 const updateTeam = (id, team) => {
   Meteor.call('team.update', id, team);
   sweetPrompts.sweetSucces('Team Updated', 'Click OK To continue', 'success', '/dashboard/team');
@@ -9,6 +9,15 @@ const transferTeam = (id, team) => {
 const updateError = (LocalState, error) => {
   LocalState.set('UPDATE_TEAM_ERROR', `Required ${error}`);
   return;
+};
+const create = () => {
+  Meteor.call('team.insert', team, (err, createdTeam) => {
+    if (createdTeam) {
+      sweetPrompts.sweetIfElseSucces('', 'Team Created', 'success',
+        {path: '/dashboard/team/new', text: 'Add another Team'},
+        {path: `/dashboard/team/${createdTeam}`, text: `View ${team.name}`})
+    }
+  });
 };
 export default {
   update({Meteor, LocalState}, id, team) {
@@ -22,6 +31,10 @@ export default {
   transferTeam({Meteor, LocalState}, id, team) {
     LocalState.set('UPDATE_TEAM_ERROR', null);
     transferTeam(id, team);
+  },
+  create({Meteor, LocalState}, team) {
+    LocalState.set('UPDATE_TEAM_ERROR', null);
+    create(id, team);
   },
   deleteTeam({Meteor, LocalState}, teamId) {
     Meteor.call('team.remove', teamId)

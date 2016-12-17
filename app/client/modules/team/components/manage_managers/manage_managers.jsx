@@ -22,11 +22,11 @@ class ManageManagers extends React.Component {
   }
 
   render() {
-    let {allManagers, teamId, teams} = this.props;
+    let {allManagers, teamId, teams, team} = this.props;
     console.log(teamId, 'oo');
     return (
       <section id="team">
-        <PageTitle title={(teamId) ? 'Managers in Team' : 'All Managers'}/>
+        <PageTitle title={ `All Managers${(team) ? ` in ${team.name}` : ''}`}/>
         <Tabs teamId={teamId}/>
         <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/manager` : '/dashboard/team/user/new/manager'}
                  text="Add New Manager" permission="createManagers"/>

@@ -22,11 +22,11 @@ class ManageClients extends React.Component {
 
 
   render() {
-    let {allClients, teamId} = this.props;
+    let {allClients, teamId, team} = this.props;
 
     return (
       <section id="team">
-        <PageTitle title={(teamId) ? 'Clients in Team' : 'All Clients'}/>
+        <PageTitle title={ `All Clients${(team) ? ` in ${team.name}` : ''}`}/>
         <Tabs teamId={teamId}/>
         <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/client` : '/dashboard/team/user/new/client'}
                  text="Add New Client" permission="createClients"/>

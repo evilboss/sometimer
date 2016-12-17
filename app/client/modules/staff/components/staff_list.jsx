@@ -71,7 +71,7 @@ class StaffList extends React.Component {
       <section id="staff-list">
         {(team) ?
           <div>
-            <PageTitle title={formatHelper.capsAll(domainHelpers.getSubdomain())}/>
+            <PageTitle title={(team) ? `${formatHelper.capsAll(team.name)} Team` : '  '}/>
             <Tabs teamId={team._id}/>
             <div className="row no-margin-bottom">
               <div className="col s6">

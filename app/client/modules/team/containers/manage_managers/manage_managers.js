@@ -1,15 +1,15 @@
-import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import ManageManagers from '/client/modules/team/components/manage_managers/manage_managers.jsx';
-import Loader from '/client/utils/loader/loader';
+import {useDeps, composeAll, composeWithTracker, compose} from "mantra-core";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import ManageManagers from "/client/modules/team/components/manage_managers/manage_managers.jsx";
+import Loader from "/client/utils/loader/loader";
 export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   let subscriptionsReady = [
     Meteor.subscribe('users.allManagers', domainHelpers.getSubdomain()).ready(),
     Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()
   ];
-  const dataReady = ()=> {
-    const team = (teamId) ? Collections.Team.findOne(teamId) : null;
+  const dataReady = () => {
+    let team = (teamId) ? Collections.Team.findOne(teamId) : null;
     const teams = Collections.Team.find().fetch();
     const selector = (team) ? {'profile.role': 'manager', _id: team.teamLeader} : {'profile.role': 'manager'};
     let allManagers = Meteor.users.find(selector).fetch();

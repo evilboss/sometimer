@@ -1,11 +1,10 @@
-import React from 'react';
-import Tabs from '/client/modules/team/containers/tabs';
-import SubTabs from '/client/modules/team/containers/sub_tabs';
-import StatusIndicator from '/client/modules/team/components/status_indicator';
-import PageTitle from '/client/modules/core/components/page_title';
-
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
+import React from "react";
+import Tabs from "/client/modules/team/containers/tabs";
+import SubTabs from "/client/modules/team/containers/sub_tabs";
+import StatusIndicator from "/client/modules/team/components/status_indicator";
+import PageTitle from "/client/modules/core/components/page_title";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
 
 class ManageAdmins extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class ManageAdmins extends React.Component {
     let {allAdmins} = this.props;
     return (
       <section id="team">
-        <PageTitle title="   "/>
+        <PageTitle title="All Managers"/>
         <Tabs/>
         <SubTabs target="/dashboard/team/user/new/admin" text="Add New Admin" permission="createClients"/>
         <section id="manage-clients" className="col s12">
@@ -39,7 +38,7 @@ class ManageAdmins extends React.Component {
                       <a
                         href={`/dashboard/staff/settings/${staff._id}`}>
                         <img
-                          src={(staff.profile.displayPhoto)?`${staff.profile.displayPhoto}`:'/uploads/defaults/default_user.png'}
+                          src={(staff.profile.displayPhoto) ? `${staff.profile.displayPhoto}` : '/uploads/defaults/default_user.png'}
                           alt="Staff" className="circle responsive-img dp-small left"/>
                       </a>
                     </td>

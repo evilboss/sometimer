@@ -1,11 +1,11 @@
-import React from 'react';
-import Tabs from '/client/modules/team/containers/tabs';
-import SubTabs from '/client/modules/team/containers/sub_tabs';
-import StatusIndicator from '/client/modules/team/components/status_indicator';
-import Assignproject from '/client/modules/team/containers/manage_managers/assignproject';
-import PageTitle from '/client/modules/core/components/page_title';
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
+import React from "react";
+import Tabs from "/client/modules/team/containers/tabs";
+import SubTabs from "/client/modules/team/containers/sub_tabs";
+import StatusIndicator from "/client/modules/team/components/status_indicator";
+import Assignproject from "/client/modules/team/containers/manage_managers/assignproject";
+import PageTitle from "/client/modules/core/components/page_title";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
 
 class ManageManagers extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class ManageManagers extends React.Component {
     console.log(teamId, 'oo');
     return (
       <section id="team">
-        <PageTitle title="   "/>
+        <PageTitle title={(teamId) ? 'Managers in Team' : 'All Managers'}/>
         <Tabs teamId={teamId}/>
         <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/manager` : '/dashboard/team/user/new/manager'}
                  text="Add New Manager" permission="createManagers"/>

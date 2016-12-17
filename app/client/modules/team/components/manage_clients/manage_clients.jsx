@@ -1,10 +1,10 @@
-import React from 'react';
-import PageTitle from '/client/modules/core/components/page_title';
-import Tabs from '/client/modules/team/containers/tabs';
-import SubTabs from '/client/modules/team/containers/sub_tabs';
-import StatusIndicator from '/client/modules/team/components/status_indicator';
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
+import React from "react";
+import PageTitle from "/client/modules/core/components/page_title";
+import Tabs from "/client/modules/team/containers/tabs";
+import SubTabs from "/client/modules/team/containers/sub_tabs";
+import StatusIndicator from "/client/modules/team/components/status_indicator";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
 
 class ManageClients extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class ManageClients extends React.Component {
 
     return (
       <section id="team">
-        <PageTitle title="   "/>
+        <PageTitle title={(teamId) ? 'Clients in Team' : 'All Clients'}/>
         <Tabs teamId={teamId}/>
         <SubTabs target={(teamId) ? `/dashboard/team/${teamId}/user/new/client` : '/dashboard/team/user/new/client'}
                  text="Add New Client" permission="createClients"/>

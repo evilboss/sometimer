@@ -8,6 +8,7 @@ import {domainHelpers} from "/client/utils/helpers/domain-helpers";
 import {formatHelper} from "/client/utils/helpers/format-helpers";
 import Breadcrumbs from "/client/modules/core/containers/breadcrumbs";
 import {control} from "/lib/access-control/control";
+import TimeRequest from '/client/modules/timesheet/containers/time_request';
 
 class StaffList extends React.Component {
   constructor(props) {
@@ -105,12 +106,16 @@ class StaffList extends React.Component {
                 <h5 className="team-name">{(team) ? (team.name) ? team.name : '' : ''}</h5>
               </div>
               <div className="col s3 no-margin twbs">
-                <div className="row">
-                  <ul className="tabs">
-                    <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
-                    <li className="tab col s1"><a  href="#request">TimeLog Request</a></li>
-                  </ul>
-                </div>
+                {/*TODO: need to add timelog request view in this page*/}
+                {!(control.isStaff(Meteor.userId())) ?
+                  <div className="row">
+                    <ul className="tabs">
+                      <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
+                      <li className="tab col s1"><a href="#request">TimeLog Request</a></li>
+                    </ul>
+                  </div> : null
+                }
+
 
               </div>
 
@@ -155,11 +160,7 @@ class StaffList extends React.Component {
                 }
               </div>
             </div>
-            <div id="teamview" class="col s12">Team View</div>
-            <div id="request" class="col s12">TimeLog Request</div>
-
-
-            <div className="row border-top">
+            <div id="teamview" className="row border-top">
               <div className="col s12 no-padding">
 
 
@@ -277,6 +278,8 @@ class StaffList extends React.Component {
                 }
               </div>
             </div>
+            <div id="request" class="col s12"><TimeRequest/></div>
+
           </div> : ''}
 
       </section>

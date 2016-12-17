@@ -1,9 +1,8 @@
-import React from 'react';
-import TimeTotal from '../containers/time_total';
-import {sweetPrompts} from '/client/utils/helpers/sweet-helper';
-import {control} from '/lib/access-control/control';
-import StatusIndicator from '/client/modules/team/components/status_indicator';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
+import React from "react";
+import {sweetPrompts} from "/client/utils/helpers/sweet-helper";
+import {control} from "/lib/access-control/control";
+import StatusIndicator from "/client/modules/team/components/status_indicator";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
 
 class StaffDetails extends React.Component {
   constructor(props) {
@@ -43,10 +42,13 @@ class StaffDetails extends React.Component {
         (staff.profile) ?
           <tr key={index}>
             <td className="staff-dp">
-              <img
-                src={(staff.profile.displayPhoto) ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
-                alt="Staff"
-                className="circle responsive-img dp-small"/>
+              <a href={`/dashboard/staff-settings/team/${teamId}/${staff._id}`}>
+                <img
+                  src={(staff.profile.displayPhoto) ? staff.profile.displayPhoto : '/uploads/defaults/default_user.png'}
+                  alt="Staff"
+                  className="circle responsive-img dp-small"/>
+              </a>
+
 
             </td>
             <td className="staff-details">
@@ -64,7 +66,7 @@ class StaffDetails extends React.Component {
             <td className="center-align">
               {(isStaff) ? null :
                 <StatusIndicator class={(staff.profile) ?
-                  (staff.profile.status) ? formatHelper.capitalize(staff.profile.status)
+                  (staff.profile.status) ? (staff.profile.status == 'completed') ? 'Invited' : formatHelper.capitalize(staff.profile.status)
                     : '' : ''}/>
               }
 
@@ -87,13 +89,7 @@ class StaffDetails extends React.Component {
                     </a>
                     : '' : ''
                 }
-                {
-                  (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ?
-                    <a href={`/dashboard/staff-settings/team/${teamId}/${staff._id}`}>
-                      <img src="/Assets/icons/settings.png"/>
-                    </a>
-                    : '' : ''
-                }
+
               </div>
 
             </td>

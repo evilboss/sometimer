@@ -21,6 +21,12 @@ export default function () {
       _.each(profile, function (value, key) {
         remotivUser.update(userId, `profile.${key}`, value);
       });
+    },
+    'users.update.permissions'(userId, permissions){
+      console.log(permissions);
+      const currentPermissions = Meteor.users.findOne(userId);
+      console.log(currentPermissions.profile.permissions);
+      //remotivUser.update(userId, `profile.permissions`, permissions);
     }
   });
 }

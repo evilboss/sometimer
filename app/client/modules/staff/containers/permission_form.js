@@ -1,6 +1,5 @@
-import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
-import PermissionForm from '../components/permission_form.jsx';
+import {useDeps, composeAll, composeWithTracker, compose} from "mantra-core";
+import PermissionForm from "../components/permission_form.jsx";
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
@@ -9,6 +8,7 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  updatePermissions: actions.staff_actions.updatePermissions,
   context: () => context
 });
 

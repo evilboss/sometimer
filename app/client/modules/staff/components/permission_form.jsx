@@ -10,20 +10,17 @@ class PermissionForm extends React.Component {
     }
   }
 
-  setInitialPermissions(permissions) {
-    this.setState({permissions: permissions});
-  }
-
   isChecked(permission) {
-    const permissions = this.props.permissions;
-    return (_.contains(permissions, permission)) ? true : false;
+    const {permissions} = this.props;
+    const result = (_.contains(permissions, permission)) ? true : false;
+    return result;
   }
 
   _changePermissions(e) {
     const permission = e.target.attributes.getNamedItem('data-permission').value;
-    const hasThisPermission = this.isChecked(permission);
-    (hasThisPermission) ? this._removePermissions(permission) : console.log('no');
-  }
+    (e.target.checked) ? this._addToPermissions(permission) : this._removePermissions(permission);
+
+  };
 
   _addToPermissions(permission) {
     let permissions = this.state.permissions;
@@ -34,18 +31,20 @@ class PermissionForm extends React.Component {
     });
   }
 
-  _updatePermissions() {
-
+  _removePermissions(permission) {
+    let permissions = this.state.permissions;
+    const index = permissions.indexOf(permission);
+    permissions.splice(index, 1);
+    this.setState({
+      permissions: permissions
+    });
   }
 
-  _removePermissions(permission) {
-    let permissions = this.state.ommitList;
-    permissions.push(permission);
-    permissions.push(permission);
-    permissions = _.uniq(permissions);
-    this.setState({
-      ommitList: permissions
-    });
+  _updatePermissions() {
+    const {user, updatePermissions} = this.props;
+    /*TODO: need to find a way how to get all checked items*/
+    console.info('updating permissions');
+    updatePermissions(user._id, this.state.permissions);
   }
 
   render() {
@@ -99,8 +98,6 @@ class PermissionForm extends React.Component {
         break;
       default:
     }
-
-    console.log(currentUserPermission);
     return (
       <div className="col s8 no-padding">
         {
@@ -128,7 +125,9 @@ class PermissionForm extends React.Component {
                           <td className="center" key={typeIndex}>
                             <input type="checkbox" defaultValue="true" id={type}
                                    defaultChecked={this.isChecked(type)}
-                                   data-permission={type}/>
+                                   data-permission={type}
+                                   onChange={this._changePermissions.bind(this)}
+                            />
                             <label htmlFor={type}></label>
                           </td>
                         )

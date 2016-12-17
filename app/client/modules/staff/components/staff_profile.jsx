@@ -10,7 +10,6 @@ class StaffProfile extends React.Component {
   render() {
     const {user, teams, team, projects} = this.props;
     const {profile} = (user) ? user : '';
-
     return (
       <section>
         {(user) ?

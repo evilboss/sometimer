@@ -129,7 +129,9 @@ class StaffSettings extends React.Component {
                     <a onClick={this.togglePermission.bind(this)}>
                       <i className="material-icons right">close</i>
                     </a>
-                    <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/>
+                    <PermissionForm userPermissions={userPermissions} user={user} permissions={permissions}/> : null
+
+
                     <div className="col s12 no-padding">
                       {(currentUser) ?
                         (!control.isStaff(currentUser)) ?

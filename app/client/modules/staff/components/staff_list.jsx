@@ -1,16 +1,13 @@
-import React from 'react';
-import moment from 'moment';
-import SendInvitationModal from '/client/modules/invitations/components/send_invitation_modal';
-import StaffDetails from '../containers/staff_details';
-import DatePicker from '/client/modules/timesheet/components/datepicker';
-import DateRange from '/client/modules/timesheet/components/daterange';
-import PageTitle from '/client/modules/core/components/page_title';
-import Tabs from '/client/modules/team/containers/tabs';
-import SubTabs from '/client/modules/team/containers/sub_tabs';
-import {domainHelpers} from '/client/utils/helpers/domain-helpers';
-import {formatHelper} from '/client/utils/helpers/format-helpers';
-import Breadcrumbs from '/client/modules/core/containers/breadcrumbs';
-import {control} from '/lib/access-control/control';
+import React from "react";
+import moment from "moment";
+import StaffDetails from "../containers/staff_details";
+import DateRange from "/client/modules/timesheet/components/daterange";
+import PageTitle from "/client/modules/core/components/page_title";
+import Tabs from "/client/modules/team/containers/tabs";
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+import {formatHelper} from "/client/utils/helpers/format-helpers";
+import Breadcrumbs from "/client/modules/core/containers/breadcrumbs";
+import {control} from "/lib/access-control/control";
 
 class StaffList extends React.Component {
   constructor(props) {
@@ -107,7 +104,31 @@ class StaffList extends React.Component {
               <div className="col s12 no-margin">
                 <h5 className="team-name">{(team) ? (team.name) ? team.name : '' : ''}</h5>
               </div>
+              <div className="col s3 no-margin twbs">
+                <div className="row">
+                  <ul className="tabs">
+                    <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
+                    <li className="tab col s1"><a  href="#request">TimeLog Request</a></li>
+                  </ul>
+                </div>
 
+              </div>
+
+              <div className="col s5 no-margin">
+                <div className="tabs-background">
+                  <div className="tabs-wrapper">
+                    <ul className="tabs">
+                      <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
+                                                    href="#today">Today</a></li>
+                      <li className="tab col s3"><a onClick={this.getWeek.bind(this)} href="#week">This Week</a></li>
+                      <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#month">This Month</a>
+                      </li>
+                      <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom Date</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
               <div className="col s4 no-margin twbs">
                 {
                   ((teamLeader) && (!_.isEmpty(staffList))) ?
@@ -133,22 +154,9 @@ class StaffList extends React.Component {
 
                 }
               </div>
-              <div className="col s5 no-margin">
-                <div className="tabs-background">
-                  <div className="tabs-wrapper">
-                    <ul className="tabs">
-                      <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
-                                                    href="#today">Today</a></li>
-                      <li className="tab col s3"><a onClick={this.getWeek.bind(this)} href="#week">This Week</a></li>
-                      <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#month">This Month</a>
-                      </li>
-                      <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom Date</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
+            <div id="teamview" class="col s12">Team View</div>
+            <div id="request" class="col s12">TimeLog Request</div>
 
 
             <div className="row border-top">

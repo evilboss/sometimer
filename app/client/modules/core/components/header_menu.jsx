@@ -1,6 +1,5 @@
 import React from "react";
 import NavbarProfile from "./navbar_profile";
-import Notification from "../containers/notification";
 import TimeTracker from "/client/modules/timesheet/containers/time_tracker";
 import {formatHelper} from "/client/utils/helpers/format-helpers";
 import {domainHelpers} from "/client/utils/helpers/domain-helpers";
@@ -68,10 +67,6 @@ class HeaderMenu extends React.Component {
                     <TimeTracker/>
                   </li>
 
-                  <li>
-                    <Notification currentUser={currentUser}/>
-
-                  </li>
                   <li>
                     <a href='' className="account-menu" data-activates='account-menu'>
                       <img className="inline"

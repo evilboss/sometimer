@@ -53,7 +53,6 @@ class HeaderMenu extends React.Component {
                       src={(sitePhoto) ? sitePhoto : '/Assets/teams/default/logo/Remotiv_logo_horizontal_onblack.png'}/>
 
                   </div>
-                  <span>{formatHelper.capsAll(domainHelpers.getSubdomain())}</span>
                 </a>
 
 

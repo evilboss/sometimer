@@ -73,7 +73,8 @@ class ManageManagers extends React.Component {
                         <Assignproject userId={staff._id} teams={teams}/>}
                     </td>
                     <td className="status">
-                      <StatusIndicator class={formatHelper.capitalize(staff.profile.status)}/>
+                      <StatusIndicator
+                        class={(staff.profile.status == 'completed') ? 'Invited' : formatHelper.capitalize(staff.profile.status)}/>
                     </td>
                   </tr>
                 ))}

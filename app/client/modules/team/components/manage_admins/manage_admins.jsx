@@ -50,7 +50,8 @@ class ManageAdmins extends React.Component {
                       </div>
                     </td>
                     <td className="status">
-                      <StatusIndicator class={formatHelper.capitalize(staff.profile.status)}/>
+                      <StatusIndicator
+                        class={(staff.profile.status == 'completed') ? 'Invited' : formatHelper.capitalize(staff.profile.status)}/>
                     </td>
                   </tr>
                 ))}

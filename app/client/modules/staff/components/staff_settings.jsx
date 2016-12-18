@@ -183,9 +183,13 @@ class StaffSettings extends React.Component {
                                   <i className="material-icons">lock</i>
                                 </a>
                             }
-                            <a onClick={this.togglePermission.bind(this)}>
-                              <i className="material-icons">edit</i>
-                            </a>
+                            {/*
+                             TODO: Add New Modal for updating profile data
+                             <a onClick={this.togglePermission.bind(this)}>
+                             <i className="material-icons">edit</i>
+                             </a>
+                             */}
+
 
                           </div>
                         </td>

@@ -18,7 +18,7 @@ class TimeRequest extends React.Component {
     const format = 'hh:mm A z';
     return (
       <section id="time-request">
-        <PageTitle title='Time Request'/>
+        <PageTitle title='Timesheet View'/>
         <table className="centered bordered">
           <thead>
           <tr>

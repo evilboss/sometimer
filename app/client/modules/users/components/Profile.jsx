@@ -1,17 +1,44 @@
 import React from "react";
 import PageTitle from "/client/modules/core/components/page_title";
-
+import UpdateAvatar from "/client/modules/core/components/update_avatar";
 export default class Profile extends React.Component {
-
   constructor(props, context) {
     super(props, context);
+    this.states = {
+      cropperOpen: false,
+      img: null,
+      croppedImg: "http://www.fillmurray.com/400/400"
+    }
+  }
 
-  };
+  handleFileChange(dataURI) {
+    console.log('hanling file change');
+    this.setState({
+      img: dataURI,
+      croppedImg: this.states.croppedImg,
+      cropperOpen: true
+    });
+  }
+
+  handleCrop(dataURI) {
+    console.log('hanling crop');
+    this.setState({
+      cropperOpen: false,
+      img: null,
+      croppedImg: dataURI
+    });
+  }
+
+  handleRequestHide() {
+    this.setState({
+      cropperOpen: false
+    });
+  }
 
 
   render() {
     const user = Meteor.user();
-    console.log(user);
+    let {croppedImg, cropperOpen, img} = this.states;
     return (
       <section id="profile">
         <PageTitle title='Account Information'/>
@@ -19,14 +46,15 @@ export default class Profile extends React.Component {
           <div className="row">
             <h5>{`${user.profile.firstName} ${user.profile.lastName}`}</h5>
             <div className="col s12 m3 l3">
+              {/*
+              Todo: make update avatar work
               <img
-                src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
-                alt="dp"
-                className="display-photo responsive-img center-block circle"/>
+               src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
+               alt="dp"
+               className="display-photo responsive-img center-block circle"/>*/}
             </div>
             <div className="col s12 m9 l9 no-horizontal-margin row">
-
-              <div class="col s8">
+              <div className="col s8">
                 <table>
                   <tbody>
                   <tr>

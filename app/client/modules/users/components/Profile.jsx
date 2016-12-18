@@ -1,5 +1,6 @@
 import React from "react";
 import PageTitle from "/client/modules/core/components/page_title";
+import AvatarEditor from "/client/modules/core/components/avatar_editor";
 export default class Profile extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -45,9 +46,11 @@ export default class Profile extends React.Component {
           <div className="row">
             <h5>{`${user.profile.firstName} ${user.profile.lastName}`}</h5>
             <div className="col s12 m3 l3">
+              <AvatarEditor
+                image={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}/>
               {/*
-              Todo: make update avatar work
-              <img
+               Todo: make update avatar work
+               <img
                src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
                alt="dp"
                className="display-photo responsive-img center-block circle"/>*/}

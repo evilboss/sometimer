@@ -1,6 +1,5 @@
 import React from "react";
 import PageTitle from "/client/modules/core/components/page_title";
-import UpdateAvatar from "/client/modules/core/components/update_avatar";
 export default class Profile extends React.Component {
   constructor(props, context) {
     super(props, context);

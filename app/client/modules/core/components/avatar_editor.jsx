@@ -1,13 +1,16 @@
 import React from "react";
 import ReactAvatarEditor from "react-avatar-editor";
-
+import {uploadToAmazonS3} from "/client/utils/helpers/file_upload";
 class AvatarEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       scale: 1,
       borderRadius: 0,
-      preview: null
+      preview: null,
+      isUploading: false,
+      image: ''
+
     }
 
     this.handleSave = this.handleSave.bind(this);
@@ -15,10 +18,41 @@ class AvatarEditor extends React.Component {
     this.handleBorderRadius = this.handleBorderRadius.bind(this);
   }
 
+  dataURItoBlob(dataURI) {
+    var binary = atob(dataURI.split(',')[1]);
+    var array = [];
+    for (var i = 0; i < binary.length; i++) {
+      array.push(binary.charCodeAt(i));
+    }
+    return new Blob([new Uint8Array(array)], {type: 'image/png'});
+  }
+
+  toggleUpload() {
+    this.setState({isUploading: !this.state.isUploading});
+  }
+
+  onFileChange() {
+    const {
+      photo
+    }= this.refs;
+    const reader = new FileReader();
+    reader.readAsDataURL(photo.files[0]);
+    reader.onloadend = (event) => {
+      var img = photo.files[0];
+      img.src = event.target.result;
+      this.setState({image: img.src});
+    }
+    this.toggleUpload();
+  }
+
   handleSave(data) {
     var img = this.refs.avatar.getImage().toDataURL();
     var rect = this.refs.avatar.getCroppingRect();
-    this.setState({preview: img, croppingRect: rect});
+    let file = this.dataURItoBlob(img);
+    //this.setState({preview: img, croppingRect: rect});
+    uploadToAmazonS3.upload({file: file}, "updateDisplayPhoto");
+    this.toggleUpload();
+
   }
 
   handleScale() {
@@ -36,43 +70,51 @@ class AvatarEditor extends React.Component {
   }
 
   render() {
-    const {image} = this.props;
+    let {displayPhoto} = this.props;
+    let {isUploading, image} = this.state;
     return (
-      <div>
-        <ReactAvatarEditor
-          ref="avatar"
-          scale={parseFloat(this.state.scale)}
-          borderRadius={this.state.borderRadius}
-          onSave={this.handleSave}
-          onLoadFailure={this.logCallback.bind(this, 'onLoadFailed')}
-          onLoadSuccess={this.logCallback.bind(this, 'onLoadSuccess')}
-          onImageReady={this.logCallback.bind(this, 'onImageReady')}
-          onImageLoad={this.logCallback.bind(this, 'onImageLoad')}
-          onDropFile={this.logCallback.bind(this, 'onDropFile')}
-          image={image}
-        />
-        <br />
-        Zoom: <input name="scale" type="range" ref="scale" onChange={this.handleScale} min="1" max="2" step="0.01"
-                     defaultValue="1"/>
-        <br />
-        Border radius: <input name="scale" type="range" ref="borderRadius" onChange={this.handleBorderRadius} min="0"
-                              max="100" step="1" defaultValue="0"/>
-        <br />
-        <br />
-        <input type="button" onClick={this.handleSave} value="Preview"/>
-        <br />
-        <img src={this.state.preview}
-             style={{borderRadius: this.state.borderRadius + 5 /* because of the 5px padding */}}/>
 
-        {this.state.croppingRect ? // display only if there is a cropping rect
-          <ImageWithRect
-            width={200 * 478 / 270}
-            height={200}
-            image="example/avatar.jpg"
-            rect={this.state.croppingRect}
-            style={{margin: '10px 24px 32px', padding: 5, border: '1px solid #CCC'}}/>
-          :
-          null}
+      <div>
+        <div>
+          {(isUploading) ?
+            <div>
+              <div className="avatar-edit">
+                <ReactAvatarEditor
+                  ref="avatar"
+                  scale={parseFloat(this.state.scale)}
+                  borderRadius={this.state.borderRadius}
+                  onSave={this.handleSave}
+                  onLoadFailure={this.logCallback.bind(this, 'onLoadFailed')}
+                  onLoadSuccess={this.logCallback.bind(this, 'onLoadSuccess')}
+                  onImageReady={this.logCallback.bind(this, 'onImageReady')}
+                  onImageLoad={this.logCallback.bind(this, 'onImageLoad')}
+                  onDropFile={this.logCallback.bind(this, 'onDropFile')}
+                  image={image}
+                />
+                <br/>
+                Zoom:
+                <input name="scale" type="range" ref="scale" onChange={this.handleScale} min="1" max="2" step="0.01"
+                       defaultValue="1"/>
+                <br/>
+                <br/>
+                <input type="button" className="btn theme-color" onClick={this.handleSave} value="Save"/>
+                <br />
+                <img src={this.state.preview}/></div>
+              <button onClick={this.toggleUpload.bind(this)}>Cancel</button>
+            </div> :
+            <div className="avatar-photo">
+              <input ref="photo" type="file" accept="image/*" onChange={this.onFileChange.bind(this)}/>
+              <div className="avatar-edit">
+                <span>Click to Pick Avatar</span>
+                <i className="fa fa-camera"></i></div>
+              <img src={displayPhoto}/>
+            </div>
+          }
+
+
+        </div>
+
+
       </div>
     )
   }

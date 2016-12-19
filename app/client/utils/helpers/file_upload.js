@@ -10,11 +10,26 @@ const _setPlaceholderText = (string = "Click to Upload") => {
 const _addUrlToDatabase = (url, type) => {
   Meteor.call(type, url, (error) => {
     if (error) {
-      Bert.alert(error.reason, "warning");
-      _setPlaceholderText();
+      Bert.alert({
+        type: 'danger',
+        style: 'growl-bottom-right',
+        title: 'Game Added',
+        message: 'Photo Not uploaded',
+        icon: 'fa-picture-o'
+      });
     } else {
-      Bert.alert("Photo Successfully Updated", "success");
-      _setPlaceholderText();
+      Bert.alert({
+        type: 'success',
+        style: 'growl-bottom-right',
+        title: 'Game Added',
+        message: 'Please wait photo uploading',
+        icon: 'fa-picture-o'
+      });
+      setInterval(function () {
+        window.location.reload()
+      }, 3000);
+
+      // window.location.reload();
     }
   });
 };

@@ -208,7 +208,7 @@ class ProfileEdit extends React.Component {
         <PageTitle title='Account Information'/>
         {(user) ?
           <div className="row">
-            <div className="col s12 m3 l3">
+            <div className="col s12 m3 l3 edit-photo">
               <img
                 src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
                 alt="dp"

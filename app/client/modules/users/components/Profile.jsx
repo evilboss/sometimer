@@ -47,7 +47,8 @@ export default class Profile extends React.Component {
             <h5>{`${user.profile.firstName} ${user.profile.lastName}`}</h5>
             <div className="col s12 m3 l3">
               <AvatarEditor
-                image={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}/>
+                displayPhoto={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}/>
+
               {/*
                Todo: make update avatar work
                <img

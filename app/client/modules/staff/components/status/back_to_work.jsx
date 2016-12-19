@@ -10,7 +10,7 @@ class BackToWork extends React.Component {
     return (
       <section>
         {(status == 'Break') ?
-          <button className="ui btn waves-effect waves-light theme-color" onClick={this.props.action.bind(this)}>
+          <button className="ui In btn waves-effect waves-light" onClick={this.props.action.bind(this)}>
             <i className="material-icons left">cached</i>
             Back To Work
           </button> : ''}

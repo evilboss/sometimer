@@ -102,12 +102,12 @@ class AvatarEditor extends React.Component {
                 <img src={this.state.preview}/></div>
               <button onClick={this.toggleUpload.bind(this)}>Cancel</button>
             </div> :
-            <div className="avatar-photo">
+            <div className="avatar-photo valign-wrapper">
               <input ref="photo" type="file" accept="image/*" onChange={this.onFileChange.bind(this)}/>
               <div className="avatar-edit">
                 <span>Click to Pick Avatar</span>
                 <i className="fa fa-camera"></i></div>
-              <img src={displayPhoto}/>
+              <img className="valign" src={displayPhoto}/>
             </div>
           }
 

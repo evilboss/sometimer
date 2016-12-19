@@ -27,7 +27,11 @@
   background-color: $green !important;
 }
 
-.Out.to.Lunch {
+.Out, .completed {
+  background-color: $dark-gray !important;
+}
+
+.Out.to.Lunch, .Break {
   background-color: $yellow !important;
 }
 

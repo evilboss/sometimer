@@ -19,7 +19,7 @@ const menuItems = [
     routes: ['']
   },
   {
-    title: "MY TEAM",
+    title: "MY TEAMS",
     icon: "group",
     url: '/dashboard/team',
     name: 'dashboard.team',

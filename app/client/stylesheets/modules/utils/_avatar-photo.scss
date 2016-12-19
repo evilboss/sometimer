@@ -1,8 +1,8 @@
 
 .avatar-photo {
   position: relative;
-  width: inherit;
-  height: 15em;
+  width: 250px;
+  height: 250px;
   position: relative;
   background-color: #666;
   overflow: hidden;
@@ -56,5 +56,8 @@
       font-size: 92px;
       opacity: 0.2;
     }
+  }
+  .valign {
+    margin: auto;
   }
 }

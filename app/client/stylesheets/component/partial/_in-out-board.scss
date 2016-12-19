@@ -7,7 +7,11 @@ section#in-out-board {
   background-size: cover;
   height: 100%;
   width: 100%;
-
+  .status {
+    .Break {
+      padding: 0 2.45em;
+    }
+  }
   .wrapper {
     margin-top: 50px;
     margin-bottom: 100px;

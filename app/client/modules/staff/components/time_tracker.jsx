@@ -143,6 +143,15 @@ class TimeTracker extends React.Component {
                                 {(currentUser.profile.timezone) ? formatHelper.getCountry(currentUser.profile.timezone) : 'Manila'}
                               </b></div>
                               <div><b>{this.getDate()}</b></div>
+
+                              <div>
+                                <div
+                                  className={`status-indicator ${currentUser.profile.status}`}>
+                                </div>
+                                <div className="inline">
+                                  {(currentUser.profile.status == 'completed') ? 'Out' : currentUser.profile.status}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div> : ''

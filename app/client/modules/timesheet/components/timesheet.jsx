@@ -59,7 +59,6 @@ class Timesheet extends React.Component {
             }
           ]}/>
           : null}
-        <UserDetails currentUser={currentUser}/>
         <DateRange changeDate={this.changeDate.bind(this)}/>
         <TimesheetTable currentUser={currentUser} dates={dates}/>
       </section>

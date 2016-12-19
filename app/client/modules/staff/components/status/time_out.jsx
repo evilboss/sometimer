@@ -11,15 +11,15 @@ class TimeOut extends React.Component {
       <div>
         {(status == 'In') ?
           <section>
-            <button className="ui btn waves-effect waves-light theme-color btn-block"
+            <button className="ui btn waves-effect waves-light Break btn-block"
                     onClick={this.props.startBreakAction.bind(this)}>
               <i className="material-icons left">timer</i>
               Break Time
             </button>
-            <button className="ui btn waves-effect waves-light theme-color btn-block time-out"
+            <button className="ui Out btn waves-effect waves-light btn-block time-out"
                     onClick={this.props.endShiftAction.bind(this)}>
               <i className="material-icons left">cached</i>
-              Log Out
+              End Shift
             </button>
           </section> : ''}
       </div>

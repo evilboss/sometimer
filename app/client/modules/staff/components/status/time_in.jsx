@@ -10,9 +10,9 @@ class TimeIn extends React.Component {
     return (
       <section>
         {(!status || status == 'Out') ?
-          <button className="ui btn waves-effect waves-light theme-color" onClick={this.props.action.bind(this)}>
+          <button className="ui In btn waves-effect waves-light" onClick={this.props.action.bind(this)}>
             <i className="material-icons left">cached</i>
-            Log In
+            Start Shift
           </button> : ''}
       </section>
 

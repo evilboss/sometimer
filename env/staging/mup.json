@@ -1,9 +1,9 @@
 {
   "servers": [
     {
-      "host": "54.164.99.22",
+      "host": "54.254.228.207",
       "username": "ubuntu",
-      "pem": "~/.ssh/remotiv-app-dev.pem",
+      "pem": "~/.ssh/remotiv-platform.pem",
       "env": {
       }
     }

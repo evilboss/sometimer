@@ -66,7 +66,6 @@ class StaffList extends React.Component {
   render() {
     const {team, staffList, teamLeader, currentUser, userPermissions} = this.props;
     const {role} = (currentUser) ? (currentUser.profile) ? currentUser.profile : 'staff' : 'staff';
-    console.log(teamLeader, 'teamleader');
     return (
       <section id="staff-list">
         {(team) ?
@@ -112,8 +111,7 @@ class StaffList extends React.Component {
               </div>
               <div className="col s4 no-margin twbs">
                 {
-                  ((teamLeader) && (!_.isEmpty(staffList))) ?
-
+                  (!_.isEmpty(teamLeader) && !_.isEmpty(staffList)) ?
                     <div className="btn btn-add">
                       {(control.isPermitted('createManagers', userPermissions)) ?
 
@@ -132,7 +130,6 @@ class StaffList extends React.Component {
                         : null}
                     </div>
                     : ''
-
                 }
               </div>
             </div>
@@ -140,7 +137,7 @@ class StaffList extends React.Component {
               <div className="col s12 no-padding">
                 <PageTitle title='Team View'/>
 
-                {((!teamLeader) && (_.isEmpty(staffList))) ?
+                {((_.isEmpty(teamLeader) && (_.isEmpty(staffList)))) ?
                   <div className="empty-team col s9 twbs">
                     <h5>This team is empty. Populate this team by doing either of the two below</h5>
                     <div className="col s5">
@@ -195,9 +192,10 @@ class StaffList extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {(teamLeader) ?
-                      <StaffDetails currentUser={currentUser._id} staff={teamLeader} index={312809}
-                                    teamId={team._id} isStaff={control.isStaff(Meteor.userId())}/> :
+                    {(!_.isEmpty(teamLeader)) ?
+                      teamLeader.map((staff, index) => (
+                        <StaffDetails currentUser={currentUser._id} staff={staff} index={index}
+                                      teamId={team._id} isStaff={control.isStaff(Meteor.userId())}/>  )) :
                       <tr>
                         <td></td>
                         <td colSpan="4">
@@ -219,38 +217,38 @@ class StaffList extends React.Component {
                         </td>
                       </tr>}
 
-                    {(!_.isEmpty(staffList)) ?
-                      staffList.map((staff, index) => (
-                        <StaffDetails key={index} staff={staff} index={index} teamId={team._id}
-                                      isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
-                      ))
-                      : <tr>
-                      <td></td>
-                      <td colSpan="3" className="red-text">
-                        <div className="empty-list red-text btn-add">
-                          There is no Staff assigned to this team yet. &nbsp;
-                          {(control.isPermitted('createManagers', userPermissions)) ?
-                            <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
-                               className="waves-effect waves-light secondary-color"><i
-                              className="material-icons">add</i><span>Add a Manager</span></a>
-                            : ''}
-                          {(control.isPermitted('createStaffs', userPermissions)) ?
-                            <a href={`/dashboard/team/${team._id}/user/new/staff`}
-                               className="waves-effect waves-light secondary-color">
-                              <i className="material-icons">add</i>
-                              <span>Add a Staff</span>
-                            </a>
-                            : ''}
-                        </div>
-                      </td>
-                    </tr>
+                    {
+                      (!_.isEmpty(staffList)) ?
+                        staffList.map((staff, index) => (
+                          <StaffDetails key={index} staff={staff} index={index} teamId={team._id}
+                                        isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
+                        ))
+                        : <tr>
+                        <td></td>
+                        <td colSpan="3" className="red-text">
+                          <div className="empty-list red-text btn-add">
+                            There is no Staff assigned to this team yet. &nbsp;
+                            {(control.isPermitted('createManagers', userPermissions)) ?
+                              <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
+                                 className="waves-effect waves-light secondary-color"><i
+                                className="material-icons">add</i><span>Add a Manager</span></a>
+                              : ''}
+                            {(control.isPermitted('createStaffs', userPermissions)) ?
+                              <a href={`/dashboard/team/${team._id}/user/new/staff`}
+                                 className="waves-effect waves-light secondary-color">
+                                <i className="material-icons">add</i>
+                                <span>Add a Staff</span>
+                              </a>
+                              : ''}
+                          </div>
+                        </td>
+                      </tr>
                     }
                     <tr>
 
                     </tr>
                     </tbody>
                   </table>
-
                 }
               </div>
             </div>

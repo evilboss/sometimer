@@ -24,7 +24,7 @@ export default function () {
     const selectedTeam = Team.findOne(teamId);
     const staffList = [];
     (selectedTeam.members) ? staffList.push.apply(staffList, selectedTeam.members) : '';
-    (selectedTeam.teamLeader) ? staffList.push(selectedTeam.teamLeader) : '';
+    (selectedTeam.teamLeader) ? staffList.push.apply(staffList, selectedTeam.teamLeader) : '';
     const teamOptions = (staffList) ? {_id: {$in: staffList}} : {_id: 'doesnotExist'};
     return [Meteor.users.find(teamOptions, {fields: fields}), Team.find(teamId)];
   });

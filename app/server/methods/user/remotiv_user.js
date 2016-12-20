@@ -4,9 +4,9 @@
 import {Invitations, Team} from '/lib/collections';
 import {remotivMailer} from '/server/methods/email/email';
 
-const add = (newUser)=> {
+const add = (newUser) => {
   console.log('add');
-  const updateInvite = ()=> {
+  const updateInvite = () => {
     const inviteToUpdate = Invitations.findOne(newUser.inviteId);
     Invitations.update({_id: newUser.inviteId}, {$set: {status: 'completed', token: ''}});
   };
@@ -18,22 +18,24 @@ const add = (newUser)=> {
   (addAccount) ? updateInvite() : '';
   return addAccount;
 };
-const remove = (userId)=> {
+const remove = (userId) => {
   Meteor.users.remove(userId)
 };
-const postAdd = (invite, teamId, userRole)=> {
+const addToTeam = (teamId, teamLeader, teamMembers, userId, userRole) => {
+  (userRole == 'manager') ? teamLeader.push(userId) : '';
+  (userRole == 'staff') ? teamMembers.push(userId) : '';
+  console.log(teamLeader,teamMembers);
+  Team.update(teamId, {$set: {teamLeader: teamLeader, members: teamMembers}});
+};
+
+const postAdd = (invite, teamId, userRole) => {
   remotivMailer.sendInvite(invite);
   let team = (teamId) ? Team.findOne(teamId) : null;
   (team) ?
-    addToTeam(teamId, team.members, invite.userId, userRole) :
+    addToTeam(teamId, team.teamLeader, team.members, invite.userId, userRole) :
     null;
 };
-const addToTeam = (teamId, teamMembers, userId, userRole)=> {
-  teamMembers.push(userId);
-  //if manager set to team leader, else just add to team members
-  (userRole == 'manager') ? Team.update(teamId, {$set: {teamLeader: userId}}) : Team.update(teamId, {$set: {members: teamMembers}});
-};
-const addNew = (user, message)=> {
+const addNew = (user, message) => {
   console.log('adding new');
   const userId = Accounts.createUser({
     email: user.email,
@@ -55,18 +57,18 @@ const addNew = (user, message)=> {
   Invitations.insert(invite);
   (userId) ? postAdd(invite, ( user.profile.department) ? user.profile.department : null, (user.profile.role) ? user.profile.role : null) : null;
 };
-const updatePhoto = (id, imgPath)=> {
+const updatePhoto = (id, imgPath) => {
   Meteor.users.update({_id: id}, {$set: {'profile.displayPhoto': imgPath}})
 };
-const update = (id, key, value)=> {
+const update = (id, key, value) => {
   Meteor.users.update({_id: id}, {$set: {[key]: value}})
 };
 
 const remotivUser = {
-  add: (newUser)=>add(newUser),
-  remove: (userId)=>remove(userId),
+  add: (newUser) => add(newUser),
+  remove: (userId) => remove(userId),
   updatePhoto: updatePhoto(),
-  update: (id, key, value)=>update(id, key, value),
-  addNew: (user, message)=>addNew(user, message),
+  update: (id, key, value) => update(id, key, value),
+  addNew: (user, message) => addNew(user, message),
 };
 export {remotivUser};

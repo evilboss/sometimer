@@ -42,16 +42,14 @@ class CreateTeam extends React.Component {
           {path: `/dashboard/team/${createdTeam}`, text: `View ${team.name}`})
       }
     });
-
   };
-
   addTeam(team) {
     team.creator = Meteor.userId();
-    team.teamLeader = this.refs.teamLeader.getValue();
+    team.teamLeader = (this.refs.teamLeader.getValue()) ? [this.refs.teamLeader.getValue()] : [];
     team.site = domainHelpers.getSubdomain();
     team.members = [];
+    team.clients = [];
     (team.name) ? this._createTeam(team) : sweetPrompts.sweetSucces('Team/Department name is required', 'Team not Created', 'error');
-
   }
 
 

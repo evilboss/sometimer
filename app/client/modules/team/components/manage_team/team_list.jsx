@@ -42,10 +42,10 @@ class TeamList extends React.Component {
                               }
                             </div>
                             <div className="card-content">
-                              {(team.teamLeader) ?
-                                <DisplayManager userId={team.teamLeader}
+                              {(!_.isEmpty(team.teamLeader)) ?
+                                <DisplayManager userId={_.first(team.teamLeader)}
                                                 target={(userPermissions) ? control.isPermitted('updateManagers', userPermissions)
-                                                  ? `/dashboard/staff-settings/team/${team._id}/${team.teamLeader}` : '' : ''}/>
+                                                  ? `/dashboard/staff-settings/team/${team._id}/${_.first(team.teamLeader)}` : '' : ''}/>
                                 :
                                 <div className="row no-margin">
                                   <img

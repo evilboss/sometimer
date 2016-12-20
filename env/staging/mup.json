@@ -1,7 +1,7 @@
 {
   "servers": [
     {
-      "host": "54.254.228.207",
+      "host": "54.169.35.244",
       "username": "ubuntu",
       "pem": "~/.ssh/remotiv-platform.pem",
       "env": {
@@ -11,7 +11,7 @@
   "setupMongo": true,
   "setupNode": true,
   "nodeVersion": "0.10.38",
-  "setupPhantom": false,
+  "setupPhantom": true,
   "appName": "remotiv-platform",
   "app": "../../app",
   "env": {

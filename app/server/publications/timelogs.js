@@ -28,7 +28,6 @@ export default function () {
   Meteor.publish('timelogs.approval', function () {
     let staffList = [];
     const teamSelector = (auth.isAdmin(this.userId)) ? {
-      teamLeader: {$exists: false},
       creator: this.userId
     } : (auth.isManager(this.userId)) ? {teamLeader: this.userId} :
       {_id: 'nonexistend'};

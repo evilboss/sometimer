@@ -59,7 +59,7 @@ class ManageStaff extends React.Component {
                     </td>
                     <td className="status">
                       <StatusIndicator
-                        class={(staff.profile.status == 'completed') ? 'Invited' : formatHelper.capitalize(staff.profile.status)}/>
+                        class={(staff.profile.status == 'completed') ? 'Out' : formatHelper.capitalize(staff.profile.status)}/>
                     </td>
                   </tr>
                 ))}

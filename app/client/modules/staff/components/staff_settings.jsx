@@ -167,8 +167,9 @@ class StaffSettings extends React.Component {
                                 `${profile.firstName} ${profile.lastName}`
                                 : ''}</h5>
                             <StatusIndicator class={(profile) ?
-                              (profile.status) ? formatHelper.capitalize(profile.status)
-                                : '' : ''}/>
+                              (profile.status == 'completed') ?
+                                'Out' : formatHelper.capitalize(profile.status)
+                              : ''}/>
                           </div>
                         </td>
                         <td className="center-align">

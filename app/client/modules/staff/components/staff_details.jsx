@@ -65,7 +65,7 @@ class StaffDetails extends React.Component {
 
             <td className="center-align">
               {(isStaff) ? null :
-                <StatusIndicator class={(staff.profile) ?
+                <StatusIndicator userId={staff._id} class={(staff.profile) ?
                   (staff.profile.status) ? (staff.profile.status == 'completed') ? 'Out' : formatHelper.capitalize(staff.profile.status)
                     : '' : ''}/>
               }

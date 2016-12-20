@@ -13,8 +13,9 @@ export default function () {
     'timelogs.endBreak'(){
       timelogs.endBreak();
     },
-    'timelogs.endShift'(){
-      timelogs.endShift();
+    'timelogs.endShift'(userId){
+      let selectedUserId = (userId) ? userId : this.userId;
+      timelogs.endShift(selectedUserId);
     },
     'timelogs.approve'(timeLogId){
       timelogs.approve(timeLogId);

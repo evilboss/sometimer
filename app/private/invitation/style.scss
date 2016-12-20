@@ -1,7 +1,7 @@
 section#invitation-content {
   .logo {
-    height: 10em;
-    display: block;
+    width: 150px !important;
+    display: block !important;
   }
   h2 {
     color: #0a6c86;
@@ -9,15 +9,15 @@ section#invitation-content {
     margin-top: 0;
   }
   .btn {
-    padding: 1em 1em;
-    background-color: #0066CC;
-    color: white;
-    font-weight: 600;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    text-decoration: none;
+    padding: 1em 1em !important;
+    background-color: #0066CC !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
+    margin-bottom: 10px !important;
+    text-decoration: none !important;
   }
   .button-wrapper {
-    margin: 2em;
+    margin: 2em !important;
   }
 }

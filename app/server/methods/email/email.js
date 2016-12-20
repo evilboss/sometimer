@@ -5,8 +5,9 @@ import {Email} from 'meteor/email';
 const addSubdomain = (subDomain) => {
   let baseUrl = Meteor.absoluteUrl();
   let urlParts = baseUrl.split('//');
-  let urlIndex = (urlParts[1] == 'www') ? 2 : 1;
-  return `${urlParts[0]}//${subDomain}.${urlParts[urlIndex]}`;
+  let hasWeb = urlParts[1].includes('www.');
+  let completeURL = urlParts[1].replace('www.', '');
+  return `${urlParts[0]}//${(hasWeb) ? 'www.' : ''}${subDomain}.${completeURL}`;
 };
 const sendInvite = (invite) => {
   const message = {

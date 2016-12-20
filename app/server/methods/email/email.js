@@ -2,12 +2,13 @@
  * Created by jr on 9/20/16.
  */
 import {Email} from 'meteor/email';
-const addSubdomain = (subDomain)=> {
+const addSubdomain = (subDomain) => {
   let baseUrl = Meteor.absoluteUrl();
   let urlParts = baseUrl.split('//');
-  return `${urlParts[0]}//${subDomain}.${urlParts[1]}`;
+  let urlIndex = (urlParts[1] == 'www') ? 2 : 1;
+  return `${urlParts[0]}//${subDomain}.${urlParts[urlIndex]}`;
 };
-const sendInvite = (invite)=> {
+const sendInvite = (invite) => {
   const message = {
     to: `${invite.firstName} ${invite.lastName} <${invite.email}>`,
     subject: 'Invitation Email',

@@ -6,18 +6,18 @@ import {auth} from "/server/methods/auth/auth";
 import {getDates, generateDateToday} from '/server/methods/timeDate/timeDate';
 
 export default function () {
-  Meteor.publish('timelogs', (userId)=> {
+  Meteor.publish('timelogs', (userId) => {
     return Timelogs.find({userId: userId});
   });
-  Meteor.publish('timelogs.by.date', (date, userId)=> {
+  Meteor.publish('timelogs.by.date', (date, userId) => {
     const selector = {date: date, userId: userId};
     return Timelogs.find(selector);
   });
-  Meteor.publish('timelogs.by.id', (timeLogId)=> {
+  Meteor.publish('timelogs.by.id', (timeLogId) => {
     const selector = {_id: timeLogId};
     return Timelogs.find(selector);
   });
-  Meteor.publish('timelogs.by.range', (from = null, to = null)=> {
+  Meteor.publish('timelogs.by.range', (from = null, to = null) => {
     const {day, month, year} = generateDateToday();
     const startDate = (from) ? from : (day <= 15) ? moment([year, month]).add(-1, "month") : moment(moment([year, month]).add(-1, "month")).add(15, "days");
     const endDate = (to) ? moment(to) : (day <= 15) ? moment(startDate).add(14, "days") : moment(startDate).endOf('month');
@@ -31,10 +31,10 @@ export default function () {
       teamLeader: {$exists: false},
       creator: this.userId
     } : (auth.isManager(this.userId)) ? {teamLeader: this.userId} :
-    {_id: 'nonexistend'};
+      {_id: 'nonexistend'};
     const teams = Team.find(teamSelector).fetch();
 
-    _.each(teams, (team)=> {
+    _.each(teams, (team) => {
       (team.members) ?
         staffList.push.apply(staffList, team.members)
         :
@@ -42,11 +42,10 @@ export default function () {
     });
     const timeLogUserIds = _.uniq(staffList);
     const timeLogOptions = (timeLogUserIds) ?
-    {
-      userId: {$in: timeLogUserIds},
-      approved: {$exists: false},
-      completed: true
-    } : {_id: 'none'};
+      {
+        userId: {$in: timeLogUserIds},
+        completed: true
+      } : {_id: 'none'};
     return Timelogs.find(timeLogOptions);
   });
 }

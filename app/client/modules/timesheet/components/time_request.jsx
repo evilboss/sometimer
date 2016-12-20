@@ -23,6 +23,7 @@ class TimeRequest extends React.Component {
           <thead>
           <tr>
             <th>Date</th>
+            <th></th>
             <th colSpan="3">Staff</th>
             <th>Log In</th>
             <th>Total Break</th>
@@ -33,30 +34,31 @@ class TimeRequest extends React.Component {
           </tr>
           </thead>
           <tbody>
-          {timeRequest.map((request, index)=>
+          {timeRequest.map((request, index) =>
             <tr key={index}>
               <td>
                 {request.date}
               </td>
-              <td colSpan="3" className="staff">
-                {request.logs.map((log, index)=>
-                  <div key={index} className="relative ">
-                    <span className="dp">
+              <td className="staff">
+                {request.logs.map((log, index) =>
+                  <div className="dp">
                     <StaffDp userId={log.userId}/>
-                      </span>
-                    <span className="name">
-                    <Username userId={log.userId}/>
-                      </span>
                   </div>
                 )}
               </td>
-              <td>
-                {request.logs.map((log, index)=>
-                  (log.timeIn) ? <div key={index} className="content-padding">{moment(log.timeIn).tz('Asia/Manila').format(format)}</div> : ''
+              <td colSpan="3" className="staff">
+                {request.logs.map((log, index) =>
+                  <Username userId={log.userId}/>
                 )}
               </td>
               <td>
-                {request.logs.map((log, index)=>
+                {request.logs.map((log, index) =>
+                  (log.timeIn) ? <div key={index}
+                                      className="content-padding">{moment(log.timeIn).tz('Asia/Manila').format(format)}</div> : ''
+                )}
+              </td>
+              <td>
+                {request.logs.map((log, index) =>
                   (log.totalBreak) ?
                     <div key={index} className="content-padding">
                       <a href={`/dashboard/timesheet/breaks/${log._id}`}>
@@ -67,20 +69,21 @@ class TimeRequest extends React.Component {
                 )}
               </td>
               <td>
-                {request.logs.map((log, index)=>
-                  (log.timeOut) ? <div className="content-padding" key={index}>{moment(log.timeOut).tz('Asia/Manila').format(format)}</div> : ''
+                {request.logs.map((log, index) =>
+                  (log.timeOut) ? <div className="content-padding"
+                                       key={index}>{moment(log.timeOut).tz('Asia/Manila').format(format)}</div> : ''
                 )}
               </td>
               <td>
 
               </td>
               <td>
-                {request.logs.map((log, index)=>
+                {request.logs.map((log, index) =>
                   (log.totalRendered) ? <div className="content-padding" key={index}>{log.totalRendered}</div> : ''
                 )}
               </td>
               <td>
-                {request.logs.map((log, index)=>
+                {request.logs.map((log, index) =>
                   <div key={index} className="content-padding">
                     {(log.approved) ? <div className="status-indicator Approved"></div>
                       : <ApprovalButton timelogId={log._id}/>}

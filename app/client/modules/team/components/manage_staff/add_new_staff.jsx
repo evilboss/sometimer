@@ -91,7 +91,9 @@ class AddNewStaff extends React.Component {
             : `/dashboard/team/${target}`, text: (teamId) ? `View ${team.name}` : `View all ${userType}s`
         })
     };
-    (error.length == 0) ? doCreate() : sweetPrompts.sweetSucces(`You forgot to fill in some required fields <br/><div class="red-text">${error.toString()}</div>`, 'Sorry', 'error');
+    (error.length == 0) ?
+      doCreate()
+      : sweetPrompts.sweetSucces(`You forgot to fill in some required fields <br/><div class="red-text">${error.toString()}</div>`, 'Sorry', 'error');
   }
 
   _renderError(error) {
@@ -202,7 +204,8 @@ class AddNewStaff extends React.Component {
                   params: ''
                 } : {},
               {
-                text: (teamId) ? `${team.name}` : `All ${formatHelper.capitalize(userType)}`,
+                text: (teamId) ?
+                  (team) ? `${team.name}` : `All ${formatHelper.capitalize(userType)}` : `All ${formatHelper.capitalize(userType)}`,
                 path: (teamId) ? `/dashboard/team/${teamId}` : `dashboard.manage${formatHelper.capitalize(target)}`,
                 params: ''
               }, {

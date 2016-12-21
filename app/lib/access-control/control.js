@@ -18,12 +18,19 @@ const isAdmin = (userId) => {
   const selectedUser = Meteor.users.findOne({_id: userId});
   return (selectedUser) ? (selectedUser.profile) ? (selectedUser.profile.role) ? (selectedUser.profile.role == 'admin' || selectedUser.profile.role == 'super-admin') : false : false : false;
 };
+
+const isSuperAdmin = (userId) => {
+  const selectedUser = Meteor.users.findOne({_id: userId});
+  return (selectedUser) ? (selectedUser.profile) ? (selectedUser.profile.role) ? (selectedUser.profile.role == 'super-admin') : false : false : false;
+};
+
 const isStaff = (userId) => {
   const selectedUser = Meteor.users.findOne({_id: userId});
   return (selectedUser) ? (selectedUser.profile) ? (selectedUser.profile.role) ? (selectedUser.profile.role == 'staff') : false : false : false;
 }
 const control = {
   isPermitted: (permission, userPermissions) => isPermitted(permission, userPermissions),
+  isSuperAdmin: (userId) => isSuperAdmin(userId),
   isAdmin: (userId) => isAdmin(userId),
   isStaff: (userId) => isStaff(userId)
 };

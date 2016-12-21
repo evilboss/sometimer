@@ -1,5 +1,12 @@
+import {control} from '/lib/access-control/control';
+import {domainHelpers} from "/client/utils/helpers/domain-helpers";
 export default {
   login({Meteor, LocalState, FlowRouter}, email, password) {
+    const userId = Meteor.userId();
+    const user = Meteor.user();
+    const {site} = (user) ? user.profile : '';
+    let path = '/dashboard/team';
+
     if (!email || !password) {
       return LocalState.set('LOGIN_ERROR', 'Email & Password are required!');
     }
@@ -10,9 +17,17 @@ export default {
       if (err && err.reason) {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      if (Meteor.user()) {
-        let path = '/dashboard/team';
+      if (control.isSuperAdmin(userId)) {
         FlowRouter.go(path);
+      } else {
+        if (site) {
+          if (site == domainHelpers.getSubdomain()) {
+            FlowRouter.go(path);
+          }
+          else {
+            return LocalState.set('LOGIN_ERROR', 'User not found');
+          }
+        }
       }
     });
   }

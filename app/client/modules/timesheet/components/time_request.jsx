@@ -28,7 +28,6 @@ class TimeRequest extends React.Component {
             <th>Log In</th>
             <th>Total Break</th>
             <th>Log Out</th>
-            <th>Leave</th>
             <th>Hours Rendered</th>
             <th>Approval</th>
           </tr>
@@ -73,9 +72,6 @@ class TimeRequest extends React.Component {
                   (log.timeOut) ? <div className="content-padding"
                                        key={index}>{moment(log.timeOut).tz('Asia/Manila').format(format)}</div> : ''
                 )}
-              </td>
-              <td>
-
               </td>
               <td>
                 {request.logs.map((log, index) =>

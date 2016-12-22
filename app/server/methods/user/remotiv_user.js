@@ -20,11 +20,12 @@ const add = (newUser) => {
 };
 const remove = (userId) => {
   Meteor.users.remove(userId)
+  Team.update({}, {$pull: {members: userId._id}});
 };
 const addToTeam = (teamId, teamLeader, teamMembers, userId, userRole) => {
   (userRole == 'manager') ? teamLeader.push(userId) : '';
   (userRole == 'staff') ? teamMembers.push(userId) : '';
-  console.log(teamLeader,teamMembers);
+  console.log(teamLeader, teamMembers);
   Team.update(teamId, {$set: {teamLeader: teamLeader, members: teamMembers}});
 };
 

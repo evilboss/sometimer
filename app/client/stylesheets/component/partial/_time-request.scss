@@ -2,6 +2,7 @@ section#time-request {
   td.staff {
     .dp {
       margin-right: 5px;
+      vertical-align: middle;
       img {
         @extend .dp-small;
       }

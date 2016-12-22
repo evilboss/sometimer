@@ -10,6 +10,7 @@ class StaffProfile extends React.Component {
   render() {
     const {user, teams, team, projects} = this.props;
     const {profile} = (user) ? user : '';
+    console.log(user, 'profile')
     return (
       <section>
         {(user) ?
@@ -31,16 +32,14 @@ class StaffProfile extends React.Component {
 
               </td>
             </tr>
-
             <tr>
               <th>Country:</th>
               <td>{(user.profile.country) ? user.profile.country : ''}</td>
             </tr>
             <tr>
               <th>Time Zone</th>
-              <td>{(user.profile.timezone) ? moment().tz(user.profile.timezone).format('z') : moment().tz('Asia/Manila').format('z')}</td>
+              <td>{(user.profile.timezone) ? moment().tz(user.profile.timezone).format('Z z') : moment().tz('Asia/Manila').format('Z z')}</td>
             </tr>
-
             <tr>
               <th>Skype ID:</th>
               <td>{(user.profile.skypeID) ? user.profile.skypeID : ''}</td>
@@ -48,6 +47,10 @@ class StaffProfile extends React.Component {
             <tr>
               <th>Contact Number:</th>
               <td>{(user.profile.contactNumber) ? user.profile.contactNumber : ''}</td>
+            </tr>
+            <tr>
+              <th>Email Address:</th>
+              <td>{(user.emails) ? user.emails[0].address : ''}</td>
             </tr>
             </tbody>
           </table>

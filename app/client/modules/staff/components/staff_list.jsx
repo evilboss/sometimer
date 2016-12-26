@@ -284,7 +284,7 @@ class StaffList extends React.Component {
                     <DateRange changeDate={this.changeDate.bind(this)}/>
                   </div>
                 </div>
-                <TimeRequest/>
+                <TimeRequest teamId={team._id}/>
               </div>
               : null}
 

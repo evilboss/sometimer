@@ -14,6 +14,7 @@ class TimeRequest extends React.Component {
   }
 
   render() {
+    const {teamId} = this.props;
     const timeRequest = this.props.timeRequest;
     const format = 'hh:mm A z';
     return (
@@ -41,7 +42,7 @@ class TimeRequest extends React.Component {
               <td className="staff">
                 {request.logs.map((log, index) =>
                   <div className="dp">
-                    <StaffDp userId={log.userId}/>
+                    <StaffDp target={`/dashboard/staff-settings/team/${teamId}/${log.userId}`} userId={log.userId}/>
                   </div>
                 )}
               </td>

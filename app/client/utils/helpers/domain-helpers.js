@@ -12,7 +12,16 @@ const getSubdomain = ()=> {
   return (url) ? processUrl(url) : '';
 
 };
+const addSubdomain = (subDomain) => {
+  let baseUrl = Meteor.absoluteUrl();
+  let urlParts = baseUrl.split('//');
+  let hasWeb = urlParts[1].includes('www.');
+  let completeURL = urlParts[1].replace('www.', '');
+  return `${urlParts[0]}//${(hasWeb) ? 'www.' : ''}${subDomain}.${completeURL}`;
+};
+
 const domainHelpers = {
-  getSubdomain: getSubdomain
+  getSubdomain: getSubdomain,
+  addSubdomain: addSubdomain
 };
 export {domainHelpers};

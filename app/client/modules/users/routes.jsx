@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'react-mounter';
 import PublicLayout from '../core/components/public_layout.jsx';
-import {Register, Login, RecoverPassword, ResetPassword, EmailVerification, UserSearch, Profile} from './containers';
+import {Register, Login,UserTeamDomain, RecoverPassword, ResetPassword, EmailVerification, UserSearch, Profile} from './containers';
 
 export default function (injectDeps, {FlowRouter}) {
   const PublicLayoutCtx = injectDeps(PublicLayout);
@@ -12,6 +12,12 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
- 
+  FlowRouter.route('/team/signin', {
+    name: 'user.team.login', action() {
+      mount(PublicLayoutCtx, {
+        content: () => (<UserTeamDomain />),
+      });
+    }
+  });
 }
 

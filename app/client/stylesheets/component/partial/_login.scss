@@ -19,6 +19,18 @@ section#login {
     .logo {
       @include margin(null, 0.5em, 2em, 0.5em);
     }
+    .domain-form {
+      margin-top: 2.5em;
+      #domain::after {
+        content: ".remotiv.io";
+      }
+      input {
+        float: none;
+      }
+      label {
+        left: 13rem;
+      }
+    }
     .form.row {
       outline: none;
       box-shadow: 0 0 15px $theme-color;

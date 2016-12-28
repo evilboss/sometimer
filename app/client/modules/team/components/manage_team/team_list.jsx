@@ -13,7 +13,6 @@ class TeamList extends React.Component {
     super(props);
   }
 
-
   render() {
     const {currentUser, teamList, userPermissions} = this.props;
     console.log(currentUser, 'current');
@@ -64,7 +63,6 @@ class TeamList extends React.Component {
                                   </div>
                                 </div>
                               }
-
                             </div>
                             <div className="card-action">
                               {(!_.isEmpty(team.members)) ?

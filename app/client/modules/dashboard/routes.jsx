@@ -4,6 +4,7 @@ import DashboardHeader from './containers/dashboard_header';
 import Foot from '../core/components/footer.jsx';
 import Header from '../core/containers/header';
 import Dashboard from './containers/dashboard';
+import SiteList from './containers/site_list';
 import {accessControl} from '/lib/access-control/access-control';
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 import Timesheet from '/client/modules/timesheet/containers/timesheet';
@@ -33,6 +34,20 @@ export default function (injectDeps, {FlowRouter}) {
       );
     }
   });
+
+  dashboardRoutes.route('/site-list', {
+    name: 'dashboard.siteList',
+    action() {
+      mount(MainLayoutCtx,
+        {
+          head: () => (<DashboardHeader />),
+          content: ()=>(<SiteList />),
+          footer: ()=>(<Foot/>),
+        },
+      );
+    }
+  });
+
   dashboardRoutes.route('/settings', {
     name: 'dashboard.settings',
     action(params){

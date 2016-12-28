@@ -33,14 +33,39 @@ class StaffList extends React.Component {
   }
 
   getWeek() {
-    var curr = new Date;
-    var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
-    var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6));
+    let curr = new Date;
+    let firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
+    let lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6));
+
   }
 
   changeView(e) {
-    console.log(e);
+    $('#daterange-modal').openModal();
   }
+
+  goToday() {
+    console.log('today');
+    this.getDates(from = null, to = null);
+  }
+
+  goThisWeek() {
+    console.log(moment().startOf('isoWeek'), moment().endOf('isoWeek'));
+    this.setState({
+      from: moment().startOf('isoWeek').format('LL'),
+      to: moment().endOf('isoWeek').format('LL')
+    });
+  }
+
+  goThisMonth() {
+    var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+    var firstDay = new Date(y, m, 1);
+    var lastDay = new Date(y, m + 1, 0);
+    this.setState({
+      from: moment(firstDay).format('LL'),
+      to: moment(lastDay).format('LL')
+    });
+  }
+
 
   getDates(from = null, to = null) {
     const reactState = this;
@@ -258,10 +283,11 @@ class StaffList extends React.Component {
                   <div className="tabs-background">
                     <div className="tabs-wrapper">
                       <ul className="tabs">
-                        <li className="tab col s3"><a onClick={this.changeView.bind(this)} className="active"
+                        <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
                                                       href="#today">Today</a></li>
-                        <li className="tab col s3"><a onClick={this.getWeek.bind(this)} href="#week">This Week</a></li>
-                        <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#month">This Month</a>
+                        <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#week">This Week</a>
+                        </li>
+                        <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#month">This Month</a>
                         </li>
                         <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom
                           Date</a>
@@ -284,7 +310,7 @@ class StaffList extends React.Component {
                     <DateRange changeDate={this.changeDate.bind(this)}/>
                   </div>
                 </div>
-                <TimeRequest teamId={team._id}/>
+                <TimeRequest teamId={team._id} from={this.state.from} to={this.state.to}/>
               </div>
               : null}
 

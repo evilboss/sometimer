@@ -41,6 +41,7 @@ class Timesheet extends React.Component {
     this.getDates(from, to);
   }
 
+
   render() {
     const {currentUser, teamId, teamName} = this.props;
     const {dates}  = this.state;

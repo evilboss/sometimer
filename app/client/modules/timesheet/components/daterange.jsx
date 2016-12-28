@@ -18,6 +18,7 @@ class Daterange extends React.Component {
       opacity: 0.5,
       in_duration: 300,
       out_duration: 200,
+      auto: true,
       ready: function () {
         if ($(".lean-overlay").length > 1) {
           $(".lean-overlay:not(:first)").each(function () {
@@ -31,8 +32,10 @@ class Daterange extends React.Component {
         });
       }
     });
+
     $('select').material_select();
   }
+
 
   closeModal(e) {
     e.preventDefault();

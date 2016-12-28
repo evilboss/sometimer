@@ -38,14 +38,13 @@ class UserTeamDomain extends React.Component {
                     <h6>Enter your team's <b>Remotiv domain</b>.</h6>
                     <div className="domain-form input-field col s12">
                       <input type="text" id="domain" value={this.state.domain} onChange={this.changeDomain.bind(this)}
-                             className="active col s4"
+                             className="active col s4" placeholder="Team Domain"
                              ref="domain"/>
-                      <label htmlFor="domain" className="active">Team Domain</label>
                       <span>.remotiv.io</span>
                     </div>
 
                     <div className="col s12">
-                      <a href={`${domainHelpers.addSubdomain(this.state.domain)}login`} className="btn">Continue</a>
+                      <a href={`${domainHelpers.addSubdomain(this.state.domain)}login`} className="btn theme-color">Continue</a>
                     </div>
                   </div>
                 </div>

@@ -25,7 +25,7 @@ export default {
             FlowRouter.go(path);
           }
           else {
-            return LocalState.set('LOGIN_ERROR', 'User not found');
+            return LocalState.set('LOGIN_ERROR', 'Incorrect site');
           }
         }
       }

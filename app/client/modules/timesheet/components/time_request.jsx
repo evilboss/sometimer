@@ -7,12 +7,10 @@ import StaffDp from '/client/modules/users/containers/staff_dp';
 import Username from '/client/modules/users/containers/username';
 import moment from 'moment';
 import tz from 'moment-timezone';
-
 class TimeRequest extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const {teamId} = this.props;
     const timeRequest = this.props.timeRequest;
@@ -90,7 +88,6 @@ class TimeRequest extends React.Component {
             </tr>
           )}
           </tbody>
-
         </table>
         {(timeRequest.length == 0) ? <div>No Pending Request</div> : ''}
       </section>

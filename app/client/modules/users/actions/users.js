@@ -1,5 +1,6 @@
 import {control} from '/lib/access-control/control';
 import {domainHelpers} from "/client/utils/helpers/domain-helpers";
+
 export default {
   login({Meteor, LocalState, FlowRouter}, email, password) {
     const userId = Meteor.userId();
@@ -25,19 +26,20 @@ export default {
             FlowRouter.go(path);
           }
           else {
-            FlowRouter.go('/dashboard/site-list');
+            return LocalState.set('LOGIN_ERROR', 'You are not allowed in this team domain');
           }
         }
       }
     });
-  }
-  ,
-  recover_password({Meteor, LocalState}, email) {
+  },
+  recoverPassword({Meteor, LocalState}, email) {
+    console.log(email);
     Accounts.forgotPassword({email: email}, (err) => {
-      if (err) {
-        notify.show(err.message, 'error');
-      } else {
-        notify.show("Email sent. Please check your mail account.", 'success');
+      if (err && err.reason) {
+        return LocalState.set('EMAIL_ERROR', err.reason);
+      }
+      else {
+        alert("Email sent. Please check your mail account.");
       }
     });
   },

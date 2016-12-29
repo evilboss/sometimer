@@ -5,6 +5,7 @@ import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 class SiteList extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {

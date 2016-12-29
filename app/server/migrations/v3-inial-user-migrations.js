@@ -1,5 +1,4 @@
-/*
-Migrations.add({
+/*Migrations.add({
   version: 3,
   name: 'Add Initial users to app',
   up: function () {
@@ -8,32 +7,8 @@ Migrations.add({
   down: function () {
     removeStaff();
   }
-});
-*/
+});*/
 const newStaffs = [
-  {
-    email: 'kimberly.ocariz@ezyva.com',
-    password: 'kRi7qzrt3!',
-    profile: {
-      firstName: 'Kimbery',
-      lastName: 'Ocariz',
-      department: 'Accounts Support',
-      staffType: 'Regular',
-      jobTitle: 'Account Support Manager',
-      displayPhoto: '/uploads/defaults/teams/ezyva/profiles/kim/kimDP.jpg',
-      role: 'staff',
-      permissions: [
-        'readStaffs',
-        'readManagers',
-        'readLeaders',
-        'readTeam',
-        'readProject',
-        'readSubProject',
-        'readTask',
-      ],
-      status: 'completed',
-    }
-  },
   {
     email: 'iob.tungul@ezyva.com',
     password: 'secretwalangclue',
@@ -55,6 +30,7 @@ const newStaffs = [
         'readTask',
       ],
       status: 'completed',
+      site: 'remote',
 
     }
   },
@@ -79,6 +55,8 @@ const newStaffs = [
         'readTask',
       ],
       status: 'completed',
+      site: 'remote',
+
     }
   },
   {
@@ -102,6 +80,8 @@ const newStaffs = [
         'readTask',
       ],
       status: 'completed',
+      site: 'remote',
+
     }
   },
   {
@@ -124,7 +104,9 @@ const newStaffs = [
         'readSubProject',
         'readTask',
       ],
-      status:'completed',
+      status: 'completed',
+      site: 'remote',
+
     }
   },
 ];
@@ -141,7 +123,7 @@ const loadStaff = ()=> {
 const removeStaff = ()=> {
   console.info('Removing Staff');
   _.each(newStaffs, function (staff) {
-    const removeUser = Meteor.users.findOne({'emails.address': {$regex: staff.email, $options: 'i'}});
+    const removeUser = Accounts.findUserByEmail(staff.email);
     if (removeUser) {
       Meteor.users.remove(removeUser._id);
     }

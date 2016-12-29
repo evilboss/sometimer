@@ -6,10 +6,10 @@
  * V2: Menu list with user role
  * V3: Initial user./ Staff migration
  * V4: Team migrations
- * V5: Project Migration
- * V6: Timelogs for staff@staff.com user
+ * V5: Timelogs Migration
+ * V6: Project migrations
  * v7: Teamlist migrations
- * v8: break migrations for staff@staff.com user
+ * v8: breaks migrations for staff@staff.com user
  * V9: Add client user stafflist
  * */
 

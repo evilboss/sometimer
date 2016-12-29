@@ -7,8 +7,8 @@ import moment from 'moment';
  * @param days
  * @returns {Date}
  */
-Date.prototype.addDays = function (days) {
-  var dat = new Date(this.valueOf())
+Date.prototype.addDays =  (days)=> {
+  var dat = new Date(this.valueOf());
   dat.setDate(dat.getDate() + days);
   return dat;
 };

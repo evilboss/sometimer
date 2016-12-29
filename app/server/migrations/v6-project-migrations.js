@@ -4,7 +4,7 @@
 import {Projects} from '/lib/collections';
 /*
 Migrations.add({
-  version: 5,
+  version: 6,
   name: 'Adds Projects to db.',
   up: function () {
     loadProjects();

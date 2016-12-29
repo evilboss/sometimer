@@ -2,8 +2,8 @@
  * Created by jr on 6/8/16.
  */
 import {Team} from '/lib/collections';
-/*
-Migrations.add({
+
+/*Migrations.add({
   version: 4,
   name: 'Add Default Teams to app',
   up: function () {
@@ -12,8 +12,8 @@ Migrations.add({
   down: function () {
     removeAllTeams();
   }
-});
-*/
+});*/
+
 const teamlist = [
   {
     name: 'Protos',
@@ -36,20 +36,31 @@ const teamlist = [
 
 ];
 const loadTeams = ()=> {
+
+  console.info('waiting for staffs to load');
+  Meteor._sleepForMs(5000);
+  let creator = Accounts.findUserByEmail('notifications@remotiv.io');
+  console.log(creator._id);
   _.each(teamlist, function (team) {
     if (Team.find({name: team.name}).count() === 0) {
       let members = [];
       _.each(team.members, (userEmail)=> {
-        let member = Meteor.users.findOne({"emails.address": userEmail})._id;
-        members.push(member);
+        let member = Accounts.findUserByEmail(userEmail);
+        if (member) {
+          console.info('check user first', member._id);
+          members.push(member._id);
+
+        }
       });
-      let teamLeader = Meteor.users.findOne({"emails.address": team.teamLeader})._id;
+      let teamLeader = Accounts.findUserByEmail(team.teamLeader);
       const newTeam = {
         createdAt: new Date(),
         name: team.name,
         description: team.description,
-        teamLeader: teamLeader,
+        teamLeader: (teamLeader) ? [teamLeader._id] : [],
         members: members,
+        site: 'remote',
+        creator: (creator) ? creator._id : ''
       };
       Team.insert(newTeam);
     }

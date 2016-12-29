@@ -25,12 +25,12 @@ export default function () {
     return Timelogs.find(selector);
   });
 //Note this userId only works in function calls classic, having issues on es6 code
-  Meteor.publish('timelogs.approval', function () {
+  Meteor.publish('timelogs.approval', function (from, to) {
     let staffList = [];
     const teamSelector = (auth.isAdmin(this.userId)) ? {
       creator: this.userId
     } : (auth.isManager(this.userId)) ? {teamLeader: this.userId} :
-      {_id: 'nonexistend'};
+    {_id: 'nonexistend'};
     const teams = Team.find(teamSelector).fetch();
 
     _.each(teams, (team) => {
@@ -41,10 +41,10 @@ export default function () {
     });
     const timeLogUserIds = _.uniq(staffList);
     const timeLogOptions = (timeLogUserIds) ?
-      {
-        userId: {$in: timeLogUserIds},
-        completed: true
-      } : {_id: 'none'};
+    {
+      userId: {$in: timeLogUserIds},
+      completed: true
+    } : {_id: 'none'};
     return Timelogs.find(timeLogOptions);
   });
 }

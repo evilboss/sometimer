@@ -91,6 +91,10 @@ class StaffList extends React.Component {
   render() {
     const {team, staffList, teamLeader, currentUser, userPermissions} = this.props;
     const {role} = (currentUser) ? (currentUser.profile) ? currentUser.profile : 'staff' : 'staff';
+    /*Todo: @aaronra need to change data checks for teamleaders and members
+    * staffList = team.members
+    * teamleader = team.teamLeader
+    * */
     return (
       <section id="staff-list">
         {(team) ?

@@ -218,8 +218,8 @@ class StaffList extends React.Component {
                     </thead>
                     <tbody>
                     {(!_.isEmpty(teamLeader)) ?
-                      teamLeader.map((staff, index) => (
-                        <StaffDetails currentUser={currentUser._id} staff={staff} index={index}
+                      team.teamLeader.map((staff, index) => (
+                        <StaffDetails currentUser={currentUser._id} staffId={staff._id} index={index}
                                       teamId={team._id} isStaff={control.isStaff(Meteor.userId())}/>  )) :
                       <tr>
                         <td></td>
@@ -244,8 +244,8 @@ class StaffList extends React.Component {
 
                     {
                       (!_.isEmpty(staffList)) ?
-                        staffList.map((staff, index) => (
-                          <StaffDetails key={index} staff={staff} index={index} teamId={team._id}
+                        team.members.map((staff, index) => (
+                          <StaffDetails key={index} staffId={staff} index={index} teamId={team._id}
                                         isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
                         ))
                         : <tr>

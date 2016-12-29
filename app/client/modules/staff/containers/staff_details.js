@@ -3,11 +3,13 @@ import moment from 'moment';
 
 import StaffDetails from '../components/staff_details.jsx';
 
-export const composer = ({context, staff, index, startDate, endDate}, onData) => {
+export const composer = ({context, staffId, index, startDate, endDate}, onData) => {
   const {Meteor, Collections} = context();
-  const subsriptionReady = [Meteor.subscribe('user.current').ready()];
+  const subsriptionReady = [Meteor.subscribe('user.current').ready(), Meteor.subscribe('user.name.by.id', staffId).ready()];
   const dataReady = ()=> {
     const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
+    let staff = Meteor.users.findOne(staffId);
+    console.info(staff);
     onData(null, {userPermissions, staff, index});
   };
   (subsriptionReady) ? dataReady() : onData();

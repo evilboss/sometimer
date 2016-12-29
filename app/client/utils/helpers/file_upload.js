@@ -13,7 +13,7 @@ const _addUrlToDatabase = (url, type) => {
       Bert.alert({
         type: 'danger',
         style: 'growl-bottom-right',
-        title: 'Game Added',
+        title: 'Avatar Upload',
         message: 'Photo Not uploaded',
         icon: 'fa-picture-o'
       });
@@ -21,7 +21,7 @@ const _addUrlToDatabase = (url, type) => {
       Bert.alert({
         type: 'success',
         style: 'growl-bottom-right',
-        title: 'Game Added',
+        title: 'Avatar Upload',
         message: 'Please wait photo uploading',
         icon: 'fa-picture-o'
       });

@@ -4,7 +4,7 @@ import Loader from '/client/utils/loader/loader';
 import StaffList from '../components/staff_list.jsx';
 
 
-export const composer = ({context, teamId}, onData) => {
+export const composer = ({context, teamId,staffId}, onData) => {
   const {Meteor, Collections} = context();
   const subscriptionReady = [Meteor.subscribe('team.members', teamId).ready(), Meteor.subscribe('user.current').ready()]
   const dataReady = () => {

@@ -4,7 +4,7 @@ import Loader from '/client/utils/loader/loader';
 import StaffList from '../components/staff_list.jsx';
 
 /*Todo: Need to cleanup subscriptions from getting staffs, Already handled in staff details*/
-export const composer = ({context, teamId,staffId}, onData) => {
+export const composer = ({context, teamId}, onData) => {
   const {Meteor, Collections} = context();
   const subscriptionReady = [Meteor.subscribe('team.members', teamId).ready(), Meteor.subscribe('user.current').ready()]
   const dataReady = () => {

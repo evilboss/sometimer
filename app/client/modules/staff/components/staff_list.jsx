@@ -16,7 +16,7 @@ class StaffList extends React.Component {
     this.state = {
       dates: [],
       from: moment().format('LL'),
-      to: moment().format('LL'),
+      to: moment().add('days', 1).format('LL'),
     };
   }
 
@@ -45,10 +45,16 @@ class StaffList extends React.Component {
 
   goToday() {
     console.log('today');
-    this.getDates(from = null, to = null);
+    this.setState({
+      from: moment().format('LL'),
+      to: moment().add('days', 1).format('LL')
+    });
+    //this.getDates(from = null, to = null);
   }
 
   goThisWeek() {
+    console.info('Week');
+
     console.log(moment().startOf('isoWeek'), moment().endOf('isoWeek'));
     this.setState({
       from: moment().startOf('isoWeek').format('LL'),
@@ -57,6 +63,7 @@ class StaffList extends React.Component {
   }
 
   goThisMonth() {
+    console.info('Month');
     var date = new Date(), y = date.getFullYear(), m = date.getMonth();
     var firstDay = new Date(y, m, 1);
     var lastDay = new Date(y, m + 1, 0);
@@ -85,16 +92,20 @@ class StaffList extends React.Component {
   }
 
   changeDate(from, to) {
-    this.getDates(from, to);
+    console.info('custom range');
+    this.setState({
+      from: moment(from).format('LL'),
+      to: moment(to).format('LL')
+    });
   }
 
   render() {
     const {team, staffList, teamLeader, currentUser, userPermissions} = this.props;
     const {role} = (currentUser) ? (currentUser.profile) ? currentUser.profile : 'staff' : 'staff';
     /*Todo: @aaronra need to change data checks for teamleaders and members
-    * staffList = team.members
-    * teamleader = team.teamLeader
-    * */
+     * staffList = team.members
+     * teamleader = team.teamLeader
+     * */
     return (
       <section id="staff-list">
         {(team) ?
@@ -127,7 +138,7 @@ class StaffList extends React.Component {
                   <div className="row">
                     <ul className="tabs">
                       <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
-                      <li className="tab col s1"><a href="#request">Timesheet View</a></li>
+                      <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#request">Timesheet View</a></li>
                     </ul>
                   </div> : null
                 }

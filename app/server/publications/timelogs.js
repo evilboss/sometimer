@@ -26,6 +26,7 @@ export default function () {
   });
 //Note this userId only works in function calls classic, having issues on es6 code
   Meteor.publish('timelogs.approval', function (from, to) {
+    console.log('subscribing to timelogs', moment(from).toDate(), moment(to).toDate());
     let staffList = [];
     const teamSelector = (auth.isAdmin(this.userId)) ? {
       creator: this.userId
@@ -40,11 +41,23 @@ export default function () {
         '';
     });
     const timeLogUserIds = _.uniq(staffList);
-    const timeLogOptions = (timeLogUserIds) ?
+    const timeLogSelector = (timeLogUserIds) ?
     {
+      createdAt: {$gte: moment(from,'LL').toDate(), $lte: moment(to,'LL').toDate()},
       userId: {$in: timeLogUserIds},
       completed: true
     } : {_id: 'none'};
-    return Timelogs.find(timeLogOptions);
+    return Timelogs.find(timeLogSelector);
   });
+  Meteor.publish('timelogs.team.approval', function (teamId, from, to) {
+    const team = Team.findOne(teamId);
+    const timeLogSelector = (team) ?
+    {
+      createdAt: {$gte: moment(from,'LL').toDate(), $lte: moment(to,'LL').toDate()},
+      userId: {$in: team.members},
+      completed: true
+    } : {_id: 'none'};
+    return Timelogs.find(timeLogSelector);
+  });
+
 }

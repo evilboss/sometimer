@@ -46,7 +46,7 @@ class TimeRequest extends React.Component {
               </td>
               <td colSpan="3" className="staff">
                 {request.logs.map((log, index) =>
-                  <Username userId={log.userId}/>
+                  <Username key={index} userId={log.userId}/>
                 )}
               </td>
               <td>

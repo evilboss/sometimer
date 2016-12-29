@@ -1,5 +1,7 @@
 import React from 'react';
 import PageTitle from "/client/modules/core/components/page_title";
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
+
 class SiteList extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class SiteList extends React.Component {
               <div className="row">
                 {(currentUser) ?
                   <div className="collection-item">
-                    <a>
+                    <a href={`${domainHelpers.addSubdomain(currentUser.profile.site)}dashboard/team`}>
                       <article className="col s12 m6 l4">
                         <div className="card">
                           <div className="card-title">

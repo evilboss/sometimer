@@ -533,6 +533,7 @@ article {
 }
 
 #daterange-modal {
+  max-height: initial !important;
   .modal-content {
     background-color: white;
     .rdr-DateRange {

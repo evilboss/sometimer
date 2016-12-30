@@ -13,6 +13,18 @@ class TeamList extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    $(document).ready(function () {
+      $('.tooltipped').tooltip({delay: 50});
+    });
+  }
+
+  componentDidUpdate() {
+    $(document).ready(function () {
+      $('.tooltipped').tooltip({delay: 50});
+    });
+  }
+
   render() {
     const {currentUser, teamList, userPermissions} = this.props;
     console.log(currentUser, 'current');
@@ -68,7 +80,11 @@ class TeamList extends React.Component {
                               {(!_.isEmpty(team.members)) ?
                                 team.members.map((member, key) => (
                                   (key <= 4) ?
-                                    <StaffDp staffType="staff" key={key} teamId={team._id} userId={member}
+                                    <StaffDp staffType="staff" key={key}
+                                             position="top"
+                                             delay="50"
+                                             className="tooltipped"
+                                             teamId={team._id} userId={member}
                                              target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff-settings/team/${team._id}/${member}` : '' : ''}/> : ''
                                 ))
                                 :

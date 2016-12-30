@@ -43,6 +43,7 @@ class StaffList extends React.Component {
   summaryChangeView(e) {
     $('#summary-date-range').openModal();
   }
+
   changeView(e) {
     $('#daterange-modal').openModal();
   }
@@ -368,7 +369,7 @@ class StaffList extends React.Component {
                       <DateRange customId="summary-date-range" changeDate={this.changeDate.bind(this)}/>
                     </div>
                   </div>
-                  <Summary team={team}/>
+                  <Summary team={team} teamId={team._id} from={this.state.from} to={this.state.to}/>
                 </div>
               </div>
 

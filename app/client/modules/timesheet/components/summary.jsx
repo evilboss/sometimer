@@ -7,7 +7,10 @@ class Summary extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  _exportLogs() {
+    const {exportLogs, teamId, from, to} = this.props;
+    exportLogs(teamId, from, to);
+  }
   render() {
     const {team} = this.props;
     return (
@@ -30,6 +33,10 @@ class Summary extends React.Component {
             )) : ''}
           </tbody>
         </table>
+        {(team) ? <button className="m5 btn theme-color" onClick={this._exportLogs.bind(this)}>Export Logs<i
+          className="right material-icons">grid_on</i></button>
+          : <div>No Summary for selected period</div>
+        }
       </section>
     );
   }

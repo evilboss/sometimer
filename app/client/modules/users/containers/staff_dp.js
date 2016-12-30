@@ -9,7 +9,6 @@ export const composer = ({context, userId, projectId, staffType}, onData) => {
   const dataReady = ()=> {
     const staff = Meteor.users.findOne(userId);
     const displayAPhoto = (staff) ? true : false;
-    console.log(displayAPhoto);
     const displayPhoto = (staff) ? ( staff.profile) ? ( staff.profile.displayPhoto) ? staff.profile.displayPhoto : '' : '' : null;
     onData(null, {displayPhoto, displayAPhoto});
   };

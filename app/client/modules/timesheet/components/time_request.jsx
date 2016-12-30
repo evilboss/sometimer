@@ -1,20 +1,15 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
-import ApprovalButton from '/client/modules/manager/containers/approval_button';
 
-import TimeData from '/client/modules/timesheet/containers/timedata';
-import StaffDp from '/client/modules/users/containers/staff_dp';
-import Username from '/client/modules/users/containers/username';
-import moment from 'moment';
-import tz from 'moment-timezone';
+import TimeRequestData from '/client/modules/timesheet/containers/time_request_data';
+
 class TimeRequest extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    const {teamId} = this.props;
-    const timeRequest = this.props.timeRequest;
-    const format = 'hh:mm A z';
+    const {teamId, timelogs} = this.props;
     return (
       <section id="time-request">
         <PageTitle title='Timesheet View'/>
@@ -24,72 +19,21 @@ class TimeRequest extends React.Component {
             <th>Date</th>
             <th></th>
             <th colSpan="3">Staff</th>
-            <th>Log In</th>
+            <th>Actions</th>
+            <th>Time-In</th>
             <th>Total Break</th>
-            <th>Log Out</th>
+            <th>Time-Out</th>
             <th>Hours Rendered</th>
             <th>Approval</th>
           </tr>
           </thead>
           <tbody>
-          {timeRequest.map((request, index) =>
-            <tr key={index}>
-              <td>
-                {request.date}
-              </td>
-              <td className="staff">
-                {request.logs.map((log, index) =>
-                  <div className="dp">
-                    <StaffDp target={`/dashboard/staff-settings/team/${teamId}/${log.userId}`} userId={log.userId}/>
-                  </div>
-                )}
-              </td>
-              <td colSpan="3" className="staff">
-                {request.logs.map((log, index) =>
-                  <Username key={index} userId={log.userId}/>
-                )}
-              </td>
-              <td>
-                {request.logs.map((log, index) =>
-                  (log.timeIn) ? <div key={index}
-                                      className="content-padding">{moment(log.timeIn).tz('Asia/Manila').format(format)}</div> : ''
-                )}
-              </td>
-              <td>
-                {request.logs.map((log, index) =>
-                  (log.totalBreak) ?
-                    <div key={index} className="content-padding">
-                      <a href={`/dashboard/timesheet/breaks/${log._id}`}>
-                        {log.totalBreak}
-                      </a>
-                    </div>
-                    : ''
-                )}
-              </td>
-              <td>
-                {request.logs.map((log, index) =>
-                  (log.timeOut) ? <div className="content-padding"
-                                       key={index}>{moment(log.timeOut).tz('Asia/Manila').format(format)}</div> : ''
-                )}
-              </td>
-              <td>
-                {request.logs.map((log, index) =>
-                  (log.totalRendered) ? <div className="content-padding" key={index}>{log.totalRendered}</div> : ''
-                )}
-              </td>
-              <td>
-                {request.logs.map((log, index) =>
-                  <div key={index} className="content-padding">
-                    {(log.approved) ? <div className="status-indicator Approved"></div>
-                      : <ApprovalButton timelogId={log._id}/>}
-                  </div>
-                )}
-              </td>
-            </tr>
+          {timelogs.map((request, index) =>
+            <TimeRequestData key={index} teamId={teamId} request={request}/>
           )}
           </tbody>
         </table>
-        {(timeRequest.length == 0) ? <div>No Pending Request</div> : ''}
+        {(timelogs.length == 0) ? <div>No Pending Request</div> : ''}
       </section>
     );
   }

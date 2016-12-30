@@ -22,7 +22,13 @@ export default function () {
     },
     'timelogs.editLogs'(timeLogId, totalRendered){
       timelogs.editLogs(timeLogId, totalRendered);
+    },
+    'timelogs.log.edit'(timeIn, timeOut, timeLogId){
+      console.info('updating timelog');
+      let timelog = Timelogs.findOne(timeLogId);
+      timelogs.editLog(timeIn, timeOut, timelog);
     }
+
 
   });
 }

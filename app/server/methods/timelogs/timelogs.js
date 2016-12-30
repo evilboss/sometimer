@@ -59,7 +59,7 @@ const endShift = (userId) => {
   }
   ;
 const startBreak = () => {
-  updateStatus('Break',Meteor.userId());
+  updateStatus('Break', Meteor.userId());
   const currentLog = Timelogs.findOne({
     userId: Meteor.userId(),
     currentStatus: 'In',
@@ -74,7 +74,7 @@ const startBreak = () => {
   Breaks.insert(breaklog);
 };
 const endBreak = () => {
-  updateStatus('In',Meteor.userId());
+  updateStatus('In', Meteor.userId());
   const currentLog = Timelogs.findOne({
     userId: Meteor.userId(),
     currentStatus: 'In',
@@ -109,6 +109,19 @@ const approve = (timelogId) => {
     $set: {approved: true}
   }) : ''
 }
+const editLog = (timeIn, timeOut, timelog)=> {
+  const breakLogs = Breaks.find({userId: timelog.userId, timeLogId: timelog._id}).fetch();
+  const totalBreak = _.pluck(breakLogs, 'duration').reduce((a, b) => addTime(a, b), 0);
+  const totalRendered = subtractTime(getHoursRendered(timeOut, timeIn), totalBreak);
+  (timelog) ? Timelogs.update(timelog, {
+    $set: {
+      timeIn: timeIn,
+      timeOut: timeOut,
+      totalBreak: totalBreak,
+      totalRendered: totalRendered
+    }
+  }) : ''
+};
 
 const timelogs = {
   startShift: () => startShift(),
@@ -116,7 +129,9 @@ const timelogs = {
   startBreak: () => startBreak(),
   endBreak: () => endBreak(),
   approve: (timeLogId) => approve(timeLogId),
-  editLogs: (timeLogId, totalRendered) => editLogs(timeLogId, totalRendered)
+  editLogs: (timeLogId, totalRendered) => editLogs(timeLogId, totalRendered),
+  editLog: editLog
+
 };
 
 export {timelogs};

@@ -25,6 +25,12 @@ class TeamList extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    $(document).ready(function () {
+      $('.tooltipped').tooltip('remove');
+    });
+  }
+
   render() {
     const {currentUser, teamList, userPermissions} = this.props;
     console.log(currentUser, 'current');

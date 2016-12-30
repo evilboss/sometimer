@@ -11,11 +11,17 @@ import {
   UserSearch,
   Profile
 } from './containers';
+import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 
 export default function (injectDeps, {FlowRouter}) {
   const PublicLayoutCtx = injectDeps(PublicLayout);
   FlowRouter.route('/login', {
-    name: 'user.login', action() {
+
+    name: 'user.login',
+    triggersEnter: [(context, redirect)=> {
+      (domainHelpers.getSubdomain() == '' || domainHelpers.getSubdomain() == 'remotiv') ? redirect('/team/signin') : '';
+    }],
+    action() {
       mount(PublicLayoutCtx, {
         content: () => (<Login />),
       });

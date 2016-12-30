@@ -9,7 +9,7 @@ class CreateTeamButton extends React.Component {
   render() {
 
     return (
-      <a href={(domainHelpers.getSubdomain() == '') ? '/team/signin' : '/login'}
+      <a href={(domainHelpers.getSubdomain() == ''|| domainHelpers.getSubdomain() == 'remotiv') ? '/team/signin' : '/login'}
          className="waves-effect waves-light btn-large light-green darken-1"><b>
         Sign in to Remotiv</b></a>
     );

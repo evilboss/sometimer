@@ -1,0 +1,23 @@
+section#invitation-content {
+  .logo {
+    width: 150px !important;
+    display: block !important;
+  }
+  h2 {
+    color: #0a6c86;
+    font-weight: 400;
+    margin-top: 0;
+  }
+  .btn {
+    padding: 1em 1em !important;
+    background-color: #0066CC !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
+    margin-bottom: 10px !important;
+    text-decoration: none !important;
+  }
+  .button-wrapper {
+    margin: 2em !important;
+  }
+}

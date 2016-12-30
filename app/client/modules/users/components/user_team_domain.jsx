@@ -35,10 +35,10 @@ class UserTeamDomain extends React.Component {
                   <div className="form row circular-border">
 
                     <PageTitle title='Sign in to your team'/>
-                    <h6>Enter your team's <b>Remotiv domain</b>.</h6>
+                    <h6>Enter your Company's <b>Remotiv domain</b>.</h6>
                     <div className="domain-form input-field col s12">
                       <input type="text" id="domain" value={this.state.domain} onChange={this.changeDomain.bind(this)}
-                             className="active col s4" placeholder="Team Domain"
+                             className="active col s4" placeholder="Company Sub-domain"
                              ref="domain"/>
                       <span>.remotiv.io</span>
                     </div>

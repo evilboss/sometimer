@@ -26,7 +26,7 @@ export default {
             FlowRouter.go(path);
           }
           else {
-            return LocalState.set('LOGIN_ERROR', 'You are not allowed in this team domain');
+            return LocalState.set('LOGIN_ERROR', 'You are not allowed in this Company sub-domain');
           }
         }
       }

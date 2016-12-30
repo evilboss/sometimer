@@ -1,0 +1,12 @@
+<section id="invitation-content">
+  <h2>Welcome to Remotiv {{name}}!</h2>
+  {{#if message}}
+    <h2>{{message}}</h2>
+  {{else}}
+    <h2>You have been invited as {{position}} </h2>
+  {{/if}}
+  <img class="logo" src="{{emailUrlFor '/Assets/teams/default/logo/remotiv_io_logo_style3.png'}}">
+  <div class="button-wrapper">
+    <a class="btn" href="{{site}}resetPassword/{{token}}">Reset Password</a>
+  </div>
+</section>

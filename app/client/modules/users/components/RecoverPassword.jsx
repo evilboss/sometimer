@@ -36,7 +36,7 @@ class RecoverPassword extends React.Component {
 
                 <div className="container">
                   <div className="form row circular-border">
-                    <PageTitle title='Forgot Password'/>
+                    <PageTitle title='Recover Password'/>
                     {err ?
                       <span className="error-container">
                         <span className="error-text">
@@ -47,8 +47,8 @@ class RecoverPassword extends React.Component {
                                  className="login">
                       <MyInput name="email" title="Email" validations="isEmail"
                                validationError="This is not a valid email" required/>
-                      <button className="btn waves-effect waves-light theme-color" type="submit">Send<i
-                        className="material-icons right">send</i></button>
+                      <button className="btn waves-effect waves-light theme-color" type="submit">Send
+                        <i className="material-icons right">send</i></button>
                     </Formsy.Form>
 
                   </div>

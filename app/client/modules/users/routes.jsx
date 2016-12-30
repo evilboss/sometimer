@@ -35,5 +35,13 @@ export default function (injectDeps, {FlowRouter}) {
       });
     }
   });
+  FlowRouter.route('/resetPassword/:token', {
+    name: 'user.resetPassword',
+    action(params){
+      mount(PublicLayoutCtx, {
+        content: ()=>(<ResetPassword/>),
+      });
+    }
+  });
 }
 

@@ -39,7 +39,9 @@ class Daterange extends React.Component {
 
   closeModal(e) {
     e.preventDefault();
-    $('#daterange-modal').closeModal({
+    const {customId} = this.props;
+    console.log('#'+(customId)?customId:'daterange-modal');
+    $('#'+(customId)?customId:'daterange-modal').closeModal({
       ready: function () {
         if ($(".lean-overlay").length > 1) {
           $(".lean-overlay:not(:first)").each(function () {
@@ -65,6 +67,7 @@ class Daterange extends React.Component {
   }
 
   render() {
+    const {customId} = this.props;
     const {rangePicker} = this.state;
     const format = 'dddd, D MMMM YYYY';
     return (
@@ -75,7 +78,7 @@ class Daterange extends React.Component {
               type='text'
               readOnly
               value={ rangePicker['startDate'] && rangePicker['startDate'].format(format).toString() }
-              data-target="daterange-modal"
+              data-target={(customId) ? customId : 'daterange-modal'}
               id="from"
               className="modal-trigger inline"
               data-toggle="modal"
@@ -87,14 +90,14 @@ class Daterange extends React.Component {
               type='text'
               readOnly
               value={ rangePicker['endDate'] && rangePicker['endDate'].format(format).toString() }
-              data-target="daterange-modal"
+              data-target={(customId) ? customId : 'daterange-modal'}
               className="modal-trigger"
               data-toggle="modal"
             />
           </div>
         </div>
 
-        <div id="daterange-modal" className="modal">
+        <div id={(customId) ? customId : 'daterange-modal'} className="modal">
           <div className="modal-content">
             <h4 className="modal-title">Date Range</h4>
             <div className="modal-body">

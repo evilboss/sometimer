@@ -1,9 +1,8 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-import moment from 'moment';
 
-import StaffDetails from '../components/staff_details.jsx';
+import StaffSummary from '../components/staff_summary.jsx';
 
-export const composer = ({context, staffId, index, startDate, endDate}, onData) => {
+export const composer = ({context, staffId, index, totalBreak, totalHours}, onData) => {
   const {Meteor, Collections} = context();
   const subsriptionReady = [Meteor.subscribe('user.current').ready(), Meteor.subscribe('user.name.by.id', staffId).ready()];
   const dataReady = ()=> {
@@ -21,4 +20,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(StaffDetails);
+)(StaffSummary);

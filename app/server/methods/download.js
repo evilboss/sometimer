@@ -1,4 +1,4 @@
-import {Timelogs} from '/lib/collections';
+import {Timelogs, Team} from '/lib/collections';
 import moment from 'moment/moment';
 
 import {Meteor} from 'meteor/meteor';
@@ -14,6 +14,18 @@ export default function () {
       const collection = (timelogs) ? timelogs : [{"status": "invalid date"}];
       return exportcsv.exportToCSV(collection);
 
+    },
+    'download.team.csv'(teamId, from, to) {
+      const team = Team.findOne(teamId);
+      const collection = [{sample: '1'}, {sample: 2}];
+      return exportcsv.exportToCSV(collection);
+
+    },
+    'download.team.summary.csv'(teamId, from, to) {
+      const team = Team.findOne(teamId);
+      const collection = [{sample: '1'}, {sample: 2}];
+      return exportcsv.exportToCSV(collection);
     }
+
   });
 }

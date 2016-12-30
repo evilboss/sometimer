@@ -7,31 +7,11 @@ import {formatHelper} from "/client/utils/helpers/format-helpers";
 class StaffDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      date: new Date()
-    };
+
   };
 
 
-  componentDidMount() {
-    this.getToday();
-  };
 
-  getToday() {
-    let reactState = this;
-    Meteor.call('timesheet.getToday', function (err, res, callback) {
-      if (err) {
-        sweatAlert(
-          'Ooops',
-          'Something went wrong!',
-          '' + JSON.stringify(err, null, 2)
-        );
-
-      } else {
-        reactState.setState({date: res});
-      }
-    });
-  }
 
   render() {
     const {staff, index, userPermissions, currentUser, teamId, isStaff} = this.props;

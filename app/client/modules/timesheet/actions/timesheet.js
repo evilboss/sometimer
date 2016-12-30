@@ -50,13 +50,54 @@ export default {
       });
   },
   exportLogs({Meteor, LocalState}, teamId, from, to){
-    Bert.alert({
-      type: 'success',
-      style: 'growl-bottom-right',
-      title: 'Timelogs Export',
-      message: 'Exporting Timelogs',
-      icon: 'fa-table'
+    var nameFile = `${teamId}.csv`;
+    Meteor.call('download.team.csv', teamId, from, to, function (err, fileContent) {
+      if (fileContent) {
+        Bert.alert({
+          type: 'success',
+          style: 'growl-bottom-right',
+          title: 'Timelogs Export',
+          message: 'Exporting Timelogs',
+          icon: 'fa-table'
+        });
+        var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, nameFile);
+      }else{
+        Bert.alert({
+          type: 'danger',
+          style: 'growl-bottom-right',
+          title: 'Timelogs Export',
+          message: 'Exporting Timelogs Failed',
+          icon: 'fa-table'
+        });
+      }
     });
+
+  },
+  exportSummary({Meteor, LocalState}, teamId, from, to){
+    var nameFile = `${teamId}.csv`;
+    Meteor.call('download.team.summary.csv', teamId, from, to, function (err, fileContent) {
+      if (fileContent) {
+        Bert.alert({
+          type: 'success',
+          style: 'growl-bottom-right',
+          title: 'Summary Export',
+          message: 'Exporting Summary',
+          icon: 'fa-table'
+        });
+        var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, nameFile);
+      }else{
+        Bert.alert({
+          type: 'danger',
+          style: 'growl-bottom-right',
+          title: 'Summary Export',
+          message: 'Exporting Summary Failed',
+          icon: 'fa-table'
+        });
+      }
+    });
+
   },
 
   clearErrors({LocalState}) {

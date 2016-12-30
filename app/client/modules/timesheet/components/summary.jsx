@@ -1,6 +1,8 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import StaffDetails from "/client/modules/staff/containers/staff_details";
+import StaffSummary from "/client/modules/staff/containers/staff_summary";
+
 class Summary extends React.Component {
   constructor(props) {
     super(props);
@@ -16,15 +18,15 @@ class Summary extends React.Component {
           <tr>
             <th></th>
             <th>Staff</th>
-            <th>Position</th>
-            <th className="center-align">Status</th>
+            <th>Total Breaks</th>
+            <th className="center-align">Total Hours Rendered</th>
             <th></th>
           </tr>
           </thead>
           <tbody>
           { (team) ?
             team.members.map((staff, index) => (
-              <StaffDetails key={index} staffId={staff} index={index} teamId={team._id}/>
+              <StaffSummary key={index} staffId={staff} index={index} teamId={team._id}/>
             )) : ''}
           </tbody>
         </table>

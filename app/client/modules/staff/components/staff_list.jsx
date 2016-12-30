@@ -40,6 +40,9 @@ class StaffList extends React.Component {
 
   }
 
+  summaryChangeView(e) {
+    $('#summary-date-range').openModal();
+  }
   changeView(e) {
     $('#daterange-modal').openModal();
   }
@@ -141,11 +144,13 @@ class StaffList extends React.Component {
                     </ul>
                   </div> : null
                 }
+
+
               </div>
 
               <div className="col s3 no-margin">
-              </div>
 
+              </div>
               <div className="col s4 no-margin twbs">
                 {
                   (!_.isEmpty(team.teamLeader) && !_.isEmpty(team.members)) ?
@@ -298,13 +303,14 @@ class StaffList extends React.Component {
                       <div className="tabs-wrapper">
                         <ul className="tabs">
                           <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
-                                                        href="#today">Today</a></li>
-                          <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#week">This Week</a>
+                                                        href="#request-today">Today</a></li>
+                          <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#request-week">This
+                            Week</a>
                           </li>
-                          <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#month">This
+                          <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#request-month">This
                             Month</a>
                           </li>
-                          <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom
+                          <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#request-custom">Custom
                             Date</a>
                           </li>
                         </ul>
@@ -312,16 +318,16 @@ class StaffList extends React.Component {
                     </div>
                   </div>
                   <div className="col s6 right-align">
-                    <div id="today" className="col s12">
+                    <div id="request-today" className="col s12">
                       Today is {moment().format('LL')}
                     </div>
-                    <div id="week" className="col s12">
+                    <div id="request-week" className="col s12">
                       Period from {this.state.from} to {this.state.to}
                     </div>
-                    <div id="month" className="col s12">
+                    <div id="request-month" className="col s12">
                       Period from {this.state.from} to {this.state.to}
                     </div>
-                    <div id="custom" className="col s12">
+                    <div id="request-custom" className="col s12">
                       <DateRange changeDate={this.changeDate.bind(this)}/>
                     </div>
                   </div>
@@ -333,13 +339,15 @@ class StaffList extends React.Component {
                       <div className="tabs-wrapper">
                         <ul className="tabs">
                           <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
-                                                        href="#today2">Today</a></li>
-                          <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#week2">This Week</a>
+                                                        href="#summary-today">Today</a></li>
+                          <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#summary-week">This
+                            Week</a>
                           </li>
-                          <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#month2">This
+                          <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#summary-month">This
                             Month</a>
                           </li>
-                          <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom2">Custom
+                          <li className="tab col s3"><a onClick={this.summaryChangeView.bind(this)}
+                                                        href="#summary-custom">Custom
                             Date</a>
                           </li>
                         </ul>
@@ -347,17 +355,17 @@ class StaffList extends React.Component {
                     </div>
                   </div>
                   <div className="col s6 right-align">
-                    <div id="today2" className="col s12">
+                    <div id="summary-today" className="col s12">
                       Today is {moment().format('LL')}
                     </div>
-                    <div id="week2" className="col s12">
+                    <div id="summary-week" className="col s12">
                       Period from {this.state.from} to {this.state.to}
                     </div>
-                    <div id="month2" className="col s12">
+                    <div id="summary-month" className="col s12">
                       Period from {this.state.from} to {this.state.to}
                     </div>
-                    <div id="custom2" className="col s12">
-                      <DateRange changeDate={this.changeDate.bind(this)}/>
+                    <div id="summary-custom" className="col s12">
+                      <DateRange customId="summary-date-range" changeDate={this.changeDate.bind(this)}/>
                     </div>
                   </div>
                   <Summary team={team}/>

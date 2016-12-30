@@ -36,7 +36,6 @@ class StaffDetails extends React.Component {
   render() {
     const {staff, index, userPermissions, currentUser, teamId, isStaff} = this.props;
     const {role} = staff.profile;
-    console.log(staff, 'staff');
     return (
       (staff) ?
         (staff.profile) ?

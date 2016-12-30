@@ -100,12 +100,8 @@ class StaffList extends React.Component {
   }
 
   render() {
-    const {team, staffList, teamLeader, currentUser, userPermissions} = this.props;
+    const {team, currentUser, userPermissions} = this.props;
     const {role} = (currentUser) ? (currentUser.profile) ? currentUser.profile : 'staff' : 'staff';
-    /*Todo: @aaronra need to change data checks for teamleaders and members
-     * staffList = team.members
-     * teamleader = team.teamLeader
-     * */
     return (
       <section id="staff-list">
         {(team) ?
@@ -138,7 +134,8 @@ class StaffList extends React.Component {
                   <div className="row">
                     <ul className="tabs">
                       <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
-                      <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#request">Timesheet View</a></li>
+                      <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#request">Timesheet View</a>
+                      </li>
                     </ul>
                   </div> : null
                 }
@@ -151,7 +148,7 @@ class StaffList extends React.Component {
               </div>
               <div className="col s4 no-margin twbs">
                 {
-                  (!_.isEmpty(teamLeader) && !_.isEmpty(staffList)) ?
+                  (!_.isEmpty(team.teamLeader) && !_.isEmpty(team.members)) ?
                     <div className="btn btn-add">
                       {(control.isPermitted('createManagers', userPermissions)) ?
 
@@ -177,7 +174,7 @@ class StaffList extends React.Component {
               <div className="col s12 no-padding">
                 <PageTitle title='Team View'/>
 
-                {((_.isEmpty(teamLeader) && (_.isEmpty(staffList)))) ?
+                {((_.isEmpty(team.teamLeader) && (_.isEmpty(team.members)))) ?
                   <div className="empty-team col s9 twbs">
                     <h5>This team is empty. Populate this team by doing either of the two below</h5>
                     <div className="col s5">
@@ -232,9 +229,9 @@ class StaffList extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {(!_.isEmpty(teamLeader)) ?
+                    {(!_.isEmpty(team.teamLeader)) ?
                       team.teamLeader.map((staff, index) => (
-                        <StaffDetails currentUser={currentUser._id} staffId={staff._id} index={index}
+                        <StaffDetails currentUser={currentUser._id} staffId={staff} index={index}
                                       teamId={team._id} isStaff={control.isStaff(Meteor.userId())}/>  )) :
                       <tr>
                         <td></td>
@@ -258,7 +255,7 @@ class StaffList extends React.Component {
                       </tr>}
 
                     {
-                      (!_.isEmpty(staffList)) ?
+                      (!_.isEmpty(team.members)) ?
                         team.members.map((staff, index) => (
                           <StaffDetails key={index} staffId={staff} index={index} teamId={team._id}
                                         isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>

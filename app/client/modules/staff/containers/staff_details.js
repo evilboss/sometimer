@@ -9,7 +9,6 @@ export const composer = ({context, staffId, index, startDate, endDate}, onData) 
   const dataReady = ()=> {
     const userPermissions = (Meteor.user()) ? (Meteor.user().profile) ? (Meteor.user().profile.permissions) ? Meteor.user().profile.permissions : [] : [] : [];
     let staff = Meteor.users.findOne(staffId);
-    console.info(staff);
     onData(null, {userPermissions, staff, index});
   };
   (subsriptionReady) ? dataReady() : onData();

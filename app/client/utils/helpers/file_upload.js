@@ -18,13 +18,7 @@ const _addUrlToDatabase = (url, type) => {
         icon: 'fa-picture-o'
       });
     } else {
-      Bert.alert({
-        type: 'success',
-        style: 'growl-bottom-right',
-        title: 'Avatar Upload',
-        message: 'Please wait photo uploading',
-        icon: 'fa-picture-o'
-      });
+
       setInterval(function () {
         window.location.reload()
       }, 3000);

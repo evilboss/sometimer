@@ -43,7 +43,7 @@ export default function (injectDeps, {FlowRouter}) {
   dashboardRoutes.route('/staff/settings/:projectId/:staffId', {
     name: 'staff.project.settings',
     action(params){
-      console.log('staffSettings project');
+      console.info('staffSettings project');
       mount(MainLayoutCtx, {
         head: () => (<Header />),
         content: () => (<StaffSettings staffId={params.staffId}/>),
@@ -54,7 +54,7 @@ export default function (injectDeps, {FlowRouter}) {
   dashboardRoutes.route('/staff-settings/team/:teamId/:staffId', {
     name: 'staff.team.settings',
     action(params){
-      console.log('staffSettings team');
+      console.info('staffSettings team');
       mount(MainLayoutCtx, {
         head: () => (<Header />),
         content: () => (<StaffSettings teamId={params.teamId} staffId={params.staffId}/>),

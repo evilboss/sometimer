@@ -23,8 +23,8 @@ class TimeRequest extends React.Component {
           <tr>
             <th>Date</th>
             <th></th>
-            <th colSpan="3">St
-              aff</th>
+            <th colSpan="3">Staff
+            </th>
             <th>Actions</th>
             <th>Time-In</th>
             <th>Total Break</th>
@@ -40,7 +40,8 @@ class TimeRequest extends React.Component {
           </tbody>
         </table>
         {(timelogs.length == 0) ? <div>No Timelogs for selected period</div> :
-          <button className="btn btn-default btn-sm"onClick={this._exportLogs.bind(this)}>Export Logs<i className="fa fa-table" aria-hidden="true"></i></button>}
+          <button className="m5 btn theme-color" onClick={this._exportLogs.bind(this)}>Export Logs<i
+            className="right material-icons">grid_on</i></button>}
       </section>
     );
   }

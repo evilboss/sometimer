@@ -91,7 +91,14 @@ class StaffDetails extends React.Component {
 
             </td>
           </tr>
-          : <tr>Please wait</tr> : <tr>Please wait</tr>
+          :
+          <tr>
+            <td>Please wait</td>
+          </tr>
+        :
+        <tr>
+          <td>Please wait</td>
+        </tr>
     )
       ;
   }

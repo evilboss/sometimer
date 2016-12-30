@@ -44,7 +44,9 @@ class UserTeamDomain extends React.Component {
                     </div>
 
                     <div className="col s12">
-                      <a href={`${domainHelpers.addSubdomain(this.state.domain)}login`} className="btn theme-color">Continue</a>
+                      <a
+                        href={(this.state.domain) ? `${domainHelpers.addSubdomain(this.state.domain)}login` : '/team/signin'}
+                        className="btn theme-color">Continue</a>
                     </div>
                   </div>
                 </div>

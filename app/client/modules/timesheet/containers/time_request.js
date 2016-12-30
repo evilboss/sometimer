@@ -13,6 +13,7 @@ export const composer = ({context, teamId, from, to}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  exportLogs: actions.timesheet.exportLogs,
   context: () => context
 });
 

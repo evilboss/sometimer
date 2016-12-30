@@ -49,6 +49,16 @@ export default {
         icon: 'fa-clock-o'
       });
   },
+  exportLogs({Meteor, LocalState}, teamId, from, to){
+    Bert.alert({
+      type: 'success',
+      style: 'growl-bottom-right',
+      title: 'Timelogs Export',
+      message: 'Exporting Timelogs',
+      icon: 'fa-table'
+    });
+  },
+
   clearErrors({LocalState}) {
     return LocalState.set('TIMESHEET_ERROR', null);
   }

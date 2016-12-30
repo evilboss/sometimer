@@ -128,13 +128,14 @@ class StaffList extends React.Component {
               <div className="col s12 no-margin">
                 <h5 className="team-name">{(team) ? (team.name) ? team.name : '' : ''}</h5>
               </div>
-              <div className="col s3 no-margin twbs">
-                {/*TODO: need to add timelog request view in this page*/}
+              <div className="col s5 no-margin twbs">
                 {!(control.isStaff(Meteor.userId())) ?
                   <div className="row">
                     <ul className="tabs">
                       <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
                       <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#request">Timesheet View</a>
+                      </li>
+                      <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#summary">Summary View</a>
                       </li>
                     </ul>
                   </div> : null
@@ -143,7 +144,7 @@ class StaffList extends React.Component {
 
               </div>
 
-              <div className="col s5 no-margin">
+              <div className="col s3 no-margin">
 
               </div>
               <div className="col s4 no-margin twbs">
@@ -290,40 +291,79 @@ class StaffList extends React.Component {
               </div>
             </div>
             {!(control.isStaff(Meteor.userId())) ?
-              <div id="request" className="col s12">
-                <div className="col s5 no-margin">
-                  <div className="tabs-background">
-                    <div className="tabs-wrapper">
-                      <ul className="tabs">
-                        <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
-                                                      href="#today">Today</a></li>
-                        <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#week">This Week</a>
-                        </li>
-                        <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#month">This Month</a>
-                        </li>
-                        <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom
-                          Date</a>
-                        </li>
-                      </ul>
+              <div>
+                <div id="request" className="col s12">
+                  <div className="col s5 no-margin">
+                    <div className="tabs-background">
+                      <div className="tabs-wrapper">
+                        <ul className="tabs">
+                          <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
+                                                        href="#today">Today</a></li>
+                          <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#week">This Week</a>
+                          </li>
+                          <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#month">This
+                            Month</a>
+                          </li>
+                          <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom
+                            Date</a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  <div className="col s6 right-align">
+                    <div id="today" className="col s12">
+                      Today is {moment().format('LL')}
+                    </div>
+                    <div id="week" className="col s12">
+                      Period from {this.state.from} to {this.state.to}
+                    </div>
+                    <div id="month" className="col s12">
+                      Period from {this.state.from} to {this.state.to}
+                    </div>
+                    <div id="custom" className="col s12">
+                      <DateRange changeDate={this.changeDate.bind(this)}/>
+                    </div>
+                  </div>
+                  <TimeRequest teamId={team._id} from={this.state.from} to={this.state.to}/>
                 </div>
-                <div className="col s6 right-align">
-                  <div id="today" className="col s12">
-                    Today is {moment().format('LL')}
+                <div id="summary" className="col s12">
+                  <div className="col s5 no-margin">
+                    <div className="tabs-background">
+                      <div className="tabs-wrapper">
+                        <ul className="tabs">
+                          <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
+                                                        href="#today">Today</a></li>
+                          <li className="tab col s3"><a onClick={this.goThisWeek.bind(this)} href="#week">This Week</a>
+                          </li>
+                          <li className="tab col s3"><a onClick={this.goThisMonth.bind(this)} href="#month">This
+                            Month</a>
+                          </li>
+                          <li className="tab col s3"><a onClick={this.changeView.bind(this)} href="#custom">Custom
+                            Date</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div id="week" className="col s12">
-                    Period from {this.state.from} to {this.state.to}
+                  <div className="col s6 right-align">
+                    <div id="today" className="col s12">
+                      Today is {moment().format('LL')}
+                    </div>
+                    <div id="week" className="col s12">
+                      Period from {this.state.from} to {this.state.to}
+                    </div>
+                    <div id="month" className="col s12">
+                      Period from {this.state.from} to {this.state.to}
+                    </div>
+                    <div id="custom" className="col s12">
+                      <DateRange changeDate={this.changeDate.bind(this)}/>
+                    </div>
                   </div>
-                  <div id="month" className="col s12">
-                    Period from {this.state.from} to {this.state.to}
-                  </div>
-                  <div id="custom" className="col s12">
-                    <DateRange changeDate={this.changeDate.bind(this)}/>
-                  </div>
+
                 </div>
-                <TimeRequest teamId={team._id} from={this.state.from} to={this.state.to}/>
               </div>
+
               : null}
 
           </div> : ''}

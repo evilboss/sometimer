@@ -12,6 +12,5 @@ export default {
   updatePermissions({Meteor, LocalState}, userId, permissions) {
     Meteor.call('users.update.permissions', userId, permissions);
     sweetPrompts.sweetSucces('Permissions Updated', 'Click OK To continue', 'success');
-  },
-
+  }
 }

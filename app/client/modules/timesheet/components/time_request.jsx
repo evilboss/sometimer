@@ -8,6 +8,11 @@ class TimeRequest extends React.Component {
     super(props);
   }
 
+  _exportLogs() {
+    const {exportLogs} = this.props;
+    exportLogs();
+  }
+
   render() {
     const {teamId, timelogs} = this.props;
     return (
@@ -18,7 +23,8 @@ class TimeRequest extends React.Component {
           <tr>
             <th>Date</th>
             <th></th>
-            <th colSpan="3">Staff</th>
+            <th colSpan="3">St
+              aff</th>
             <th>Actions</th>
             <th>Time-In</th>
             <th>Total Break</th>
@@ -33,7 +39,8 @@ class TimeRequest extends React.Component {
           )}
           </tbody>
         </table>
-        {(timelogs.length == 0) ? <div>No Pending Request</div> : ''}
+        {(timelogs.length == 0) ? <div>No Timelogs for selected period</div> :
+          <button className="btn btn-default btn-sm"onClick={this._exportLogs.bind(this)}>Export Logs<i className="fa fa-table" aria-hidden="true"></i></button>}
       </section>
     );
   }

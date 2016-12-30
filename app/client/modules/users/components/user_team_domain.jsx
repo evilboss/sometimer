@@ -12,9 +12,7 @@ class UserTeamDomain extends React.Component {
 
   changeDomain() {
     let {domain} = this.refs;
-    console.log(domain.value);
-    this.setState({domain: domain.value})
-    console.log(this.state);
+    this.setState({domain: domain.value});
   }
 
   render() {

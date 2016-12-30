@@ -168,7 +168,7 @@ class StaffSettings extends React.Component {
                                 : ''}</h5>
                             <StatusIndicator class={(profile) ?
                               (profile.status == 'completed') ?
-                                'Out' : formatHelper.capitalize(profile.status)
+                                'Out' : (profile.status) ? formatHelper.capitalize(profile.status) : 'Out'
                               : ''}/>
                           </div>
                         </td>

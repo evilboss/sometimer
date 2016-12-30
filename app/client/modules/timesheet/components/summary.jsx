@@ -1,18 +1,19 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
-import StaffDetails from "/client/modules/staff/containers/staff_details";
 import StaffSummary from "/client/modules/staff/containers/staff_summary";
 
 class Summary extends React.Component {
   constructor(props) {
     super(props);
   }
+
   _exportLogs() {
-    const {exportLogs, teamId, from, to} = this.props;
-    exportLogs(teamId, from, to);
+    const {exportLogs, teamId, from, to,teamName} = this.props;
+    exportLogs(teamId, from, to,teamName);
   }
+
   render() {
-    const {team} = this.props;
+    const {team, summaryList} = this.props;
     return (
       <section id="summary">
         <PageTitle title='Summary View'/>
@@ -27,10 +28,12 @@ class Summary extends React.Component {
           </tr>
           </thead>
           <tbody>
-          { (team) ?
-            team.members.map((staff, index) => (
-              <StaffSummary key={index} staffId={staff} index={index} teamId={team._id}/>
-            )) : ''}
+          {
+            (summaryList) ?
+              summaryList.map((staff, index) => (
+                <StaffSummary key={index} staffId={staff._id} totalBreak={staff.totalBreak} totalHours={staff.totalRendered} index={index} teamId={team._id}/>
+              )) : ''
+          }
           </tbody>
         </table>
         {(team) ? <button className="m5 btn theme-color" onClick={this._exportLogs.bind(this)}>Export Logs<i

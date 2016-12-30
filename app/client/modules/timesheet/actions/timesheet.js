@@ -1,6 +1,5 @@
 import {timeHelpers} from '/client/utils/helpers/time-helpers';
 import moment from 'moment';
-
 const UpdateLog = (timein, timeout, timelog)=> {
   let timeIn = timeHelpers.setTime(timelog.createdAt, timein);
   let timeOut = timeHelpers.setTime(timelog.createdAt, timeout);
@@ -49,8 +48,8 @@ export default {
         icon: 'fa-clock-o'
       });
   },
-  exportLogs({Meteor, LocalState}, teamId, from, to){
-    var nameFile = `${teamId}.csv`;
+  exportLogs({Meteor, LocalState}, teamId, from, to, name){
+    var nameFile = `${(name) ? name : teamId}-timelogexport-${from.toString()}-${to.toString()}.csv`;
     Meteor.call('download.team.csv', teamId, from, to, function (err, fileContent) {
       if (fileContent) {
         Bert.alert({
@@ -62,7 +61,7 @@ export default {
         });
         var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
         saveAs(blob, nameFile);
-      }else{
+      } else {
         Bert.alert({
           type: 'danger',
           style: 'growl-bottom-right',
@@ -74,8 +73,8 @@ export default {
     });
 
   },
-  exportSummary({Meteor, LocalState}, teamId, from, to){
-    var nameFile = `${teamId}.csv`;
+  exportSummary({Meteor, LocalState}, teamId, from, to, name){
+    var nameFile = `${(name) ? name : teamId}-summary-${from.toString()}-${to.toString()}.csv`;
     Meteor.call('download.team.summary.csv', teamId, from, to, function (err, fileContent) {
       if (fileContent) {
         Bert.alert({
@@ -87,7 +86,7 @@ export default {
         });
         var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
         saveAs(blob, nameFile);
-      }else{
+      } else {
         Bert.alert({
           type: 'danger',
           style: 'growl-bottom-right',

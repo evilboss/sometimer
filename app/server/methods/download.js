@@ -17,8 +17,14 @@ export default function () {
     },
     'download.team.csv'(teamId, from, to) {
       const team = Team.findOne(teamId);
-      const collection = [{sample: '1'}, {sample: 2}];
-      return exportcsv.exportToCSV(collection);
+      const timeLogSelector = (team) ?
+      {
+        createdAt: {$gte: moment(from, 'LL').toDate(), $lte: moment(to, 'LL').toDate()},
+        userId: {$in: team.members},
+        completed: true
+      } : {_id: 'none'};
+      const timelogs = Timelogs.find(timeLogSelector).fetch();
+      return exportcsv.exportToCSV(timelogs);
 
     },
     'download.team.summary.csv'(teamId, from, to) {

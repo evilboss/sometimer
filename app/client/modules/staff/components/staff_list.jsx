@@ -238,7 +238,7 @@ class StaffList extends React.Component {
                     <tbody>
                     {(!_.isEmpty(team.teamLeader)) ?
                       team.teamLeader.map((staff, index) => (
-                        <StaffDetails currentUser={currentUser._id} staffId={staff} index={index}
+                        <StaffDetails key={index} currentUser={currentUser._id} staffId={staff} index={index}
                                       teamId={team._id} isStaff={control.isStaff(Meteor.userId())}/>  )) :
                       <tr>
                         <td></td>
@@ -332,7 +332,8 @@ class StaffList extends React.Component {
                       <DateRange changeDate={this.changeDate.bind(this)}/>
                     </div>
                   </div>
-                  <TimeRequest teamId={team._id} from={this.state.from} to={this.state.to}/>
+                  <TimeRequest teamId={team._id} from={this.state.from} to={this.state.to}
+                               teamName={formatHelper.capsAll(team.name)}/>
                 </div>
                 <div id="summary" className="col s12">
                   <div className="col s5 no-margin">
@@ -369,7 +370,8 @@ class StaffList extends React.Component {
                       <DateRange customId="summary-date-range" changeDate={this.changeDate.bind(this)}/>
                     </div>
                   </div>
-                  <Summary team={team} teamId={team._id} from={this.state.from} to={this.state.to}/>
+                  <Summary team={team} teamId={team._id} from={this.state.from} to={this.state.to}
+                           teamName={formatHelper.capsAll(team.name)}/>
                 </div>
               </div>
 

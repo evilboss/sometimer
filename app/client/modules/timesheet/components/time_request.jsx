@@ -9,9 +9,10 @@ class TimeRequest extends React.Component {
   }
 
   _exportLogs() {
-    const {exportLogs, teamId, from, to} = this.props;
-    exportLogs(teamId, from, to);
+    const {exportLogs, teamId, from, to, teamName} = this.props;
+    exportLogs(teamId, from, to, teamName);
   }
+
   render() {
     const {teamId, timelogs} = this.props;
     return (
@@ -22,9 +23,7 @@ class TimeRequest extends React.Component {
           <tr>
             <th>Date</th>
             <th></th>
-            <th colSpan="3">St
-              aff
-            </th>
+            <th colSpan="3">Staff</th>
             <th>Actions</th>
             <th>Time-In</th>
             <th>Total Break</th>

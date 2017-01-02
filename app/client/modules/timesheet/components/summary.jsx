@@ -31,7 +31,7 @@ class Summary extends React.Component {
           {
             (summaryList) ?
               summaryList.map((staff, index) => (
-                <StaffSummary key={index} staffId={staff._id} totalBreak={staff.totalBreak} totalHours={staff.totalRendered} index={index} teamId={team._id}/>
+                <StaffSummary key={index} staffId={staff._id} totalBreak={staff.totalBreak} totalHours={staff.totalHours} index={index} teamId={team._id}/>
               )) : ''
           }
           </tbody>

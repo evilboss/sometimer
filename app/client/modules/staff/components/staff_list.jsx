@@ -54,7 +54,8 @@ class StaffList extends React.Component {
       from: moment().format('LL'),
       to: moment().add('days', 1).format('LL')
     });
-    //this.getDates(from = null, to = null);
+    $('ul.tabs').tabs('select_tab', 'request-today');
+    $('ul.tabs').tabs('select_tab', 'summary-today');
   }
 
   goThisWeek() {

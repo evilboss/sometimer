@@ -98,7 +98,6 @@ export default {
     });
 
   },
-
   clearErrors({LocalState}) {
     return LocalState.set('TIMESHEET_ERROR', null);
   }

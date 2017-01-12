@@ -54,7 +54,7 @@ class TimeRequestData extends React.Component {
 
 
         </td>
-        <td colSpan="3" className="staff">
+        <td colSpan="3" className="staff text-left">
 
           <Username userId={request.userId}/>
 

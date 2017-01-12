@@ -15,6 +15,7 @@ class TimeRequest extends React.Component {
 
   render() {
     const {teamId, timelogs} = this.props;
+    console.log(timelogs, 'timelogs');
     return (
       <section id="time-request">
         <PageTitle title='Timesheet View'/>
@@ -23,7 +24,7 @@ class TimeRequest extends React.Component {
           <tr>
             <th>Date</th>
             <th></th>
-            <th colSpan="3">Staff</th>
+            <th colSpan="3" className="text-left">Staff</th>
             <th>Actions</th>
             <th>Time-In</th>
             <th>Total Break</th>

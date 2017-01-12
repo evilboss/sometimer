@@ -1,8 +1,8 @@
 section#time-request {
   td.staff {
+    vertical-align: inherit !important;
     .dp {
-      margin-right: 5px;
-      vertical-align: middle;
+      padding-top: 2px;
       img {
         @extend .dp-small;
       }

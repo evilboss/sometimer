@@ -27,10 +27,7 @@ class Summary extends React.Component {
       summaryBreak = addTime(summaryBreak, log.totalBreak);
     });
     return summaryBreak;
-
-
   }
-
   render() {
     const {team, summaryList} = this.props;
     return (

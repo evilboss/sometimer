@@ -50,7 +50,7 @@ class Summary extends React.Component {
           {
             (summaryList) ?
               summaryList.map((staff, index) => (
-                <StaffSummary key={index} staffId={staff._id} totalBreak={staff.totalBreak}
+                <StaffSummary key={index} staffId={staff._id} totalBreak={this.getTotalBreak(staff.timelogs)}
                               totalHours={this.getTotalRendered(staff.timelogs)} index={index}
                               teamId={team._id}/>
 

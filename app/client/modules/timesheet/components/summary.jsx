@@ -24,7 +24,7 @@ class Summary extends React.Component {
   getTotalBreak(staffLogs) {
     let summaryBreak = '00:00:00';
     _.each(staffLogs, (log)=> {
-      summaryBreak = addTime(summaryTotal, log.totalBreak);
+      summaryBreak = addTime(summaryBreak, log.totalBreak);
     });
     return summaryBreak;
 

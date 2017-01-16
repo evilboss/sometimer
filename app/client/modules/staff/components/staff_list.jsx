@@ -60,8 +60,6 @@ class StaffList extends React.Component {
 
   goThisWeek() {
     console.info('Week');
-
-    console.log(moment().startOf('isoWeek'), moment().endOf('isoWeek'));
     this.setState({
       from: moment().startOf('isoWeek').format('LL'),
       to: moment().endOf('isoWeek').format('LL')

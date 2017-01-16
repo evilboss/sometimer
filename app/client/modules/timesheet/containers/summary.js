@@ -2,6 +2,13 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
 import Summary from '../components/summary.jsx';
 import {addTime} from '/lib/lib/time';
+const getSummaryTotal = (timelogs)=> {
+  let summaryTotal = '00:00:00';
+  _.each(timelogs, (log)=> {
+    summaryTotal = addTime(summaryTotal, log.totalRendered);
+  });
+  return summaryTotal;
+};
 export const composer = ({context, team, teamId, from, to}, onData) => {
   const {Meteor, Collections} = context();
   const subscriptionReady = [Meteor.subscribe('timelogs.team.approval', teamId, from, to).ready];
@@ -9,17 +16,12 @@ export const composer = ({context, team, teamId, from, to}, onData) => {
     let summaryList = [];
     _.each(team.members, (staffId)=> {
       const timelogs = Collections.Timelogs.find({userId: staffId}).fetch();
-      let summaryBreak = '00:00:00';
-      let summaryTotal = '00:00:00';
-      _.each(timelogs, (log)=> {
-        summaryBreak = addTime(summaryBreak, log.totalBreak);
-        summaryTotal = addTime(summaryBreak, log.totalRendered);
-      });
+      console.log(timelogs);
       summaryList.push({
-        _id: staffId, totalBreak: summaryBreak, totalHours: summaryTotal
+        _id: staffId, timelogs: timelogs, totalBreak: "00:00:00", totalHours: "00:00:00"
       });
     });
-    (_.isEmpty(summaryList)) ? onData() : onData(null, {summaryList});
+    (_.isEmpty(summaryList)) ? onData() : onData(null, {summaryList, addTime});
   };
   (subscriptionReady) ? dataReady() : onData();
 };

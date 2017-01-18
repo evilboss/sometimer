@@ -7,7 +7,7 @@ import moment from 'moment';
  * @param days
  * @returns {Date}
  */
-Date.prototype.addDays =  (days)=> {
+Date.prototype.addDays = (days) => {
   var dat = new Date(this.valueOf());
   dat.setDate(dat.getDate() + days);
   return dat;
@@ -18,7 +18,7 @@ Date.prototype.addDays =  (days)=> {
  * @param stopDate
  * @returns {Array}
  */
-const getDates = (startDate, stopDate)=> {
+const getDates = (startDate, stopDate) => {
   var dateArray = new Array();
   var currentDate = startDate;
   while (currentDate <= stopDate) {
@@ -33,7 +33,7 @@ const getDates = (startDate, stopDate)=> {
  * @param time
  * @returns {*}
  */
-const setTime = (date, time)=> {
+const setTime = (date, time) => {
   currentDate = moment(date);
   time = time.split(':');
   currentDate.set({
@@ -46,7 +46,7 @@ const setTime = (date, time)=> {
  *
  * @returns {{day, month, year, date: *}}
  */
-const generateDateToday = ()=> {
+const generateDateToday = () => {
   const date = moment();
   const month = date.format('M');
   const day = date.format('D');
@@ -70,6 +70,29 @@ const getHoursRendered = (timeOut, timeIn) => {
   timeIn = moment(timeIn).format('DD/MM/YYYY HH:mm:ss');
   let diff = moment.utc(moment(timeOut, "DD/MM/YYYY HH:mm:ss").diff(moment(timeIn, "DD/MM/YYYY HH:mm:ss"))).format("HH:mm:ss");
   return diff;
+};
+
+const secondsToTime = (secs) => {
+  var hours = Math.floor(secs / (60 * 60));
+  var divisor_for_minutes = secs % (60 * 60);
+  var minutes = Math.floor(divisor_for_minutes / 60);
+  var divisor_for_seconds = divisor_for_minutes % 60;
+  var seconds = Math.ceil(divisor_for_seconds);
+  var obj = {
+    "h": hours,
+    "m": minutes,
+    "s": seconds
+  };
+  return obj;
+};
+const timeDiff = (a, b) => {
+  return (b - a) / 1000;
+};
+const example = () => {
+  var a = new Date('2015-03-25T12:00:00-06:30');
+  var b = new Date();
+  var difference = timeDiff(a, b);
+  console.log(secondsToTime(difference));
 };
 export {
   setTime,

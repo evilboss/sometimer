@@ -56,8 +56,7 @@ const endShift = (userId) => {
       }
     });
 
-  }
-  ;
+  };
 const startBreak = () => {
   updateStatus('Break', Meteor.userId());
   const currentLog = Timelogs.findOne({
@@ -93,7 +92,6 @@ const endBreak = () => {
     }
   });
 };
-//TODO: evilboss make editlogs work.
 const editLogs = (timeLogId, totalRendered) => {
   const currentTimelog = Timelogs.findOne(timeLogId);
   console.log(currentTimelog);
@@ -122,7 +120,6 @@ const editLog = (timeIn, timeOut, timelog)=> {
     }
   }) : ''
 };
-
 const timelogs = {
   startShift: () => startShift(),
   endShift: (userId) => endShift(userId),
@@ -133,5 +130,4 @@ const timelogs = {
   editLog: editLog
 
 };
-
 export {timelogs};

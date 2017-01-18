@@ -299,7 +299,7 @@ class StaffList extends React.Component {
               <div>
                 <div id="request" className="col s12">
                   <div className="col s5 no-margin">
-                    <div className="tabs-background">
+                    <div className="tabs-background border-bottom">
                       <div className="tabs-wrapper">
                         <ul className="tabs">
                           <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"
@@ -336,7 +336,7 @@ class StaffList extends React.Component {
                 </div>
                 <div id="summary" className="col s12">
                   <div className="col s5 no-margin">
-                    <div className="tabs-background">
+                    <div className="tabs-background border-bottom">
                       <div className="tabs-wrapper">
                         <ul className="tabs">
                           <li className="tab col s3"><a onClick={this.goToday.bind(this)} className="active"

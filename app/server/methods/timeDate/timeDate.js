@@ -72,28 +72,7 @@ const getHoursRendered = (timeOut, timeIn) => {
   return diff;
 };
 
-const secondsToTime = (secs) => {
-  var hours = Math.floor(secs / (60 * 60));
-  var divisor_for_minutes = secs % (60 * 60);
-  var minutes = Math.floor(divisor_for_minutes / 60);
-  var divisor_for_seconds = divisor_for_minutes % 60;
-  var seconds = Math.ceil(divisor_for_seconds);
-  var obj = {
-    "h": hours,
-    "m": minutes,
-    "s": seconds
-  };
-  return obj;
-};
-const timeDiff = (a, b) => {
-  return (b - a) / 1000;
-};
-const example = () => {
-  var a = new Date('2015-03-25T12:00:00-06:30');
-  var b = new Date();
-  var difference = timeDiff(a, b);
-  console.log(secondsToTime(difference));
-};
+
 export {
   setTime,
   setTime,

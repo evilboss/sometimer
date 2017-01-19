@@ -26,20 +26,3 @@ export default function () {
 
   });
 };
-// Meteor.methods({
-//   storeUrlInDatabase: function (url) {
-//     check(url, String);
-//     const urlToSave = encodeURI(url);
-//     //Modules.both.checkUrlValidity(urlToSave);
-//
-//     try {
-//       Files.insert({
-//         url: urlToSave,
-//         userId: Meteor.userId(),
-//         added: new Date()
-//       });
-//     } catch (exception) {
-//       return exception;
-//     }
-//   }
-// });

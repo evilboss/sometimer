@@ -10,12 +10,11 @@ export default function () {
     'timelogs.startBreak'(){
       timelogs.startBreak();
     },
-    'timelogs.endBreak'(){
-      timelogs.endBreak();
+    'timelogs.endBreak'(userId = this.userId){
+      timelogs.endBreak(userId);
     },
-    'timelogs.endShift'(userId){
-      let selectedUserId = (userId) ? userId : this.userId;
-      timelogs.endShift(selectedUserId);
+    'timelogs.endShift'(userId = this.userId){
+      timelogs.endShift(userId);
     },
     'timelogs.approve'(timeLogId){
       timelogs.approve(timeLogId);

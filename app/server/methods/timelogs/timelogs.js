@@ -1,17 +1,24 @@
 import moment from 'moment/moment';
 import {Timelogs, Breaks} from '/lib/collections/';
-import {addTime, subtractTime} from '/lib/lib/time';
+import {addTime, subtractTime, timeDiff, secondsToTime, summation} from '/lib/lib/time';
 import {getHoursRendered} from '/server/methods/timeDate/timeDate';
 /**
  *
  * @param status
  */
-const updateStatus = (status, userId) => {
-  Meteor.users.update({_id: userId}, {$set: {'profile.status': status}});
+const updateStatus = (status, userId, timelogId = null, breakId = null) => {
+  Meteor.users.update({_id: userId}, {
+    $set: {
+      'profile.status': status,
+      'profile.timeLogId': timelogId,
+      'profile.breakId': breakId
+    }
+  });
+};
+const getTimeLogId = (userId)=> {
+  return Meteor.users.findOne(userId).profile;
 };
 const startShift = () => {
-  updateStatus('In', Meteor.userId());
-  const sameDayLog = Timelogs.findOne({userId: Meteor.userId(), date: moment(new Date).format('DD:MM:YY')});
   const timeLog = {
     userId: Meteor.userId(),
     timeIn: new Date(),
@@ -19,94 +26,59 @@ const startShift = () => {
     date: moment(new Date).format('DD:MM:YY'),
     currentStatus: 'In',
   };
-  if (!sameDayLog) {
-    Timelogs.insert(timeLog);
-  } else {
-    Timelogs.update({
-      _id: sameDayLog._id
-
-    }, {
-      $set: {
-        timeIn: new Date(),
-        currentStatus: 'In'
-      }
-    });
-  }
+  const timelogId = Timelogs.insert(timeLog);
+  console.log(timelogId);
+  updateStatus('In', Meteor.userId(), timelogId);
 };
 const endShift = (userId) => {
-    console.log(userId);
-    updateStatus('Out', userId);
-    const currentLog = Timelogs.findOne({
-      userId: userId,
-      currentStatus: 'In',
-      date: moment(new Date).format('DD:MM:YY')
-    });
-    console.log('currentLog:', currentLog);
-    const breakLogs = Breaks.find({userId: userId, timeLogId: currentLog._id}).fetch();
-    const totalBreak = _.pluck(breakLogs, 'duration').reduce((a, b) => addTime(a, b), 0);
-    const timeOut = new Date();
-    const totalRendered = subtractTime(getHoursRendered(timeOut, currentLog.timeIn), totalBreak);
-    Timelogs.update(currentLog._id, {
-      $set: {
-        currentStatus: 'Out',
-        timeOut: timeOut,
-        totalBreak: totalBreak,
-        completed: true,
-        totalRendered: totalRendered
-      }
-    });
-
-  };
-const startBreak = () => {
-  updateStatus('Break', Meteor.userId());
-  const currentLog = Timelogs.findOne({
-    userId: Meteor.userId(),
-    currentStatus: 'In',
-    date: moment(new Date).format('DD:MM:YY')
+  const {timeLogId} = getTimeLogId(userId);
+  const currentLog = Timelogs.findOne(timeLogId);
+  const breakLogs = Breaks.find({userId: userId, timeLogId: timeLogId}).fetch();
+  const totalBreak = summation(breakLogs, 'duration');
+  const timeOut = new Date();
+  const totalRendered = (timeDiff(currentLog.timeIn, timeOut) - totalBreak);
+  Timelogs.update(timeLogId, {
+    $set: {
+      currentStatus: 'Out',
+      timeOut: timeOut,
+      totalBreak: totalBreak,
+      completed: true,
+      totalRendered: totalRendered
+    }
   });
+  updateStatus('Out', userId);
+};
+const startBreak = () => {
+  const {timeLogId} = getTimeLogId(Meteor.userId());
   const breaklog = {
     userId: Meteor.userId(),
-    timeLogId: currentLog._id,
+    timeLogId: timeLogId,
     breakTimeIn: new Date(),
     currentStatus: 'BreakIn'
   };
-  Breaks.insert(breaklog);
+  const breakId = Breaks.insert(breaklog);
+  updateStatus('Break', Meteor.userId(), timeLogId, breakId);
 };
-const endBreak = () => {
-  updateStatus('In', Meteor.userId());
-  const currentLog = Timelogs.findOne({
-    userId: Meteor.userId(),
-    currentStatus: 'In',
-    date: moment(new Date).format('DD:MM:YY')
-  });
-  const breakLog = Breaks.findOne({
-    userId: Meteor.userId(),
-    timeLogId: currentLog._id,
-    currentStatus: 'BreakIn'
-  });
-  Breaks.update(breakLog._id, {
+const endBreak = (userId) => {
+  const {timeLogId, breakId} = getTimeLogId(userId);
+  const breakLog = Breaks.findOne(breakId);
+  const breakTimeOut = new Date();
+  Breaks.update(breakId, {
     $set: {
       currentStatus: 'BreakOut',
-      breakTimeOut: new Date(),
-      duration: getHoursRendered(new Date(), breakLog.breakTimeIn)
+      breakTimeOut: breakTimeOut,
+      duration: timeDiff(breakLog.breakTimeIn, breakTimeOut)
     }
   });
+  updateStatus('In', Meteor.userId(), timeLogId);
+
 };
-const editLogs = (timeLogId, totalRendered) => {
-  const currentTimelog = Timelogs.findOne(timeLogId);
-  console.log(currentTimelog);
-  //Timelogs.update({_id: timeLogId}, {$set: {totalRendered: totalRendered}});
-};
-/**
- *
- * @param timelogId
- */
 const approve = (timelogId) => {
   const timelog = Timelogs.findOne(timelogId);
   (timelog) ? Timelogs.update(timelog, {
     $set: {approved: true}
   }) : ''
-}
+};
 const editLog = (timeIn, timeOut, timelog)=> {
   const breakLogs = Breaks.find({userId: timelog.userId, timeLogId: timelog._id}).fetch();
   const totalBreak = _.pluck(breakLogs, 'duration').reduce((a, b) => addTime(a, b), 0);
@@ -124,7 +96,7 @@ const timelogs = {
   startShift: () => startShift(),
   endShift: (userId) => endShift(userId),
   startBreak: () => startBreak(),
-  endBreak: () => endBreak(),
+  endBreak: (userId) => endBreak(userId),
   approve: (timeLogId) => approve(timeLogId),
   editLogs: (timeLogId, totalRendered) => editLogs(timeLogId, totalRendered),
   editLog: editLog

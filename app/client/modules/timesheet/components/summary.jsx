@@ -1,7 +1,8 @@
 import React from 'react';
 import PageTitle from '/client/modules/core/components/page_title';
 import StaffSummary from "/client/modules/staff/containers/staff_summary";
-import {addTime} from '/lib/lib/time';
+import {summation} from '/lib/lib/time';
+import {timeHelpers} from '/client/utils/helpers/time-helpers';
 
 class Summary extends React.Component {
   constructor(props) {
@@ -13,21 +14,6 @@ class Summary extends React.Component {
     exportLogs(teamId, from, to, teamName);
   }
 
-  getTotalRendered(staffLogs) {
-    let summaryTotal = '00:00:00';
-    _.each(staffLogs, (log)=> {
-      summaryTotal = addTime(summaryTotal, log.totalRendered);
-    });
-    return summaryTotal;
-  }
-
-  getTotalBreak(staffLogs) {
-    let summaryBreak = '00:00:00';
-    _.each(staffLogs, (log)=> {
-      summaryBreak = addTime(summaryBreak, log.totalBreak);
-    });
-    return summaryBreak;
-  }
   render() {
     const {team, summaryList} = this.props;
     return (
@@ -47,8 +33,10 @@ class Summary extends React.Component {
           {
             (summaryList) ?
               summaryList.map((staff, index) => (
-                <StaffSummary key={index} staffId={staff._id} totalBreak={this.getTotalBreak(staff.timelogs)}
-                              totalHours={this.getTotalRendered(staff.timelogs)} index={index}
+                <StaffSummary key={index} staffId={staff._id}
+                              totalBreak={timeHelpers.formatSeconds((_.isEmpty(staff.timelogs)) ? 0 : summation(staff.timelogs, 'totalBreak'))}
+                              totalHours={timeHelpers.formatSeconds((_.isEmpty(staff.timelogs)) ? 0 : summation(staff.timelogs, 'totalRendered'))}
+                              index={index}
                               teamId={team._id}/>
 
               )) : ''

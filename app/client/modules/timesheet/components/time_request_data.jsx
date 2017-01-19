@@ -4,6 +4,8 @@ import StaffDp from '/client/modules/users/containers/staff_dp';
 import Username from '/client/modules/users/containers/username';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
+import {timeHelpers} from '/client/utils/helpers/time-helpers';
+
 class TimeRequestData extends React.Component {
   constructor(props) {
     super(props);
@@ -99,7 +101,7 @@ class TimeRequestData extends React.Component {
           {(request.totalBreak) ?
             <div className="content-padding">
               <a href={`/dashboard/timesheet/breaks/${request._id}`}>
-                {request.totalBreak}
+                {timeHelpers.formatSeconds(request.totalBreak)}
               </a>
             </div>
             : ''}
@@ -123,7 +125,8 @@ class TimeRequestData extends React.Component {
         </td>
         <td>
           {
-            (request.totalRendered) ? <div className="content-padding">{request.totalRendered}</div> : ''
+            (request.totalRendered) ?
+              <div className="content-padding">{timeHelpers.formatSeconds(request.totalRendered)}</div> : ''
           }
         </td>
         <td>

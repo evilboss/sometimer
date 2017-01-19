@@ -34,7 +34,7 @@ const endShift = (userId) => {
   const {timeLogId} = getTimeLogId(userId);
   const currentLog = Timelogs.findOne(timeLogId);
   const breakLogs = Breaks.find({userId: userId, timeLogId: timeLogId}).fetch();
-  const totalBreak = summation(breakLogs, 'duration');
+  const totalBreak = (_.isEmpty(breakLogs)) ? 0 : summation(breakLogs, 'duration');
   const timeOut = new Date();
   const totalRendered = (timeDiff(currentLog.timeIn, timeOut) - totalBreak);
   Timelogs.update(timeLogId, {
@@ -81,8 +81,8 @@ const approve = (timelogId) => {
 };
 const editLog = (timeIn, timeOut, timelog)=> {
   const breakLogs = Breaks.find({userId: timelog.userId, timeLogId: timelog._id}).fetch();
-  const totalBreak = _.pluck(breakLogs, 'duration').reduce((a, b) => addTime(a, b), 0);
-  const totalRendered = subtractTime(getHoursRendered(timeOut, timeIn), totalBreak);
+  const totalBreak = (_.isEmpty(breakLogs)) ? 0 : summation(breakLogs, 'duration');
+  const totalRendered = (timeDiff(timeIn, timeOut) - totalBreak);
   (timelog) ? Timelogs.update(timelog, {
     $set: {
       timeIn: timeIn,

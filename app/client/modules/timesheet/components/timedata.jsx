@@ -4,7 +4,8 @@ import TimePicker from 'rc-time-picker';
 import tz from 'moment-timezone';
 import ApprovalButton from '/client/modules/manager/containers/approval_button';
 import EditHoursRendered from './edit_hour_rendered';
-/*TODO: @aaron declined timelog*/
+import {timeHelpers} from '/client/utils/helpers/time-helpers';
+
 class Timedata extends React.Component {
   constructor(props) {
     super(props);
@@ -79,6 +80,7 @@ class Timedata extends React.Component {
     (time) ? self.setState({time: time}) : '';
   }
 
+
   render() {
     const showSecond = false;
     const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
@@ -109,18 +111,18 @@ class Timedata extends React.Component {
                   <div className="clickedit" id={timelog._id}>
                     <TimePicker
                       id={`time-in-${timelog._id}`}
-                      style={{ width: 100 }}
+                      style={{width: 100}}
                       showSecond={showSecond}
                       defaultValue={moment()}
                       className={`time-in ${timelog._id}`}
                       onChange={this.onChange.bind(this)}
                     />
-                    <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-in')}><i
+                    <button className="btn done theme-color" onClick={this.done.bind(this, timelog._id, 'time-in')}><i
                       className="material-icons">done</i></button>
-                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-in')}><i
+                    <button className="btn cancel" onClick={this.cancel.bind(this, timelog._id, 'time-in')}><i
                       className="material-icons">clear</i></button>
                   </div>
-                  <div onClick={this.edit.bind(this,timelog._id,'time-in')} className="edit" id={timelog._id}>
+                  <div onClick={this.edit.bind(this, timelog._id, 'time-in')} className="edit" id={timelog._id}>
                     <i className="material-icons">border_color</i>
                   </div>
                 </div>
@@ -130,7 +132,9 @@ class Timedata extends React.Component {
         </td>
         <td className="total-break">
           {(timelog) ? (timelog.totalBreak) ?
-            <a href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timelog.totalBreak}</a> : '' : ''}
+            <a
+              href={`/dashboard/timesheet/breaks/${timelog._id}`}>{timeHelpers.formatSeconds(timelog.totalBreak)}</a> : '' : ''}
+
         </td>
         <td className="time-out">
           <span className="inline">
@@ -154,18 +158,18 @@ class Timedata extends React.Component {
                 <div className="inline">
                   <div className="clickedit" id={timelog._id}>
                     <TimePicker
-                      style={{ width: 100 }}
+                      style={{width: 100}}
                       showSecond={showSecond}
                       defaultValue={moment()}
                       className={`time-out ${timelog._id}`}
                       onChange={this.onChange}
                     />
-                    <button className="btn done theme-color" onClick={this.done.bind(this,timelog._id,'time-out')}><i
+                    <button className="btn done theme-color" onClick={this.done.bind(this, timelog._id, 'time-out')}><i
                       className="material-icons">done</i></button>
-                    <button className="btn cancel" onClick={this.cancel.bind(this,timelog._id,'time-out')}><i
+                    <button className="btn cancel" onClick={this.cancel.bind(this, timelog._id, 'time-out')}><i
                       className="material-icons">clear</i></button>
                   </div>
-                  <div onClick={this.edit.bind(this,timelog._id,'time-out')} className="edit" id={timelog._id}>
+                  <div onClick={this.edit.bind(this, timelog._id, 'time-out')} className="edit" id={timelog._id}>
                     <i className="material-icons">border_color</i>
                   </div>
                 </div>
@@ -174,7 +178,7 @@ class Timedata extends React.Component {
             : ''}
         </td>
         <td className="rendered">
-          {(timelog) ? (timelog.completed) ? (timelog.totalRendered) : (timelog.totalRendered) : '0'}
+          {(timelog) ? (timelog.completed) ? (timeHelpers.formatSeconds(timelog.totalRendered)) : (timeHelpers.formatSeconds(timelog.totalRendered)) : '0'}
         </td>
         <td>
           {(timelog) ?

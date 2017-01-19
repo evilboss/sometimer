@@ -2,6 +2,8 @@
  * Created by evilBoss on 12/30/16.
  */
 import moment from 'moment/moment';
+import {secondsToTime, summation} from '/lib/lib/time';
+
 const setTime = (date, time)=> {
   currentDate = moment(date);
   time = time.split(':');
@@ -11,7 +13,13 @@ const setTime = (date, time)=> {
   });
   return currentDate.toDate()
 };
+const formatSeconds = (seconds)=> {
+  let formatedTime = secondsToTime(seconds);
+  return `${formatedTime.h}:${formatedTime.m}`;
+};
+
 const timeHelpers = {
-  setTime:setTime
+  setTime,
+  formatSeconds
 };
 export {timeHelpers};

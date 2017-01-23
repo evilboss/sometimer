@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import {DateRange} from 'react-date-range';
-
 class Daterange extends React.Component {
 
 
@@ -39,9 +38,9 @@ class Daterange extends React.Component {
   closeModal(e) {
     e.preventDefault();
     const {customId} = this.props;
-
-    console.log('#' + (customId) ? customId : 'daterange-modal');
-    $('#daterange-modal').closeModal({
+    let selectedId = '#' + ((customId) ? customId : 'daterange-modal');
+    console.log(selectedId);
+    $(selectedId).closeModal({
       ready: function () {
         if ($(".lean-overlay").length > 1) {
           $(".lean-overlay:not(:first)").each(function () {
@@ -99,8 +98,7 @@ class Daterange extends React.Component {
             />
           </div>
         </div>
-
-        <div id='daterange-modal' className="modal">
+        <div id={(customId) ? customId : 'daterange-modal'} className="modal">
           <div className="modal-content">
             <h4 className="modal-title">Date Range</h4>
             <div className="modal-body">

@@ -16,7 +16,18 @@ class Timesheet extends React.Component {
     }
   };
 
+
+  componentDidUpdate() {
+    $(document).ready(function () {
+      $('ul.tabs').tabs();
+    });
+
+  }
+
   componentDidMount() {
+    $(document).ready(function () {
+      $('ul.tabs').tabs();
+    });
     $('.modal-trigger').leanModal();
     $('select').material_select();
   }
@@ -60,6 +71,42 @@ class Timesheet extends React.Component {
             }
           ]}/>
           : null}
+
+        <div id="request" className="col s12">
+          <div className="col s5 no-margin">
+            <div className="tabs-background border-bottom">
+              <div className="tabs-wrapper">
+                <ul className="tabs">
+                  <li className="tab col s3"><a className="active"
+                                                href="#request-today">Today</a></li>
+                  <li className="tab col s3"><a href="#request-week">This
+                    Week</a>
+                  </li>
+                  <li className="tab col s3"><a href="#request-month">This
+                    Month</a>
+                  </li>
+                  <li className="tab col s3"><a href="#request-custom">Custom
+                    Date</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="col s6 right-align">
+            <div id="request-today" className="col s12">
+
+            </div>
+            <div id="request-week" className="col s12">
+
+            </div>
+            <div id="request-month" className="col s12">
+
+            </div>
+            <div id="request-custom" className="col s12">
+
+            </div>
+          </div>
+        </div>
         <DateRange changeDate={this.changeDate.bind(this)}/>
         <TimesheetTable currentUser={currentUser} dates={dates}/>
       </section>

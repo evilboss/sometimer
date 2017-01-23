@@ -35,7 +35,7 @@ class TimesheetTotal extends React.Component {
           <th>
             Approved:
             <span className="green-text">
-            {totalPaid}
+            {totalPaid}&nbsp;
           </span>
             / Unapproved:
             <span className="red-text">

@@ -1,6 +1,6 @@
 import {Timelogs, Teamlist, Team} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
-import moment from 'moment/moment';
+import moment from 'moment-timezone';
 import {check} from 'meteor/check';
 import {auth} from "/server/methods/auth/auth";
 import {getDates, generateDateToday} from '/server/methods/timeDate/timeDate';
@@ -29,9 +29,9 @@ export default function () {
     console.log('subscribing to timelogs', moment(from).toDate(), moment(to).toDate());
     let staffList = [];
     const teamSelector = (auth.isAdmin(this.userId)) ? {
-      creator: this.userId
-    } : (auth.isManager(this.userId)) ? {teamLeader: this.userId} :
-    {_id: 'nonexistend'};
+        creator: this.userId
+      } : (auth.isManager(this.userId)) ? {teamLeader: this.userId} :
+        {_id: 'nonexistend'};
     const teams = Team.find(teamSelector).fetch();
 
     _.each(teams, (team) => {
@@ -42,21 +42,21 @@ export default function () {
     });
     const timeLogUserIds = _.uniq(staffList);
     const timeLogSelector = (timeLogUserIds) ?
-    {
-      createdAt: {$gte: moment(from,'LL').toDate(), $lte: moment(to,'LL').toDate()},
-      userId: {$in: timeLogUserIds},
-      completed: true
-    } : {_id: 'none'};
+      {
+        createdAt: {$gte: moment(from, 'LL').toDate(), $lte: moment(to, 'LL').toDate()},
+        userId: {$in: timeLogUserIds},
+        completed: true
+      } : {_id: 'none'};
     return Timelogs.find(timeLogSelector);
   });
   Meteor.publish('timelogs.team.approval', function (teamId, from, to) {
     const team = Team.findOne(teamId);
     const timeLogSelector = (team) ?
-    {
-      createdAt: {$gte: moment(from,'LL').toDate(), $lte: moment(to,'LL').toDate()},
-      userId: {$in: team.members},
-      completed: true
-    } : {_id: 'none'};
+      {
+        createdAt: {$gte: moment(from, 'LL').toDate(), $lte: moment(to, 'LL').toDate()},
+        userId: {$in: team.members},
+        completed: true
+      } : {_id: 'none'};
     return Timelogs.find(timeLogSelector);
   });
 

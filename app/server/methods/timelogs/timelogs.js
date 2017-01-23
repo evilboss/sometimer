@@ -22,10 +22,11 @@ const startShift = () => {
   let {timezone} = getTimeLogId(Meteor.userId());
   let currentDate = new Date().toLocaleString("en-US", {timeZone: (timezone) ? timezone : "Asia/Manila"});
   console.log('starting shift');
+
   const timeLog = {
     userId: Meteor.userId(),
     timeIn: new Date(currentDate),
-    createdAt: moment(new Date(currentDate)).tz((timezone) ? timezone : "Asia/Manila").format(),
+    createdAt: new Date(),
     date: moment(new Date(currentDate)).tz((timezone) ? timezone : "Asia/Manila").format('DD:MM:YY'),
     currentStatus: 'In',
   };
@@ -104,7 +105,8 @@ const timelogs = {
   endBreak: (userId) => endBreak(userId),
   approve: (timeLogId) => approve(timeLogId),
   editLogs: (timeLogId, totalRendered) => editLogs(timeLogId, totalRendered),
-  editLog: editLog
+  editLog: editLog,
+  getTimeLogId: (userId) => getTimeLogId(userId)
 
 };
 export {timelogs};

@@ -1,6 +1,6 @@
 {
   "name": "Remotiv",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Remotive platform",
   "scripts": {
     "test": "mocha .scripts/mocha_boot.js client/**/tests/**/*.js --compilers js:babel-core/register",
@@ -52,7 +52,7 @@
     "material-ui": "^0.15.0",
     "meteor-react-autoform": "0.0.92",
     "moment": "^2.13.0",
-    "moment-timezone": "^0.5.5",
+    "moment-timezone": "^0.5.11",
     "node-sass": "^3.13.1",
     "object-assign": "^4.1.0",
     "rc-time-picker": "^2.0.0",

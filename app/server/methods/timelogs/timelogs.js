@@ -1,4 +1,4 @@
-import moment from 'moment/moment';
+import moment from 'moment-timezone';
 import {Timelogs, Breaks} from '/lib/collections/';
 import {addTime, subtractTime, timeDiff, secondsToTime, summation} from '/lib/lib/time';
 import {getHoursRendered} from '/server/methods/timeDate/timeDate';
@@ -25,8 +25,8 @@ const startShift = () => {
   const timeLog = {
     userId: Meteor.userId(),
     timeIn: new Date(currentDate),
-    createdAt: new Date(currentDate),
-    date: moment(new Date(currentDate)).format('DD:MM:YY'),
+    createdAt: moment(new Date(currentDate)).tz((timezone) ? timezone : "Asia/Manila").format(),
+    date: moment(new Date(currentDate)).tz((timezone) ? timezone : "Asia/Manila").format('DD:MM:YY'),
     currentStatus: 'In',
   };
   const timelogId = Timelogs.insert(timeLog);

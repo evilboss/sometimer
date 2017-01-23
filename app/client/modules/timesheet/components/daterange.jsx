@@ -36,12 +36,12 @@ class Daterange extends React.Component {
     $('select').material_select();
   }
 
-
   closeModal(e) {
     e.preventDefault();
     const {customId} = this.props;
-    console.log('#'+(customId)?customId:'daterange-modal');
-    $('#'+(customId)?customId:'daterange-modal').closeModal({
+
+    console.log('#' + (customId) ? customId : 'daterange-modal');
+    $('#daterange-modal').closeModal({
       ready: function () {
         if ($(".lean-overlay").length > 1) {
           $(".lean-overlay:not(:first)").each(function () {
@@ -58,6 +58,7 @@ class Daterange extends React.Component {
 
   }
 
+
   handleChange(which, dateRange) {
     this.setState({
       [which]: dateRange
@@ -73,6 +74,8 @@ class Daterange extends React.Component {
     return (
       <section className="daterange">
         <div className="form-group right">
+          <button className="modal-trigger btn theme-color" data-target={(customId) ? customId : 'daterange-modal'}
+                  data-toggle="modal"><i className="material-icons">date_range</i></button>
           <div className="inline input-field col s6">
             <input
               type='text'
@@ -97,7 +100,7 @@ class Daterange extends React.Component {
           </div>
         </div>
 
-        <div id={(customId) ? customId : 'daterange-modal'} className="modal">
+        <div id='daterange-modal' className="modal">
           <div className="modal-content">
             <h4 className="modal-title">Date Range</h4>
             <div className="modal-body">

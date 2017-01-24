@@ -51,9 +51,10 @@ export default function () {
   });
   Meteor.publish('timelogs.team.approval', function (teamId, from, to) {
     const team = Team.findOne(teamId);
+    const format = 'YYYY-MM-DD HH:mm:ss';
     const timeLogSelector = (team) ?
       {
-        createdAt: {$gte: moment(from, 'LL').toDate(), $lte: moment(to, 'LL').toDate()},
+        createdAt: {$gte: moment(from, 'LL').format(format), $lte: moment(to, 'LL').format(format)},
         userId: {$in: team.members},
         completed: true
       } : {_id: 'none'};

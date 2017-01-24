@@ -20,18 +20,17 @@ const getTimeLogId = (userId) => {
 };
 const startShift = () => {
   let {timezone} = getTimeLogId(Meteor.userId());
-  let currentDate = new Date().toLocaleString("en-US", {timeZone: (timezone) ? timezone : "Asia/Manila"});
-  console.log('starting shift');
+  let currentDate = moment.tz((timezone) ? timezone : 'Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
 
+  console.log('starting shift');
   const timeLog = {
     userId: Meteor.userId(),
-    timeIn: new Date(currentDate),
-    createdAt: new Date(),
-    date: moment(new Date(currentDate)).tz((timezone) ? timezone : "Asia/Manila").format('DD:MM:YY'),
+    timeIn: moment.tz((timezone) ? timezone : 'Asia/Manila').toDate(),
+    createdAt: currentDate,
+    date: moment.tz((timezone) ? timezone : 'Asia/Manila').format('DD:MM:YY'),
     currentStatus: 'In',
   };
   const timelogId = Timelogs.insert(timeLog);
-  console.log(timelogId);
   updateStatus('In', Meteor.userId(), timelogId);
 };
 const endShift = (userId) => {
@@ -39,9 +38,8 @@ const endShift = (userId) => {
   const currentLog = Timelogs.findOne(timeLogId);
   const breakLogs = Breaks.find({userId: userId, timeLogId: timeLogId}).fetch();
   const totalBreak = (_.isEmpty(breakLogs)) ? 0 : summation(breakLogs, 'duration');
-  const timeOut = new Date().toLocaleString("en-US", {timeZone: (timezone) ? timezone : "Asia/Manila"});
+  const timeOut = moment.tz((timezone) ? timezone : 'Asia/Manila').toDate();
   const totalRendered = (timeDiff(currentLog.timeIn, new Date(timeOut)) - totalBreak);
-  console.log(timeDiff(currentLog.timeIn, new Date(timeOut), totalBreak, (timeDiff(currentLog.timeIn, new Date(timeOut)) - totalBreak)));
   Timelogs.update(timeLogId, {
     $set: {
       currentStatus: 'Out',

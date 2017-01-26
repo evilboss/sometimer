@@ -45,4 +45,10 @@ section#staff-list {
       margin: 20px 0;
     }
   }
+  .notification.badge {
+    top: -20px;
+    right: -5px;
+    color: white;
+    border-radius: 20px;
+  }
 }

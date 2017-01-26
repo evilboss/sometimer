@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import StaffDetails from "../containers/staff_details";
+import NotificationBadge from "../containers/notification_badge";
 import DateRange from "/client/modules/timesheet/components/daterange";
 import PageTitle from "/client/modules/core/components/page_title";
 import Tabs from "/client/modules/team/containers/tabs";
@@ -110,9 +111,13 @@ class StaffList extends React.Component {
               <div className="col s5 no-margin twbs">
                 {!(control.isStaff(Meteor.userId())) ?
                   <div className="row">
-                    <ul className="tabs">
+                    <ul className="tabs overflow-visible">
                       <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
-                      <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#request">Timesheet View</a>
+                      <li className="tab col s1 overflow-visible relative" onClick={this.goToday.bind(this)}><a href="#request">
+                        Timesheet View
+                        <NotificationBadge/>
+                      </a>
+
                       </li>
                       <li className="tab col s1" onClick={this.goToday.bind(this)}><a href="#summary">Summary View</a>
                       </li>
@@ -242,25 +247,25 @@ class StaffList extends React.Component {
                                         isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
                         ))
                         : <tr>
-                          <td></td>
-                          <td colSpan="3" className="red-text">
-                            <div className="empty-list red-text btn-add">
-                              There is no Staff assigned to this team yet. &nbsp;
-                              {(control.isPermitted('createManagers', userPermissions)) ?
-                                <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
-                                   className="waves-effect waves-light secondary-color"><i
-                                  className="material-icons">add</i><span>Add a Manager</span></a>
-                                : ''}
-                              {(control.isPermitted('createStaffs', userPermissions)) ?
-                                <a href={`/dashboard/team/${team._id}/user/new/staff`}
-                                   className="waves-effect waves-light secondary-color">
-                                  <i className="material-icons">add</i>
-                                  <span>Add a Staff</span>
-                                </a>
-                                : ''}
-                            </div>
-                          </td>
-                        </tr>
+                        <td></td>
+                        <td colSpan="3" className="red-text">
+                          <div className="empty-list red-text btn-add">
+                            There is no Staff assigned to this team yet. &nbsp;
+                            {(control.isPermitted('createManagers', userPermissions)) ?
+                              <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
+                                 className="waves-effect waves-light secondary-color"><i
+                                className="material-icons">add</i><span>Add a Manager</span></a>
+                              : ''}
+                            {(control.isPermitted('createStaffs', userPermissions)) ?
+                              <a href={`/dashboard/team/${team._id}/user/new/staff`}
+                                 className="waves-effect waves-light secondary-color">
+                                <i className="material-icons">add</i>
+                                <span>Add a Staff</span>
+                              </a>
+                              : ''}
+                          </div>
+                        </td>
+                      </tr>
                     }
                     <tr>
 

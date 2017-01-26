@@ -11,7 +11,7 @@ const getSummaryTotal = (timelogs)=> {
 };
 export const composer = ({context, team, teamId, from, to}, onData) => {
   const {Meteor, Collections} = context();
-  const subscriptionReady = [Meteor.subscribe('timelogs.team.approval', teamId, from, to).ready];
+  const subscriptionReady = [Meteor.subscribe('timelogs.team.approved', teamId, from, to).ready];
   const dataReady = () => {
     let summaryList = [];
     _.each(team.members, (staffId)=> {

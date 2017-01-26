@@ -49,16 +49,26 @@ export default function () {
       } : {_id: 'none'};
     return Timelogs.find(timeLogSelector);
   });
-  Meteor.publish('timelogs.team.approval', function (teamId, from, to) {
+  Meteor.publish('timelogs.team.approval', function (teamId) {
+    const team = Team.findOne(teamId);
+
+    const timeLogSelector = (team) ?
+      {
+        userId: {$in: team.members},
+        completed: true
+      } : {_id: 'none'};
+    return Timelogs.find(timeLogSelector);
+  });
+  Meteor.publish('timelogs.team.approved', function (teamId, from, to) {
     const team = Team.findOne(teamId);
     const format = 'YYYY-MM-DD HH:mm:ss';
     const timeLogSelector = (team) ?
       {
         createdAt: {$gte: moment(from, 'LL').format(format), $lte: moment(to, 'LL').format(format)},
         userId: {$in: team.members},
-        completed: true
+        completed: true,
+        approved: true
       } : {_id: 'none'};
     return Timelogs.find(timeLogSelector);
   });
-
 }

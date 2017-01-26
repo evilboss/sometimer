@@ -1,7 +1,6 @@
 import {Team} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
-
 export default function () {
   Meteor.methods({
     'team.insert'(team) {
@@ -11,12 +10,12 @@ export default function () {
     'team.update'(id, team){
       Team.update(id, {$set: team});
     },
-
     'team.remove'(teamId) {
       Team.remove({_id: teamId});
     },
     'team.assign'(teamId, userId){
-      Team.update(teamId, {$set: {teamLeader: userId}});
+      //TODO: get team leaders. good time to refactor to new method temporary fix so will not be broken
+      Team.update(teamId, {$set: {teamLeader: [userId]}});
     }
   });
 }

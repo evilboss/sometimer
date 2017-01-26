@@ -14,7 +14,7 @@ class TimeRequest extends React.Component {
   }
 
   render() {
-    const {teamId, timelogs} = this.props;
+    const {teamId, timelogs, approveLogs} = this.props;
     return (
       <section id="time-request">
         <PageTitle title='Timesheet View'/>
@@ -33,6 +33,9 @@ class TimeRequest extends React.Component {
           </tr>
           </thead>
           <tbody>
+          {approveLogs.map((request, index) =>
+            <TimeRequestData key={index} teamId={teamId} request={request}/>
+          )}
           {timelogs.map((request, index) =>
             <TimeRequestData key={index} teamId={teamId} request={request}/>
           )}

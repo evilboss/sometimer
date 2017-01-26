@@ -1,7 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import moment from 'moment/moment';
 import TimeRequest from '../components/time_request.jsx';
-
 export const composer = ({context, teamId, from, to}, onData) => {
   const {Meteor, Collections} = context();
   const format = 'YYYY-MM-DD HH:mm:ss';
@@ -19,7 +18,6 @@ export const composer = ({context, teamId, from, to}, onData) => {
   };
   (subscriptionReady) ? dataReady() : onData(null, {});
 };
-
 export const depsMapper = (context, actions) => ({
   exportLogs: actions.timesheet.exportLogs,
   context: () => context

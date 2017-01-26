@@ -10,7 +10,7 @@ export const composer = ({context, team, teamId, from, to}, onData) => {
     _.each(team.members, (staffId) => {
       const timelogs = Collections.Timelogs.find({userId: staffId, approved: true}).fetch();
       summaryList.push({
-        _id: staffId, timelogs: timelogs, totalBreak: "00:00:00", totalHours: "00:00:00"
+        _id: staffId, timelogs: timelogs, totalBreak: "00:00", totalHours: "00:00"
       });
     });
     (_.isEmpty(summaryList)) ? onData() : onData(null, {summaryList, addTime});

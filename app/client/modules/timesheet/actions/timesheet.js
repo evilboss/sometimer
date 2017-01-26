@@ -48,9 +48,9 @@ export default {
         icon: 'fa-clock-o'
       });
   },
-  exportLogs({Meteor, LocalState}, teamId, from, to, name){
+  exportLogs({Meteor, LocalState}, teamId, from, to, name, teamLogs){
     var nameFile = `${(name) ? name : teamId}-timelogexport-${from.toString()}-${to.toString()}.csv`;
-    Meteor.call('download.team.csv', teamId, from, to, function (err, fileContent) {
+    Meteor.call('download.team.csv', teamId, from, to, teamLogs, function (err, fileContent) {
       if (fileContent) {
         Bert.alert({
           type: 'success',

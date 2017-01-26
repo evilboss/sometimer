@@ -9,8 +9,8 @@ class TimeRequest extends React.Component {
   }
 
   _exportLogs() {
-    const {exportLogs, teamId, from, to, teamName} = this.props;
-    exportLogs(teamId, from, to, teamName);
+    const {exportLogs, teamId, from, to, teamName, timelogs} = this.props;
+    exportLogs(teamId, from, to, teamName, timelogs);
   }
 
   render() {

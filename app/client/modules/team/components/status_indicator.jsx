@@ -9,7 +9,6 @@ class StatusIndicator extends React.Component {
 
   forceEndShift() {
     let {userId} = this.props;
-    console.log(userId);
     sweetAlert({
       title: "Force End Shift?",
       type: "warning",
@@ -24,6 +23,11 @@ class StatusIndicator extends React.Component {
     }, function (isConfirm) {
       if (isConfirm) {
         Meteor.call('timelogs.endShift', userId);
+        swal(
+          'Force Logout Successful',
+          'The user was forced end shift',
+          'success'
+        )
       }
     });
   }
@@ -38,7 +42,7 @@ class StatusIndicator extends React.Component {
         <span> {indicatorClass}</span>
         {control.isStaff(Meteor.userId()) ? null
           : (indicatorClass == 'Out' || indicatorClass == 'Invited') ? '' :
-          <button className="btn" onClick={this.forceEndShift.bind(this)}>Force End Shift</button>}
+            <button className="btn" onClick={this.forceEndShift.bind(this)}>Force End Shift</button>}
       </div>
 
     );

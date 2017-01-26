@@ -8,7 +8,7 @@ const transferTeam = (id, team) => {
 };
 const updateError = (LocalState, error) => {
   LocalState.set('UPDATE_TEAM_ERROR', `Required ${error}`);
-  return;
+
 };
 const create = () => {
   Meteor.call('team.insert', team, (err, createdTeam) => {
@@ -37,7 +37,7 @@ export default {
     create(id, team);
   },
   deleteTeam({Meteor, LocalState}, teamId) {
-    Meteor.call('team.remove', teamId)
+    Meteor.call('team.remove', teamId);;;;;;;;;
     sweetPrompts.sweetSucces('Team Deleted', 'Click OK To continue', 'success', '/dashboard/team');
   },
   add({Meteor, LocalState}, teamName){
@@ -49,5 +49,8 @@ export default {
   },
   clearErrors({LocalState}) {
     return LocalState.set('UPDATE_TEAM_ERROR', null);
+  },
+  forceEndShift({Meteor, LocalState}, userId){
+    Meteor.call('timelogs.endShift', userId);
   }
 }

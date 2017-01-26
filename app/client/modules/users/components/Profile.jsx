@@ -48,13 +48,6 @@ export default class Profile extends React.Component {
             <div className="col s12 m3 l3">
               <AvatarEditor
                 displayPhoto={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}/>
-
-              {/*
-               Todo: make update avatar work
-               <img
-               src={(user.profile.displayPhoto) ? user.profile.displayPhoto : '/uploads/defaults/default_user.png'}
-               alt="dp"
-               className="display-photo responsive-img center-block circle"/>*/}
             </div>
             <div className="col s12 m9 l9 no-horizontal-margin row">
               <div className="col s8">
@@ -93,10 +86,6 @@ export default class Profile extends React.Component {
                     <td>{(user.profile.contactNumber) ? user.profile.contactNumber : ''}</td>
                   </tr>
 
-                  {/*<tr>
-                   <th>Department/Team:</th>
-                   <td>{(user.profile.department) ? user.profile.department : ''}</td>
-                   </tr>*/}
                   </tbody>
                 </table>
               </div>

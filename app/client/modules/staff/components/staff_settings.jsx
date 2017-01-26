@@ -87,22 +87,22 @@ class StaffSettings extends React.Component {
             <small>{(team) ? (team.description) ? team.description : '' : ''}</small>
           </div>
           : <div className="col s6">
-          <Breadcrumbs crumbs={
-            [
-              {
-                text: `All ${((user) ? (user.profile) ? `${user.profile.role}s` : '' : '')}`,
-                path: (user) ? (user.profile) ? `dashboard.manage${formatHelper.capitalize(user.profile.role)}s` : '' : '',
-                params: ''
-              },
-              {
-                text: (user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : '',
-                path: 'staff.team.settings',
-                params: ''
-              }
-            ]
-          }/>
+            <Breadcrumbs crumbs={
+              [
+                {
+                  text: `All ${((user) ? (user.profile) ? `${user.profile.role}s` : '' : '')}`,
+                  path: (user) ? (user.profile) ? `dashboard.manage${formatHelper.capitalize(user.profile.role)}s` : '' : '',
+                  params: ''
+                },
+                {
+                  text: (user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : '',
+                  path: 'staff.team.settings',
+                  params: ''
+                }
+              ]
+            }/>
 
-        </div>}
+          </div>}
         <div className="col s12 border-bottom">
           <h5 className="viewed-profile">
             Viewing {(user) ? (user.profile) ? `${user.profile.firstName} ${user.profile.lastName}` : '' : ''}</h5>
@@ -169,12 +169,11 @@ class StaffSettings extends React.Component {
                             <StatusIndicator class={(profile) ?
                               (profile.status == 'completed') ?
                                 'Out' : (profile.status) ? formatHelper.capitalize(profile.status) : 'Out'
-                              : ''}/>
+                              : ''} userId={staffId}/>
                           </div>
                         </td>
                         <td className="center-align">
                           <div className="icons center-align">
-
                             <a href={(team) ? `/dashboard/staff/${team._id}/${user._id}` : ''}>
                               <img src="/Assets/icons/time.png"/>
                             </a>
@@ -184,12 +183,6 @@ class StaffSettings extends React.Component {
                                   <i className="material-icons">lock</i>
                                 </a>
                             }
-                            {/*
-                             TODO: Add New Modal for updating profile data
-                             <a onClick={this.togglePermission.bind(this)}>
-                             <i className="material-icons">edit</i>
-                             </a>
-                             */}
 
 
                           </div>

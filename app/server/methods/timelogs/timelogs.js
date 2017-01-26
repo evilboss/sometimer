@@ -34,8 +34,11 @@ const startShift = () => {
   updateStatus('In', Meteor.userId(), timelogId);
 };
 const endShift = (userId) => {
-  const {timeLogId, timezone} = getTimeLogId(Meteor.userId());
+  const {timeLogId, timezone, status} = getTimeLogId(userId);
   const currentLog = Timelogs.findOne(timeLogId);
+  if (status == 'Break') {
+    endBreak(userId);
+  }
   const breakLogs = Breaks.find({userId: userId, timeLogId: timeLogId}).fetch();
   const totalBreak = (_.isEmpty(breakLogs)) ? 0 : summation(breakLogs, 'duration');
   const timeOut = moment.tz((timezone) ? timezone : 'Asia/Manila').toDate();
@@ -61,13 +64,16 @@ const startBreak = () => {
     breakTimeIn: new Date(currentDate),
     currentStatus: 'BreakIn'
   };
+
   const breakId = Breaks.insert(breaklog);
   updateStatus('Break', Meteor.userId(), timeLogId, breakId);
 };
 const endBreak = (userId) => {
+  console.log('ending break');
   const {timeLogId, breakId, timezone} = getTimeLogId(userId);
   const breakLog = Breaks.findOne(breakId);
   const breakTimeOut = new Date().toLocaleString("en-US", {timeZone: (timezone) ? timezone : "Asia/Manila"});
+
   Breaks.update(breakId, {
     $set: {
       currentStatus: 'BreakOut',
@@ -75,7 +81,7 @@ const endBreak = (userId) => {
       duration: timeDiff(breakLog.breakTimeIn, new Date(breakTimeOut))
     }
   });
-  updateStatus('In', Meteor.userId(), timeLogId);
+  updateStatus('In', userId, timeLogId);
 };
 const approve = (timelogId) => {
   const timelog = Timelogs.findOne(timelogId);

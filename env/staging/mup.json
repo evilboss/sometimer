@@ -19,5 +19,5 @@
     "ROOT_URL": "http://www.remotiv.io/",
     "NODE_ENV": "staging"
   },
-  "deployCheckWaitTime": 60
+  "deployCheckWaitTime": 200
 }

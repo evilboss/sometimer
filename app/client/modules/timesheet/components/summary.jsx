@@ -10,7 +10,7 @@ class Summary extends React.Component {
   }
 
   _exportLogs() {
-    const {exportLogs, teamId, from, to, teamName} = this.props;
+    const {exportLogs, teamId, from, to, teamName, summaryList} = this.props;
     exportLogs(teamId, from, to, teamName);
   }
 

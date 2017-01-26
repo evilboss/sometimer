@@ -113,9 +113,10 @@ class StaffList extends React.Component {
                   <div className="row">
                     <ul className="tabs overflow-visible">
                       <li className="tab col s1"><a href="#teamview" className="active">Team View</a></li>
-                      <li className="tab col s1 overflow-visible relative" onClick={this.goToday.bind(this)}><a href="#request">
+                      <li className="tab col s1 overflow-visible relative" onClick={this.goToday.bind(this)}><a
+                        href="#request">
                         Timesheet View
-                        <NotificationBadge/>
+                        <NotificationBadge teamId={team._id}/>
                       </a>
 
                       </li>
@@ -247,25 +248,25 @@ class StaffList extends React.Component {
                                         isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
                         ))
                         : <tr>
-                        <td></td>
-                        <td colSpan="3" className="red-text">
-                          <div className="empty-list red-text btn-add">
-                            There is no Staff assigned to this team yet. &nbsp;
-                            {(control.isPermitted('createManagers', userPermissions)) ?
-                              <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
-                                 className="waves-effect waves-light secondary-color"><i
-                                className="material-icons">add</i><span>Add a Manager</span></a>
-                              : ''}
-                            {(control.isPermitted('createStaffs', userPermissions)) ?
-                              <a href={`/dashboard/team/${team._id}/user/new/staff`}
-                                 className="waves-effect waves-light secondary-color">
-                                <i className="material-icons">add</i>
-                                <span>Add a Staff</span>
-                              </a>
-                              : ''}
-                          </div>
-                        </td>
-                      </tr>
+                          <td></td>
+                          <td colSpan="3" className="red-text">
+                            <div className="empty-list red-text btn-add">
+                              There is no Staff assigned to this team yet. &nbsp;
+                              {(control.isPermitted('createManagers', userPermissions)) ?
+                                <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
+                                   className="waves-effect waves-light secondary-color"><i
+                                  className="material-icons">add</i><span>Add a Manager</span></a>
+                                : ''}
+                              {(control.isPermitted('createStaffs', userPermissions)) ?
+                                <a href={`/dashboard/team/${team._id}/user/new/staff`}
+                                   className="waves-effect waves-light secondary-color">
+                                  <i className="material-icons">add</i>
+                                  <span>Add a Staff</span>
+                                </a>
+                                : ''}
+                            </div>
+                          </td>
+                        </tr>
                     }
                     <tr>
 
@@ -297,6 +298,7 @@ class StaffList extends React.Component {
                       </div>
                     </div>
                   </div>
+                  <div className="col s6 left-align"> {/* Todo: @evilBoss User Dropdown to select users*/}</div>
                   <div className="col s6 right-align">
                     <div id="request-today" className="col s12">
                       Today is {moment().format('LL')}
@@ -353,10 +355,11 @@ class StaffList extends React.Component {
                            teamName={formatHelper.capsAll(team.name)}/>
                 </div>
               </div>
-
-              : null}
-
-          </div> : ''}
+              : null
+            }
+          </div>
+          : ''
+        }
 
       </section>
     );

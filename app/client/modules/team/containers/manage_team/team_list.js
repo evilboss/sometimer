@@ -4,7 +4,6 @@ import {domainHelpers} from '/client/utils/helpers/domain-helpers';
 import Loader from '/client/utils/loader/loader';
 export const composer = ({context, clientId}, onData) => {
   const {Meteor, Collections} = context();
-
   const subsriptionReady = [Meteor.subscribe('user.current').ready(), Meteor.subscribe('team.list', domainHelpers.getSubdomain()).ready()];
   const dataReady = ()=> {
     const selector = (clientId) ? {members: clientId} : {};

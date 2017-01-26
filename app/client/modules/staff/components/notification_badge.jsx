@@ -6,8 +6,15 @@ class NotificationBadge extends React.Component {
   }
 
   render() {
+    let {approveLogs}= this.props;
     return (
-      <span className="notification badge red">4</span>
+      <span>
+        {
+          (approveLogs) ?
+            <span className="notification badge red">{approveLogs}</span>
+            : null
+        }
+      </span>
     );
   }
 }

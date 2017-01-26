@@ -33,13 +33,6 @@ class StaffList extends React.Component {
     });
   }
 
-  getWeek() {
-    let curr = new Date;
-    let firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
-    let lastday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 6));
-
-  }
-
   summaryChangeView(e) {
     $('#summary-date-range').openModal();
   }
@@ -74,24 +67,6 @@ class StaffList extends React.Component {
     this.setState({
       from: moment(firstDay).format('LL'),
       to: moment(lastDay).format('LL')
-    });
-  }
-
-
-  getDates(from = null, to = null) {
-    const reactState = this;
-    Meteor.call('timesheet_dates.getCutOffDates', from, to, function (err, res, callback) {
-      if (err) {
-        sweatAlert(
-          'Ooops',
-          'Something went wrong!',
-          '' + JSON.stringify(err, null, 2)
-        );
-
-      } else {
-        reactState.setState({dates: res});
-      }
-
     });
   }
 

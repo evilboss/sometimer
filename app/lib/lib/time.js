@@ -13,7 +13,7 @@ function timestrToSec(timestr) {
  * @param num
  * @returns {string}
  */
-const pad = (num)=> {
+const pad = (num) => {
   if (num < 10) {
     return "0" + num;
   } else {
@@ -25,18 +25,18 @@ const pad = (num)=> {
  * @param seconds
  * @returns {string}
  */
-const formatTime = (seconds)=> {
+const formatTime = (seconds) => {
   return [pad(Math.floor(seconds / 3600) % 60),
     pad(Math.floor(seconds / 60) % 60),
     pad(seconds % 60),
   ].join(":");
 };
-const addTime = (time1, time2)=> {
+const addTime = (time1, time2) => {
   time1 = (time1) ? time1 : "00:00:00";
   time2 = (time2) ? time2 : "00:00:00";
   return formatTime(timestrToSec(time1) + timestrToSec(time2));
 };
-const subtractTime = (time1, time2)=> {
+const subtractTime = (time1, time2) => {
   time1 = (time1) ? time1 : "00:00:00";
   time2 = (time2) ? time2 : "00:00:00";
   return formatTime(timestrToSec(time1) - timestrToSec(time2));
@@ -57,7 +57,7 @@ const secondsToTime = (secs) => {
 const timeDiff = (from, to) => {
   return (to - from) / 1000;
 };
-const summation = (collection, key)=> {
+const summation = (collection, key) => {
   const total = _.pluck(collection, key).reduce((a, b) => a + b);
   return total;
 };
@@ -67,11 +67,17 @@ const example = () => {
   var difference = timeDiff(a, b);
   console.log(secondsToTime(difference));
 };
+const formatSeconds = (seconds) => {
+  let formatedTime = secondsToTime(seconds);
+  return `${formatedTime.h}:${formatedTime.m}`;
+};
+
 export {
   addTime,
   subtractTime,
   secondsToTime,
   timeDiff,
   summation,
+  formatSeconds,
   example
 }

@@ -26,6 +26,7 @@ export const composer = ({context, team, teamId, from, to}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   exportLogs: actions.timesheet.exportLogs,
+  exportSummary: actions.timesheet.exportSummary,
   context: () => context
 });
 

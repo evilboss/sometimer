@@ -3,15 +3,14 @@ import PageTitle from '/client/modules/core/components/page_title';
 import StaffSummary from "/client/modules/staff/containers/staff_summary";
 import {summation} from '/lib/lib/time';
 import {timeHelpers} from '/client/utils/helpers/time-helpers';
-
 class Summary extends React.Component {
   constructor(props) {
     super(props);
   }
 
   _exportLogs() {
-    const {exportLogs, teamId, from, to, teamName, summaryList} = this.props;
-    exportLogs(teamId, from, to, teamName);
+    const {exportSummary, teamId, from, to, teamName, summaryList} = this.props;
+    exportSummary(teamId, from, to, teamName, summaryList);
   }
 
   render() {
@@ -44,12 +43,11 @@ class Summary extends React.Component {
           </tbody>
         </table>
         {(team) ? <button className="m5 btn theme-color" onClick={this._exportLogs.bind(this)}>Export Logs<i
-          className="right material-icons">grid_on</i></button>
+            className="right material-icons">grid_on</i></button>
           : <div>No Summary for selected period</div>
         }
       </section>
     );
   }
 }
-
 export default Summary;

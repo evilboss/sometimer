@@ -16,7 +16,6 @@ export const composer = ({context, team, teamId, from, to}, onData) => {
     let summaryList = [];
     _.each(team.members, (staffId)=> {
       const timelogs = Collections.Timelogs.find({userId: staffId, approved: true}).fetch();
-      console.log(timelogs);
       summaryList.push({
         _id: staffId, timelogs: timelogs, totalBreak: "00:00:00", totalHours: "00:00:00"
       });

@@ -85,13 +85,12 @@ class TeamList extends React.Component {
                             <div className="card-action">
                               {(!_.isEmpty(team.members)) ?
                                 team.members.map((member, key) => (
-                                  (key <= 4) ?
-                                    <StaffDp staffType="staff" key={key}
-                                             position="top"
-                                             delay="50"
-                                             className="tooltipped"
-                                             teamId={team._id} userId={member}
-                                             target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff-settings/team/${team._id}/${member}` : '' : ''}/> : ''
+                                  <StaffDp staffType="staff" key={key}
+                                           position="top"
+                                           delay="50"
+                                           className="tooltipped"
+                                           teamId={team._id} userId={member}
+                                           target={ (userPermissions) ? control.isPermitted('updateStaffs', userPermissions) ? `/dashboard/staff-settings/team/${team._id}/${member}` : '' : ''}/>
                                 ))
                                 :
                                 <div className="row no-margin">

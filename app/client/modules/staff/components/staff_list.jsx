@@ -52,7 +52,7 @@ class StaffList extends React.Component {
     console.log('today');
     this.setState({
       from: moment().format('LL'),
-      to: moment().add('days', 1).format('LL')
+      to: moment().format('LL')
     });
     $('ul.tabs').tabs('select_tab', 'request-today');
     $('ul.tabs').tabs('select_tab', 'summary-today');
@@ -267,25 +267,25 @@ class StaffList extends React.Component {
                                         isStaff={(staff._id == currentUser) ? false : control.isStaff(Meteor.userId())}/>
                         ))
                         : <tr>
-                        <td></td>
-                        <td colSpan="3" className="red-text">
-                          <div className="empty-list red-text btn-add">
-                            There is no Staff assigned to this team yet. &nbsp;
-                            {(control.isPermitted('createManagers', userPermissions)) ?
-                              <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
-                                 className="waves-effect waves-light secondary-color"><i
-                                className="material-icons">add</i><span>Add a Manager</span></a>
-                              : ''}
-                            {(control.isPermitted('createStaffs', userPermissions)) ?
-                              <a href={`/dashboard/team/${team._id}/user/new/staff`}
-                                 className="waves-effect waves-light secondary-color">
-                                <i className="material-icons">add</i>
-                                <span>Add a Staff</span>
-                              </a>
-                              : ''}
-                          </div>
-                        </td>
-                      </tr>
+                          <td></td>
+                          <td colSpan="3" className="red-text">
+                            <div className="empty-list red-text btn-add">
+                              There is no Staff assigned to this team yet. &nbsp;
+                              {(control.isPermitted('createManagers', userPermissions)) ?
+                                <a href={(team._id) ? `/dashboard/team/${team._id}/user/new/manager` : ''}
+                                   className="waves-effect waves-light secondary-color"><i
+                                  className="material-icons">add</i><span>Add a Manager</span></a>
+                                : ''}
+                              {(control.isPermitted('createStaffs', userPermissions)) ?
+                                <a href={`/dashboard/team/${team._id}/user/new/staff`}
+                                   className="waves-effect waves-light secondary-color">
+                                  <i className="material-icons">add</i>
+                                  <span>Add a Staff</span>
+                                </a>
+                                : ''}
+                            </div>
+                          </td>
+                        </tr>
                     }
                     <tr>
 

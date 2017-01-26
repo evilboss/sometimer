@@ -64,7 +64,10 @@ export default function () {
     const format = 'YYYY-MM-DD HH:mm:ss';
     const timeLogSelector = (team) ?
       {
-        createdAt: {$gte: moment(from, 'LL').format(format), $lte: moment(to, 'LL').format(format)},
+        createdAt: {
+          $gte: moment(from, 'LL').hour(0).minute(0).format(format),
+          $lte: moment(to, 'LL').hour(23).minute(59).format(format)
+        },
         userId: {$in: team.members},
         completed: true,
         approved: true

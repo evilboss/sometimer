@@ -43,12 +43,14 @@ class Timesheet extends React.Component {
         );
 
       } else {
+        console.log(res);
         reactState.setState({dates: res});
       }
     });
   }
 
   changeDate(from, to) {
+    console.log(from, to);
     this.getDates(from, to);
   }
 
@@ -61,15 +63,15 @@ class Timesheet extends React.Component {
         <PageTitle
           title={(currentUser) ? `${(Meteor.userId() == currentUser._id) ? 'Your' : `${currentUser.profile.firstName}'s`} Time Tracker` : ''}/>
         {(teamId) ? <Breadcrumbs crumbs={
-          [
-            {text: 'All Teams', path: 'dashboard.team', params: ''},
-            {text: (teamName) ? teamName : 'Team', path: 'dashboard.myteam', params: teamId},
-            {
-              text: (currentUser) ? `${currentUser.profile.firstName} ${currentUser.profile.lastName}` : '',
-              path: 'dashboard.myteam',
-              params: `${teamId}/${(currentUser) ? currentUser._id : ''}`
-            }
-          ]}/>
+            [
+              {text: 'All Teams', path: 'dashboard.team', params: ''},
+              {text: (teamName) ? teamName : 'Team', path: 'dashboard.myteam', params: teamId},
+              {
+                text: (currentUser) ? `${currentUser.profile.firstName} ${currentUser.profile.lastName}` : '',
+                path: 'dashboard.myteam',
+                params: `${teamId}/${(currentUser) ? currentUser._id : ''}`
+              }
+            ]}/>
           : null}
 
         <div id="request" className="col s12">

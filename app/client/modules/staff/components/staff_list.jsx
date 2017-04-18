@@ -18,7 +18,7 @@ class StaffList extends React.Component {
     this.state = {
       dates: [],
       from: moment().format('LL'),
-      to: moment().add('days', 1).format('LL'),
+      to:  moment().format('LL'),
     };
   }
 

@@ -30,7 +30,6 @@ class EditHourRendered extends React.Component {
     event.preventDefault();
     let min = this.refs.mins.value;
     let hour = this.refs.hours.value;
-
     $('#' + this.props.target).closeModal();
 
   }
